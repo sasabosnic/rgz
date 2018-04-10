@@ -1,0 +1,19 @@
+{
+  "dir": "ltr",
+  "lang": "en",
+  "name": "Roman Zolotarev",
+  "scope": "/",
+  "display": "fullscreen",
+  "start_url": "/",
+  "short_name": "RZ",
+  "theme_color": "#ffffff",
+  "description": "Hi, I am @romanzolotarev on GitHub\nand Twitter. I make stuff for the web.",
+  "orientation": "any",
+  "background_color": "transparent",
+  "related_applications": [],
+  "prefer_related_applications": false,
+  "icons": [{
+    "src": "/favicon.ico",
+    "sizes": "16x16 32x32 48x48"
+  }]
+}

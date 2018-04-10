@@ -1,0 +1,140 @@
+<!DOCTYPE html><html lang="en">
+<head><title>GitHub and the command line - Roman Zolotarev</title><meta charset="utf-8"><meta name="referrer" content="no-referrer"><link rel="stylesheet" href="/styles.css"><link rel="manifest" href="/manifest.webmanifest"><meta name="theme-color" content="#ffffff"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+</head>
+<body><script>!function(t){ t.addEventListener('DOMContentLoaded', function () { var l = t.querySelector('#light-off'); if (l === null) { console.log('Lights-out...'); } else { l.checked = t.cookie.match(/lightOff=true/) !== null; l.addEventListener('change', function () { t.cookie = 'lightOff=' + JSON.stringify(l.checked) + ';path=/'; }); } })}(document);</script><input class="light-off" type="checkbox" id="light-off">
+<div class="page">
+<div class="header"><div class="header__home"><a href="/">Home</a> - <a href="https://twitter.com/romanzolotarev">Twitter</a></div><div class="header__light-off"><label for="light-off" class="light-off-button"></label></div></div>
+<div class="article"><h1 id="GitHub%20and%20the%20command%20line">GitHub and the command line</h1>
+
+<p>Why use the command line? Okay, GitHub has a clean and straightforward
+website, but when I&#8217;m in Terminal all day long, it&#8217;s much easier to write
+a function and put it into my <code>.bashrc</code> than switch to a web browser and
+click buttons.</p>
+
+<h2 id="Basic%20setup">Basic setup</h2>
+
+<p>First, make sure you have enabled <a href="https://github.com/settings/two_factor_authentication/configure">two-factor
+authentication</a>
+for your GitHub account.</p>
+
+<p>Then <a href="/ssh/">generate SSH keys</a> and add your public key to <a href="https://github.com/settings/keys">your profile
+on GitHub</a> so you can connect to GitHub
+via SSH. Test it right away.</p>
+
+<pre><code class="language-bash">ssh -T git@github.com
+</code></pre>
+
+<p>By the way, did you know GitHub makes your public key available via HTTPS?
+Having your keys accessible is convenient, for example, when you&#8217;re on one
+of your remote servers.</p>
+
+<pre><code class="language-bash">touch ~/.ssh/authorized_keys
+curl https://github.com/USERNAME.keys &gt;&gt; ~/.ssh/authorized_keys
+</code></pre>
+
+<h2 id="%3Ccode%3Ehub%3C/code%3E"><code>hub</code></h2>
+
+<p>If you work in Terminal most of the time, install
+<a href="https://hub.github.com">hub</a>. It&#8217;s a CLI tool made by GitHub that makes
+it easier to use GitHub from the command line. With <code>hub</code> you can create
+repositories, create pull requests, compare branches, etc.</p>
+
+<p>To install it on macOS with <a href="https://brew.sh">Homebrew</a> run:</p>
+
+<pre><code class="language-bash">brew install hub
+</code></pre>
+
+<p>As soon as you have <code>hub</code> you can do more things from the command line.</p>
+
+<pre><code class="language-bash"># Use short repository names, so...
+hub clone dotfiles
+# ...runs &quot;git clone git://github.com/YOUR_USERNAME/dotfiles.git&quot;
+
+hub clone romanzolotarev/dotfiles
+# git clone git://github.com/romanzolotarev/dotfiles.git
+
+# Open the current repository in a web browser
+hub browse
+
+# Open the current repository&#39;s issues page
+hub browse -- issues
+
+# List the current repository&#39;s issues
+hub issue
+
+# Open a text editor for your pull request message
+hub pull-request
+
+# Open a compare view between two releases
+hub compare v0.9..v1.0
+
+# Create a repository with the name of the current directory
+hub create
+</code></pre>
+
+<h2 id="API">API</h2>
+
+<p><a href="https://developer.github.com/v3/">Explore the documentation</a>.</p>
+
+<p>To parse the JSON from API responses, I suggest you install
+<a href="https://stedolan.github.io/jq/">jq</a>.</p>
+
+<pre><code>brew install jq
+</code></pre>
+
+<p>Let&#8217;s play with the <code>/user/keys</code> endpoint to see what&#8217;s possible with the
+GitHub API. For this endpoint you need your personal access token. Get one
+on <a href="https://github.com/settings/tokens">your profile page</a> or via command
+line. To make the following examples work your token should be in the
+<code>admin:public_key</code> scope.</p>
+
+<h2 id="Get%20access%20token">Get access token</h2>
+
+<p>Replace <code>USERNAME</code>, <code>OTP_CODE</code>, and <code>NOTE</code> with actual values:</p>
+
+<pre><code class="language-bash">curl -s https://api.github.com/authorizations \
+  -H &#39;X-GitHub-OTP: OTP_CODE&#39; \
+  -u USERNAME \
+  -d &#39;{&quot;scopes&quot;: [&quot;admin:public_key&quot;], &quot;note&quot;: &quot;NOTE&quot;}&#39; \
+  | jq -r .token
+</code></pre>
+
+<p>In response you will receive your personal access token. <a href="/keychain/">Treat it as
+carefully as a password</a>.</p>
+
+<h2 id="List%20your%20public%20keys">List your public keys</h2>
+
+<p>You can now check your public keys via API. Replace <code>ACCESS_TOKEN</code> with
+your personal access token:</p>
+
+<pre><code class="language-bash">curl -s https://api.github.com/user/keys \
+  -H &#39;Authorization: token ACCESS_TOKEN&#39; \
+  | jq
+</code></pre>
+
+<h2 id="Add%20your%20public%20key">Add your public key</h2>
+
+<p>You can even add new public keys. Replace <code>ACCESS_TOKEN</code>, <code>TITLE</code>,
+<code>PUBLIC_KEY</code> with actual values, where <code>PUBLIC_KEY</code> is a path to your
+public SSH key:</p>
+
+<pre><code class="language-bash">curl -s https://api.github.com/user/keys \
+  -H &#39;Authorization: token ACCESS_TOKEN&#39; \
+  -d &quot;{\&quot;title\&quot;: \&quot;TITLE\&quot;, \&quot;key\&quot;: \&quot;$(cat PUBLIC_KEY)\&quot;}&quot; \
+  | jq
+</code></pre>
+
+<h2 id="Delete%20your%20public%20key">Delete your public key</h2>
+
+<p>To delete a key you need to get its <code>ID</code> at GitHub. Do not forget to
+replace <code>ACCESS_TOKEN</code> and <code>ID</code> with actual values.</p>
+
+<pre><code class="language-bash">curl -X &#39;DELETE&#39; https://api.github.com/user/keys/ID \
+  -H &#39;Authorization: token ACCESS_TOKEN&#39;
+</code></pre>
+
+<p>Happy curling.</p></div>
+<div class="footer">&copy; <a href="/">Roman Zolotarev</a></div>
+</div></body></html>

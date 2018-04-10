@@ -1,0 +1,72 @@
+#l!/bin/sh
+PATH=$HOME/bin\
+:$HOME/.gem/ruby/2.5/bin\
+:/bin\
+:/sbin\
+:/usr/X11R6/bin\
+:/usr/bin\
+:/usr/games\
+:/usr/local/bin\
+:/usr/local/sbin\
+:/usr/sbin\
+:.
+LANG=en_US.UTF-8
+LC_ALL=en_US.UTF-8
+TERM=xterm-256color
+GIT_PS1_SHOWDIRTYSTATE=true
+# shellcheck disable=SC1091
+# shellcheck source="$HOME/.gitprompt"
+. "$HOME/.gitprompt"
+PS1="\\[\\e[38;5;247m\\]\\h:\\w\$(__git_ps1) \\[\\e[0m\\]"
+
+export PATH LANG LC_ALL TERM GIT_PS1_SHOWDIRTYSTATE
+
+
+alias cp='cp -i'
+alias l='ls -a'
+alias ll='ls -lahF'
+alias mv='mv -i'
+alias rm='rm -i'
+alias du='du -hd1'
+alias rz="cd \$HOME/src/romanzolotarev.com"
+alias b="vim \$HOME/.profile && . \$HOME/.profile"
+
+
+stty -ixon # rescue <C-s> for vim
+
+
+# shellcheck disable=SC2086
+update_complete_pass() {
+  pass_list=$(pass ls)
+  set -A complete_pass -- init passphrase add import show export ls
+  set -A complete_pass_add -- $pass_list
+  set -A complete_pass_edit -- $pass_list
+  set -A complete_pass_export -- $pass_list
+  set -A complete_pass_mv -- $pass_list
+  set -A complete_pass_show -- $pass_list
+}
+update_complete_pass
+pass_show() { pass show "$1" && update_complete_pass; }
+pass_add() { pass add "$1" && update_complete_pass; }
+pass_edit() { pass edit "$1"; }
+pass_export() { pass export "$1" && update_complete_pass; }
+
+
+LOCAL_PKG_PATH="$HOME/pub/OpenBSD/$(uname -r)/packages/$(uname -m)"
+pkg_add_from_cache() { doas env PKG_PATH="$LOCAL_PKG_PATH" pkg_add "$@"; }
+pkg_add_with_cache() { mkdir -p "$LOCAL_PKG_PATH" && doas env PKG_CACHE="$LOCAL_PKG_PATH" pkg_add "$@"; }
+
+
+mnt() { [ -n "$1" ] && doas mkdir -p "/mnt/$1" && doas mount "/dev/$1" "/mnt/$1" && cd "/mnt/$1" || return; }
+umnt() { [ -n "$1" ] && doas umount "/dev/$1"; }
+
+
+aria() { mkdir -p "$HOME/downloads" && (cd "$HOME/downloads" && aria2c "$1"); }
+yt() { mkdir -p "$HOME/downloads" && (cd "$HOME/downloads" && youtube-dl "$1"); }
+yl() { mkdir -p "$HOME/downloads" && (cd "$HOME/downloads" && youtube-dl -f 'bestvideo[height<=144]+bestaudio/best[height<=144]' "$1"); }
+jekyll() { bundler25 exec jekyll serve --clean --safe --increment --host "$(ifconfig|grep 'inet.*broadcast'|head -n1|cut -d' ' -f2)"; }
+
+
+MY_JOURNAL="$HOME/src/journal"
+notes() { dir="$(date +%Y/%m)"; mkdir -p "$MY_JOURNAL/$dir" && (cd "$MY_JOURNAL" || return && vim "$dir/$(date +%Y-%m-%d).md"); }
+j() { mkdir -p "$MY_JOURNAL" && (cd "$MY_JOURNAL" || return && vim 'my.journal'); }

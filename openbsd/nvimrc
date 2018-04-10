@@ -1,0 +1,6 @@
+let &packpath=&runtimepath
+source ~/.vim/vimrc
+language en_US
+set noruler laststatus=1 noshowcmd
+set runtimepath^=~/.vim
+set shada='10,\"100,:20,%,n$HOME/.nvim/viminfo

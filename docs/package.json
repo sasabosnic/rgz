@@ -1,0 +1,22 @@
+{
+  "name": "romanzolotarev.com",
+  "version": "1.0.0",
+  "description": "Personal website of Roman Zolotarev",
+  "main": "index.js",
+  "scripts": {
+    "test": "webpagetest test 'https://romanzolotarev.com/' --first --poll --specs webpagetestspecs.json --key 'A.7e23c0298b9fcb0ba6cd465246613d93'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/romanzolotarev/romanzolotarev.github.io.git"
+  },
+  "author": "Roman Zolotarev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/romanzolotarev/romanzolotarev.github.io/issues"
+  },
+  "homepage": "https://github.com/romanzolotarev/romanzolotarev.github.io#readme",
+  "dependencies": {
+    "webpagetest": "^0.3.8"
+  }
+}

@@ -1,0 +1,40 @@
+#!/bin/sh
+#
+# https://www.romanzolotarev.com/bin/net
+# Copyright 2017 Roman Zolotarev
+#
+install
+wifi='iwm0'
+eth='re0'
+
+case "$1" in
+
+  scan)
+    doas ifconfig $wifi scan
+    ;;
+
+  wifi)
+    doas ifconfig $eth -inet down
+    if [ -n "$2" ] && [ -n "$3" ]; then
+      doas ifconfig $wifi nwid "$2" wpa wpakey "$3" wpaprotos wpa1,wpa2
+    fi
+    doas route -n flush
+    doas ifconfig $wifi up
+    doas dhclient $wifi
+    ;;
+
+  eth)
+    doas ifconfig $wifi -inet down
+    doas route -n flush
+    doas ifconfig $eth up
+    doas dhclient $eth
+  ;;
+
+  *)
+    echo 'usage: net scan'
+    echo '         | wifi'
+    echo '         | wifi <SSID> <password>'
+    echo '         | eth'
+  ;;
+
+esac

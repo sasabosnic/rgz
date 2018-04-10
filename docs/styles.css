@@ -1,0 +1,60 @@
+body { font-family: "Noto Sans", "Arial", sans-serif; font-size: 1em; }
+body,
+html { margin: 0; height: 100%; }
+
+#light-off { position: absolute; visibility: hidden; }
+
+.light-off-button { display: block; }
+.light-off-button,
+.light-off-button-inline { color: #888888; -webkit-user-select: none; user-select: none; cursor: pointer; text-align: right; }
+
+.light-off-button:hover:after,
+.light-off-button-inline:hover:after { color: #357edd; border-bottom: 1px solid #357edd; }
+.light-off:checked ~ .page .light-off-button:hover:after,
+.light-off:checked ~ .page .light-off-button-inline:hover:after { color: #ddddb6;  border-bottom: 1px solid #aaaa96;}
+
+.light-off-button:after,
+.light-off-button-inline:after { content: "turn light off"; border-bottom: 1px solid #cccccc; }
+.light-off:checked ~ .page .light-off-button:after,
+.light-off:checked ~ .page .light-off-button-inline:after { content: "turn light on"; border-bottom: 1px solid #444444; }
+
+.page { background-color: #ffffff; color: #232323; min-height: 100%; }
+.light-off:checked ~ .page { background-color: #141414; color: #cccccc; }
+
+.page:selection { background: #ddddb6; }
+.light-off:checked ~ .page:selection { background: #357edd; }
+
+.page a { color: #357edd; text-decoration: none; border-bottom: 1px solid #a5ceff; }
+.light-off:checked ~ .page a { color: #ddddb6; border-bottom: 1px solid #aaaa96; }
+
+.page a:visited { color: #888888; border-bottom: 1px solid #cccccc; }
+.light-off:checked ~ .page a:visited { color: #888888; border-bottom: 1px solid #444444; }
+
+.page a:hover { color: #357edd; border-bottom: 1px solid #357edd; }
+.light-off:checked ~ .page a:hover { color: #ddddb6; border-bottom: 1px solid #ddddb6; }
+
+.header, 
+.footer { color: #888888; padding: 1em; margin: 0 auto; max-width: 32em; }
+.header a,
+.footer a { color: #888888; border-bottom: 1px solid #cccccc; }
+.header__home { width: 50%; float: left; }
+.header__light-off { width: 50%; float: right; }
+
+.article { line-height: 1.6em; margin: 0 auto; padding: 2em 1em; max-width: 32em; } @media (max-width: 38em) { .article { max-width: 28em; } }
+.article h1,
+.article h2 { line-height: 1em; font-weight: 700; letter-spacing: -0.03em; word-spacing: -0.03em; }
+.article h1 { font-size: 2.8em; }
+.article h2 { font-size: 1.6em; }
+.article p { margin: 1em 0; }
+.article p code { font-weight: 700; }
+.article p img { margin: 1em 0; width: 100%; }
+.article hr { border: none; margin-top: 4em; }
+.article ul { padding: 0; }
+.article ul li { list-style: none; }
+.article li { margin: 1em 0; }
+.article .avatar { height: 5em; width: 5em; }
+
+.article code,
+.article pre { font-family: "Menlo", "DejaVu Sans Mono", monospace; font-size: 1em; margin: 0; }
+.article pre { background-color: #eeeeee; color: #232323; margin: 0 -1em; overflow-x: auto; padding: 1em; word-wrap: normal; }
+.light-off:checked ~ .page .article pre { background-color: #000000; color: #cccccc; }

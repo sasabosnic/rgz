@@ -1,0 +1,47 @@
+<!DOCTYPE html><html lang="en">
+<head><title>Manage passwords with shell and LibreSSL - Roman Zolotarev</title><meta charset="utf-8"><meta name="referrer" content="no-referrer"><link rel="stylesheet" href="/styles.css"><link rel="manifest" href="/manifest.webmanifest"><meta name="theme-color" content="#ffffff"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+</head>
+<body><script>!function(t){ t.addEventListener('DOMContentLoaded', function () { var l = t.querySelector('#light-off'); if (l === null) { console.log('Lights-out...'); } else { l.checked = t.cookie.match(/lightOff=true/) !== null; l.addEventListener('change', function () { t.cookie = 'lightOff=' + JSON.stringify(l.checked) + ';path=/'; }); } })}(document);</script><input class="light-off" type="checkbox" id="light-off">
+<div class="page">
+<div class="header"><div class="header__home"><a href="/">Home</a> - <a href="https://twitter.com/romanzolotarev">Twitter</a></div><div class="header__light-off"><label for="light-off" class="light-off-button"></label></div></div>
+<div class="article"><h1 id="Manage%20passwords%20with%20shell%20and%20LibreSSL">Manage passwords with shell and LibreSSL</h1>
+
+<p><code>crypt</code> is a POSIX shell script. It works on OpenBSD and macOS
+out-of-the-box, because it depends only on the software in the base (sh,
+openssl, tar, grep, cat, etc).</p>
+
+<h2 id="Install%20dependencies%20(optional)">Install dependencies (optional)</h2>
+
+<p>It has only one 3rd-party dependency. For TOTP you need to install
+<a href="http://www.nongnu.org/oath-toolkit/oathtool.1.html">oathtool(1)</a>.</p>
+
+<pre><code># pkg_add oath-toolkit
+</code></pre>
+
+<h2 id="Usage">Usage</h2>
+
+<h2 id="File%20format">File format</h2>
+
+<ul>
+<li>RSA private key protected by the master passphrase</li>
+<li>RSA public key</li>
+<li>password is tar archive
+
+<ul>
+<li>encrypted key file for AES encryption</li>
+<li>encrypted (AES) text file with a secret (username, password, url, etc)</li>
+</ul></li>
+</ul>
+
+<h2 id="Install">Install</h2>
+
+<p>Download and run <a href="/bin/crypt">crypt</a>:</p>
+
+<pre><code>$ curl -O https://www.romanzolotarev.com/bin/crypt
+$ ./crypt
+$
+</code></pre></div>
+<div class="footer">&copy; <a href="/">Roman Zolotarev</a></div>
+</div></body></html>

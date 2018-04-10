@@ -1,0 +1,123 @@
+<!DOCTYPE html><html lang="en">
+<head><title>Try OpenBSD - Roman Zolotarev</title><meta charset="utf-8"><meta name="referrer" content="no-referrer"><link rel="stylesheet" href="/styles.css"><link rel="manifest" href="/manifest.webmanifest"><meta name="theme-color" content="#ffffff"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+</head>
+<body><script>!function(t){ t.addEventListener('DOMContentLoaded', function () { var l = t.querySelector('#light-off'); if (l === null) { console.log('Lights-out...'); } else { l.checked = t.cookie.match(/lightOff=true/) !== null; l.addEventListener('change', function () { t.cookie = 'lightOff=' + JSON.stringify(l.checked) + ';path=/'; }); } })}(document);</script><input class="light-off" type="checkbox" id="light-off">
+<div class="page">
+<div class="header"><div class="header__home"><a href="/">Home</a> - <a href="https://twitter.com/romanzolotarev">Twitter</a></div><div class="header__light-off"><label for="light-off" class="light-off-button"></label></div></div>
+<div class="article"><h1 id="Try%20OpenBSD">Try OpenBSD</h1>
+
+<p>Why OpenBSD as a desktop? I like how simple and reliable it is.
+This guide is the shortest way to try OpenBSD. This may take just few
+minutes.</p>
+
+<h2 id="Backup%20everything">Backup everything</h2>
+
+<p>As you follow this guide you may accidentally erase your drives, so before
+we continue, please <strong>back up all your data</strong>.</p>
+
+<h2 id="Download%20the%20installer">Download the installer</h2>
+
+<pre><code>cd /tmp
+export URL=https://fastly.cdn.openbsd.org/pub/OpenBSD
+curl $URL/6.2/amd64/install62.fs
+curl $URL/6.2/amd64/SHA256
+
+grep install62.fs SHA256
+shasum -a 256 install62.fs
+</code></pre>
+
+<h2 id="Create%20install%20media">Create install media</h2>
+
+<p>Plug your flash drive in. It should be at least 400 MB. Run <code>diskutil
+list</code> to find an identifier of the flash drive. Usually it&#8217;s <code>/dev/disk2</code>.</p>
+
+<blockquote>
+<p>Substitute <code>/dev/diskX</code> with the identifier of the flash drive.
+<strong>All data on <code>/dev/diskX</code> will be erased!</strong></p>
+</blockquote>
+
+<pre><code>$ sudo dd if=install62.fs of=/dev/diskX bs=1m
+</code></pre>
+
+<p>If you want to automate these steps, here is how I make <a href="https://github.com/romanzolotarev/dotfiles/blob/master/macos/openbsd.sh">bootable OpenBSD
+installer from
+macOS</a>
+and <a href="https://raw.githubusercontent.com/romanzolotarev/dotfiles/master/bin/install">from
+OpenBSD</a>.</p>
+
+<h2 id="Boot%20the%20installer">Boot the installer</h2>
+
+<blockquote>
+<p>In this guide I don&#8217;t <a href="/openbsd-fde/">enable full disk encryption</a>, but you definitely
+should use it for all your computers with sensitive data.</p>
+</blockquote>
+
+<p>Boot from that flash drive.
+If you can&#8217;t boot OpenBSD try to enable legacy-boot in your BIOS.</p>
+
+<h2 id="Install%20OpenBSD%20base">Install OpenBSD base</h2>
+
+<p>Select <code>(I)nstall</code> and answer the questions. Some hints:</p>
+
+<ul>
+<li>Location of sets: <code>disk</code></li>
+<li>Which disk contains the install media: <code>sd1</code></li>
+<li>Continue without verification: <code>yes</code></li>
+</ul>
+
+<blockquote>
+<p>You can automate these steps too, here is <a href="/mercury.conf">one of my
+configuration examples for autoinstall</a>.</p>
+</blockquote>
+
+<p>If everything is okay:</p>
+
+<pre><code>$ reboot
+</code></pre>
+
+<p>&#8230;and unplug the flash drive.</p>
+
+<h2 id="After%20the%20first%20boot">After the first boot</h2>
+
+<p>Boot OpenBSD from your drive, login as root, and run:</p>
+
+<p>Set URL to download packages and updates</p>
+
+<pre><code>echo &#39;https://fastly.cdn.openbsd.org/pub/OpenBSD&#39;\
+&gt; /etc/installurl
+</code></pre>
+
+<p>Allow the user to run commands as root</p>
+
+<pre><code>echo &#39;permit nopass romanzolotarev&#39;\
+&gt; /etc/doas.conf
+</code></pre>
+
+<p>Done. Reboot and login as a regular user.</p>
+
+<h2 id="Post-install">Post-install</h2>
+
+<p>Install a tilling window manager and Firefox.</p>
+
+<pre><code>doas pkg_add dwm firefox
+</code></pre>
+
+<p>Make <code>dwm</code> your default window manager and start X11.</p>
+
+<pre><code>echo &#39;exec /usr/local/bin/dwm&#39; &gt; ~/.xinitrc
+startx
+</code></pre>
+
+<blockquote>
+<p>As you may expect, these steps are easy to automate as well, here is how
+I <a href="https://raw.githubusercontent.com/romanzolotarev/romanzolotarev.github.io/master/setup">setup dotfiles and install all the packages I
+use</a>.</p>
+</blockquote>
+
+<h2 id="See%20also">See also</h2>
+
+<p><a href="https://www.openbsd.org/faq/faq4.html">OpenBSD FAQ - Installation Guide</a></p></div>
+<div class="footer">&copy; <a href="/">Roman Zolotarev</a></div>
+</div></body></html>

@@ -1,0 +1,279 @@
+#!/bin/sh
+#
+# https://www.romanzolotarev.com/bin/pass
+# Copyright 2018 Roman Zolotarev
+#
+# Permission to use, copy, modify, and/or distribute this software for any
+# purpose with or without fee is hereby granted, provided that the above
+# copyright notice and this permission notice appear in all copies.
+#
+# THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+# WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+# MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+# ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+# WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+# ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+# OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+#
+set -e
+
+fail() { echo "$1"; exit 1; }
+should_exist() { if [ ! -f "$1" ]; then fail "Can't find $1."; fi; }
+should_not_exist() { if [ -f "$1" ]; then fail "$1 already exists."; fi; }
+should_be_dir() { if [ ! -d "$1" ]; then fail "$1 is not a directory."; fi; }
+should_be_defined() { if [ ! "$1" ]; then fail "$2 should be defined."; fi; }
+
+
+keygen() {
+  private_key="$1"
+  public_key="$2"
+  should_be_defined "$private_key" "Private key path"
+  should_be_defined "$public_key" "Public key path"
+  should_not_exist "$private_key"
+  should_be_dir "$(dirname "$private_key")"
+  should_not_exist "$public_key"
+  should_be_dir "$(dirname "$public_key")"
+
+  echo 'Generating public/private key pair.'
+
+  printf 'New pass phrase: '; stty -echo; read -r pass; stty echo; printf '\n'
+  if [ ! "$pass" ]; then fail 'The pass phrase cannot be empty.'; fi
+  printf 'Confirm: '; stty -echo; read -r pass_confirm; stty echo; printf '\n'
+
+  if [ "$pass" = "$pass_confirm" ]; then
+    openssl genrsa 2048 |
+      openssl pkcs8 -topk8 -inform pem -outform pem -out "$private_key" -v2 aes256 -passout "pass:$pass"
+    chmod 0400 "$private_key"
+    openssl rsa -in "$private_key" -out "$public_key" -outform pem -pubout -passin "pass:$pass"
+    chmod 0600 "$public_key"
+  else
+    fail 'Pass phrase mismatch.'
+  fi
+}
+
+
+passphrase() {
+  private_key="$1"
+  should_be_defined "$private_key" "Private key path"
+  should_exist "$private_key"
+
+  echo "Changing $private_key pass phrase."
+
+  printf 'Current pass phrase: '; stty -echo; read -r pass; stty echo; printf '\n'
+  printf 'New pass phrase: '; stty -echo; read -r new_pass; stty echo; printf '\n'
+  if [ ! "$new_pass" ]; then fail 'The pass phrase cannot be empty.'; fi
+  printf 'Confirm: '; stty -echo; read -r new_pass_confirm; stty echo; printf '\n'
+
+  if [ "$new_pass" = "$new_pass_confirm" ]; then
+    chmod 0600 "$private_key" &&
+    openssl rsa -aes256 -in "$private_key" -out "$private_key" -passin "pass:$pass" -passout "pass:$new_pass" 2>/dev/null ||
+      fail 'Pass phrase change failed.' &&
+      { echo 'Pass phrase changed.'; chmod 0400 "$private_key"; }
+  else
+    fail 'Pass phrase mismatch.'
+  fi
+}
+
+
+encrypt() {
+  public_key="$1"
+  data_file="$2"
+  should_be_defined "$data_file" "Data file path"
+  enc_file="$data_file.enc"
+  key_file="$data_file.key"
+  base_dir="$(dirname "$data_file")"
+  should_be_dir "$base_dir"
+  should_exist "$public_key"
+  should_not_exist "$enc_file"
+  should_not_exist "$key_file"
+
+  key=$(openssl rand -base64 180)
+  cleartext="$(cat)"
+  dir=$(dirname "$data_file"); mkdir -p "$dir"; chmod 0700 "$dir"
+
+  echo "$key" |
+    openssl rsautl -encrypt -pubin -inkey "$public_key" |
+      openssl enc -base64 -out "$key_file" >/dev/null 2>&1 ||
+      fail 'Encryption failed.'
+
+  echo "$cleartext" |
+    openssl enc -aes-256-cbc -base64 -salt -k "$key" -out "$enc_file"
+
+  cleartext=''
+  key=''
+
+  tar cf "$data_file" -C "$base_dir" "$(basename "$key_file")" "$(basename "$enc_file")"
+  rm "$key_file" "$enc_file"
+  chmod 0600 "$data_file"
+}
+
+
+sign() {
+  private_key="$1"
+  data_file="$2"
+  pass="$3"
+  should_be_defined "$data_file" "Data file path"
+  signature="$data_file.sig"
+  base_dir="$(dirname "$data_file")"
+  should_be_dir "$base_dir"
+  should_exist "$private_key"
+  should_exist "$data_file"
+
+  if [ ! "$pass" ]; then
+    if ! openssl dgst -sha256 -sign "$private_key" -out "$signature" "$data_file" 2>/dev/null; then
+      rm "$signature"
+      fail 'Signing failed.'
+    fi
+  else
+    if ! openssl dgst -sha256 -passin "pass:$pass" -sign "$private_key" -out "$signature" "$data_file" 2>/dev/null; then
+      rm "$signature"
+      fail 'Signing failed.'
+    fi
+  fi
+
+  chmod 0600 "$signature"
+}
+
+
+decrypt() {
+  private_key="$1"
+  data_file="$2"
+  pass="$3"
+  should_be_defined "$private_key" "Private key path"
+  should_be_defined "$data_file" "Data file path"
+  enc_file="$data_file.enc"
+  key_file="$data_file.key"
+  should_exist "$private_key"
+  should_exist "$data_file"
+
+  base_dir="$(dirname "$data_file")"
+  tar xf "$data_file" -C "$base_dir"
+  if [ ! "$pass" ]; then
+    key=$(openssl enc -d -base64 -in "$key_file"|openssl rsautl -decrypt -inkey "$private_key" 2>/dev/null)
+  else
+    key=$(openssl enc -d -base64 -in "$key_file"|openssl rsautl -passin "pass:$pass" -decrypt -inkey "$private_key" 2>/dev/null)
+  fi
+  openssl enc -aes-256-cbc -d -base64 -k "$key" -in "$enc_file" 2>/dev/null
+  rm "$key_file" "$enc_file"
+}
+
+verify () {
+  public_key="$1"
+  data_file="$2"
+  signature="$data_file.sig"
+  should_exist "$public_key"
+  should_exist "$data_file"
+  should_exist "$signature"
+
+  if ! openssl dgst -sha256 -verify "$public_key" -signature "$signature" "$data_file" >/dev/null 2>&1; then
+    fail 'Invalid signature.'
+  fi
+}
+
+if [ ! "$BASE_DIR" ]; then BASE_DIR="$HOME/.pass"; fi
+if [ ! "$PRIVATE_KEY" ]; then PRIVATE_KEY="$BASE_DIR/.key"; fi
+if [ ! "$PUBLIC_KEY" ]; then PUBLIC_KEY="$BASE_DIR/.key.pub"; fi
+if [ "$2" ]; then ID="$2"; fi
+if [ "$3" ]; then PASS="$3"; fi
+
+
+case "$1" in
+
+passphrase)
+  passphrase "$PRIVATE_KEY"
+  ;;
+
+
+init)
+  mkdir -p "$(dirname "$PRIVATE_KEY")"; chmod 0700 "$(dirname "$PRIVATE_KEY")"
+  mkdir -p "$(dirname "$PUBLIC_KEY")"; chmod 0700 "$(dirname "$PUBLIC_KEY")"
+  keygen "$PRIVATE_KEY" "$PUBLIC_KEY"
+  ;;
+
+add)
+  should_be_defined "$ID" "id"
+  should_not_exist "$BASE_DIR/$ID"
+  printf 'Pass phrase: '; stty -echo; read -r pass; stty echo; printf '\n'
+  if [ ! "$pass" ]; then fail 'The pass phrase cannot be empty.'; fi
+  openssl rand -base64 10 |
+    openssl dgst -sha256 -passin "pass:$pass" -sign "$PRIVATE_KEY" >/dev/null 2>&1 ||
+    fail 'Invalid pass phrase.'
+  echo 'Press Enter and CTRL-D to complete.'
+  encrypt "$PUBLIC_KEY" "$BASE_DIR/$ID"
+  sign "$PRIVATE_KEY" "$BASE_DIR/$ID" "$pass"
+  ;;
+
+import)
+  should_be_defined "$ID" "id"
+  should_not_exist "$BASE_DIR/$ID"
+  encrypt "$PUBLIC_KEY" "$BASE_DIR/$ID"
+  sign "$PRIVATE_KEY" "$BASE_DIR/$ID" "$PASS"
+  ;;
+
+show)
+  should_be_defined "$ID" "id"
+  verify "$PUBLIC_KEY" "$BASE_DIR/$ID"
+  cleartext="$(decrypt "$PRIVATE_KEY" "$BASE_DIR/$ID")"
+  echo "$cleartext"|head -n1
+  totp_seed="$(echo "$cleartext"|grep 'totp: '|head -n1|cut -d' ' -f2)"
+  if [ "$totp_seed" ]; then
+    if oathtool --version >/dev/null 2>&1; then
+      oathtool --totp -b "$totp_seed"
+    else
+      echo 'oathtool(1) should be installed'
+    fi
+  fi
+  ;;
+
+export)
+  should_be_defined "$ID" "id"
+  verify "$PUBLIC_KEY" "$BASE_DIR/$ID"
+  decrypt "$PRIVATE_KEY" "$BASE_DIR/$ID" "$PASS"
+  ;;
+
+ls)
+  cd "$BASE_DIR"
+  find . \( -type f \
+    -name "${ID}"\* \
+    \! -name \*.enc \
+    \! -name \*.key \
+    \! -name \*.sig \
+    \! -name \.key \
+    \! -name \.key.pub \
+    \! -path \*/.git/\* \) | cut -f2 -d'/' | sort
+  ;;
+
+edit)
+  should_be_defined "$ID" "id"
+  # verify "$PUBLIC_KEY" "$BASE_DIR/$ID"
+  cleartext_file="$BASE_DIR/$ID.cleartext"
+  cleartext=$(decrypt "$PRIVATE_KEY" "$BASE_DIR/$ID")
+  touch "$cleartext_file"; chmod 0600 "$cleartext_file"
+  echo "$cleartext" > "$cleartext_file"
+  vi "$cleartext_file"
+  after=$(cat "$cleartext_file")
+  rm "$cleartext_file"
+  if [ "$(echo "$cleartext"|md5)" = "$(echo "$after"|md5)" ]; then
+    echo "No changes in $ID"
+  else
+    echo "$after"|encrypt "$PUBLIC_KEY" "$BASE_DIR/$ID"
+    sign "$PRIVATE_KEY" "$BASE_DIR/$ID"
+  fi
+  ;;
+
+*)
+  echo 'usage: export BASE_DIR=~/.pass'
+  echo '       export PRIVATE_KEY=~/.pass/.key'
+  echo '       export PUBLIC_KEY=~/.pass/.key.pub'
+  echo
+  echo '       pass init'
+  echo '          | passphrase'
+  echo '          | add        id'
+  echo '          | import     id <pass>'
+  echo '          | show       id'
+  echo '          | export     id <pass>'
+  echo '          | ls        <id>'
+  exit 1
+  ;;
+
+esac

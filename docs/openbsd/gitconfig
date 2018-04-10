@@ -1,0 +1,14 @@
+[user]
+  name = Roman Zolotarev
+  email = hi@romanzolotarev.com
+[github]
+  user = romanzolotarev
+[core]
+  excludesfile = ~/.gitignore
+  editor = /usr/local/bin/vim
+[merge]
+  tool = vimdiff
+[push]
+  default = simple
+[commit]
+  gpgsign = false

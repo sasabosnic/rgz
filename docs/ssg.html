@@ -1,0 +1,109 @@
+<!DOCTYPE html><html lang="en">
+<head><title>Static site generator - Roman Zolotarev</title><meta charset="utf-8"><meta name="referrer" content="no-referrer"><link rel="stylesheet" href="/styles.css"><link rel="manifest" href="/manifest.webmanifest"><meta name="theme-color" content="#ffffff"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+</head>
+<body><script>!function(t){ t.addEventListener('DOMContentLoaded', function () { var l = t.querySelector('#light-off'); if (l === null) { console.log('Lights-out...'); } else { l.checked = t.cookie.match(/lightOff=true/) !== null; l.addEventListener('change', function () { t.cookie = 'lightOff=' + JSON.stringify(l.checked) + ';path=/'; }); } })}(document);</script><input class="light-off" type="checkbox" id="light-off">
+<div class="page">
+<div class="header"><div class="header__home"><a href="/">Home</a> - <a href="https://twitter.com/romanzolotarev">Twitter</a></div><div class="header__light-off"><label for="light-off" class="light-off-button"></label></div></div>
+<div class="article"><h1 id="Static%20site%20generator">Static site generator</h1>
+
+<p><a href="/bin/ssg">ssg</a> is less than two hundred lines of POSIX-compliant shell
+script. It generates Markdown articles to a static website.</p>
+
+<ol>
+<li><p>It copies the current directory file tree to <code>_site/</code> with
+<a href="https://rsync.samba.org/">rsync(1)</a>, ignoring <code>.*</code> and <code>_*</code>,</p></li>
+<li><p>renders all Markdown articles to HTML with
+<a href="https://kristaps.bsd.lv/lowdown/">lowdown(1)</a>,</p></li>
+<li><p>then generates a sitemap and wraps articles with a single HTML
+template.</p></li>
+</ol>
+
+<p>To watch source file changes it depends on
+<a href="http://entrproject.org/">entr(1)</a>, and for the local web server it relies
+on <a href="https://man.openbsd.org/httpd.8">httpd(8)</a>.</p>
+
+<p>Feel free to fork it.</p>
+
+<h2 id="Usage">Usage</h2>
+
+<p>For example your current directory looks like this:</p>
+
+<pre><code>.
+|-- .git/
+|   |-- ...
+|-- projects/
+|   |-- build-a-rocket.md
+|   |-- me-and-my-dog-on-the-moon.jpeg
+|   `-- visit-the-moon.md
+|-- about.md
+|-- index.html
+`-- index.css
+</code></pre>
+
+<p>Run</p>
+
+<pre><code>$ ssg build
+</code></pre>
+
+<p>and in a moment you will get a new directory <code>_site</code>.</p>
+
+<pre><code>.
+|
+|-- .git/
+|   |-- ...
+|-- _site/
+|   |-- projects/
+|   |   |-- build-a-rocket.html
+|   |   |-- me-and-my-dog-on-the-moon.jpeg
+|   |   `-- visit-the-moon.html
+|   |-- about.html
+|   |-- index.html
+|   |-- index.css
+|   `-- sitemap.xml
+|-- projects/
+|   |-- ...
+</code></pre>
+
+<p>To re-build pages on change run:</p>
+
+<pre><code>$ ssg watch
+</code></pre>
+
+<p><code>entr(1)</code> watches changes in <code>*.html</code>, <code>*.md</code>, <code>*.css</code>, <code>*.txt</code> files and
+runs <code>ssg build</code> on every file change.</p>
+
+<p>To start web server run:</p>
+
+<pre><code>$ ssg serve
+</code></pre>
+
+<p><code>ssg</code> starts <code>httpd(1)</code> in a debug mode and serves pages from
+<a href="http://127.0.0.1:4000">http://127.0.0.1:4000</a>.</p>
+
+<p>You can build, watch changes, and serve pages with a single command:</p>
+
+<pre><code>$ ssg
+</code></pre>
+
+<h2 id="Environment%20variables">Environment variables</h2>
+
+<p>To change the destination directory, server address or port, define
+environment variables <code>DOCS</code>, <code>HOST</code>, <code>PORT</code>. For example:</p>
+
+<pre><code>$ DOCS=_static ssg build
+$ DOCS=_static ssg watch
+$ doas env DOCS=/var/www/htdocs ssg watch
+$ HOST=192.168.1.111 PORT=8000 ssg serve
+</code></pre>
+
+<h2 id="Performance">Performance</h2>
+
+<p>100 pps. On modern computers <code>ssg</code> generates a hundred pages per second.
+Half of a time for markdown rendering and another half for wrapping
+articles into the template. I heard good static site generators
+work&#8212;twice as fast&#8212;at 200 pps, so there&#8217;s lots of performance that can
+be gained. ;)</p></div>
+<div class="footer">&copy; <a href="/">Roman Zolotarev</a></div>
+</div></body></html>

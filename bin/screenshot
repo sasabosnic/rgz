@@ -1,0 +1,8 @@
+#!/bin/sh
+#
+# https://www.romanzolotarev.com/bin/screenshot
+# Copyright 2018 Roman Zolotarev
+#
+sleep 0.2 # to prevent race condition when called via cwm bind-key
+# shellcheck disable=SC2016
+scrot -s -e 'xclip -selection c -t image/png $f'

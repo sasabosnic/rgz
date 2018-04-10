@@ -1,0 +1,44 @@
+#!/bin/sh
+#
+# https://www.romanzolotarev.com/bin/pass_import_1p
+# Copyright 2018 Roman Zolotarev
+#
+set -e
+
+fail() { echo "$1"; exit 1; }
+if [ -z "$1" ]; then fail "usage: $(basename "$0") data.1pif"; fi
+if [ ! -f "$1" ]; then fail "$1 not found"; fi
+
+printf 'Password: '; stty -echo; read -r pass; stty echo; printf '\n'
+if [ -z "$pass" ]; then fail 'The password cannot be empty.'; fi
+
+grep "^{" "$1" | while read -r line; do
+  file="$(printf "%s" "$line" | jq -r '.title' | tr ' ' '-' | tr ':' '-' | tr '[:upper:]' '[:lower:]')"
+  if [ -n "$file" ]; then
+    echo "==="
+    echo "$file"
+
+    SC="$(printf "%s" "$line" | jq -r '.secureContents' 2>/dev/null)"
+    SCF="$(printf "%s" "$SC" | jq -r '.fields|.[]' 2>/dev/null)"
+    SCSF="$(printf "%s" "$SC" | jq -r '.sections|.[]|.fields' 2>/dev/null | grep -v 'null')"
+
+    PASSWD="$(printf "%s" "$SCF" | jq -r 'select(.designation=="password")|.value' 2>/dev/null)"
+    UN="$(printf "%s" "$SCF" | jq -r 'select(.designation=="username")|.value' 2>/dev/null)"
+    LOC="$(printf "%s" "$line" | jq -r .location 2>/dev/null)"
+    TAGS="$(printf "%s" "$line" | jq -cr '.openContents.tags|join(", ")' 2>/dev/null)"
+    SECS="$(printf "%s" "$SCSF" | jq -r '.[]|"\(.t): \(.v)"' 2>/dev/null)"
+    # NOTES="$(printf "%s" "$SC" | jq -r '.notesPlain' 2>/dev/null)"
+
+    STRING=''
+
+    if [ -n "$PASSWD" ] && [ "$PASSWD" != 'null' ]; then STRING="$PASSWD\\n"; fi
+    if [ -n "$UN" ] && [ "$UN" != 'null' ]; then STRING="${STRING}username: $UN\\n"; fi
+    if [ -n "$LOC" ] && [ "$LOC" != 'null' ]; then STRING="${STRING}url: $LOC\\n"; fi
+    if [ -n "$TAGS" ] && [ "$TAGS" != 'null' ]; then STRING="${STRING}tags: $TAGS\\n"; fi
+    if [ -n "$SECS" ] && [ "$SECS" != 'null' ]; then STRING="${STRING}$SECS\\n"; fi
+    # if [ -n "$NOTES" ] && [ "$NOTES" != 'null' ]; then STRING="${STRING}$NOTES\\n"; fi
+    printf "%s" "$STRING" | crypt pass import "$file" "$pass"
+    echo "---"
+    echo "$STRING"
+  fi
+done

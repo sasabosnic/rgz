@@ -1,0 +1,139 @@
+#!/bin/sh
+#
+# https://www.romanzolotarev.com/bin/pass_test
+# Copyright 2018 Roman Zolotarev
+#
+cd "$(dirname "$0")" || exit 1
+which expect >/dev/null 2>&1 || { echo 'expect(1) should be installed' && exit 1; }
+which oathtool >/dev/null 2>&1 || { echo 'oathtool(1) should be installed' && exit 1; }
+counter=0; failed=0
+fail() { counter=$((counter+1)); echo "no ok $counter - $1"; failed=$((failed+1)); }
+pass() { counter=$((counter+1)); echo "ok $counter - $1"; }
+equal() { if [ "$(echo "$1"|md5)" = "$(echo "$2"|md5)" ]; then pass "$3"; else fail "$3\\n$1\\n!=\\n$2"; fi; }
+exist() { if [ -f "$1" ]; then pass "$2"; else fail "$2"; fi; }
+not_exist() { if [ ! -f "$1" ]; then pass "$2"; else fail "$2"; fi; }
+describe() { echo '#'; echo "# \\033[1m$1\\033[m"; }
+INIT_DIR=$(pwd); TEST_DIR=$(mktemp -d); cd "$TEST_DIR" || exit
+
+
+export BASE_DIR="$TEST_DIR/1"
+export PRIVATE_KEY="$TEST_DIR/1/.key"
+export PUBLIC_KEY="$TEST_DIR/1/.key.pub"
+cleartext="$(cat <<EOF
+qwerty1234567890
+username: romanzolotarev
+totp: lkjhlkjhlkjh
+url: romanzolotarev.com
+EOF
+)"
+
+
+describe 'pass init'
+expect >/dev/null << RUN
+spawn "$INIT_DIR/pass" init
+expect phrase: {send passphrase\\n}
+expect Confirm: {send passphrase\\n}
+expect eof
+RUN
+exist "$TEST_DIR/1/.key" "Private key created"
+exist "$TEST_DIR/1/.key.pub" "Public key created"
+equal "$(head -n1 < "$TEST_DIR/1/.key")" "-----BEGIN ENCRYPTED PRIVATE KEY-----" "Private key header"
+equal "$(head -n1 < "$TEST_DIR/1/.key.pub")" "-----BEGIN PUBLIC KEY-----" "Private key header"
+
+
+describe 'pass passphrase'
+expect << RUN
+spawn "$INIT_DIR/pass" passphrase
+expect phrase: {send passphrase\\n}
+expect phrase: {send newpassphrase\\n}
+expect Confirm: {send newpassphrase\\n}
+expect eof
+RUN
+expect << RUN
+spawn "$INIT_DIR/pass" passphrase
+expect phrase: {send newpassphrase\\n}
+expect phrase: {send passphrase\\n}
+expect Confirm: {send passphrase\\n}
+log_file "$TEST_DIR/passphrase.log"
+expect eof
+RUN
+message="$(tail -n1 < "$TEST_DIR/passphrase.log"|tr -d '\r')"
+equal "$message" "Pass phrase changed." "Pass phrase changed"
+
+
+describe 'pass import A'
+expect >/dev/null << RUN
+spawn "$INIT_DIR/pass" import A
+send "$cleartext"
+send \\n\\x04
+expect /.key: {send passphrase\\n}
+expect eof
+RUN
+exist "$TEST_DIR/1/A" "Data file imported"
+not_exist "$TEST_DIR/1/A.enc" "Temp enc file removed"
+not_exist "$TEST_DIR/1/A.key" "Temp key file removed"
+exist "$TEST_DIR/1/A.sig" "Signature file created"
+
+
+describe 'pass ls'
+expect >/dev/null << RUN
+spawn "$INIT_DIR/pass" ls
+log_file "$TEST_DIR/pass-ls.log"
+expect eof
+RUN
+ls="$(cat "$TEST_DIR/pass-ls.log")"
+equal "$ls" "A\\r" 'Passwords listed'
+
+
+describe 'pass export A'
+expect > /dev/null << RUN
+spawn "$INIT_DIR/pass" export A
+log_file "$TEST_DIR/pass-export.log"
+expect /.key: {send passphrase\\n}
+expect eof
+RUN
+cleartext_exported="$(tail -n4 < "$TEST_DIR/pass-export.log"|tr -d '\r' )"
+equal "$cleartext_exported" "$cleartext" 'Data file imported and exported'
+
+
+describe 'pass show A'
+expect >/dev/null << RUN
+spawn "$INIT_DIR/pass" show A
+log_file "$TEST_DIR/pass-show.log"
+expect /.key: {send passphrase\\n}
+expect eof
+RUN
+cleartext_shown="$(tail -n2 < "$TEST_DIR/pass-show.log"|tr -d '\r' )"
+cleartext_first_line="$(echo "$cleartext"|head -n1)"
+totp_seed="$(echo "$cleartext"|grep 'totp: '|head -n1|cut -d' ' -f2)"
+totp=$(oathtool --totp -b "$totp_seed")
+equal "$cleartext_shown" "$cleartext_first_line\\n$totp" 'Password and OTP shown'
+
+
+describe 'pass import B passphrase'
+expect >/dev/null << RUN
+spawn "$INIT_DIR/pass" import B passphrase
+send "$cleartext"
+send \\n\\x04
+expect eof
+RUN
+exist "$TEST_DIR/1/B" "Data file imported"
+not_exist "$TEST_DIR/1/B.enc" "Temp enc file removed"
+not_exist "$TEST_DIR/1/B.key" "Temp key file removed"
+exist "$TEST_DIR/1/B.sig" "Signature file created"
+
+
+describe 'pass export B'
+expect >/dev/null << RUN
+spawn "$INIT_DIR/pass" export B
+log_file "$TEST_DIR/pass-export.log"
+expect /.key: {send passphrase\\n}
+expect eof
+RUN
+cleartext_exported="$(tail -n4 < "$TEST_DIR/pass-export.log"|tr -d '\r')"
+equal "$cleartext_exported" "$cleartext" 'Data file imported and exported'
+
+
+echo "1..$counter"
+if [ "$failed" -gt 0 ]; then echo "FAILED $failed/$counter"; else echo "PASS"; fi
+cd "$INIT_DIR" || exit; rm -rf "$TEST_DIR"

@@ -1,0 +1,253 @@
+#!/usr/bin/env bash
+
+export PATH="$PATH:$HOME/Library/Haskell/bin:$HOME/.local/bin:/Library/TeX/texbin:/usr/local/opt/node@6/bin:/usr/local/opt/python/libexec/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:"
+
+export GIT_PS1_SHOWDIRTYSTATE=true
+PS1="\\[\\e[38;5;247m\\]\\h:\\w\$(__git_ps1) \\[\\e[0m\\]"
+
+# Add tab completion for ssh, defaults, killall, git, and todo-txt
+[ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2 | tr ' ' '\n')" scp sftp ssh
+complete -W "NSGlobalDomain" defaults
+complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes SystemUIServer Terminal Twitter" killall
+complete -F _git g
+
+# Homebrew: bash-competion' >> ~/.completions
+# shellcheck source="/usr/local/etc/bash_completion"
+source "/usr/local/etc/bash_completion"
+
+export SHELL_SESSION_HISTORY=0
+export HISTCONTROL=ignoreboth
+export HISTSIZE=10000
+shopt -s histappend
+shopt -s histreedit
+shopt -s histverify
+PROMPT_COMMAND="history -a;history -c;history -r;$PROMPT_COMMAND"
+
+function default_prompt() {
+  export PS1="\\[\\e[38;5;247m\\]$ \\[\\e[0m\\]"
+  export PROMPT_COMMAND=''
+}
+alias s='clear;tmux_rename_window;pwd;default_prompt'
+
+export EDITOR='vim'
+export HOMEBREW_NO_ANALYTICS=1
+export FZF_DEFAULT_COMMAND='ag -l -g ""'
+export GREP_OPTIONS='--color=auto'
+
+set -o vi
+
+export LC_ALL='en_US.UTF-8'
+export LANG='en_US'
+
+export SHELLCHECK_OPTS="-e SC1091"
+
+export TMUX_DEFAULT_SESSION='romanzolotarev'
+export MY_SOURCE="$HOME/Source"
+export MY_GOODIES="$HOME/Goodies"
+export MY_JOURNAL="${MY_SOURCE}/romanzolotarev/journal"
+
+# To handle <C-s> in Vim
+function vim() {
+  local STTYOPTS
+  STTYOPTS="$(stty -g)"
+  stty stop '' -ixoff
+  command reattach-to-user-namespace vim "$@"
+  stty "$STTYOPTS"
+}
+export -f vim
+alias vi='vim -u NONE -C'
+
+# Tmux
+
+function tmux_start() {
+  # Creates session and window, if needed.
+  tmux new-session -A -s "$TMUX_DEFAULT_SESSION" -n "$1" -c "$2" 2>/dev/null \
+    || tmux select-window -t "$1" 2>/dev/null \
+    || tmux new-window -n "$1" -c "$2" 2>/dev/null
+}
+
+function tmux_rename_window() {
+  local name
+  if [ -z "$1" ]; then name="${PWD##*/}"; else name="$1"; fi
+  tmux rename-window "$name" 2>/dev/null
+}
+alias a=tmux_rename_window
+
+function x() {
+  tmux_start x "$HOME"
+}
+
+function find_random_available_port() {
+  while true; do
+    local port=$(((RANDOM % 100) + 8000))
+    nc -z localhost "$port" || break
+  done
+  echo "$port"
+}
+
+function get_ngrok_public_url() {
+  curl -s http://localhost:4040/api/tunnels | jq .tunnels[0].public_url | sed "s/^\"\(.*\)\"$/\1/"
+}
+
+function open_ngrok_public_url() {
+  nc -z localhost 4040 && open "$(get_ngrok_public_url)"
+}
+
+function guess_repository_path() {
+  local dir="${MY_SOURCE}/romanzolotarev"
+  if [[ -z "$1" ]]; then
+    echo "${dir}/romanzolotarev.github.io"
+  else
+    echo "${dir}/$1"
+  fi
+}
+
+function run_jekyll() {
+  local host
+  local port
+  local reload_port1
+  if [[ -z "$1" ]]; then
+    port=$(find_random_available_port)
+  else
+    port="$1"
+  fi
+  reload_port1="1${port}"
+  host=$(ipconfig getifaddr en0)
+  [[ -z "$host" ]] && host="localhost"
+  tmux_rename_window "${PWD##*/}:$port"
+  sleep 1 && open -g "http://$host:$port" &
+  bundle exec jekyll clean
+  bundle exec jekyll serve --livereload --host "$host" --safe --increment --port "$port" --reload_port "$reload_port1"
+  tmux_rename_window "${PWD##*/}"
+}
+alias r=run_jekyll
+
+function rdom() {
+  local IFS=\>
+  read -rd \< E C
+}
+function webpagetest_all() { curl -s https://www.romanzolotarev.com/sitemap.xml | while rdom; do if [[ "$E" == loc ]]; then webpagetest_by_url "$C"; fi; done; }
+function webpagetest_by_url() {
+  echo "$1"
+  webpagetest test "${1}" \
+    --first --poll \
+    --reporter tap \
+    --specs ~/Source/romanzolotarev/romanzolotarev.github.io/webpagetestspecs.json \
+    --key "$(security find-generic-password -a "${USER}" -s WebPageTest -w)"
+}
+alias wt=webpagetest_all
+
+function notes() {
+  local dir
+  local file
+  dir="$(date +%Y/%m)"
+  file="$(date +%Y-%m-%d).md"
+  mkdir -p "$MY_JOURNAL/$dir"
+  cd "$MY_JOURNAL" || return
+  tmux_rename_window notes
+  vim "$dir/$file"
+  cd - || exit
+}
+
+function journal() {
+  mkdir -p "$MY_JOURNAL"
+  cd "$MY_JOURNAL" || return
+  tmux_rename_window journal
+  vim 'my.journal'
+  cd - || exit
+}
+alias j=journal
+
+# Git
+
+function clone() {
+  if [[ "${1}" == *"/"* ]]; then
+    local username="${1%/*}"
+  else
+    local username=romanzolotarev
+  fi
+  local repository="${1##*/}"
+  cd "$MY_SOURCE" || return
+  mkdir -p "$username"
+  cd "$username" && hub clone "$1" && cd "$repository" || return
+}
+
+# Downloads
+
+alias yt="tmux_rename_window yt && youtube-dl -o '\$HOME/Downloads/%(uploader)s/%(title)s-%(id)s.%(ext)s' -f 'bestvideo[height<=480]+bestaudio/best[height<=480]'"
+alias aria='tmux_rename_window yt && cd "$HOME/Downloads";aria2c --seed-time=0'
+
+# System
+
+alias c=clear
+
+alias -- -='cd -'
+alias ....='cd ../../..'
+alias ...='cd ../..'
+alias ..='cd ..'
+
+function mcd() {
+  mkdir -p "$1" && cd "$1" || return
+}
+
+alias cp='cp -i'
+alias mv='mv -i'
+alias srm='srm -i'
+alias rm='rm -i'
+
+alias l='ls -aFG'
+alias ll='ls -lhFG'
+alias la='ls -laFG'
+alias ls='command ls -G'
+alias du='du -h -d 1'
+
+alias show='defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder'
+alias hide='defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder'
+alias path='echo -e ${PATH//:/\\n}'
+alias b="vim \$HOME/.bash_profile && source \$HOME/.bash_profile"
+
+function generate_ssh_key() {
+  local id
+  id=$(date +%s)
+  ssh-keygen -o -a 100 -t ed25519 -f ~/.ssh/"$id" -C "$id"
+  # ssh-keygen -o -a 100 -t rsa -b 4096 -f ~/.ssh/"$id" -C "$id"
+}
+
+function get_random_line() {
+  jot -r "$(wc -l "$1")" 1 | paste - "$1" | sort -n | cut -f 2- | head -n 1
+}
+
+function vultr() {
+  curl -s -H "API-Key: $(security find-generic-password -a "${USER}" -s Vultr -w)" "https://api.vultr.com/v1/$1"
+}
+
+function get_github_personal_access_token() {
+  local token
+  token=$(curl -s https://api.github.com/authorizations \
+    -H "X-GitHub-OTP: ${1}" \
+    -u "${USER}" \
+    -d "{\"scopes\": [\"admin:public_key\"], \"note\": \"$(hostname)-$(date +%s)\"}" \
+    | jq -r .token)
+  security delete-generic-password -a "${USER}" -s GitHub
+  security add-generic-password -a "${USER}" -s GitHub -w "$token"
+}
+
+function add_ssh_key_to_github() {
+  curl -s https://api.github.com/user/keys \
+    -H "Authorization: token $(security find-generic-password -a "${USER}" -s GitHub -w)" \
+    -d "{\"title\": \"$(date +%s)\", \"key\": \"$(cat "$1")\"}"
+}
+
+function list_github_ssh_keys() {
+  curl -s https://api.github.com/user/keys \
+    -H "Authorization: token $(security find-generic-password -a "${USER}" -s GitHub -w)" \
+    | jq 'map({title: .title, key:.key})'
+}
+
+function security_find() {
+  security find-generic-password -a "${USER}" -s "$1" -w
+}
+
+function security_add() {
+  security add-generic-password -a "${USER}" -s "$1" -w
+}

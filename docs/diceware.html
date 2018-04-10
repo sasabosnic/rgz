@@ -1,0 +1,27 @@
+<!DOCTYPE html><html lang="en">
+<head><title>Generate secure passwords - Roman Zolotarev</title><meta charset="utf-8"><meta name="referrer" content="no-referrer"><link rel="stylesheet" href="/styles.css"><link rel="manifest" href="/manifest.webmanifest"><meta name="theme-color" content="#ffffff"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+</head>
+<body><script>!function(t){ t.addEventListener('DOMContentLoaded', function () { var l = t.querySelector('#light-off'); if (l === null) { console.log('Lights-out...'); } else { l.checked = t.cookie.match(/lightOff=true/) !== null; l.addEventListener('change', function () { t.cookie = 'lightOff=' + JSON.stringify(l.checked) + ';path=/'; }); } })}(document);</script><input class="light-off" type="checkbox" id="light-off">
+<div class="page">
+<div class="header"><div class="header__home"><a href="/">Home</a> - <a href="https://twitter.com/romanzolotarev">Twitter</a></div><div class="header__light-off"><label for="light-off" class="light-off-button"></label></div></div>
+<div class="article"><h1 id="Generate%20secure%20passwords">Generate secure passwords</h1>
+
+<p>Download and run <a href="/bin/diceware">diceware</a>:</p>
+
+<pre><code>$ curl -O https://www.romanzolotarev.com/bin/diceware
+$ . diceware
+uerrilla agnostic backdoor glove jealous mummy dictionary sloth
+</code></pre>
+
+<p>On every run it generates a random 8-word passphrase. Write this
+phrase down or just memorize it.</p>
+
+<h2 id="See%20also">See also</h2>
+
+<p><a href="https://en.m.wikipedia.org/wiki/Diceware">Diceware</a>,
+<a href="https://www.eff.org/deeplinks/2016/07/new-wordlists-random-passphrases">Deep Dive: EFF&#8217;s New Wordlists for Random Passphrases</a> by Joseph Bonneau,
+<a href="https://m.xkcd.com/936/">xkcd: Password Strength</a></p></div>
+<div class="footer">&copy; <a href="/">Roman Zolotarev</a></div>
+</div></body></html>

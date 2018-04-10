@@ -1,0 +1,2 @@
+XDG_DESKTOP_DIR="$HOME/src"
+XDG_DOWNLOAD_DIR="$HOME/downloads"

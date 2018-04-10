@@ -1,0 +1,50 @@
+<!DOCTYPE html><html lang="en">
+<head><title>Why OpenBSD? - Roman Zolotarev</title><meta charset="utf-8"><meta name="referrer" content="no-referrer"><link rel="stylesheet" href="/styles.css"><link rel="manifest" href="/manifest.webmanifest"><meta name="theme-color" content="#ffffff"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+</head>
+<body><script>!function(t){ t.addEventListener('DOMContentLoaded', function () { var l = t.querySelector('#light-off'); if (l === null) { console.log('Lights-out...'); } else { l.checked = t.cookie.match(/lightOff=true/) !== null; l.addEventListener('change', function () { t.cookie = 'lightOff=' + JSON.stringify(l.checked) + ';path=/'; }); } })}(document);</script><input class="light-off" type="checkbox" id="light-off">
+<div class="page">
+<div class="header"><div class="header__home"><a href="/">Home</a> - <a href="https://twitter.com/romanzolotarev">Twitter</a></div><div class="header__light-off"><label for="light-off" class="light-off-button"></label></div></div>
+<div class="article"><h1 id="Why%20OpenBSD?">Why OpenBSD?</h1>
+
+<p>Looking for a minimalist operating system? If you are software developer
+or system administrator, you should try OpenBSD.</p>
+
+<p><a href="https://www.openbsd.org">OpenBSD</a> shines on servers, but if you do just
+basic things on your desktop computer, then you&#8217;d love OpenBSD. In my case
+switching from macOS to OpenBSD was easy decision: I use my computer as an
+internet-enabled typewriter. All I need for my work is a web browser,
+terminal, and <a href="/why-vim/">Vim</a>.</p>
+
+<h2 id="Known%20issues">Known issues</h2>
+
+<p>OpenBSD works perfectly on mainstream hardware, but it doesn&#8217;t support
+all the hardware. Bluetooth is not supported, at all; <a href="https://man.openbsd.org/?query=wireless&amp;apropos=1">only few wireless
+chipsets</a> are
+supported; 3D acceleration is supported for limited number of video cards;
+USB3 audio is not here yet; etc.</p>
+
+<p>The most popular open source software is ported to OpenBSD, but some of
+the ports and packages can be outdated.</p>
+
+<h2 id="Secure,%20correct,%20reliable">Secure, correct, reliable</h2>
+
+<p>OpenBSD is a relatively small system, the dead code is actively removed to
+reduce maintenance costs, improve quality, and minimize attack surface.</p>
+
+<p>Everything I need is in the base: POSIX shell, X11, vi, tmux, httpd,
+smptd. There are only things I need, almost nothing else. The base is well
+documented, actively maintained, well integrated, nothing breaks
+unexpectedly.</p>
+
+<p>Files are neatly organized. They are always where you expect them to be.
+Configuration files are clean. Defaults are sane, there is almost nothing
+to customize.</p>
+
+<p>Easy to upgrade. If you don&#8217;t use exotic software or hardware, upgrade
+takes just few minutes (spent mostly on reading release notes).</p>
+
+<p><a href="/try-openbsd/">If it installs</a>, it works.</p></div>
+<div class="footer">&copy; <a href="/">Roman Zolotarev</a></div>
+</div></body></html>

@@ -1,0 +1,10 @@
+#!/bin/sh
+setxkbmap -option grp:alt_space_toggle us,ru &
+xinput --set-prop 7 'Device Accel Constant Deceleration' 5
+xset mouse 3 3
+xset -b
+xsetroot -solid black
+xsetroot -bitmap "$HOME/src/bg.xbm"
+xidle -delay 5 -timeout 600 -program "$HOME/bin/lockscreen" &
+xterm -e ". $HOME/.profile; tmux a || tmux" &
+cwm

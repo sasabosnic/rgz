@@ -1,0 +1,68 @@
+<style>
+.black       { background-color: #000000; }
+.dark-blue   { background-color: #1D2B53; }
+.dark-purple { background-color: #7E2553; }
+.dark-green  { background-color: #008751; }
+.brown       { background-color: #AB5236; }
+.dark-gray   { background-color: #5F574F; }
+.light-gray  { background-color: #C2C3C7; }
+.white       { background-color: #FFF1E8; }
+.red         { background-color: #FF004D; }
+.orange      { background-color: #FFA300; }
+.yellow      { background-color: #FFEC27; }
+.green       { background-color: #00E436; }
+.blue        { background-color: #29ADFF; }
+.indigo      { background-color: #83769C; }
+.pink        { background-color: #FF77A8; }
+.peach       { background-color: #FFCCAA; }
+@font-face { font-family: pico8; src: url('pico-8.woff2') format('woff2'), url('pico-8.woff') format('woff'); font-weight: normal; font-style: normal; }
+body { font-family: pico8, monospace; }
+.palette { margin: 2em 0; }
+.palette div { padding: 1em; color: #000000; margin: 0 -1em; }
+.palette div.black { color: #5F574F; }
+.page,
+.article div,
+.article h1 { font-size: 11px; }
+.aritcle h1 { margin-top: 4em; }
+.light-off:checked ~ .page .header a,
+.light-off:checked ~ .page a,
+.light-off:checked ~ .page .footer a,
+.page .header a,
+.page a ,
+.page .footer a,
+.light-off-button:hover:after,
+.light-off:checked ~ .page .light-off-button:hover:after,
+.light-off-button:after,
+.light-off:checked ~ .page .light-off-button:after { border: none; }
+</style>
+
+<h1>PICO-8 Color Palette</h1>
+<div class="palette">
+<div class="black">       #000000 (0,   0,   0)   black</div>
+<div class="dark-blue">   #1D2B53 (29,  43,  83)  dark-blue</div>
+<div class="dark-purple"> #7E2553 (126, 37,  83)  dark-purple</div>
+<div class="dark-green">  #008751 (0,   135, 81)  dark-green</div>
+<div class="brown">       #AB5236 (171, 82,  54)  brown</div>
+<div class="dark-gray">   #5F574F (95,  87,  79)  dark-gray</div>
+<div class="light-gray">  #C2C3C7 (194, 195, 199) light-gray</div>
+<div class="white">       #FFF1E8 (255, 241, 232) white</div>
+<div class="red">         #FF004D (255, 0,   77)  red</div>
+<div class="orange">      #FFA300 (255, 163, 0)   orange</div>
+<div class="yellow">      #FFEC27 (255, 236, 39)  yellow</div>
+<div class="green">       #00E436 (0,   228, 54)  green</div>
+<div class="blue">        #29ADFF (41,  173, 255) blue</div>
+<div class="indigo">      #83769C (131, 118, 156) indigo</div>
+<div class="pink">        #FF77A8 (255, 119, 168) pink</div>
+<div class="peach">       #FFCCAA (255, 204, 170) peach</div>
+</div>
+<hr>
+<div><a href="/pico-8-color-palette/pico-8.clr">OS X Color Picker palette</a></div>
+<div><a href="/pico-8-color-palette/screenshot.png">Screenshot of v0.1.8</a></div>
+<div><a href="/pico-8-color-palette/palette.png">palette.png</a></div>
+<hr>
+<div><a href="https://www.lexaloffle.com/pico-8.php">console</a>, palette,<br>
+and typeface by <a href="http://www.lexaloffle.com/bbs/?uid=1&mode=about">Joseph White</a></div>
+<div>font by <a href="http://www.lexaloffle.com/bbs/?tid=3109">RhythmLynx</a></div>
+<hr>
+<div>PICO-8 color palette<br>
+is licensed under <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC-0</a></div>

@@ -1,0 +1,75 @@
+<!DOCTYPE html><html lang="en">
+<head><title>Enable full disk encryption on OpenBSD - Roman Zolotarev</title><meta charset="utf-8"><meta name="referrer" content="no-referrer"><link rel="stylesheet" href="/styles.css"><link rel="manifest" href="/manifest.webmanifest"><meta name="theme-color" content="#ffffff"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+</head>
+<body><script>!function(t){ t.addEventListener('DOMContentLoaded', function () { var l = t.querySelector('#light-off'); if (l === null) { console.log('Lights-out...'); } else { l.checked = t.cookie.match(/lightOff=true/) !== null; l.addEventListener('change', function () { t.cookie = 'lightOff=' + JSON.stringify(l.checked) + ';path=/'; }); } })}(document);</script><input class="light-off" type="checkbox" id="light-off">
+<div class="page">
+<div class="header"><div class="header__home"><a href="/">Home</a> - <a href="https://twitter.com/romanzolotarev">Twitter</a></div><div class="header__light-off"><label for="light-off" class="light-off-button"></label></div></div>
+<div class="article"><h1 id="Enable%20full%20disk%20encryption%20on%20OpenBSD">Enable full disk encryption on OpenBSD</h1>
+
+<p>If you store sensitive data on your computer (e.g. passwords, keys,
+private files) you better enable full disk encryption.</p>
+
+<p>First of all you need to generate <a href="/diceware/">a secure passphrase</a>, then
+boot OpenBSD installer and select <code>(S)hell</code>.</p>
+
+<p>Note: Substitute <code>sd0</code> with the identifier of the target drive. All data
+on <code>sd0</code> will be erased! Also check an identifier of the new crypto volume.
+In my example it&#8217;s <code>sd3</code>.</p>
+
+<pre><code>#!/bin/sh
+set -e
+drive=&#39;/dev/rsd0c&#39;
+echo &quot;DANGER! All data on $drive will be erased. Press CTRL-C to cancel.&quot;
+read -r
+dd if=/dev/urandom of=&quot;$drive&quot; bs=1m count=1 status=none
+fdisk -iy sd0 &gt;/dev/null
+disklabel -E sd0 &gt;/dev/null &lt;&lt; EOF
+z
+a a
+1024
+*
+RAID
+w
+q
+EOF
+bioctl -c C -l sd0a softraid0
+cd /dev &amp;&amp; sh MAKEDEV sd3
+dd if=/dev/zero of=/dev/rsd3c bs=1m count=1 status=none
+echo &#39;Done! Please exit this shell to return to the main installer.&#39;
+</code></pre>
+
+<p>Optionally, you can automate few steps. Here is how I do it. Frist, enable
+your internet connection:</p>
+
+<pre><code># ifconfig re0 up
+# dhclient re0
+</code></pre>
+
+<p>Then download and execute <a href="https://raw.githubusercontent.com/romanzolotarev/romanzolotarev.github.io/master/fde">the
+script</a>:</p>
+
+<p>Be very careful, <strong>at this step you may lose all your data</strong>.</p>
+
+<pre><code># ftp -Vo - https://www.romanzolotarev.com/fde | sh -
+# exit
+</code></pre>
+
+<h2 id="Return%20to%20the%20main%20installer">Return to the main installer</h2>
+
+<p>When the installer asks <em>which disk is the root disk</em>, specify <code>sd3</code>.</p>
+
+<h2 id="Post-install">Post-install</h2>
+
+<p>When you booted OpenBSD from that crypto volume you can change the
+passphrase with this command:</p>
+
+<pre><code>doas bioctl -P sd3
+</code></pre>
+
+<h2 id="See%20also">See also</h2>
+
+<p><a href="https://www.openbsd.org/faq/faq14.html">OpenBSD FAQ - Disk Setup</a></p></div>
+<div class="footer">&copy; <a href="/">Roman Zolotarev</a></div>
+</div></body></html>
