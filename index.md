@@ -26,7 +26,7 @@ follow me on [Twitter](https://twitter.com/romanzolotarev).
 - [Touch typing](/typing.html "2016-11-19")
 <!-- - [Start with Elm](/elm.html "2016-11-14") -->
 - [Automate website testing with WebPagetest](/webpagetest.html "2016-11-14")
-- [Make your webpages fast](/fast.html "2016-11-13")
+- [Fast web](/fast.html "2016-11-13")
 <!-- - [Pagination](/pagination.html "2016-10-26") -->
 - [Screencasts for programmers](/screencasts.html "2016-10-25")
 <!-- - [TextEdit.app](/textedit.html "2016-09-17") -->

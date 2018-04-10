@@ -88,6 +88,6 @@ Install and run:
 
 ## See also
 
-[Jekyll Minimalist](/jekyll-minimalist/),
+[Jekyll Minimalist](https://romanzolotarev.github.io/jekyll-minimalist),
 [Jekyll](http://jekyllrb.com),
 [GitHub Pages](https://pages.github.com)

@@ -1,4 +1,4 @@
-# Make your webpages fast
+# Fast web
 
 As a web developer, you have to focus on a million different things. It is
 easy to forget about performance optimization, especially when you are

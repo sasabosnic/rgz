@@ -24,4 +24,4 @@ at GitHub, all you need is your email address and few more minutes.
 1. Share the link with your friends. (*This* is where social media
    sites can be useful.)
 
-[jm]: https://www.romanzolotarev.com/jekyll-minimalist
+[jm]: https://romanzolotarev.github.io/jekyll-minimalist
