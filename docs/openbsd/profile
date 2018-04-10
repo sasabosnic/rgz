@@ -28,7 +28,7 @@ alias ll='ls -lahF'
 alias mv='mv -i'
 alias rm='rm -i'
 alias du='du -hd1'
-alias rz="cd \$HOME/src/romanzolotarev.com"
+alias rz="cd \$HOME/src/romanzolotarev.com && DOCS=/var/www/htdocs ssg watch"
 alias b="vim \$HOME/.profile && . \$HOME/.profile"
 
 
@@ -64,7 +64,6 @@ umnt() { [ -n "$1" ] && doas umount "/dev/$1"; }
 aria() { mkdir -p "$HOME/downloads" && (cd "$HOME/downloads" && aria2c "$1"); }
 yt() { mkdir -p "$HOME/downloads" && (cd "$HOME/downloads" && youtube-dl "$1"); }
 yl() { mkdir -p "$HOME/downloads" && (cd "$HOME/downloads" && youtube-dl -f 'bestvideo[height<=144]+bestaudio/best[height<=144]' "$1"); }
-jekyll() { bundler25 exec jekyll serve --clean --safe --increment --host "$(ifconfig|grep 'inet.*broadcast'|head -n1|cut -d' ' -f2)"; }
 
 
 MY_JOURNAL="$HOME/src/journal"
