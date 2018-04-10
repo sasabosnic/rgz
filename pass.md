@@ -1,31 +1,173 @@
-# Manage passwords with shell and LibreSSL
+# Command line password manager powered by LibreSSL
 
 
-`crypt` is a POSIX shell script. It works on OpenBSD and macOS
-out-of-the-box, because it depends only on the software in the base (sh,
-openssl, tar, grep, cat, etc).
+[pass](/bin/pass) is a POSIX-compliant shell script. It works on OpenBSD
+and macOS out-of-the-box, because it depends only on the software in the
+base (for example: sh, openssl, tar, grep, cat).
 
-## Install dependencies (optional)
-
-It has only one 3rd-party dependency. For TOTP you need to install
+Frankly, it has one 3rd-party dependency, if you need time-based one-time
+passwords. If that is the case you need to install
 [oathtool(1)](http://www.nongnu.org/oath-toolkit/oathtool.1.html).
 
     # pkg_add oath-toolkit
 
-## Usage
+Download and run `pass`. Assuming `./bin` is in `PATH`.
 
-## File format
+    $ cd bin
+    $ ftp https://www.romanzolotarev.com/bin/pass
+    $ chmod +x pass
+    $ pass
+    usage: export BASE_DIR=~/.pass
+           export PRIVATE_KEY=~/.pass/.key
+           export PUBLIC_KEY=~/.pass/.key.pub
 
-- RSA private key protected by the master passphrase
-- RSA public key
-- password is tar archive
-  - encrypted key file for AES encryption
-  - encrypted (AES) text file with a secret (username, password, url, etc)
+           pass init
+              | passphrase
+              | add        id
+              | import     id <pass>
+              | show       id
+              | export     id <pass>
+              | ls        <id>
 
-## Install
+## Initialization
 
-Download and run [crypt](/bin/crypt):
+Create a directory for your passwords and generate your key pair.
+Please pick [a strong master pass phrase](/diceware.html) for your keys.
 
-    $ curl -O https://www.romanzolotarev.com/bin/crypt
-    $ ./crypt
+    $ pass init
+    Generating public/private key pair.
+    New pass phrase:
+    Confirm:
+    Generating RSA private key, 2048 bit long modulus
+    ..........................+++
+    ..................+++
+    e is 65537 (0x10001)
+    writing RSA key
+    $ ls -1 ~/.pass
+    .key
+    .key.pub
     $
+
+Yep, as result you will get two files in `~/.pass` directory. These files are
+your keys and they are protected with your master passphrase.
+
+---
+
+**Important!** Backup these files, you won't be able to recover any of
+your passwords without the private key. Also make sure you remember your
+pass phrase, there is no way to recover it either.
+
+---
+
+## Change pass phrase
+
+You can always change the master pass phrase for your private key.
+
+    $ pass passphrase
+    Changing /home/romanzolotarev/.pass/.key pass phrase.
+    Current pass phrase:
+    New pass phrase:
+    Confirm:
+    Pass phrase changed.
+    $
+
+## Add a password
+
+Ready for the next step? Let's add your first password. Run the following
+command and enter your master pass phrase, then type-in the password and
+hit Enter. In the second line type username and in the third line type
+url. Press Enter and CTRL-D to save the password.
+
+    $ pass add github
+    Pass phrase:
+    Press Enter and CTRL-D to complete.
+    always mule boots jaguar agnostic singles dalmatian vixen
+    username: romanzolotarev
+    url: https://github.com
+    $
+
+## Import a password
+
+Instead of typing your passwords manually you can pipe [your favorite password
+generator](/diceware.html) right into `pass`.
+
+    $ diceware | pass import twitter
+    Enter pass phrase for /home/romanzolotarev/.pass/.key:
+    $
+
+## Edit the password
+
+If you want to update your password run:
+
+    $ pass edit github
+    Enter pass phrase for /home/romanzolotarev/.pass/.key:
+
+As soon as you enter the pass phrase `pass` opens `vi` with the content of
+your password file. Let's enable [2FA at
+GitHub](https://help.github.com/articles/providing-your-2fa-authentication-code/)
+paste the TOTP seed from GitHub into the password file. For example:
+
+    totp: fx33dwhsbw7esrda
+
+When you're done press `ZZ` to save and exit `vi`.
+
+## Show the password
+
+To show a password you can run:
+
+    $ pass show twitter
+    pelican mule satchel headband yo-yo lemon luscious older
+    $
+
+But if a password file has a line staring with `totp:`, then `pass` shows
+one time password in the second line.
+
+    $ pass show github
+    Enter pass phrase for /home/romanzolotarev/.pass/.key:
+    always mule boots jaguar agnostic singles dalmatian vixen
+    122635
+    $
+
+## Export the password
+
+If you want to see all lines of your password file, you can use `export`
+
+    $ pass export github
+    always mule boots jaguar agnostic singles dalmatian vixen
+    username: romanzolotarev
+    url: https://github.com
+    $
+
+## List all passwords
+
+To list all your passwords run:
+
+    $ pass ls
+    github
+    twitter
+    $
+
+## Files
+
+    .pass
+    |-- .key           - RSA private key protected by pass phrase
+    |-- .key.pub       - RSA public key
+    |-- github         - tar archive of two files:
+    |   |-- github.key - AES key encrypted with RSA public key
+    |   `-- github.enc - text file encrypted with AES key
+    |-- github.sig     - signature of tar archive created with
+    |                    RSA private key
+
+Every time you change your password file `pass` generates tar archive with
+a new AES key and a new signature. `pass` verifies the signature every
+time you show or export the password.
+
+## Environment variables
+
+To change path to the working directory or your keys, define
+environment variables `BASE_DIR`, `PRIVATE_KEY`, `PUBLIC_KEY`. For example:
+
+    $ BASE_DIR=~/.pass \
+    PRIVATE_KEY=~/.pass/.key \
+    PUBLIC_KEY=~/.pass/.key.pub pass init
+    ...

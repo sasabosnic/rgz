@@ -1,4 +1,4 @@
-# Static site generator
+# Static site generator with rsync and lowdown
 
 [ssg](/bin/ssg) is less than two hundred lines of POSIX-compliant shell
 script. It generates Markdown articles to a static website.
@@ -33,8 +33,10 @@ For example your current directory looks like this:
     |-- index.html
     `-- index.css
 
-Run
+Download and run `ssg`:
 
+    $ ftp https://www.romanzolotarev.com/bin/ssg
+    $ chmod +x ssg
     $ ssg build
 
 and in a moment you will get a new directory `docs`.

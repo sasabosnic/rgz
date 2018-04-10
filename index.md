@@ -5,16 +5,16 @@ Hi, my name is **Roman** and I make stuff for the web.
 If you like what you're reading here,
 follow me on [Twitter](https://twitter.com/romanzolotarev).
 
-- [Static site generator](/ssg.html "2018-04-03")
+- [Static site generator with rsync and lowdown](/ssg.html "2018-04-03")
 <!-- - [Upgrade OpenBSD](/openbsd/upgrade.html "2018-04-03") -->
-<!-- - [Generate secure passwords](/diceware.html "2018-03-30") -->
+- [Strong human readable password generator](/diceware.html "2018-03-30")
 <!-- - [Change time zone in OpenBSD](/openbsd/timezone.html "2018-03-16") -->
 <!-- - [Backup with borg](/borg.html "2018-03-02") -->
 <!-- - [Mount drives on OpenBSD](/openbsd/mount.html "2018-03-01") -->
 <!-- - [Printing with CUPS](/printing.html "2018-02-27") -->
 <!-- - [Why OpenBSD?](/openbsd/why.html "2017-11-25") -->
 <!-- - [Enable full disk encryption on OpenBSD](/openbsd/fde.html "2017-11-02") -->
-<!-- - [Manage passwords with LibreSSL](/pass.html "2017-10-10") -->
+- [Command line password manager powered by LibreSSL](/pass.html "2017-10-10")
 <!-- - [Configure YubiKey for login and SSH on OpenBSD](/openbsd/yubikey.html "2017-09-21") -->
 <!-- - [Try OpenBSD](/openbsd/try.html "2017-09-20") -->
 <!-- - [Why Vim](/why-vim.html "2017-08-26") -->

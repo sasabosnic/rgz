@@ -1,13 +1,36 @@
-# Generate secure passwords
+# Strong human readable password generator
 
-Download and run [diceware](/bin/diceware):
+[diceware](/bin/diceware) is a POSIX-compliant shell script. It generates
+a random combination of words from the predefined list. It uses
+`/dev/urandom` as the source of entropy, so make sure your operating
+system provides good enough randomness.
 
-    $ curl -O https://www.romanzolotarev.com/bin/diceware
-    $ . diceware
-    uerrilla agnostic backdoor glove jealous mummy dictionary sloth
 
-On every run it generates a random 8-word passphrase. Write this
-phrase down or just memorize it.
+Download and run `diceware`. Assuming `./bin` is in `PATH`.
+
+    $ cd bin
+    $ ftp https://www.romanzolotarev.com/bin/diceware
+    $ chmod +x diceware
+    $ diceware
+    uerrilla agnostic backdoor glove jealous mummy myth sloth
+    $
+
+On every run it generates a random 8-word pass phrase. You can write this
+phrase down, just memorize it, or you can pipe it to your [favorite
+password manager](/pass.html):
+
+    $ diceware | pass import twitter
+    $
+
+Each word adds about 10 bits of entropy, so for passwords use 8 words or
+more. Need more words? Easy:
+
+    $ diceware 20
+    khaki hemoglobin artichoke cyclist coverless dictionary
+    vegetable sardine datebook ruined purse cytoplasm
+    absorbing narrator snapshot smitten cuticle journal
+    fiscally neither
+    $
 
 ## See also
 

@@ -1,12 +1,12 @@
 <!DOCTYPE html><html lang="en">
-<head><title>Static site generator - Roman Zolotarev</title><meta charset="utf-8"><meta name="referrer" content="no-referrer"><link rel="stylesheet" href="/styles.css"><link rel="manifest" href="/manifest.webmanifest"><meta name="theme-color" content="#ffffff"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+<head><title>Static site generator with rsync and lowdown - Roman Zolotarev</title><meta charset="utf-8"><meta name="referrer" content="no-referrer"><link rel="stylesheet" href="/styles.css"><link rel="manifest" href="/manifest.webmanifest"><meta name="theme-color" content="#ffffff"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 </head>
 <body><script>!function(t){ t.addEventListener('DOMContentLoaded', function () { var l = t.querySelector('#light-off'); if (l === null) { console.log('Lights-out...'); } else { l.checked = t.cookie.match(/lightOff=true/) !== null; l.addEventListener('change', function () { t.cookie = 'lightOff=' + JSON.stringify(l.checked) + ';path=/'; }); } })}(document);</script><input class="light-off" type="checkbox" id="light-off">
 <div class="page">
 <div class="header"><div class="header__home"><a href="/">Home</a> - <a href="https://twitter.com/romanzolotarev">Twitter</a></div><div class="header__light-off"><label for="light-off" class="light-off-button"></label></div></div>
-<div class="article"><h1 id="Static%20site%20generator">Static site generator</h1>
+<div class="article"><h1 id="Static%20site%20generator%20with%20rsync%20and%20lowdown">Static site generator with rsync and lowdown</h1>
 
 <p><a href="/bin/ssg">ssg</a> is less than two hundred lines of POSIX-compliant shell
 script. It generates Markdown articles to a static website.</p>
@@ -42,9 +42,11 @@ on <a href="https://man.openbsd.org/httpd.8">httpd(8)</a>.</p>
 `-- index.css
 </code></pre>
 
-<p>Run</p>
+<p>Download and run <code>ssg</code>:</p>
 
-<pre><code>$ ssg build
+<pre><code>$ ftp https://www.romanzolotarev.com/bin/ssg
+$ chmod +x ssg
+$ ssg build
 </code></pre>
 
 <p>and in a moment you will get a new directory <code>docs</code>.</p>

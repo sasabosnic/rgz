@@ -3,6 +3,7 @@
 # https://www.romanzolotarev.com/bin/diceware_test
 # Copyright 2017 Roman Zolotarev
 #
+cd "$(dirname "$0")" || exit 1
 counter=0; failed=0
 fail() { counter=$((counter+1)); echo "no ok $counter - $1"; failed=$((failed+1)); }
 pass() { counter=$((counter+1)); echo "ok $counter - $1"; }
