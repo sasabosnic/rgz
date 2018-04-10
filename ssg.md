@@ -3,7 +3,7 @@
 [ssg](/bin/ssg) is less than two hundred lines of POSIX-compliant shell
 script. It generates Markdown articles to a static website.
 
-1. It copies the current directory file tree to `_site/` with
+1. It copies the current directory file tree to `docs/` with
    [rsync(1)](https://rsync.samba.org/), ignoring `.*` and `_*`,
 
 1. renders all Markdown articles to HTML with
@@ -37,13 +37,13 @@ Run
 
     $ ssg build
 
-and in a moment you will get a new directory `_site`.
+and in a moment you will get a new directory `docs`.
 
     .
     |
     |-- .git/
     |   |-- ...
-    |-- _site/
+    |-- docs/
     |   |-- projects/
     |   |   |-- build-a-rocket.html
     |   |   |-- me-and-my-dog-on-the-moon.jpeg

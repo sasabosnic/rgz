@@ -12,7 +12,7 @@
 script. It generates Markdown articles to a static website.</p>
 
 <ol>
-<li><p>It copies the current directory file tree to <code>_site/</code> with
+<li><p>It copies the current directory file tree to <code>docs/</code> with
 <a href="https://rsync.samba.org/">rsync(1)</a>, ignoring <code>.*</code> and <code>_*</code>,</p></li>
 <li><p>renders all Markdown articles to HTML with
 <a href="https://kristaps.bsd.lv/lowdown/">lowdown(1)</a>,</p></li>
@@ -47,13 +47,13 @@ on <a href="https://man.openbsd.org/httpd.8">httpd(8)</a>.</p>
 <pre><code>$ ssg build
 </code></pre>
 
-<p>and in a moment you will get a new directory <code>_site</code>.</p>
+<p>and in a moment you will get a new directory <code>docs</code>.</p>
 
 <pre><code>.
 |
 |-- .git/
 |   |-- ...
-|-- _site/
+|-- docs/
 |   |-- projects/
 |   |   |-- build-a-rocket.html
 |   |   |-- me-and-my-dog-on-the-moon.jpeg

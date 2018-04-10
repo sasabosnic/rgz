@@ -12,7 +12,7 @@ Markdown is plain text with a few markup tricks.
     `monospace` in backticks.
 
     [A link](https://www.romanzolotarev.com/).
-    ![An image](https://www.romanzolotarev.com/avatar.jpg)
+    ![An image](/avatar.jpg)
 
         # Indented code block
         hello() { echo 'Hello'; }
