@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -e
-echo -e "You are about to replace \e[33m~/.config/nvim\e[0m"
+echo -e "You are about to replace \\e[33m~/.config/nvim\\e[0m"
 echo 'Sure?'
 read -r
 

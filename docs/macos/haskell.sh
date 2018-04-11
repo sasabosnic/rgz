@@ -16,5 +16,5 @@ stack install \
   hindent \
   hlint
 
-echo -e "\033[33mstackconfig.yaml\033[m -> \033[32m.stack/config.yaml\033[0m"
+echo -e "\\033[33mstackconfig.yaml\\033[m -> \\033[32m.stack/config.yaml\\033[0m"
 ln -Fhis "${PWD}/stackconfig.yaml" "${HOME}/.stack/config.yaml"

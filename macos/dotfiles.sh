@@ -2,7 +2,7 @@
 cd "$(dirname "${BASH_SOURCE[@]}")" || exit
 
 function link_to_dir() {
-  echo -e "\033[33m${1}\033[m -> \033[32m${2}\033[0m"
+  echo -e "\\033[33m${1}\\033[m -> \\033[32m${2}\\033[0m"
   ln -Fhis "$PWD/$1" "$2"
 }
 

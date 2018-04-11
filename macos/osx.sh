@@ -112,7 +112,7 @@ sudo chflags hidden "${HOME}/Applications" && echo 'Hide ~/Applications'
 sudo chflags hidden "${HOME}/Public" && echo 'Hide ~/Public'
 
 duti duti.config
-touch $HOME/.bash_sessions_disable
+touch "$HOME/.bash_sessions_disable"
 
 killall Dock
 killall Finder

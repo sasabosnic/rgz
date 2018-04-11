@@ -61,9 +61,9 @@ alias vi='vim -u NONE -C'
 
 function tmux_start() {
   # Creates session and window, if needed.
-  tmux new-session -A -s "$TMUX_DEFAULT_SESSION" -n "$1" -c "$2" 2>/dev/null \
-    || tmux select-window -t "$1" 2>/dev/null \
-    || tmux new-window -n "$1" -c "$2" 2>/dev/null
+  tmux new-session -A -s "$TMUX_DEFAULT_SESSION" -n "$1" -c "$2" 2>/dev/null ||
+  tmux select-window -t "$1" 2>/dev/null ||
+  tmux new-window -n "$1" -c "$2" 2>/dev/null
 }
 
 function tmux_rename_window() {
@@ -86,7 +86,7 @@ function find_random_available_port() {
 }
 
 function get_ngrok_public_url() {
-  curl -s http://localhost:4040/api/tunnels | jq .tunnels[0].public_url | sed "s/^\"\(.*\)\"$/\1/"
+  curl -s http://localhost:4040/api/tunnels | jq .tunnels[0].public_url | sed "s/^\"\\(.*\\)\"$/\\1/"
 }
 
 function open_ngrok_public_url() {
@@ -226,8 +226,8 @@ function get_github_personal_access_token() {
   token=$(curl -s https://api.github.com/authorizations \
     -H "X-GitHub-OTP: ${1}" \
     -u "${USER}" \
-    -d "{\"scopes\": [\"admin:public_key\"], \"note\": \"$(hostname)-$(date +%s)\"}" \
-    | jq -r .token)
+    -d "{\"scopes\": [\"admin:public_key\"], \"note\": \"$(hostname)-$(date +%s)\"}" |
+    jq -r .token)
   security delete-generic-password -a "${USER}" -s GitHub
   security add-generic-password -a "${USER}" -s GitHub -w "$token"
 }
@@ -240,8 +240,8 @@ function add_ssh_key_to_github() {
 
 function list_github_ssh_keys() {
   curl -s https://api.github.com/user/keys \
-    -H "Authorization: token $(security find-generic-password -a "${USER}" -s GitHub -w)" \
-    | jq 'map({title: .title, key:.key})'
+    -H "Authorization: token $(security find-generic-password -a "${USER}" -s GitHub -w)" |
+    jq 'map({title: .title, key:.key})'
 }
 
 function security_find() {
