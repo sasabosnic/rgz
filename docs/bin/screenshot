@@ -5,4 +5,4 @@
 #
 sleep 0.2 # to prevent race condition when called via cwm bind-key
 # shellcheck disable=SC2016
-scrot -s -e 'xclip -selection c -t image/png $f'
+scrot 'downloads/%Y%m%d-%H%M%S-$wx$h.png' -s -e 'xclip -selection c -t image/png $f'

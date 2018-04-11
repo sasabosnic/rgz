@@ -22,17 +22,26 @@ PS1="\\[\\e[38;5;247m\\]\\h:\\w\$(__git_ps1) \\[\\e[0m\\]"
 export PATH LANG LC_ALL TERM GIT_PS1_SHOWDIRTYSTATE
 
 
+stty -ixon # rescue <C-s> for vim
+
+
+# shellcheck disable=SC2086
+start_tmux() {
+  TERM=xterm-256color tmux new-session -A -s 0 -n "$1" -c "$2" "TERM=xterm-256color $3" 2>/dev/null||
+  tmux select-window -t "$1" 2>/dev/null||
+  tmux new-window -n "$1" -c "$2" "$3" 2>/dev/null
+}
+alias s="cd \$HOME/src/romanzolotarev.com && DOCS=/var/www/htdocs ssg watch"
+alias rz="start_tmux rz \$HOME/src/romanzolotarev.com 'vim index.md'"
+alias cm="start_tmux cmus \$HOME/pub/music 'cmus'"
+alias j="start_tmux j \$HOME/src/journal 'vim my.journal'"
 alias cp='cp -i'
 alias l='ls -a'
 alias ll='ls -lahF'
 alias mv='mv -i'
 alias rm='rm -i'
 alias du='du -hd1'
-alias rz="cd \$HOME/src/romanzolotarev.com"
 alias b="vim \$HOME/.profile && . \$HOME/.profile"
-
-
-stty -ixon # rescue <C-s> for vim
 
 
 # shellcheck disable=SC2086
@@ -64,8 +73,3 @@ umnt() { [ -n "$1" ] && doas umount "/dev/$1"; }
 aria() { mkdir -p "$HOME/downloads" && (cd "$HOME/downloads" && aria2c "$1"); }
 yt() { mkdir -p "$HOME/downloads" && (cd "$HOME/downloads" && youtube-dl "$1"); }
 yl() { mkdir -p "$HOME/downloads" && (cd "$HOME/downloads" && youtube-dl -f 'bestvideo[height<=144]+bestaudio/best[height<=144]' "$1"); }
-
-
-MY_JOURNAL="$HOME/src/journal"
-notes() { dir="$(date +%Y/%m)"; mkdir -p "$MY_JOURNAL/$dir" && (cd "$MY_JOURNAL" || return && vim "$dir/$(date +%Y-%m-%d).md"); }
-j() { mkdir -p "$MY_JOURNAL" && (cd "$MY_JOURNAL" || return && vim 'my.journal'); }
