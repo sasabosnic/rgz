@@ -27,16 +27,19 @@ stty -ixon # rescue <C-s> for vim
 
 # shellcheck disable=SC2086
 start_tmux() {
-  TERM=xterm-256color tmux new-session -A -s 0 -n "$1" -c "$2" "TERM=xterm-256color $3" 2>/dev/null||
+  cmd="TERM=xterm-256color $3"
+  tmux new-session -As 0 -n "$1" -c "$2" "$cmd" 2>/dev/null||
   tmux select-window -t "$1" 2>/dev/null||
-  tmux new-window -n "$1" -c "$2" "$3" 2>/dev/null
+  tmux new-window -n "$1" -c "$2" "$cmd" 2>/dev/null
 }
-alias s="cd \$HOME/src/romanzolotarev.com && DOCS=/var/www/htdocs ssg watch"
-alias rz="start_tmux rz \$HOME/src/romanzolotarev.com 'vim index.md'"
-alias cm="start_tmux cmus \$HOME/pub/music 'cmus'"
-alias j="start_tmux j \$HOME/src/journal 'vim my.journal'"
+cm() { start_tmux cm "$HOME/pub/music" 'cmus'; }
+j() { start_tmux j "$HOME/src/journal" 'vim my.journal'; }
+rz() { start_tmux rz "$HOME/src/romanzolotarev.com" 'vim index.md'; }
+s() { cd "$HOME/src/romanzolotarev.com" && DOCS=/var/www/htdocs ssg watch || return; }
+
+
 alias cp='cp -i'
-alias l='ls -a'
+alias l='ls -aF'
 alias ll='ls -lahF'
 alias mv='mv -i'
 alias rm='rm -i'
