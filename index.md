@@ -25,7 +25,6 @@ follow me on [Twitter](https://twitter.com/romanzolotarev).
 <!-- - [Jekyll](/jekyll.html "2016-11-22") -->
 - [Touch typing](/typing.html "2016-11-19")
 <!-- - [Start with Elm](/elm.html "2016-11-14") -->
-- [Website performance testing with WebPageTest](/webpagetest.html "2016-11-14")
 - [Fast web](/fast.html "2016-11-13")
 <!-- - [Pagination](/pagination.html "2016-10-26") -->
 - [Screencasts for programmers](/screencasts.html "2016-10-25")

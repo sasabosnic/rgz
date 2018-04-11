@@ -98,8 +98,7 @@ A focus on performance helps you to pick the right tools from the start
 and build a great product, but performance optimization becomes
 prohibitively expensive as your web app grows.
 
-Talk to your team. [Automate web page performance
-testing](/webpagetest.html). Include it in
+Talk to your team. Automate web page performance testing. Include it in
 your continuous deployment process. Set a performance budget. Catch
 performance issues early.
 
