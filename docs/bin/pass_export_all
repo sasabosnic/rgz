@@ -1,7 +1,7 @@
 #!/bin/sh
 #
 # https://www.romanzolotarev.com/bin/pass_export_all
-# Copyright 2018 Roman Zolotarev
+# Copyright 2018 Roman Zolotarev <hi@romanzolotarev.com>
 #
 set -e
 

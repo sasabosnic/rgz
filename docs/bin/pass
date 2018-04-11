@@ -1,7 +1,7 @@
 #!/bin/sh
 #
 # https://www.romanzolotarev.com/bin/pass
-# Copyright 2018 Roman Zolotarev
+# Copyright 2018 Roman Zolotarev <hi@romanzolotarev.com>
 #
 # Permission to use, copy, modify, and/or distribute this software for any
 # purpose with or without fee is hereby granted, provided that the above
@@ -250,7 +250,7 @@ edit)
   cleartext=$(decrypt "$PRIVATE_KEY" "$BASE_DIR/$ID")
   touch "$cleartext_file"; chmod 0600 "$cleartext_file"
   echo "$cleartext" > "$cleartext_file"
-  vi "$cleartext_file"
+  ${EDITOR:-$(which vi)} "$cleartext_file"
   after=$(cat "$cleartext_file")
   rm "$cleartext_file"
   if [ "$(echo "$cleartext"|md5)" = "$(echo "$after"|md5)" ]; then

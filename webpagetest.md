@@ -1,4 +1,4 @@
-# Automate website testing with WebPagetest
+# Website performance testing with WebPageTest
 
 Install [webpagetest-api](https://github.com/marcelduran/webpagetest-api).
 

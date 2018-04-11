@@ -16,15 +16,16 @@ script. It generates Markdown articles to a static website.</p>
 <a href="https://rsync.samba.org/">rsync(1)</a>, ignoring <code>.*</code> and <code>_*</code>,</p></li>
 <li><p>renders all Markdown articles to HTML with
 <a href="https://kristaps.bsd.lv/lowdown/">lowdown(1)</a>,</p></li>
-<li><p>then generates a sitemap and wraps articles with a single HTML
-template.</p></li>
+<li><p>extracts the first <code>&lt;h1&gt;</code> tag from every article to generate a
+sitemap and use it as a page title,</p></li>
+<li><p>then wraps articles with a single HTML template.</p></li>
 </ol>
 
 <p>To watch source file changes it depends on
 <a href="http://entrproject.org/">entr(1)</a>, and for the local web server it relies
 on <a href="https://man.openbsd.org/httpd.8">httpd(8)</a>.</p>
 
-<p>Feel free to fork it.</p>
+<p>Feel free to fork it and re-write for your needs.</p>
 
 <h2 id="Usage">Usage</h2>
 
@@ -47,9 +48,11 @@ on <a href="https://man.openbsd.org/httpd.8">httpd(8)</a>.</p>
 <pre><code>$ ftp https://www.romanzolotarev.com/bin/ssg
 $ chmod +x ssg
 $ ssg build
+2018-04-10T10:56:52+0000 4pp
+$
 </code></pre>
 
-<p>and in a moment you will get a new directory <code>docs</code>.</p>
+<p>You have got a new directory <code>docs</code>.</p>
 
 <pre><code>.
 |
@@ -71,6 +74,8 @@ $ ssg build
 <p>To re-build pages on change run:</p>
 
 <pre><code>$ ssg watch
+2018-04-10T11:04:11+0000 4pp
+$
 </code></pre>
 
 <p><code>entr(1)</code> watches changes in <code>*.html</code>, <code>*.md</code>, <code>*.css</code>, <code>*.txt</code> files and
@@ -79,6 +84,9 @@ runs <code>ssg build</code> on every file change.</p>
 <p>To start web server run:</p>
 
 <pre><code>$ ssg serve
+serving /home/romanzolotarev/src/romanzolotarev.com/docs
+listening http://127.0.0.1:4000
+startup
 </code></pre>
 
 <p><code>ssg</code> starts <code>httpd(1)</code> in a debug mode and serves pages from
@@ -87,6 +95,11 @@ runs <code>ssg build</code> on every file change.</p>
 <p>You can build, watch changes, and serve pages with a single command:</p>
 
 <pre><code>$ ssg
+watching /home/romanzolotarev/src/romanzolotarev.com
+serving /home/romanzolotarev/src/romanzolotarev.com/docs
+listening http://127.0.0.1:4000
+startup
+2018-04-10T11:06:43+0300 4pp
 </code></pre>
 
 <h2 id="Environment%20variables">Environment variables</h2>
@@ -95,14 +108,13 @@ runs <code>ssg build</code> on every file change.</p>
 environment variables <code>DOCS</code>, <code>HOST</code>, <code>PORT</code>. For example:</p>
 
 <pre><code>$ DOCS=_static ssg build
-$ DOCS=_static ssg watch
-$ doas env DOCS=/var/www/htdocs ssg watch
+$ DOCS=/var/www/htdocs ssg watch
 $ HOST=192.168.1.111 PORT=8000 ssg serve
 </code></pre>
 
 <h2 id="Performance">Performance</h2>
 
-<p>100 pps. On modern computers <code>ssg</code> generates a hundred pages per second.
+<p><strong>100 pps</strong>. On modern computers <code>ssg</code> generates a hundred pages per second.
 Half of a time for markdown rendering and another half for wrapping
 articles into the template. I heard good static site generators
 work&#8212;twice as fast&#8212;at 200 pps, so there&#8217;s lots of performance that can

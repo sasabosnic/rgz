@@ -4,7 +4,7 @@
 # 10 bits of entropy per word. For passwords use 8 words or more.
 #
 # https://www.romanzolotarev.com/bin/diceware
-# Copyright 2017 Roman Zolotarev
+# Copyright 2017 Roman Zolotarev <hi@romanzolotarev.com>
 #
 # Permission to use, copy, modify, and/or distribute this software for any
 # purpose with or without fee is hereby granted, provided that the above
@@ -1324,16 +1324,16 @@ EOF
 
 dice() {
   random_int=$(od -vAn -N4 -tu4 < /dev/urandom|tr -d ' \n'|sed 's/^0*//')
-  printf "%s" $(( random_int % 6 + 1 ))
+  echo $(( random_int % 6 + 1 ))
 }
 
-i=$(printf "%s" "$1"|tr -cd '[:digit:]'|sed 's/^0*//')
-if [ -z "$i" ]; then i=8; fi
+i=$(echo "$1"|tr -cd '[:digit:]'|sed 's/^0*//')
+[ -z "$i" ] && i=8
 
 while [ $i -ne 0 ]; do
   number="$(dice)$(dice)$(dice)$(dice)"
-  printf "%s" "$wordlist"|grep "$number"|cut -d' ' -f2|tr '\n' ' '
+  echo "$wordlist"|grep "$number"|cut -d' ' -f2|tr '\n' ' '
   i=$((i - 1))
 done
 
-printf '\n'
+echo

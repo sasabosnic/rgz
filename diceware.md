@@ -1,4 +1,4 @@
-# Strong human readable password generator
+# Strong password generator
 
 [diceware](/bin/diceware) is a POSIX-compliant shell script. It generates
 a random combination of words from the predefined list. It uses

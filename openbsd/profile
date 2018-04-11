@@ -28,7 +28,7 @@ alias ll='ls -lahF'
 alias mv='mv -i'
 alias rm='rm -i'
 alias du='du -hd1'
-alias rz="cd \$HOME/src/romanzolotarev.com && DOCS=/var/www/htdocs ssg watch"
+alias rz="cd \$HOME/src/romanzolotarev.com"
 alias b="vim \$HOME/.profile && . \$HOME/.profile"
 
 

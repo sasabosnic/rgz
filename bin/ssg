@@ -1,7 +1,7 @@
 #!/bin/sh
 #
 # https://www.romanzolotarev.com/bin/ssg
-# Copyright 2018 Roman Zolotarev
+# Copyright 2018 Roman Zolotarev <hi@romanzolotarev.com>
 #
 # Permission to use, copy, modify, and/or distribute this software for any
 # purpose with or without fee is hereby granted, provided that the above
@@ -103,16 +103,16 @@ EOF
   echo "$date $(echo "$sitemap"|wc -l|tr -d ' ')pp"
 }
 
-[ -z "$DOCS" ] && DOCS=$(readlink -fn "./docs") || DOCS=$(readlink -fn "$DOCS")
+DOCS_PATH=$(readlink -fn "${DOCS:-./docs}")
 
 case "$1" in
 
 build)
   which rsync >/dev/null 2>&1 || { echo 'rsync(1) should be installed'; exit 1; }
   which lowdown >/dev/null 2>&1 || { echo 'lowdown(1) should be installed'; exit 1; }
-  copy_files "$DOCS"
-  md_to_html "$DOCS"
-  wrap_html "$DOCS"
+  copy_files "$DOCS_PATH"
+  md_to_html "$DOCS_PATH"
+  wrap_html "$DOCS_PATH"
   ;;
 
 watch)
@@ -121,7 +121,7 @@ watch)
   while true; do
     find "$PWD" -type f \
       \( -name "$(basename "$0")" -or -name '*.md' -or -name '*.html' -or -name '*.css' -or -name '*.txt' \)\
-      ! -name ".*" ! -path "*/.*" ! -path "*/node_modules*" ! -path "${DOCS}*" |
+      ! -name ".*" ! -path "*/.*" ! -path "*/node_modules*" ! -path "${DOCS_PATH}*" |
       entr -d ssg build
   done
   ;;
@@ -130,20 +130,14 @@ serve)
   [ -z "$PORT" ] && PORT='4000'
   [ -z "$HOST" ] && HOST='127.0.0.1'
   which httpd >/dev/null 2>&1 || { echo 'httpd(8) should be installed'; exit 1; }
-  logdir="$DOCS/logs"
-  conf="$DOCS/httpd.conf"
-  echo "serving $DOCS"
-  echo "listening http://$HOST/$PORT"
-  mkdir -p "$DOCS" "$logdir"
-  cat > "$conf" <<EOF
-chroot "$DOCS"
-logdir "$logdir"
-server "$HOST" {
-  listen on $HOST port $PORT
-  root "/"
-}
-EOF
-  cd "$DOCS" || exit
+  logdir="$DOCS_PATH/logs"
+  conf="$DOCS_PATH/httpd.conf"
+  echo "serving $DOCS_PATH"
+  echo "listening http://$HOST:$PORT"
+  mkdir -p "$DOCS_PATH" "$logdir"
+  printf 'chroot "%s"\nlogdir "%s"\nserver "%s" {\n  listen on %s port %s\n  root "/"\n}\n' \
+    "$DOCS_PATH" "$logdir" "$HOST" "$HOST" "$PORT" > "$conf"
+  cd "$DOCS_PATH" || exit
   doas httpd -d -f "$conf"
   ;;
 

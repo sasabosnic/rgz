@@ -1,4 +1,4 @@
-# Command line password manager powered by LibreSSL
+# Password manager powered by LibreSSL
 
 
 [pass](/bin/pass) is a POSIX-compliant shell script. It works on OpenBSD
