@@ -1,4 +1,4 @@
-# GitHub Pages
+# How to host a website on GitHub Pages
 
 Want to make your website? I suggest you start with [GitHub
 Pages](https://pages.github.com).
