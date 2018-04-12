@@ -16,7 +16,7 @@ TERM=xterm-256color
 GIT_PS1_SHOWDIRTYSTATE=true
 # shellcheck disable=SC1091
 # shellcheck source="$HOME/.gitprompt"
-. "$HOME/.gitprompt"
+. "$HOME/bin/gitprompt"
 PS1="\\[\\e[38;5;247m\\]\\h:\\w\$(__git_ps1) \\[\\e[0m\\]"
 
 export PATH LANG LC_ALL TERM GIT_PS1_SHOWDIRTYSTATE
@@ -33,9 +33,9 @@ start_tmux() {
   tmux new-window -n "$1" -c "$2" "$cmd" 2>/dev/null
 }
 cm() { start_tmux cm "$HOME/pub/music" 'cmus'; }
-j() { start_tmux j "$HOME/src/journal" 'vim my.journal'; }
-rz() { start_tmux rz "$HOME/src/romanzolotarev.com" 'vim index.md'; }
-s() { cd "$HOME/src/romanzolotarev.com" && DOCS=/var/www/htdocs ssg watch || return; }
+j() { start_tmux j "$HOME/src/j" 'vim my.journal'; }
+rz() { start_tmux rz "$HOME/src/rz" 'vim index.md'; }
+s() { cd "$HOME/src/rz" && DOCS=/var/www/htdocs ssg watch || return; }
 
 
 alias cp='cp -i'

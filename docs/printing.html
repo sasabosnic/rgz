@@ -8,21 +8,31 @@
 <div class="header"><div class="header__home"><a href="/">Home</a> - <a href="https://twitter.com/romanzolotarev">Twitter</a></div><div class="header__light-off"><label for="light-off" class="light-off-button"></label></div></div>
 <div class="article"><h1 id="Printing%20with%20CUPS">Printing with CUPS</h1>
 
-<p>Install CUPS and connect to a remote printer via IPP:</p>
+<p>Install CUPS and add a printer:</p>
 
 <pre><code># pkg_add cups
-# lpadmin -p printer -E -v ipp://192.168.1.10/ipp/print -m everywhere
+# lpadmin \
+-p Printer                      # Arbitrary printer name \
+-v ipp://192.168.1.10/ipp/print # device URI \
+-P Vendor-Model.ppd             # path to the PPD file \
+-E                              # enable accepting jobs
 </code></pre>
 
 <p>Check available printers:</p>
 
 <pre><code>$ lpstat -a
-printer accepting requests since Sat Mar 31 23:59:32 2018
+Printer accepting requests since Sat Mar 31 23:59:32 2018
+$
 </code></pre>
 
-<p>Print:</p>
+<p>Print a document:</p>
 
-<pre><code>$ lp -d &quot;printer&quot; document.pdf
+<pre><code>$ lp -d Printer document.pdf
+</code></pre>
+
+<p>Delete the printer:</p>
+
+<pre><code># lpadmin -x Printer
 </code></pre></div>
 <div class="footer">&copy; <a href="/">Roman Zolotarev</a></div>
 </div></body></html>

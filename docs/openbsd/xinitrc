@@ -4,7 +4,6 @@ xinput --set-prop 7 'Device Accel Constant Deceleration' 5
 xset mouse 3 3
 xset -b
 xsetroot -solid black
-xsetroot -bitmap "$HOME/src/bg.xbm"
 xidle -delay 5 -timeout 600 -program "$HOME/bin/lockscreen" &
 xterm -e 'TERM=xterm-256color tmux new-session -As 0' &
 cwm

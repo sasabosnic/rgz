@@ -11,7 +11,7 @@ bind-key    CSM-q          quit
 bind-key    M-Return       xterm
 bind-key    M-e            menu-exec
 bind-key    M-equal        "vol up"
-bind-key    M-f            window-fullscreen
+bind-key    M-f            "firefox"
 bind-key    M-h            window-htile
 bind-key    M-j            window-cycle-ingroup
 bind-key    M-k            window-rcycle-ingroup

@@ -1,15 +1,24 @@
 # Printing with CUPS
 
-Install CUPS and connect to a remote printer via IPP:
+Install CUPS and add a printer:
 
     # pkg_add cups
-    # lpadmin -p printer -E -v ipp://192.168.1.10/ipp/print -m everywhere
+    # lpadmin \
+    -p Printer                      # Arbitrary printer name \
+    -v ipp://192.168.1.10/ipp/print # device URI \
+    -P Vendor-Model.ppd             # path to the PPD file \
+    -E                              # enable accepting jobs
 
 Check available printers:
 
     $ lpstat -a
-    printer accepting requests since Sat Mar 31 23:59:32 2018
+    Printer accepting requests since Sat Mar 31 23:59:32 2018
+    $
 
-Print:
+Print a document:
 
-    $ lp -d "printer" document.pdf
+    $ lp -d Printer document.pdf
+
+Delete the printer:
+
+    # lpadmin -x Printer

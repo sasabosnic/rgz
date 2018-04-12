@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# https://www.romanzolotarev.com/bin/status
+# https://WWW.romanzolotarev.com/bin/status
 # Copyright 2017 Roman Zolotarev <hi@romanzolotarev.com>
 #
 to_icon() { if printf "%s" "$1"|grep -q "$2"; then printf "%s" "$3"; else printf "%s" "$4"; fi }
@@ -10,8 +10,8 @@ mixer_bars="$(printf '▁ ▂ ▃ ▄ ▅ ▆ ▇ █'|
   cut -d' ' -f$(( $(printf "%s" "$mixer_status"|grep 'outputs.master='|cut -d',' -f2) * 7 / 255)) )"
 
 if [ -n "$cmus_status" ]; then
-  printf "%s %s %s %s "\
-    "$(printf "%s" "$cmus_status"|grep 'tag title'|cut -d' ' -f3-)"\
+  printf "%-20s %s %s %s "\
+    "$(printf "%s" "$cmus_status"|grep 'tag title'|cut -c 11-30)"\
     "$(to_icon "$cmus_status" 'status playing' '►' '∙')"\
     "$(to_icon "$cmus_status" 'set shuffle true' '☼' '∙')"\
     "$(to_icon "$cmus_status" 'set repeat_current true' '∞' '∙')"
@@ -19,6 +19,6 @@ fi
 
 printf "%s %s %s° %s"\
   "$(to_icon "$mixer_status" 'outputs.master.mute=off' "$mixer_bars" '∙')"\
-  "$(to_icon "$(xset -q|grep LED|cut -d' ' -f21)" '00000000' 'A' 'Я')"\
+  "$(to_icon "$(xset -q|grep LED|cut -d' ' -f21)" '00000000' 'A' 'A')"\
   "$(sysctl -n hw.sensors.cpu0|cut -d'.' -f1)"\
   "$(date "+%a %e %b %H:%M")"
