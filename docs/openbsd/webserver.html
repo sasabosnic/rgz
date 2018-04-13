@@ -1,0 +1,185 @@
+<!DOCTYPE html><html lang="en">
+<head><title>Run OpenBSD on your web server - Roman Zolotarev</title><meta charset="utf-8"><meta name="referrer" content="no-referrer"><link rel="stylesheet" href="/styles.css"><link rel="manifest" href="/manifest.webmanifest"><meta name="theme-color" content="#ffffff"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+</head>
+<body><script>!function(t){ t.addEventListener('DOMContentLoaded', function () { var l = t.querySelector('#light-off'); if (l === null) { console.log('Lights-out...'); } else { l.checked = t.cookie.match(/lightOff=true/) !== null; l.addEventListener('change', function () { t.cookie = 'lightOff=' + JSON.stringify(l.checked) + ';path=/'; }); } })}(document);</script><input class="light-off" type="checkbox" id="light-off">
+<div class="page">
+<div class="header"><div class="header__home"><a href="/">Home</a> - <a href="https://twitter.com/romanzolotarev">Twitter</a></div><div class="header__light-off"><label for="light-off" class="light-off-button"></label></div></div>
+<div class="article"><h1 id="Run%20OpenBSD%20on%20your%20web%20server">Run OpenBSD on your web server</h1>
+
+<p>Before you start, make sure you have <a href="/ssh.html">SSH key pair</a>
+generated. If you need a new server, register at
+<a href="https://www.vultr.com/?ref=7035749" title="Disclaimer: It&#39;s a referal
+link">Vultr</a> and deploy your server in few minutes. For example:</p>
+
+<ol>
+<li>Server Location: <strong>Miami</strong></li>
+<li>Server Type: 64 bit OS, <strong>OpenBSD 6 x64</strong></li>
+<li>Server Size: 20 GB SSD <strong>$2.50/mo</strong> 1 CPU 512MB Memory 500GB Bandwidth</li>
+<li>Additional Features: Enable IPv6</li>
+<li>Start Script: None</li>
+<li>SSH Keys: Add new key and then select it</li>
+<li>Firewall Group: No firewall</li>
+<li>Server Hostname &amp; Label: <strong>www</strong></li>
+</ol>
+
+<p>After few minutes your sever will be deployed with a new IP address.
+Update your DNS zone accordingly.</p>
+
+<pre><code>www.example.com. 300 IN   CAA 0 issue letsencrypt.org
+    example.com. 300 IN   CAA 0 issue letsencrypt.org
+    example.com. 300 IN     A 93.184.216.34
+www.example.com. 300 IN CNAME example.com.
+</code></pre>
+
+<p>Assuming your private SSH key is in <code>~/.ssh/</code> you can login to the server,
+like this:</p>
+
+<pre><code>$ ssh root@example.com
+OpenBSD 6.3 (GENERIC.MP) #107: Sat Mar 24 14:21:59 MDT 2018
+
+Welcome to OpenBSD: The proactively secure Unix-like operating
+system.
+
+Please use the sendbug(1) utility to report bugs in the system.
+Before reporting a bug, please try to reproduce it with the
+latest version of the code. With bug reports, please try to
+ensure that enough information to reproduce the problem is
+enclosed, and if a known fix for it exists, include that as
+well.
+
+www#
+</code></pre>
+
+<p>Hooray!</p>
+
+<p>First, patch the system:</p>
+
+<pre><code>www# echo &#39;http://cloudflare.cdn.openbsd.org/pub/OpenBSD&#39; \
+&gt; /etc/installurl
+www# syspatch
+</code></pre>
+
+<h2 id="Configure%20%3Ccode%3Ehttpd(8)%3C/code%3E%20with%20%3Ccode%3Eacme-client(1)%3C/code%3E">Configure <code>httpd(8)</code> with <code>acme-client(1)</code></h2>
+
+<p>Let&#8217;s configure <a href="http://man.openbsd.org/httpd.8">httpd(8)</a>.</p>
+
+<pre><code>www# vi /etc/httpd.conf
+</code></pre>
+
+<p>Edit your <code>/etc/httpd.conf</code></p>
+
+<pre><code>server &quot;example.com&quot; {
+  listen on * port 80
+  listen on :: port 80
+  root &quot;/htdocs/example.com&quot;
+  location &quot;/.well-known/acme-challenge/*&quot; {
+    root &quot;/acme&quot;
+    root strip 2
+  }
+}
+</code></pre>
+
+<p>Make directories for httpd(8):</p>
+
+<pre><code>www# mkdir -p /var/www/htdocs/example.com
+www# mkdir -p /var/www/logs/example.com
+www# echo &#39;Hello world&#39; &gt; \
+/var/www/htdocs/example.com/index.html
+</code></pre>
+
+<p>And for acme-client(1):</p>
+
+<pre><code>www# mkdir -p -m 700 /etc/acme
+www# mkdir -p -m 700 /etc/ssl/acme/private
+www# mkdir -p /var/www/acme
+www# vi /etc/acme-client.conf
+</code></pre>
+
+<p>Replace with your domain name:</p>
+
+<pre><code>authority letsencrypt {
+  api url &quot;https://acme-v01.api.letsencrypt.org/directory&quot;
+  account key &quot;/etc/acme/letsencrypt-privkey.pem&quot;
+}
+authority letsencrypt-staging {
+  api url &quot;https://acme-staging.api.letsencrypt.org/directory&quot;
+  account key &quot;/etc/acme/letsencrypt-staging-privkey.pem&quot;
+}
+domain example.com {
+  alternative names { www.example.com }
+  domain key &quot;/etc/ssl/private/example.com.key&quot;
+  domain certificate &quot;/etc/ssl/example.com.crt&quot;
+  domain full chain certificate &quot;/etc/ssl/example.com.fullchain.pem&quot;
+  sign with letsencrypt
+}
+</code></pre>
+
+<p>Start httpd(8):</p>
+
+<pre><code>www# rcctl enable httpd
+www# rcctl start httpd
+httpd(ok)
+www#
+</code></pre>
+
+<p>Open your website in a browser to test.</p>
+
+<p>Initialize a new account and domain key:</p>
+
+<pre><code>www# acme-client -vAD example.com
+</code></pre>
+
+<p>To renew the certificate add this job to crontab</p>
+
+<pre><code>0 0 * * * acme-client example.com &amp;&amp; rcctl reload httpd
+</code></pre>
+
+<h2 id="Enable%20HTTPS">Enable HTTPS</h2>
+
+<p>Edit <code>/etc/httpd.conf</code> again:</p>
+
+<pre><code>server &quot;example.com&quot; {
+  listen on * port 80
+  listen on :: port 80
+  root &quot;/htdocs/example.com&quot;
+  location &quot;/.well-known/acme-challenge/*&quot; {
+    root &quot;/acme&quot;
+    root strip 2
+  }
+  location * {
+    block return 302 &quot;https://$HTTP_HOST$REQUEST_URI&quot;
+  }
+}
+server &quot;example.com&quot; {
+  listen on * tls port 443
+  listen on :: tls port 443
+  root &quot;/htdocs/example.com&quot;
+  tls {
+    certificate &quot;/etc/ssl/example.com.fullchain.pem&quot;
+    key &quot;/etc/ssl/private/example.com.key&quot;
+  }
+  location &quot;/.well-known/acme-challenge/*&quot; {
+    root &quot;/acme&quot;
+    root strip 2
+  }
+}
+</code></pre>
+
+<p>Restart <code>httpd</code>:</p>
+
+<pre><code>www# rcctl restart httpd
+</code></pre>
+
+<p>Done!</p>
+
+<hr/>
+
+<p><strong>Thanks</strong> to <a href="https://twitter.com/gumnos">Tim Chase</a> and <a href="https://twitter.com/vetelko">Ve
+Telko</a> for reading drafts of this, to <a href="https://reykfloeter.com/">Reyk
+Floeter</a> for <a href="https://bsd.plumbing">httpd(8)</a>
+and to <a href="https://www.divelog.blue/">Kristaps Dzonsons</a> for
+<a href="https://kristaps.bsd.lv/acme-client/">acme-client(1)</a>.</p></div>
+<div class="footer">&copy; <a href="/">Roman Zolotarev</a></div>
+</div></body></html>

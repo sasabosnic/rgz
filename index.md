@@ -5,6 +5,7 @@ Hi, my name is **Roman** and I make stuff for the web.
 If you like what you're reading here,
 follow me on [Twitter](https://twitter.com/romanzolotarev).
 
+<!-- - [Run OpenBSD on your web server](/openbsd/webserver.html "2018-04-12") -->
 - [Static site generator with rsync and lowdown](/ssg.html "2018-04-03")
 <!-- - [Upgrade OpenBSD](/openbsd/upgrade.html "2018-04-03") -->
 - [Strong password generator](/diceware.html "2018-03-30")
