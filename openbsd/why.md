@@ -37,4 +37,4 @@ to customize.
 Easy to upgrade. If you don't use exotic software or hardware, upgrade
 takes just few minutes (spent mostly on reading release notes).
 
-[If it installs](/try-openbsd/), it works.
+[If it installs](/openbsd/try.html), it works.

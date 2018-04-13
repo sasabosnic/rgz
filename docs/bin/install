@@ -5,11 +5,11 @@
 #
 set -e
 
-drive='/dev/sd2c'
-fs='install62.fs'
-key='/etc/signify/openbsd-62-base.pub'
-src='https://fastly.cdn.openbsd.org/pub/OpenBSD/6.2/amd64'
-dst="$HOME/pub/OpenBSD/6.2/amd64"
+drive='/dev/sd3c'
+fs='install63.fs'
+key='/etc/signify/openbsd-63-base.pub'
+src='https://cloudflare.cdn.openbsd.org/pub/OpenBSD/6.3/amd64'
+dst="$HOME/pub/OpenBSD/6.3/amd64"
 
 mkdir -p "$dst"
 cd "$dst"

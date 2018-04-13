@@ -8,9 +8,9 @@
 <div class="header"><div class="header__home"><a href="/">Home</a> - <a href="https://twitter.com/romanzolotarev">Twitter</a></div><div class="header__light-off"><label for="light-off" class="light-off-button"></label></div></div>
 <div class="article"><h1 id="Try%20OpenBSD">Try OpenBSD</h1>
 
-<p>Why OpenBSD as a desktop? I like how simple and reliable it is.
-This guide is the shortest way to try OpenBSD. This may take just few
-minutes.</p>
+<p>Why OpenBSD as a desktop? I like how simple and reliable it is. This guide
+is the shortest way to try OpenBSD. This may take just few minutes. Here
+is the step-by-step instruction for macOS users.</p>
 
 <h2 id="Backup%20everything">Backup everything</h2>
 
@@ -20,12 +20,12 @@ we continue, please <strong>back up all your data</strong>.</p>
 <h2 id="Download%20the%20installer">Download the installer</h2>
 
 <pre><code>cd /tmp
-export URL=https://fastly.cdn.openbsd.org/pub/OpenBSD
-curl $URL/6.2/amd64/install62.fs
-curl $URL/6.2/amd64/SHA256
+export URL=https://cloudflare.cdn.openbsd.org/pub/OpenBSD
+curl $URL/6.3/amd64/install63.fs
+curl $URL/6.3/amd64/SHA256
 
-grep install62.fs SHA256
-shasum -a 256 install62.fs
+grep install63.fs SHA256
+shasum -a 256 install63.fs
 </code></pre>
 
 <h2 id="Create%20install%20media">Create install media</h2>
@@ -33,29 +33,23 @@ shasum -a 256 install62.fs
 <p>Plug your flash drive in. It should be at least 400 MB. Run <code>diskutil
 list</code> to find an identifier of the flash drive. Usually it&#8217;s <code>/dev/disk2</code>.</p>
 
-<blockquote>
-<p>Substitute <code>/dev/diskX</code> with the identifier of the flash drive.
-<strong>All data on <code>/dev/diskX</code> will be erased!</strong></p>
-</blockquote>
+<p>Substitute <code>/dev/diskX</code> with the identifier of the flash drive. <strong>All data
+on <code>/dev/diskX</code> will be erased!</strong></p>
 
 <pre><code>$ sudo dd if=install62.fs of=/dev/diskX bs=1m
 </code></pre>
 
-<p>If you want to automate these steps, here is how I make <a href="https://github.com/romanzolotarev/dotfiles/blob/master/macos/openbsd.sh">bootable OpenBSD
-installer from
-macOS</a>
-and <a href="https://raw.githubusercontent.com/romanzolotarev/dotfiles/master/bin/install">from
-OpenBSD</a>.</p>
+<p>If you want to automate these steps, here is how I make <a href="/macos/openbsd.sh">bootable OpenBSD
+installer on macOS</a> and <a href="/openbsd/install">on OpenBSD</a>.</p>
 
 <h2 id="Boot%20the%20installer">Boot the installer</h2>
 
-<blockquote>
-<p>In this guide I don&#8217;t <a href="/openbsd-fde/">enable full disk encryption</a>, but you definitely
-should use it for all your computers with sensitive data.</p>
-</blockquote>
+<p>In this guide I don&#8217;t <a href="/openbsd/fde.html">enable full disk encryption</a>,
+but you definitely should use it for all your computers with sensitive
+data.</p>
 
-<p>Boot from that flash drive.
-If you can&#8217;t boot OpenBSD try to enable legacy-boot in your BIOS.</p>
+<p>Boot from that flash drive. If you can&#8217;t boot OpenBSD try to enable
+legacy-boot in your BIOS.</p>
 
 <h2 id="Install%20OpenBSD%20base">Install OpenBSD base</h2>
 
@@ -67,10 +61,8 @@ If you can&#8217;t boot OpenBSD try to enable legacy-boot in your BIOS.</p>
 <li>Continue without verification: <code>yes</code></li>
 </ul>
 
-<blockquote>
-<p>You can automate these steps too, here is <a href="/mercury.conf">one of my
-configuration examples for autoinstall</a>.</p>
-</blockquote>
+<p>You can automate these steps too, here is <a href="/openbsd/mercury-install.conf">one of my configuration
+examples for autoinstall</a>.</p>
 
 <p>If everything is okay:</p>
 
@@ -85,7 +77,7 @@ configuration examples for autoinstall</a>.</p>
 
 <p>Set URL to download packages and updates</p>
 
-<pre><code>echo &#39;https://fastly.cdn.openbsd.org/pub/OpenBSD&#39;\
+<pre><code>echo &#39;https://cloudflare.cdn.openbsd.org/pub/OpenBSD&#39;\
 &gt; /etc/installurl
 </code></pre>
 
@@ -101,20 +93,17 @@ configuration examples for autoinstall</a>.</p>
 
 <p>Install a tilling window manager and Firefox.</p>
 
-<pre><code>doas pkg_add dwm firefox
+<pre><code>doas pkg_add firefox
 </code></pre>
 
-<p>Make <code>dwm</code> your default window manager and start X11.</p>
+<p>Make <code>cwm</code> your default window manager and start X11.</p>
 
-<pre><code>echo &#39;exec /usr/local/bin/dwm&#39; &gt; ~/.xinitrc
+<pre><code>echo &#39;cwm&#39; &gt;&gt; ~/.xinitrc
 startx
 </code></pre>
 
-<blockquote>
 <p>As you may expect, these steps are easy to automate as well, here is how
-I <a href="https://raw.githubusercontent.com/romanzolotarev/romanzolotarev.github.io/master/setup">setup dotfiles and install all the packages I
-use</a>.</p>
-</blockquote>
+I <a href="/openbsd/setup.sh">setup dotfiles and install all the packages I use</a>.</p>
 
 <h2 id="See%20also">See also</h2>
 
