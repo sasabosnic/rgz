@@ -118,6 +118,8 @@ build)
   ;;
 
 watch)
+  cmd="entr -d env DOCS=$DOCS ssg build"
+  pgrep -qf "$cmd" && { echo "already watching $DOCS"; exit 1; }
   echo "building $DOCS_PATH"
   echo "watching $PWD"
   which entr >/dev/null 2>&1 || { echo 'entr(1) should be installed'; exit 1; }
@@ -125,7 +127,7 @@ watch)
     find "$PWD" -type f \
       \( -name "$(basename "$0")" -or -name '*.md' -or -name '*.html' -or -name '*.css' -or -name '*.txt' \)\
       ! -name ".*" ! -path "*/.*" ! -path "*/node_modules*" ! -path "${DOCS_PATH}*" |
-      entr -d ssg build
+      $cmd
   done
   ;;
 
@@ -147,7 +149,8 @@ deploy)
   [ -z "$REMOTE_HOST" ] && REMOTE_HOST='www.romanzolotarev.com'
   [ -z "$REMOTE_DOCS" ] && REMOTE_DOCS='/var/www/htdocs/www.romanzolotarev.com'
   start=$(date +%s)
-  printf "deploying to %s:%s... " "$REMOTE_HOST" "$REMOTE_DOCS"
+  echo "deploying $DOCS"
+  printf "to %s:%s... " "$REMOTE_HOST" "$REMOTE_DOCS"
   # shellcheck disable=SC2029
   cd "$DOCS_PATH" && tar -cf - . |
     ssh -C "$REMOTE_HOST" "cd $REMOTE_DOCS && tar -xf -"

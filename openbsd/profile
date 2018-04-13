@@ -36,8 +36,12 @@ cm() { start_tmux cm "$HOME/pub/music" 'cmus'; }
 j() { start_tmux j "$HOME/src/j" 'vim my.journal'; }
 rz() { start_tmux rz "$HOME/src/rz" 'vim index.md'; }
 s() { cd "$HOME/src/rz" && DOCS=/var/www/htdocs ssg watch || return; }
+d() { cd "$HOME/src/rz" && DOCS=/var/www/htdocs REMOTE_HOST="$1" ssg deploy || return; }
+# shellcheck disable=SC2029
+log() { [ -n "$1" ] && [ -n "$2" ] && ssh "$1" "while :; do printf '%s %s %s %s\\n' \"\$(grep \"$2\" /var/www/logs/access.log|cut -f2 -d' '|sort|uniq|wc -l|tr -d ' ')\" \"\$(date +%Y-%m-%dT%H:%M:%S)\" \"$1\" \"$2\"; sleep 30; done"; }
 
 
+alias c='PS1=$\ ;clear'
 alias cp='cp -i'
 alias l='ls -aF'
 alias ll='ls -lahF'
