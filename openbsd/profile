@@ -27,10 +27,10 @@ stty -ixon # rescue <C-s> for vim
 
 # shellcheck disable=SC2086
 start_tmux() {
-  cmd="TERM=xterm-256color $3"
-  tmux new-session -As 0 -n "$1" -c "$2" "$cmd" 2>/dev/null||
+  cmd="cd $2 && TERM=xterm-256color $3"
+  tmux new-session -As 0 -n "$1" "$cmd" 2>/dev/null||
   tmux select-window -t "$1" 2>/dev/null||
-  tmux new-window -n "$1" -c "$2" "$cmd" 2>/dev/null
+  tmux new-window -n "$1" "$cmd" 2>/dev/null
 }
 cm() { start_tmux cm "$HOME/pub/music" 'cmus'; }
 j() { start_tmux j "$HOME/src/j" 'vim my.journal'; }
