@@ -1,7 +1,0 @@
-#!/bin/sh
-#
-# https://www.romanzolotarev.com/bin/lockscreen
-# Copyright 2017 Roman Zolotarev <hi@romanzolotarev.com>
-#
-if cmus-remote -Q|grep -q 'status playing'; then cmus-remote --pause; fi
-/usr/X11R6/bin/xlock -font fixed
