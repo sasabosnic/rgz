@@ -15,17 +15,18 @@
 # ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 # OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 #
-# set -e
 
 usage() {
   echo 'usage: export HOST=127.0.0.1'
   echo '       export PORT=4000'
   echo '       export DOCS=docs'
+  echo '       export REMOTE_HOST=romanzolotarev.com'
+  echo '       export REMOTE_DOCS=/var/www/htdocs/romanzolotarev.com'
   echo
-  echo '       ssg'
-  echo '         | build'
+  echo '       ssg build'
   echo '         | watch'
   echo '         | serve'
+  echo '         | deploy'
   exit 1
 }
 
@@ -108,6 +109,7 @@ DOCS_PATH=$(readlink -fn "${DOCS:-./docs}")
 case "$1" in
 
 build)
+  ls index.* >/dev/null 2>&1 || { echo 'no index.* found in the current directory'; exit 1; }
   which rsync >/dev/null 2>&1 || { echo 'rsync(1) should be installed'; exit 1; }
   which lowdown >/dev/null 2>&1 || { echo 'lowdown(1) should be installed'; exit 1; }
   copy_files "$DOCS_PATH"
@@ -116,6 +118,7 @@ build)
   ;;
 
 watch)
+  echo "building $DOCS_PATH"
   echo "watching $PWD"
   which entr >/dev/null 2>&1 || { echo 'entr(1) should be installed'; exit 1; }
   while true; do
@@ -132,7 +135,6 @@ serve)
   which httpd >/dev/null 2>&1 || { echo 'httpd(8) should be installed'; exit 1; }
   logdir="$DOCS_PATH/logs"
   conf="$DOCS_PATH/httpd.conf"
-  echo "serving $DOCS_PATH"
   echo "listening http://$HOST:$PORT"
   mkdir -p "$DOCS_PATH" "$logdir"
   printf 'chroot "%s"\nlogdir "%s"\nserver "%s" {\n  listen on %s port %s\n  root "/"\n}\n' \
@@ -141,9 +143,15 @@ serve)
   doas httpd -d -f "$conf"
   ;;
 
-'')
-  ssg serve &
-  ssg watch
+deploy)
+  [ -z "$REMOTE_HOST" ] && REMOTE_HOST='romanzolotarev.com'
+  [ -z "$REMOTE_DOCS" ] && REMOTE_DOCS='/var/www/htdocs/romanzolotarev.com'
+  start=$(date +%s)
+  printf "deploying to %s:%s... " "$REMOTE_HOST" "$REMOTE_DOCS"
+  # shellcheck disable=SC2029
+  cd "$DOCS_PATH" && tar -cf - . |
+    ssh -C "$REMOTE_HOST" "cd $REMOTE_DOCS && tar -xf -"
+  echo "$(( $(date +%s) - start ))s"
   ;;
 
 *) usage;;
