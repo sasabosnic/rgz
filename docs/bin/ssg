@@ -20,8 +20,8 @@ usage() {
   echo 'usage: export HOST=127.0.0.1'
   echo '       export PORT=4000'
   echo '       export DOCS=docs'
-  echo '       export REMOTE_HOST=romanzolotarev.com'
-  echo '       export REMOTE_DOCS=/var/www/htdocs/romanzolotarev.com'
+  echo '       export REMOTE_HOST=www.romanzolotarev.com'
+  echo '       export REMOTE_DOCS=/var/www/htdocs/www.romanzolotarev.com'
   echo
   echo '       ssg build'
   echo '         | watch'
@@ -144,8 +144,8 @@ serve)
   ;;
 
 deploy)
-  [ -z "$REMOTE_HOST" ] && REMOTE_HOST='romanzolotarev.com'
-  [ -z "$REMOTE_DOCS" ] && REMOTE_DOCS='/var/www/htdocs/romanzolotarev.com'
+  [ -z "$REMOTE_HOST" ] && REMOTE_HOST='www.romanzolotarev.com'
+  [ -z "$REMOTE_DOCS" ] && REMOTE_DOCS='/var/www/htdocs/www.romanzolotarev.com'
   start=$(date +%s)
   printf "deploying to %s:%s... " "$REMOTE_HOST" "$REMOTE_DOCS"
   # shellcheck disable=SC2029
