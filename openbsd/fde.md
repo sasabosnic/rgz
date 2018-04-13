@@ -3,8 +3,8 @@
 If you store sensitive data on your computer (e.g. passwords, keys,
 private files) you better enable full disk encryption.
 
-First of all you need to generate [a secure passphrase](/diceware/), then
-boot OpenBSD installer and select `(S)hell`.
+First of all you need to generate [a secure passphrase](/diceware.html),
+then boot OpenBSD installer and select `(S)hell`.
 
 Note: Substitute `sd0` with the identifier of the target drive. All data
 on `sd0` will be erased! Also check an identifier of the new crypto volume.
@@ -38,11 +38,13 @@ your internet connection:
     # dhclient re0
 
 Then download and execute [the
-script](https://raw.githubusercontent.com/romanzolotarev/romanzolotarev.github.io/master/fde):
+script](https://www.romanzolotarev.com/openbsd/fde.sh):
 
 Be very careful, **at this step you may lose all your data**.
 
-    # ftp -Vo - https://www.romanzolotarev.com/fde | sh -
+    # ftp https://www.romanzolotarev.com/openbsd/fde.sh
+    # chmod +x
+    # fde.sh
     # exit
 
 ## Return to the main installer

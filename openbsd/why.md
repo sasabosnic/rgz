@@ -7,7 +7,7 @@ or system administrator, you should try OpenBSD.
 basic things on your desktop computer, then you'd love OpenBSD. In my case
 switching from macOS to OpenBSD was easy decision: I use my computer as an
 internet-enabled typewriter. All I need for my work is a web browser,
-terminal, and [Vim](/why-vim/).
+terminal, and Vim.
 
 ## Known issues
 
