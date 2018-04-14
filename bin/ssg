@@ -83,7 +83,7 @@ wrap_html() {
       *)
         title="${line#*;}"
         head_title="<title>$title - Roman Zolotarev</title>"
-        header__home='<a href="/">Home</a> - <a href="https://twitter.com/romanzolotarev">Twitter</a>'
+        header__home='<a href="/">Home</a> - <a href="https://twitter.com/romanzolotarev">Twitter</a> - <strong><a href="/patreon.html">Patreon</a></strong>'
         ;;
     esac
     # merge page with html template

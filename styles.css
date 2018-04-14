@@ -25,17 +25,14 @@ html { margin: 0; height: 100%; }
 .light-off:checked ~ .page:selection { background: #357edd; }
 
 .page a { color: #357edd; text-decoration: none; border-bottom: 1px solid #a5ceff; }
-.light-off:checked ~ .page a { color: #ddddb6; border-bottom: 1px solid #aaaa96; }
-
 .page a:visited { color: #888888; border-bottom: 1px solid #cccccc; }
-.light-off:checked ~ .page a:visited { color: #888888; border-bottom: 1px solid #444444; }
-
 .page a:hover { color: #357edd; border-bottom: 1px solid #357edd; }
+.light-off:checked ~ .page a { color: #ddddb6; border-bottom: 1px solid #aaaa96; }
+.light-off:checked ~ .page a:visited { color: #888888; border-bottom: 1px solid #444444; }
 .light-off:checked ~ .page a:hover { color: #ddddb6; border-bottom: 1px solid #ddddb6; }
 
 .header, 
 .footer { color: #888888; padding: 1em; margin: 0 auto; max-width: 32em; }
-.header a,
 .footer a { color: #888888; border-bottom: 1px solid #cccccc; }
 .header__home { width: 50%; float: left; }
 .header__light-off { width: 50%; float: right; }
