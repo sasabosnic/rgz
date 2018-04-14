@@ -27,6 +27,7 @@ stty -ixon # rescue <C-s> for vim
 
 # shellcheck disable=SC2086
 start_tmux() {
+  cd "$2" || return
   cmd="cd $2 && TERM=xterm-256color $3"
   tmux new-session -As 0 -n "$1" "$cmd" 2>/dev/null||
   tmux select-window -t "$1" 2>/dev/null||
@@ -34,13 +35,13 @@ start_tmux() {
 }
 cm() { start_tmux cm "$HOME/pub/music" 'cmus'; }
 j() { start_tmux j "$HOME/src/j" 'vim my.journal'; }
-rz() { start_tmux rz "$HOME/src/rz" 'vim index.md'; }
-s() { cd "$HOME/src/rz" && DOCS=/var/www/htdocs ssg watch || return; }
-d() { cd "$HOME/src/rz" && DOCS=/var/www/htdocs REMOTE_HOST="$1" ssg deploy || return; }
+www() { start_tmux www "$HOME/src/www" 'vim index.md'; }
+s() { cd "$HOME/src/www" && DOCS=/var/www/htdocs ssg watch || return; }
+d() { cd "$HOME/src/www" && DOCS=/var/www/htdocs REMOTE_HOST="$1" ssg deploy || return; }
 # shellcheck disable=SC2029
-log() { [ -n "$1" ] && [ -n "$2" ] && ssh "$1" "while :; do printf '%s %s %s %s\\n' \"\$(grep \"$2\" /var/www/logs/access.log|cut -f2 -d' '|sort|uniq|wc -l|tr -d ' ')\" \"\$(date +%Y-%m-%dT%H:%M:%S)\" \"$1\" \"$2\"; sleep 30; done"; }
+log() { [ -n "$1" ] && [ -n "$2" ] && ssh "$1" "while :; do printf '%s %s %s %s\\n' \"\$(grep \"$2\" /var/www/logs/access.log|cut -f2,13- -d' '|tr -d ' '|sort|uniq|wc -l|tr -d ' ')\" \"\$(date +%Y-%m-%dT%H:%M:%S)\" \"$1\" \"$2\"; sleep 30; done"; }
 
-
+alias f='git add . && git commit -mfix && git rebase -i HEAD~10'
 alias c='PS1=$\ ;clear'
 alias cp='cp -i'
 alias l='ls -aF'
