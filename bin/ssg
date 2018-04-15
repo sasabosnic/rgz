@@ -70,6 +70,7 @@ wrap_html() {
   echo '</urlset>' >> "$1/sitemap.xml"
   #
   # generate html pages
+  styles=$(cat styles.css)
   echo "$sitemap"|while read -r line; do
     page=${line%;*}
     url=${page#$1}
@@ -89,7 +90,8 @@ wrap_html() {
     # merge page with html template
     cat > "$page" <<EOF
 <!DOCTYPE html><html lang="en">
-<head>$head_title<meta charset="utf-8"><meta name="referrer" content="no-referrer"><link rel="stylesheet" href="/styles.css"><link rel="manifest" href="/manifest.webmanifest"><meta name="theme-color" content="#ffffff"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+<head>$head_title<meta charset="utf-8"><meta name="referrer" content="no-referrer"><link rel="manifest" href="/manifest.webmanifest"><meta name="theme-color" content="#ffffff"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
+<style>$styles</style>
 <link rel="icon" type="image/png" href="/favicon.png" />
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
