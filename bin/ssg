@@ -32,7 +32,7 @@ usage() {
 
 copy_files() {
   [ "$(dirname "$1")" = "$PWD" ] && self="/$(basename "$1")/" || self="$1"
-  rsync -a "." "$1" --delete-excluded \
+  rsync -a "." "$1" \
     --exclude "$self" \
     --exclude ".*" \
     --exclude "_*" \
