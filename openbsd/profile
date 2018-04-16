@@ -42,7 +42,7 @@ d() { cd "$HOME/src/www" && DOCS=/var/www/htdocs REMOTE_HOST="$1" ssg deploy || 
 # shellcheck disable=SC2029
 log() { [ -n "$1" ] && [ -n "$2" ] && ssh "$1" "while :; do printf '%s %s %s %s\\n' \"\$(grep \"$2\" /var/www/logs/access.log|cut -f2,13- -d' '|tr -d ' '|sort|uniq|wc -l|tr -d ' ')\" \"\$(date +%Y-%m-%dT%H:%M:%S)\" \"$1\" \"$2\"; sleep 30; done"; }
 
-alias f='git add . && git commit -mfix && git rebase -i HEAD~10'
+fix() { git add . && git commit -mfix && git rebase -i HEAD~"${1:-2}"; }
 alias c='PS1=$\ ;clear'
 alias cp='cp -i'
 alias l='ls -aF'

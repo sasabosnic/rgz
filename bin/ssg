@@ -55,6 +55,7 @@ wrap_html() {
   #
   # save sitemap in html and xml formats
   date=$(date +%Y-%m-%dT%H:%M:%S%z)
+  year=$(date +%Y)
   echo '<?xml version="1.0" encoding="UTF-8"?><urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' > "$1/sitemap.xml"
   echo "$sitemap"|while read -r line; do
     page=${line%;*}
@@ -100,7 +101,7 @@ wrap_html() {
 <div class="page">
 <div class="header"><div class="header__home">$header__home</div><div class="header__light-off"><label for="light-off" class="light-off-button"></label></div></div>
 <div class="article">$article</div>
-<div class="footer">&copy; <a href="/">Roman Zolotarev</a></div>
+<div class="footer"><a href="/about.html#Everything%20is%20software">Copyright</a> 2016&ndash;$year <a href="/">Roman Zolotarev</a></div>
 </div></body></html>
 EOF
   done
