@@ -77,6 +77,7 @@ pkg_add_with_cache() { mkdir -p "$LOCAL_PKG_PATH" && doas env PKG_CACHE="$LOCAL_
 
 mnt() { [ -n "$1" ] && doas mkdir -p "/mnt/$1" && doas mount "/dev/$1" "/mnt/$1" && cd "/mnt/$1" || return; }
 umnt() { [ -n "$1" ] && doas umount "/dev/$1"; }
+pics() { [ -n "$1" ] && mnt "$1" && cd DCIM && rsync -avPc --chown=romanzolotarev:romanzolotarev . "$HOME/downloads" && cd "$HOME/downloads" && umnt "$1"; }
 
 
 aria() { mkdir -p "$HOME/downloads" && (cd "$HOME/downloads" && aria2c "$1"); }
