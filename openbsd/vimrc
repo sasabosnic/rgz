@@ -161,9 +161,8 @@ function! JournalSettings()
   setlocal nolinebreak
   setlocal formatoptions=tcroqnB1j
   setlocal iskeyword+=:
-  nnoremap <buffer> O O<C-o>:call JournalInsertDate()<CR>
-  nnoremap <buffer> o o<C-o>:call JournalInsertDate()<CR>
 
+  nnoremap <buffer> <CR> :call JournalInsertDate()<CR>
   syntax case ignore
   syntax match date "^[0-9]\{4}-[0-9]\{2}-[0-9]\{2}"
   syntax match time "^[0-9]\{4}-[0-9]\{2}-[0-9]\{2} [0-9]\{2}:[0-9]\{2}"
