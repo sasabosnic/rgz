@@ -23,16 +23,18 @@ usage() {
   echo '       export REMOTE_HOST=www.romanzolotarev.com'
   echo '       export REMOTE_DOCS=/var/www/htdocs/www.romanzolotarev.com'
   echo
-  echo '       ssg build'
-  echo '         | watch'
+  echo '       ssg build [--clean]'
+  echo '         | watch [--clean]'
   echo '         | serve'
   echo '         | deploy'
   exit 1
 }
 
 copy_files() {
+  RSYNC_FLAGS="$2"
   [ "$(dirname "$1")" = "$PWD" ] && self="/$(basename "$1")/" || self="$1"
-  rsync -a "." "$1" \
+  # shellcheck disable=2086
+  rsync -a "." "$1" $RSYNC_FLAGS \
     --exclude "$self" \
     --exclude ".*" \
     --exclude "_*" \
@@ -109,22 +111,22 @@ EOF
 }
 
 DOCS_PATH=$(readlink -fn "${DOCS:-./docs}")
-
+[ "$2" = '--clean' ] && RSYNC_FLAGS='--delete-excluded' || RSYNC_FLAGS=''
 case "$1" in
 
 build)
   ls index.* >/dev/null 2>&1 || { echo 'no index.* found in the current directory'; exit 1; }
   which rsync >/dev/null 2>&1 || { echo 'rsync(1) should be installed'; exit 1; }
   which lowdown >/dev/null 2>&1 || { echo 'lowdown(1) should be installed'; exit 1; }
-  copy_files "$DOCS_PATH"
+  printf 'building %s %s ' "$DOCS_PATH" "$2"
+  copy_files "$DOCS_PATH" "$RSYNC_FLAGS"
   md_to_html "$DOCS_PATH"
   wrap_html "$DOCS_PATH"
   ;;
 
 watch)
-  cmd="entr -d env DOCS=$DOCS ssg build"
+  cmd="entr -d env DOCS=$DOCS ssg build $2"
   pgrep -qf "$cmd" && { echo "already watching $DOCS"; exit 1; }
-  echo "building $DOCS_PATH"
   echo "watching $PWD"
   which entr >/dev/null 2>&1 || { echo 'entr(1) should be installed'; exit 1; }
   while true; do

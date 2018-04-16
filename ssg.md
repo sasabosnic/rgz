@@ -20,7 +20,15 @@ on [httpd(8)](https://man.openbsd.org/httpd.8).
 
 Feel free to fork it and re-write for your needs.
 
-## Usage
+## Install
+
+
+Download `ssg`. For example, on OpenBSD:
+
+    $ ftp https://www.romanzolotarev.com/bin/ssg
+    $ chmod +x ssg
+
+## Build
 
 For example your current directory looks like this:
 
@@ -35,12 +43,8 @@ For example your current directory looks like this:
     |-- index.html
     `-- index.css
 
-Download and run `ssg`:
-
-    $ ftp https://www.romanzolotarev.com/bin/ssg
-    $ chmod +x ssg
     $ ssg build
-    2018-04-10T10:56:52+0000 4pp
+    building /home/alice/src/www/docs  2018-04-10T10:56:52+0000 4pp
     $
 
 You have got a new directory `docs`.
@@ -61,42 +65,57 @@ You have got a new directory `docs`.
     |-- projects/
     |   |-- ...
 
+## Watch
+
 To re-build pages on change run:
 
     $ ssg watch
-    2018-04-10T11:04:11+0000 4pp
-    $
+    watching /home/alice/src/www
+    building /home/alice/src/www/docs  2018-04-10T11:04:11+0000 4pp
 
 `entr(1)` watches changes in `*.html`, `*.md`, `*.css`, `*.txt` files and
 runs `ssg build` on every file change.
 
-To start web server run:
+## Clean
+
+If you'd like to delete all files in the destination directory before
+the build, then run:
+
+    $ ssg build --clean
+    building /home/alice/src/www/docs --clean
+    2018-04-16T09:03:32+0000 4pp
+    $
+
+The same option works for watching.
+
+    $ ssg watch --clean
+    watching /home/alice/src/www
+    building /home/alice/src/www/docs --clean
+    2018-04-16T09:04:25+0000 4pp
+
+## Preview
+
+To start a local web server run:
 
     $ ssg serve
-    serving /home/romanzolotarev/src/romanzolotarev.com/docs
     listening http://127.0.0.1:4000
     startup
 
 `ssg` starts `httpd(1)` in a debug mode and serves pages from
 <http://127.0.0.1:4000>.
 
-You can build, watch changes, and serve pages with a single command:
+## Deploy
 
-    $ ssg
-    watching /home/romanzolotarev/src/romanzolotarev.com
-    serving /home/romanzolotarev/src/romanzolotarev.com/docs
-    listening http://127.0.0.1:4000
-    startup
-    2018-04-10T11:06:43+0300 4pp
+To deploy to remote server over SSH run:
 
-## Environment variables
+    $ export DOCS=/var/www/htdocs
+    $ export REMOTE_HOST=www
+    $ export REMOME_DOCS=/var/www/htdocs
+    $ ssg delpoy
+    deploying /var/www/htdocs
+    to www:/var/www/htdocs... 4s
+    $
 
-To change the destination directory, server address or port, define
-environment variables `DOCS`, `HOST`, `PORT`. For example:
-
-    $ DOCS=_static ssg build
-    $ DOCS=/var/www/htdocs ssg watch
-    $ HOST=192.168.1.111 PORT=8000 ssg serve
 
 ## Performance
 

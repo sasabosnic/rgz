@@ -1,4 +1,5 @@
-#l!/bin/sh
+#!/bin/sh
+
 PATH=$HOME/bin\
 :$HOME/.gem/ruby/2.5/bin\
 :/bin\
@@ -37,7 +38,7 @@ o() { start_tmux o "$HOME/src/openvpn" 'doas openvpn --config default.ovpn'; }
 cm() { start_tmux cm "$HOME/pub/music" 'cmus'; }
 j() { start_tmux j "$HOME/src/j" 'vim my.journal'; }
 www() { start_tmux www "$HOME/src/www" 'vim index.md'; }
-s() { cd "$HOME/src/www" && DOCS=/var/www/htdocs ssg watch || return; }
+s() { cd "$HOME/src/www" && DOCS=/var/www/htdocs ssg watch --clean|| return; }
 d() { cd "$HOME/src/www" && DOCS=/var/www/htdocs REMOTE_HOST="$1" ssg deploy || return; }
 # shellcheck disable=SC2029
 log() { [ -n "$1" ] && [ -n "$2" ] && ssh "$1" "while :; do printf '%s %s %s %s\\n' \"\$(grep \"$2\" /var/www/logs/access.log|cut -f2,13- -d' '|tr -d ' '|sort|uniq|wc -l|tr -d ' ')\" \"\$(date +%Y-%m-%dT%H:%M:%S)\" \"$1\" \"$2\"; sleep 30; done"; }
