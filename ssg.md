@@ -105,3 +105,8 @@ Half of a time for markdown rendering and another half for wrapping
 articles into the template. I heard good static site generators
 work---twice as fast---at 200 pps, so there's lots of performance that can
 be gained. ;)
+
+---
+
+**Thanks** to [h3artbl33d](https://twitter.com/h3artbl33d) and [Mischa
+Peters](https://twitter.com/mischapeters) for testing `ssg`.

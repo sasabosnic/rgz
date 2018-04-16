@@ -1,0 +1,14 @@
+#!/bin/sh
+#
+# https://www.romanzolotarev.com/bin/screencast
+# Copyright 2018 Roman Zolotarev <hi@romanzolotarev.com>
+set -e
+
+export DISPLAY=:0 
+Xephyr -ac -br -noreset -screen 800x600 :1 &
+sleep 0.1
+DISPLAY=:1 xsetroot -solid black &
+DISPLAY=:1 xrdb -load "$HOME/.Xdefaults" &
+sleep 0.1
+DISPLAY=:1 xterm -e 'TERM=xterm-256color tmux' &
+
