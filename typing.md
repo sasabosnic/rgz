@@ -89,7 +89,7 @@ time.
 
 [chip]: https://getchip.com/
 
-![ErgoDox](/typing-ergodox.jpg) _Photo from ergodox-ez.com_
+![ErgoDox](/typing-ergodox.jpeg)
 
 **Why EZ?** Wrist rest and tilt kit. High quality. Excellent service.
 2-year warranty.
@@ -147,7 +147,7 @@ fifteen-key difference from QWERTY.
 [kla]: http://patorjk.com/keyboard-layout-analyzer/#/main
 [ted]: http://www.tedmor.in/blog/posts/ive-been-typing-for-little-while
 
-![Norman layout on ErgoDox](/typing-norman.gif)
+![Norman layout on ErgoDox](/typing-norman.png)
 
 I use Vim with both QWERTY and Norman, and I do not remap anything in Vim.
 In the beginning, I had one annoying issue: `HJKL` on Norman are in weird

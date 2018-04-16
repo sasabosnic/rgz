@@ -1,6 +1,6 @@
 # Roman Zolotarev
 
-<img class="avatar" src="/avatar.jpg" width="112" height="112" alt="Avatar"><br>
+<img class="avatar" src="/avatar.jpeg" width="112" height="112" alt="Avatar"><br>
 Hi, my name is **Roman** and I make stuff for the web.
 If you like what you're reading here,
 follow me on [Twitter](https://twitter.com/romanzolotarev) and support on
