@@ -1,14 +1,53 @@
 #!/bin/sh
 #
-# https://www.romanzolotarev.com/bin/screencast
+# https://www.romanzolotarev.com/bin/screenshot
 # Copyright 2018 Roman Zolotarev <hi@romanzolotarev.com>
-set -e
+#
+# pkg_add slop ffmpeg mpv
 
-export DISPLAY=:0 
-Xephyr -ac -br -noreset -screen 800x600 :1 &
-sleep 0.1
-DISPLAY=:1 xsetroot -solid black &
-DISPLAY=:1 xrdb -load "$HOME/.Xdefaults" &
-sleep 0.1
-DISPLAY=:1 xterm -e 'TERM=xterm-256color tmux' &
+movie() {
+  size=$1
+  input=$2
+  log='/tmp/screencast.log'
+  output="$HOME/downloads/$(date +%Y%m%d-%H%M%S)-$size.mp4"
+  printf 'capturing to %s ' "$output"
+  DISPLAY=:0 ffmpeg -f x11grab -r 30 -s "$size" -i "$input" \
+    -preset veryslow \
+    -pix_fmt yuv420p \
+    -hide_banner \
+    -movflags +faststart \
+    -tune animation \
+    -vcodec h264 "$output" 2> "$log"
+  rm "$log"
+  stat -f '%z bytes' "$output"
+  ffmpeg -i "$output" -f gif -r 10 "${output}.gif"
+  stat -f 'GIF: %z bytes' "${output}.gif"
+  xclip -selection c -t image/gif -i "${output}.gif"
+  mpv --really-quiet "$output"
+}
 
+case $1 in
+
+start-left) movie '976x1080' ':0.0+0,0';;
+start-right) movie '944x1080' ':0.0+976,0';;
+start)
+  area=$(slop -o) &&
+  size=$(echo "$area"|cut -d'+' -f1) &&
+  input=":0.0+$(echo "$area"|cut -d'+' -f2-|tr '+' ',')" &&
+  movie "$size" "$input"
+  ;;
+
+stop)
+  pgrep -q ffmpeg || { echo 'nothing to stop'; exit 1; }
+  pkill ffmpeg
+  ;;
+
+*)
+  echo 'usage: screenshot start'
+  echo '                | start-left'
+  echo '                | start-right'
+  echo '                | stop'
+  exit 1
+  ;;
+
+esac

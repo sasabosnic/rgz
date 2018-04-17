@@ -9,6 +9,7 @@ bind-key    CM-q           window-delete
 bind-key    CM-r           restart
 bind-key    CSM-q          quit
 bind-key    M-Return       xterm
+bind-key    M-a            "screencast start"
 bind-key    M-e            menu-exec
 bind-key    M-equal        "vol up"
 bind-key    M-h            window-htile
@@ -17,6 +18,7 @@ bind-key    M-k            window-rcycle-ingroup
 bind-key    M-m            "vol toggle"
 bind-key    M-minus        "vol down"
 bind-key    M-n            "cmus-remote --next"
+bind-key    M-o            "screencast stop"
 bind-key    M-p            "cmus-remote --prev"
 bind-key    M-r            "cmus-remote -C 'toggle repeat_current'"
 bind-key    M-s            "screenshot"

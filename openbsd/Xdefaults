@@ -49,7 +49,7 @@ XTerm*background: gray8
 XTerm*foreground: #eeeeee
 
 XTerm*eightBitInput:  false
-XTerm*faceName:       Menlo
+XTerm*faceName:       DejaVu Sans Mono
 XTerm*faceSize:       12
 XTerm*internalBorder: 0
 XTerm*loginShell:     true

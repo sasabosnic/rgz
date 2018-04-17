@@ -3,6 +3,12 @@
 # https://www.romanzolotarev.com/bin/screenshot
 # Copyright 2018 Roman Zolotarev <hi@romanzolotarev.com>
 #
-sleep 0.2 # to prevent race condition when called via cwm bind-key
-# shellcheck disable=SC2016
-scrot 'downloads/%Y%m%d-%H%M%S-$wx$h.png' -s
+# pkg_add slop ImageMagick feh xclip
+
+set -e
+
+area="$(slop -o)"
+output="$HOME/downloads/$(date +%Y%m%d-%H%M%S)-$area.png"
+import -window root -crop "$area" "$output"
+xclip -selection c -t image/png -i "$output"
+feh -.Z "$output"

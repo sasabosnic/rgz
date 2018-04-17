@@ -128,4 +128,7 @@ be gained. ;)
 ---
 
 **Thanks** to [h3artbl33d](https://twitter.com/h3artbl33d) and [Mischa
-Peters](https://twitter.com/mischapeters) for testing `ssg`.
+Peters](https://twitter.com/mischapeters) for testing `ssg`, [Kristaps
+Dzonsons](https://www.divelog.blue/) for
+[lowdown(1)](https://kristaps.bsd.lv/lowdown/) and [Eric
+Radman](http://eradman.com) for [entr(1)](http://entrproject.org).

@@ -3,6 +3,15 @@
 # https://WWW.romanzolotarev.com/bin/status
 # Copyright 2017 Roman Zolotarev <hi@romanzolotarev.com>
 #
+
+screencast_log=/tmp/screencast.log
+if [ -f "$screencast_log" ]; then
+  printf "%s°C %s fps" \
+    "$(sysctl -n hw.sensors.cpu0|cut -d'.' -f1)" \
+    "$(tr '' '\n' < "$screencast_log" |grep 'fps= '|tail -n1|cut -d'=' -f3|cut -d' ' -f2)"
+  exit 0
+fi
+
 to_icon() { if printf "%s" "$1"|grep -q "$2"; then printf "%s" "$3"; else printf "%s" "$4"; fi }
 cmus_status="$(cmus-remote -Q)"
 mixer_status="$(mixerctl)"
@@ -17,7 +26,7 @@ if [ -n "$cmus_status" ]; then
     "$(to_icon "$cmus_status" 'set repeat_current true' '∞' '∙')"
 fi
 
-printf "%s %s %s° %s"\
+printf "%s %s %s°C %s"\
   "$(to_icon "$mixer_status" 'outputs.master.mute=off' "$mixer_bars" '∙')"\
   "$(to_icon "$(xset -q|grep LED|cut -d' ' -f21)" '00000000' 'A' 'Я')"\
   "$(sysctl -n hw.sensors.cpu0|cut -d'.' -f1)"\
