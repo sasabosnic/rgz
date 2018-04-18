@@ -1,8 +1,7 @@
-# Printing with CUPS
+# Printing from the command line on macOS
 
-Install CUPS and add a printer:
+Add a printer:
 
-    # pkg_add cups
     # lpadmin \
     -p Printer                      # Arbitrary printer name \
     -v ipp://192.168.1.10/ipp/print # device URI \

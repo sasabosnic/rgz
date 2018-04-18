@@ -46,7 +46,7 @@ Today I am a happy ErgoDox user. My average speed on Norman is 60 WPM, and
 it's increasing every month, slowly but steadily.
 
 [ez]: https://ergodox-ez.com/
-[keybr]: http://www.keybr.com/
+[keybr]: https://www.keybr.com/
 [keyhero]: https://www.keyhero.com/free-typing-test/
 
 ## Lessons learned
@@ -84,39 +84,13 @@ the primary reward: my hands, shoulders, and back are much happier now.
 Yes, ErgoDox costs three hundred dollars, but it's the best keyboard
 available today for that price, and the keyboard is the most important
 part of my workplace. If you're typing all day long, you can connect your
-awesome keyboard to [a nine-dollar computer][chip] and be productive in no
-time.
+awesome keyboard to [a nine-dollar computer](https://getchip.com/) and be
+productive in no time.
 
-[chip]: https://getchip.com/
+<div class="picture"><a href="/setup.html#ErgoDox%20EZ%20V3"><img class="picture__avatar" src="/ergodox-ez.jpeg"></a></div>
 
-![ErgoDox](/typing-ergodox.jpeg)
-
-**Why EZ?** Wrist rest and tilt kit. High quality. Excellent service.
-2-year warranty.
-
-I have chosen ErgoDox with Cherry MX Brown switches, blank DCS keycaps, and
-my custom single-layer layout.
-
-**Why Cherry MX Brown?** Blue switches are louder than brown; other
-switches are not that good for typing. If you are not sure, browns are the
-great default choice.
-
-**Why DCS?** I tried DSA for a month, but during that experiment, my
-accuracy was lower than with DCS. With sculpted keycaps my fingers "know"
-where they are, while it is a bit harder with DSA profile keycaps to find
-home row.
-
-**Why a custom single-layer layout?** Layout switching is an extra step I
-would like to avoid. Everything I need fits well into one layer (I even
-have one key left unused). By default, ErgoDox comes with a multiple-layer
-layout. I liked the idea and tried to use layers, but I found out that
-layer switching is expensive. You have to press and sometimes hold two or
-more keys simultaneously. I encourage every ErgoDox user to try a
-single-layer layout first and add extra layers only when you need to
-assign more keys and the base layer is full.
-
-**Why blank keycaps?** I don't look at my keyboard anymore, so I don't
-need any labels.
+[Check my current setup and why I've chosen ErgoDox
+EZ](/setup.html#ErgoDox%20EZ%20V3).
 
 ## Alternative keyboard layout
 
@@ -144,7 +118,7 @@ fifteen-key difference from QWERTY.
 
 [aaron]: https://twitter.com/search?q=from%3Atenderlove%20norman
 [gary]: https://twitter.com/search?q=from%3Agarybernhardt%20norman
-[kla]: http://patorjk.com/keyboard-layout-analyzer/#/main
+[kla]: http://patorjk.com/keyboard-layout-analyzer/
 [ted]: http://www.tedmor.in/blog/posts/ive-been-typing-for-little-while
 
 ![Norman layout on ErgoDox](/typing-norman.png)
@@ -191,5 +165,5 @@ keyboard.
 
 [Typing with pleasure by Pavel Fating](https://pavelfatin.com/typing-with-pleasure/#input-latency),
 [Programming's dirtiest little secret by Steve Yegge](http://steve-yegge.blogspot.sg/2008/09/programmings-dirtiest-little-secret.html),
-[Norman layout by David Norman](http://normanlayout.info/),
+[Norman layout by David Norman](https://normanlayout.info/),
 [My keyboard layout on GitHub](https://github.com/qmk/qmk_firmware/tree/master/layouts/community/ergodox/romanzolotarev-norman-osx)

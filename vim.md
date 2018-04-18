@@ -37,7 +37,7 @@ Word](https://en.m.wikipedia.org/wiki/Microsoft_Word),
 [Pages.app](https://en.m.wikipedia.org/wiki/Pages_(word_processor)), and
 [Google
 Docs](https://en.m.wikipedia.org/wiki/Google_Docs,_Sheets,_and_Slides) a
-lot, now I prefer [Markdown and Jekyll](/jekyll/).
+lot, now I prefer [Markdown](/markdown.html) and [ssg](/ssg.html).
 
 So why did I switch to Vim? Why should you?
 

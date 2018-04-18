@@ -37,8 +37,7 @@ your internet connection:
     # ifconfig re0 up
     # dhclient re0
 
-Then download and execute [the
-script](https://www.romanzolotarev.com/openbsd/fde.sh):
+Then download and execute [the script](/openbsd/fde.sh):
 
 Be very careful, **at this step you may lose all your data**.
 

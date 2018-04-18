@@ -40,6 +40,14 @@ copy_files() {
     --exclude "_*" \
     --exclude "node_modules"
   echo '<h1>Sitemap</h1><table>' > "$1/sitemap.html"
+  cat > "$1/rss.xml" <<EOF
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel>
+<title>Roman Zolotarev</title><description>A personal website about web technologes and development tools.</description>
+<link>https://www.romanzolotarev.com/</link>
+<lastBuildDate>Sat, 13 Dec 2003 18:30:02 GMT</lastBuildDate>
+<managingEditor>hi@romanzolotarev.com (Roman Zolotarev)</managingEditor>
+EOF
+
 }
 
 md_to_html() {
@@ -52,7 +60,7 @@ wrap_html() {
   #
   # generate sorted sitemap
   sitemap="$(find "$1" -type f -name '*.html'|while read -r file; do
-    awk '/<[h1]*( id=".*")?>/{gsub(/<[^>]*>/,"");print(FILENAME";"$0);exit;}' "$file"
+    awk '/<[h1]*( id=".*")?>/{gsub(/<[^>]*>/,"");print(FILENAME"===="$0);exit;}' "$file"
   done|sort)"
   #
   # save sitemap in html and xml formats
@@ -60,11 +68,11 @@ wrap_html() {
   year=$(date +%Y)
   echo '<?xml version="1.0" encoding="UTF-8"?><urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' > "$1/sitemap.xml"
   echo "$sitemap"|while read -r line; do
-    page=${line%;*}
+    page=${line%====*}
     url=${page#$1}
     case "$url" in
       /index.html) title='Home';;
-      *) title="${line#*;}";;
+      *) title="${line#*====}";;
     esac
     echo "<tr><td><a href=\"$url\">$url</a><td> $title</tr>" >> "$1/sitemap.html"
     echo "<url><loc>https://www.romanzolotarev.com$url</loc><lastmod>$date</lastmod><priority>1.0</priority></url>" >> "$1/sitemap.xml"
@@ -74,20 +82,21 @@ wrap_html() {
   #
   # generate html pages
   styles=$(cat styles.css)
+  rss="$1/rss.xml"
   echo "$sitemap"|while read -r line; do
-    page=${line%;*}
+    page=${line%====*}
     url=${page#$1}
     article=$(cat "$page")
     case "$url" in
       /index.html)
         title='Home'
         head_title='<title>Roman Zolotarev</title>'
-        header__home='Home'
+        header__home=''
         ;;
       *)
-        title="${line#*;}"
+        title="${line#*====}"
         head_title="<title>$title - Roman Zolotarev</title>"
-        header__home='<a href="/">Home</a> - <a href="https://twitter.com/romanzolotarev">Twitter</a> - <strong><a href="/patreon.html">Patreon</a></strong>'
+        header__home='<a href="/">Home</a> - <!-- <a href="/rss.xml">RSS</a> --> <a href="https://twitter.com/romanzolotarev">Twitter</a> - <strong><a href="/patreon.html">Patreon</a></strong>'
         ;;
     esac
     # merge page with html template
@@ -96,6 +105,7 @@ wrap_html() {
 <head>$head_title<meta charset="utf-8"><meta name="referrer" content="no-referrer"><link rel="manifest" href="/manifest.webmanifest"><meta name="theme-color" content="#ffffff"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
 <style>$styles</style>
 <link rel="icon" type="image/png" href="/favicon.png" />
+<link rel="alternate" type="application/atom+xml" href="/rss.xml" />
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 </head>
@@ -106,7 +116,21 @@ wrap_html() {
 <div class="footer"><a href="/about.html#Everything%20is%20software">Copyright</a> 2016&ndash;$year <a href="/">Roman Zolotarev</a></div>
 </div></body></html>
 EOF
+  date_rfc_822=$(date)
+
+  case "$url" in
+    /index.html) echo "$url";; 
+    /about.html) 
+    cat >> "$rss" <<EOF
+<item><title>$title</title><guid isPermaLink="false">urn:uuid:$(uuidgen)</guid>
+<link>https://www.romanzolotarev.com$url</link><pubDate>$date_rfc_822</pubDate><description><![CDATA[$article]]></description></item>
+EOF
+    ;;
+    *) echo "$url";;
+  esac
+
   done
+  echo '</channel></rss>' >> "$rss"
   echo "$date $(echo "$sitemap"|wc -l|tr -d ' ')pp"
 }
 
@@ -131,7 +155,7 @@ watch)
   which entr >/dev/null 2>&1 || { echo 'entr(1) should be installed'; exit 1; }
   while true; do
     find "$PWD" -type f \
-      \( -name "$(basename "$0")" -or -name '*.md' -or -name '*.html' -or -name '*.css' -or -name '*.txt' \)\
+      \( -name "$(basename "$0")" -or -name '*.md' -or -name '*.html' -or -name '*.css' -or -name '*.txt' -or -name '*.jpeg' -or -name '*.png' \)\
       ! -name ".*" ! -path "*/.*" ! -path "*/node_modules*" ! -path "${DOCS_PATH}*" |
       $cmd
   done

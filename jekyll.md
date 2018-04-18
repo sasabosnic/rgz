@@ -1,4 +1,4 @@
-# Jekyll
+# Make a static website with Jekyll
 
 Jekyll is a static website generator. It converts your
 [markdown](/markdown.html) files to web pages which you can publish with a
@@ -88,6 +88,6 @@ Install and run:
 
 ## See also
 
-[Jekyll Minimalist](https://romanzolotarev.github.io/jekyll-minimalist),
-[Jekyll](http://jekyllrb.com),
+[Jekyll Minimalist](https://romanzolotarev.github.io/jekyll-minimalist/),
+[Jekyll](https://jekyllrb.com),
 [GitHub Pages](https://pages.github.com)

@@ -43,13 +43,23 @@ html { margin: 0; height: 100%; }
 .article h1 { font-size: 2.8em; margin-top: 1em; }
 .article h2 { font-size: 1.6em; margin-top: 3em; }
 .article p { margin: 1em 0; }
+.article li code,
 .article p code { font-weight: 700; }
-.article p img { margin: 1em 0; width: 100%; }
+.article p img { margin: 1em 0; width: 106%; margin: 0 -1em; }
 .article hr { border: none; margin-top: 4em; }
 .article ul { padding: 0; }
 .article ul li { list-style: none; }
 .article li { margin: 1em 0; }
-.article .avatar { height: 5em; width: 5em; }
+.article table { width: 100%; margin: 2em 0; }
+.article .picture a,
+.article .quote a,
+.light-off:checked ~ .page .picture a,
+.light-off:checked ~ .page .quote a { border: 0; }
+.article .picture__avatar { margin: 0; height: 6em; width: 6em; border-radius: 6em; }
+.article .quote { padding-bottom: 0.4em; }
+.article .quote__avatar { height: 2em; width: 2em; border-radius: 2em; margin: 0 0.4em 0 0; vertical-align: middle; }
+.article .quote__name,
+.article .quote__text { vertical-align: middle; font-style: italic; }
 
 .article code,
 .article pre { font-family: "Menlo", "DejaVu Sans Mono", monospace; font-size: 0.9em; line-height: 1.5em; margin: 0; }

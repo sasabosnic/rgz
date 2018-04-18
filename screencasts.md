@@ -67,7 +67,7 @@ by Josh Adams
 by Aaron VonderHaar
 <br>Elm
 
-[**KnowThen**](http://knowthen.com)
+[**KnowThen**](https://knowthen.com/)
 by James Moore
 <br>Elm, React, Go, RethinkDB
 
@@ -111,7 +111,7 @@ by Chris Mather
 by Ryan Irelan
 <br>CMS, Git, HTML, CSS, Python, Jekyll
 
-[**Jekyll Tips**](http://jekyll.tips/)
+[**Jekyll Tips**]( https://learn.cloudcannon.com/)
 by CloudCannon
 <br>Jekyll, MacOS
 
@@ -155,7 +155,7 @@ by Michael Kennedy
 by Ben Scheirman
 <br>iOS, Swift, Objective-C, Xcode
 
-[**Level Up Tutorials**](https://leveluptutorials.com/)
+[**Level Up Tutorials**](https://www.leveluptutorials.com/)
 by Scott Tolinski
 <br>Meteor, React, Angular, Drupal, WordPress, Magento, Sketch, Sass, Stylus, PostCSS, Java
 
@@ -209,9 +209,6 @@ Explore these online schools and stores to find more courses.
 
 [**Code School**](https://www.codeschool.com/)
 <br>HTML, CSS, Ruby, JavaScript, Python, iOS, Git, .Net, SQL, MongoDB
-
-[**GitHub On Demand Training**](https://github.github.com/on-demand/)
-<br>Git, GitHub
 
 [**Caster IO**](https://caster.io/)
 <br>Android, RxJava, Material Design, Espresso

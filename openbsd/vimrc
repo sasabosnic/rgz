@@ -95,7 +95,7 @@ augroup END
 
 set path=.,**
 set wildcharm=<C-z>
-set wildignore+=*.gif,*.ico,*.jpg,*.png,node_modules/*,.git/**/*,_site/*,tags,*.tar.*
+set wildignore+=*.gif,*.ico,*.jpeg,*.jpg,*.png,node_modules/*,.git/**/*,tags,*.tar.*
 set wildmenu wildignorecase
 command! -nargs=+ Grep execute 'vim <args> *' | copen
 nnoremap <Leader>/ :Grep<Space>

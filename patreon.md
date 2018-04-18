@@ -1,4 +1,4 @@
-<meta http-equiv="refresh" content="0; url=https://patreon.com/romanzolotarev">
+<meta http-equiv="refresh" content="0; url=https://www.patreon.com/romanzolotarev">
 
 # Patreon
 

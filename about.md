@@ -1,12 +1,22 @@
+"Guy knows what he's talking about folks."
+<div class="quote"><a href="https://m.twitter.com/smhhms/status/930470965754114052">
+<img src="/avatars/smhhms.jpeg" class="quote__avatar" title="14 November 2017" alt="Sean (@smhhms)"></a>
+<span class="quote__name">Sean (@smhhms)</span></div>
+
+"Damn you are a machine!! Building tons of stuff."
+<div class="quote"><a href="https://twitter.com/BrutusUnix/status/986417139425869825">
+<img src="/avatars/BrutusUnix.jpeg" class="quote__avatar" title="18 April 2018" alt="EssentialOS=OpenBSD (@BrutusUnix)"></a>
+<span class="quote__name">EssentialOS=OpenBSD (@BrutusUnix)</span></div>
+
 # About this site
 
-This website is here, because I want to share what I've learned as a web
-developer and help you to learn something new. Thank you for your
-curiosity.
+This website is here, because I want to share with you what I've learned
+as a web developer and I want **to help beginners and junior developers to
+learn** same things, but **faster**. Thank you for your curiosity.
 
-On these pages you can learn basics of web technologies and functional
-programming. You can learn how to build your software development tool set
-with Unix-like operating systems and command line tools.
+On these pages you can learn basics of web technologies and how to build
+your software development tool set with Unix-like operating systems and
+command line tools.
 
 You can expect these pages [load fast](/fast.html) even if the internet
 connection is slow, all pages are just static HTML and CSS. To keep this
@@ -18,8 +28,10 @@ for="light-off"></label> link. It's always in the top right corner. On
 click it saves your preferences in a browser cookie, other than that no
 JavaScript is required to use this website.
 
-[Enjoy reading](/).
+This website has been generated with [ssg](/ssg.html), served by [OpenBSD
+httpd](/openbsd/webserver.html), and hosted on [Vultr](/vultr.html).
 
+[Enjoy reading](/).
 
 ## Everything is software
 

@@ -43,7 +43,7 @@ password checking we used a hundred rounds of the key derivation function
 (`-a 100`).
 
 P.S. To protect your private key, use a strong passphrase. [A few random common
-words should work](/diceware/).
+words should work](/diceware.html).
 
 ## RSA fallback
 

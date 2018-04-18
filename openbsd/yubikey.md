@@ -1,8 +1,9 @@
 # Configure YubiKey for login and SSH on OpenBSD
 
-Make sure OpenBSD 6.2 is installed on your computer, you're `root`, and
-you have at least one YubiKey. First of all, install and start **YubiKey
-Personalization Tool**:
+Make sure [OpenBSD is installed on your computer](/openbsd/install.html),
+you're `root`, and you have at least one
+[YubiKey](https://www.yubico.com/store/). First of all, install and start
+**YubiKey Personalization Tool**:
 
     # pkg_add yubikey-personalization-gui
     # yubikey-personalization-gui
@@ -35,7 +36,7 @@ Update `/etc/ssh/sshd_config`:
     AuthenticationMethods publickey,password
     PasswordAuthentication yes
 
-Restart sshd, verify, and reboot:
+Restart `sshd`, verify, and `reboot`:
 
     # rcctl restart sshd
     # ssh root@localhost
@@ -58,5 +59,4 @@ Restart sshd, verify, and reboot:
 
 [login.conf(5)](http://man.openbsd.com/login.conf.5),
 [login_yubikey(8)](http://man.openbsd.com/login_yubikey.8),
-[YubiKey Personalization GUI](https://github.com/Yubico/yubikey-personalization-gui),
-[Yubico Store](https://www.yubico.com/store/)
+[YubiKey Personalization GUI](https://github.com/Yubico/yubikey-personalization-gui)

@@ -1,4 +1,4 @@
-# Pagination
+# Comparing Vanilla JavaScript, Ramda, and Elm
 
 I recently worked on pagination for a web app. This simple problem is a
 good case study for comparing JavaScript and Elm.
@@ -597,7 +597,7 @@ Ramda or Elm can save you from mistakes and make your developer experience
 much better.
 
 You'd still better know [JavaScript equality
-quirks](http://dorey.github.io/JavaScript-Equality-Table/), how to
+quirks](https://dorey.github.io/JavaScript-Equality-Table/), how to
 manipulate the
 [DOM](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model)
 directly, how to manage scope, how to avoid mutable state, how to handle

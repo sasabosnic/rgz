@@ -19,7 +19,7 @@ movie() {
     -hide_banner \
     -movflags +faststart \
     -tune animation \
-    -vcodec h264 "$output" 2> "$log"
+    -vcodec h264 "$output" 2> "$log" &&
   rm "$log"
   stat -f '%z bytes' "$output"
   ffmpeg -i "$output" -f gif -r 10 "${output}.gif"
