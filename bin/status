@@ -6,9 +6,8 @@
 
 screencast_log=/tmp/screencast.log
 if [ -f "$screencast_log" ]; then
-  printf "%s°C %s fps" \
-    "$(sysctl -n hw.sensors.cpu0|cut -d'.' -f1)" \
-    "$(tr '' '\n' < "$screencast_log" |grep 'fps= '|tail -n1|cut -d'=' -f3|cut -d' ' -f2)"
+  fps="$(tr '' '\n' < "$screencast_log"|grep 'fps= '|tail -n1|cut -d'=' -f3|cut -d' ' -f2)"
+  printf "%s fps" "${fps:-0}"
   exit 0
 fi
 

@@ -5,13 +5,15 @@
 #
 # pkg_add slop ffmpeg mpv
 
+sleep 0.2
+
 movie() {
   size=$1
   input=$2
   log='/tmp/screencast.log'
   output="$HOME/downloads/$(date +%Y%m%d-%H%M%S)-$size.mp4"
   printf 'capturing to %s ' "$output"
-  DISPLAY=:0 ffmpeg -f x11grab -r 30 -s "$size" -i "$input" \
+  ffmpeg -f x11grab -r 30 -s "$size" -i "$input" \
     -preset veryslow \
     -pix_fmt yuv420p \
     -hide_banner \
