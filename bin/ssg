@@ -19,14 +19,13 @@
 usage() {
   echo 'usage: export HOST=127.0.0.1'
   echo '       export PORT=4000'
-  echo '       export DOCS=docs'
+  echo '       export DOCS=/var/www/htdocs/www.romanzolotarev.com'
   echo '       export REMOTE_HOST=www.romanzolotarev.com'
   echo '       export REMOTE_DOCS=/var/www/htdocs/www.romanzolotarev.com'
   echo
   echo '       ssg build [--clean]'
   echo '         | watch [--clean]'
-  echo '         | serve'
-  echo '         | deploy'
+  echo '         | deploy [--clean]'
   exit 1
 }
 
@@ -134,7 +133,7 @@ EOF
   echo "$date $(echo "$sitemap"|wc -l|tr -d ' ')pp"
 }
 
-DOCS_PATH=$(readlink -fn "${DOCS:-./docs}")
+DOCS_PATH=$(readlink -fn "${DOCS:-/var/www/htdocs/www.romanzolotarev.com}")
 [ "$2" = '--clean' ] && RSYNC_FLAGS='--delete-excluded' || RSYNC_FLAGS=''
 case "$1" in
 
@@ -161,29 +160,14 @@ watch)
   done
   ;;
 
-serve)
-  [ -z "$PORT" ] && PORT='4000'
-  [ -z "$HOST" ] && HOST='127.0.0.1'
-  which httpd >/dev/null 2>&1 || { echo 'httpd(8) should be installed'; exit 1; }
-  logdir="$DOCS_PATH/logs"
-  conf="$DOCS_PATH/httpd.conf"
-  echo "listening http://$HOST:$PORT"
-  mkdir -p "$DOCS_PATH" "$logdir"
-  printf 'chroot "%s"\nlogdir "%s"\nserver "%s" {\n  listen on %s port %s\n  root "/"\n}\n' \
-    "$DOCS_PATH" "$logdir" "$HOST" "$HOST" "$PORT" > "$conf"
-  cd "$DOCS_PATH" || exit
-  doas httpd -d -f "$conf"
-  ;;
-
 deploy)
   [ -z "$REMOTE_HOST" ] && REMOTE_HOST='www.romanzolotarev.com'
   [ -z "$REMOTE_DOCS" ] && REMOTE_DOCS='/var/www/htdocs/www.romanzolotarev.com'
   start=$(date +%s)
   echo "deploying $DOCS"
   printf "to %s:%s... " "$REMOTE_HOST" "$REMOTE_DOCS"
-  # shellcheck disable=SC2029
-  cd "$DOCS_PATH" && tar -cf - . |
-    ssh -C "$REMOTE_HOST" "cd $REMOTE_DOCS && tar -xf -"
+  # shellcheck disable=2086
+  rsync -avP "$DOCS_PATH/" "$REMOTE_HOST:$REMOTE_DOCS" $RSYNC_FLAGS
   echo "$(( $(date +%s) - start ))s"
   ;;
 
