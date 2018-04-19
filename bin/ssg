@@ -17,15 +17,10 @@
 #
 
 usage() {
-  echo 'usage: export HOST=127.0.0.1'
-  echo '       export PORT=4000'
-  echo '       export DOCS=/var/www/htdocs/www.romanzolotarev.com'
-  echo '       export REMOTE_HOST=www.romanzolotarev.com'
-  echo '       export REMOTE_DOCS=/var/www/htdocs/www.romanzolotarev.com'
+  echo 'usage: DOCS=/var/www/htdocs/www.romanzolotarev.com'
   echo
   echo '       ssg build [--clean]'
   echo '         | watch [--clean]'
-  echo '         | deploy [--clean]'
   exit 1
 }
 
@@ -36,17 +31,7 @@ copy_files() {
   rsync -a "." "$1" $RSYNC_FLAGS \
     --exclude "$self" \
     --exclude ".*" \
-    --exclude "_*" \
-    --exclude "node_modules"
-  echo '<h1>Sitemap</h1><table>' > "$1/sitemap.html"
-  cat > "$1/rss.xml" <<EOF
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel>
-<title>Roman Zolotarev</title><description>A personal website about web technologes and development tools.</description>
-<link>https://www.romanzolotarev.com/</link>
-<lastBuildDate>Sat, 13 Dec 2003 18:30:02 GMT</lastBuildDate>
-<managingEditor>hi@romanzolotarev.com (Roman Zolotarev)</managingEditor>
-EOF
-
+    --exclude "_*"
 }
 
 md_to_html() {
@@ -64,7 +49,7 @@ wrap_html() {
   #
   # save sitemap in html and xml formats
   date=$(date +%Y-%m-%dT%H:%M:%S%z)
-  year=$(date +%Y)
+  date_year=$(date +%Y)
   echo '<?xml version="1.0" encoding="UTF-8"?><urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' > "$1/sitemap.xml"
   echo "$sitemap"|while read -r line; do
     page=${line%====*}
@@ -73,15 +58,12 @@ wrap_html() {
       /index.html) title='Home';;
       *) title="${line#*====}";;
     esac
-    echo "<tr><td><a href=\"$url\">$url</a><td> $title</tr>" >> "$1/sitemap.html"
     echo "<url><loc>https://www.romanzolotarev.com$url</loc><lastmod>$date</lastmod><priority>1.0</priority></url>" >> "$1/sitemap.xml"
   done
-  echo '</table>' >> "$1/sitemap.html"
   echo '</urlset>' >> "$1/sitemap.xml"
   #
   # generate html pages
   styles=$(cat styles.css)
-  rss="$1/rss.xml"
   echo "$sitemap"|while read -r line; do
     page=${line%====*}
     url=${page#$1}
@@ -104,7 +86,7 @@ wrap_html() {
 <head>$head_title<meta charset="utf-8"><meta name="referrer" content="no-referrer"><link rel="manifest" href="/manifest.webmanifest"><meta name="theme-color" content="#ffffff"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta name="viewport" content="width=device-width, initial-scale=1">
 <style>$styles</style>
 <link rel="icon" type="image/png" href="/favicon.png" />
-<link rel="alternate" type="application/atom+xml" href="/rss.xml" />
+<!--link rel="alternate" type="application/atom+xml" href="/rss.xml" /-->
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 </head>
@@ -112,24 +94,10 @@ wrap_html() {
 <div class="page">
 <div class="header"><div class="header__home">$header__home</div><div class="header__light-off"><label for="light-off" class="light-off-button"></label></div></div>
 <div class="article">$article</div>
-<div class="footer"><a href="/about.html#Everything%20is%20software">Copyright</a> 2016&ndash;$year <a href="/">Roman Zolotarev</a></div>
+<div class="footer"><a href="/about.html#Everything%20is%20software">Copyright</a> 2016&ndash;$date_year <a href="/">Roman Zolotarev</a></div>
 </div></body></html>
 EOF
-  date_rfc_822=$(date)
-
-  case "$url" in
-    /index.html) echo "$url";; 
-    /about.html) 
-    cat >> "$rss" <<EOF
-<item><title>$title</title><guid isPermaLink="false">urn:uuid:$(uuidgen)</guid>
-<link>https://www.romanzolotarev.com$url</link><pubDate>$date_rfc_822</pubDate><description><![CDATA[$article]]></description></item>
-EOF
-    ;;
-    *) echo "$url";;
-  esac
-
   done
-  echo '</channel></rss>' >> "$rss"
   echo "$date $(echo "$sitemap"|wc -l|tr -d ' ')pp"
 }
 
@@ -158,17 +126,6 @@ watch)
       ! -name ".*" ! -path "*/.*" ! -path "*/node_modules*" ! -path "${DOCS_PATH}*" |
       $cmd
   done
-  ;;
-
-deploy)
-  [ -z "$REMOTE_HOST" ] && REMOTE_HOST='www.romanzolotarev.com'
-  [ -z "$REMOTE_DOCS" ] && REMOTE_DOCS='/var/www/htdocs/www.romanzolotarev.com'
-  start=$(date +%s)
-  echo "deploying $DOCS"
-  printf "to %s:%s... " "$REMOTE_HOST" "$REMOTE_DOCS"
-  # shellcheck disable=2086
-  rsync -avP "$DOCS_PATH/" "$REMOTE_HOST:$REMOTE_DOCS" $RSYNC_FLAGS
-  echo "$(( $(date +%s) - start ))s"
   ;;
 
 *) usage;;

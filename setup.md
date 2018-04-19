@@ -55,6 +55,21 @@ run `-current` on a desktop? Because `-stable` is shipped every six months
 and I that's is often enough for me. I prefer [slow
 fashion](https://www.youtube.com/watch?v=Wiw3YcwGwrU).
 
+Regarding my window manager of choice: it's
+[cwm(1)](http://man.openbsd.org/cwm.1). It has tiling mode, so I don't
+have to rearrange windows manually.
+
+![cwm](/cwm.jpeg)
+
+Here is my [.cwmrc](/openbsd/cwmrc). Quite often I keep just two windows
+open. On the left side: [tmux(1)](http://man.openbsd.org/tmux.1) in
+[xterm(1)](http://man.openbsd.org/xterm.1). On the right side: Firefox.
+
+<div class="quote"><a href="https://m.twitter.com/mischapeters/status/987004963682430976">
+<img src="/avatars/mischapeters.jpeg" class="quote__avatar" title="19 April 2018" alt="(((Mischa &#x1F576; &#x1F421; RCX))) (@mischapeters)"></a>
+<span class="quote__text">It’s a nice .cwmrc! I even modeled mine after it. Recommended. 5&nbsp;stars.</span></div>
+
+
 ## Zotac CI527
 
     Intel Core i3-7100U, dual core 2.4 GHz CPU
