@@ -1,10 +1,10 @@
-"Guy knows what he's talking about folks."
-<div class="quote"><a href="https://m.twitter.com/smhhms/status/930470965754114052">
-<img src="/avatars/smhhms.jpeg" class="quote__avatar" title="14 November 2017" alt="Sean (@smhhms)"></a>
-<span class="quote__name">Sean (@smhhms)</span></div>
+"Roman thanks for sharing all this information. Really is helpful especially to new comers to the project."
+<div class="quote"><a href="https://mobile.twitter.com/tuxbsd/status/987336763508183041">
+<img src="/avatars/tuxbsd.jpeg" class="quote__avatar" title="20 April 2018" alt="Josh Stephens (@tuxbsd)"></a>
+<span class="quote__name">Josh Stephens (@tuxbsd)</span></div>
 
 "Damn you are a machine!! Building tons of stuff."
-<div class="quote"><a href="https://twitter.com/BrutusUnix/status/986417139425869825">
+<div class="quote"><a href="https://mobile.twitter.com/BrutusUnix/status/986417139425869825">
 <img src="/avatars/BrutusUnix.jpeg" class="quote__avatar" title="18 April 2018" alt="EssentialOS=OpenBSD (@BrutusUnix)"></a>
 <span class="quote__name">EssentialOS=OpenBSD (@BrutusUnix)</span></div>
 

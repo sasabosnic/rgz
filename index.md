@@ -7,8 +7,6 @@ you're reading here, <!-- subscribe to [my RSS feed](/rss.xml), --> follow me on
 [Twitter](https://m.twitter.com/romanzolotarev) and support on
 [Patreon](/patreon.html).
 
-
-
 ---
 
 - [Enable HTTPS on OpenBSD with Let's Encrypt and acme-client(1)](/openbsd/acme-client.html "2018-04-13")

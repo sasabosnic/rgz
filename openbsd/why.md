@@ -13,6 +13,11 @@
 <img src="/avatars/hir0pr0tagonist.jpeg" class="quote__avatar" title="17 April 2018" alt="Tom A (@hir0pr0tagonist)"></a>
 <span class="quote__name">Tom A (@hir0pr0tagonist)</span></div>
 
+"Guy knows what he's talking about folks."
+<div class="quote"><a href="https://mobile.twitter.com/smhhms/status/930470965754114052">
+<img src="/avatars/smhhms.jpeg" class="quote__avatar" title="14 November 2017" alt="Sean (@smhhms)"></a>
+<span class="quote__name">Sean (@smhhms)</span></div>
+
 # Why OpenBSD?
 
 [OpenBSD](https://www.openbsd.org) shines on servers, but if you do just
