@@ -1,17 +1,15 @@
+".<a href="https://mobile.twitter.com/romanzolotarev">@romanzolotarev</a> motivated me to spend some more time in OpenBSD"
+<div class="quote"><a href="https://mobile.twitter.com/wezm/status/987251788821684224">
+<img src="/avatars/wezm.jpeg" class="quote__avatar" title="20 April 2018" alt="Wesley Moore (@wezm)"></a>
+<span class="quote__text">Wesley Moore (@wezm)</span></div>
+
 "Oh god. The first paragraph is so spot on it's almost spooky. I've always dreamed of being able to boot into the terminal then open web browser just when I needed."
-<div class="quote"><a href="https://m.twitter.com/jesusgollonet/status/930376114110951424">
+<div class="quote"><a href="https://mobile.twitter.com/jesusgollonet/status/930376114110951424">
 <img src="/avatars/jesusgollonet.jpeg" class="quote__avatar" title="14 November 2017" alt="jes&uacute;s gollonet (@jesusgollonet)"></a>
 <span class="quote__name">jes&uacute;s gollonet (@jesusgollonet)</span></div>
 
-Few minutes later...
-
-"Convinced. I'm trying <a href="https://m.twitter.com/hashtag/OpenBSD">#OpenBSD</a> as soon as I have time."
-<div class="quote"><a href="https://m.twitter.com/jesusgollonet/status/930381616173764608">
-<img src="/avatars/jesusgollonet.jpeg" class="quote__avatar" title="14 November 2017" alt="jes&uacute;s gollonet (@jesusgollonet)"></a>
-<span class="quote__name">jes&uacute;s gollonet (@jesusgollonet)</span></div>
-
-"I've said it before, but <a href="https://m.twitter.com/mwlauthor">@mwlauthor</a> and <a href="https://m.twitter.com/romanzolotarev">@romanzolotarev</a> are the reasons I use OpenBSD"
-<div class="quote"><a href="https://m.twitter.com/hir0pr0tagonist/status/986292987566149632">
+"I've said it before, but <a href="https://mobile.twitter.com/mwlauthor">@mwlauthor</a> and <a href="https://mobile.twitter.com/romanzolotarev">@romanzolotarev</a> are the reasons I use OpenBSD"
+<div class="quote"><a href="https://mobile.twitter.com/hir0pr0tagonist/status/986292987566149632">
 <img src="/avatars/hir0pr0tagonist.jpeg" class="quote__avatar" title="17 April 2018" alt="Tom A (@hir0pr0tagonist)"></a>
 <span class="quote__name">Tom A (@hir0pr0tagonist)</span></div>
 
@@ -51,10 +49,10 @@ to customize.
 Easy to upgrade. If you don't use exotic software or hardware, upgrade
 takes just few minutes (spent mostly on reading release notes).
 
-**[Install OpenBSD](/openbsd/try.html)**
+**[Install OpenBSD](/openbsd/install.html)**
 
 ---
 
 If you never tried BSD, don't be afraid. [We are here to
 help](https://mobile.twitter.com/romanzolotarev/lists/bsd/members).
-<br>Have questions? [Ping me on Twitter](https://m.twitter.com/romanzolotarev).
+<br>Have questions? [Ping me on Twitter](https://mobile.twitter.com/romanzolotarev).

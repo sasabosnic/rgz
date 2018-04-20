@@ -1,0 +1,30 @@
+#!/bin/sh
+[ -z "$1" ] || [ -z "$2" ] && { echo 'usage: rss <index> <rss>'; exit 1; }
+[ -f "$1" ] || { echo "can't find $1"; exit 1; }
+
+date_rfc_822=$(date)
+cat > "$2" <<EOF
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel>
+<title>Roman Zolotarev</title><description>A personal website about web technologes and development tools.</description>
+<link>https://www.romanzolotarev.com/</link>
+<lastBuildDate>$date_rfc_822</lastBuildDate>
+<managingEditor>hi@romanzolotarev.com (Roman Zolotarev)</managingEditor>
+EOF
+
+grep '<li>' "$1" |
+while read -r line; do
+  # title=$(echo "$line"|sed -r 's/(.*\[)(.*)(\].*)/\2/g')
+  # href=$(echo  "$line"|sed -r 's/(.*\()(.*)(\).*)/\2/g')
+  # url=$(echo   "$href"|sed -r 's/(.*)( \".*)(".*)/\1/g')
+  title="title"
+  url="title"
+  day=$(echo  "$line"|sed -r 's/(.*title=")(.*)(".*)/\2/g')
+  year=${day#-}
+  echo "$date" >> "$2"
+  # article=$(echo "./$url")
+  cat >> "$rss" <<EOF
+<item><title>$title</title><guid isPermaLink="false">urn:uuid:$(uuidgen)</guid>
+<link>https://www.romanzolotarev.com$url</link><pubDate>$date_rfc_822</pubDate><description><![CDATA[$article]]></description></item>
+EOF
+done 
+echo '</channel></rss>' >> "$2"
