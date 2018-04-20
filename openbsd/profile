@@ -43,7 +43,7 @@ rss() { cd '/var/www/htdocs/www.romanzolotarev.com' && ssg_rss index.html rss.xm
 d() { rsync -avP --delete-excluded '/var/www/htdocs/www.romanzolotarev.com' "$1:/var/www/htdocs/"; }
 # shellcheck disable=SC2029
 log() { [ -n "$1" ] && [ -n "$2" ] && ssh "$1" "while :; do printf '%s %s %s %s\\n' \"\$(grep \"$2\" /var/www/logs/access.log|cut -f2,13- -d' '|tr -d ' '|sort|uniq|wc -l|tr -d ' ')\" \"\$(date +%Y-%m-%dT%H:%M:%S)\" \"$1\" \"$2\"; sleep 30; done"; }
-logt() { log "$1" "$(date "+%d/%b/%Y").*$2"; }
+logt() { log "$1" "$(date "+%d/%b/%Y").*${2:-GET.*HTTP/1\.1. 200}"; }
 
 fix() { git add . && git commit -mfix && git rebase -i HEAD~"${1:-2}"; }
 alias c='PS1=$\ ;clear'

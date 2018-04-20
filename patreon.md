@@ -3,4 +3,4 @@
 # Patreon
 
 You are about to be redirected to [Patreon](https://www.patreon.com/romanzolotarev).
-See you there.
+I appreciate your support. See you there.

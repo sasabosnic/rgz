@@ -1,4 +1,4 @@
-# Comparing Vanilla JavaScript, Ramda, and Elm
+# Compare Vanilla JavaScript, Ramda, and Elm
 
 I recently worked on pagination for a web app. This simple problem is a
 good case study for comparing JavaScript and Elm.
