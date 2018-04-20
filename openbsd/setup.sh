@@ -3,6 +3,10 @@ set -x
 mirror='https://cloudflare.cdn.openbsd.org/pub/OpenBSD'
 backup_drive='/mnt/sd2a'
 
+rcctl enable apmd
+rcctl set apmd flags -H
+rcctl start apmd
+
 cp /etc/fstab /etc/fstab.bak
 sed -i 's/rw,softdep,noatime/rw/;s/rw/rw,softdep,noatime/' /etc/fstab
 diff -d /etc/fstab.bak /etc/fstab

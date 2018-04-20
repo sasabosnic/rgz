@@ -13,19 +13,18 @@ movie() {
   log='/tmp/screencast.log'
   output="$HOME/downloads/$(date +%Y%m%d-%H%M%S)-$size.mp4"
   printf 'capturing to %s ' "$output"
+  aucat -i "$HOME/src/www/clear.wav"
   ffmpeg -f x11grab -r 30 -s "$size" -i "$input" \
     -preset veryslow \
     -pix_fmt yuv420p \
     -hide_banner \
     -movflags +faststart \
     -tune animation \
-    -vcodec h264 "$output" 2> "$log" &&
+    -vcodec h264 "$output" 2> "$log"
   rm "$log"
   stat -f '%z bytes' "$output"
-  ffmpeg -i "$output" -f gif -r 10 "${output}.gif"
-  stat -f 'GIF: %z bytes' "${output}.gif"
-  xclip -selection c -t image/gif -i "${output}.gif"
-  mpv --really-quiet "$output"
+  mpv --really-quiet "$output" &
+  aucat -i "$HOME/src/www/quits.wav"
 }
 
 case $1 in
@@ -40,6 +39,7 @@ start)
   ;;
 
 stop)
+  aucat -i "$HOME/src/www/thats_it.wav"
   pgrep -q ffmpeg || { echo 'nothing to stop'; exit 1; }
   pkill ffmpeg
   ;;
