@@ -23,6 +23,7 @@ export PATH LANG LC_ALL TERM GIT_PS1_SHOWDIRTYSTATE
 
 stty -ixon # rescue <C-s> for vim
 
+quits() { aucat -i "$HOME/src/www/quits.wav"; }
 # shellcheck disable=SC2086
 start_tmux() {
   cd "$2" || return
@@ -37,13 +38,12 @@ j() { start_tmux j "$HOME/src/j" 'vim my.journal'; }
 www() { start_tmux www "$HOME/src/www" 'vim index.md'; }
 s() { cd "$HOME/src/www" && ssg watch --clean|| return; }
 rss() { cd '/var/www/htdocs/www.romanzolotarev.com' && ssg_rss index.html rss.xml|| return; }
-d() { rsync -avPc --delete-excluded '/var/www/htdocs/www.romanzolotarev.com' "$1:/var/www/htdocs/"; }
-quits() { aucat -i "$HOME/src/www/clear.wav"; }
+d() { rsync -avPc --delete-excluded '/var/www/htdocs/www.romanzolotarev.com' "$1:/var/www/htdocs/"; quits; }
 # shellcheck disable=SC2029
 log() { [ -n "$1" ] && [ -n "$2" ] && ssh "$1" "while :; do printf '%s %s %s %s\\n' \"\$(grep \"$2\" /var/www/logs/access.log|cut -f2,13- -d' '|tr -d ' '|sort|uniq|wc -l|tr -d ' ')\" \"\$(date +%Y-%m-%dT%H:%M:%S)\" \"$1\" \"$2\"; sleep 30; done"; }
 logt() { log "$1" "$(date "+%d/%b/%Y").*${2:-GET.*HTTP/1\.1. 200}"; }
 
-fix() { git add . && git commit -mfix && git rebase -i HEAD~"${1:-2}"; }
+rebase() { git rebase -i HEAD~"${1:-2}"; }
 alias c='PS1=$\ ;clear'
 alias cp='cp -i'
 alias l='ls -aF'

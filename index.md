@@ -41,4 +41,5 @@ you're reading here, <!-- subscribe to [my RSS feed](/rss.xml), --> follow me on
 - [Learn Markdown in twenty four lines](/markdown.html "2016-08-30")
 - [Start a standalone blog](/standalone.html "2016-08-23")
 - [Host static website on GitHub Pages](/github-pages.html "2016-08-18")
+- [Find out why you need a website](/website.html "2016-08-15")
 - [Read about this site](/about.html "2016-08-01")
