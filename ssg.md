@@ -1,8 +1,8 @@
 "It's really inspiring to see you give back much to the community. I
 appreciate your work - ssg, your how-to's for less familiar
 users, etc. I felt I should mention that to you &#x1F600;"
-<div class="quote"><a href="https://m.twitter.com/h3artbl33d/status/985173503103074304">
-<img src="/avatars/h3artbl33d.jpeg" class="quote__avatar" title="14 April 2018" alt="H3artbl33d (@h3artbl33d)"></a>
+<div class="quote"><a href="https://mobile.twitter.com/h3artbl33d/status/985173503103074304">
+<img src="/avatars/h3artbl33d.jpeg" class="quote__avatar" title="14 Apr 2018" alt="H3artbl33d (@h3artbl33d)"></a>
 <span class="quote__name">H3artbl33d (@h3artbl33d)</span></div>
 
 

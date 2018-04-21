@@ -37,7 +37,7 @@ html { margin: 0; height: 100%; }
 .header__home { width: 50%; float: left; }
 .header__light-off { width: 50%; float: right; }
 
-.article { line-height: 1.6em; margin: 0 auto; padding: 2em 1em; max-width: 32em; } @media (max-width: 38em) { .article { max-width: 28em; } }
+.article { clear: both; line-height: 1.6em; margin: 0 auto; padding: 2em 1em; max-width: 32em; }
 .article h1,
 .article h2 { line-height: 1em; font-weight: 700; letter-spacing: -0.03em; word-spacing: -0.03em; }
 .article h1 { font-size: 2.8em; margin-top: 1em; }

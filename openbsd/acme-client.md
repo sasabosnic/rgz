@@ -1,6 +1,6 @@
 "...thanks for article itself this can help many people to give <a href="https://twitter.com/hashtag/OpenBSD">#OpenBSD</a> a chance."
-<div class="quote"><a href="https://m.twitter.com/vetelko/status/985095582174900224">
-<img src="/avatars/vetelko.jpeg" class="quote__avatar" title="14 April 2018" alt="Ve Telko (@vetelko)"></a>
+<div class="quote"><a href="https://mobile.twitter.com/vetelko/status/985095582174900224">
+<img src="/avatars/vetelko.jpeg" class="quote__avatar" title="14 Apr 2018" alt="Ve Telko (@vetelko)"></a>
 <span class="quote__name">Ve Telko (@vetelko)</span></div>
 
 

@@ -6,7 +6,7 @@ image and verify its checksum:
 
     # PKG_PATH='http://fastly.cdn.openbsd.org/pub/OpenBSD'
     # ftp $PKG_PATH/6.3/amd64/install63.fs
-    # ftp $PKG_PATH/6.3/amd64/SHA64.sig
+    # ftp $PKG_PATH/6.3/amd64/SHA256.sig
     # sha256 -C SHA256.sig install63.fs
     (SHA256) install63.fs: OK
 

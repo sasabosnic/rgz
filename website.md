@@ -3,7 +3,7 @@ written, and probably not once. Now I feel kind of tickle going to write
 something (in fact anything, I've got so many things to tell about), but
 didn't find spare couple hours yet :)"
 <div class="quote"><a href="https://mobile.twitter.com/healdementia/status/987440001142095873">
-<img src="/avatars/healdementia.jpeg" class="quote__avatar" title="21 April 2018" alt="Marina Kuznetsova (@healdementia)"></a>
+<img src="/avatars/healdementia.jpeg" class="quote__avatar" title="21 Apr 2018" alt="Marina Kuznetsova (@healdementia)"></a>
 <span class="quote__name">Marina Kuznetsova (@healdementia)</span></div>
 
 # Why do you need a&nbsp;website?

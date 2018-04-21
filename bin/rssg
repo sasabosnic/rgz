@@ -2,29 +2,31 @@
 [ -z "$1" ] || [ -z "$2" ] && { echo 'usage: rss <index> <rss>'; exit 1; }
 [ -f "$1" ] || { echo "can't find $1"; exit 1; }
 
-date_rfc_822=$(date)
+build_date_rfc_822=$(date "+%a, %e %b %Y %H:%M:%S %z")
 cat > "$2" <<EOF
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel>
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+<atom:link href="https://www.romanzolotarev.com/rss.xml" rel="self" type="application/rss+xml" />
 <title>Roman Zolotarev</title><description>A personal website about web technologes and development tools.</description>
 <link>https://www.romanzolotarev.com/</link>
-<lastBuildDate>$date_rfc_822</lastBuildDate>
+<lastBuildDate>$build_date_rfc_822</lastBuildDate>
 <managingEditor>hi@romanzolotarev.com (Roman Zolotarev)</managingEditor>
 EOF
-
-grep '<li>' "$1" |
+SRC='/home/romanzolotarev/src/www'
+lowdown index.md  | grep '^<li><a href=".*" title="[^<]*">[^<]*<\/a>.*<\/li>.*' | head -n20 |
 while read -r line; do
-  # title=$(echo "$line"|sed -r 's/(.*\[)(.*)(\].*)/\2/g')
-  # href=$(echo  "$line"|sed -r 's/(.*\()(.*)(\).*)/\2/g')
-  # url=$(echo   "$href"|sed -r 's/(.*)( \".*)(".*)/\1/g')
-  title="title"
-  url="title"
-  day=$(echo  "$line"|sed -r 's/(.*title=")(.*)(".*)/\2/g')
-  year=${day#-}
-  echo "$date" >> "$2"
-  # article=$(echo "./$url")
-  cat >> "$rss" <<EOF
-<item><title>$title</title><guid isPermaLink="false">urn:uuid:$(uuidgen)</guid>
-<link>https://www.romanzolotarev.com$url</link><pubDate>$date_rfc_822</pubDate><description><![CDATA[$article]]></description></item>
+  url=$(echo "$line"   |sed 's/^<li><a href="\(.*\)" title="\([^<]*\)">\([^<]*\)<\/a>.*<\/li>.*/\1/g')
+  date=$(echo "$line"  |sed 's/^<li><a href="\(.*\)" title="\([^<]*\)">\([^<]*\)<\/a>.*<\/li>.*/\2/g')
+  title=$(echo "$line" |sed 's/^<li><a href="\(.*\)" title="\([^<]*\)">\([^<]*\)<\/a>.*<\/li>.*/\3/g')
+  file="${SRC}${url%\.html}.md"
+  guid=$(sha256 -q "$file")
+  article=$(lowdown -D html-skiphtml -d metadata "$file"|sed 's/\([hrefsrc]*\)="\//\1="https:\/\/www.romanzolotarev.com\//g')
+  cat >> "$2" <<EOF
+<item><title>$title</title><guid isPermaLink="false">$guid</guid>
+<link>https://www.romanzolotarev.com$url</link><pubDate>$date 00:00:00 +0000</pubDate><description><![CDATA[$article]]></description></item>
 EOF
-done 
+
+done >> "$2"
 echo '</channel></rss>' >> "$2"
+cat "$2"

@@ -4,7 +4,7 @@ unbind-key  all
 bind-key    CM-1           group-only-1
 bind-key    CM-2           group-only-2
 bind-key    CM-3           group-only-3
-bind-key    CM-l           "lockscreen"
+bind-key    CM-l           "/home/romanzolotarev/bin/lockscreen"
 bind-key    CM-q           window-delete
 bind-key    CM-r           restart
 bind-key    CSM-q          quit

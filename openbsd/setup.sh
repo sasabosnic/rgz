@@ -4,7 +4,7 @@ mirror='https://cloudflare.cdn.openbsd.org/pub/OpenBSD'
 backup_drive='/mnt/sd2a'
 
 rcctl enable apmd
-rcctl set apmd flags -H
+rcctl set apmd flags -A
 rcctl start apmd
 
 cp /etc/fstab /etc/fstab.bak
