@@ -16,74 +16,125 @@
 # OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 #
 
-: "${AUTHOR_NAME:=Roman Zolotarev}"
-: "${AUTHOR_EMAIL:=hi@romanzolotarev.com}"
+: "${WEBSITE_TITLE:=Roman Zolotarev}"
 : "${SERVER_NAME:=www.romanzolotarev.com}"
 : "${SERVER_PROTO:=https}"
+: "${RSS_AUTHOR:=hi@romanzolotarev.com (Roman Zolotarev)}"
+: "${RSS_DESCRIPTION:=Personal website}"
 : "${COPYRIGHT_YEAR:=2016}"
 
 ##########################################################################
 
 [ -n "$DOCS" ] || { echo "export DOCS <target_directory>"; exit 1; }
-DOCS_PATH=$(readlink -fn "$DOCS")
-
+DOCUMENT_ROOT=$(readlink -fn "$DOCS")
+TEMP_DIR=$(mktemp -d)
+# shellcheck disable=SC2064
+trap 'clean_up' EXIT
+trap exit HUP INT TERM
 [ "$2" = '--clean' ] && RSYNC_FLAGS='--delete-excluded' || RSYNC_FLAGS=''
 
-INDEX_HTML_FILE="$DOCS_PATH/index.html"
-CSS_FILE="$DOCS_PATH/styles.css"
-RSS_FILE="$DOCS_PATH/rss.xml"
+INDEX_HTML_FILE="$TEMP_DIR/index.html"
+CSS_FILE="$TEMP_DIR/styles.css"
+RSS_FILE="$TEMP_DIR/rss.xml"
 RSS_URL="$SERVER_PROTO://$SERVER_NAME/rss.xml"
-RSS_AUTHOR="$AUTHOR_EMAIL ($AUTHOR_NAME)"
-SITEMAP="$DOCS_PATH/sitemap.xml"
+SITEMAP="$TEMP_DIR/sitemap.xml"
 
 ANNOUNCEMENT_FILE="$PWD/announcement.html"
 FOOTER_FILE="$PWD/footer.html"
 HEADER_FILE="$PWD/header.html"
-[ -f "$ANNOUNCEMENT_FILE" ] && ANNOUNCEMENT_TEXT=$(cat "$ANNOUNCEMENT_FILE")
-[ -f "$HEADER_FILE"       ] && HEADER=$(cat "$HEADER_FILE") || HEADER="<a href=\"/\">Home</a> - <a href=\"/twitter.html\">Twitter</a>"
-[ -f "$FOOTER_FILE"       ] && FOOTER=$(cat "$FOOTER_FILE") || FOOTER="Copyright $COPYRIGHT_YEAR&ndash;$(date +%Y) <a href=\"/about.html\">$AUTHOR_NAME</a>"
+[ -f "$ANNOUNCEMENT_FILE" ] &&
+  ANNOUNCEMENT_TEXT=$(cat "$ANNOUNCEMENT_FILE")
+[ -f "$HEADER_FILE"       ] &&
+  HEADER=$(cat "$HEADER_FILE") ||
+  HEADER=$(cat << EOF
+<a href="/">Home</a> -
+<a href="/twitter.html">Twitter</a>
+EOF
+)
+[ -f "$FOOTER_FILE"       ] &&
+  FOOTER=$(cat "$FOOTER_FILE") ||
+  FOOTER=$(cat << EOF
+Copyright $COPYRIGHT_YEAR&ndash;$(date +%Y)
+<a href=\"/about.html\">$WEBSITE_TITLE</a>
+EOF
+)
 
 ##########################################################################
 
 usage() {
-  echo "usage: DOCS=<target_directory>"
+  echo 'usage: DOCS=<target_directory>'
   echo
   echo '       ssg build [--clean]'
   echo '         | watch [--clean]'
   exit 1
 }
 
-copy_files() {
-  [ "$(dirname "$DOCS_PATH")" = "$PWD" ] && self="/$(basename "$DOCS_PATH")/" || self="$DOCS_PATH"
-  # shellcheck disable=2086
-  rsync -a "." "$DOCS_PATH" $RSYNC_FLAGS \
+copy_to_temp_dir() {
+  rsync -a --delete-excluded \
+    --exclude '.*' \
+    --exclude '_*' \
+    '.' "$TEMP_DIR"
+}
+
+copy_to_document_root() {
+  [ "$(dirname "$DOCUMENT_ROOT")" = "$PWD" ] &&
+    self="/$(basename "$DOCUMENT_ROOT")/" ||
+    self="$DOCUMENT_ROOT"
+  rsync -a $RSYNC_FLAGS \
     --exclude "$self" \
-    --exclude ".*" \
-    --exclude "_*"
+    --exclude '.*' \
+    --exclude '_*' \
+    "$TEMP_DIR/" "$DOCUMENT_ROOT"
 }
 
 md_to_html() {
-  find "$DOCS_PATH" -type f -name '*.md'|while read -r file; do
-    lowdown -D html-skiphtml -d metadata "$file" > "${file%\.md}.html" && rm "$file"
-  done
+  find "$TEMP_DIR" -type f -name '*.md'|
+    while read -r file; do
+      lowdown -D html-skiphtml -d metadata \
+        "$file" > "${file%\.md}.html" &&
+        rm "$file"
+    done
 }
 
 index_to_rss() {
   date_rfc_822=$(date "+%a, %e %b %Y %H:%M:%S %z")
-  echo "<?xml version=\"1.0\" encoding=\"utf-8\"?><rss version=\"2.0\" xmlns:atom=\"http://www.w3.org/2005/Atom\"><channel><atom:link href=\"$RSS_URL\" rel=\"self\" type=\"application/rss+xml\" /><title>$AUTHOR_NAME</title><description>A personal website about web technologies and development tools.</description><link>$SERVER_PROTO://$SERVER_NAME/</link><lastBuildDate>$date_rfc_822</lastBuildDate><managingEditor>$RSS_AUTHOR</managingEditor>" > "$RSS_FILE" 
+  cat > "$RSS_FILE" << EOF
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+<atom:link href="$RSS_URL" rel="self" type="application/rss+xml" />
+<title>$WEBSITE_TITLE</title>
+<description>$RSS_DESCRIPTION</description>
+<link>$SERVER_PROTO://$SERVER_NAME/</link>
+<lastBuildDate>$date_rfc_822</lastBuildDate>
+<managingEditor>$RSS_AUTHOR</managingEditor>"
+EOF
+
   # filter first 20 lines with links and link titles (dates)
-  grep '^<li><a href=".*" title="[^<]*">[^<]*<\/a>.*<\/li>.*' "$INDEX_HTML_FILE" |
+  # shellcheck disable=SC2016
+  first_h1_tag='/<[h1]*( id=".*")?>/{gsub(/<[^>]*>/,"");print($0);exit;}'
+  link_tag='^<li><a href="\(.*\)" title="\([^<]*\)">[^<]*<\/a>.*<\/li>.*'
+  prefix="$SERVER_PROTO:\\/\\/$SERVER_NAME\\/"
+  grep "$link_tag" "$INDEX_HTML_FILE" |
   head -n20 |
-  while read -r line; do 
-    url=$(echo "$line" |sed 's/^<li><a href="\(.*\)" title="\([^<]*\)">\([^<]*\)<\/a>.*<\/li>.*/\1/g')
-    date=$(echo "$line"|sed 's/^<li><a href="\(.*\)" title="\([^<]*\)">\([^<]*\)<\/a>.*<\/li>.*/\2/g')
-    file="${DOCS_PATH}${url}"
-    if [ -f "$file" ]; then 
-      title="$(awk '/<[h1]*( id=".*")?>/{gsub(/<[^>]*>/,"");print($0);exit;}' "$file")"
+  while read -r line; do
+    url=$(echo "$line"|sed "s/$link_tag/\\1/g")
+    date=$(echo "$line"|sed "s/$link_tag/\\2/g")
+    file="${TEMP_DIR}${url}"
+    if [ -f "$file" ]; then
+      title="$(awk "$first_h1_tag" "$file")"
       guid=$(sha256 -q "$file")
       # replace relative URIs with absolute URIs
-      article=$(sed "s/\\([hrefsrc]*\\)=\"\\//\\1=\"$SERVER_PROTO:\\/\\/$SERVER_NAME\\//g" "$file")
-      echo "<item><title>$title</title><guid isPermaLink=\"false\">$guid</guid><link>$SERVER_PROTO://${SERVER_NAME}$url</link><pubDate>$date 00:00:00 +0000</pubDate><description><![CDATA[$article]]></description></item>" >> "$RSS_FILE" 
+      article=$(sed "s/\\([hrefsc]*\\)=\"\\//\\1=\"$prefix/g" "$file")
+      cat >> "$RSS_FILE" << EOF
+<item>
+<title>$title</title>
+<guid isPermaLink="false">$guid</guid>
+<link>$SERVER_PROTO://${SERVER_NAME}$url</link>
+<pubDate>$date 00:00:00 +0000</pubDate>
+<description><![CDATA[$article]]></description>
+</item>
+EOF
     fi
   done
   echo '</channel></rss>' >> "$RSS_FILE"
@@ -91,52 +142,104 @@ index_to_rss() {
 
 wrap_html() {
   # generate sorted sitemap
-  sitemap="$(find "$DOCS_PATH" -type f -name '*.html'|while read -r file; do
-    awk '/<[h1]*( id=".*")?>/{gsub(/<[^>]*>/,"");print(FILENAME"===="$0);exit;}' "$file"
-  done|sort)"
+  find_h1_tag='/<[h1]*( id=".*")?>/'
+  # shellcheck disable=SC2016
+  get_tag_content='{gsub(/<[^>]*>/,"");print(FILENAME"===="$0);exit;}'
+  sitemap="$(
+  find "$TEMP_DIR" -type f -name '*.html'|
+    while read -r file; do
+      awk "${find_h1_tag}${get_tag_content}" "$file"
+    done|
+    sort
+  )"
   # save sitemap in html and xml formats
   date=$(date +%Y-%m-%dT%H:%M:%S%z)
-  echo '<?xml version="1.0" encoding="UTF-8"?><urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' > "$SITEMAP"
+  cat > "$SITEMAP" << EOF
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"
+xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+EOF
   echo "$sitemap"|while read -r line; do
     page=${line%====*}
-    url=${page#$DOCS_PATH}
+    url=${page#$TEMP_DIR}
     case "$url" in
       /index.html) title='Home';;
       *) title="${line#*====}";;
     esac
-    echo "<url><loc>$SERVER_PROTO://${SERVER_NAME}$url</loc><lastmod>$date</lastmod><priority>1.0</priority></url>" >> "$SITEMAP"
+    cat >> "$SITEMAP" << EOF
+<url>
+<loc>$SERVER_PROTO://${SERVER_NAME}$url</loc>
+<lastmod>$date</lastmod>
+<priority>1.0</priority>
+</url>
+EOF
   done
   echo '</urlset>' >> "$SITEMAP"
   # generate html pages
   styles=$(cat "$CSS_FILE")
-  echo "$sitemap"|while read -r line; do
+  [ -n "$ANNOUNCEMENT_TEXT" ] &&
+    announcement="$(cat << EOF
+<div class="announcement">
+<div class="announcement__text">$ANNOUNCEMENT_TEXT</div>
+</div>
+EOF
+)"
+echo "$sitemap"|
+    while read -r line; do
     page=${line%====*}
-    url=${page#$DOCS_PATH}
+    url=${page#$TEMP_DIR}
     article=$(cat "$page")
-    [ -n "$ANNOUNCEMENT_TEXT" ] && announcement="<div class=\"announcement\"><div class=\"announcement__text\">$ANNOUNCEMENT_TEXT</div></div>"
     case "$url" in
       /index.html)
         title='Home'
-        head_title="$AUTHOR_NAME"
+        head_title="$WEBSITE_TITLE"
         header__home=''
         ;;
       *)
         title="${line#*====}"
-        head_title="$title - $AUTHOR_NAME"
+        head_title="$title - $WEBSITE_TITLE"
         header__home="$HEADER"
         ;;
     esac
     # merge page with html template
     cat > "$page" <<EOF
 <!DOCTYPE html><html lang="en">
-<head><title>$head_title</title><meta charset="utf-8"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta name="referrer" content="no-referrer"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="alternate" type="application/atom+xml" href="/rss.xml"><link rel="icon" type="image/png" href="/favicon.png">
+<head><title>$head_title</title>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="referrer" content="no-referrer">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="alternate" type="application/atom+xml" href="/rss.xml">
+<link rel="icon" type="image/png" href="/favicon.png">
 <style>$styles</style>
 </head>
 <body>
-<script>!function(t){ t.addEventListener('DOMContentLoaded', function () { var l = t.querySelector('#light-off'); if (l === null) { console.log('Lights-out...'); } else { l.checked = t.cookie.match(/lightOff=true/) !== null; l.addEventListener('change', function () { t.cookie = 'lightOff=' + JSON.stringify(l.checked) + ';path=/'; }); } })}(document);</script><input class="light-off" type="checkbox" id="light-off">
+<script>
+!function(t){
+  t.addEventListener('DOMContentLoaded', function () {
+    var l = t.querySelector('#light-off');
+    if (l === null) { console.log('Lights-out...'); }
+    else {
+      l.checked = t.cookie.match(/lightOff=true/) !== null;
+      l.addEventListener('change', function () {
+        t.cookie = 'lightOff=' + JSON.stringify(l.checked) + ';path=/';
+      });
+    }
+  })
+}(document);
+</script>
+<input class="light-off" type="checkbox" id="light-off">
 <div class="page">
 $announcement
-<div class="header"><div class="header__left">$header__home</div><div class="header__right"><label for="light-off" class="light-off-button"></label></div></div>
+<div class="header">
+<div class="header__left">$header__home</div>
+<div class="header__right">
+<label for="light-off" class="light-off-button"></label>
+</div>
+</div>
 <div class="article">$article</div>
 <div class="footer">$FOOTER</div>
 </div>
@@ -147,30 +250,46 @@ EOF
   echo "$date $(echo "$sitemap"|wc -l|tr -d ' ')pp"
 }
 
+clean_up() { rm -rf "$TEMP_DIR"; }
+
 ##########################################################################
 
 case "$1" in
 
 build)
-  ls index.* >/dev/null 2>&1 || { echo 'no index.* found in the current directory'; exit 1; }
-  which rsync >/dev/null 2>&1 || { echo 'rsync(1) should be installed'; exit 1; }
-  which lowdown >/dev/null 2>&1 || { echo 'lowdown(1) should be installed'; exit 1; }
-  printf 'building %s %s ' "$DOCS_PATH" "$RSYNC_FLAGS"
-  copy_files
+  ls index.* >/dev/null 2>&1 || 
+    { echo 'no index.* found in the current directory'; exit 1; }
+  which rsync >/dev/null 2>&1 || 
+    { echo 'rsync(1) should be installed'; exit 1; }
+  which lowdown >/dev/null 2>&1 || 
+    { echo 'lowdown(1) should be installed'; exit 1; }
+  printf 'building %s %s ' "$DOCUMENT_ROOT" "$2"
+  copy_to_temp_dir
   md_to_html
   index_to_rss
   wrap_html
+  copy_to_document_root
+  clean_up
   ;;
 
 watch)
-  cmd="entr -d env DOCS=$DOCS $(basename "$0") build $RSYNC_FLAGS"
+  cmd="entr -d env DOCS=$DOCS $(basename "$0") build $2"
   pgrep -qf "$cmd" && { echo "already watching $DOCS"; exit 1; }
   echo "watching $PWD"
-  which entr >/dev/null 2>&1 || { echo 'entr(1) should be installed'; exit 1; }
+  which entr >/dev/null 2>&1 || 
+    { echo 'entr(1) should be installed'; exit 1; }
   while true; do
     find "$PWD" -type f \
-      \( -name "$(basename "$0")" -or -name '*.md' -or -name '*.html' -or -name '*.css' -or -name '*.txt' -or -name '*.jpeg' -or -name '*.png' \)\
-      ! -name ".*" ! -path "*/.*" ! -path "*/node_modules*" ! -path "${DOCS_PATH}*" |
+      \( -name "$(basename "$0")" \
+      -or -name '*.md' \
+      -or -name '*.html' \
+      -or -name '*.css' \
+      -or -name '*.txt' \
+      -or -name '*.jpeg' \
+      -or -name '*.png' \)\
+      ! -name ".*" \
+      ! -path "*/.*" \
+      ! -path "${DOCUMENT_ROOT}*" |
       $cmd
   done
   ;;

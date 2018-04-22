@@ -5,18 +5,12 @@
 #
 # pkg_add slop ffmpeg mpv
 
-case $1 in
-
-start-left) movie '976x1080' ':0.0+0,0';;
-start-right) movie '944x1080' ':0.0+976,0';;
-start)
-  area=$(slop -o)
-  size=$(echo "$area"|cut -d'+' -f1)
-  input=":0.0+$(echo "$area"|cut -d'+' -f2-|tr '+' ',')"
+movie() {
+  size=$1
+  input=$2
   log='/tmp/screencast.log'
   output="$HOME/downloads/$(date +%Y%m%d-%H%M%S)-$size.mp4"
-  printf 'capturing %s ' "$input"
-  printf 'to %s ' "$output"
+  printf 'capturing to %s ' "$output"
   aucat -i "$HOME/src/www/clear.wav"
   ffmpeg -f x11grab -r 30 -s "$size" -i "$input" \
     -preset veryslow \
@@ -30,6 +24,19 @@ start)
   stat -f '%z bytes' "$output"
   mpv --really-quiet "$output" &
   aucat -i "$HOME/src/www/quits.wav"
+}
+
+case $1 in
+
+l) movie '976x1080' ':0.0+0,0';;
+r) movie '944x1080' ':0.0+976,0';;
+start)
+  set -e
+  area=$(slop -o)
+  size=$(echo "$area"|cut -d'+' -f1)
+  input=":0.0+$(echo "$area"|cut -d'+' -f2-|tr '+' ',')"
+  set +e
+  movie "$size" "$input"
   ;;
 
 stop)
@@ -40,9 +47,9 @@ stop)
 
 *)
   echo 'usage: screenshot start'
-  echo '                | start-left'
-  echo '                | start-right'
   echo '                | stop'
+  echo '                | l'
+  echo '                | r'
   exit 1
   ;;
 

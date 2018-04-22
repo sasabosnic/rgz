@@ -11,8 +11,9 @@ users, etc. I felt I should mention that to you &#x1F600;"
 [ssg](/bin/ssg) is less than two hundred lines of POSIX-compliant shell
 script. It generates Markdown articles to a static website.
 
-1. It copies the current directory file tree to `docs/` with
-   [rsync(1)](https://rsync.samba.org/), ignoring `.*` and `_*`,
+1. It copies the current directory file tree to a temporary directory in
+   `/tmp` with [rsync(1)](https://rsync.samba.org/), ignoring `.*` and
+   `_*`,
 
 1. renders all Markdown articles to HTML with
    [lowdown(1)](https://kristaps.bsd.lv/lowdown/),
@@ -22,7 +23,9 @@ script. It generates Markdown articles to a static website.
 1. extracts the first `<h1>` tag from every article to generate a
    sitemap and use it as a page title,
 
-1. then wraps articles with a single HTML template.
+1. then wraps articles with a single HTML template,
+
+1. copies everything from the temporary directory to `$DOCS/`.
 
 To watch source file changes it depends on
 [entr(1)](http://entrproject.org/), and for the local web server it relies
@@ -49,11 +52,12 @@ Let's customize `ssg` for you.
 Before you start, obviously you'll need to replace my credentials with
 yours.
 
-    $ export AUTHOR_NAME='Jack'
-    $ export AUTHOR_EMAIL='jack@example.com'
-    $ export COPYRIGHT_YEAR='2018'
+    $ export WEBSITE_TITLE='Jack'
     $ export SERVER_NAME='www.example.com'
     $ export SERVER_PROTO='https'
+    $ export RSS_AUTHOR='jack@example.com (Jack)'
+    $ export RSS_DESCRIPTION='Personal website'
+    $ export COPYRIGHT_YEAR='2016'
 
 Define your target directory in `$DOCS`:
 
@@ -68,7 +72,7 @@ There are few required files:
 
 Example of `index.md`:
 
-    # Roman Zolotarev
+    # Jack
 
     - [About](/about.html "01 Aug 2016")
 
