@@ -17,6 +17,8 @@ script. It generates Markdown articles to a static website.
 1. renders all Markdown articles to HTML with
    [lowdown(1)](https://kristaps.bsd.lv/lowdown/),
 
+1. generates [RSS feed](/rss.xml) based on links from  `index.html`,
+
 1. extracts the first `<h1>` tag from every article to generate a
    sitemap and use it as a page title,
 
@@ -26,104 +28,179 @@ To watch source file changes it depends on
 [entr(1)](http://entrproject.org/), and for the local web server it relies
 on [httpd(8)](https://man.openbsd.org/httpd.8).
 
-Feel free to fork it and re-write for your needs.
+If you agree with the licences feel free to use this script its HTML and
+my [styles.css](/styles.css) or re-write them for your needs.
 
 ## Install
 
+Download `ssg` and install dependencies. For example, on OpenBSD:
 
-Download `ssg`. For example, on OpenBSD:
-
+    $ cd ./bin
     $ ftp https://www.romanzolotarev.com/bin/ssg
     $ chmod +x ssg
+    $ pkg_add entr rsync lowdown
+
+Let's customize `ssg` for you.
+
+---
+
+## Variables
+
+Before you start, obviously you'll need to replace my credentials with
+yours.
+
+    $ export AUTHOR_NAME='Jack'
+    $ export AUTHOR_EMAIL='jack@example.com'
+    $ export COPYRIGHT_YEAR='2018'
+    $ export SERVER_NAME='www.example.com'
+    $ export SERVER_PROTO='https'
+
+Define your target directory in `$DOCS`:
+
+    $ export DOCS='/var/www/htdocs/www'
+
+## Required files
+
+There are few required files:
+
+1. `index.html` or `index.md` - home page
+1. `styles.css` - styles, [take mine and customize](/styles.css)
+
+Example of `index.md`:
+
+    # Roman Zolotarev
+
+    - [About](/about.html "01 Aug 2016")
+
+`ssg` renders `index.md` to `index.html` and then generates the RSS feed
+based on first 20 links, if they have the following syntax (it only uses
+page URL and date from `<a>` tag):
+
+    ...
+    <li><a href="/about.html" title="01 Aug 2016">About</a></li>
+    ...
+
+## Optional files
+
+1. `header.html` - header of every page
+1. `footer.html` - and its footer
+1. `announcement.html` - added to the top of every page, if the file
+   exists.
+
+If you want to override defaults, here are examples for `header`...
+
+    <a href="/">Home</a> -
+    <a href="https://twitter.com/jack">Twitter</a>
+
+... and `footer`:
+
+    Copyright 2018 <a href="/about.html">Jack</a>
+
+## Reserved file names
+
+There are also reserved filenames, these files are generated when you run
+`ssg build`. Don't use these names.
+
+1. `rss.xml` - reserved for RSS feed
+1. `sitemap.xml` - for the sitemap
+
+
+## Your first page
+
+Let's create `about.html` with one header and some text about your site.
+
+    # About this site
+
+    ...
+
+`ssg` converts all `.md` article into `.html` and then uses content of the
+first `<h1>` tag as a page title.
+
+Nota bene: **Don't use `=====` in titles**.
 
 ## Build
 
-For example your current directory looks like this:
+Now we are ready to build. If your current source directory looks like
+this:
 
     .
     |-- .git/
-    |   |-- ...
-    |-- projects/
-    |   |-- build-a-rocket.md
-    |   |-- me-and-my-dog-on-the-moon.jpeg
-    |   `-- visit-the-moon.md
     |-- about.md
-    |-- index.html
-    `-- index.css
+    |-- footer.html
+    |-- header.html
+    |-- index.md
+    `-- styles.css
 
+After you run `ssg` (don't forget to set `$DOCS`):
+
+    $ export DOCS=/var/www/htdocs/www
     $ ssg build
-    building /home/alice/src/www/docs  2018-04-10T10:56:52+0000 4pp
+    building /var/www/htdocs/www  2018-04-10T10:56:52+0000 4pp
     $
 
-You have got a new directory `docs`.
+You have your static website ready in `/var/www/htdocs/www`.
 
     .
     |
-    |-- .git/
-    |   |-- ...
-    |-- docs/
-    |   |-- projects/
-    |   |   |-- build-a-rocket.html
-    |   |   |-- me-and-my-dog-on-the-moon.jpeg
-    |   |   `-- visit-the-moon.html
-    |   |-- about.html
-    |   |-- index.html
-    |   |-- index.css
-    |   `-- sitemap.xml
-    |-- projects/
-    |   |-- ...
+    |-- about.html
+    |-- footer.html
+    |-- header.html
+    |-- styles.css
+    |-- index.html
+    |-- rss.xml
+    `-- sitemap.xml
+
+## Preview
+
+For OpenBSD I suggest to a [web server](/openbsd/webserver.html) locally.
+
+For macOS and Linux you can run:
+
+    $ cd /var/www/htdocs/www
+    $ python -m SimpleHTTPServer
+    Serving HTTP on 0.0.0.0 port 8000...
 
 ## Watch
 
 To re-build pages on change run:
 
     $ ssg watch
-    watching /home/alice/src/www
-    building /home/alice/src/www/docs  2018-04-10T11:04:11+0000 4pp
+    watching /home/jack/src/www
+    building /var/www/htdocs/www  2018-04-10T11:04:11+0000 4pp
 
 `entr(1)` watches changes in `*.html`, `*.md`, `*.css`, `*.txt` files and
 runs `ssg build` on every file change.
 
 ## Clean
 
-If you'd like to delete all files in the destination directory before
-the build, then run:
+If you'd like to delete all files in the destination directory during
+build, then run:
 
     $ ssg build --clean
-    building /home/alice/src/www/docs --clean
+    building /home/jack/src/www/docs --clean
     2018-04-16T09:03:32+0000 4pp
     $
 
 The same option works for watching.
 
     $ ssg watch --clean
-    watching /home/alice/src/www
-    building /home/alice/src/www/docs --clean
+    watching /home/jack/src/www
+    building /home/jack/src/www/docs --clean
     2018-04-16T09:04:25+0000 4pp
-
-## Preview
-
-To start a local web server run:
-
-    $ ssg serve
-    listening http://127.0.0.1:4000
-    startup
-
-`ssg` starts `httpd(1)` in a debug mode and serves pages from
-<http://127.0.0.1:4000>.
 
 ## Deploy
 
-To deploy to remote server over SSH run:
+If you don't have a public server yet, [try Vultr](/vultr.html).
+To deploy to remote server you can use `rsync(1)` like this:
 
-    $ export DOCS=/var/www/htdocs
-    $ export REMOTE_HOST=www
-    $ export REMOME_DOCS=/var/www/htdocs
-    $ ssg delpoy
-    deploying /var/www/htdocs
-    to www:/var/www/htdocs... 4s
-    $
+    $ rsync -avPc     /var/www/htdocs/www \
+      www.example.com:/var/www/htdocs/
 
+Or if you want to clean up the target directory on the remote server use:
+
+    $ rsync -avPc --delete-excluded \
+                      /var/www/htdocs/www \
+      www.example.com:/var/www/htdocs/
 
 ## Performance
 
@@ -132,10 +209,6 @@ Half of a time for markdown rendering and another half for wrapping
 articles into the template. I heard good static site generators
 work---twice as fast---at 200 pps, so there's lots of performance that can
 be gained. ;)
-
-## Known issues
-
-- Don't use `====` in a page title, `ssg` relies on this.
 
 ---
 
