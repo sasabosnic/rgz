@@ -18,7 +18,7 @@ you're reading here, subscribe to [my RSS feed](/rss.xml), follow me on
 - [Backup with borg](/backup.html "02 Mar 2018")
 - [Mount drives on OpenBSD](/openbsd/mount.html "01 Mar 2018")
 - [Print from the command line on macOS](/macos/cups.html "27 Feb 2018")
-- [Take a look at my fanless OpenBSD desktop setup](/setup.html "17 Nov 2017")
+- [Take a look at my fanless OpenBSD desktop setup](/setup.html "17 Nov 2017") _[setup](/openbsd/setup.sh)_
 - [Consider OpenBSD](/openbsd/why.html "15 Nov 2017")
 - [Enable full disk encryption on OpenBSD](/openbsd/fde.html "02 Nov 2017")
 - [Manage your passwords with openssl(1)](/pass.html "10 Oct 2017") _[pass](/bin/pass)_

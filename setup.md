@@ -59,16 +59,16 @@ Regarding my window manager of choice: it's
 [cwm(1)](http://man.openbsd.org/cwm.1). It has tiling mode, so I don't
 have to rearrange windows manually.
 
-![cwm](/cwm.jpeg)
-
 Here is my [.cwmrc](/openbsd/cwmrc). Quite often I keep just two windows
 open. On the left side: [tmux(1)](http://man.openbsd.org/tmux.1) in
 [xterm(1)](http://man.openbsd.org/xterm.1). On the right side: Firefox.
 
+![cwm](/cwm.jpeg)
+
+"It’s a nice .cwmrc! I even modeled mine after it.<br>Recommended. 5&nbsp;stars."
 <div class="quote"><a href="https://mobile.twitter.com/mischapeters/status/987004963682430976">
 <img src="/avatars/mischapeters.jpeg" class="quote__avatar" title="19 Apr 2018" alt="(((Mischa &#x1F576; &#x1F421; RCX))) (@mischapeters)"></a>
-<span class="quote__text">It’s a nice .cwmrc! I even modeled mine after it. Recommended. 5&nbsp;stars.</span></div>
-
+<span class="quote__name">(((Mischa &#x1F576; &#x1F421; RCX))) (@mischapeters)</span></div>
 
 ## Zotac CI527
 
