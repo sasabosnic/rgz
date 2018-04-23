@@ -5,18 +5,20 @@ users, etc. I felt I should mention that to you &#x1F600;"
 <img src="/avatars/h3artbl33d.jpeg" class="quote__avatar" title="14 Apr 2018" alt="H3artbl33d (@h3artbl33d)"></a>
 <span class="quote__name">H3artbl33d (@h3artbl33d)</span></div>
 
-
 # Static site generator with rsync and lowdown
 
-[ssg](/bin/ssg) is less than two hundred lines of POSIX-compliant shell
-script. It generates Markdown articles to a static website.
+[ssg](/bin/ssg) is tiny POSIX-compliant shell script with few dependencies:
 
-1. It copies the current directory file tree to a temporary directory in
-   `/tmp` with [rsync(1)](https://rsync.samba.org/), ignoring `.*` and
-   `_*`,
+- [lowdown(1)](https://kristaps.bsd.lv/lowdown/) to parse markdown,
+- [rsync(1)](https://rsync.samba.org/) to copy temporary files, and
+- [entr(1)](http://entrproject.org/) to watch file changes.
 
-1. renders all Markdown articles to HTML with
-   [lowdown(1)](https://kristaps.bsd.lv/lowdown/),
+It generates Markdown articles to a static website.
+
+1. It copies the current directory to a temporary on in `/tmp` skipping
+   `.*` and `_*`,
+
+1. renders all Markdown articles to HTML,
 
 1. generates [RSS feed](/rss.xml) based on links from  `index.html`,
 
@@ -27,14 +29,39 @@ script. It generates Markdown articles to a static website.
 
 1. copies everything from the temporary directory to `$DOCS/`.
 
-To watch source file changes it depends on
-[entr(1)](http://entrproject.org/), and for the local web server it relies
-on [httpd(8)](https://man.openbsd.org/httpd.8).
+![ssg](/ssg.jpeg)
+_299 LoC in Vim with Terminus 8px. [Enlarge, enhance, zoom!](/ssg.png)_
 
-If you agree with the licences feel free to use this script its HTML and
-my [styles.css](/styles.css) or re-write them for your needs.
+## Why not Jekyll or "$X"?
+
+`ssg` is **one hundred times smaller** than Jekyll.
+
+`ssg` and its dependencies are about 800KB _combined_. Compare that to 78MB
+of ruby with Jekyll and all the gems. So `ssg` can be installed in just
+few seconds on almost any Unix-like operating system.
+
+Obviously, `ssg` is tailored for my needs, it has all features I need and
+only those I use.
+
+Keeping `ssg` helps you to master your Unix-shell skills: `awk`, `grep`,
+`sed`, `sh`, `cut`, `tr`. As a web developer you work with lots of text:
+code and data. So you better master these wonderful tools.
+
+## Performance
+
+**100 pps**. On modern computers `ssg` generates a hundred pages per second.
+Half of a time for markdown rendering and another half for wrapping
+articles into the template. I heard good static site generators
+work---twice as fast---at 200 pps, so there's lots of performance that can
+be gained. ;)
+
+---
 
 ## Install
+
+If you agree with the license, feel free to use this script, its HTML and
+my [styles.css](/styles.css) or/and re-write them for your needs.
+
 
 Download `ssg` and install dependencies. For example, on OpenBSD:
 
@@ -206,18 +233,14 @@ Or if you want to clean up the target directory on the remote server use:
                       /var/www/htdocs/www \
       www.example.com:/var/www/htdocs/
 
-## Performance
-
-**100 pps**. On modern computers `ssg` generates a hundred pages per second.
-Half of a time for markdown rendering and another half for wrapping
-articles into the template. I heard good static site generators
-work---twice as fast---at 200 pps, so there's lots of performance that can
-be gained. ;)
-
 ---
 
-**Thanks** to [h3artbl33d](https://twitter.com/h3artbl33d) and [Mischa
-Peters](https://twitter.com/mischapeters) for testing `ssg`, [Kristaps
-Dzonsons](https://www.divelog.blue/) for
-[lowdown(1)](https://kristaps.bsd.lv/lowdown/) and [Eric
-Radman](http://eradman.com) for [entr(1)](http://entrproject.org).
+**Thanks** to
+[Denis Borovikov](https://mobile.twitter.com/metallerden) for reading the draft of this,
+[h3artbl33d](https://mobile.twitter.com/h3artbl33d), and
+[Mischa Peters](https://mobile.twitter.com/mischapeters), and
+[Tom Atkinson](https://mobile.twitter.com/hir0pr0tagonist) for testing `ssg`,
+[Kristaps Dzonsons](https://www.divelog.blue/) for
+[lowdown(1)](https://kristaps.bsd.lv/lowdown/) and
+[Eric Radman](http://eradman.com) for
+[entr(1)](http://entrproject.org).
