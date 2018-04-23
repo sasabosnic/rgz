@@ -1,3 +1,4 @@
+<style>.page { background-color: #cccccc; } .light-off:checked ~ .page { background-color: #222222; } .header, .footer, .announcement { display: none; }</style>
 <meta http-equiv="refresh" content="0; url=https://www.patreon.com/posts/18347324">
 
 # Patreon

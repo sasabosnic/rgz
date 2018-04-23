@@ -4,7 +4,8 @@
 
 Hi, my name is **Roman** and I make stuff for the web. If you like what
 you're reading here, subscribe to [my RSS feed](/rss.xml), follow me on
-[Twitter](/twitter.html) and support on [Patreon](/patreon.html).
+[Twitter](/twitter.html), support on [Patreon](/patreon.html) or via
+[PayPal](/paypal.html) directly.
 
 ---
 

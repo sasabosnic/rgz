@@ -5,13 +5,29 @@
 #
 # pkg_add slop ffmpeg mpv
 
-movie() {
-  size=$1
-  input=$2
-  log='/tmp/screencast.log'
+set -e
+debug_log='/tmp/screencast.debug.log'
+log='/tmp/screencast.log'
+trap 'clean_up' EXIT
+trap exit HUP INT TERM
+
+clean_up() {
+  echo "$(date) clean up">>"$debug_log"
+  [ -f "$log" ] && { cat "$log" >> "$debug_log"; rm "$log"; }
+  [ -f "$output" ] && { stat -f '%z bytes' "$output"; mpv --really-quiet "$output"; }
+}
+
+case $1 in
+
+start)
+  echo "$(date) start">>"$debug_log"
+  area=$(slop -o)
+  size=$(echo "$area"|cut -d'+' -f1)
+  input=":0.0+$(echo "$area"|cut -d'+' -f2-|tr '+' ',')"
   output="$HOME/downloads/$(date +%Y%m%d-%H%M%S)-$size.mp4"
-  printf 'capturing to %s ' "$output"
-  aucat -i "$HOME/src/www/clear.wav"
+  echo "$(date) DISPLAY=$DISPLAY">>"$debug_log"
+  echo "$(date) capturing $size from $input to $output" >> "$debug_log"
+  echo "$(date) ffmpeg">>"$debug_log"
   ffmpeg -f x11grab -r 30 -s "$size" -i "$input" \
     -preset veryslow \
     -pix_fmt yuv420p \
@@ -19,37 +35,19 @@ movie() {
     -movflags +faststart \
     -tune animation \
     -vcodec h264 "$output" 2> "$log"
-  cat "$log"
-  rm "$log"
-  stat -f '%z bytes' "$output"
-  mpv --really-quiet "$output" &
-  aucat -i "$HOME/src/www/quits.wav"
-}
-
-case $1 in
-
-l) movie '976x1080' ':0.0+0,0';;
-r) movie '944x1080' ':0.0+976,0';;
-start)
-  set -e
-  area=$(slop -o)
-  size=$(echo "$area"|cut -d'+' -f1)
-  input=":0.0+$(echo "$area"|cut -d'+' -f2-|tr '+' ',')"
-  set +e
-  movie "$size" "$input"
   ;;
 
 stop)
-  aucat -i "$HOME/src/www/thats_it.wav"
-  pgrep -q ffmpeg || { echo 'nothing to stop'; exit 1; }
-  pkill ffmpeg
+  echo "$(date) stop">>"$debug_log"
+  pgrep -q ffmpeg || { echo "$(date) nothing to stop" >> "$debug_log"; exit 1; }
+  pkill ffmpeg && 
+    echo "$(date) stopped">>"$debug_log" ||
+    echo "$(date) failed to stop">>"$debug_log"
   ;;
 
 *)
   echo 'usage: screenshot start'
   echo '                | stop'
-  echo '                | l'
-  echo '                | r'
   exit 1
   ;;
 

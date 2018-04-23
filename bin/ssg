@@ -57,7 +57,7 @@ EOF
   FOOTER=$(cat "$FOOTER_FILE") ||
   FOOTER=$(cat << EOF
 Copyright $COPYRIGHT_YEAR&ndash;$(date +%Y)
-<a href=\"/about.html\">$WEBSITE_TITLE</a>
+<a href="/about.html">$WEBSITE_TITLE</a>
 EOF
 )
 
