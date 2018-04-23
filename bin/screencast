@@ -21,9 +21,15 @@ case $1 in
 
 start)
   echo "$(date) start">>"$debug_log"
-  area=$(slop -o)
-  size=$(echo "$area"|cut -d'+' -f1)
-  input=":0.0+$(echo "$area"|cut -d'+' -f2-|tr '+' ',')"
+  area=$(slop -o -f '%x,%y+%wx%h')
+  origin=$(echo "$area"|cut -d'+' -f1)
+  odd_size=$(echo "$area"|cut -d'+' -f2)
+  # width and height should be divisible by two
+  w=$(( $(echo "$odd_size"|cut -d'x' -f1) / 2 * 2))
+  h=$(( $(echo "$odd_size"|cut -d'x' -f2) / 2 * 2))
+  size="${w}x${h}"
+  echo "$(date) $odd_size -> $size">>"$debug_log"
+  input=":0.0+$origin"
   output="$HOME/downloads/$(date +%Y%m%d-%H%M%S)-$size.mp4"
   echo "$(date) DISPLAY=$DISPLAY">>"$debug_log"
   echo "$(date) capturing $size from $input to $output" >> "$debug_log"
