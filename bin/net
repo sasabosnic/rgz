@@ -3,7 +3,7 @@
 # https://www.romanzolotarev.com/bin/net
 # Copyright 2017 Roman Zolotarev <hi@romanzolotarev.com>
 #
-install
+
 wifi='iwm0'
 eth='re0'
 

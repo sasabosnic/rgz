@@ -44,6 +44,11 @@ d() { rsync -avPc --delete-excluded "$DOCS" "$1:/var/www/htdocs/"; quits; }
 log() { [ -n "$1" ] && [ -n "$2" ] && ssh "$1" "while :; do printf '%s %s %s %s\\n' \"\$(grep \"$2\" /var/www/logs/access.log|cut -f2,13- -d' '|tr -d ' '|sort|uniq|wc -l|tr -d ' ')\" \"\$(date +%Y-%m-%dT%H:%M:%S)\" \"$1\" \"$2\"; sleep 30; done"; }
 logt() { log "$1" "$(date "+%d/%b/%Y").*${2:-GET.*HTTP/1\.1. 200}"; }
 
+png() { optipng -preserve -keep -strip all -o7 "$1"; }
+jpeg() { cp "$1" "$1.bak" && jpegoptim --strip-all --preserve --preserve-perms --verbose -m80 "$1"; }
+fit() { cp "$1" "$1.original" && convert -resize 1200 "$1.original" "$1"; }
+alias feh='feh -.Zd'
+
 rebase() { git rebase -i HEAD~"${1:-2}"; }
 alias c='PS1=$\ ;clear'
 alias cp='cp -i'
