@@ -7,7 +7,7 @@ users, etc. I felt I should mention that to you &#x1F600;"
 
 # Static site generator with rsync and lowdown
 
-[ssg](/bin/ssg) is tiny POSIX-compliant shell script with few dependencies:
+[ssg](/bin/ssg) is a tiny POSIX-compliant shell script with few dependencies:
 
 - [lowdown(1)](https://kristaps.bsd.lv/lowdown/) to parse markdown,
 - [rsync(1)](https://rsync.samba.org/) to copy temporary files, and

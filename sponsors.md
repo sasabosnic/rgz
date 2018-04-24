@@ -75,11 +75,13 @@ listed, or if you want to remove your name from the list.
 
 Updated on 24 Apr 2018.
 
-- Aleksey Popov _$5 Patreon_
-- [Ilmari Vacklin](https://mobile.twitter.com/wolverian) _$1 Patreon_
-- [Tom Atkinson](https://www.tomatkinson.uk/) _$5 Patreon_
-- [Wesley Moore](http://wezm.net/) _$5 Patreon_
+- [Tom Smyth](https://www.patreon.com/user/creators?u=10913897 "24 Apr 2018") 10.00 USD Patreon
+- [wireless connect ltd](http://wirelessconnect.eu "24 Apr 2018") 10.00 EUR PayPal _"keep up good work Roman"_
+- [Aleksey Popov](https://www.patreon.com/user?u=10910753 "24 Apr 2018") $5 Patreon
 - [Adam Dymitruk](https://mobile.twitter.com/adymitruk "24 Apr 2018") 83,800 Satoshi
+- [Ilmari Vacklin](https://www.patreon.com/user?u=2288738 "23 Apr 2018") 1.00 USD Patreon
+- [Tom Atkinson](https://www.patreon.com/user?u=10778845 "16 Apr 2018"16 Apr 2018"16 Apr 2018"16 Apr 2018"16 Apr 2018"16 Apr 2018"16 Apr 2018"16 Apr 2018"16 Apr 2018"16 Apr 2018"16 Apr 2018"16 Apr 2018"16 Apr 2018"16 Apr 2018"16 Apr 2018"16 Apr 2018") 5.00 USD Patreon
+- [Wesley Moore](https://www.patreon.com/wezm "15 Apr 2018") 5.00 USD Patreon
 - [Mischa Peters](https://mobile.twitter.com/mischapeters "13 Apr 2018") VPS
 - [Evander Sinque](https://mobile.twitter.com/FiLiS "31 Oct 2017") Run BSD Stickers
 - [Mischa Peters](https://mobile.twitter.com/mischapeters "19 Sep 2017") Run BSD T-shirt
