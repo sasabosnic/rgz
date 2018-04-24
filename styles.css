@@ -75,7 +75,7 @@ html { margin: 0; height: 100%; }
 
 .article .picture__avatar { margin: 0; height: 6em; width: 6em; border-radius: 6em; }
 .article .quote { padding-bottom: 0.4em; }
-.article .quote__avatar { height: 2em; width: 2em; border-radius: 2em; margin: 0 0.4em 0 0; vertical-align: middle; }
+.article .quote__avatar { height: 2em; width: 2em; border: 1px solid #888888; border-radius: 2em; margin: 0 0.4em 0 0; vertical-align: middle; }
 .article .quote__name,
 .article .quote__text { vertical-align: middle; font-style: italic; }
 

@@ -31,7 +31,7 @@ JavaScript is required to use this website.
 This website has been generated with [ssg](/ssg.html), served by [OpenBSD
 httpd](/openbsd/webserver.html), and hosted on [Vultr](/vultr.html).
 
-[Enjoy reading](/).
+This project is [sponsored by you](/sponsors.html). Thank you!
 
 ## Everything is software
 

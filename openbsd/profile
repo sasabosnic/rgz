@@ -18,7 +18,7 @@ GIT_PS1_SHOWDIRTYSTATE=true
 # shellcheck disable=SC1091
 # shellcheck source="$HOME/.gitprompt"
 . "$HOME/bin/gitprompt"
-PS1="\\[\\e[38;5;247m\\]\\h:\\w\$(__git_ps1) \\[\\e[0m\\]"
+PS1="\\[\\e[38;5;247m\\]\\w\$(__git_ps1) \\[\\e[0m\\]"
 export PATH LANG LC_ALL TERM GIT_PS1_SHOWDIRTYSTATE
 
 stty -ixon # rescue <C-s> for vim
@@ -33,7 +33,7 @@ start_tmux() {
   tmux new-window -n "$1" "$cmd" 2>/dev/null
 }
 o() { start_tmux o "$HOME/src/openvpn" 'doas openvpn --config default.ovpn'; }
-cm() { start_tmux cm "$HOME/pub/music" 'cmus'; }
+m() { start_tmux m "$HOME/pub/music" 'cmus'; }
 j() { start_tmux j "$HOME/src/j" 'vim my.journal'; }
 www() { start_tmux www "$HOME/src/www" 'vim index.md'; }
 
@@ -47,6 +47,7 @@ logt() { log "$1" "$(date "+%d/%b/%Y").*${2:-GET.*HTTP/1\.1. 200}"; }
 png() { optipng -preserve -keep -strip all -o7 "$1"; }
 jpeg() { cp "$1" "$1.bak" && jpegoptim --strip-all --preserve --preserve-perms --verbose -m80 "$1"; }
 fit() { cp "$1" "$1.original" && convert -resize 1200 "$1.original" "$1"; }
+fit50() { cp "$1" "$1.original" && convert -resize 50 "$1.original" "$1"; }
 alias feh='feh -.Zd'
 
 rebase() { git rebase -i HEAD~"${1:-2}"; }

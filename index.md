@@ -9,6 +9,7 @@ you're reading here, subscribe to [my RSS feed](/rss.xml), follow me on
 
 ---
 
+- [Meet my dear sponsors](/sponsors.html "24 Apr 2018")
 - [Enable HTTPS on OpenBSD with Let's Encrypt and acme-client(1)](/openbsd/acme-client.html "13 Apr 2018")
 - [Configure httpd(8) on OpenBSD for your web server](/openbsd/webserver.html "12 Apr 2018")
 - [Deploy a VPS on Vultr](/vultr.html "11 Apr 2018")
@@ -41,5 +42,5 @@ you're reading here, subscribe to [my RSS feed](/rss.xml), follow me on
 - [Learn Markdown in twenty four lines](/markdown.html "30 Aug 2016")
 - [Start a standalone blog](/standalone.html "23 Aug 2016")
 - [Host static website on GitHub Pages](/github-pages.html "18 Aug 2016")
-- [Find out why you need a website](/website.html "15 Aug 2016")
+- [Decide if you need a website](/website.html "15 Aug 2016")
 - [Read about this site](/about.html "01 Aug 2016")

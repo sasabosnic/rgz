@@ -98,7 +98,7 @@ According to [sysctl(8)](https://man.openbsd.org/sysctl.8) its CPU is at
 down in five minutes.
 
 ![Zotac CI527](/zotac-ci527.jpeg)
-_Zotac CI527 with [RUNBSD](http://runbsd.nl) sticker on the top_
+_Zotac CI527 with [RUNBSD](http://runbsd.info/) sticker on the top_
 
 If you're curious about the sticker, here is how it found me:
 
