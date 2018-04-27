@@ -1,9 +1,23 @@
 "It's really inspiring to see you give back much to the community. I
 appreciate your work - ssg, your how-to's for less familiar
 users, etc. I felt I should mention that to you &#x1F600;"
-<div class="quote"><a href="https://mobile.twitter.com/h3artbl33d/status/985173503103074304">
-<img src="/avatars/h3artbl33d.jpeg" class="quote__avatar" title="14 Apr 2018" alt="H3artbl33d (@h3artbl33d)"></a>
-<span class="quote__name">H3artbl33d (@h3artbl33d)</span></div>
+<div class="quote"><a
+href="https://mobile.twitter.com/h3artbl33d/status/985173503103074304"><img
+src="/avatars/h3artbl33d.jpeg"
+title="14 Apr 2018"
+alt="H3artbl33d (@h3artbl33d)" class="quote__avatar"></a><span class="quote__name">
+H3artbl33d (@h3artbl33d)</span></div>
+
+"Thanks to <a
+href="https://twitter.com/romanzolotarev">@romanzolotarev</a>'s static
+site generator, I'm back on my "static site sausage machine for some extra
+pocket peanuts" kick again."
+<div class="quote"><a
+href="https://mobile.twitter.com/pr1ntf/status/988605007556571136"><img
+src="/avatars/pr1ntf.jpeg"
+title="24 Apr 2018"
+alt="Rebel Without a Clue &#x1F47D;&#x1F4E1; (@pr1ntf)" class="quote__avatar"></a><span class="quote__name">
+Rebel Without a Clue &#x1F47D;&#x1F4E1; (@pr1ntf)</span></div>
 
 # Static site generator with rsync and lowdown
 

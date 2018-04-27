@@ -1,15 +1,18 @@
 "my X1 Carbon was delayed yet again... That @romanzolotarev will be ready
 with his OpenBSD setup by the time it finally ships is the only good thing
-about the delay. Tot stealing his work"
-<div class="quote"><a href="https://mobile.twitter.com/zeRusski/status/930362868440162304">
-<img src="/avatars/zeRusski.jpeg" class="quote__avatar" title="14 Nov 2017" alt="Vlad Kozin (@zeRusski)"></a>
-<span class="quote__name">Vlad Kozin (@zeRusski)</span></div>
+about the delay. Tot stealing his work" <div class="quote"><a
+href="https://mobile.twitter.com/zeRusski/status/930362868440162304"><img
+src="/avatars/zeRusski.jpeg"
+title="14 Nov 2017"
+alt="Vlad Kozin (@zeRusski)" class="quote__avatar"></a><span class="quote__name">
+Vlad Kozin (@zeRusski)</span></div>
 
-"Sweet rig, I know what I'm asking for on my next birthday!"
-<div class="quote"><a href="https://mobile.twitter.com/smhhms/status/909899624948920320">
-<img src="/avatars/smhhms.jpeg" class="quote__avatar" title="18 Sep 2017" alt="Sean (@smhhms)"></a>
-<span class="quote__name">Sean (@smhhms)</span></div>
-
+"Sweet rig, I know what I'm asking for on my next birthday!" <div class="quote"><a
+href="https://mobile.twitter.com/smhhms/status/909899624948920320"><img
+src="/avatars/smhhms.jpeg"
+title="18 Sep 2017"
+alt="Sean (@smhhms)" class="quote__avatar"></a><span class="quote__name">
+Sean (@smhhms)</span></div>
 
 # OpenBSD on my fanless desktop computer
 
@@ -65,10 +68,12 @@ open. On the left side: [tmux(1)](http://man.openbsd.org/tmux.1) in
 
 ![cwm](/cwm.jpeg)
 
-"It’s a nice .cwmrc! I even modeled mine after it.<br>Recommended. 5&nbsp;stars."
-<div class="quote"><a href="https://mobile.twitter.com/mischapeters/status/987004963682430976">
-<img src="/avatars/mischapeters.jpeg" class="quote__avatar" title="19 Apr 2018" alt="(((Mischa &#x1F576; &#x1F421; RCX))) (@mischapeters)"></a>
-<span class="quote__name">(((Mischa &#x1F576; &#x1F421; RCX))) (@mischapeters)</span></div>
+"It’s a nice .cwmrc! I even modeled mine after it.<br>Recommended. 5&nbsp;stars." <div class="quote"><a
+href="https://mobile.twitter.com/mischapeters/status/987004963682430976"><img
+src="/avatars/mischapeters.jpeg"
+title="19 Apr 2018"
+alt="(((Mischa &#x1F576; &#x1F421; RCX))) (@mischapeters)" class="quote__avatar"></a><span class="quote__name">
+(((Mischa &#x1F576; &#x1F421; RCX))) (@mischapeters)</span></div>
 
 ## Zotac CI527
 
@@ -102,13 +107,19 @@ _Zotac CI527 with [RUNBSD](http://runbsd.info/) sticker on the top_
 
 If you're curious about the sticker, here is how it found me:
 
-<div class="quote"><a href="https://mobile.twitter.com/romanzolotarev/status/925424605367623680">
-<img src="/avatars/romanzolotarev.jpeg" class="quote__avatar" title="31 Oct 2017" alt="Roman Zolotarev (@romanzolotarev)"></a>
-<span class="quote__text">Hi <a href="https://mobile.twitter.com/FiLiS">@FiLiS</a>, where can I buy those wonderful RUN BSD stickers?</span></div>
+<div class="quote"><a
+href="https://mobile.twitter.com/romanzolotarev/status/925424605367623680"><img
+src="/avatars/romanzolotarev.jpeg"
+title="31 Oct 2017"
+alt="Roman Zolotarev (@romanzolotarev)" class="quote__avatar"></a><span class="quote__text">
+Hi <a href="https://mobile.twitter.com/FiLiS">@FiLiS</a>, where can I buy those wonderful RUN BSD stickers?</span></div>
 
-<div class="quote"><a href="https://mobile.twitter.com/FiLiS/status/925425396941770755">
-<img src="/avatars/FiLiS.jpeg" class="quote__avatar" title="31 Oct 2017" alt="Not Evander Sinque (@FiLiS)"></a>
-<span class="quote__text">you can't. You can DM me your address and I'll send you some. :)</span></div>
+<div class="quote"><a
+href="https://mobile.twitter.com/FiLiS/status/925425396941770755"><img
+src="/avatars/FiLiS.jpeg"
+title="31 Oct 2017"
+alt="Not Evander Sinque (@FiLiS)" class="quote__avatar"></a><span class="quote__text">
+you can't. You can DM me your address and I'll send you some. :)</span></div>
 
 Two weeks later...
 
@@ -179,6 +190,13 @@ to compare with other trackballs.
 For notes I use [Field Notes 48-page Memo Books][m]. In those
 rare moments when I'm away from my computer I can jot things down at the
 rate of two hundred pages per year.
+
+<div class="quote"><a
+href="https://mobile.twitter.com/liddy_io/status/910086740223946753"><img
+src="/avatars/liddy_io.jpeg"
+title="19 Sep 2017"
+alt="BuildItBenjamin (@liddy_io)" class="quote__avatar"></a><span class="quote__text">
+Bonus points for using the Field Notes ;)</span></div>
 
 ![Field Notes Memo Book](/field-notes-memo-book.jpeg)
 _My first memo book. Circa 2012_

@@ -1,3 +1,16 @@
+"Roman you have inspired me. I'm starting a project this weekend on <a
+href="https://twitter.com/vultr">@vultr</a> with <a
+href="https://mobile.twitter.com/hashtag/OpenBSD">#OpenBSD</a> and <a
+href="https://mobile.twitter.com/hashtag/Erlang">#Erlang</a>. Will be
+sharing more soon still brainstorming the project. Will post every step as
+I build."
+<div class="quote"><a
+href="https://mobile.twitter.com/BrutusUnix/status/987485038630572032"><img
+src="/avatars/BrutusUnix.jpeg"
+title="21 Apr 2018"
+alt="EssentialOS=OpenBSD (@BrutusUnix)" class="quote__avatar"></a><span class="quote__name">
+EssentialOS=OpenBSD (@BrutusUnix)</span></div>
+
 # Deploy a VPS on Vultr
 
 If you need a new server, make sure you have your [public SSH

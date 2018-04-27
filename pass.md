@@ -1,5 +1,11 @@
-# Password manager powered by LibreSSL
+"zOMG! This is AWESOME! Great job, going to set this up first thing in the morning. &#x1F495;" <div class="quote"><a
+href="https://mobile.twitter.com/h3artbl33d/status/983827387409403904"><img
+src="/avatars/h3artbl33d.jpeg"
+title="11 Apr 2018"
+alt="H3artbl33d (@h3artbl33d)" class="quote__avatar"></a><span class="quote__name">
+H3artbl33d (@h3artbl33d)</span></div>
 
+# Password manager powered by LibreSSL
 
 [pass](/bin/pass) is a POSIX-compliant shell script. It works on OpenBSD
 and macOS out-of-the-box, because it depends only on the software in the
