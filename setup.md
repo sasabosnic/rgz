@@ -14,6 +14,13 @@ title="18 Sep 2017"
 alt="Sean (@smhhms)" class="quote__avatar"></a><span class="quote__name">
 Sean (@smhhms)</span></div>
 
+"I am in love with this setup. Simple. Awesome. Functional. Efficient." <div class="quote"><a
+href="https://mobile.twitter.com/liddy_io/status/989840013650288640"><img
+src="/avatars/liddy_io.jpeg"
+title="27 Apr 2018"
+alt="BuildItBenjamin (@liddy_io)" class="quote__avatar"></a><span class="quote__name">
+BuildItBenjamin (@liddy_io)</span></div>
+
 # OpenBSD on my fanless desktop computer
 
 You asked me about my setup. Here you go.
