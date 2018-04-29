@@ -73,8 +73,9 @@ Roman
 P.S. Here are all received donations. Please ping me, if yours hasn't been
 listed, or if you want to remove your name from the list.
 
-Updated on 27 Apr 2018.
+Updated on 29 Apr 2018.
 
+- [Drew Bell](https://www.patreon.com/droob/creators "29 Apr 2018") 1.00 USD Patreon
 - [Denis Borovikov](https://www.patreon.com/user/creators?u=10926064 "25 Apr 2018") 5.00 USD Patreon
 - [Tom Smyth](https://www.patreon.com/user/creators?u=10913897 "24 Apr 2018") 10.00 USD Patreon
 - [wireless connect ltd](http://wirelessconnect.eu "24 Apr 2018") 10.00 EUR PayPal _"keep up good work Roman"_
