@@ -79,6 +79,8 @@ Restart `sshd`, verify, and `reboot`:
 
 _Tested on OpenBSD 6.3._
 
+P.S. Also [tweak your login screen](/openbsd/login.html) if you wish.
+
 ## See also
 
 [login.conf(5)](http://man.openbsd.com/login.conf.5),

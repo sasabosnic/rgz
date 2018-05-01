@@ -9,6 +9,7 @@ you're reading here, subscribe to [my RSS feed](/rss.xml), follow me on
 
 ---
 
+- [Configure minimalist login on OpenBSD](/openbsd/login.html "1 May 2018")
 - [Set default applications on X Window System](/openbsd/mime.html "1 May 2018")
 - [Meet my dear sponsors](/sponsors.html "24 Apr 2018")
 - [Enable HTTPS on OpenBSD with Let's Encrypt and acme-client(1)](/openbsd/acme-client.html "13 Apr 2018")
