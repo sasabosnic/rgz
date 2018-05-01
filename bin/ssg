@@ -99,7 +99,7 @@ md_to_html() {
 }
 
 index_to_rss() {
-  date_rfc_822=$(date "+%a, %e %b %Y %H:%M:%S %z")
+  date_rfc_822=$(date "+%a, %d %b %Y %H:%M:%S %z")
   cat > "$RSS_FILE" << EOF
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
@@ -109,7 +109,7 @@ index_to_rss() {
 <description>$RSS_DESCRIPTION</description>
 <link>$SERVER_PROTO://$SERVER_NAME/</link>
 <lastBuildDate>$date_rfc_822</lastBuildDate>
-<managingEditor>$RSS_AUTHOR</managingEditor>"
+<managingEditor>$RSS_AUTHOR</managingEditor>
 EOF
 
   # filter first 20 lines with links and link titles (dates)
@@ -125,13 +125,12 @@ EOF
     file="${TEMP_DIR}${url}"
     if [ -f "$file" ]; then
       title="$(awk "$first_h1_tag" "$file")"
-      guid=$(sha256 -q "$file")
       # replace relative URIs with absolute URIs
       article=$(sed "s/\\([hrefsc]*\\)=\"\\//\\1=\"$prefix/g" "$file")
       cat >> "$RSS_FILE" << EOF
 <item>
 <title>$title</title>
-<guid isPermaLink="false">$guid</guid>
+<guid>$SERVER_PROTO://${SERVER_NAME}$url</guid>
 <link>$SERVER_PROTO://${SERVER_NAME}$url</link>
 <pubDate>$date 00:00:00 +0000</pubDate>
 <description><![CDATA[$article]]></description>

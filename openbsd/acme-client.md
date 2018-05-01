@@ -144,6 +144,8 @@ To verify your setup [run SSL server test](https://www.ssllabs.com/ssltest/analy
 
 Congratulation! Your website and its visitors are now secured.
 
+_Tested on OpenBSD 6.3._
+
 ---
 
 **Thanks** to [Tim Chase](https://twitter.com/gumnos),

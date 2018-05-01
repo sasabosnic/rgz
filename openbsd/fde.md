@@ -57,6 +57,8 @@ passphrase with this command:
 
     doas bioctl -P sd3
 
+_Tested on OpenBSD 6.3._
+
 ## See also
 
 [OpenBSD FAQ - Disk Setup](https://www.openbsd.org/faq/faq14.html)

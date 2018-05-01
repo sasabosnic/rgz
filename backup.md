@@ -2,7 +2,7 @@
 
 Install [BorgBackup](https://www.borgbackup.org/):
 
-    # pkg_add borgbackup-1.0.11
+    # pkg_add borgbackup
 
 Initialize the repository:
 
@@ -48,3 +48,5 @@ To extract
 You can setup your own server or use something like
 [Rsync.net](http://www.rsync.net/products/attic.html) account ($9/year for
 25 GB or $0.36/year/GB).
+
+_Tested on OpenBSD 6.3 with borgbackup-1.1.4p0._

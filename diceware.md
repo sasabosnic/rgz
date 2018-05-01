@@ -32,6 +32,8 @@ more. Need more words? Easy:
     fiscally neither
     $
 
+_Tested on OpenBSD 6.3 and macOS 10.13_
+
 ## See also
 
 [Diceware](https://en.m.wikipedia.org/wiki/Diceware),

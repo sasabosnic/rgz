@@ -64,3 +64,5 @@ Make `cwm` your default window manager and start X11.
 
 As you may expect, these steps are easy to automate as well. [Check my
 post-install script](/openbsd/setup.sh).
+
+_Tested on OpenBSD 6.3._

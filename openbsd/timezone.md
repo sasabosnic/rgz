@@ -12,6 +12,8 @@ or simply use [zic(8)](https://man.openbsd.org/zic.8) (in this example to&nbsp;`
     # date
     Thu Apr  5 15:26:51 MSK 2018
 
+_Tested on OpenBSD 6.3._
+
 ## See also
 
 [ln(1)](https://man.openbsd.org/ln),

@@ -78,3 +78,5 @@ replace `ACCESS_TOKEN` and `ID` with actual values.
     -H 'Authorization: token ACCESS_TOKEN'
 
 Happy curling.
+
+_Tested on macOS 10.13_

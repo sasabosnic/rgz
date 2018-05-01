@@ -33,3 +33,5 @@ Boot from that USB drive, then choose the `(S)hell` option to mount your
     # exit
 
 Choose the `(U)pgrade` option and follow the prompts.
+
+_Tested on OpenBSD 6.2 and 6.3._

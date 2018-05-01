@@ -72,3 +72,5 @@ Later you can list the SSH keys associated with your GitHub account:
 To learn more, read the `security` man page:
 
     $ man security
+
+_Tested on macOS 10.13._

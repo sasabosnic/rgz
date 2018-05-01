@@ -65,3 +65,5 @@ able to access your new web server by its domain name.
     http://www.example.com/
 
 What's next? [Enable HTTPS on your server](/openbsd/acme-client.html).
+
+_Tested on OpenBSD 6.3._

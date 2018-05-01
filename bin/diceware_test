@@ -23,12 +23,12 @@ words=$("$INIT_DIR/diceware" 01w)
 word_count=$(echo "$words"|wc -w|tr -d ' ')
 equal "$word_count" "1" '1 word if the argument is 01w'
 
-echo "# Generating two 20 word passphrases. Please wait..."
-a=$("$INIT_DIR/diceware" 20|tr ' ' '\n')
-b=$("$INIT_DIR/diceware" 20|tr ' ' '\n')
+echo "# Generating two 8 word passphrases. Please wait..."
+a=$("$INIT_DIR/diceware" 8|tr ' ' '\n')
+b=$("$INIT_DIR/diceware" 8|tr ' ' '\n')
 unique_count=$(printf "%s\\n%s" "$a" "$b"|sort|uniq|wc -l|tr -d ' ')
 
-equal "$unique_count" "40" 'Two calls return two different phrases'
+equal "$unique_count" "16" 'Two calls return two different phrases'
 
 echo "1..$counter"
 if [ "$failed" -gt 0 ]; then echo "FAILED $failed/$counter"; else echo "PASS"; fi

@@ -21,3 +21,5 @@ Print a document:
 Delete the printer:
 
     # lpadmin -x Printer
+
+_Tested on macOS 10.13._

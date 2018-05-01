@@ -79,3 +79,5 @@ across multiple files, is inefficient. To be honest, I switched to Vim to
 edit this page as soon as the first draft was complete.
 
 Plain text is awesome!
+
+_Tested on macOS 10.13._

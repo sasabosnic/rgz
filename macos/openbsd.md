@@ -21,3 +21,5 @@ on `/dev/diskX` will be erased!**
 
 Wait few minutes and when it's done, [try to boot and install
 OpenBSD](/openbsd/install.html).
+
+_Tested on macOS 10.13._

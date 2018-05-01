@@ -49,3 +49,5 @@ That's it.
 
 If you'd like to automate these steps, check `mnt()` and `umnt()`
 functions from my [~/.profile](/openbsd/profile).
+
+_Tested on OpenBSD 6.3._

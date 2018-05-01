@@ -6,25 +6,47 @@ you're `root`, and you have at least one
 **YubiKey Personalization Tool**:
 
     # pkg_add yubikey-personalization-gui
+    quirks-2.414 signed on 2018-03-28T14:24:37Z
+    yubikey-personalization-gui-3.1.25: ok
     # yubikey-personalization-gui
 
 Insert your YubiKey into USB port. Click **Yubico OTP**, then **Quick**.
 Select **Configuration Slot 1** or **2**. Click **Write Configuration**.
-Important: save the log into `/tmp/log`. Click **Exit**.
+Important: save the log into `/tmp/yubikey.csv`. Click **Exit**.
 
-Extract _uid_ and _key_ from the log, verify `/var/db/yubikey/*` files, and
-remove the log.
+As `root` extract _uid_ and _key_ from the log, verify `/var/db/yubikey/*`
+files, and remove `yubikey.csv` file.
 
     # cd /var/db/yubikey
-    # grep Yubico /tmp/log | cut -f5 -d,>$(whoami).uid
-    # grep Yubico /tmp/log | cut -f6 -d,>$(whoami).key
-    # chown root:auth $(whoami).*
-    # chmod 440 $(whoami).*
-    # cat $(whoami).*
+    # grep Yubico /tmp/yubikey.csv | cut -f5 -d,>root.uid
+    # grep Yubico /tmp/yubikey.csv | cut -f6 -d,>root.key
+    # chown root:auth root.*
+    # chmod 440 root.*
+    # cat root.*
     xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
     xxxxxxxxxxxx
-    # rm /tmp/log
-    # rm $(whoami).ctr # reset the counter, if present
+    # rm /tmp/yubikey.csv
+
+If `/var/db/yubikey/root.ctr` is present, remove it to reset the counter.
+
+    # rm root.ctr
+
+If you have one more YubiKey, then repeat these steps, but replace
+`root.uid` with `USERNAME.uid` and `root.key` with `USERNAME.uid`, where
+`USERNAME` is a name of your user.
+
+Or, if you have only one YubiKey, then just copy those two files.
+
+    # cp root.uid USERNAME.uid
+    # cp root.key USERNAME.key
+
+The result in my case looks like this:
+
+    # ls -l /var/db/yubikey/*
+    -r--r-----  1 root  auth  33 May  1 15:22 romanzolotarev.key
+    -r--r-----  1 root  auth  13 May  1 15:22 romanzolotarev.uid
+    -r--r-----  1 root  auth  33 May  1 14:59 root.key
+    -r--r-----  1 root  auth  13 May  1 14:59 root.uid
 
 Change `auth-defaults` in `/etc/login.conf`:
 
@@ -54,6 +76,8 @@ Restart `sshd`, verify, and `reboot`:
 
     # exit
     # reboot
+
+_Tested on OpenBSD 6.3._
 
 ## See also
 

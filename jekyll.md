@@ -86,6 +86,8 @@ Install and run:
     $ bundle install
     $ bundle exec jekyll serve -L
 
+_Tested on macOS 10.13_
+
 ## See also
 
 [Jekyll Minimalist](https://romanzolotarev.github.io/jekyll-minimalist/),
