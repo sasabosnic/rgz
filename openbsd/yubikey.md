@@ -48,31 +48,47 @@ The result in my case looks like this:
     -r--r-----  1 root  auth  33 May  1 14:59 root.key
     -r--r-----  1 root  auth  13 May  1 14:59 root.uid
 
-Change `auth-defaults` in `/etc/login.conf`:
+We are about to change two config files, let's back up them first.
+
+    # cp /etc/login.conf /etc/login.conf.bak
+    # cp /etc/ssh/sshd_config /etc/ssh/ssh_config.bak
+
+In case something goes wrong you'll be able to [boot in a single user
+mode](https://www.openbsd.org/faq/faq8.html), revert changes, reboot and
+login with a regular password as usual.
+
+Now we can change `auth-defaults` in `/etc/login.conf`:
 
     auth-defaults:auth=yubikey,passwd:
 
-Update `/etc/ssh/sshd_config`:
+And update `/etc/ssh/sshd_config`:
 
     PermitRootLogin yes
     AuthenticationMethods publickey,password
     PasswordAuthentication yes
 
-Restart `sshd`, verify, and `reboot`:
+Restart `sshd`, then verify: when ssh asks for a password---instead of
+entering your regular password---touch YubiKey, if you have used
+slot&nbsp;1 (or touch and hold it for 2-3 seconds for slot&nbsp;2)...
 
     # rcctl restart sshd
     # ssh root@localhost
     root@localhost's password:
-    Last login: Fri Mar 30 12:36:23 2018
-    OpenBSD 6.2 (GENERIC.MP) #7: Sat Mar 17 21:38:36 CET 2018
+    Last login: Wed May  2 17:11:06 2018 OpenBSD 6.3
+    (GENERIC.MP) #1: Sat Apr 21 14:26:25 CEST 2018
 
-    Welcome to OpenBSD: The proactively secure Unix-like operating system.
+    Welcome to OpenBSD: The proactively secure Unix-like
+    operating system.
 
-    Please use the sendbug(1) utility to report bugs in the system.
-    Before reporting a bug, please try to reproduce it with the latest
-    version of the code. With bug reports, please try to ensure that
-    enough information to reproduce the problem is enclosed, and if a
-    known fix for it exists, include that as well.
+    Please use the sendbug(1) utility to report bugs in the
+    system. Before reporting a bug, please try to reproduce it
+    with the latest version of the code. With bug reports,
+    please try to ensure that enough information to reproduce
+    the problem is enclosed, and if a known fix for it exists,
+    include that as well.
+
+
+...then exit and reboot:
 
     # exit
     # reboot
