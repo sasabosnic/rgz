@@ -177,3 +177,31 @@ environment variables `BASE_DIR`, `PRIVATE_KEY`, `PUBLIC_KEY`. For example:
     PRIVATE_KEY=~/.pass/.key \
     PUBLIC_KEY=~/.pass/.key.pub pass init
     ...
+
+## Completions in Korn shell
+
+If you run `pass` on OpenBSD you may want to add completions in
+[ksh(1)](https://man.openbsd.org/ksh.1)---its default shell. Add these
+functions to your `~/.profile`:
+
+    update_complete_pass() {
+      pass_list=$(pass ls)
+      set -A complete_pass_edit -- $pass_list
+      set -A complete_pass_export -- $pass_list
+      set -A complete_pass_show -- $pass_list
+    }
+    update_complete_pass
+    pass_edit() { pass edit "$1"; }
+    pass_export() { pass export "$1" && update_complete_pass; }
+    pass_show() { pass show "$1" && update_complete_pass; }
+
+
+Now open a terminal or source `~/.profile` and try `pass`:
+
+    $ pass <Tab>
+    init  passphrase  add  import  show  export  ls
+
+Or most importantly try `pass_show`:
+
+    $ pass_show twit<Tab>
+    twitch  twitter

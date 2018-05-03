@@ -21,6 +21,13 @@ title="27 Apr 2018"
 alt="BuildItBenjamin (@liddy_io)" class="quote__avatar"></a><span class="quote__name">
 BuildItBenjamin (@liddy_io)</span></div>
 
+"Dope setup" <div class="quote"><a
+href="https://mobile.twitter.com/nixcraft/status/991738751666794497"><img
+src="/avatars/nixcraft.jpeg"
+title="2 May 2018"
+alt="nixCraft: The Best Linux Blog In the Unixverse (@nixcraft)" class="quote__avatar"></a><span class="quote__name">
+nixCraft: The Best Linux Blog In the Unixverse (@nixcraft)</span></div>
+
 # OpenBSD on my fanless desktop computer
 
 You asked me about my setup. Here you go.
