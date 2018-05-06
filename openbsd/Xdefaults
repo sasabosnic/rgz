@@ -48,11 +48,10 @@ XTerm*color250: #d5c4a1
 XTerm*background: gray8
 XTerm*foreground: #eeeeee
 
-XTerm*eightBitInput:  false
-XTerm*loginShell:     true
-XTerm*scrollBar:      false
-*.XTerm.*.selectToClipboard: true
-*.XTerm.*.visualBell:			false
-*.XTerm.*.faceName:				dejavu sans mono:size=12
-*.XTerm.*.scaleHeight:			1.01
-*.XTerm.*.internalBorder:		6
+XTerm*eightBitInput:     false
+XTerm*loginShell:        true
+XTerm*scrollBar:         false
+XTerm*selectToClipboard: true
+XTerm*visualBell:        false
+XTerm*faceName:          dejavu sans mono:size=12
+XTerm*internalBorder:    6

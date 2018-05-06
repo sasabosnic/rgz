@@ -16,13 +16,15 @@ for file in \
   ln -fs "$HOME/src/www/openbsd/$file" "$HOME/.${file}"
 done
 
-ln -fs "$HOME/src/www/bin" "$HOME/bin"
-ln -fs "$HOME/src/www/openbsd/user-dirs.dirs" "$HOME/.config/user-dirs.dirs"
+ln -fsh "$HOME/src/www/bin" "$HOME/bin"
+ln -fs  "$HOME/src/www/openbsd/newsboat.conf" "$HOME/.newsboat/config"
+ln -fs  "$HOME/src/www/blogroll.txt" "$HOME/.newsboat/urls"
+ln -fs  "$HOME/src/www/openbsd/user-dirs.dirs" "$HOME/.config/user-dirs.dirs"
 
 # Link private 
 
-ln -fs "$HOME/src/ssh" "$HOME/.ssh"
-ln -fs "$HOME/src/pass" "$HOME/.pass"
+ln -fsh "$HOME/src/ssh" "$HOME/.ssh"
+ln -fsh "$HOME/src/pass" "$HOME/.pass"
 
 # Configure Vim and install plugins
 
