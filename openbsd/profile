@@ -23,26 +23,35 @@ export PATH LANG LC_ALL TERM GIT_PS1_SHOWDIRTYSTATE
 stty -ixon # rescue <C-s> for vim
 
 start_tmux() {
-  window="$1"
-  dir="$2"
-  cmd="cd $dir && TERM=xterm-256color $3"
-  tmux new-session -As 0 -n "$window" -c "$dir" "$cmd" 2>/dev/null || {
-  tmux select-window     -t "$window" 2>/dev/null 
-  [ "$(tmux list-windows|grep '\*'|cut -d' ' -f2)" = "${window}*" ] && { cd "$dir" || return; }; } || {
-  tmux show-window-option automatic-rename >/dev/null && {
-  tmux new-window        -n "$window"           "$cmd" || { 
-  tmux rename-window        "$window" && sh  -c "$cmd"; }; }; }
+  # try to create a new session
+  if ! tmux new-session -As 0 -n "$1" "cd $2 && TERM=xterm-256color $3" 2>/dev/null; then
+    # if already in the session
+    # try to select the window
+    if tmux select-window -t "$1" 2>/dev/null; then
+      # if selected
+      # change to the directory if we are it the current window
+      if tmux list-windows|grep ": ${1}\\*">/dev/null; then cd "$2" || return; fi
+    else
+      # if it's a named window then create new one, 
+      # else just rename the current window
+      if tmux show-window-option automatic-rename|grep off; then
+        tmux new-window -n "$1" "cd $2 && TERM=xterm-256color $3"
+      else
+        tmux rename-window "$1" && sh -c "cd $2 && $3"
+      fi
+    fi
+  fi
 }
 j()   { start_tmux 'j'   "$HOME/src/j"       'vim my.journal'; }
 m()   { start_tmux 'm'   "$HOME/pub/music"   'cmus'; }
-n()   { start_tmux 'n'   '.'                 'newsboat'; }
+n()   { start_tmux 'n'   "$HOME/downloads"   'newsboat'; }
 o()   { start_tmux 'o'   "$HOME/src/openvpn" 'doas openvpn --config default.ovpn'; }
 www() { start_tmux 'www' "$HOME/src/www"     'vim index.md'; }
 
 quits() { aucat -i "$HOME/src/www/quits.wav"; }
 export DOCS='/var/www/htdocs/www.romanzolotarev.com'
 s() { cd "$HOME/src/www" && ssg watch --clean|| return; }
-d() { rsync -avPc --delete-excluded "$DOCS" "$1:/var/www/htdocs/"; quits; }
+d() { rsync -avPc --delete-excluded "$DOCS" "$1:/var/www/htdocs/"; quits & }
 # shellcheck disable=SC2029
 log() { [ -n "$1" ] && [ -n "$2" ] && ssh "$1" "while :; do printf '%s %s %s %s\\n' \"\$(grep \"$2\" /var/www/logs/access.log|cut -f2,13- -d' '|tr -d ' '|sort|uniq|wc -l|tr -d ' ')\" \"\$(date +%Y-%m-%dT%H:%M:%S)\" \"$1\" \"$2\"; sleep 30; done"; }
 logt() { log "$1" "$(date "+%d/%b/%Y").*${2:-GET.*HTTP/1\.1. 200}"; }
