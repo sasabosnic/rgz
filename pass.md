@@ -1,3 +1,9 @@
+**WARNING** This shell script uses parts of OpenSSL/LibreSSL, which are
+intended for testing purposes only. **You may loose your passwords.** Use it
+at your own risk.
+
+---
+
 "zOMG! This is AWESOME! Great job, going to set this up first thing in the morning. &#x1F495;" <div class="quote"><a
 href="https://mobile.twitter.com/h3artbl33d/status/983827387409403904"><img
 src="/avatars/h3artbl33d.jpeg"
