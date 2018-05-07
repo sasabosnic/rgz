@@ -83,7 +83,7 @@ Plug 'shougo/neocomplete.vim'
 "
 " INTEGRATION TOOLS
 
-set clipboard=unnamed
+set clipboard=unnamedplus
 set nobackup nowritebackup noswapfile
 set undofile undolevels=1000 undoreload=3000 undodir=$HOME/.vim/undo/
 

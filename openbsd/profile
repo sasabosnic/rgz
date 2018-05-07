@@ -35,9 +35,9 @@ start_tmux() {
       # if it's a named window then create new one, 
       # else just rename the current window
       if tmux show-window-option automatic-rename|grep off; then
-        tmux new-window -n "$1" "cd $2 && TERM=xterm-256color $3"
+        tmux new-window -n "$1" -c "$2" "TERM=xterm-256color $3"
       else
-        tmux rename-window "$1" && sh -c "cd $2 && $3"
+        tmux rename-window "$1" && cd "$2" && sh -c "$3"
       fi
     fi
   fi
@@ -51,7 +51,7 @@ www() { start_tmux 'www' "$HOME/src/www"     'vim index.md'; }
 quits() { aucat -i "$HOME/src/www/quits.wav"; }
 export DOCS='/var/www/htdocs/www.romanzolotarev.com'
 s() { cd "$HOME/src/www" && ssg watch --clean|| return; }
-d() { rsync -avPc --delete-excluded "$DOCS" "$1:/var/www/htdocs/"; quits & }
+d() { [ -n "$1" ] && { rsync -avPc --delete-excluded "$DOCS" "$1:/var/www/htdocs/"; quits & }; }
 # shellcheck disable=SC2029
 log() { [ -n "$1" ] && [ -n "$2" ] && ssh "$1" "while :; do printf '%s %s %s %s\\n' \"\$(grep \"$2\" /var/www/logs/access.log|cut -f2,13- -d' '|tr -d ' '|sort|uniq|wc -l|tr -d ' ')\" \"\$(date +%Y-%m-%dT%H:%M:%S)\" \"$1\" \"$2\"; sleep 30; done"; }
 logt() { log "$1" "$(date "+%d/%b/%Y").*${2:-GET.*HTTP/1\.1. 200}"; }

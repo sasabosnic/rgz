@@ -117,3 +117,7 @@ programming languages come and go, but Vim always does its job well.
 ---
 
 Still undecided? Try Vim for a couple days.
+
+## See also
+
+[my `.vimrc`](/openbsd/vimrc)

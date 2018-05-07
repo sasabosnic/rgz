@@ -1,3 +1,4 @@
+http://matt.might.net/articles/feed.rss
 http://blather.michaelwlucas.com/feed
 http://blog.tintagel.pl/feed.xml
 http://bsdly.blogspot.com/feeds/posts/default

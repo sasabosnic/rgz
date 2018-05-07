@@ -8,8 +8,8 @@ on OpenBSD, you just need to configure it:
 
     www# vi /etc/httpd.conf
 
-Add two `server` sections---one for `www` and another for naked domain (all requests are
-redirected to `www`).
+Add two `server` sections---one for `www` and another for naked domain
+(all requests are redirected to `www`).
 
     server "www.example.com" {
       listen on * port 80
