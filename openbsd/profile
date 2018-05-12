@@ -1,59 +1,39 @@
 #!/bin/sh
 
-PATH=$HOME/bin\
-:$HOME/.gem/ruby/2.5/bin\
-:/bin\
-:/sbin\
-:/usr/X11R6/bin\
-:/usr/bin\
-:/usr/games\
-:/usr/local/bin\
-:/usr/local/sbin\
-:/usr/sbin\
-:.
-LANG=en_US.UTF-8
-LC_ALL=en_US.UTF-8
-TERM=xterm-256color
-GIT_PS1_SHOWDIRTYSTATE=true
-# shellcheck disable=SC1090
-. "$HOME/bin/gitprompt"
-PS1="\\[\\e[38;5;247m\\]\\w\$(__git_ps1) \\[\\e[0m\\]"
-export PATH LANG LC_ALL TERM GIT_PS1_SHOWDIRTYSTATE
+PATH="$HOME/bin:$PATH"
+LC_ALL='en_US.UTF-8'
+TERM='vt100'
+VISUAL='vi'
+PS1='\w '
+export PATH LC_ALL TERM VISUAL PS1
 
-stty -ixon # rescue <C-s> for vim
+quits() { aucat -i "$HOME/src/www/quits.wav"; }
 
 start_tmux() {
-  # try to create a new session
-  if ! tmux new-session -As 0 -n "$1" "cd $2 && TERM=xterm-256color $3" 2>/dev/null; then
-    # if already in the session
-    # try to select the window
-    if tmux select-window -t "$1" 2>/dev/null; then
-      # if selected
-      # change to the directory if we are it the current window
-      if tmux list-windows|grep ": ${1}\\*">/dev/null; then cd "$2" || return; fi
+  if ! tmux new-session -As 0 -n "$1" "cd $2 && $3" 2>/dev/null;then
+    if tmux select-window -t "$1" 2>/dev/null;then
+      if tmux list-windows|grep ": ${1}\\*">/dev/null;then cd "$2"||return;fi
     else
-      # if it's a named window then create new one, 
-      # else just rename the current window
-      if tmux show-window-option automatic-rename|grep off; then
-        tmux new-window -n "$1" -c "$2" "TERM=xterm-256color $3"
+      if tmux show-window-option automatic-rename|grep off>/dev/null;then
+        tmux new-window -n "$1" -c "$2" sh -c "$3"
       else
         tmux rename-window "$1" && cd "$2" && sh -c "$3"
       fi
     fi
   fi
 }
-j()   { start_tmux 'j'   "$HOME/src/j"       'vim my.journal'; }
+
+j()   { start_tmux 'j'   "$HOME/src/j"       'vi my.journal'; }
 m()   { start_tmux 'm'   "$HOME/pub/music"   'cmus'; }
 n()   { start_tmux 'n'   "$HOME/downloads"   'newsboat'; }
 o()   { start_tmux 'o'   "$HOME/src/openvpn" 'doas openvpn --config default.ovpn'; }
-www() { start_tmux 'www' "$HOME/src/www"     'vim index.md'; }
+www() { start_tmux 'www' "$HOME/src/www"     'vi index.md'; }
 
-quits() { aucat -i "$HOME/src/www/quits.wav"; }
 export DOCS='/var/www/htdocs/www.romanzolotarev.com'
-s() { cd "$HOME/src/www" && ssg watch --clean|| return; }
-d() { [ -n "$1" ] && { rsync -avPc --delete-excluded "$DOCS" "$1:/var/www/htdocs/"; quits & }; }
+s() { cd "$HOME/src/www" && ssg watch --clean||return; }
+d() { [ -n "$1" ] && { rsync -avPc --delete-excluded "$DOCS" "$1:/var/www/htdocs/";quits & }; }
 # shellcheck disable=SC2029
-log() { [ -n "$1" ] && [ -n "$2" ] && ssh "$1" "while :; do printf '%s %s %s %s\\n' \"\$(grep \"$2\" /var/www/logs/access.log|cut -f2,13- -d' '|tr -d ' '|sort|uniq|wc -l|tr -d ' ')\" \"\$(date +%Y-%m-%dT%H:%M:%S)\" \"$1\" \"$2\"; sleep 30; done"; }
+log() { [ -n "$1" ] && [ -n "$2" ] && ssh "$1" "while :;do printf '%s %s %s %s\\n' \"\$(grep \"$2\" /var/www/logs/access.log|cut -f2,13- -d' '|tr -d ' '|sort|uniq|wc -l|tr -d ' ')\" \"\$(date +%Y-%m-%dT%H:%M:%S)\" \"$1\" \"$2\";sleep 30;done"; }
 logt() { log "$1" "$(date "+%d/%b/%Y").*${2:-GET.*HTTP/1\.1. 200}"; }
 logc() { [ -n "$1" ] && ssh "$1" "awk '{\$1=\"\";print \$0}' /var/www/logs/access.log | logswan -g -"; }
 
@@ -62,16 +42,17 @@ jpeg() { cp "$1" "$1.bak" && jpegoptim --strip-all --preserve --preserve-perms -
 fit() { cp "$1" "$1.original" && convert -resize 1200 "$1.original" "$1"; }
 fit50() { cp "$1" "$1.original" && convert -resize 50 "$1.original" "$1"; }
 alias feh='feh -.Zd'
+alias vim=vi
 
 rebase() { git rebase -i HEAD~"${1:-2}"; }
-alias c='PS1=$\ ;clear'
+c() { clear; PS1='$ '; }
 alias cp='cp -i'
 alias l='ls -aF'
 alias ll='ls -lahF'
 alias mv='mv -i'
 alias rm='rm -i'
 alias du='du -hd1'
-alias b="vim \$HOME/.profile && . \$HOME/.profile"
+alias b="vi \$HOME/.profile && . \$HOME/.profile"
 
 # shellcheck disable=SC2086
 update_complete_pass() {
@@ -93,7 +74,7 @@ LOCAL_PKG_PATH="$HOME/pub/OpenBSD/$(uname -r)/packages/$(uname -m)"
 pkg_add_from_cache() { doas env PKG_PATH="$LOCAL_PKG_PATH" pkg_add "$@"; }
 pkg_add_with_cache() { mkdir -p "$LOCAL_PKG_PATH" && doas env PKG_CACHE="$LOCAL_PKG_PATH" pkg_add "$@"; }
 
-mnt() { [ -n "$1" ] && doas mkdir -p "/mnt/$1" && doas mount "/dev/$1" "/mnt/$1" && cd "/mnt/$1" || return; }
+mnt() { [ -n "$1" ] && doas mkdir -p "/mnt/$1" && doas mount "/dev/$1" "/mnt/$1" && cd "/mnt/$1"||return; }
 umnt() { [ -n "$1" ] && doas umount "/dev/$1"; }
 pics() { mnt sd1i && cd DCIM && rsync -avPc --chown=romanzolotarev:romanzolotarev . "$HOME/downloads" && cd "$HOME/downloads" && umnt sd1i && feh ./**/*; }
 

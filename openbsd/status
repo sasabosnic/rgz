@@ -1,33 +1,32 @@
 #!/bin/sh
 #
 # https://WWW.romanzolotarev.com/openbsd/status
-# Copyright 2017 Roman Zolotarev <hi@romanzolotarev.com>
+# Copyright 2017-2018 Roman Zolotarev <hi@romanzolotarev.com>
 #
 
 screencast_log=/tmp/screencast.log
 
-to_icon() { if printf "%s" "$1"|grep -q "$2"; then printf "%s" "$3"; else printf "%s" "$4"; fi }
+to_icon() { if echo "$1"|grep -q "$2"; then echo "$3"; else echo "$4"; fi }
 cmus_status="$(cmus-remote -Q)"
 mixer_status="$(mixerctl)"
-mixer_bars="$(printf '▁ ▂ ▃ ▄ ▅ ▆ ▇ █'|
-  cut -d' ' -f$(( $(printf "%s" "$mixer_status"|grep 'outputs.master='|cut -d',' -f2) * 7 / 255)) )"
+mixer_vol="$(( $(echo "$mixer_status"|grep 'outputs.master='|cut -d',' -f2 ) * 100 / 255 ))%"
 
 if [ -n "$cmus_status" ]; then
-  printf '%+20s %s %s %s ' \
-    "$(printf "%s" "$cmus_status"|grep 'tag title'|cut -c 11-30)" \
-    "$(to_icon "$cmus_status" 'status playing' '►' '∙')" \
-    "$(to_icon "$cmus_status" 'set shuffle true' '☼' '∙')" \
-    "$(to_icon "$cmus_status" 'set repeat_current true' '∞' '∙')"
+  printf '%+20s:%-4s%s%s ' \
+    "$(echo "$cmus_status"|grep 'tag title'|cut -c 11-30)" \
+    "$(echo "$cmus_status"|grep 'position'|cut -c 10-)"\
+    "$(to_icon "$cmus_status" 'set shuffle true' 'L' '.')" \
+    "$(to_icon "$cmus_status" 'set repeat_current true' 'R' '.')"
 fi
 
-printf '%s %s %s° ' \
-  "$(to_icon "$mixer_status" 'outputs.master.mute=off' "$mixer_bars" '∙')" \
+printf '%+4s %s %sC ' \
+  "$(to_icon "$mixer_status" 'outputs.master.mute=off' "$mixer_vol" 'mute')" \
   "$(to_icon "$(xset -q|grep LED|cut -d' ' -f21)" '00000000' 'A' 'Я')" \
   "$(sysctl -n hw.sensors.cpu0|cut -d'.' -f1)"
 
 if [ -f "$screencast_log" ]; then
-  fps="$(tr '' '\n' < "$screencast_log"|grep 'fps= '|tail -n1|cut -d'=' -f3|cut -d' ' -f2)"
-  printf "%s fps" "${fps:-0}"
+  fps="$(tr '' '\n'<"$screencast_log"|grep 'fps= '|tail -n1|cut -d'=' -f3|cut -d' ' -f2)"
+  printf '%+2s fps' "${fps:-0}"
 else
-  printf '%s' "$(date "+%a %e %b %H:%M")"
+  date "+%a %e %b %H:%M"
 fi

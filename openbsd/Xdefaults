@@ -1,3 +1,13 @@
+Xcursor*size:	large
+XTerm*background:        #141414
+XTerm*foreground:        #eeeeee
+XTerm*loginShell:        true
+XTerm*scrollBar:         false
+XTerm*selectToClipboard: true
+XTerm*visualBell:        false
+XTerm*faceName:          dejavu sans mono:size=11
+XTerm*internalBorder:    6
+
 XTerm*color0:   #000000
 XTerm*color1:   #ff6c60
 XTerm*color2:   #a8ff60
@@ -44,14 +54,3 @@ XTerm*color245: #928374
 XTerm*color246: #a89984
 XTerm*color248: #bdae93
 XTerm*color250: #d5c4a1
-
-XTerm*background: gray8
-XTerm*foreground: #eeeeee
-
-XTerm*eightBitInput:     false
-XTerm*loginShell:        true
-XTerm*scrollBar:         false
-XTerm*selectToClipboard: true
-XTerm*visualBell:        false
-XTerm*faceName:          dejavu sans mono:size=12
-XTerm*internalBorder:    6

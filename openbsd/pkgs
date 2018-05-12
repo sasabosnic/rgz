@@ -28,7 +28,6 @@ ranger-1.9.1        minimalistic console file manager
 shellcheck-0.4.7    shell script analysis tool
 slop-6.3.48p0       query for a selection and print to stdout (select operation)
 terminus-font-4.46-symquotes-centered_tilde fixed width fonts especially for long hacking sessions
-vim-8.0.1589-gtk2-lua vi clone, many additional features
 xclip-0.13p0        command line interface to X selections
 youtube-dl-2018.01.18 CLI program to download videos from YouTube and other sites
 yubikey-personalization-gui-3.1.25 Qt GUI to configure YubiKeys

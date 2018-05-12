@@ -3,7 +3,10 @@
 # https://www.romanzolotarev.com/bin/screenshot
 # Copyright 2018 Roman Zolotarev <hi@romanzolotarev.com>
 #
-# pkg_add slop ffmpeg mpv
+#   pkg_add slop ffmpeg mpv
+#   rcctl set sndiod flags -s default -m play,mon -s mon
+#   rcctl restart sndiod
+#
 
 set -e
 debug_log='/tmp/screencast.debug.log'
@@ -14,7 +17,7 @@ trap exit HUP INT TERM
 clean_up() {
   echo "$(date) clean up">>"$debug_log"
   [ -f "$log" ] && { cat "$log" >> "$debug_log"; rm "$log"; }
-  [ -f "$output" ] && { stat -f '%z bytes' "$output"; mpv --really-quiet "$output"; }
+  [ -f "$output" ] && { stat -f '%z bytes' "$output"; mpv --loop=inf --really-quiet "$output"; }
 }
 
 case $1 in
@@ -34,13 +37,19 @@ start)
   echo "$(date) DISPLAY=$DISPLAY">>"$debug_log"
   echo "$(date) capturing $size from $input to $output" >> "$debug_log"
   echo "$(date) ffmpeg">>"$debug_log"
-  ffmpeg -f x11grab -r 30 -s "$size" -i "$input" \
+
+  ffmpeg \
+    -f x11grab -r 30 -s "$size" -i "$input" \
     -preset veryslow \
     -pix_fmt yuv420p \
     -hide_banner \
     -movflags +faststart \
     -tune animation \
-    -vcodec h264 "$output" 2> "$log"
+    -vcodec h264 \
+    "$output" 2> "$log"
+    # -acodec mp3 -ab 192 -ar 44100 -t 20\
+    # -f sndio -i snd/0.mon \
+
   ;;
 
 stop)

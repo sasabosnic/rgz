@@ -1,0 +1,3 @@
+map tp :?^$?,//!fmt -pw 72
+map tt :%s/[[:space:]]\{1,\}$//g
+set autoindent cedit=

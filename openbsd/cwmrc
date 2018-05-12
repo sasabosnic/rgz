@@ -7,10 +7,11 @@ bind-key    CM-3           group-only-3
 bind-key    CM-l           "/home/romanzolotarev/bin/lockscreen"
 bind-key    CM-q           window-delete
 bind-key    CM-r           restart
-bind-key    CSM-q          quit
+bind-key    CMS-q          quit
 bind-key    F5             "/home/romanzolotarev/bin/screencast start"
 bind-key    F6             "/home/romanzolotarev/bin/screencast stop"
-bind-key    M-Return       xterm
+bind-key    M-Return       "xterm"
+bind-key    CM-Return      "xterm -fg '#232323' -bg '#ffffff'"
 bind-key    M-e            menu-exec
 bind-key    M-equal        "/home/romanzolotarev/bin/vol up"
 bind-key    M-h            window-htile
@@ -31,11 +32,11 @@ bind-key    SM-2           window-movetogroup-2
 bind-key    SM-3           window-movetogroup-3
 
 command     firefox        firefox
-command     chrome         chrome
 command     xterm          xterm
 
-borderwidth 16
-color       activeborder   gray8
-color       inactiveborder black
+borderwidth 2 
+color       activeborder   "#444444"
+color       inactiveborder "#000000"
+fontname    dejavu sans mono:size=12
 snapdist    16
 sticky      yes

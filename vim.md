@@ -3,12 +3,12 @@
 Considering Vim? Looking for a good reason to switch? Vim is a powerful
 and simple text editor.
 
-I use Vim for writing code, documentation, editing configuration files,
-and taking notes. It works great for me. If it's not your cup of tea,
-that's okay. There are many other text editors today.
+I had used Vim---before I switched to [vi(1)](/vi.html)---for writing
+code, documentation, editing configuration files, and taking notes. It
+works great for me. If it's not your cup of tea, that's okay. There are
+many other text editors today.
 
 Nowadays I edit all text files in
-[Vim](https://en.m.wikipedia.org/wiki/Vim) and
 [vi](https://en.m.wikipedia.org/wiki/Vi),
 but I used to use other editors as well:
 [Norton Commander](https://en.m.wikipedia.org/wiki/Norton_Commander),

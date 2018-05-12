@@ -260,9 +260,9 @@ case "$1" in
 build)
   ls index.* >/dev/null 2>&1 || 
     { echo 'no index.* found in the current directory'; exit 1; }
-  which rsync >/dev/null 2>&1 || 
+  [ ! -x "$(which rsync)" ] &&
     { echo 'rsync(1) should be installed'; exit 1; }
-  which lowdown >/dev/null 2>&1 || 
+  [ ! -x "$(which lowdown)" ] &&
     { echo 'lowdown(1) should be installed'; exit 1; }
   printf 'building %s %s ' "$DOCUMENT_ROOT" "$2"
   copy_to_temp_dir
@@ -277,7 +277,7 @@ watch)
   cmd="entr -d env DOCS=$DOCS $(basename "$0") build $2"
   pgrep -qf "$cmd" && { echo "already watching $DOCS"; exit 1; }
   echo "watching $PWD"
-  which entr >/dev/null 2>&1 || 
+  [ ! -x "$(which entr)" ] &&
     { echo 'entr(1) should be installed'; exit 1; }
   while true; do
     find "$PWD" -type f \
