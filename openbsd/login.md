@@ -14,8 +14,9 @@ As `root` edit `/etc/X11/xenodm/Xresources`:
     xlogin.Login.namePrompt:       \040login
     xlogin.Login.passwdPrompt:     passwd
 
+    xlogin.Login.logoFileName:     /etc/X11/xenodm/pixmaps/OpenBSD_1bpp.xpm
     xlogin.Login.height:           180
-    xlogin.Login.width:            280
+    xlogin.Login.width:            500
     xlogin.Login.y:                440
     xlogin.Login.frameWidth:       0
     xlogin.Login.innerFramesWidth: 0
@@ -26,9 +27,9 @@ As `root` edit `/etc/X11/xenodm/Xresources`:
     xlogin.Login.inpColor:         black
     xlogin.Login.promptColor:      #888888
 
-    xlogin.Login.face:             dejavu sans mono:size=12
-    xlogin.Login.failFace:         dejavu sans mono:size=12
-    xlogin.Login.promptFace:       dejavu sans mono:size=12
+    xlogin.Login.face:             fixed-13
+    xlogin.Login.failFace:         fixed-13
+    xlogin.Login.promptFace:       fixed-13
 
 Then edit `/etc/X11/xenodm/Xsetup_0`
 

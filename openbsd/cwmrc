@@ -1,29 +1,28 @@
-# cwm config
 unbind-key  all
 
 bind-key    CM-1           group-only-1
 bind-key    CM-2           group-only-2
 bind-key    CM-3           group-only-3
-bind-key    CM-l           "/home/romanzolotarev/bin/lockscreen"
+bind-key    CM-Return      "xterm -fg '#232323' -bg '#ffffff'"
+bind-key    CM-l           "xlock"
 bind-key    CM-q           window-delete
 bind-key    CM-r           restart
 bind-key    CMS-q          quit
-bind-key    F5             "/home/romanzolotarev/bin/screencast start"
-bind-key    F6             "/home/romanzolotarev/bin/screencast stop"
+bind-key    F5             "bin/screencast start"
+bind-key    F6             "bin/screencast stop"
 bind-key    M-Return       "xterm"
-bind-key    CM-Return      "xterm -fg '#232323' -bg '#ffffff'"
 bind-key    M-e            menu-exec
-bind-key    M-equal        "/home/romanzolotarev/bin/vol up"
+bind-key    M-equal        "bin/vol up"
 bind-key    M-h            window-htile
 bind-key    M-j            window-cycle-ingroup
 bind-key    M-k            window-rcycle-ingroup
 bind-key    M-l            "cmus-remote --shuffle"
-bind-key    M-m            "/home/romanzolotarev/bin/vol toggle"
-bind-key    M-minus        "/home/romanzolotarev/bin/vol down"
+bind-key    M-m            "bin/vol toggle"
+bind-key    M-minus        "bin/vol down"
 bind-key    M-n            "cmus-remote --next"
 bind-key    M-p            "cmus-remote --prev"
 bind-key    M-r            "cmus-remote -C 'toggle repeat_current'"
-bind-key    M-s            "/home/romanzolotarev/bin/screenshot"
+bind-key    M-s            "bin/screenshot"
 bind-key    M-t            window-maximize
 bind-key    M-u            "cmus-remote --pause"
 bind-key    M-v            window-vtile
@@ -37,6 +36,6 @@ command     xterm          xterm
 borderwidth 2 
 color       activeborder   "#444444"
 color       inactiveborder "#000000"
-fontname    dejavu sans mono:size=12
 snapdist    16
+fontname    fixed-13
 sticky      yes

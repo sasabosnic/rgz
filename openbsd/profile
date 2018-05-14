@@ -2,10 +2,9 @@
 
 PATH="$HOME/bin:$PATH"
 LC_ALL='en_US.UTF-8'
-TERM='vt100'
 VISUAL='vi'
 PS1='\w '
-export PATH LC_ALL TERM VISUAL PS1
+export PATH LC_ALL VISUAL PS1
 
 quits() { aucat -i "$HOME/src/www/quits.wav"; }
 
@@ -42,7 +41,6 @@ jpeg() { cp "$1" "$1.bak" && jpegoptim --strip-all --preserve --preserve-perms -
 fit() { cp "$1" "$1.original" && convert -resize 1200 "$1.original" "$1"; }
 fit50() { cp "$1" "$1.original" && convert -resize 50 "$1.original" "$1"; }
 alias feh='feh -.Zd'
-alias vim=vi
 
 rebase() { git rebase -i HEAD~"${1:-2}"; }
 c() { clear; PS1='$ '; }

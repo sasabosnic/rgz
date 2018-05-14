@@ -1,8 +1,8 @@
 #!/bin/sh
-setxkbmap -option grp:alt_space_toggle us,ru &
+setxkbmap -option grp:alt_space_toggle us,ru
 xinput --set-prop 7 'Device Accel Constant Deceleration' 5
 xset mouse 3 3
 xset -b
-xidle -delay 10 -timeout 300 -program "$HOME/bin/lockscreen" &
-xterm -e 'LC_ALL=en_US.UTF-8 TERM=vt100 tmux new-session -As 0' &
+xidle &
+xterm -e 'LC_ALL=en_US.UTF-8 tmux new-session -As 0' &
 cwm

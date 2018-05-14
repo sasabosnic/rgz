@@ -1,6 +1,7 @@
-**WARNING** This shell script uses parts of OpenSSL/LibreSSL, which are
-intended for testing purposes only. **You may loose your passwords.** Use it
-at your own risk.
+**WARNING**<br>
+This shell script uses parts of OpenSSL/LibreSSL, which are intended for
+testing purposes only. **You may loose your passwords.** Use it at your
+own risk.
 
 ---
 
