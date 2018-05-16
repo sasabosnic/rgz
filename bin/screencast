@@ -17,7 +17,10 @@ trap exit HUP INT TERM
 clean_up() {
   echo "$(date) clean up">>"$debug_log"
   [ -f "$log" ] && { cat "$log" >> "$debug_log"; rm "$log"; }
-  [ -f "$output" ] && { stat -f '%z bytes' "$output"; mpv --loop=inf --really-quiet "$output"; }
+  [ -f "$output" ] && {
+    stat -f '%z bytes' "$output"
+    mpv --loop=inf --really-quiet "$output"
+  }
 }
 
 case $1 in
@@ -35,15 +38,15 @@ start)
   input=":0.0+$origin"
   output="$HOME/downloads/$(date +%Y%m%d-%H%M%S)-$size.mp4"
   echo "$(date) DISPLAY=$DISPLAY">>"$debug_log"
-  echo "$(date) capturing $size from $input to $output" >> "$debug_log"
+  echo "$(date) capture $size from $input to $output">>"$debug_log"
   echo "$(date) ffmpeg">>"$debug_log"
 
   ffmpeg \
     -f x11grab -r 30 -s "$size" -i "$input" \
-    -preset veryslow \
-    -pix_fmt yuv420p \
     -hide_banner \
     -movflags +faststart \
+    -pix_fmt yuv420p \
+    -preset veryslow \
     -tune animation \
     -vcodec h264 \
     "$output" 2> "$log"
@@ -55,7 +58,7 @@ start)
 stop)
   echo "$(date) stop">>"$debug_log"
   pgrep -q ffmpeg || { echo "$(date) nothing to stop" >> "$debug_log"; exit 1; }
-  pkill ffmpeg && 
+  pkill ffmpeg &&
     echo "$(date) stopped">>"$debug_log" ||
     echo "$(date) failed to stop">>"$debug_log"
   ;;

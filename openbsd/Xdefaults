@@ -2,7 +2,7 @@ XIdle.timeout:           300
 XLock.background:        #ffffff
 XLock.foreground:        #ffffff
 XLock.icongeometry:      1x1
-XLock.lockdelay:         10
+XLock.lockdelay:         2
 XTerm*background:        #141414
 XTerm*font:              -misc-fixed-medium-r-normal--15-140-75-75-c-90-iso10646-1
 XTerm*foreground:        #eeeeee

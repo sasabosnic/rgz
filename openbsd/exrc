@@ -1,4 +1,5 @@
 map tf {!}fmt -pw 72
 map ts {!}sort
+map tS {!}sort -r
 map tt :%s/[[:space:]]\{1,\}$//g
 set autoindent cedit=
