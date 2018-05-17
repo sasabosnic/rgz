@@ -1,33 +1,34 @@
-ImageMagick-6.9.9.38 image processing tools
-aria2-1.33.1        lightweight multi-protocol & multi-source download utility
-borgbackup-1.1.4p0  deduplicating backup program
-cmus-2.7.1p1        ncurses-based music player
-entr-4.0            run arbitrary commands when files change
-expect-5.45p5       sophisticated scripter based on Tcl/Tk
-feh-2.23.1          lightweight image viewer
-ffmpeg-20180219p0   audio/video converter and streamer
-firefox-59.0.2      Mozilla web browser
-gimp-2.8.22p1       GNU Image Manipulation Program
-git-2.16.2          GIT - Tree History Storage Tool
-ja-fonts-funet-19911117p1 extra japanese fonts, marumoji
-ja-fonts-gnu-1.2.1  extra japanese fonts
-ja-sazanami-ttf-20040629p3 japanese true type fonts
-jpegoptim-1.4.4     utility to optimize jpeg files
-jq-1.5p2            lightweight and flexible command-line JSON processor
-libreoffice-6.0.2.1v0 multi-platform productivity suite
-lowdown-0.3.1       simple markdown translator
-mozilla-dicts-ru-1.3p1 ru dictionary for Mozilla
-mpv-0.22.0p1        movie player based on MPlayer/mplayer2
-mupdf-1.11p2        graphic library, pdf parser, viewer and utilities
-noto-emoji-20150929p0 emoji fonts for the noto font family
-noto-fonts-20150929p2 pan-unicode font family
-oath-toolkit-2.6.2p0 toolkit for OATH/HOTP and TOTP
-openvpn-2.4.5p1     easy-to-use, robust, and highly configurable VPN
-optipng-0.7.7       lossless PNG optimizer
-ranger-1.9.1        minimalistic console file manager
-shellcheck-0.4.7    shell script analysis tool
-slop-6.3.48p0       query for a selection and print to stdout (select operation)
-terminus-font-4.46-symquotes-centered_tilde fixed width fonts especially for long hacking sessions
-xclip-0.13p0        command line interface to X selections
-youtube-dl-2018.01.18 CLI program to download videos from YouTube and other sites
-yubikey-personalization-gui-3.1.25 Qt GUI to configure YubiKeys
+ImageMagick--
+aria2--
+borgbackup--
+cmus--
+entr--
+expect--
+feh--
+ffmpeg--
+firefox--
+gimp--
+git--
+gphoto--
+ja-fonts-funet--
+ja-fonts-gnu--
+ja-sazanami-ttf--
+jpegoptim--
+kpcli--
+libreoffice--
+logswan--
+lowdown--
+mpv--
+mupdf--
+newsboat--
+noto-emoji--
+noto-fonts--
+nvi--iconv
+oath-toolkit--
+openvpn--
+optipng--
+quirks--
+shellcheck--
+slop--
+xclip--
+youtube-dl--

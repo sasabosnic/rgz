@@ -258,7 +258,7 @@ clean_up() { rm -rf "$TEMP_DIR"; }
 case "$1" in
 
 build)
-  ls index.* >/dev/null 2>&1 || 
+  ls index.* >/dev/null 2>&1 ||
     { echo 'no index.* found in the current directory'; exit 1; }
   [ ! -x "$(which rsync)" ] &&
     { echo 'rsync(1) should be installed'; exit 1; }

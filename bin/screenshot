@@ -8,7 +8,10 @@
 set -e
 
 area="$(slop -o)"
-output="$HOME/downloads/$(date +%Y%m%d-%H%M%S)-$area.png"
+date="$(date +%Y%m%d-%H%M%S)"
+dir="$HOME/downloads/screenshots/${date%-*}"
+mkdir -p "$dir"
+output="$dir/${date}-$area.png"
 import -window root -crop "$area" "$output"
 xclip -selection c -t image/png -i "$output"
 feh -.Z "$output"

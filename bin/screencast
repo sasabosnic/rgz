@@ -9,14 +9,16 @@
 #
 
 set -e
-debug_log='/tmp/screencast.debug.log'
 log='/tmp/screencast.log'
 trap 'clean_up' EXIT
 trap exit HUP INT TERM
 
 clean_up() {
-  echo "$(date) clean up">>"$debug_log"
-  [ -f "$log" ] && { cat "$log" >> "$debug_log"; rm "$log"; }
+  logger 'screencast: clean up'
+  [ -f "$log" ] && {
+    logger "ffmpeg: $(tr '' ' '<"$log"|sed -E 's/ {1,}/ /g')"
+    rm "$log"
+  }
   [ -f "$output" ] && {
     stat -f '%z bytes' "$output"
     mpv --loop=inf --really-quiet "$output"
@@ -26,7 +28,7 @@ clean_up() {
 case $1 in
 
 start)
-  echo "$(date) start">>"$debug_log"
+  logger 'screencast: start'
   area=$(slop -o -f '%x,%y+%wx%h')
   origin=$(echo "$area"|cut -d'+' -f1)
   odd_size=$(echo "$area"|cut -d'+' -f2)
@@ -34,12 +36,13 @@ start)
   w=$(( $(echo "$odd_size"|cut -d'x' -f1) / 2 * 2))
   h=$(( $(echo "$odd_size"|cut -d'x' -f2) / 2 * 2))
   size="${w}x${h}"
-  echo "$(date) $odd_size -> $size">>"$debug_log"
+  logger "screencast: $odd_size -> $size"
   input=":0.0+$origin"
-  output="$HOME/downloads/$(date +%Y%m%d-%H%M%S)-$size.mp4"
-  echo "$(date) DISPLAY=$DISPLAY">>"$debug_log"
-  echo "$(date) capture $size from $input to $output">>"$debug_log"
-  echo "$(date) ffmpeg">>"$debug_log"
+  date="$(date +%Y%m%d-%H%M%S)"
+  dir="$HOME/downloads/screencasts/${date%-*}"
+  mkdir -p "$dir"
+  output="$dir/${date}-$size.mp4"
+  logger "screencast: capture $size from $input to $output"
 
   ffmpeg \
     -f x11grab -r 30 -s "$size" -i "$input" \
@@ -56,11 +59,11 @@ start)
   ;;
 
 stop)
-  echo "$(date) stop">>"$debug_log"
-  pgrep -q ffmpeg || { echo "$(date) nothing to stop" >> "$debug_log"; exit 1; }
+  logger 'screencast: stop'
+  pgrep -q ffmpeg || { logger 'screencast: nothing to stop'; exit 1; }
   pkill ffmpeg &&
-    echo "$(date) stopped">>"$debug_log" ||
-    echo "$(date) failed to stop">>"$debug_log"
+    logger 'screencast: stopped' ||
+    logger 'screencast: failed to stop'
   ;;
 
 *)

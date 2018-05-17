@@ -7,7 +7,7 @@
 screencast_log=/tmp/screencast.log
 
 to_icon() { if echo "$1"|grep -q "$2"; then echo "$3"; else echo "$4"; fi }
-cmus_status="$(cmus-remote -Q)"
+cmus_status="$(cmus-remote -Q 2>/dev/null)"
 mixer_status="$(mixerctl)"
 mixer_vol="$(( $(echo "$mixer_status"|grep 'outputs.master='|cut -d',' -f2 ) * 100 / 255 ))%"
 
