@@ -4,6 +4,7 @@
 # Copyright 2018 Roman Zolotarev <hi@romanzolotarev.com>
 #
 # pkg_add slop ImageMagick feh xclip
+#
 
 set -e
 

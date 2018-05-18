@@ -6,27 +6,33 @@
 
 screencast_log=/tmp/screencast.log
 
-to_icon() { if echo "$1"|grep -q "$2"; then echo "$3"; else echo "$4"; fi }
-cmus_status="$(cmus-remote -Q 2>/dev/null)"
-mixer_status="$(mixerctl)"
-mixer_vol="$(( $(echo "$mixer_status"|grep 'outputs.master='|cut -d',' -f2 ) * 100 / 255 ))%"
+to_icon() {
+	if echo "$1"|grep -q "$2"; then echo "$3"; else echo "$4"; fi
+}
 
-if [ -n "$cmus_status" ]; then
-  printf '%+20s:%-4s%s%s ' \
-    "$(echo "$cmus_status"|grep 'tag title'|cut -c 11-30)" \
-    "$(echo "$cmus_status"|grep 'position'|cut -c 10-)"\
-    "$(to_icon "$cmus_status" 'set shuffle true' 'L' '.')" \
-    "$(to_icon "$cmus_status" 'set repeat_current true' 'R' '.')"
+cmus="$(cmus-remote -Q 2>/dev/null)"
+vol=$(( $(mixerctl outputs.master|cut -d',' -f2 ) * 100 / 255 ))
+
+if [ -n "$cmus" ]; then
+	printf '%+20s:%-4s%s%s ' \
+	"$(echo "$cmus"|grep 'tag title'|cut -c 11-30)" \
+	"$(echo "$cmus"|grep 'position'|cut -c 10-)"\
+	"$(to_icon "$cmus" 'set shuffle true' 'L' '.')" \
+	"$(to_icon "$cmus" 'set repeat_current true' 'R' '.')"
 fi
 
-printf '%+4s %s %sC ' \
-  "$(to_icon "$mixer_status" 'outputs.master.mute=off' "$mixer_vol" 'mute')" \
-  "$(to_icon "$(xset -q|grep LED|cut -d' ' -f21)" '00000000' 'A' 'Я')" \
-  "$(sysctl -n hw.sensors.cpu0|cut -d'.' -f1)"
+printf '%+4s\% %s %sC ' \
+"$(to_icon "$(mixerctl outputs.master.mute)" 'off' "$vol" 'mute')" \
+"$(to_icon "$(xset -q|grep LED)" '00000000' 'A' 'Я')" \
+"$(sysctl -n hw.sensors.cpu0|cut -d'.' -f1)"
 
 if [ -f "$screencast_log" ]; then
-  fps="$(tr '' '\n'<"$screencast_log"|grep 'fps= '|tail -n1|cut -d'=' -f3|cut -d' ' -f2)"
-  printf '%+2s fps' "${fps:-0}"
+	fps="$(tr '' '\n'<"$screencast_log"|
+		grep 'fps= '|
+		tail -n1|
+		cut -d'=' -f3|
+		cut -d' ' -f2)"
+	printf '%+2sfps' "${fps:-0}"
 else
-  date "+%a %e %b %H:%M"
+	date "+%a %e %b %H:%M"
 fi
