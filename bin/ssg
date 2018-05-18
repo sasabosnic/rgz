@@ -98,6 +98,32 @@ md_to_html() {
 		done
 }
 
+
+# filter first 20 lines with links and link titles (dates)
+# shellcheck disable=SC2016
+fst_h1='/<[h1]*( id=".*")?>/{gsub(/<[^>]*>/,"");print($0);exit;}'
+a='^<li><a href="\(.*\)" title="\([^<]*\)">[^<]*<\/a>.*<\/li>.*'
+
+line_to_rss_item() {
+	url=$(echo "$line"|sed "s/$a/\\1/g")
+	date=$(echo "$line"|sed "s/$a/\\2/g")
+	file="${TEMP_DIR}${url}"
+	[ ! -f "$file" ] && return
+
+	title="$(awk "$fst_h1" "$file")"
+	# replace relative URIs with absolute URIs
+	article=$(sed "s/\\([hrefsc]*\\)=\"\\//\\1=\"$prefix/g" "$file")
+	cat >> "$RSS_FILE" << EOF
+<item>
+<title>$title</title>
+<guid>$SERVER_PROTO://${SERVER_NAME}$url</guid>
+<link>$SERVER_PROTO://${SERVER_NAME}$url</link>
+<pubDate>$date 00:00:00 +0000</pubDate>
+<description><![CDATA[$article]]></description>
+</item>
+EOF
+}
+
 index_to_rss() {
 	date_rfc_822=$(date "+%a, %d %b %Y %H:%M:%S %z")
 	cat > "$RSS_FILE" << EOF
@@ -112,32 +138,10 @@ index_to_rss() {
 <managingEditor>$RSS_AUTHOR</managingEditor>
 EOF
 
-	# filter first 20 lines with links and link titles (dates)
-	# shellcheck disable=SC2016
-	first_h1_tag='/<[h1]*( id=".*")?>/{gsub(/<[^>]*>/,"");print($0);exit;}'
-	link_tag='^<li><a href="\(.*\)" title="\([^<]*\)">[^<]*<\/a>.*<\/li>.*'
 	prefix="$SERVER_PROTO:\\/\\/$SERVER_NAME\\/"
-	grep "$link_tag" "$INDEX_HTML_FILE" |
+	grep "$a" "$INDEX_HTML_FILE" |
 	head -n20 |
-	while read -r line; do
-		url=$(echo "$line"|sed "s/$link_tag/\\1/g")
-		date=$(echo "$line"|sed "s/$link_tag/\\2/g")
-		file="${TEMP_DIR}${url}"
-		if [ -f "$file" ]; then
-			title="$(awk "$first_h1_tag" "$file")"
-			# replace relative URIs with absolute URIs
-			article=$(sed "s/\\([hrefsc]*\\)=\"\\//\\1=\"$prefix/g" "$file")
-			cat >> "$RSS_FILE" << EOF
-<item>
-<title>$title</title>
-<guid>$SERVER_PROTO://${SERVER_NAME}$url</guid>
-<link>$SERVER_PROTO://${SERVER_NAME}$url</link>
-<pubDate>$date 00:00:00 +0000</pubDate>
-<description><![CDATA[$article]]></description>
-</item>
-EOF
-		fi
-	done
+	while read -r line; do line_to_rss_item "$line"; done
 	echo '</channel></rss>' >> "$RSS_FILE"
 }
 
@@ -145,11 +149,11 @@ wrap_html() {
 	# generate sorted sitemap
 	find_h1_tag='/<[h1]*( id=".*")?>/'
 	# shellcheck disable=SC2016
-	get_tag_content='{gsub(/<[^>]*>/,"");print(FILENAME"===="$0);exit;}'
+	tag_content='{gsub(/<[^>]*>/,"");print(FILENAME"===="$0);exit;}'
 	sitemap="$(
 	find "$TEMP_DIR" -type f -name '*.html'|
 		while read -r file; do
-			awk "${find_h1_tag}${get_tag_content}" "$file"
+			awk "${find_h1_tag}${tag_content}" "$file"
 		done|
 		sort
 	)"
