@@ -32,25 +32,18 @@ html {
 .light-off-button:hover:after,
 .light-off-button-inline:hover:after {
   color: #357edd;
-  border-bottom: 1px solid #357edd;
+  border-bottom: 0;
 }
 
 .light-off:checked ~ .page .light-off-button:hover:after,
 .light-off:checked ~ .page .light-off-button-inline:hover:after {
   color: #ddddb6;
- border-bottom: 1px solid #aaaa96;
+  border-bottom: 0;
 }
 
 .light-off-button:after,
 .light-off-button-inline:after {
-  content: "turn light off";
-  border-bottom: 1px solid #cccccc;
-}
-
-.light-off:checked ~ .page .light-off-button:after,
-.light-off:checked ~ .page .light-off-button-inline:after {
-  content: "turn light on";
-  border-bottom: 1px solid #444444;
+  content: "\1F4A1";
 }
 
 

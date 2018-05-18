@@ -1,18 +1,23 @@
-"Roman thanks for sharing all this information. Really is helpful especially to new comers to the project."
-<div class="quote"><a href="https://mobile.twitter.com/tuxbsd/status/987336763508183041">
-<img src="/avatars/tuxbsd.jpeg" class="quote__avatar" title="20 Apr 2018" alt="Josh Stephens (@tuxbsd)"></a>
-<span class="quote__name">Josh Stephens (@tuxbsd)</span></div>
+"Roman thanks for sharing all this information. Really is helpful
+especially to new comers to the project." <div class="quote"><a
+href="https://mobile.twitter.com/tuxbsd/status/987336763508183041"><img
+src="/avatars/tuxbsd.jpeg"
+title="20 Apr 2018"
+alt="Josh Stephens (@tuxbsd)" class="quote__avatar"></a><span class="quote__name">
+Josh Stephens (@tuxbsd)</span></div>
 
-"Damn you are a machine!! Building tons of stuff."
-<div class="quote"><a href="https://mobile.twitter.com/BrutusUnix/status/986417139425869825">
-<img src="/avatars/BrutusUnix.jpeg" class="quote__avatar" title="18 Apr 2018" alt="EssentialOS=OpenBSD (@BrutusUnix)"></a>
-<span class="quote__name">EssentialOS=OpenBSD (@BrutusUnix)</span></div>
+"Damn you are a machine!! Building tons of stuff." <div class="quote"><a
+href="https://mobile.twitter.com/BrutusUnix/status/986417139425869825"><img
+src="/avatars/BrutusUnix.jpeg"
+title="18 Apr 2018"
+alt="EssentialOS=OpenBSD (@BrutusUnix)" class="quote__avatar"></a><span class="quote__name">
+EssentialOS=OpenBSD (@BrutusUnix)</span></div>
 
 # About this site
 
 This website is here, because I want to share with you what I've learned
-as a web developer and I want **to help beginners and junior developers to
-learn** same things, but **faster**. Thank you for your curiosity.
+as a web developer and I want **to help beginners and junior developers
+to learn** same things, but **faster**. Thank you for your curiosity.
 
 On these pages you can learn basics of web technologies and how to build
 your software development tool set with Unix-like operating systems and
@@ -20,16 +25,18 @@ command line tools.
 
 You can expect these pages [load fast](/fast.html) even if the internet
 connection is slow, all pages are just static HTML and CSS. To keep this
-site snappy and protect your privacy I avoid embedded web fonts, tracking,
-analytic tools, social media buttons. Most pages are just text.
+site snappy and protect your privacy I avoid embedded web fonts,
+tracking, analytic tools, social media buttons. Most pages are just
+text.
 
-To switch the color scheme click on <label class="light-off-button-inline"
-for="light-off"></label> link. It's always in the top right corner. On
-click it saves your preferences in a browser cookie, other than that no
-JavaScript is required to use this website.
+To switch the color scheme click on <label
+class="light-off-button-inline" for="light-off"></label>. It's always in
+the top right corner. On click it saves your preferences in a browser
+cookie, other than that no JavaScript is required to use this website.
 
-This website has been generated with [ssg](/ssg.html), served by [OpenBSD
-httpd](/openbsd/webserver.html), and hosted on [Vultr](/vultr.html).
+This website has been generated with [ssg](/ssg.html), served by
+[OpenBSD httpd](/openbsd/webserver.html), and hosted on
+[Vultr](/vultr.html).
 
 This project is [sponsored by you](/sponsors.html). Thank you!
 
