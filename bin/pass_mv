@@ -3,25 +3,28 @@
 # https://www.romanzolotarev.com/bin/pass_mv
 # Copyright 2018 Roman Zolotarev <hi@romanzolotarev.com>
 #
+
 set -e
 
 fail() { echo "$1"; exit 1; }
 
-if [ -z "$1" ] || [ -z "$2" ]; then fail "usage: $(basename "$0") id new_id"; fi
+if [ -z "$1" ] || [ -z "$2" ]; then
+	fail "usage: $(basename "$0") id new_id"
+fi
 
-printf 'Pass phrase: '; stty -echo; read -r pass; stty echo; printf '\n'
+printf 'Pass phrase: '; stty -echo; read -r pass; stty echo; echo
 if [ -z "$pass" ]; then fail 'The pass phrase cannot be empty.'; fi
 
 if src_data=$(crypt pass export "$1" "$pass"); then
-  printf "%s" "$src_data" | crypt pass import "$2" "$pass"
-  dst_data=$(crypt pass export "$2" "$pass")
-  if [ "$dst_data" = "$src_data" ]; then
-    echo "$2"
-    printf "%s\\n" "$dst_data"
-    crypt pass rm "$1"
-  else
-    fail "Can't export $2"
-  fi
+	printf "%s" "$src_data" | crypt pass import "$2" "$pass"
+	dst_data=$(crypt pass export "$2" "$pass")
+	if [ "$dst_data" = "$src_data" ]; then
+		echo "$2"
+		echo "$dst_data"
+		crypt pass rm "$1"
+	else
+		fail "Can't export $2"
+	fi
 else
-  fail "Can't export $1"
+	fail "Can't export $1"
 fi

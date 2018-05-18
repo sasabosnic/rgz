@@ -1,5 +1,0 @@
-date=$(cat)
-month=$(printf "Jan\\nFeb\\nMar\\nApr\\nMay\\nJun\\nJul\\nAug\\nSep\\nOct\\nNov\\nDec"|
-  sed -n "$(echo "$date"|sed -E "s,.{5}(..).*,\\1,")"p)
-echo "$date"|
-  sed -E "s,(....)....(..),\\2 $month \\1 00:00:00 GMT,"
