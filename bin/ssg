@@ -50,7 +50,7 @@ HEADER_FILE="$PWD/header.html"
 	HEADER=$(cat "$HEADER_FILE") ||
 	HEADER=$(cat << EOF
 <a href="/">Home</a> -
-<a href="/twitter.html">Twitter</a>
+<a href="/twitter.html">@romanzolotarev</a>
 EOF
 )
 [ -f "$FOOTER_FILE"       ] &&
@@ -202,12 +202,12 @@ echo "$sitemap"|
 			/index.html)
 				title='Home'
 				head_title="$WEBSITE_TITLE"
-				header__home=''
+				header=''
 				;;
 			*)
 				title="${line#*====}"
 				head_title="$title - $WEBSITE_TITLE"
-				header__home="$HEADER"
+				header="$HEADER"
 				;;
 		esac
 		# merge page with html template
@@ -221,32 +221,10 @@ echo "$sitemap"|
 <style>$styles</style>
 </head>
 <body>
-<script>
-!function(t){
-  t.addEventListener('DOMContentLoaded', function () {
-    var l = t.querySelector('#light-off');
-    if (l === null) { console.log('Lights-out...'); }
-    else {
-      l.checked = t.cookie.match(/lightOff=true/) !== null;
-      l.addEventListener('change', function () {
-        t.cookie = 'lightOff=' + JSON.stringify(l.checked) + ';path=/';
-      });
-    }
-  })
-}(document);
-</script>
-<input class="light-off" type="checkbox" hidden="hidden" id="light-off">
-<div class="page">
 $announcement
-<div class="header">
-<div class="header__left">$header__home</div>
-<div class="header__right">
-<label for="light-off" class="light-off-button"></label>
-</div>
-</div>
+<div class="header">$header</div>
 <div class="article">$article</div>
 <div class="footer">$FOOTER</div>
-</div>
 </body>
 </html>
 EOF
