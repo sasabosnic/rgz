@@ -49,4 +49,6 @@ You can setup your own server or use something like
 [Rsync.net](http://www.rsync.net/products/attic.html) account ($9/year for
 25 GB or $0.36/year/GB).
 
-_Tested on OpenBSD 6.3 with borgbackup-1.1.4p0._
+---
+
+Tested on OpenBSD 6.3 with borgbackup-1.1.4p0.

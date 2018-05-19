@@ -16,17 +16,17 @@ you're reading here, subscribe to [my RSS feed](/rss.xml), follow me on
 - [Enable HTTPS on OpenBSD with Let's Encrypt and acme-client(1)](/openbsd/acme-client.html "13 Apr 2018")
 - [Configure httpd(8) on OpenBSD for your web server](/openbsd/webserver.html "12 Apr 2018")
 - [Deploy a VPS on Vultr](/vultr.html "11 Apr 2018")
-- [Generate your static site with lowdown(1)](/ssg.html "07 Apr 2018") _[ssg](/bin/ssg)_
+- [Generate your static site with lowdown(1)](/ssg.html "07 Apr 2018")
 - [Upgrade OpenBSD to 6.3](/openbsd/upgrade.html "03 Apr 2018")
-- [Generate strong passwords with a shell script](/diceware.html "30 Mar 2018") _[diceware](/bin/diceware)_
+- [Generate strong passwords with a shell script](/diceware.html "30 Mar 2018")
 - [Change time zone in OpenBSD](/openbsd/timezone.html "16 Mar 2018")
 - [Backup with borg](/backup.html "02 Mar 2018")
 - [Mount drives on OpenBSD](/openbsd/mount.html "01 Mar 2018")
 - [Print from the command line on macOS](/macos/cups.html "27 Feb 2018")
-- [Take a look at my fanless OpenBSD desktop setup](/setup.html "17 Nov 2017") _[setup](/openbsd/setup.sh)_
+- [Take a look at my fanless OpenBSD desktop setup](/setup.html "17 Nov 2017")
 - [Consider OpenBSD](/openbsd/why.html "15 Nov 2017")
 - [Enable full disk encryption on OpenBSD](/openbsd/fde.html "02 Nov 2017")
-- [Manage your passwords with openssl(1)](/pass.html "10 Oct 2017") _[pass](/bin/pass)_
+- [Manage your passwords with openssl(1)](/pass.html "10 Oct 2017")
 - [Configure YubiKey for login and SSH on OpenBSD](/openbsd/yubikey.html "01 Sep 2017")
 - [Install OpenBSD on your desktop](/openbsd/install.html "20 Sep 2017")
 - [Prepare a bootable OpenBSD drive on macOS](/macos/openbsd.html "19 Sep 2017")

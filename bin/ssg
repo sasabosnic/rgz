@@ -92,7 +92,7 @@ copy_to_document_root() {
 md_to_html() {
 	find "$TEMP_DIR" -type f -name '*.md'|
 		while read -r file; do
-			lowdown -D html-skiphtml -d metadata \
+			lowdown -D html-skiphtml -D smarty -d metadata \
 				"$file" > "${file%\.md}.html" &&
 				rm "$file"
 		done
@@ -235,7 +235,7 @@ echo "$sitemap"|
   })
 }(document);
 </script>
-<input class="light-off" type="checkbox" id="light-off">
+<input class="light-off" type="checkbox" hidden="hidden" id="light-off">
 <div class="page">
 $announcement
 <div class="header">
