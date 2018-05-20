@@ -5,47 +5,34 @@ tweeted
 ](https://mobile.twitter.com/romanzolotarev/status/909807483149066248)
 about [my fanless OpenBSD setup](/setup.html). You retweeted and liked
 that tweet, and then
-[@mischapeters](https://mobile.twitter.com/mischapeters) sent me a T-shirt
-and almost at the same time [@FiLiS](https://mobile.twitter.com/FiLiS)
-mailed me few stickers...
+[@mischapeters](https://mobile.twitter.com/mischapeters) sent me a
+T-shirt and almost at the same time
+[@FiLiS](https://mobile.twitter.com/FiLiS) mailed me few stickers...
 
-<div class="quote"> <a
-href="https://mobile.twitter.com/mischapeters/status/910019073223872512"><img class="quote__avatar"
-src="/avatars/mischapeters.jpeg"
-title="19 Sep 2017"
-alt="(((Mischa &#x1F576; &#x1F421; RCX))) (@mischapeters)"></a><span class="quote__text">
-Nice setup! That needs a RUN BSD shirt!</span></div>
+> [Mischa](https://mobile.twitter.com/mischapeters/status/910019073223872512 "19 Sep 2017"):
+"Nice setup! That needs a RUN BSD shirt!"
 
-<div class="quote"><a
-href="https://mobile.twitter.com/FiLiS/status/925425396941770755"><img class="quote__avatar"
-src="/avatars/FiLiS.jpeg"
-title="31 Oct 2017"
-alt="Not Evander Sinque (@FiLiS)"></a><span class="quote__text">
-...DM me your address and I'll send you some.</span></div>
+> [FiLiS](https://mobile.twitter.com/FiLiS/status/925425396941770755 "31 Oct 2017"):
+"...DM me your address and I'll send you some."
 
-Few months later [Mischa](https://mobile.twitter.com/mischapeters) has
-helped me again and hosted [an European mirror of this very
-website](http://hi.romanzolotarev.com/).
+Few months later Mischa has helped me again and hosted [an European
+mirror of this very website](http://hi.romanzolotarev.com/).
 
-<div class="quote"> <a
-href="https://mobile.twitter.com/mischapeters/status/984827416215457794"><img class="quote__avatar"
-src="/avatars/mischapeters.jpeg"
-title="13 Apr 2018"
-alt="(((Mischa &#x1F576; &#x1F421; RCX))) (@mischapeters)"></a><span class="quote__text">
-Let me know if you need an OpenBSD VPS on VMM in Amsterdam.</span></div>
+> [Mischa](https://mobile.twitter.com/mischapeters/status/984827416215457794 "13 Apr 2018"):
+"Let me know if you need an OpenBSD VPS on VMM in Amsterdam."
 
 That's how it all started.
 
 ---
 
-First of all, your feedback and tangible support is
-a priceless source of motivation. Knowing that a stranger from the
-internet supports my project boosts my morale enormously. Thank you.
+First of all, your feedback and tangible support is a priceless source
+of motivation. Knowing that a stranger from the internet supports my
+project boosts my morale enormously. Thank you.
 
-All goods and services you donate go directly to support this website, to
-promote other software projects I use (for example, [OpenBSD
-Project](https://www.openbsdfoundation.org/donations.html),
-[Run BSD](http://runbsd.info/)).
+All goods and services you donate go directly to support this website,
+to promote other software projects I use (for example, [OpenBSD
+Project](https://www.openbsdfoundation.org/donations.html), [Run
+BSD](http://runbsd.info/)).
 
 Your money covers [hosting](/vultr.html) and [domain
 registration](https://iwantmyname.com/) fees for this website. The rest
@@ -60,8 +47,12 @@ To keep this website alive:
 1. Try my how-to guides, review, run and my scripts
 1. Send me some feedback via DMs on Twitter and/or email
 1. **[Donate directly via PayPal](/paypal.html)**
-1. Send me some satoshis to **3MZ9d6NTsirYfjx9iJVieT2WCHnzBZckHd**
 1. **[Become my Patron on Patreon](/patreon.html)**
+1. Send me some satoshis to
+
+```
+3MZ9d6NTsirYfjx9iJVieT2WCHnzBZckHd
+```
 
 Don't hesitate to contact me if you have questions or need my help.
 
@@ -70,8 +61,8 @@ Roman
 
 ---
 
-P.S. Here are all received donations. Please ping me, if yours hasn't been
-listed, or if you want to remove your name from the list.
+P.S. Here are all received donations. Please ping me, if yours hasn't
+been listed, or if you want to remove your name from the list.
 
 Updated on 16 May 2018.
 

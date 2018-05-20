@@ -10,6 +10,7 @@ http://steve-yegge.blogspot.com/feeds/posts/default?alt=rss
 http://theorangeduck.com/feeds/pages
 http://undeadly.org/cgi?action=rss
 http://www.daemonology.net/blog/index.rss
+http://www.feyrer.de/NetBSD/bx/blosxom.cgi/index.rss
 http://www.joelonsoftware.com/rss.xml
 http://www.magicreadalong.com/episode?format=rss
 http://www.tedunangst.com/flak/rss

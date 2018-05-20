@@ -1,12 +1,9 @@
-"Two days ago I thought that everything I would write about is already
+> "Two days ago I thought that everything I would write about is already
 written, and probably not once. Now I feel kind of tickle going to write
 something (in fact anything, I've got so many things to tell about), but
-didn't find spare couple hours yet :)" <div class="quote"><a
-href="https://mobile.twitter.com/healdementia/status/987440001142095873"><img
-src="/avatars/healdementia.jpeg"
-title="21 Apr 2018"
-alt="Marina Kuznetsova (@healdementia)" class="quote__avatar"></a><span class="quote__name">
-Marina Kuznetsova (@healdementia)</span></div>
+didn't find spare couple hours yet :)"<br>
+[Marina Kuznetsova](https://mobile.twitter.com/healdementia/status/987440001142095873 "21 Apr 2018")
+(@healdementia)
 
 # Why do you need a&nbsp;website?
 

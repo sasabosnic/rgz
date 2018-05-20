@@ -1,27 +1,22 @@
-"It's really inspiring to see you give back much to the community. I
+> "It's really inspiring to see you give back much to the community. I
 appreciate your work - ssg, your how-to's for less familiar
-users, etc. I felt I should mention that to you &#x1F600;"
-<div class="quote"><a
-href="https://mobile.twitter.com/h3artbl33d/status/985173503103074304"><img
-src="/avatars/h3artbl33d.jpeg"
-title="14 Apr 2018"
-alt="H3artbl33d (@h3artbl33d)" class="quote__avatar"></a><span class="quote__name">
-H3artbl33d (@h3artbl33d)</span></div>
+users, etc. I felt I should mention that to you &#x1F600;"<br>
+[H3artbl33d](https://mobile.twitter.com/h3artbl33d/status/985173503103074304 "14 Apr 2018")
+(@h3artbl33d)
 
-"Thanks to <a
-href="https://twitter.com/romanzolotarev">@romanzolotarev</a>'s static
+> "Thanks to <a
+href="https://mobile.twitter.com/romanzolotarev">@romanzolotarev</a>'s static
 site generator, I'm back on my "static site sausage machine for some extra
-pocket peanuts" kick again."
-<div class="quote"><a
-href="https://mobile.twitter.com/pr1ntf/status/988605007556571136"><img
-src="/avatars/pr1ntf.jpeg"
-title="24 Apr 2018"
-alt="Rebel Without a Clue &#x1F47D;&#x1F4E1; (@pr1ntf)" class="quote__avatar"></a><span class="quote__name">
-Rebel Without a Clue &#x1F47D;&#x1F4E1; (@pr1ntf)</span></div>
+pocket peanuts" kick again."<br>
+[Rebel Without a Clue &#x1F47D;&#x1F4E1;](https://mobile.twitter.com/pr1ntf/status/988605007556571136 "24 Apr 2018")
+(@pr1ntf)
+
+---
 
 # Static site generator with rsync and lowdown
 
-[ssg](/bin/ssg) is a tiny POSIX-compliant shell script with few dependencies:
+[ssg](/bin/ssg) is a tiny POSIX-compliant shell script with few
+dependencies:
 
 - [lowdown(1)](https://kristaps.bsd.lv/lowdown/) to parse markdown,
 - [rsync(1)](https://rsync.samba.org/) to copy temporary files, and
@@ -50,12 +45,12 @@ _299 LoC in Vim with Terminus 8px. [Enlarge, enhance, zoom!](/ssg.png)_
 
 `ssg` is **one hundred times smaller** than Jekyll.
 
-`ssg` and its dependencies are about 800KB _combined_. Compare that to 78MB
-of ruby with Jekyll and all the gems. So `ssg` can be installed in just
-few seconds on almost any Unix-like operating system.
+`ssg` and its dependencies are about 800KB _combined_. Compare that to
+78MB of ruby with Jekyll and all the gems. So `ssg` can be installed in
+just few seconds on almost any Unix-like operating system.
 
-Obviously, `ssg` is tailored for my needs, it has all features I need and
-only those I use.
+Obviously, `ssg` is tailored for my needs, it has all features I need
+and only those I use.
 
 Keeping `ssg` helps you to master your Unix-shell skills: `awk`, `grep`,
 `sed`, `sh`, `cut`, `tr`. As a web developer you work with lots of text:
@@ -63,18 +58,18 @@ code and data. So you better master these wonderful tools.
 
 ## Performance
 
-**100 pps**. On modern computers `ssg` generates a hundred pages per second.
-Half of a time for markdown rendering and another half for wrapping
-articles into the template. I heard good static site generators
-work---twice as fast---at 200 pps, so there's lots of performance that can
-be gained. ;)
+**100 pps**. On modern computers `ssg` generates a hundred pages per
+second.  Half of a time for markdown rendering and another half for
+wrapping articles into the template. I heard good static site generators
+work---twice as fast---at 200 pps, so there's lots of performance that
+can be gained. ;)
 
 ---
 
 ## Install
 
-If you agree with the license, feel free to use this script, its HTML and
-my [styles.css](/styles.css) or/and re-write them for your needs.
+If you agree with the license, feel free to use this script, its HTML
+and CSS or/and re-write them for your needs.
 
 
 Download `ssg` and install dependencies. For example, on OpenBSD:
@@ -127,19 +122,9 @@ page URL and date from `<a>` tag):
 
 ## Optional files
 
-1. `header.html` - header of every page
-1. `footer.html` - and its footer
-1. `announcement.html` - added to the top of every page, if the file
-   exists.
-
-If you want to override defaults, here are examples for `header`...
-
-    <a href="/">Home</a> -
-    <a href="https://twitter.com/jack">Twitter</a>
-
-... and `footer`:
-
-    Copyright 2018 <a href="/about.html">Jack</a>
+1. `_header.html` - header of every page
+1. `_footer.html` - and its footer
+1. `_styles.css` - styles
 
 ## Reserved file names
 
@@ -170,11 +155,11 @@ this:
 
     .
     |-- .git/
+    |-- _footer.html
+    |-- _header.html
+    |-- _styles.css
     |-- about.md
-    |-- footer.html
-    |-- header.html
-    |-- index.md
-    `-- styles.css
+    `-- index.md
 
 After you run `ssg` (don't forget to set `$DOCS`):
 
@@ -188,9 +173,6 @@ You have your static website ready in `/var/www/htdocs/www`.
     .
     |
     |-- about.html
-    |-- footer.html
-    |-- header.html
-    |-- styles.css
     |-- index.html
     |-- rss.xml
     `-- sitemap.xml

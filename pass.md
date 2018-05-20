@@ -5,12 +5,10 @@ own risk.
 
 ---
 
-"zOMG! This is AWESOME! Great job, going to set this up first thing in the morning. &#x1F495;" <div class="quote"><a
-href="https://mobile.twitter.com/h3artbl33d/status/983827387409403904"><img
-src="/avatars/h3artbl33d.jpeg"
-title="11 Apr 2018"
-alt="H3artbl33d (@h3artbl33d)" class="quote__avatar"></a><span class="quote__name">
-H3artbl33d (@h3artbl33d)</span></div>
+> "zOMG! This is AWESOME! Great job, going to set this up first thing in
+the morning. &#x1F495;"<br>
+[H3artbl33d](https://mobile.twitter.com/h3artbl33d/status/983827387409403904 "11 Apr 2018")
+(@h3artbl33d)
 
 # Password manager powered by LibreSSL
 

@@ -36,30 +36,18 @@ trap exit HUP INT TERM
 [ "$2" = '--clean' ] && RSYNC_FLAGS='--delete-excluded' || RSYNC_FLAGS=''
 
 INDEX_HTML_FILE="$TEMP_DIR/index.html"
-CSS_FILE="$TEMP_DIR/styles.css"
 RSS_FILE="$TEMP_DIR/rss.xml"
 RSS_URL="$SERVER_PROTO://$SERVER_NAME/rss.xml"
 SITEMAP="$TEMP_DIR/sitemap.xml"
 
-ANNOUNCEMENT_FILE="$PWD/announcement.html"
-FOOTER_FILE="$PWD/footer.html"
-HEADER_FILE="$PWD/header.html"
-[ -f "$ANNOUNCEMENT_FILE" ] &&
-	ANNOUNCEMENT_TEXT=$(cat "$ANNOUNCEMENT_FILE")
-[ -f "$HEADER_FILE"       ] &&
+CSS_FILE="$PWD/_styles.css"
+HEADER_FILE="$PWD/_header.html"
+FOOTER_FILE="$PWD/_footer.html"
+[ -f "$CSS_FILE" ] && CSS="<style><!--$(cat "$CSS_FILE")--></style>"
+[ -f "$HEADER_FILE" ] &&
 	HEADER=$(cat "$HEADER_FILE") ||
-	HEADER=$(cat << EOF
-<a href="/">Home</a> -
-<a href="/twitter.html">@romanzolotarev</a>
-EOF
-)
-[ -f "$FOOTER_FILE"       ] &&
-	FOOTER=$(cat "$FOOTER_FILE") ||
-	FOOTER=$(cat << EOF
-Copyright $COPYRIGHT_YEAR&ndash;$(date +%Y)
-<a href="/about.html">$WEBSITE_TITLE</a>
-EOF
-)
+	HEADER="<a href=\"/\">Home</a>"
+[ -f "$FOOTER_FILE" ] && FOOTER=$(cat "$FOOTER_FILE")
 
 ##########################################################################
 
@@ -185,14 +173,6 @@ EOF
 	done
 	echo '</urlset>' >> "$SITEMAP"
 	# generate html pages
-	styles=$(cat "$CSS_FILE")
-	[ -n "$ANNOUNCEMENT_TEXT" ] &&
-		announcement="$(cat << EOF
-<div class="announcement">
-<div class="announcement__text">$ANNOUNCEMENT_TEXT</div>
-</div>
-EOF
-)"
 echo "$sitemap"|
 		while read -r line; do
 		page=${line%====*}
@@ -202,12 +182,10 @@ echo "$sitemap"|
 			/index.html)
 				title='Home'
 				head_title="$WEBSITE_TITLE"
-				header=''
 				;;
 			*)
 				title="${line#*====}"
 				head_title="$title - $WEBSITE_TITLE"
-				header="$HEADER"
 				;;
 		esac
 		# merge page with html template
@@ -218,11 +196,10 @@ echo "$sitemap"|
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="alternate" type="application/atom+xml" href="/rss.xml">
 <link rel="icon" type="image/png" href="/favicon.png">
-<style>$styles</style>
+$CSS
 </head>
 <body>
-$announcement
-<div class="header">$header</div>
+<div class="header">$HEADER</div>
 <div class="article">$article</div>
 <div class="footer">$FOOTER</div>
 </body>

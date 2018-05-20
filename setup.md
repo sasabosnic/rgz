@@ -1,32 +1,22 @@
-"my X1 Carbon was delayed yet again... That @romanzolotarev will be ready
+> "my X1 Carbon was delayed yet again... That @romanzolotarev will be ready
 with his OpenBSD setup by the time it finally ships is the only good thing
-about the delay. Tot stealing his work" <div class="quote"><a
-href="https://mobile.twitter.com/zeRusski/status/930362868440162304"><img
-src="/avatars/zeRusski.jpeg"
-title="14 Nov 2017"
-alt="Vlad Kozin (@zeRusski)" class="quote__avatar"></a><span class="quote__name">
-Vlad Kozin (@zeRusski)</span></div>
+about the delay. Tot stealing his work"<br>
+[Vlad Kozin](https://mobile.twitter.com/zeRusski/status/930362868440162304 "14 Nov 2017")
+(@zeRusski)
 
-"Sweet rig, I know what I'm asking for on my next birthday!" <div class="quote"><a
-href="https://mobile.twitter.com/smhhms/status/909899624948920320"><img
-src="/avatars/smhhms.jpeg"
-title="18 Sep 2017"
-alt="Sean (@smhhms)" class="quote__avatar"></a><span class="quote__name">
-Sean (@smhhms)</span></div>
+> "Sweet rig, I know what I'm asking for on my next birthday!"<br>
+[Sean](https://mobile.twitter.com/smhhms/status/909899624948920320 "18 Sep 2017")
+(@smhhms)
 
-"I am in love with this setup. Simple. Awesome. Functional. Efficient." <div class="quote"><a
-href="https://mobile.twitter.com/liddy_io/status/989840013650288640"><img
-src="/avatars/liddy_io.jpeg"
-title="27 Apr 2018"
-alt="BuildItBenjamin (@liddy_io)" class="quote__avatar"></a><span class="quote__name">
-BuildItBenjamin (@liddy_io)</span></div>
+> "I am in love with this setup. Simple. Awesome. Functional. Efficient."<br>
+[BuildItBenjamin](https://mobile.twitter.com/liddy_io/status/989840013650288640 "27 Apr 2018")
+(@liddy_io)
 
-"Dope setup" <div class="quote"><a
-href="https://mobile.twitter.com/nixcraft/status/991738751666794497"><img
-src="/avatars/nixcraft.jpeg"
-title="2 May 2018"
-alt="nixCraft: The Best Linux Blog In the Unixverse (@nixcraft)" class="quote__avatar"></a><span class="quote__name">
-nixCraft: The Best Linux Blog In the Unixverse (@nixcraft)</span></div>
+> "Dope setup"<br>
+[nixCraft: The Best Linux Blog In the Unixverse](https://mobile.twitter.com/nixcraft/status/991738751666794497 "2 May 2018")
+(@nixcraft)
+
+---
 
 # OpenBSD on my fanless desktop computer
 
@@ -82,12 +72,9 @@ open. On the left side: [tmux(1)](http://man.openbsd.org/tmux.1) in
 
 ![cwm](/cwm.jpeg)
 
-"It’s a nice .cwmrc! I even modeled mine after it.<br>Recommended. 5&nbsp;stars." <div class="quote"><a
-href="https://mobile.twitter.com/mischapeters/status/987004963682430976"><img
-src="/avatars/mischapeters.jpeg"
-title="19 Apr 2018"
-alt="(((Mischa &#x1F576; &#x1F421; RCX))) (@mischapeters)" class="quote__avatar"></a><span class="quote__name">
-(((Mischa &#x1F576; &#x1F421; RCX))) (@mischapeters)</span></div>
+> "It’s a nice .cwmrc! I even modeled mine after it. Recommended. 5&nbsp;stars."<br>
+[(((Mischa &#x1F576; &#x1F421; RCX)))](https://mobile.twitter.com/mischapeters/status/987004963682430976 "19 Apr 2018")
+(@mischapeters)
 
 ## Zotac CI527
 
@@ -119,44 +106,47 @@ down in five minutes.
 ![Zotac CI527](/zotac-ci527.jpeg)
 _Zotac CI527 with [RUNBSD](http://runbsd.info/) sticker on the top_
 
+---
+
 If you're curious about the sticker, here is how it found me:
 
-<div class="quote"><a
-href="https://mobile.twitter.com/romanzolotarev/status/925424605367623680"><img
-src="/avatars/romanzolotarev.jpeg"
-title="31 Oct 2017"
-alt="Roman Zolotarev (@romanzolotarev)" class="quote__avatar"></a><span class="quote__text">
-Hi <a href="https://mobile.twitter.com/FiLiS">@FiLiS</a>, where can I buy those wonderful RUN BSD stickers?</span></div>
+> [RZ](https://mobile.twitter.com/romanzolotarev/status/925424605367623680
+"31 Oct 2017"): Hi <a
+href="https://mobile.twitter.com/FiLiS">@FiLiS</a>, where can I buy
+those wonderful RUN BSD stickers?
 
-<div class="quote"><a
-href="https://mobile.twitter.com/FiLiS/status/925425396941770755"><img
-src="/avatars/FiLiS.jpeg"
-title="31 Oct 2017"
-alt="Not Evander Sinque (@FiLiS)" class="quote__avatar"></a><span class="quote__text">
-you can't. You can DM me your address and I'll send you some. :)</span></div>
+> [FiLiS](https://mobile.twitter.com/FiLiS/status/925425396941770755 "31
+Oct 2017"): > you can't. You can DM me your address and I'll send you
+some. :)
 
 Two weeks later...
 
-<div class="quote"><a href="https://mobile.twitter.com/romanzolotarev/status/931467864896409600">
-<img src="/avatars/romanzolotarev.jpeg" class="quote__avatar" title="17 Nov 2017" alt="Roman Zolotarev (@romanzolotarev)"></a>
-<span class="quote__text"><a href="https://mobile.twitter.com/hashtag/RUNBSD">#RUNBSD</a> It's official now. Thank you <a href="https://mobile.twitter.com/FiLiS">@FiLiS</a></span></div>
+> [RZ](https://mobile.twitter.com/romanzolotarev/status/931467864896409600
+"17 Nov 2017"): <a
+href="https://mobile.twitter.com/hashtag/RUNBSD">#RUNBSD</a> It's
+official now. Thank you <a
+href="https://mobile.twitter.com/FiLiS">@FiLiS</a>
 
-<div class="quote"><a href="https://mobile.twitter.com/FiLiS/status/931619067185811459">
-<img src="/avatars/FiLiS.jpeg" class="quote__avatar" title="17 Nov 2017" alt="Not Evander Sinque (@FiLiS)"></a>
-<span class="quote__text">You're welcome. :)</span></div>
+> [FiLiS](https://mobile.twitter.com/FiLiS/status/931619067185811459 "17
+Nov 2017"): You're welcome. :)
+
+---
 
 Almost all the hardware is supported by OpenBSD 6.3 out-of-the-box. For
 Intel network devices (LAN and WiFi) you'll need firmware binary images.
-OpenBSD downloads and installs them automatically on the first boot. I've
-not tested DisplayPort and USB-C, but supposed to work.
+OpenBSD downloads and installs them automatically on the first boot.
+I've not tested DisplayPort and USB-C, but supposed to work.
 
 Only Bluetooth doesn't work because, well, [it
 shouldn't](https://marc.info/?l=openbsd-cvs&m=140511572108715&w=2).
 
-_"I'm not very familiar, but the implementation had too many issues for it to be salvageable, it was treated like a network protocol which turned out to be the wrong design. Commit message suggests it also simply didn't work: <a href="https://marc.info/?l=openbsd-cvs&m=140511572108715&w=2">marc.info?l=openbsd-cvs...</a>"_
-<div class="quote"><a href="https://mobile.twitter.com/canadianbryan/status/984782198887911425">
-<img src="/avatars/canadianbryan.jpeg" class="quote__avatar" title="13 Apr 2018" alt="Bryan Steele (@canadianbryan)"></a>
-<span class="quote__name">Bryan Steele (@canadianbryan)</span></div>
+> "I'm not very familiar, but the implementation had too many issues for
+it to be salvageable, it was treated like a network protocol which
+turned out to be the wrong design. Commit message suggests it also
+simply didn't work: <a
+href="https://marc.info/?l=openbsd-cvs&m=140511572108715&w=2">marc.info?l=openbsd-cvs...</a>"<br>
+[Bryan Steele](https://mobile.twitter.com/canadianbryan/status/984782198887911425 "13 Apr 2018")
+(@canadianbryan)
 
 ## ErgoDox EZ V3
 
@@ -205,12 +195,11 @@ For notes I use [Field Notes 48-page Memo Books][m]. In those
 rare moments when I'm away from my computer I can jot things down at the
 rate of two hundred pages per year.
 
-<div class="quote"><a
-href="https://mobile.twitter.com/liddy_io/status/910086740223946753"><img
-src="/avatars/liddy_io.jpeg"
-title="19 Sep 2017"
-alt="BuildItBenjamin (@liddy_io)" class="quote__avatar"></a><span class="quote__text">
-Bonus points for using the Field Notes ;)</span></div>
+---
+
+> "Bonus points for using the Field Notes ;)"<br>
+[BuildItBenjamin](https://mobile.twitter.com/liddy_io/status/910086740223946753 "19 Sep 2017")
+(@liddy_io)
 
 ![Field Notes Memo Book](/field-notes-memo-book.jpeg)
 _My first memo book. Circa 2012_

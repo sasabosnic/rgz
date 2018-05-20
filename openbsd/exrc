@@ -1,4 +1,4 @@
-map tf {!}fmt -pw 72
+map tf {!}fmt -pw 72}}{j
 map ts {!}sort
 map tS {!}sort -r
 map tt :%s/[[:space:]]\{1,\}$//g

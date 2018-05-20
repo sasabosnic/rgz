@@ -12,38 +12,38 @@ reading.
 
 I "touch typed" with seven fingers for decades and managed to type at
 average speed with pretty poor accuracy. I tried so many times to learn
-proper technique, but I always gave up in a week. A year ago I decided it
-was now or never. I had only one goal: to type faster, like 100 WPM.
+proper technique, but I always gave up in a week. A year ago I decided
+it was now or never. I had only one goal: to type faster, like 100 WPM.
 _Spoiler: I'm not there yet_. Back then I was using QWERTY on an Apple
 Wireless keyboard.
 
 This was my method: "Okay, roll up your sleeves, and just memorize every
 key for all ten fingers." It took two days. I memorized all the keys
-during that weekend. Typing speed plummeted to 10 WPM on the first day; I
-was "thinking" before pressing almost every key. I could type with 100%
-accuracy without looking, but it was very very slow.
+during that weekend. Typing speed plummeted to 10 WPM on the first day;
+I was "thinking" before pressing almost every key. I could type with
+100% accuracy without looking, but it was very very slow.
 
 Next phase: typing lessons every day for an hour. From time to time I
-typed with my seven (favorite) fingers when I needed to get work done, but
-in a few days I switched to the ten-finger method cold turkey. I continued
-practicing every day at [Keybr][keybr] and [Keyhero][keyhero] and finally reached
-40 WPM in two weeks.
+typed with my seven (favorite) fingers when I needed to get work done,
+but in a few days I switched to the ten-finger method cold turkey. I
+continued practicing every day at [Keybr][keybr] and [Keyhero][keyhero]
+and finally reached 40 WPM in two weeks.
 
 Phew...
 
 As soon as I returned to my original speed and accuracy, I decided to
 upgrade my keyboard to an ergonomic one. Two months later [ErgoDox][ez]
-arrived. And of course, I wanted to try an alternative keyboard layout on
-it. After a quick analysis, I picked the Norman layout: it's easy to
+arrived. And of course, I wanted to try an alternative keyboard layout
+on it. After a quick analysis, I picked the Norman layout: it's easy to
 learn, and it significantly reduces distance traveled from the home row.
 
 Relearning. My speed dropped to 10 WPM, and recovered to 40 WPM in three
-weeks. I switched to the ErgoDox full time and played with ErgoDox layers,
-ending up with a single-layer solution. I reached 50 WPM in 40 days and
-stopped all typing lessons.
+weeks. I switched to the ErgoDox full time and played with ErgoDox
+layers, ending up with a single-layer solution. I reached 50 WPM in 40
+days and stopped all typing lessons.
 
-Today I am a happy ErgoDox user. My average speed on Norman is 60 WPM, and
-it's increasing every month, slowly but steadily.
+Today I am a happy ErgoDox user. My average speed on Norman is 60 WPM,
+and it's increasing every month, slowly but steadily.
 
 [ez]: https://ergodox-ez.com/
 [keybr]: https://www.keybr.com/
@@ -51,8 +51,8 @@ it's increasing every month, slowly but steadily.
 
 ## Lessons learned
 
-Fast and accurate typing is a must-have skill for a programmer. I wish I'd
-switched to the right path earlier.
+Fast and accurate typing is a must-have skill for a programmer. I wish
+I'd switched to the right path earlier.
 
 I am not the fastest typist, just a bit quicker than average. My
 achievements in terms of words per minute are very humble. Still, I can
@@ -60,10 +60,10 @@ say the return on investment is overwhelmingly high.
 
 ## Proper typing style
 
-Better typing speed saves me a few hours every week on code documentation,
-notes, and emails. Fast typing enables blogging: you can find an hour for
-a draft, but it is harder to find two. So a difference of 20 WPM can
-affect your productivity quite significantly.
+Better typing speed saves me a few hours every week on code
+documentation, notes, and emails. Fast typing enables blogging: you can
+find an hour for a draft, but it is harder to find two. So a difference
+of 20 WPM can affect your productivity quite significantly.
 
 If you are an average typist, you should invest few minutes a day in
 typing lessons. Focus on accuracy and practice every day. Totally worth
@@ -71,23 +71,22 @@ it.
 
 ## Ergonomic keyboard
 
-If you have a Mac, there's a good chance that your keyboard is excellent.
-Apple keyboards are robust, compact, and quiet.
+If you have a Mac, there's a good chance that your keyboard is
+excellent.  Apple keyboards are robust, compact, and quiet.
 
 ErgoDox is louder and bigger. The primary benefit of ErgoDox is
-ergonomics. (Surprise!) As with any split keyboard, you can sit (or stand)
-straight, so your posture is healthier, and it's simply more relaxing.
+ergonomics. (Surprise!) As with any split keyboard, you can sit (or
+stand) straight, so your posture is healthier, and it's simply more
+relaxing.
 
-My initial goal was just to improve my typing speed. Of course, high speed
-is necessary, but when I started using ErgoDox, I realized that comfort is
-the primary reward: my hands, shoulders, and back are much happier now.
-Yes, ErgoDox costs three hundred dollars, but it's the best keyboard
-available today for that price, and the keyboard is the most important
-part of my workplace. If you're typing all day long, you can connect your
-awesome keyboard to [a nine-dollar computer](https://getchip.com/) and be
-productive in no time.
-
-<div class="picture"><a href="/setup.html#ErgoDox%20EZ%20V3"><img class="picture__avatar" src="/ergodox-ez.jpeg"></a></div>
+My initial goal was just to improve my typing speed. Of course, high
+speed is necessary, but when I started using ErgoDox, I realized that
+comfort is the primary reward: my hands, shoulders, and back are much
+happier now.  Yes, ErgoDox costs three hundred dollars, but it's the
+best keyboard available today for that price, and the keyboard is the
+most important part of my workplace. If you're typing all day long, you
+can connect your awesome keyboard to [a nine-dollar
+computer](https://getchip.com/) and be productive in no time.
 
 [Check my current setup and why I've chosen ErgoDox
 EZ](/setup.html#ErgoDox%20EZ%20V3).
@@ -102,18 +101,18 @@ speed; my fingers can move faster than I can compose words in English.
 
 Why not stick with QWERTY on all my keyboards? Switching to a different
 layout and keyboard helped me break my bad typing habits. It's easier to
-learn correct technique from scratch on an entirely new instrument than it
-is to to fix those bad habits deeply wired into your brain.
+learn correct technique from scratch on an entirely new instrument than
+it is to to fix those bad habits deeply wired into your brain.
 
 **How did I choose Norman?** Two sources. First, people who already who
 use multiple layouts for years: [Gary Bernhardt][gary], [Aaron
-Patterson][aaron], a good review by [Ted][ted]. Second, I compared Dvorak,
-Colemak, Workman, Norman, and even my custom layout with [a keyboard
-layout analyzer][kla] (made by Patrick Gillespie). Norman performed
-slightly better than the others on my custom corpus of text.
+Patterson][aaron], a good review by [Ted][ted]. Second, I compared
+Dvorak, Colemak, Workman, Norman, and even my custom layout with [a
+keyboard layout analyzer][kla] (made by Patrick Gillespie). Norman
+performed slightly better than the others on my custom corpus of text.
 
-One more reason I picked Norman: It's easy to switch to QWERTY and back to
-Norman in few minutes. (I use QWERTY when I travel.) Norman is just a
+One more reason I picked Norman: It's easy to switch to QWERTY and back
+to Norman in few minutes. (I use QWERTY when I travel.) Norman is just a
 fifteen-key difference from QWERTY.
 
 [aaron]: https://twitter.com/search?q=from%3Atenderlove%20norman
@@ -123,10 +122,10 @@ fifteen-key difference from QWERTY.
 
 ![Norman layout on ErgoDox](/typing-norman.png)
 
-I use Vim with both QWERTY and Norman, and I do not remap anything in Vim.
-In the beginning, I had one annoying issue: `HJKL` on Norman are in weird
-locations. I was hitting `U` instead of `J`. That was such a painful week.
-Now everything is just fine.
+I use Vim with both QWERTY and Norman, and I do not remap anything in
+Vim.  In the beginning, I had one annoying issue: `HJKL` on Norman are
+in weird locations. I was hitting `U` instead of `J`. That was such a
+painful week.  Now everything is just fine.
 
 Looking back, I am not entirely sure if all these layouts made any
 difference in my case. I can learn any crazy layout and reach an average
@@ -136,27 +135,27 @@ Maybe I should try QWERTY on ErgoDox someday.
 ## Level up
 
 If you need to type at high speed for hours at a time, then you should
-probably follow Mirabai Knight and learn [stenography][steno]. Beware: the
-learning curve for steno is steep and you need a steno machine (or for the
-first time you can use NKRO keyboard, e.g., ErgoDox).
+probably follow Mirabai Knight and learn [stenography][steno]. Beware:
+the learning curve for steno is steep and you need a steno machine (or
+for the first time you can use NKRO keyboard, e.g., ErgoDox).
 
 [steno]: http://www.openstenoproject.org
 
 ## Conclusion
 
-Typing can be fun if you fix your bad typing habits. The earlier you start
-learning, the more rewarding it can be. Teach kids to touch type as soon
-as they start playing with the computer. This skill will stay relevant for
-at least one more generation.
+Typing can be fun if you fix your bad typing habits. The earlier you
+start learning, the more rewarding it can be. Teach kids to touch type
+as soon as they start playing with the computer. This skill will stay
+relevant for at least one more generation.
 
 If you want to take away only one thing from my story, it's this: Learn
 proper touch typing technique today.
 
 ## Recipe
 
-Take a typing test on [Keyhero][keyhero]. Slower than 40 WPM? Practice 15
-minutes every day for a month. If your accuracy is lower than 95%, slow
-down and try to type as accurately as possible.
+Take a typing test on [Keyhero][keyhero]. Slower than 40 WPM? Practice
+15 minutes every day for a month. If your accuracy is lower than 95%,
+slow down and try to type as accurately as possible.
 
 If you type more than four hours every day, you should use an ergonomic
 keyboard.

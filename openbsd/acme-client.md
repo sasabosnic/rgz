@@ -1,8 +1,9 @@
-"...thanks for article itself this can help many people to give <a href="https://twitter.com/hashtag/OpenBSD">#OpenBSD</a> a chance."
-<div class="quote"><a href="https://mobile.twitter.com/vetelko/status/985095582174900224">
-<img src="/avatars/vetelko.jpeg" class="quote__avatar" title="14 Apr 2018" alt="Ve Telko (@vetelko)"></a>
-<span class="quote__name">Ve Telko (@vetelko)</span></div>
+> "...thanks for article itself this can help many people to give <a
+href="https://mobile.twitter.com/hashtag/OpenBSD">#OpenBSD</a> a chance."<br>
+[Ve Telko](https://mobile.twitter.com/vetelko/status/985095582174900224 "14 Apr 2018")
+(@vetelko)
 
+---
 
 # Enable HTTPS on OpenBSD with Let's Encrypt and acme-client(1)
 
@@ -48,8 +49,8 @@ Create directories:
     www# mkdir -p -m 700 /etc/ssl/acme/private
     www# mkdir -p -m 755 /var/www/acme
 
-Update `/etc/httpd.conf` to handle verification requests from Let's Encrypt.
-It should look like this:
+Update `/etc/httpd.conf` to handle verification requests from Let's
+Encrypt.  It should look like this:
 
     server "www.example.com" {
       listen on * port 80
@@ -149,8 +150,10 @@ _Tested on OpenBSD 6.3._
 ---
 
 **Thanks** to [Tim Chase](https://twitter.com/gumnos),
-[Mischa Peters](https://twitter.com/mischapeters), and [Ve
-Telko](https://twitter.com/vetelko) for reading drafts of this, to [Reyk
-Floeter](https://reykfloeter.com/) for [httpd(8)](https://bsd.plumbing)
-and to [Kristaps Dzonsons](https://www.divelog.blue/) for
-[acme-client(1)](https://kristaps.bsd.lv/acme-client/).
+[Mischa Peters](https://twitter.com/mischapeters),
+and [Ve Telko](https://twitter.com/vetelko)
+for reading drafts of this,
+to [Reyk Floeter](https://reykfloeter.com/)
+for [httpd(8)](https://bsd.plumbing)
+and to [Kristaps Dzonsons](https://www.divelog.blue/)
+for [acme-client(1)](https://kristaps.bsd.lv/acme-client/).

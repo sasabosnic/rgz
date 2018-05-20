@@ -1,15 +1,13 @@
-"Roman you have inspired me. I'm starting a project this weekend on <a
-href="https://twitter.com/vultr">@vultr</a> with <a
+> "Roman you have inspired me. I'm starting a project this weekend on <a
+href="https://mobile.twitter.com/vultr">@vultr</a> with <a
 href="https://mobile.twitter.com/hashtag/OpenBSD">#OpenBSD</a> and <a
 href="https://mobile.twitter.com/hashtag/Erlang">#Erlang</a>. Will be
 sharing more soon still brainstorming the project. Will post every step as
-I build."
-<div class="quote"><a
-href="https://mobile.twitter.com/BrutusUnix/status/987485038630572032"><img
-src="/avatars/BrutusUnix.jpeg"
-title="21 Apr 2018"
-alt="EssentialOS=OpenBSD (@BrutusUnix)" class="quote__avatar"></a><span class="quote__name">
-EssentialOS=OpenBSD (@BrutusUnix)</span></div>
+I build."<br>
+[EssentialOS=OpenBSD](https://mobile.twitter.com/BrutusUnix/status/987485038630572032 "21 Apr 2018")
+(@BrutusUnix)
+
+---
 
 # Deploy a VPS on Vultr
 
@@ -30,7 +28,8 @@ For example:
 1. Server Hostname & Label: **www**
 
 In a minute your sever will be deployed. Login using the new IP address
-and your private SSH key (assuming it's in the default location: `~/.ssh/id_ed25519`):
+and your private SSH key (assuming it's in the default location:
+`~/.ssh/id_ed25519`):
 
     $ ssh root@XXX.XXX.XXX.XXX
     OpenBSD 6.3 (GENERIC.MP) #107: Sat Mar 24 14:21:59 MDT 2018
@@ -47,7 +46,8 @@ and your private SSH key (assuming it's in the default location: `~/.ssh/id_ed25
 
     www#
 
-Yes, `root` login is enabled on Vultr servers by default. We better harden
-a server right after its first boot, but this topic deserves its own post.
+Yes, `root` login is enabled on Vultr servers by default. We better
+harden a server right after its first boot, but this topic deserves its
+own post.
 
 Now you can [setup a web server](/openbsd/webserver.html).
