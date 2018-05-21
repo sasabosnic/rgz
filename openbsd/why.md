@@ -1,3 +1,7 @@
+<style><!-- body, h1, h2 {
+  font-family: "Comic Sans MS", "Chalkboard SE", "Comic Neue", sans-serif;
+}--></style>
+
 > ".<a
 href="https://mobile.twitter.com/romanzolotarev">@romanzolotarev</a>
 motivated me to spend some more time in OpenBSD"<br>
