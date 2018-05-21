@@ -46,7 +46,7 @@ FOOTER_FILE="$PWD/_footer.html"
 [ -f "$CSS_FILE" ] && CSS="<style><!--$(cat "$CSS_FILE")--></style>"
 [ -f "$HEADER_FILE" ] &&
 	HEADER=$(cat "$HEADER_FILE") ||
-	HEADER="<a href=\"/\">Home</a>"
+	HEADER="<p><a href=\"/\">Home</a></p>"
 [ -f "$FOOTER_FILE" ] && FOOTER=$(cat "$FOOTER_FILE")
 
 ##########################################################################
