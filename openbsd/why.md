@@ -1,5 +1,5 @@
-<style><!-- body, h1, h2 {
-  font-family: "Comic Sans MS", "Chalkboard SE", "Comic Neue", sans-serif;
+<style><!-- BODY, H1, H2 {
+  font-family: "Comic Sans MS", "Chalkboard SE", "Comic Neue";
 }--></style>
 
 > ".<a

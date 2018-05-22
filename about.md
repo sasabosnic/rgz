@@ -25,11 +25,6 @@ site snappy and protect your privacy I avoid embedded web fonts,
 tracking, analytic tools, social media buttons. Most pages are just
 text.
 
-To switch the color scheme click on <label
-class="light-off-button-inline" for="light-off"></label>. It's always in
-the top right corner. On click it saves your preferences in a browser
-cookie, other than that no JavaScript is required to use this website.
-
 This website has been generated with [ssg](/ssg.html), served by
 [OpenBSD httpd](/openbsd/webserver.html), and hosted on
 [Vultr](/vultr.html).
