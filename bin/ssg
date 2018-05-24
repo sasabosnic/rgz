@@ -41,14 +41,13 @@ RSS_URL="$SERVER_PROTO://$SERVER_NAME/rss.xml"
 SITEMAP="$TEMP_DIR/sitemap.xml"
 
 CSS_FILE="$PWD/_styles.css"
+JS_FILE="$PWD/_scripts.js"
 HEADER_FILE="$PWD/_header.html"
 FOOTER_FILE="$PWD/_footer.html"
-[ -f "$CSS_FILE" ] &&
-	CSS="<style><!--$(cat "$CSS_FILE")--></style>"
-[ -f "$HEADER_FILE" ] &&
-	HEADER="<div class=\"header\">$(cat "$HEADER_FILE")</div>"
-[ -f "$FOOTER_FILE" ] &&
-	FOOTER="<div class=\"footer\">$(cat "$FOOTER_FILE")</div>"
+[ -f "$CSS_FILE" ] && CSS="<style>$(cat "$CSS_FILE")</style>"
+[ -f "$JS_FILE" ] && JS="<script>$(cat "$JS_FILE")</script>"
+[ -f "$HEADER_FILE" ] && HEADER="$(cat "$HEADER_FILE")"
+[ -f "$FOOTER_FILE" ] && FOOTER="$(cat "$FOOTER_FILE")"
 
 ##########################################################################
 
@@ -147,6 +146,7 @@ wrap_html() {
 		done|
 		sort
 	)"
+        [ -z "$sitemap" ] && { echo && return; }
 	# save sitemap in html and xml formats
 	date=$(date +%Y-%m-%dT%H:%M:%S%z)
 	cat > "$SITEMAP" << EOF
@@ -174,11 +174,11 @@ EOF
 	done
 	echo '</urlset>' >> "$SITEMAP"
 	# generate html pages
-echo "$sitemap"|
+	echo "$sitemap"|
 		while read -r line; do
 		page=${line%====*}
 		url=${page#$TEMP_DIR}
-		article=$(cat "$page")
+                article=$(cat "$page")
 		case "$url" in
 			/index.html)
 				title='Home'
@@ -191,13 +191,15 @@ echo "$sitemap"|
 		esac
 		# merge page with html template
 		cat > "$page" <<EOF
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head><title>$head_title</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="alternate" type="application/atom+xml" href="/rss.xml">
 <link rel="icon" type="image/png" href="/favicon.png">
 $CSS
+$JS
 </head>
 <body>
 $HEADER

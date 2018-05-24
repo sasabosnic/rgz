@@ -29,8 +29,18 @@ o()   { start_tmux 'o'   "$HOME/src/openvpn" 'doas openvpn --config default.ovpn
 www() { start_tmux 'www' "$HOME/src/www"     'vi index.md'; }
 
 export DOCS='/var/www/htdocs/www.romanzolotarev.com'
+export BSDJOBS='/var/www/htdocs/www.bsdjobs.com'
 s() { cd "$HOME/src/www" && ssg watch --clean||return; }
+sbsdjobs() { cd "$HOME/src/bsdjobs" &&
+  WEBSITE_TITLE="BSDjobs.com" \
+  SERVER_NAME="www.bsdjobs.com" \
+  SERVER_PROTO="https" \
+  RSS_AUTHOR="hi@romanzolotarev.com (Roman Zolotarev)" \
+  RSS_DESCRIPTION="Looking for BSD sysadmin? Post a job" \
+  COPYRIGHT_YEAR="2018" \
+  DOCS="$BSDJOBS" ssg watch --clean||return; }
 d() { [ -n "$1" ] && { rsync -avPc --delete-excluded "$DOCS" "$1:/var/www/htdocs/";quits & }; }
+dbsdjobs() { rsync -avPc --delete-excluded "$BSDJOBS" "www:/var/www/htdocs/";quits & }
 # shellcheck disable=SC2029
 log() { [ -n "$1" ] && [ -n "$2" ] && ssh "$1" "while :;do printf '%s %s %s %s\\n' \"\$(grep \"$2\" /var/www/logs/access.log|cut -f2,13- -d' '|tr -d ' '|sort|uniq|wc -l|tr -d ' ')\" \"\$(date +%Y-%m-%dT%H:%M:%S)\" \"$1\" \"$2\";sleep 30;done"; }
 logt() { log "$1" "$(date "+%d/%b/%Y").*${2:-GET.*HTTP/1\.1. 200}"; }

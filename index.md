@@ -41,10 +41,10 @@ low tech.
 - [host static website on GitHub Pages](/github-pages.html "18 Aug 2016")
 - [decide if you need a website](/website.html "15 Aug 2016")
 
-## How to support with site
+## How to support this site
 
-1. [become a sponsor](/sponsors.html "24 Apr 2018")
-1. say something nice, if my work helps :)
+1. [Become a sponsor](/sponsors.html "24 Apr 2018")
+1. Say something nice, if my work helps :)
 
 > "Special thanks to @romanzolotarev without whom I wouldn't venture
 many things - including this one &#x1F44F;"<br>

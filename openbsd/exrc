@@ -1,5 +1,9 @@
-map tf {!}fmt -pw 72}}{j
-map ts {!}sort
-map tS {!}sort -r
-map tt :%s/[[:space:]]\{1,\}$//g
-set autoindent cedit=
+map gS {!}sort -r
+map gg :1
+map gc :%!prettier --parser=css --write
+map gf {!}fmt -p}}{j
+map gj :%!prettier --write
+map gs {!}sort
+map gt :%s/[[:space:]]\{1,\}$//g
+map gw :w
+set cedit=
