@@ -1,3 +1,9 @@
+> "Thank you & thanks again because I wouldn't be using a YubiKey without your help!"<br>
+[equalunique](https://mobile.twitter.com/no1evanrowley/status/992617178863202304 "5 May 2018")
+(@no1evanrowley)
+
+---
+
 # Configure YubiKey for login and SSH on OpenBSD
 
 Make sure [OpenBSD is installed on your computer](/openbsd/install.html),

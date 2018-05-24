@@ -134,7 +134,6 @@ There are also reserved filenames, these files are generated when you run
 1. `rss.xml` - reserved for RSS feed
 1. `sitemap.xml` - for the sitemap
 
-
 ## Your first page
 
 Let's create `about.html` with one header and some text about your site.

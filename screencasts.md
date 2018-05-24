@@ -1,3 +1,9 @@
+> "Oh wow, this is something for my long and boring night shifts."<br>
+[Peter Kotr&#x10D;ka](https://mobile.twitter.com/kotrckap/status/996695819792330754 "17 May 2018")
+(@kotrckap)
+
+---
+
 # Screencasts for programmers
 
 Looking for top-notch screencasts? You are on the right page.

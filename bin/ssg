@@ -43,11 +43,12 @@ SITEMAP="$TEMP_DIR/sitemap.xml"
 CSS_FILE="$PWD/_styles.css"
 HEADER_FILE="$PWD/_header.html"
 FOOTER_FILE="$PWD/_footer.html"
-[ -f "$CSS_FILE" ] && CSS="<style><!--$(cat "$CSS_FILE")--></style>"
+[ -f "$CSS_FILE" ] &&
+	CSS="<style><!--$(cat "$CSS_FILE")--></style>"
 [ -f "$HEADER_FILE" ] &&
-	HEADER=$(cat "$HEADER_FILE") ||
-	HEADER="<p><a href=\"/\">Home</a></p>"
-[ -f "$FOOTER_FILE" ] && FOOTER=$(cat "$FOOTER_FILE")
+	HEADER="<div class=\"header\">$(cat "$HEADER_FILE")</div>"
+[ -f "$FOOTER_FILE" ] &&
+	FOOTER="<div class=\"footer\">$(cat "$FOOTER_FILE")</div>"
 
 ##########################################################################
 
@@ -90,7 +91,7 @@ md_to_html() {
 # filter first 20 lines with links and link titles (dates)
 # shellcheck disable=SC2016
 fst_h1='/<[h1]*( id=".*")?>/{gsub(/<[^>]*>/,"");print($0);exit;}'
-a='^<li><a href="\(.*\)" title="\([^<]*\)">[^<]*<\/a>.*<\/li>.*'
+a='^<li>.*<a href="\(.*\)" title="\([^<]*\)">.*<\/a>.*<\/li>.*'
 
 line_to_rss_item() {
 	url=$(echo "$line"|sed "s/$a/\\1/g")
@@ -199,9 +200,9 @@ echo "$sitemap"|
 $CSS
 </head>
 <body>
-<div class="header">$HEADER</div>
+$HEADER
 <div class="article">$article</div>
-<div class="footer">$FOOTER</div>
+$FOOTER
 </body>
 </html>
 EOF
@@ -243,6 +244,7 @@ watch)
 			-or -name '*.md' \
 			-or -name '*.html' \
 			-or -name '*.css' \
+			-or -name '*.js' \
 			-or -name '*.txt' \
 			-or -name '*.jpeg' \
 			-or -name '*.png' \)\
