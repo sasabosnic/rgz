@@ -1,8 +1,3 @@
-**THIS IS DRAFT**<br>
-[Follow me on Twitter](/twitter.html) for updates.
-
----
-
 # Switch from Vim to vi(1)
 
 Before I [switched to OpenBSD](/setup.html), I had used [Vim](/vim.html)

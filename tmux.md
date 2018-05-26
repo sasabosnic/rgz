@@ -1,7 +1,4 @@
-**THIS IS DRAFT**<br>
-[Follow me on Twitter](/twitter.html) for updates.
-
-# Multiplex your terminals with tmux(1)
+# Manage your terminals with tmux(1)
 
 [tmux(1)](https://man.openbsd.org/tmux.1) is a terminal multiplexor and
 is one of the most important tools I use every day. You should try it.

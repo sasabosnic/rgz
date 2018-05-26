@@ -4,6 +4,8 @@ low tech.
 
 # How to...
 
+- [manage your terminals with tmux(1)](/tmux.html "18 May 2018")
+- [switch from Vim to vi(1)](/vi.html "12 May 2018")
 - [configure newsboat(1) to read RSS feeds in&nbsp;terminal](/newsboat.html "6 May 2018")
 - [set default applications on X Window System](/openbsd/mime.html "1 May 2018")
 - [configure minimalist login on OpenBSD](/openbsd/login.html "1 May 2018")
