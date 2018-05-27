@@ -1,5 +1,5 @@
 map gS {!}sort -r
-map gg :1
+map gg 1G
 map gc :%!prettier --parser=css --write
 map gf {!}fmt -p}}{j
 map gj :%!prettier --write

@@ -92,7 +92,7 @@ but apparently not. &#x1F914;"<br>
 ---
 
     https://www.romanzolotarev.com/
-    Copyright 2016-2018 Roman Zolotarev <hi@romanzolotarev.com>
+    Copyright 2008-2018 Roman Zolotarev <hi@romanzolotarev.com>
 
     Permission to use, copy, modify, and/or distribute this software for
     any purpose with or without fee is hereby granted, provided that the

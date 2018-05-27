@@ -20,8 +20,10 @@ https://feeds.feedburner.com/WaitingForTheJobsToFinish
 https://feeds.feedburner.com/codinghorror/
 https://feeds.feedburner.com/planet-openbsd
 https://kristaps.bsd.lv/sblg/atom.xml
+https://l33tsource.com/atom.xml
 https://reykfloeter.com/atom.xml
 https://threema.ch/en/blog/feeds/rss
 https://wildauer.io/atom.xml
 https://www.cyberciti.biz/atom/atom.xml
+https://www.geeklan.co.uk/?feed=rss2
 https://www.reykfloeter.com/atom.xml

@@ -3,6 +3,7 @@ setxkbmap -option grp:alt_space_toggle us,ru
 xinput --set-prop 7 'Device Accel Constant Deceleration' 5
 xset mouse 3 3
 xset -b
+unclutter -root -idle 2 -noevents &
 xidle &
 xterm -e 'LC_ALL=en_US.UTF-8 tmux new-session -As 0' &
 cwm

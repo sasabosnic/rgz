@@ -42,7 +42,6 @@ For many other features there are POSIX utilities and shell scripts:
 
 Vim feature                  | nvi 1.79
 :--                          | :--
-multiple windows             | [tmux](/tmux.html)
 sort                         | `/usr/bin/sort`
 spell checking               | `/usr/bin/spell`
 diff mode                    | `/usr/bin/diff`
