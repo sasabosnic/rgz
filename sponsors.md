@@ -48,11 +48,7 @@ To keep this website alive:
 1. Send me some feedback via DMs on Twitter and/or email
 1. **[Donate directly via PayPal](/paypal.html)**
 1. **[Become my Patron on Patreon](/patreon.html)**
-1. Send me some satoshis to
-
-```
-3MZ9d6NTsirYfjx9iJVieT2WCHnzBZckHd
-```
+1. Send satoshis to [`3MZ9d6NTsirYfjx9iJVieT2WCHnzBZckHd`](bitcoin://3MZ9d6NTsirYfjx9iJVieT2WCHnzBZckHd)
 
 Don't hesitate to contact me if you have questions or need my help.
 
@@ -64,15 +60,16 @@ Roman
 P.S. Here are all received donations. Please ping me, if yours hasn't
 been listed, or if you want to remove your name from the list.
 
-Updated on 16 May 2018.
+Updated on 28 May 2018.
 
+- [micah](https://www.patreon.com/user/creators?u=4721204 "28 May 2018") 2.00 USD Patreon
 - [Peter Kotr&#x10D;ka](https://www.patreon.com/pkotrcka/creators "16 May 2018") 2.00 USD Patreon
 - [Alexander Gudulin](https://www.patreon.com/agudulin/creators "14 May 2018") 1.00 USD Patreon
 - [Drew Bell](https://www.patreon.com/droob/creators "29 Apr 2018") 1.00 USD Patreon
 - [Denis Borovikov](https://www.patreon.com/user/creators?u=10926064 "25 Apr 2018") 5.00 USD Patreon
 - [Tom Smyth](https://www.patreon.com/user/creators?u=10913897 "24 Apr 2018") 10.00 USD Patreon
 - [wireless connect ltd](http://wirelessconnect.eu "24 Apr 2018") 10.00 EUR PayPal _"keep up good work Roman"_
-- [Aleksey Popov](https://www.patreon.com/user?u=10910753 "24 Apr 2018") $5 Patreon
+- [Aleksey Popov](https://www.patreon.com/user?u=10910753 "24 Apr 2018") 5.00 USD Patreon
 - [Adam Dymitruk](https://mobile.twitter.com/adymitruk "24 Apr 2018") 83,800 Satoshi
 - [Ilmari Vacklin](https://www.patreon.com/user?u=2288738 "23 Apr 2018") 1.00 USD Patreon
 - [Tom Atkinson](https://www.patreon.com/user?u=10778845 "16 Apr 2018"16 Apr 2018"16 Apr 2018"16 Apr 2018"16 Apr 2018"16 Apr 2018"16 Apr 2018"16 Apr 2018"16 Apr 2018"16 Apr 2018"16 Apr 2018"16 Apr 2018"16 Apr 2018"16 Apr 2018"16 Apr 2018"16 Apr 2018") 5.00 USD Patreon

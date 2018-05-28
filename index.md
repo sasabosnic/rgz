@@ -45,8 +45,20 @@ low tech.
 
 ## How to support this site
 
-1. [Become a sponsor](/sponsors.html "24 Apr 2018")
-1. Say something nice, if my work helps :)
+[Become a sponsor](/sponsors.html "24 Apr 2018").
+
+Thank you for your support! My current goal is quite modest. I'd
+like to test Patreon and how donations work for sites like mine.
+
+<progress style="display: block; width: 100%; border: none;" value="33" max="100"></progress>
+$33 of $100 per month
+
+As soon as the goal is reached, I'll publish my roadmap.
+
+[![the first goal on Patreon](/the-first-goal.gif)](/patreon.html)
+
+If you're not ready to become a patron, say something nice on
+Twitter, that helps too. :)
 
 > "Special thanks to @romanzolotarev without whom I wouldn't venture
 many things - including this one &#x1F44F;"<br>
