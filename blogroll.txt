@@ -15,6 +15,7 @@ http://www.joelonsoftware.com/rss.xml
 http://www.magicreadalong.com/episode?format=rss
 http://www.tedunangst.com/flak/rss
 https://blog.iandreev.com/?feed=rss2&cat=3
+https://bsdmag.org/feed/
 https://dataswamp.org/~solene/rss.xml
 https://feeds.feedburner.com/WaitingForTheJobsToFinish
 https://feeds.feedburner.com/codinghorror/

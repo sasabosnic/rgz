@@ -32,11 +32,11 @@ export DOCS='/var/www/htdocs/www.romanzolotarev.com'
 export BSDJOBS='/var/www/htdocs/www.bsdjobs.com'
 s() { cd "$HOME/src/www" && ssg watch --clean||return; }
 sbsdjobs() { cd "$HOME/src/bsdjobs" &&
-  WEBSITE_TITLE="BSDjobs.com" \
+  WEBSITE_TITLE="#BSDjobs" \
   SERVER_NAME="www.bsdjobs.com" \
   SERVER_PROTO="https" \
   RSS_AUTHOR="hi@romanzolotarev.com (Roman Zolotarev)" \
-  RSS_DESCRIPTION="Looking for BSD sysadmin? Post a job" \
+  RSS_DESCRIPTION="Open BSD jobs. Updated weekly. OpenBSD, FreeBSD, NetBSD, DragonFly BSD" \
   COPYRIGHT_YEAR="2018" \
   DOCS="$BSDJOBS" ssg watch --clean||return; }
 d() { [ -n "$1" ] && { rsync -avPc --delete-excluded "$DOCS" "$1:/var/www/htdocs/";quits & }; }
