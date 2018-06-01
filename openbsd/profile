@@ -39,17 +39,16 @@ sbsdjobs() { cd "$HOME/src/bsdjobs" &&
   RSS_DESCRIPTION="Open BSD jobs. Updated weekly. OpenBSD, FreeBSD, NetBSD, DragonFly BSD" \
   COPYRIGHT_YEAR="2018" \
   DOCS="$BSDJOBS" ssg watch --clean||return; }
-d() { [ -n "$1" ] && { rsync -avPc --delete-excluded "$DOCS" "$1:/var/www/htdocs/";quits & }; }
-dbsdjobs() { rsync -avPc --delete-excluded "$BSDJOBS" "www:/var/www/htdocs/";quits & }
-# shellcheck disable=SC2029
-log() { [ -n "$1" ] && [ -n "$2" ] && ssh "$1" "while :;do printf '%s %s %s %s\\n' \"\$(grep \"$2\" /var/www/logs/access.log|cut -f2,13- -d' '|tr -d ' '|sort|uniq|wc -l|tr -d ' ')\" \"\$(date +%Y-%m-%dT%H:%M:%S)\" \"$1\" \"$2\";sleep 30;done"; }
-logt() { log "$1" "$(date "+%d/%b/%Y").*${2:-GET.*HTTP/1\.1. 200}"; }
-logc() { [ -n "$1" ] && ssh "$1" "awk '{\$1=\"\";print \$0}' /var/www/logs/access.log | logswan -g -"; }
+d() { [ -n "$1" ] && { rsync -azvPc --delete-excluded "$DOCS" "$1:/var/www/htdocs/";quits & }; }
+dbsdjobs() { rsync -azvPc --delete-excluded "$BSDJOBS" "www:/var/www/htdocs/";quits & }
+
+sync_logs() { [ -n "$1" ] && { rsync -azvPc "$1:/var/www/logs/*" "$HOME/src/logs/$1/"; quits & }; }
 
 png() { optipng -preserve -keep -strip all -o7 "$1"; }
 jpeg() { cp "$1" "$1.bak" && jpegoptim --strip-all --preserve --preserve-perms --verbose -m80 "$1"; }
 fit() { cp "$1" "$1.original" && convert -resize 1200 "$1.original" "$1"; }
 fit50() { cp "$1" "$1.original" && convert -resize 50 "$1.original" "$1"; }
+fit120() { cp "$1" "$1.original" && convert -resize 120 "$1.original" "$1"; }
 alias feh='feh -.Zd'
 
 rebase() { git rebase -i HEAD~"${1:-2}"; }

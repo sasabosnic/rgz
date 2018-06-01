@@ -3,7 +3,7 @@
 (@no1evanrowley)
 
 > "Dope setup"<br>
-[nixCraft: The Best Linux Blog In the Unixverse](https://mobile.twitter.com/nixcraft/status/991738751666794497 "2 May 2018")
+[nixCraft](https://mobile.twitter.com/nixcraft/status/991738751666794497 "2 May 2018")
 (@nixcraft)
 
 > "I am in love with this setup. Simple. Awesome. Functional. Efficient."<br>
@@ -44,7 +44,7 @@ Item                                           | Price, USD
 [Zotac CI527 NANO-BE][z]                       | 371
 16GB RAM Crucial DDR4-2133                     | 127
 250GB SSD Samsung 850 EVO                      | 104
-[Asus VZ249HE][a] 23.8" IPS Full HD                | 129
+[Asus VZ249HE][a] 23.8" IPS Full HD            | 129
 [ErgoDox EZ V3][e], Cherry MX Brown, blank DCS | 325
 [Kensington Orbit Trackball][k]                | 33
                                                | **1,107**
