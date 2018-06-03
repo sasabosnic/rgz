@@ -1,22 +1,17 @@
 #!/bin/sh
 set -x
 
-for file in \
-  Xdefaults \
-  cwmrc     \
-  exrc      \
-  forward   \
-  gitconfig \
-  profile   \
-  tmux.conf \
-  xsession  \
-; do
-  ln -fs "$HOME/src/www/openbsd/$file" "$HOME/.${file}"
-done
+ln -fs	"$HOME/src/www/blogroll.txt"		"$HOME/.config/newsboat/urls"
+ln -fs	"$HOME/src/www/openbsd/Xdefaults"	"$HOME/.Xdefaults"
+ln -fs	"$HOME/src/www/openbsd/cwmrc"		"$HOME/.cwmrc"
+ln -fs	"$HOME/src/www/openbsd/exrc"		"$HOME/.exrc"
+ln -fs	"$HOME/src/www/openbsd/gitconfig"	"$HOME/.gitconfig"
+ln -fs	"$HOME/src/www/openbsd/newsboat.conf"	"$HOME/.config/newsboat/config"
+ln -fs	"$HOME/src/www/openbsd/profile"		"$HOME/.profile"
+ln -fs	"$HOME/src/www/openbsd/tmux.conf"	"$HOME/.tmux.conf"
+ln -fs	"$HOME/src/www/openbsd/user-dirs.dirs"	"$HOME/.config/user-dirs.dirs"
+ln -fs	"$HOME/src/www/openbsd/xsession"	"$HOME/.xsession"
+ln -fsh	"$HOME/src/www/bin"			"$HOME/bin"
 
-ln -fsh "$HOME/src/www/bin" "$HOME/bin"
-ln -fs  "$HOME/src/www/openbsd/newsboat.conf" "$HOME/.config/newsboat/config"
-ln -fs  "$HOME/src/www/blogroll.txt" "$HOME/.config/newsboat/urls"
-ln -fs  "$HOME/src/www/openbsd/user-dirs.dirs" "$HOME/.config/user-dirs.dirs"
-ln -fsh "$HOME/src/ssh" "$HOME/.ssh"
-ln -fsh "$HOME/src/pass" "$HOME/.pass"
+ln -fsh	"$HOME/prv/pass"			"$HOME/.pass"
+ln -fsh	"$HOME/prv/ssh"				"$HOME/.ssh"

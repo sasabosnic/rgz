@@ -35,10 +35,7 @@ Project](https://www.openbsdfoundation.org/donations.html), [Run
 BSD](http://runbsd.info/)).
 
 Your money covers [hosting](/vultr.html) and [domain
-registration](https://iwantmyname.com/) fees for this website. The rest
-goes to book stores (mostly books authored by [Michael W
-Lucas](https://mwl.io/) or/and published by [No Stratch
-Press](https://nostarch.com/)).
+registration](https://iwantmyname.com/) fees for this website.
 
 To keep this website alive:
 
@@ -60,20 +57,38 @@ Roman
 P.S. Here are all received donations. Please ping me, if yours hasn't
 been listed, or if you want to remove your name from the list.
 
-Updated on 28 May 2018.
+Updated on 3 June 2018.
 
 - [micah](https://www.patreon.com/user/creators?u=4721204 "28 May 2018") 2.00 USD Patreon
-- [Peter Kotr&#x10D;ka](https://www.patreon.com/pkotrcka/creators "16 May 2018") 2.00 USD Patreon
-- [Alexander Gudulin](https://www.patreon.com/agudulin/creators "14 May 2018") 1.00 USD Patreon
-- [Drew Bell](https://www.patreon.com/droob/creators "29 Apr 2018") 1.00 USD Patreon
-- [Denis Borovikov](https://www.patreon.com/user/creators?u=10926064 "25 Apr 2018") 5.00 USD Patreon
-- [Tom Smyth](https://www.patreon.com/user/creators?u=10913897 "24 Apr 2018") 10.00 USD Patreon
+- [Peter Kotr&#x10D;ka](https://www.patreon.com/pkotrckacreators "Since 16 May 2018") 2.00 USD Patreon
+- [Alexander Gudulin](https://www.patreon.com/agudulin/creators "Since 14 May 2018") 1.00 USD Patreon
+- [Drew Bell](https://www.patreon.com/droob/creators "Since 29 Apr 2018") 2.00 USD Patreon
+- [Denis Borovikov](https://www.patreon.com/user/creators?u=10926064 "Since 25 Apr 2018") 10.00 USD Patreon
+- [Tom Smyth](https://www.patreon.com/user/creators?u=10913897 "Since 24 Apr 2018") 20.00 USD Patreon
 - [wireless connect ltd](http://wirelessconnect.eu "24 Apr 2018") 10.00 EUR PayPal _"keep up good work Roman"_
-- [Aleksey Popov](https://www.patreon.com/user?u=10910753 "24 Apr 2018") 5.00 USD Patreon
+- [Aleksey Popov](https://www.patreon.com/user?u=10910753 "Since 24 Apr 2018") 10.00 USD Patreon
 - [Adam Dymitruk](https://mobile.twitter.com/adymitruk "24 Apr 2018") 83,800 Satoshi
-- [Ilmari Vacklin](https://www.patreon.com/user?u=2288738 "23 Apr 2018") 1.00 USD Patreon
-- [Tom Atkinson](https://www.patreon.com/user?u=10778845 "16 Apr 2018"16 Apr 2018"16 Apr 2018"16 Apr 2018"16 Apr 2018"16 Apr 2018"16 Apr 2018"16 Apr 2018"16 Apr 2018"16 Apr 2018"16 Apr 2018"16 Apr 2018"16 Apr 2018"16 Apr 2018"16 Apr 2018"16 Apr 2018") 5.00 USD Patreon
-- [Wesley Moore](https://www.patreon.com/wezm "15 Apr 2018") 5.00 USD Patreon
+- [Ilmari Vacklin](https://www.patreon.com/user?u=2288738 "Since 23 Apr 2018") 2.00 USD Patreon
+- [Tom Atkinson](https://www.patreon.com/user?u=10778845 "Since 16 Apr 2018") 10.00 USD Patreon
+- [Wesley Moore](https://www.patreon.com/wezm "15 Apr 2018") 10.00 USD Patreon
 - [Mischa Peters](https://mobile.twitter.com/mischapeters "13 Apr 2018") VPS
 - [Evander Sinque](https://mobile.twitter.com/FiLiS "31 Oct 2017") Run BSD Stickers
 - [Mischa Peters](https://mobile.twitter.com/mischapeters "19 Sep 2017") Run BSD T-shirt
+
+---
+
+## People and projects to support
+
+While you are in generous mood, here are people and projects I've
+supported, please consider supporting them too:
+
+- [Ingo Schwarze](https://www.patreon.com/IngoSchwarze "Since 1 Jun 2018") 5.00 USD Patreon
+- [The OpenBSD Store](https://www.openbsdstore.com/ "6 May 2018 41389") 73.21 GBP
+- [Bryan Steele](https://brynet.biz.tm/ "16 Apr 2018 5M5560322U154440G") 10.00 CAD
+- [Michael W Lucas](https://www.michaelwlucas.com/tools/relayd "1 Apr 2018") 10.00 USD Relayd and Httpd Mastery
+- [Michael W Lucas](https://www.michaelwlucas.com/tools/ed "1 Apr 2018") 5.00 USD Ed Mastery
+- [The OpenBSD Foundation](https://www.openbsdfoundation.org/donations.html "15 Dec 2017 91920137MK9975307") 10.00 EUR
+- [Michael W Lucas](https://www.michaelwlucas.com/tools/ssh "2 Nov 2017") 25.00 USD SSH Mastery (e-book sponsor)
+- [Bryan Steele](https://brynet.biz.tm/ "6 Oct 2017 0AB18292BG563772H") 5.00 CAD
+- [Michael W Lucas](https://www.michaelwlucas.com/tools/tarsnap "14 Sep 2017") 10.00 USD Tarsnap Mastery
+- [The OpenBSD Foundation](https://www.openbsdfoundation.org/donations.html "25 Aug 2017 7BF04702TU178773D") 100.00 EUR

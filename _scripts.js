@@ -116,6 +116,7 @@
     d.addEventListener("keydown", function(e) {
       switch (e.keyCode) {
         case 32:
+          if (!w.model.slidesOn) return;
           e.preventDefault();
           e.shiftKey ? prev() : next();
           break;
@@ -127,6 +128,7 @@
           break;
         case 37:
         case 38:
+          if (!w.model.slidesOn) return;
           e.preventDefault();
           prev();
           break;
@@ -135,6 +137,7 @@
           break;
         case 39:
         case 40:
+          if (!w.model.slidesOn) return;
           e.preventDefault();
           next();
           break;

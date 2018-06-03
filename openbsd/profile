@@ -22,10 +22,10 @@ start_tmux() {
   fi
 }
 
-j()   { start_tmux 'j'   "$HOME/src/j"       'vi my.journal'; }
+j()   { start_tmux 'j'   "$HOME/prv/j"       'vi my.journal'; }
 m()   { start_tmux 'm'   "$HOME/pub/music"   'cmus'; }
 n()   { start_tmux 'n'   "$HOME/downloads"   'newsboat'; }
-o()   { start_tmux 'o'   "$HOME/src/openvpn" 'doas openvpn --config default.ovpn'; }
+o()   { start_tmux 'o'   "$HOME/prv/openvpn" 'doas openvpn --config default.ovpn'; }
 www() { start_tmux 'www' "$HOME/src/www"     'vi index.md'; }
 
 export DOCS='/var/www/htdocs/www.romanzolotarev.com'
@@ -42,7 +42,7 @@ sbsdjobs() { cd "$HOME/src/bsdjobs" &&
 d() { [ -n "$1" ] && { rsync -azvPc --delete-excluded "$DOCS" "$1:/var/www/htdocs/";quits & }; }
 dbsdjobs() { rsync -azvPc --delete-excluded "$BSDJOBS" "www:/var/www/htdocs/";quits & }
 
-sync_logs() { [ -n "$1" ] && { rsync -azvPc "$1:/var/www/logs/*" "$HOME/src/logs/$1/"; quits & }; }
+sync_logs() { [ -n "$1" ] && { rsync -azvPc "$1:/var/www/logs/*" "$HOME/prv/logs/$1/"; quits & }; }
 
 png() { optipng -preserve -keep -strip all -o7 "$1"; }
 jpeg() { cp "$1" "$1.bak" && jpegoptim --strip-all --preserve --preserve-perms --verbose -m80 "$1"; }
