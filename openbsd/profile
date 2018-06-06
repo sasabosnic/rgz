@@ -39,7 +39,7 @@ sbsdjobs() { cd "$HOME/src/bsdjobs" &&
   RSS_DESCRIPTION="Open BSD jobs. Updated weekly. OpenBSD, FreeBSD, NetBSD, DragonFly BSD" \
   COPYRIGHT_YEAR="2018" \
   DOCS="$BSDJOBS" ssg watch --clean||return; }
-d() { [ -n "$1" ] && { rsync -azvPc --delete-excluded "$DOCS" "$1:/var/www/htdocs/";quits & }; }
+d() { [ -n "$1" ] && { rsync -azvPc --delete-excluded "$DOCS" "$1:/var/www/htdocs/"; }; }
 dbsdjobs() { rsync -azvPc --delete-excluded "$BSDJOBS" "www:/var/www/htdocs/";quits & }
 
 sync_logs() { [ -n "$1" ] && { rsync -azvPc "$1:/var/www/logs/*" "$HOME/prv/logs/$1/"; quits & }; }
@@ -50,8 +50,6 @@ fit() { cp "$1" "$1.original" && convert -resize 1200 "$1.original" "$1"; }
 fit50() { cp "$1" "$1.original" && convert -resize 50 "$1.original" "$1"; }
 fit120() { cp "$1" "$1.original" && convert -resize 120 "$1.original" "$1"; }
 
-
-rebase() { git rebase -i HEAD~"${1:-2}"; }
 c() { clear; PS1='$ '; }
 
 alias feh='feh -.Zd'

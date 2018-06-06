@@ -5,5 +5,5 @@ xset mouse 3 3
 xset -b
 unclutter -root -idle 2 -noevents &
 xidle &
-xterm -e 'LC_ALL=en_US.UTF-8 tmux new-session -As 0' &
+xterm -e 'LC_ALL=en_US.UTF-8 tmux new -As 0' &
 cwm

@@ -1,11 +1,23 @@
 # Host your Git repositories
 
-If you don't have a server yet, you should [deploy one](/vultr.html).
-Login to the server.
+[Deploy OpenBSD server on Vultr](/vultr.html) and login into it.
+
+Install [git(1)](https://git-scm.com/):
 
 <pre>
 # <b>pkg_add install git</b>
+quirks-2.414 signed on 2018-03-28T14:24:37Z
+git-2.16.2: ok
+The following new rcscripts were installed: /etc/rc.d/gitdaemon
+See rcctl(8) for details.
+Look in /usr/local/share/doc/pkg-readmes for extra documentation.
+</pre>
+
+Add `git` user:
+
+<pre>
 # <b>useradd -q</b>
+</pre>
 # <b>su git</b>
 $ <b>cd</b>
 $ <b>mkdir -m 700 .ssh</b>
