@@ -14,7 +14,7 @@ second="$(printf "%s" "$position"|tail -c 1)"
 if [ "$second" -gt 5 ]; then tag=artist; else tag=title; fi
 label="$(echo "$cmus"|grep "tag $tag"|cut -c 11-30)"
 
-if [ -n "$cmus" ]; then printf '%+20s %-3s %s%s ' \
+if [ -n "$cmus" ]; then printf '%+20s %-3s%s%s' \
 	"$label" \
 	"$position" \
 	"$(ifttt "$cmus" 'set shuffle true' 'L' '.')" \
@@ -33,5 +33,5 @@ if [ -f "$screencast_log" ]; then
 		cut -d' ' -f2)"
 	printf '%+2sfps' "${fps:-0}"
 else
-	date "+%a %e %b %H:%M"
+	date "+%a %b %d %H:%M"
 fi

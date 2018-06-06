@@ -45,59 +45,82 @@ _299 LoC in Vim with Terminus 8px. [Enlarge, enhance, zoom!](/ssg.png)_
 
 `ssg` is **one hundred times smaller** than Jekyll.
 
-`ssg` and its dependencies are about 800KB _combined_. Compare that to
-78MB of ruby with Jekyll and all the gems. So `ssg` can be installed in
-just few seconds on almost any Unix-like operating system.
+`ssg` and its dependencies are about 800KB _combined_. Compare that
+to 78MB of ruby with Jekyll and all the gems. So `ssg` can be
+installed in just few seconds on almost any Unix-like operating
+system.
 
-Obviously, `ssg` is tailored for my needs, it has all features I need
-and only those I use.
+Obviously, `ssg` is tailored for my needs, it has all features I
+need and only those I use.
 
-Keeping `ssg` helps you to master your Unix-shell skills: `awk`, `grep`,
-`sed`, `sh`, `cut`, `tr`. As a web developer you work with lots of text:
-code and data. So you better master these wonderful tools.
+Keeping `ssg` helps you to master your Unix-shell skills: `awk`,
+`grep`, `sed`, `sh`, `cut`, `tr`. As a web developer you work with
+lots of text: code and data. So you better master these wonderful
+tools.
 
 ## Performance
 
-**100 pps**. On modern computers `ssg` generates a hundred pages per
-second.  Half of a time for markdown rendering and another half for
-wrapping articles into the template. I heard good static site generators
-work---twice as fast---at 200 pps, so there's lots of performance that
-can be gained. ;)
+**100 pps**. On modern computers `ssg` generates a hundred pages
+per second.  Half of a time for markdown rendering and another half
+for wrapping articles into the template. I heard good static site
+generators work---twice as fast---at 200 pps, so there's lots of
+performance that can be gained. ;)
 
 ---
 
 ## Install
 
-If you agree with the license, feel free to use this script, its HTML
-and CSS or/and re-write them for your needs.
+If you agree with the license, feel free to use this script, its
+HTML and CSS or/and re-write them for your needs.
 
+Install dependencies and download `ssg`. For example, on OpenBSD:
+as root install `entr`, `rsync`, and `lowdown`.
 
-Download `ssg` and install dependencies. For example, on OpenBSD:
+<pre>
+# <b>pkg_add entr rsync-3.1.3-iconv lowdown</b>
+quirks-2.414 signed on 2018-03-28T14:24:37Z
+entr-4.0: ok
+rsync-3.1.3-iconv: ok
+lowdown-0.3.1: ok
+The following new rcscripts were installed: /etc/rc.d/rsyncd
+See rcctl(8) for details.
+</pre>
 
-    $ cd ./bin
-    $ ftp https://www.romanzolotarev.com/bin/ssg
-    $ chmod +x ssg
-    $ pkg_add entr rsync lowdown
+Then as a regular user change into `~/.bin` directory.
 
-Let's customize `ssg` for you.
+<pre>
+$ <b>cd ~/.bin</b>
+$ <b>ftp https://www.romanzolotarev.com/bin/ssg</b>
+Trying 140.82.28.210...
+Requesting https://www.romanzolotarev.com/bin/ssg
+100% |****************************************|  7257       00:00
+7257 bytes received in 0.00 seconds (2.99 MB/s)
+$ <b>chmod +x ssg</b>
+</pre>
+
+Let's customize your `ssg` setup.
 
 ---
 
 ## Variables
 
-Before you start, obviously you'll need to replace my credentials with
-yours.
+Before you start, obviously you'll need to replace my credentials
+with yours.
 
-    $ export WEBSITE_TITLE='Jack'
-    $ export SERVER_NAME='www.example.com'
-    $ export SERVER_PROTO='https'
-    $ export RSS_AUTHOR='jack@example.com (Jack)'
-    $ export RSS_DESCRIPTION='Personal website'
-    $ export COPYRIGHT_YEAR='2016'
+<pre>
+$ <b>export WEBSITE_TITLE='Jack'</b>
+$ <b>export SERVER_NAME='www.example.com'</b>
+$ <b>export SERVER_PROTO='https'</b>
+$ <b>export RSS_AUTHOR='jack@example.com (Jack)'</b>
+$ <b>export RSS_DESCRIPTION='Personal website'</b>
+$ <b>export COPYRIGHT_YEAR='2016'</b>
+</pre>
 
 Define your target directory in `$DOCS`:
 
-    $ export DOCS='/var/www/htdocs/www'
+<pre>
+$ <b>export DOCS='/var/www/htdocs/www'</b>
+</pre>
 
 ## Required files
 
@@ -162,10 +185,12 @@ this:
 
 After you run `ssg` (don't forget to set `$DOCS`):
 
-    $ export DOCS=/var/www/htdocs/www
-    $ ssg build
-    building /var/www/htdocs/www  2018-04-10T10:56:52+0000 4pp
-    $
+<pre>
+$ <b>export DOCS=/var/www/htdocs/www</b>
+$ <b>ssg build</b>
+building /var/www/htdocs/www  2018-04-10T10:56:52+0000 4pp
+$
+</pre>
 
 You have your static website ready in `/var/www/htdocs/www`.
 
@@ -178,21 +203,25 @@ You have your static website ready in `/var/www/htdocs/www`.
 
 ## Preview
 
-For OpenBSD I suggest to a [web server](/openbsd/webserver.html) locally.
+For OpenBSD I suggest to run [httpd](/openbsd/httpd.html) locally.
 
 For macOS and Linux you can run:
 
-    $ cd /var/www/htdocs/www
-    $ python -m SimpleHTTPServer
-    Serving HTTP on 0.0.0.0 port 8000...
+<pre>
+$ <b>cd /var/www/htdocs/www</b>
+$ <b>python -m SimpleHTTPServer</b>
+Serving HTTP on 0.0.0.0 port 8000...
+</pre>
 
 ## Watch
 
 To re-build pages on change run:
 
-    $ ssg watch
-    watching /home/jack/src/www
-    building /var/www/htdocs/www  2018-04-10T11:04:11+0000 4pp
+<pre>
+$ <b>ssg watch</b>
+watching /home/jack/src/www
+building /var/www/htdocs/www  2018-04-10T11:04:11+0000 4pp
+</pre>
 
 `entr(1)` watches changes in `*.html`, `*.md`, `*.css`, `*.txt` files and
 runs `ssg build` on every file change.
@@ -202,31 +231,85 @@ runs `ssg build` on every file change.
 If you'd like to delete all files in the destination directory during
 build, then run:
 
-    $ ssg build --clean
-    building /home/jack/src/www/docs --clean
-    2018-04-16T09:03:32+0000 4pp
-    $
+<pre>
+$ <b>ssg build --clean</b>
+building /home/jack/src/www/docs --clean
+2018-04-16T09:03:32+0000 4pp
+$
+</pre>
 
 The same option works for watching.
 
-    $ ssg watch --clean
-    watching /home/jack/src/www
-    building /home/jack/src/www/docs --clean
-    2018-04-16T09:04:25+0000 4pp
+<pre>
+$ <b>ssg watch --clean</b>
+watching /home/jack/src/www
+building /home/jack/src/www/docs --clean
+2018-04-16T09:04:25+0000 4pp
+</pre>
 
-## Deploy
+## Deploy with `rsync`
 
 If you don't have a public server yet, [try Vultr](/vultr.html).
 To deploy to remote server you can use `rsync(1)` like this:
 
-    $ rsync -avPc     /var/www/htdocs/www \
-      www.example.com:/var/www/htdocs/
+<pre>
+$ <b> rsync -avPc     /var/www/htdocs/www \
+www.example.com:/var/www/htdocs/</b>
+</pre>
 
 Or if you want to clean up the target directory on the remote server use:
 
-    $ rsync -avPc --delete-excluded \
-                      /var/www/htdocs/www \
-      www.example.com:/var/www/htdocs/
+<pre>
+$ <b>rsync -avPc --delete-excluded \
+                /var/www/htdocs/www \
+www.example.com:/var/www/htdocs/</b>
+</pre>
+
+## Deploy with Git `post-receive` hook
+
+[Set up Git on your server](/git.html).
+
+As root install `rsync` and `lowdown` packages on that server.
+
+<pre>
+# <b>pkg_add rsync-3.1.3-iconv lowdown</b>
+quirks-2.414 signed on 2018-03-28T14:24:37Z
+rsync-3.1.3-iconv: ok
+lowdown-0.3.1: ok
+The following new rcscripts were installed: /etc/rc.d/rsyncd
+See rcctl(8) for details.
+</pre>
+
+Then as `git` user download `ssg` on the server:
+
+<pre>
+# <b>cd /home/git</b>
+# <b>su git</b>
+$ <b>mkdir -p /home/git/bin</b>
+$ <b>cd /home/git/bin</b>
+$ <b>ftp https://www.romanzolotarev.com/bin/ssg</b>
+Trying 140.82.28.210...
+Requesting https://www.romanzolotarev.com/bin/ssg
+100% |****************************************|  7257       00:00
+7257 bytes received in 0.00 seconds (2.99 MB/s)
+$ <b>chmod +x ssg</b>
+</pre>
+
+Then add these lines to `/home/git/REPOSITORY.git/hooks/post-receive`:
+
+	TMPDIR="$(mktemp -d)"
+	git archive --format=tar HEAD | (cd "$TMPDIR" && tar xf -)
+	cd "$TMPDIR"
+	DOCS='/var/www/htdocs/www.romanzolotarev.com' \
+	/home/git/ssg build --clean
+
+As root make sure `git` user owns `$DOCS` directory:
+
+<pre>
+# <b>chown -R git:git /var/www/htdocs/www.romanzolotarev.com</b>
+</pre>
+
+_Tested on OpenBSD 6.3_
 
 ---
 

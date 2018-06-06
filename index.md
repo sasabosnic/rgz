@@ -10,7 +10,7 @@ low tech.
 - [set default applications on X Window System](/openbsd/mime.html "1 May 2018")
 - [configure minimalist login on OpenBSD](/openbsd/login.html "1 May 2018")
 - [enable HTTPS on OpenBSD with Let's Encrypt and acme-client(1)](/openbsd/acme-client.html "13 Apr 2018")
-- [configure httpd(8) on OpenBSD for your web server](/openbsd/webserver.html "12 Apr 2018")
+- [configure httpd(8) on OpenBSD for your web server](/openbsd/httpd.html "12 Apr 2018")
 - [deploy a VPS on Vultr](/vultr.html "11 Apr 2018")
 - **[generate your static site with lowdown(1)](/ssg.html "07 Apr 2018")**
 - [upgrade OpenBSD to 6.3](/openbsd/upgrade.html "03 Apr 2018")

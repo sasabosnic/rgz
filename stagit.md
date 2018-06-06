@@ -1,62 +1,69 @@
-# Publish your Git repositories with stagit(1) and httpd(1)
+# Publish your Git repositories with stagit(1) and httpd(8)
 
-stagit(1) generates HTML files from on your git repository.
+[stagit(1)](https://git.codemadness.org/stagit) generates HTML files
+from your git repository. The source of this website, for example:
+[/src/www](/src/www/).
 
-View source of this website, for example: [/src/www](/src/www/).
+Set up [Git](/git.html) and [httpd server](/openbsd/httpd.html).
 
-If you don't have a web server yet, [set up one](/openbsd/webserver.html).
-If you don't host your Git repositories, it's time [to set up Git on this server](/git.html).
+## Build stagit(1)
 
-On OpenBSD you have to build stagit(1) from sources (the version from ports fails).
+On OpenBSD we have to build stagit(1) from sources:
 
 <pre>
 # <b>pkg_add libgit2</b>
+quirks-2.414 signed on 2018-03-28T14:24:37Z
+libgit2-0.26.3:libssh2-1.8.0: ok
+libgit2-0.26.3: ok
 # <b>cd /tmp</b>
 # <b>git clone git://git.codemadness.org/stagit</b>
-# <b>cd stagit</b>
-# <b>make && make install</b>
+Cloning into 'stagit'...
+remote: Counting objects: 946, done.
+remote: Compressing objects: 100% (396/396), done.
+remote: Total 946 (delta 620), reused 834 (delta 549)
+Receiving objects: 100% (946/946), 164.47 KiB | 230.00 KiB/s, done.
+Resolving deltas: 100% (620/620), done.
+# <b>cd /tmp/stagit</b>
+# <b>www# make && make install</b>
+cc -c -O2 -std=c99 -I/usr/local/include -D_XOPEN_SOURCE=700
+-D_DEFAULT_SOURCE -D_BSD_SOURCE -I/usr/local/include -o stagit.o
+-c stagit.c
+...
 </pre>
 
-Let's configure httpd(8). Add `location` section to your `server`.
+## Configure httpd(8)
+
+Edit `/etc/httpd.conf` to add `location` section to your `server`.
 
 	location "/src*" { root { "/src", strip 1 } }
-
-<pre>
-# <b>httpd -n</b>
-# <b>rcctl restart httpd</b>
-</pre>
-
-Switch to `git` user:
-
-<pre>
-# <b>su git</b>
-$ <b>cd</b>
-$ <b>echo <i>'DESCRIPTION'</i> > <i>REPOSITORY.git</i>/description</b>
-</pre>
 
 Make `src` directory in `/var/www`:
 
 <pre>
-$ <b>mkdir -p /var/www/src</b>
-$ <b>cd /var/www/src</b>
-$ <b>stagit-index /home/git/* > index.html</b>
+# <b>mkdir -p /var/www/src</b>
+# <b>chown git:git /var/www/src</b>
 </pre>
 
-Add `style.css`, `logo.png`, and `favion.png` to taste.
-
-Then add [stagit-post-recive.sh](/stagit-post-recive.sh) script to `/home/git`.
+Verify the new httpd configuration and restart it:
 
 <pre>
-$ <b>cd /home/git</b>
-$ <b>ftp https://www.romanzolotarev.com/stagit-post-recive.sh</b>
-$ <b>chmod +x stagit-post-recive.sh</b>
+# <b>httpd -n</b>
+configuration OK
+# <b>rcctl restart httpd</b>
+httpd(ok)
+httpd(ok)
 </pre>
 
-Edit the script for your needs.
+## Add repositories
 
-## Add one more repo?
+Switch to `git` user:
 
-Add for files to your bare repository:
+<pre>
+# <b>cd /home/git</b>
+# <b>su git</b>
+</pre>
+
+Repeat these steps for every of your repositories:
 
 <pre>
 $ <b>cd <i>/home/git/REPOSITORY.git</i></b>
@@ -65,30 +72,60 @@ $ <b>echo <i>'OWNER_NAME'</i> > owner</b>
 $ <b>echo <i>'DESCRIPTION'</i> > description</b>
 </pre>
 
-Edit `hooks/post-recive`:
+Edit a hook script `/home/git/REPOSITORY.git/hooks/post-receive`:
 
 	#!/bin/sh
-	/home/git/stagit-post-recive.sh
+	export LC_CTYPE='en_US.UTF-8'
+	src="$(pwd)"
+	name=$(basename "$src")
+	dst="/var/www/src/$(basename "$name" '.git')"
+	mkdir -p "$dst"
+	cd "$dst" || exit 1
 
-Don't forget to make it executable.
+	echo "[stagit] building $dst"
+	stagit "$src"
+
+	ln -sf log.html index.html
+	ln -sf ../style.css style.css
+	ln -sf ../logo.png logo.png
+
+Or download a bit more advanced [post-receive](/post-receive) hook:
 
 <pre>
-$ <b>chmod +x hooks/post-recive</b>
+$ <b>cd /home/git/REPOSITORY.git/hooks</b>
+$ <b>ftp -V https://www.romanzolotarev.com/post-receive</b>
+100% |******************************************|  1032       00:00
+$ <b>chmod +x post-receive</b>
 </pre>
 
-When all repos are ready, update the index file:
+Edit the script to suit your needs.
+
+When all repos are ready, generate the index page:
 
 <pre>
 $ <b>cd /var/www/src</b>
-$ <b>stagit-index /home/git/* > index.html</b>
+$ <b>stagit-index /home/git/*.git > index.html</b>
 </pre>
 
-From your local host:
+Add `style.css`, `logo.png`, and `favicon.png` to `/var/www/src` if
+needed.
 
 <pre>
-$ <b>git push <i>REMOTE</i></b>
+$ <b>ftp -V https://www.romanzolotarev.com/stagit/style.css</b>
+style.css    100% |*****************************|   959       00:00
+$ <b>ftp -V https://www.romanzolotarev.com/stagit/logo.png</b>
+logo.png     100% |*****************************|  6406       00:00
+$ <b>ftp -V https://www.romanzolotarev.com/favicon.png</b>
+favicon.png  100% |*****************************|   408       00:00
+</pre>
+
+To test `post-receive` hook push from your local host to the server:
+
+<pre>
+$ <b>git push <i>REMOTE</i> master</b>
 </pre>
 
 Done!
 
-_Tested on OpenBSD 6.3_
+_Tested on OpenBSD 6.3 with stagit
+[187daa](https://git.codemadness.org/stagit/commit/187daac42007c87e6af9317a20446e3b81907f63.html)_

@@ -8,7 +8,8 @@ Nota bene: it's all about the userland, although I've contributed to some
 of these projects, but not as a developer. In reverse order of appearance
 in my tool set:
 
-- 2018 [httpd](/openbsd/webserver.html) with
+- 2018 [stagit](/stagit.html)
+- 2018 [httpd](/openbsd/httpd.html) with
   [acme-client](/openbsd/acme-client.html)
 - 2018 Gopher
 - 2018 awk

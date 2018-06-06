@@ -26,8 +26,7 @@ tracking, analytic tools, social media buttons. Most pages are just
 text.
 
 This website has been generated with [ssg](/ssg.html), served by
-[OpenBSD httpd](/openbsd/webserver.html), and hosted on
-[Vultr](/vultr.html).
+[OpenBSD httpd](/openbsd/httpd.html), and hosted on [Vultr](/vultr.html).
 
 This project is [sponsored by you](/sponsors.html). Thank you!
 

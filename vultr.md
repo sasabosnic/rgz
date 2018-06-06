@@ -51,3 +51,5 @@ harden a server right after its first boot, but this topic deserves its
 own post.
 
 Now you can [setup a web server](/openbsd/webserver.html).
+
+_Tested on OpenBSD 6.3_

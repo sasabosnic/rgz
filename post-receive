@@ -1,0 +1,49 @@
+#!/bin/sh
+LC_CTYPE="en_US.UTF-8"
+export LC_CTYPE
+
+src="$(pwd)"
+name=$(basename "$src")
+
+
+# Check if git push is forced
+
+force=0
+while read -r old new ref; do
+	[ "$old" = '0000000000000000000000000000000000000000' ] && continue
+	[ "$new" = '0000000000000000000000000000000000000000' ] && continue
+	hasrevs=$(git rev-list "$old" "^$new" | sed 1q)
+	[ -n "$hasrevs" ] && { force=1; break; }
+done
+
+
+# Publish HTML files with stagit(1)
+
+dst="/var/www/src/$(basename "$name" ".git")"
+mkdir -p "$dst"
+cd "$dst" || { echo "[stagit] can't change to $dst"; exit 1; }
+
+# Delete commit directory when push is forced
+[ "$force" = "1" ] && rm -rf "commit"
+
+echo "[stagit] building $dst"
+stagit "$src"
+ln -sf log.html index.html
+ln -sf ../style.css style.css
+ln -sf ../logo.png logo.png
+
+
+# Copy HEAD into raw directory
+
+[ -d "$dst/raw" ] && rm -rf "$dst/raw"
+mkdir -p "$dst/raw"
+cd "$src" || { echo "[archive] can't change to $src"; exit 1; }
+git archive --format=tar HEAD | (cd "$dst/raw" && tar xf -)
+
+
+# Rebuild the website with ssg from raw
+
+cd "$dst/raw" || { echo "[ssg] can't change to $dst/raw"; exit 1; }
+printf '[ssg] '
+DOCS='/var/www/htdocs/www.romanzolotarev.com' \
+"$HOME/bin/ssg" build --clean

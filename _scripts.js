@@ -114,6 +114,7 @@
     render();
 
     d.addEventListener("keydown", function(e) {
+	console.log(e)
       switch (e.keyCode) {
         case 32:
           if (!w.model.slidesOn) return;
@@ -123,6 +124,7 @@
         case 13:
           toggle();
           break;
+	case 81:
         case 27:
           off();
           break;

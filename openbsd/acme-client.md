@@ -9,7 +9,7 @@ href="https://mobile.twitter.com/hashtag/OpenBSD">#OpenBSD</a> a chance."<br>
 
 I assume you already have [httpd(8)](https://man.openbsd.org/httpd.8)
 running on your OpenBSD server. If it's not, [then go ahead and
-configure it](/openbsd/webserver.html). I'll wait for you here.
+configure it](/openbsd/httpd.html). I'll wait for you here.
 
 We are going to use [Let's Encrypt](https://letsencrypt.org) as a
 certificate authority for Transport Layer Security (TLS) encryption.
