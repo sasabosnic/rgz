@@ -1,4 +1,7 @@
+map gp :r!xclip -o -s clipboard
+map gy {!}xclip -i -s clipboard
 map gS {!}sort -r
+map gd :r!date +\%Y-\%m-\%d
 map gg 1G
 map gc :%!prettier --parser=css --write
 map gf {!}fmt -p}}{j

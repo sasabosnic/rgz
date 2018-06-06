@@ -10,24 +10,24 @@ eth='re0'
 case "$1" in
 
   scan)
-    doas ifconfig $wifi scan
+    ifconfig $wifi scan
     ;;
 
   wifi)
-    doas ifconfig $eth -inet down
+    ifconfig $eth -inet down
     if [ -n "$2" ] && [ -n "$3" ]; then
-      doas ifconfig $wifi nwid "$2" wpa wpakey "$3" wpaprotos wpa1,wpa2
+      ifconfig $wifi nwid "$2" wpa wpakey "$3" wpaprotos wpa1,wpa2
     fi
-    doas route -n flush
-    doas ifconfig $wifi up
-    doas dhclient $wifi
+    route -n flush
+    ifconfig $wifi up
+    dhclient $wifi
     ;;
 
   eth)
-    doas ifconfig $wifi -inet down
-    doas route -n flush
-    doas ifconfig $eth up
-    doas dhclient $eth
+    ifconfig $wifi -inet down
+    route -n flush
+    ifconfig $eth up
+    dhclient $eth
   ;;
 
   *)
