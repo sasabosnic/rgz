@@ -9,6 +9,7 @@ http://sivers.org/en.atom
 http://steve-yegge.blogspot.com/feeds/posts/default?alt=rss
 http://theorangeduck.com/feeds/pages
 http://undeadly.org/cgi?action=rss
+http://vincentdelft.be/rss
 http://www.daemonology.net/blog/index.rss
 http://www.feyrer.de/NetBSD/bx/blosxom.cgi/index.rss
 http://www.joelonsoftware.com/rss.xml

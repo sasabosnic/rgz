@@ -1,7 +1,5 @@
 #!/bin/sh
 #
-# $romanzolotarev.com: ssg,v 1.1 2018/04/23 10:00:00 romanzolotarev $
-#
 # https://www.romanzolotarev.com/bin/ssg
 # Copyright 2018 Roman Zolotarev <hi@romanzolotarev.com>
 #
@@ -18,16 +16,13 @@
 # OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 #
 
-: "${WEBSITE_TITLE:=Roman Zolotarev}"
-: "${SERVER_NAME:=www.romanzolotarev.com}"
-: "${SERVER_PROTO:=https}"
-: "${RSS_AUTHOR:=hi@romanzolotarev.com (Roman Zolotarev)}"
-: "${RSS_DESCRIPTION:=Personal website}"
-: "${COPYRIGHT_YEAR:=2016}"
+CONF_FILE="$PWD/ssg.conf"
+[ -f "$CONF_FILE" ] && . "$CONF_FILE"
+[ -n "$DOCS" ] || { echo 'to build set DOCS in ssg.conf'; exit 1; }
+[ -n "$ROOT" ] || { echo 'to build set ROOT in ssg.conf'; exit 1; }
 
 ##########################################################################
 
-[ -n "$DOCS" ] || { echo "export DOCS <target_directory>"; exit 1; }
 DOCUMENT_ROOT=$(readlink -fn "$DOCS")
 TEMP_DIR=$(mktemp -d)
 # shellcheck disable=SC2064
@@ -37,7 +32,7 @@ trap exit HUP INT TERM
 
 INDEX_HTML_FILE="$TEMP_DIR/index.html"
 RSS_FILE="$TEMP_DIR/rss.xml"
-RSS_URL="$SERVER_PROTO://$SERVER_NAME/rss.xml"
+RSS_URL="$ROOT/rss.xml"
 SITEMAP="$TEMP_DIR/sitemap.xml"
 
 CSS_FILE="$PWD/_styles.css"
@@ -86,7 +81,6 @@ md_to_html() {
 		done
 }
 
-
 # filter first 20 lines with links and link titles (dates)
 # shellcheck disable=SC2016
 fst_h1='/<[h1]*( id=".*")?>/{gsub(/<[^>]*>/,"");print($0);exit;}'
@@ -100,12 +94,12 @@ line_to_rss_item() {
 
 	title="$(awk "$fst_h1" "$file")"
 	# replace relative URIs with absolute URIs
-	article=$(sed "s/\\([hrefsc]*\\)=\"\\//\\1=\"$prefix/g" "$file")
+	article=$(sed "s#\\([hrefsc]*\\)=\"#\\1=\"$ROOT#g" "$file")
 	echo $(cat << EOF
 <item>
 <title>$title</title>
-<guid>$SERVER_PROTO://${SERVER_NAME}$url</guid>
-<link>$SERVER_PROTO://${SERVER_NAME}$url</link>
+<guid>${ROOT}$url</guid>
+<link>${ROOT}$url</link>
 <pubDate>$date 00:00:00 +0000</pubDate>
 <description><![CDATA[$article]]></description>
 </item>
@@ -122,12 +116,10 @@ index_to_rss() {
 <atom:link href="$RSS_URL" rel="self" type="application/rss+xml" />
 <title>$WEBSITE_TITLE</title>
 <description>$RSS_DESCRIPTION</description>
-<link>$SERVER_PROTO://$SERVER_NAME/</link>
+<link>$ROOT/</link>
 <lastBuildDate>$date_rfc_822</lastBuildDate>
 <managingEditor>$RSS_AUTHOR</managingEditor>
 EOF
-
-	prefix="$SERVER_PROTO:\\/\\/$SERVER_NAME\\/"
 	grep "$a" "$INDEX_HTML_FILE" |
 	head -n20 |
 	while read -r line; do line_to_rss_item "$line"; done
@@ -166,7 +158,7 @@ EOF
 		esac
 		cat >> "$SITEMAP" << EOF
 <url>
-<loc>$SERVER_PROTO://${SERVER_NAME}$url</loc>
+<loc>${ROOT}$url</loc>
 <lastmod>$date</lastmod>
 <priority>1.0</priority>
 </url>
@@ -243,6 +235,7 @@ watch)
 	while true; do
 		find "$PWD" -type f \
 			\( -name "$(basename "$0")" \
+			-or -name '*.conf' \
 			-or -name '*.md' \
 			-or -name '*.html' \
 			-or -name '*.css' \

@@ -102,25 +102,19 @@ Let's customize your `ssg` setup.
 
 ---
 
-## Variables
+## Configuration
 
-Before you start, obviously you'll need to replace my credentials
-with yours.
+Before you start, create `ssg.conf` file. For example, here is mine:
 
-<pre>
-$ <b>export WEBSITE_TITLE='Jack'</b>
-$ <b>export SERVER_NAME='www.example.com'</b>
-$ <b>export SERVER_PROTO='https'</b>
-$ <b>export RSS_AUTHOR='jack@example.com (Jack)'</b>
-$ <b>export RSS_DESCRIPTION='Personal website'</b>
-$ <b>export COPYRIGHT_YEAR='2016'</b>
-</pre>
+	#!/bin/sh
+	: "${DOCS:=/var/www/htdocs/www.romanzolotarev.com}"
+	ROOT='https://www.romanzolotarev.com'
+	WEBSITE_TITLE='Roman Zolotarev'
+	RSS_AUTHOR='hi@romanzolotarev.com (Roman Zolotarev)'
+	RSS_DESCRIPTION='Personal website'
 
-Define your target directory in `$DOCS`:
-
-<pre>
-$ <b>export DOCS='/var/www/htdocs/www'</b>
-</pre>
+Note: in this example if `$DOCS` is set, then ssg uses the original
+value, **not** the value from `ssg.conf`.
 
 ## Required files
 
@@ -186,7 +180,6 @@ this:
 After you run `ssg` (don't forget to set `$DOCS`):
 
 <pre>
-$ <b>export DOCS=/var/www/htdocs/www</b>
 $ <b>ssg build</b>
 building /var/www/htdocs/www  2018-04-10T10:56:52+0000 4pp
 $

@@ -28,20 +28,7 @@ n()   { start_tmux 'n'   "$HOME/downloads"   'newsboat'; }
 o()   { start_tmux 'o'   "$HOME/prv/openvpn" 'doas openvpn --config default.ovpn'; }
 www() { start_tmux 'www' "$HOME/src/www"     'vi index.md'; }
 
-export DOCS='/var/www/htdocs/www.romanzolotarev.com'
-export BSDJOBS='/var/www/htdocs/www.bsdjobs.com'
-s() { cd "$HOME/src/www" && ssg watch --clean||return; }
-sbsdjobs() { cd "$HOME/src/bsdjobs" &&
-  WEBSITE_TITLE="#BSDjobs" \
-  SERVER_NAME="www.bsdjobs.com" \
-  SERVER_PROTO="https" \
-  RSS_AUTHOR="hi@romanzolotarev.com (Roman Zolotarev)" \
-  RSS_DESCRIPTION="Open BSD jobs. Updated weekly. OpenBSD, FreeBSD, NetBSD, DragonFly BSD" \
-  COPYRIGHT_YEAR="2018" \
-  DOCS="$BSDJOBS" ssg watch --clean||return; }
-d() { [ -n "$1" ] && { rsync -azvPc --delete-excluded "$DOCS" "$1:/var/www/htdocs/"; }; }
-dbsdjobs() { rsync -azvPc --delete-excluded "$BSDJOBS" "www:/var/www/htdocs/";quits & }
-
+s() { [ -n "$1" ] && [ -d "$HOME/src/$1" ] && cd "$HOME/src/$1" && ssg watch --clean||return; }
 sync_logs() { [ -n "$1" ] && { rsync -azvPc "$1:/var/www/logs/*" "$HOME/prv/logs/$1/"; quits & }; }
 
 png() { optipng -preserve -keep -strip all -o7 "$1"; }
@@ -52,7 +39,6 @@ fit120() { cp "$1" "$1.original" && convert -resize 120 "$1.original" "$1"; }
 
 c() { clear; PS1='$ '; }
 
-alias feh='feh -.Zd'
 alias cp='cp -i'
 alias l='ls -aF'
 alias ll='ls -lahF'
@@ -83,7 +69,7 @@ pkg_add_with_cache() { mkdir -p "$LOCAL_PKG_PATH" && doas env PKG_CACHE="$LOCAL_
 
 mnt() { [ -n "$1" ] && doas mkdir -p "/mnt/$1" && doas mount "/dev/$1" "/mnt/$1" && cd "/mnt/$1"||return; }
 umnt() { [ -n "$1" ] && doas umount "/dev/$1"; }
-pics() { mnt sd1i && cd DCIM && rsync -avPc --chown=romanzolotarev:romanzolotarev . "$HOME/downloads" && cd "$HOME/downloads" && umnt sd1i && feh ./**/*; }
+pics() { mnt sd1i && cd DCIM && rsync -avPc --chown=romanzolotarev:romanzolotarev . "$HOME/downloads" && cd "$HOME/downloads" && umnt sd1i; }
 
 aria() { mkdir -p "$HOME/downloads" && (cd "$HOME/downloads" && aria2c "$1"); }
 yt() { mkdir -p "$HOME/downloads" && (cd "$HOME/downloads" && youtube-dl "$1"); }
