@@ -2,6 +2,8 @@
 
 [Deploy OpenBSD server on Vultr](/vultr.html) and login into it.
 
+## On the remote host
+
 Install [git(1)](https://git-scm.com/):
 
 <pre>
@@ -27,21 +29,23 @@ Add your public SSH keys:
 # <b>cp /root/.ssh/authorized_keys /home/git/.ssh/</b>
 </pre>
 
-Create the first Git repository:
-
-<pre>
-# <b>git init --bare <i>/home/git/REPOSITORY.git</i></b>
-Initialized emtpy Git repository in /home/git/REPOSITORY.git/
-</pre>
-
 Set the proper owner and group, then exit.
 
 <pre>
 # <b>chown -R git:git /home/git</b>
-# <b>exit</b>
+#
 </pre>
 
-On your local host:
+## On the local host
+
+Initialize bare repository on the remote:
+
+<pre>
+$ <b>ssh git@<i>REMOTE</i> git init --bare <i>REPOSITORY.git</i></b>
+Initialized emtpy Git repository in /home/git/REPOSITORY.git/
+</pre>
+
+Add the remote and push a local copy to it:
 
 <pre>
 $ <b>cd <i>REPOSITORY</i></b>

@@ -19,12 +19,19 @@ done
 
 # Publish HTML files with stagit(1)
 
-dst="/var/www/src/$(basename "$name" ".git")"
+dst_root="/var/www/src"
+dst="$dst_root/$(basename "$name" ".git")"
 mkdir -p "$dst"
-cd "$dst" || { echo "[stagit] can't change to $dst"; exit 1; }
+cd "$dst" || { echo "[post-receive] can't change to $dst"; exit 1; }
 
 # Delete commit directory when push is forced
 [ "$force" = "1" ] && rm -rf "commit"
+
+repos="$(find "$src"/.. -maxdepth 2|grep '\.git$'|sed s#/\.git##|tr '\n' ' ')"
+[ -n "$repos" ] && {
+	echo "[stagit] building $(dirname "$src")"
+	stagit-index $repos > "$dst_root/index.html"
+}
 
 echo "[stagit] building $dst"
 stagit "$src"
@@ -33,17 +40,24 @@ ln -sf ../style.css style.css
 ln -sf ../logo.png logo.png
 
 
-# Copy HEAD into raw directory
+# Copy HEAD to raw directory
 
+echo "[post-receive] copy HEAD to $dst/raw"
 [ -d "$dst/raw" ] && rm -rf "$dst/raw"
 mkdir -p "$dst/raw"
-cd "$src" || { echo "[archive] can't change to $src"; exit 1; }
+cd "$src" || { echo "[post-receive] can't change to $src"; exit 1; }
 git archive --format=tar HEAD | (cd "$dst/raw" && tar xf -)
 
 
 # Rebuild the website with ssg from raw
 
-cd "$dst/raw" || { echo "[ssg] can't change to $dst/raw"; exit 1; }
-printf '[ssg] '
-DOCS='/var/www/htdocs/www.romanzolotarev.com' \
-"$HOME/bin/ssg" build --clean
+cd "$dst/raw" || { echo "[post-receive] can't change to $dst/raw"; exit 1; }
+printf '[ssg] ' && "$HOME/bin/ssg" build --clean
+
+
+# Publish the repository
+
+echo "[post-receive] copy bare repository to ${dst}.git"
+[ -d "${dst}.git" ] && rm -rf "${dst}.git"
+cp -r "$src" "${dst}.git"
+cd "${dst}.git" && git --bare update-server-info

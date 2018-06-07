@@ -24,7 +24,7 @@ remote: Total 946 (delta 620), reused 834 (delta 549)
 Receiving objects: 100% (946/946), 164.47 KiB | 230.00 KiB/s, done.
 Resolving deltas: 100% (620/620), done.
 # <b>cd /tmp/stagit</b>
-# <b>www# make && make install</b>
+# <b>make && make install</b>
 cc -c -O2 -std=c99 -I/usr/local/include -D_XOPEN_SOURCE=700
 -D_DEFAULT_SOURCE -D_BSD_SOURCE -I/usr/local/include -o stagit.o
 -c stagit.c
@@ -94,7 +94,7 @@ Or download a bit more advanced [post-receive](/post-receive) hook:
 <pre>
 $ <b>cd /home/git/REPOSITORY.git/hooks</b>
 $ <b>ftp -V https://www.romanzolotarev.com/post-receive</b>
-100% |******************************************|  1032       00:00
+post-receive 100% |*****************************|  1032       00:00
 $ <b>chmod +x post-receive</b>
 </pre>
 

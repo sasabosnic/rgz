@@ -4,6 +4,8 @@ low tech.
 
 # How to...
 
+- [publish your Git repositories with stagit(1) and httpd(8)](/git.html "7 Jun 2018")
+- [host your Git repositories](/git.html "7 Jun 2018")
 - [manage your terminals with tmux(1)](/tmux.html "18 May 2018")
 - [switch from Vim to vi(1)](/vi.html "12 May 2018")
 - [configure newsboat(1) to read RSS feeds in&nbsp;terminal](/newsboat.html "6 May 2018")
