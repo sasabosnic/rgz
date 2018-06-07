@@ -104,7 +104,20 @@ Let's customize your `ssg` setup.
 
 ## Configuration
 
-Before you start, create `ssg.conf` file. For example, here is mine:
+To configure `ssg` you need to set two variables:
+
+- `$DOCS` - path to web server document root directory
+- `$ROOT` - root URL of your web site
+
+There are three more variables, but these are optional:
+
+- `$WEBSITE_TITLE` - title (suffix) for all pages
+- `$RSS_AUTHOR` - author's full name for RSS feed
+- `$RSS_DESCRIPTION` - RSS feed description
+
+You can set all those variables in enviornment with `export` or
+`env`, but I recommend to create `ssg.conf` file. For example, here
+is mine:
 
 	#!/bin/sh
 	: "${DOCS:=/var/www/htdocs/www.romanzolotarev.com}"
