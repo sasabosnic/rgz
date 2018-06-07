@@ -126,7 +126,7 @@ is mine:
 	RSS_AUTHOR='hi@romanzolotarev.com (Roman Zolotarev)'
 	RSS_DESCRIPTION='Personal website'
 
-Note: in this example if `$DOCS` is set, then ssg uses the original
+Note: in this example if `$DOCS` is set, then `ssg` uses the original
 value, **not** the value from `ssg.conf`.
 
 ## Required files
