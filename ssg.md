@@ -156,6 +156,10 @@ page URL and date from `<a>` tag):
 1. `_footer.html` - and its footer
 1. `_styles.css` - styles
 
+If you use my CSS, don't forget to wrap the content of `_header.html`
+into `<div class="header>...</div>` and the content of `_footer.html`
+into `<div class="footer>...</div>`.
+
 ## Reserved file names
 
 There are also reserved filenames, these files are generated when you run
