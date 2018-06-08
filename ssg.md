@@ -116,7 +116,7 @@ There are three more variables, but these are optional:
 - `$RSS_DESCRIPTION` - RSS feed description
 
 You can set all those variables in enviornment with `export` or
-`env`, but I recommend to create `ssg.conf` file. For example, here
+`env`, but I recommend to create `_ssg.conf` file. For example, here
 is mine:
 
 	#!/bin/sh
@@ -127,14 +127,14 @@ is mine:
 	RSS_DESCRIPTION='Personal website'
 
 Note: in this example if `$DOCS` is set, then `ssg` uses the original
-value, **not** the value from `ssg.conf`.
+value, **not** the value from `_ssg.conf`.
 
 ## Required files
 
 There are few required files:
 
 1. `index.html` or `index.md` - home page
-1. `styles.css` - styles, [take mine and customize](/styles.css)
+1. `styles.css` - styles, [take mine and customize](/src/www/raw/_styles.css)
 
 Example of `index.md`:
 
