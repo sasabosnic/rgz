@@ -131,10 +131,9 @@ value, **not** the value from `_ssg.conf`.
 
 ## Required files
 
-There are few required files:
+There is only one file required:
 
 1. `index.html` or `index.md` - home page
-1. `styles.css` - styles, [take mine and customize](/src/www/raw/_styles.css)
 
 Example of `index.md`:
 
@@ -154,7 +153,7 @@ page URL and date from `<a>` tag):
 
 1. `_header.html` - header of every page
 1. `_footer.html` - and its footer
-1. `_styles.css` - styles
+1. `_styles.css` - styles, [take mine and customize](/src/www/raw/_styles.css)
 
 If you use my CSS, don't forget to wrap the content of `_header.html`
 into `<div class="header>...</div>` and the content of `_footer.html`
