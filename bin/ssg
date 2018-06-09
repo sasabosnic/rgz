@@ -95,7 +95,7 @@ line_to_rss_item() {
 	title="$(awk "$fst_h1" "$file")"
 	# replace relative URIs with absolute URIs
 	article=$(sed "s#\\([hrefsc]*\\)=\"#\\1=\"$ROOT#g" "$file")
-	echo $(cat << EOF
+	printf "%s" "$(cat << EOF
 <item>
 <title>$title</title>
 <guid>${ROOT}$url</guid>
@@ -104,7 +104,7 @@ line_to_rss_item() {
 <description><![CDATA[$article]]></description>
 </item>
 EOF
-)|sed 's/\&nbsp;/\&#160;/'>>"$RSS_FILE"
+)"|sed 's/\&nbsp;/\&#160;/' >> "$RSS_FILE"
 }
 
 index_to_rss() {
