@@ -19,8 +19,7 @@ done
 
 # Publish HTML files with stagit(1)
 
-dst_root="/var/www/src"
-dst="$dst_root/$(basename "$name" ".git")"
+dst="/var/www/src/$(basename "$name" ".git")"
 mkdir -p "$dst"
 cd "$dst" || { echo "[post-receive] can't change to $dst"; exit 1; }
 
@@ -30,7 +29,7 @@ cd "$dst" || { echo "[post-receive] can't change to $dst"; exit 1; }
 repos="$(find "$src"/.. -maxdepth 2|grep '\.git$'|sed s#/\.git##|tr '\n' ' ')"
 [ -n "$repos" ] && {
 	echo "[stagit] building $(dirname "$src")"
-	stagit-index $repos > "$dst_root/index.html"
+	stagit-index $repos > "$dst"/../index.html
 }
 
 echo "[stagit] building $dst"
