@@ -1,42 +1,33 @@
-unbind-key  all
+bind-key M-Return       terminal
+bind-key M-j            window-cycle
+bind-key M-k            window-cycle
+bind-key M-t            window-maximize
+bind-key M-v            window-vtile
+bind-key MC-1           group-only-1
+bind-key MC-2           group-only-2
+bind-key MC-l           lock
+bind-key MC-q           window-delete
+bind-key MC-r           restart
+bind-key MCS-1          window-movetogroup-1
+bind-key MCS-2          window-movetogroup-2
+bind-key MCS-q          quit
 
-bind-key    CM-1           group-only-1
-bind-key    CM-2           group-only-2
-bind-key    CM-3           group-only-3
-bind-key    CM-Return      "xterm -fg '#ffaa44' -bg '#221100'"
-bind-key    CM-l           "xlock"
-bind-key    CM-q           window-delete
-bind-key    CM-r           restart
-bind-key    CM-s           "bin/screenshot 200"
-bind-key    CSM-1          window-movetogroup-1
-bind-key    CSM-2          window-movetogroup-2
-bind-key    CSM-3          window-movetogroup-3
-bind-key    CSM-q          quit
-bind-key    F5             "bin/screencast start"
-bind-key    F6             "bin/screencast stop"
-bind-key    M-Return       "xterm"
-bind-key    M-e            menu-exec
-bind-key    M-equal        "bin/vol up"
-bind-key    M-h            window-htile
-bind-key    M-j            window-cycle
-bind-key    M-k            window-cycle
-bind-key    M-l            "cmus-remote --shuffle"
-bind-key    M-m            "bin/vol toggle"
-bind-key    M-minus        "bin/vol down"
-bind-key    M-n            "cmus-remote --next"
-bind-key    M-r            "cmus-remote -C 'toggle repeat_current'"
-bind-key    M-s            "bin/screenshot"
-bind-key    M-t            window-maximize
-bind-key    M-u            "cmus-remote --pause"
-bind-key    M-v            window-vtile
-bind-key    SM-n           "cmus-remote --prev"
+bind-key F5             "bin/screencast start"
+bind-key F6             "bin/screencast stop"
+bind-key M-equal        "bin/vol up"
+bind-key M-f            "firefox"
+bind-key M-l            "cmus-remote --shuffle"
+bind-key M-m            "bin/vol toggle"
+bind-key M-minus        "bin/vol down"
+bind-key M-n            "cmus-remote --next"
+bind-key M-r            "cmus-remote -C 'toggle repeat_current'"
+bind-key M-s            "bin/screenshot"
+bind-key M-u            "cmus-remote --pause"
+bind-key MC-s           "bin/screenshot 200"
+bind-key MCS-s          "bin/screenshot 400"
+bind-key MS-n           "cmus-remote --prev"
 
-command     firefox        firefox
-command     xterm          xterm
-
-borderwidth 2 
-color       activeborder   "#444444"
-color       inactiveborder "#000000"
-snapdist    16
-fontname    fixed-13
-sticky      yes
+color    activeborder   "#444444"
+color    inactiveborder "#000000"
+fontname fixed-13
+sticky   yes

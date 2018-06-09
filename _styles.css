@@ -49,13 +49,19 @@ pre {
 }
 
 #slides-on:checked ~ .article table,
+#slides-on:checked ~ .article h1,
+#slides-on:checked ~ .article h2 {
+  margin-top: 4000px;
+  padding-top: 50px;
+}
+#slides-on:checked ~ .article table,
 #slides-on:checked ~ .article p,
 #slides-on:checked ~ .article pre,
 #slides-on:checked ~ .article h1,
 #slides-on:checked ~ .article h2 {
-  margin-top: 1000px;
-  padding: 50px;
+  padding-left: 50px;
 }
+
 #slides-on:checked ~ .article blockquote {
   margin: 0;
   padding: 0;

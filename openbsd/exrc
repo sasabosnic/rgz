@@ -1,11 +1,10 @@
-map gp :r!xclip -o -s clipboard
-map gy {!}xclip -i -s clipboard
 map gS {!}sort -r
-map gd :r!date +\%Y-\%m-\%d
-map gg 1G
 map gc :%!prettier --parser=css --write
+map gd :r!date +\%Y-\%m-\%d
 map gf {!}fmt -p}}{j
+map gg 1G
 map gj :%!prettier --write
+map gp :r!xclip -o -s clipboard
 map gs {!}sort
 map gt :%s/[[:space:]]\{1,\}$//g
 map gw :w

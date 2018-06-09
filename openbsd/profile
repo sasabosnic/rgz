@@ -37,8 +37,6 @@ fit() { cp "$1" "$1.original" && convert -resize 1200 "$1.original" "$1"; }
 fit50() { cp "$1" "$1.original" && convert -resize 50 "$1.original" "$1"; }
 fit120() { cp "$1" "$1.original" && convert -resize 120 "$1.original" "$1"; }
 
-c() { clear; PS1='$ '; }
-
 alias cp='cp -i'
 alias l='ls -aF'
 alias ll='ls -lahF'
