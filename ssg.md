@@ -1,3 +1,8 @@
+> "Hey @romanzolotarev, thanx again for ssg! Starting to move gists
+to my site and it couldn't have been more simple."<br>
+[(((Mischa &#x1F576; &#x1F421; RCX)))](https://mobile.twitter.com/mischapeters/status/1005464189807353857 "9 Jun 2018")
+(@mischapeters)
+
 > "It's really inspiring to see you give back much to the community. I
 appreciate your work - ssg, your how-to's for less familiar
 users, etc. I felt I should mention that to you &#x1F600;"<br>
