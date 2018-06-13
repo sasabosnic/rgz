@@ -21,11 +21,8 @@ allowed to issue certificates for your domain.
     www.example.com. 300 IN   CAA 0 issue letsencrypt.org
 
 To manage certificates we need to configure built-in
-[acme-client(1)](http://man.openbsd.org/acme-client.1):
-
-    www# vi /etc/acme-client.conf
-
-Add these three sections:
+[acme-client(1)](http://man.openbsd.org/acme-client.1). Add these
+three sections to `/etc/acme-client.conf`:
 
     authority letsencrypt {
       api url "https://acme-v01.api.letsencrypt.org/directory"
@@ -45,9 +42,11 @@ Add these three sections:
 
 Create directories:
 
-    www# mkdir -p -m 700 /etc/acme
-    www# mkdir -p -m 700 /etc/ssl/acme/private
-    www# mkdir -p -m 755 /var/www/acme
+<pre>
+# <b>mkdir -p -m 700 /etc/acme</b>
+# <b>mkdir -p -m 700 /etc/ssl/acme/private</b>
+# <b>mkdir -p -m 755 /var/www/acme</b>
+</pre>
 
 Update `/etc/httpd.conf` to handle verification requests from Let's
 Encrypt.  It should look like this:
@@ -67,25 +66,29 @@ Encrypt.  It should look like this:
 
 Check this configuration and restart `httpd`:
 
-    www# httpd -n
-    configuration ok
-    www# rcctl restart httpd
-    httpd(ok)
-    httpd(ok)
-    www#
+<pre>
+# <b>httpd -n</b>
+configuration ok
+# <b>rcctl restart httpd</b>
+httpd(ok)
+httpd(ok)
+#
+</pre>
 
 Let's run `acme-client` to create new account and domain keys.
 
-    www# acme-client -vAD www.example.com
-    ...
-    acme-client: http://cert.int-x3.letsencrypt.org/: full chain
-    acme-client: cert.int-x3.letsencrypt.org: DNS: 104.73.25.126
-    acme-client: /etc/ssl/www.example.com.crt: created
-    acme-client: /etc/ssl/www.example.com.fullchain.pem: created
+<pre>
+# <b>acme-client -vAD www.example.com</b>
+...
+acme-client: /etc/ssl/www.example.com.crt: created
+acme-client: /etc/ssl/www.example.com.fullchain.pem: created
+</pre>
 
 To renew certificates automatically edit the current crontab:
 
-    www# crontab -e
+<pre>
+# <b>crontab -e</b>
+</pre>
 
 Append this line:
 
@@ -93,8 +96,10 @@ Append this line:
 
 Save and exit:
 
-    crontab: installing new crontab
-    www#
+<pre>
+crontab: installing new crontab
+#
+</pre>
 
 ## Enable HTTPS and restart the daemon
 
@@ -136,14 +141,62 @@ Now we have the new certificate and domain key, so we can re-configure
 
 Test this configuration and restart `httpd`:
 
-    www# httpd -n
-    configuration ok
-    www# rcctl restart httpd
-    www#
+<pre>
+ # <b>httpd -n</b>
+ configuration ok
+ # <b>rcctl restart httpd</b>
+ httpd (ok)
+ httpd (ok)
+ #
+</pre>
 
 To verify your setup [run SSL server test](https://www.ssllabs.com/ssltest/analyze.html).
 
 Congratulation! Your website and its visitors are now secured.
+
+## Add domains
+
+Backup and remove the certificate
+
+    mv /etc/ssl/www.example.com.crt /etc/ssl/www.example.com.crt.bak
+
+Add a new alternative name to `/etc/acme-client.conf`:
+
+    ...
+    alternative names { example.com new.example.com }
+    ...
+
+Add a new server section to  `/etc/httpd.conf`. Use the same certificate and key.
+
+    ...
+    server "new.example.com" {
+      listen on * tls port 443
+      root "/htdocs/new.example.com"
+      tls {
+        certificate "/etc/ssl/www.example.com.fullchain.pem"
+        key "/etc/ssl/private/www.example.com.key"
+      }
+      location "/.well-known/acme-challenge/*" {
+        root { "/acme", strip 2 }
+      }
+    }
+    ...
+
+Request a new certificate with the new alternative new in it. Verify
+`httpd.conf` and restart `httpd(8)`:
+
+<pre>
+# <b>acme-client -vFAD www.example.com</b>
+...
+acme-client: /etc/ssl/www.example.com.crt: created
+acme-client: /etc/ssl/www.example.com.fullchain.pem: created
+# <b>httpd -n</b>
+configuration ok
+# <b>rcctl restart httpd</b>
+httpd(ok)
+httpd(ok)
+#
+</pre>
 
 _Tested on OpenBSD 6.3._
 

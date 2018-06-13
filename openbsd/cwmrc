@@ -1,4 +1,5 @@
 bind-key M-Return       terminal
+bind-key M-e            menu-exec
 bind-key M-j            window-cycle
 bind-key M-k            window-cycle
 bind-key M-t            window-maximize
@@ -15,7 +16,6 @@ bind-key MCS-q          quit
 bind-key F5             "bin/screencast start"
 bind-key F6             "bin/screencast stop"
 bind-key M-equal        "bin/vol up"
-bind-key M-f            "firefox"
 bind-key M-l            "cmus-remote --shuffle"
 bind-key M-m            "bin/vol toggle"
 bind-key M-minus        "bin/vol down"
