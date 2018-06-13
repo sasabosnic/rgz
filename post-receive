@@ -55,8 +55,7 @@ printf '[ssg] ' && "$HOME/bin/ssg" build --clean
 
 
 # Publish the repository
-
-echo "[post-receive] copy bare repository to ${dst}.git"
+echo "[post-receive] clone ${src} repository to ${dst}.git"
 [ -d "${dst}.git" ] && rm -rf "${dst}.git"
-cp -r "$src" "${dst}.git"
-cd "${dst}.git" && git --bare update-server-info
+git clone --bare "$src" "${dst}.git"
+# cd "${dst}.git" && git status #git update-server-info --bare
