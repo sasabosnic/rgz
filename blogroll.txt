@@ -4,6 +4,7 @@ http://blather.michaelwlucas.com/feed
 http://blog.tintagel.pl/feed.xml
 http://bsdly.blogspot.com/feeds/posts/default
 http://matt.might.net/articles/feed.rss
+http://n-gate.com/index.rss
 http://rss.slashdot.org/Slashdot/slashdotBsd
 http://sivers.org/en.atom
 http://steve-yegge.blogspot.com/feeds/posts/default?alt=rss
