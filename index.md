@@ -4,7 +4,7 @@ low tech.
 
 # How to...
 
-- [publish your Git repositories with stagit(1) and httpd(8)](/git.html "7 Jun 2018")
+- [publish your Git repositories with stagit(1) and httpd(8)](/stagit.html "7 Jun 2018")
 - [host your Git repositories](/git.html "7 Jun 2018")
 - [manage your terminals with tmux(1)](/tmux.html "18 May 2018")
 - [switch from Vim to vi(1)](/vi.html "12 May 2018")
