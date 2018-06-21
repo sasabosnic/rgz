@@ -1,4 +1,10 @@
-> "Fellow OpenBSD, YubiKey, Kensington Orbit Trackball, & ErgoDox user - I salute you!"<br>
+> "I envy @romanzolotarev fanless desktop. Thanks to him, my next
+PC will be fanless :D"<br>
+[minimalist_unix](https://mobile.twitter.com/minimalist_unix/status/996764784090648577 "16 May 2018")
+(@minimalist_unix)
+
+> "Fellow OpenBSD, YubiKey, Kensington Orbit Trackball, & ErgoDox
+user - I salute you!"<br>
 [equalunique](https://mobile.twitter.com/no1evanrowley/status/992498136118677505 "4 May 2018")
 (@no1evanrowley)
 
@@ -6,13 +12,14 @@
 [nixCraft](https://mobile.twitter.com/nixcraft/status/991738751666794497 "2 May 2018")
 (@nixcraft)
 
-> "I am in love with this setup. Simple. Awesome. Functional. Efficient."<br>
+> "I am in love with this setup. Simple. Awesome. Functional.
+Efficient."<br>
 [BuildItBenjamin](https://mobile.twitter.com/liddy_io/status/989840013650288640 "27 Apr 2018")
 (@liddy_io)
 
-> "my X1 Carbon was delayed yet again... That @romanzolotarev will be ready
-with his OpenBSD setup by the time it finally ships is the only good thing
-about the delay. Tot stealing his work"<br>
+> "my X1 Carbon was delayed yet again... That @romanzolotarev will
+be ready with his OpenBSD setup by the time it finally ships is the
+only good thing about the delay. Tot stealing his work"<br>
 [Vlad Kozin](https://mobile.twitter.com/zeRusski/status/930362868440162304 "14 Nov 2017")
 (@zeRusski)
 

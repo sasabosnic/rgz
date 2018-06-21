@@ -21,7 +21,7 @@ low tech.
 - [backup with borg](/backup.html "02 Mar 2018")
 - [mount drives on OpenBSD](/openbsd/mount.html "01 Mar 2018")
 - [print from the command line on macOS](/macos/cups.html "27 Feb 2018")
-- **[take a look at my fanless OpenBSD desktop setup](/setup.html "17 Nov 2017")**
+- **[set up a fanless desktop computer powered by OpenBSD](/setup.html "17 Nov 2017")**
 - [consider OpenBSD](/openbsd/why.html "15 Nov 2017")
 - [enable full disk encryption on OpenBSD](/openbsd/fde.html "02 Nov 2017")
 - **[manage your passwords with openssl(1)](/pass.html "10 Oct 2017")**
@@ -55,12 +55,11 @@ like to test Patreon and how donations work for sites like mine.
 <progress style="display: block; width: 100%; border: none;" value="33" max="100"></progress>
 $33 of $100 per month
 
-As soon as the goal is reached, I'll publish my roadmap.
+If you're not ready to become a patron yet, your kind tweets help me too. :)
 
-[![the first goal on Patreon](/the-first-goal.gif)](/patreon.html)
-
-If you're not ready to become a patron, say something nice on
-Twitter, that helps too. :)
+> "I like your style, you go to the root!"<br>
+[Jonas B. Rossi](https://mobile.twitter.com/rossijonas/status/1005544513438445568 "9 Jun 2018")
+(@rossijonas)
 
 > "Special thanks to @romanzolotarev without whom I wouldn't venture
 many things - including this one &#x1F44F;"<br>

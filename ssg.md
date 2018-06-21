@@ -1,20 +1,28 @@
-> "Hey @romanzolotarev, thanx again for ssg! Starting to move gists
+> "...Thanks for providing ssg! It is helping me
+to (slowly) put my #OpenBSD musings into words..."<br>
+[fd0](https://mobile.twitter.com/fd0_nl/status/1008026424362586113 "16 Jun 2018")
+(@fd0_nl)
+
+> "...thanx again for ssg! Starting to move gists
 to my site and it couldn't have been more simple."<br>
 [(((Mischa &#x1F576; &#x1F421; RCX)))](https://mobile.twitter.com/mischapeters/status/1005464189807353857 "9 Jun 2018")
 (@mischapeters)
+
+> "I am loving @romanzolotarev's romanzolotarev.com/ssg.html"<br>
+[Doppelvizsla](https://mobile.twitter.com/doppelvizsla/status/988742307368271872 "24 Apr 2018")
+(@doppelvizsla)
+
+> "Thanks to @romanzolotarev's static site generator, I'm back on
+my "static site sausage machine for some extra pocket peanuts" kick
+again."<br>
+[pr1ntf](https://mobile.twitter.com/pr1ntf/status/988605007556571136 "24 Apr 2018")
+(@pr1ntf)
 
 > "It's really inspiring to see you give back much to the community. I
 appreciate your work - ssg, your how-to's for less familiar
 users, etc. I felt I should mention that to you &#x1F600;"<br>
 [H3artbl33d](https://mobile.twitter.com/h3artbl33d/status/985173503103074304 "14 Apr 2018")
 (@h3artbl33d)
-
-> "Thanks to <a
-href="https://mobile.twitter.com/romanzolotarev">@romanzolotarev</a>'s static
-site generator, I'm back on my "static site sausage machine for some extra
-pocket peanuts" kick again."<br>
-[Rebel Without a Clue &#x1F47D;&#x1F4E1;](https://mobile.twitter.com/pr1ntf/status/988605007556571136 "24 Apr 2018")
-(@pr1ntf)
 
 ---
 
