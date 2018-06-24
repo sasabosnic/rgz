@@ -66,7 +66,7 @@
                   d.querySelector(".article").querySelectorAll(tag)
                 );
               },
-              ["h1", "h2", "table"]
+              ["h1", "h2", "table", "hr"]
             )
           )
         )

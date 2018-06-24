@@ -28,7 +28,7 @@ n()   { start_tmux 'n'   "$HOME/downloads"   'newsboat'; }
 o()   { start_tmux 'o'   "$HOME/prv/openvpn" 'doas openvpn --config default.ovpn'; }
 www() { start_tmux 'www' "$HOME/src/www"     'vi index.md'; }
 
-s() { [ -n "$1" ] && [ -d "$HOME/src/$1" ] && cd "$HOME/src/$1" && ssg watch --clean||return; }
+s() { ssg watch --clean||return; }
 sync_logs() { [ -n "$1" ] && { rsync -azvPc "$1:/var/www/logs/*" "$HOME/prv/logs/$1/"; quits & }; }
 
 png() { optipng -preserve -keep -strip all -o7 "$1"; }

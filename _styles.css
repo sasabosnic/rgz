@@ -2,21 +2,30 @@ body {
   margin: 0px;
   font-family: sans-serif;
 }
+
+h1 {
+  margin-top: 40px;
+}
+
 hr {
   border: 0;
-  margin-top: 60px;
+  margin-top: 40px;
 }
+
 li {
   margin-top: 10px;
 }
+
 p img,
 table {
   width: 100%;
 }
+
 pre {
   padding-left: 40px;
   overflow-x: auto;
 }
+
 .header,
 .footer,
 .article {
@@ -25,50 +34,67 @@ pre {
   margin: 0 auto;
 }
 
-#slides-on:checked ~ .article { font-size: 220%; }
-@media (max-width: 1200px) { #slides-on:checked ~ .article { font-size: 160%; } }
-@media (max-width: 800px) { #slides-on:checked ~ .article { font-size: 120%; } }
-@media (max-width: 600px) { #slides-on:checked ~ .article { font-size: 100%; } }
+#slides-on:checked ~ .article {
+  font-size: 220%;
+}
+
+@media (max-width: 1200px) {
+  #slides-on:checked ~ .article {
+    font-size: 160%;
+  }
+}
+
+@media (max-width: 800px) {
+  #slides-on:checked ~ .article {
+    font-size: 120%;
+  }
+}
+
+@media (max-width: 600px) {
+  #slides-on:checked ~ .article {
+    font-size: 100%;
+  }
+}
 
 #slides-on:checked ~ .article {
-  padding: 100px 0;
+  padding: 50px;
+  margin: 50px 0;
   max-width: 100%;
 }
+
 #slides-on:checked ~ .article,
 #slides-on:checked ~ .article a {
   background-color: #141414;
   color: #eeeeee;
 }
+
 #slides-on:checked ~ .article a {
   border-bottom: 1px solid #faeb8a;
   text-decoration: none;
   color: #faeb8a;
 }
+
 #slides-on:checked ~ .article p {
   line-height: 160%;
 }
 
-#slides-on:checked ~ .article table,
 #slides-on:checked ~ .article h1,
-#slides-on:checked ~ .article h2 {
+#slides-on:checked ~ .article h2,
+#slides-on:checked ~ .article table,
+#slides-on:checked ~ .article hr {
   margin-top: 4000px;
   padding-top: 50px;
-}
-#slides-on:checked ~ .article table,
-#slides-on:checked ~ .article p,
-#slides-on:checked ~ .article pre,
-#slides-on:checked ~ .article h1,
-#slides-on:checked ~ .article h2 {
-  padding-left: 50px;
 }
 
 #slides-on:checked ~ .article blockquote {
   margin: 0;
   padding: 0;
 }
+
 #slides-on:checked ~ .article pre {
   overflow-x: hidden;
 }
+
 #slides-on:checked ~ .article ul,
 #slides-on:checked ~ .article ol {
   list-style-type: none;

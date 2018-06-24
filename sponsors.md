@@ -57,8 +57,9 @@ Roman
 P.S. Here are all received donations. Please ping me, if yours hasn't
 been listed, or if you want to remove your name from the list.
 
-Updated on 8 Jun 2018.
+Updated on 24 Jun 2018.
 
+- [Dylan Thiedeke](https://www.patreon.com/user/creators?u=2300411 "24 Jun 2018") 1.00 USD
 - [Gabriel Francisco](https://mobile.twitter.com/fgbreel "8 Jun 2018") 10.00 EUR _"I love your blog and the content you share about OpenBSD! Keep rocking!"_
 - [micah](https://www.patreon.com/user/creators?u=4721204 "28 May 2018") 2.00 USD Patreon
 - [Peter Kotr&#x10D;ka](https://www.patreon.com/pkotrckacreators "Since 16 May 2018") 2.00 USD Patreon
@@ -72,7 +73,7 @@ Updated on 8 Jun 2018.
 - [Ilmari Vacklin](https://www.patreon.com/user?u=2288738 "Since 23 Apr 2018") 2.00 USD Patreon
 - [Tom Atkinson](https://www.patreon.com/user?u=10778845 "Since 16 Apr 2018") 10.00 USD Patreon
 - [Wesley Moore](https://www.patreon.com/wezm "15 Apr 2018") 10.00 USD Patreon
-- [Mischa Peters](https://mobile.twitter.com/mischapeters "13 Apr 2018") VPS
+- [Mischa Peters](https://mobile.twitter.com/mischapeters "13 Apr 2018") [VPS](https://openbsd.amsterdam)
 - [Evander Sinque](https://mobile.twitter.com/FiLiS "31 Oct 2017") Run BSD Stickers
 - [Mischa Peters](https://mobile.twitter.com/mischapeters "19 Sep 2017") Run BSD T-shirt
 
@@ -83,6 +84,8 @@ Updated on 8 Jun 2018.
 While you are in generous mood, here are people and projects I've
 supported, please consider supporting them too:
 
+- [High5!](https://high5.nl/ "Since 20 Jun 2018") 60.00 EUR
+- [OpenBSD in Amsterdam](https://openbsd.amsterdam/ "Since 10 Jun 2018") [Logo, media kit, website](/openbsd/amsterdam.html)
 - [Ingo Schwarze](https://www.patreon.com/IngoSchwarze "Since 1 Jun 2018") 5.00 USD Patreon
 - [The OpenBSD Store](https://www.openbsdstore.com/ "6 May 2018 41389") 73.21 GBP
 - [Bryan Steele](https://brynet.biz.tm/ "16 Apr 2018 5M5560322U154440G") 10.00 CAD
