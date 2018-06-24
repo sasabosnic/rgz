@@ -47,13 +47,13 @@ low tech.
 
 ## How to support this site
 
-[Become a sponsor](/sponsors.html "24 Apr 2018").
+[Become a sponsor](/sponsors.html).
 
 Thank you for your support! My current goal is quite modest. I'd
 like to test Patreon and how donations work for sites like mine.
 
-<progress style="display: block; width: 100%; border: none;" value="33" max="100"></progress>
-$33 of $100 per month
+<progress style="display: block; width: 100%; border: none;" value="34" max="100"></progress>
+$34 of $100 per month
 
 If you're not ready to become a patron yet, your kind tweets help me too. :)
 
