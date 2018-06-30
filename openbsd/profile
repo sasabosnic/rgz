@@ -68,7 +68,7 @@ pkg_add_with_cache() { mkdir -p "$LOCAL_PKG_PATH" && doas env PKG_CACHE="$LOCAL_
 mnt() { [ -n "$1" ] && doas mkdir -p "/mnt/$1" && doas mount "/dev/$1" "/mnt/$1" && cd "/mnt/$1"||return; }
 umnt() { [ -n "$1" ] && doas umount "/dev/$1"; }
 pics() {  mnt sd1i && cd DCIM && rsync -avPc --chown=romanzolotarev:romanzolotarev . "$HOME/downloads/pics" && cd "$HOME/downloads/pics" && umnt sd1i; }
-x() { sxiv -tor "${1:-.}" | xargs -r rm -v; }
+x() { sxiv -tor "${1:-.}" | xargs -r rm; }
 
 aria() { mkdir -p "$HOME/downloads" && (cd "$HOME/downloads" && aria2c "$1"); }
 yt() { mkdir -p "$HOME/downloads" && (cd "$HOME/downloads" && youtube-dl "$1"); }

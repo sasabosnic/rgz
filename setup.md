@@ -214,16 +214,15 @@ rate of two hundred pages per year.
 [BuildItBenjamin](https://mobile.twitter.com/liddy_io/status/910086740223946753
 "19 Sep 2017") (@liddy_io)
 
-![Field Notes Memo Book](/field-notes-memo-book.jpeg) _My first
-memo book. Circa 2012_
+![Field Notes Memo Book](/field-notes-memo-book.jpeg) _Space pen and 48-page
+memo book._
 
 Another thing is [Field Notes Space Pen][s], which lasts forever:
 one refill per thousand memo book pages.
 
 ---
 
-![Nokia 105](/nokia-105.jpeg) _The charger, phone, memo book cover,
-and Space Pen._
+![Nokia 105](/nokia-105.jpeg) _USB cable, phone, memo book ruler._
 
 My main phone is [Nokia
 105](https://www.nokia.com/en_int/phones/nokia-105). No internet.

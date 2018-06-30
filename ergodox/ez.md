@@ -12,7 +12,7 @@ I run a [job board](https://bsdjobs.com) and make [tutorials for
 BSD users](https://www.romanzolotarev.com). I'm fan of OpenBSD,
 POSIX-shell, vi, and mechanical keyboards, of course.
 
-![romanzolotarev](/romanzolotarev.png)
+![romanzolotarev](/romanzolotarev.jpeg)
 
 ## 2) What hardware do you use?
 
