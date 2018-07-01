@@ -4,6 +4,7 @@ low tech.
 
 # How to...
 
+- [deploy a VM in Amsterdam](/openbsd.amsterdam.html "1 Jul 2018")
 - [publish your Git repositories with stagit(1) and httpd(8)](/stagit.html "7 Jun 2018")
 - [host your Git repositories](/git.html "7 Jun 2018")
 - [manage your terminals with tmux(1)](/tmux.html "18 May 2018")
