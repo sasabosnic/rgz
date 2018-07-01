@@ -13,8 +13,8 @@ VMs.
 
 ---
 
-Contact [OpenBSDAms](https://mobile.twitter.com/openbsdams) on
-Twitter.
+Contact @OpenBSDAms on [Twitter](https://mobile.twitter.com/OpenBSDAms)
+or [bsd.network](https://bsd.network/@OpenBSDAms).
 
 Send them your username and your public [SSH key](/ssh.html).
 
