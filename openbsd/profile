@@ -73,11 +73,3 @@ x() { sxiv -tor "${1:-.}" | xargs -r rm; }
 aria() { mkdir -p "$HOME/downloads" && (cd "$HOME/downloads" && aria2c "$1"); }
 yt() { mkdir -p "$HOME/downloads" && (cd "$HOME/downloads" && youtube-dl "$1"); }
 yl() { mkdir -p "$HOME/downloads" && (cd "$HOME/downloads" && youtube-dl -f 'bestvideo[height<=144]+bestaudio/best[height<=144]' "$1"); }
-
-
-rfc() {
-	[ -n "$1" ] && {
-		ftp -Vo - "https://ietf.org/rfc/rfc$1.txt" |
-		less  -f
-	}
-}
