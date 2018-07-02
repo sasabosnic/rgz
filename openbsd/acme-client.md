@@ -17,8 +17,8 @@ certificate authority for Transport Layer Security (TLS) encryption.
 Add or update your CAA records to inform Let's Encrypt that they are
 allowed to issue certificates for your domain.
 
-        example.com. 300 IN   CAA 0 issue letsencrypt.org
-    www.example.com. 300 IN   CAA 0 issue letsencrypt.org
+        example.com. 300 IN   CAA   0 issue "letsencrypt.org"
+    www.example.com. 300 IN   CAA   0 issue "letsencrypt.org"
 
 To manage certificates we need to configure built-in
 [acme-client(1)](http://man.openbsd.org/acme-client.1). Add these
