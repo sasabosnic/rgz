@@ -13,10 +13,18 @@ VMs.
 
 ---
 
-Contact @OpenBSDAms on [Twitter](https://mobile.twitter.com/OpenBSDAms)
-or [bsd.network](https://bsd.network/@OpenBSDAms).
+Send your name, email address, hostname, username, and public SSH key to OpenBSDAms
+via [contact form](https://openbsd.amsterdam/contact.html),
+[Twitter](https://mobile.twitter.com/OpenBSDAms), or
+[Mastodon](https://bsd.network/@OpenBSDAms), before you pay.
 
-Send them your username and your public [SSH key](/ssh.html).
+For example:
+
+	Roman Zolotarev
+	hi@romanzolotarev.com
+	www.romanzolotarev.com
+	romanzolotarev
+	ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIqh7BmO... 1500469202
 
 You'll get IPv4 (and IPv6) address as soon as your VM is deployed.
 
@@ -101,9 +109,20 @@ Verify the new `sshd` config:
 Restart `sshd`:
 
 <pre>
-# rcctl restart sshd
+# <b>rcctl restart sshd</b>
 sshd(ok)
 sshd(ok)
+#
+</pre>
+
+---
+
+Stop and disable `sndiod`:
+
+<pre>
+# <b>rcctl stop sndiod</b>
+sndiod(ok)
+# <b>rcctl disable sndiod</b>
 #
 </pre>
 
