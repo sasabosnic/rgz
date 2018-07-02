@@ -7,19 +7,19 @@ XLock.lockdelay:         2
 Xcursor.theme: dmz
 Xcursor.size: 96
 
-XTerm*background:        #141414
 XTerm*font:              -misc-fixed-medium-r-normal--15-140-75-75-c-90-iso10646-1
-XTerm*foreground:        #eeeeee
 XTerm*internalBorder:    10
 XTerm*loginShell:        true
 XTerm*scrollBar:         false
 XTerm*selectToClipboard: true
 
+XTerm*background:        #141414
+XTerm*foreground:        #eeeeee
 XTerm*color0:   #000000
 XTerm*color1:   #ff6c60
 XTerm*color2:   #a8ff60
 XTerm*color3:   #ffffb6
-XTerm*color4:   #96cbfe
+XTerm*color4:   #6a96ca
 XTerm*color5:   #ff73fd
 XTerm*color6:   #c6c5fe
 XTerm*color7:   #eeeeee
