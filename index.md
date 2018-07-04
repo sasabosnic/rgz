@@ -19,7 +19,7 @@ low tech.
 - [upgrade OpenBSD to 6.3](/openbsd/upgrade.html "03 Apr 2018")
 - **[generate strong passwords with a shell script](/diceware.html "30 Mar 2018")**
 - [change time zone in OpenBSD](/timezone.html "16 Mar 2018")
-- [backup with borg](/backup.html "02 Mar 2018")
+- [backup with borg](/borg.html "02 Mar 2018")
 - [mount drives on OpenBSD](/openbsd/mount.html "01 Mar 2018")
 - [print from the command line on macOS](/macos/cups.html "27 Feb 2018")
 - **[set up a fanless desktop computer powered by OpenBSD](/setup.html "17 Nov 2017")**
