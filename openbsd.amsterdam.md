@@ -62,7 +62,36 @@ password:
 #
 </pre>
 
----
+
+## Configure `doas`
+
+Add your _username_ to `/etc/doas.conf`:
+
+<pre>
+# <b>echo 'permit <i>username</i>' > /etc/doas.conf</b>
+#
+</pre>
+
+## Disable remote login for `root`
+
+Edit `/etc/ssh/sshd_config`:
+
+<pre>
+PermitRootLogin no
+PasswordAuthentication no
+</pre>
+
+Verify the new config and restart `sshd`:
+
+<pre>
+# <b>sshd -t</b>
+# <b>rcctl restart sshd</b>
+sshd(ok)
+sshd(ok)
+#
+</pre>
+
+## Fix time counter
 
 Run `sysctl` to set the time counter:
 
@@ -72,8 +101,6 @@ kern.timecounter.hardware: i8254 -> tsc
 # <b>echo 'kern.timecounter.hardware=tsc' > /etc/sysctl.conf</b>
 #
 </pre>
-
----
 
 Run `ntpd` to set the local clock and terminate it by pressing `^C`.
 
@@ -90,32 +117,47 @@ Terminating
 #
 </pre>
 
----
+## Configure IPv6
 
-Edit `/etc/ssh/sshd_config`:
+Edit `/etc/hostname.vio0`:
+
+	inet 46.23.xx.xx 255.255.255.0
+	inet6 2a03:6000:xxxx::xxx 64 -soii
+
+Note: `-soii` disables IPv6 persistent _Semantically Opaque Interface
+Identifiers_ on the interface.
+
+Edit `/etc/mygate`:
+
+	46.23.xx.1
+	2a03:6000:xxxx::1
+
+Reinitialize the network:
 
 <pre>
-PermitRootLogin no
-PasswordAuthentication no
-</pre>
-
-Verify the new `sshd` config:
-
-<pre>
-# <b>sshd -t</b>
-#
-</pre>
-
-Restart `sshd`:
-
-<pre>
-# <b>rcctl restart sshd</b>
-sshd(ok)
-sshd(ok)
+# <b>sh /etc/netstart vio0</b>
 #
 </pre>
 
 ---
+
+Update `/etc/pf.conf`, test, and load it:
+
+<pre>
+# <b>echo 'pass in quick proto icmp6 all' >> /etc/pf.conf</b>
+# <b>pfctl -nf /etc/pf.conf</b>
+# <b>pfctl -f /etc/pf.conf</b>
+# <b>pfctl -sr</b>
+block return all
+pass all flags S/SA
+block return in on ! lo0 proto tcp from any to any port 6000:6010
+block return out log proto tcp all user = 55
+block return out log proto udp all user = 55
+pass in quick proto ipv6-icmp all
+#
+</pre>
+
+## Disable audio server
 
 Stop and disable `sndiod`:
 
@@ -126,18 +168,11 @@ sndiod(ok)
 #
 </pre>
 
----
 
-Add your username to `/etc/doas.conf`:
+## Apply patches
 
-<pre>
-# <b>echo 'permit <i>username</i>' > /etc/doas.conf</b>
-</pre>
-
----
-
-Don't forget to check [6.3 errata](https://www.openbsd.org/errata63.html)
-and apply available patches.
+Check [6.3 errata](https://www.openbsd.org/errata63.html) and apply
+available patches.
 
 <pre>
 # <b>syspatch</b>
