@@ -144,7 +144,7 @@ Reinitialize the network:
 Update `/etc/pf.conf`, test, and load it:
 
 <pre>
-# <b>echo 'pass in quick proto icmp6 all' >> /etc/pf.conf</b>
+# <b>echo 'pass in quick proto { icmp, icmp6 } all' >> /etc/pf.conf</b>
 # <b>pfctl -nf /etc/pf.conf</b>
 # <b>pfctl -f /etc/pf.conf</b>
 # <b>pfctl -sr</b>
@@ -153,6 +153,7 @@ pass all flags S/SA
 block return in on ! lo0 proto tcp from any to any port 6000:6010
 block return out log proto tcp all user = 55
 block return out log proto udp all user = 55
+pass in quick proto icmp all
 pass in quick proto ipv6-icmp all
 #
 </pre>
@@ -189,3 +190,12 @@ Connection to XXX.XXX.XXX.XXX closed.
 Now you may want [to setup a web server](/openbsd/webserver.html).
 
 _Tested on OpenBSD 6.3_
+
+---
+
+**Thanks** to 
+[Mischa Peters](https://mobile.twitter.com/mischapeters) for reading drafts fo this,
+to [Mike Larkin](https://mobile.twitter.com/mlarkin2012), 
+[Bryan Steele](https://mobile.twitter.com/canadianbryan), 
+[h3artbl33d](https://mobile.twitter.com/h3artbl33d), and
+[Jeff Neitzel](https://mobile.twitter.com/v6shell) for tips and hints.
