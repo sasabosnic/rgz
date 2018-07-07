@@ -106,7 +106,7 @@
 
     w.model = {
       slideId: 0,
-      slidesOn: false,
+      slidesOn: true,
       originalScrollY: 0,
       offsets: getOffsets()
     };
@@ -114,7 +114,6 @@
     render();
 
     d.addEventListener("keydown", function(e) {
-	console.log(e)
       switch (e.keyCode) {
         case 32:
           if (!w.model.slidesOn) return;
