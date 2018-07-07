@@ -110,7 +110,7 @@ EOF
 index_to_rss() {
 	date_rfc_822=$(date "+%a, %d %b %Y %H:%M:%S %z")
 	cat > "$RSS_FILE" << EOF
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
 <atom:link href="$RSS_URL" rel="self" type="application/rss+xml" />
