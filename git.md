@@ -7,7 +7,7 @@
 Install [git(1)](https://git-scm.com/):
 
 <pre>
-# <b>pkg_add install git</b>
+# <b>pkg_add git</b>
 quirks-2.414 signed on 2018-03-28T14:24:37Z
 git-2.16.2: ok
 The following new rcscripts were installed: /etc/rc.d/gitdaemon
@@ -65,3 +65,9 @@ $
 Done! Now you may want [to publish your Git repositories on the web](/stagit.html).
 
 _Tested on OpenBSD 6.3 with git-2.16.2_
+
+---
+
+**Thanks** to 
+[Luclu7_](https://mobile.twitter.com/Luclu7_/status/1015396970112978950)
+for catching typos.
