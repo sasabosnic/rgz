@@ -2,22 +2,28 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes">
 <title>OpenBSD Jumpstart</title>
 <link rel="stylesheet" href="/tomorrow-night.css">
 <script src="/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
+
 <style>
-body { overflow: auto; padding: 50px; margin: 50px 0; max-width: 100%; }
+
+body { overflow: hidden; padding: 50px; margin: 50px 0; max-width: 100%; }
+body:hover { overflow: hidden; }
 body { font-family: sans-serif; font-size: 220%; }
 @media (max-width: 1200px) { body { font-size: 160%; } }
 @media (max-width: 800px) { body { font-size: 120%; } }
-@media (max-width: 600px) { body { font-size: 100%; } }
+@media (max-width: 600px) { body { font-size: 100%; padding: 10px; } }
+@media (max-width: 400px) { body { font-size: 80%; padding: 10px; } }
 body, a { background-color: #141414; color: #eeeeee; }
 a { border-bottom: 1px solid #faeb8a; text-decoration: none; color: #faeb8a; }
 h1 { margin-top: 40px; }
 hr { border: 0; margin-top: 40px; }
 h1, h2 { line-height: 105%; }
-ul, ol { list-style-type: none; padding: 0 50px; margin: 0; }
+ul, ol { list-style-type: none; padding: 0; margin: 0; }
 li { margin-top: 10px; }
 p { line-height: 160%; }
 p img, table { width: 100%; }
@@ -68,6 +74,16 @@ blockquote { margin: 0; padding: 0; }
     return result;
   }
 
+  function debounce (f, delay) {
+    var inDebounce;
+    return function() {
+      var context = this;
+      var args = arguments;
+      clearTimeout(inDebounce);
+      inDebounce = setTimeout(function() { f.apply(context, args) }, delay);
+    }
+  }
+
   d.addEventListener("DOMContentLoaded", function() {
     function render() {
         w.model.originalScrollY = w.scrollY;
@@ -115,6 +131,8 @@ blockquote { margin: 0; padding: 0; }
     // Initialize
 
     var body = d.querySelector("body");
+    var xDown = null;
+    var yDown = null;
 
     w.model = {
       slideId: 0,
@@ -123,6 +141,34 @@ blockquote { margin: 0; padding: 0; }
     };
 
     render();
+
+    d.addEventListener("mousewheel", debounce(onMouseScroll, 200));
+    d.addEventListener("DOMMouseScroll", debounce(onMouseScroll, 200));
+
+    function onMouseScroll(e) {
+         var delta = e.detail || -e.wheelDelta;
+         delta > 0 ? next() : prev();
+    }
+
+    d.addEventListener("touchstart", debounce(function(e){
+      e.preventDefault();
+      xDown = e.touches[0].clientX;
+      yDown = e.touches[0].clientY;
+    }, 0));
+
+    d.addEventListener("touchmove", debounce(function(e){
+      if ( ! xDown || ! yDown ) return;
+      e.preventDefault();
+      var xUp = e.touches[0].clientX;
+      var yUp = e.touches[0].clientY;
+      var dx = xDown - xUp;
+      var dy = yDown - yUp;
+      if ( Math.abs(dx) > Math.abs(dy) ) { 
+        dx > 0 ? next() : prev();
+      } else {  
+        dy > 0 ? next() : prev(); 
+      }
+    }, 100));
 
     d.addEventListener("keydown", function(e) {
       switch (e.keyCode) {
@@ -157,10 +203,11 @@ blockquote { margin: 0; padding: 0; }
       }
     });
 
-    w.addEventListener("resize", function() {
+    w.addEventListener("resize", debounce(function() {
       w.model.offsets = getOffsets();
+      console.log('xxx');
       toSlide();
-    });
+    }, 500));
   });
 })(document, window);
 </script>
@@ -170,7 +217,7 @@ blockquote { margin: 0; padding: 0; }
 
 <!-- SLIDES -->
 
-<h2>Learn to tame OpenBSD quickly</h2>
+<h2>1. Learn to tame OpenBSD quickly</h2>
 
 <pre><code># file: /etc/pf.conf
 # Protect a laptop (allow only ping/ssh from anywhere)
@@ -182,14 +229,14 @@ pass in on egress inet proto tcp from any to any port ssh
 pass out
 </code></pre>
 
-<h2>History</h2>
+<h2>2. History</h2>
 
 <p>
 Forked from NetBSD.
 <a target="_blank" href="http://www.theos.com/deraadt/">Theo de Raadt</a> is the founder and leader of the OpenBSD project. The first OpenBSD release <a target="_blank" href="https://cvsweb.openbsd.org/cgi-bin/cvsweb/src/etc/rc?rev=1.1&content-type=text/x-cvsweb-markup">1.1/CVS</a> appear on October 18, 1995.
 </p>
 
-<h2>Why use OpenBSD</h2>
+<h2>3. Why use OpenBSD</h2>
 
 <ul>
 <li>UNIX-like</li>
@@ -201,11 +248,11 @@ Forked from NetBSD.
 <li>Cryptography</li>
 </ul>
 
-<h2> OpenBSD innovations</h2>
+<h2>4. OpenBSD innovations</h2>
 
 <p>Software and ideas developed or maintained by the OpenBSD project: <a target="_blank" href="http://www.openbsd.org/innovations.html">http://www.openbsd.org/innovations.html</a></p>
 
-<h2>Thanks!</h2>
+<h2>5. Thanks!</h2>
 <!-- THE END -->
 
 </body>
