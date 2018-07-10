@@ -38,7 +38,7 @@ low tech.
 - [learn touch typing](/typing.html "19 Nov 2016")
 - [start with Elm](/elm.html "14 Nov 2016")
 - [make web faster](/fast.html "13 Nov 2016")
-- [compare Vanilla Javascript, with Ramda, and Elm](/pagination.html "26 Oct 2016")
+- [compare Vanilla JavaScript, with Ramda, and Elm](/pagination.html "26 Oct 2016")
 - **[watch screencasts for programmers](/screencasts.html "25 Oct 2016")**
 - [edit plain text with TextEdit.app](/macos/textedit.html "17 Sep 2016")
 - [learn Markdown in twenty four lines](/markdown.html "30 Aug 2016")

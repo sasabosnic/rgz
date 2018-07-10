@@ -35,7 +35,7 @@ cc -c -O2 -std=c99 -I/usr/local/include -D_XOPEN_SOURCE=700
 
 Edit `/etc/httpd.conf` to add `location` section to your `server`.
 
-	location "/src*" { root { "/src", strip 1 } }
+	location "/src/*" { root { "/src", strip 1 } }
 
 Make `src` directory in `/var/www`:
 
@@ -129,3 +129,8 @@ Done!
 
 _Tested on OpenBSD 6.3 with stagit
 [187daa](https://git.codemadness.org/stagit/commit/187daac42007c87e6af9317a20446e3b81907f63.html)_
+
+---
+
+**Thanks** to [Adriano Barbosa](https://mobile.twitter.com/barbosaaob)
+for catching a bug in httpd.conf.
