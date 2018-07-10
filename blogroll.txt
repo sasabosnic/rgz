@@ -1,32 +1,23 @@
 https://www.romanzolotarev.com/rss.xml
 
-http://blather.michaelwlucas.com/feed
-http://blog.tintagel.pl/feed.xml
+http://blather.michaelwlucas.com/feed http://blog.tintagel.pl/feed.xml
 http://bsdly.blogspot.com/feeds/posts/default
-http://matt.might.net/articles/feed.rss
-http://n-gate.com/index.rss
-http://rss.slashdot.org/Slashdot/slashdotBsd
-http://sivers.org/en.atom
+http://matt.might.net/articles/feed.rss http://n-gate.com/index.rss
+http://rss.slashdot.org/Slashdot/slashdotBsd http://sivers.org/en.atom
 http://steve-yegge.blogspot.com/feeds/posts/default?alt=rss
-http://theorangeduck.com/feeds/pages
-http://undeadly.org/cgi?action=rss
-http://vincentdelft.be/rss
-http://www.daemonology.net/blog/index.rss
+http://theorangeduck.com/feeds/pages http://undeadly.org/cgi?action=rss
+http://vincentdelft.be/rss http://www.daemonology.net/blog/index.rss
 http://www.feyrer.de/NetBSD/bx/blosxom.cgi/index.rss
 http://www.joelonsoftware.com/rss.xml
 http://www.magicreadalong.com/episode?format=rss
 http://www.tedunangst.com/flak/rss
-https://blog.iandreev.com/?feed=rss2&cat=3
-https://bsdmag.org/feed/
+https://blog.iandreev.com/?feed=rss2&cat=3 https://bsdmag.org/feed/
 https://dataswamp.org/~solene/rss.xml
 https://feeds.feedburner.com/WaitingForTheJobsToFinish
 https://feeds.feedburner.com/codinghorror/
 https://feeds.feedburner.com/planet-openbsd
-https://kristaps.bsd.lv/sblg/atom.xml
-https://l33tsource.com/atom.xml
-https://reykfloeter.com/atom.xml
-https://threema.ch/en/blog/feeds/rss
-https://wildauer.io/atom.xml
+https://kristaps.bsd.lv/sblg/atom.xml http://akpoff.com/rss.xml
+https://l33tsource.com/atom.xml https://reykfloeter.com/atom.xml
+https://threema.ch/en/blog/feeds/rss https://wildauer.io/atom.xml
 https://www.cyberciti.biz/atom/atom.xml
-https://www.geeklan.co.uk/?feed=rss2
-https://www.reykfloeter.com/atom.xml
+https://www.geeklan.co.uk/?feed=rss2 https://www.reykfloeter.com/atom.xml
