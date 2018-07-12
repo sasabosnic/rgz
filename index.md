@@ -1,3 +1,13 @@
+<img src="/avatar.jpeg"
+  style="border: 0; width: 60px; height: 60px; border-radius: 60px;"
+  width="60" height="60"
+  alt="Roman's avatar"
+  title="Go to the home page"></a>
+
+Hi, my name is **Roman**. I run a [job board](https://www.bsdjobs.com/)
+and make tutorials for BSD users. I'm fan of [OpenBSD](/openbsd/why.html),
+POSIX-shell, and vi.
+
 I'm here to help you to learn about web development, BSD userland, text
 editors, single board and fanless computers, mechanical keyboards, and
 low tech.
@@ -8,7 +18,7 @@ low tech.
 - [publish your Git repositories with stagit(1) and httpd(8)](/stagit.html "7 Jun 2018")
 - [host your Git repositories](/git.html "7 Jun 2018")
 - [manage your terminals with tmux(1)](/tmux.html "18 May 2018")
-- [switch from Vim to vi(1)](/vi.html "12 May 2018")
+- [upgrade from Vim to vi(1)](/vi.html "12 May 2018")
 - [configure newsboat(1) to read RSS feeds in&nbsp;terminal](/newsboat.html "6 May 2018")
 - [set default applications on X Window System](/openbsd/mime.html "1 May 2018")
 - [configure minimalist login on OpenBSD](/openbsd/login.html "1 May 2018")

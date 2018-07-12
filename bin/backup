@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# backup dumps and gzips to archive
+# backup archives a directory
 #
 # https://www.romanzolotarev.com/bin/backup
 # Copyright 2018 Roman Zolotarev <hi@romanzolotarev.com>
@@ -17,22 +17,50 @@
 # ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 # OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 #
+fmt="+%Y%m%d%H%M.%S"
+time="$(date "$fmt")"
 
-usage() { echo 'backup <dir>'; exit 1; }
+[ -z "$1" ] && { >&2 echo 'usage: backup src [prev_pax]'; exit 1; }
+src="$(readlink -f "$1")"
+[ -d "$src" ] || { >&2 echo "$src is not a directory"; exit 3; }
 
-[ -z "$1" ] && usage 
+if [ -n "$2" ]
+then
+	from="$(date -j "$2" "$fmt")"
+	printf '%s-' "$from"
+	opts="-T $from"
+else
+	opts=''
+fi
 
-data_dir="$1"
-dump_dir="/mnt/sd4i/mercury"
-dump_file="$dump_dir/$(basename "$data_dir")-$(date +%Y%m%d-%H%M%S)"
+base="$(pwd)/$(hostname -s)-$(basename "$src")-$time"
+tree="${base}.tree.gz"
+dgst="${base}.sha256"
+pax="${base}.pax.gz"
 
-cd "$data_dir" || exit 1
 
-mtree -cK sha256digest | 
-	gzip > "${dump_file}.tree.gz"
+printf '%s %s %s' "$time" "$src" "$base"
 
-zcat "${dump_file}.tree.gz" | 
-	sha256 > "${dump_file}.sha265"
+mtree -cK sha256digest -p "$src" | gzip   > "$tree"
+zcat "$tree"                     | sha256 > "$dgst"
 
-dump -0af - "$data_dir" | 
-	gzip -9 > "${dump_file}-0.dump.gz"
+
+cd "$(dirname "$src")" &&
+pax $opts -wzx cpio -f "$pax" "$(basename "$src")"
+printf ' %s' "$(du -sk "$pax"|cut -f1)"
+
+
+(temp=$(mktemp -d) &&
+cd "$temp" &&
+pax -pe -rzf "$pax"
+
+if cd "$(basename "$src")" &&
+	gunzip < "$tree" |
+	sed 's/time=\([0-9]*\)\.[0-9]*/time=\1.0/' |
+	mtree
+then status='OKAY'
+else status='ERROR'
+fi
+rm -rf "$temp"
+
+echo " $status")

@@ -42,7 +42,6 @@ alias l='ls -aF'
 alias ll='ls -lahF'
 alias mv='mv -i'
 alias rm='rm -i'
-alias du='du -hd1'
 alias b="vi \$HOME/.profile && . \$HOME/.profile"
 
 # shellcheck disable=SC2086

@@ -1,0 +1,66 @@
+#!/bin/sh
+#
+# https://www.romanzolotarev.com/bin/backup_test
+# Copyright 2018 Roman Zolotarev <hi@romanzolotarev.com>
+#
+program="$(dirname "$(readlink -f "$0")")/backup"
+
+total=0; nos=0
+no() { total=$((total+1)); echo "no ok $total - $1"; nos=$((nos+1)); }
+ok() { total=$((total+1)); echo "ok $total - $1"; }
+eq() { if [ "$1" = "$2" ]; then ok "$3"; else no "$3\\n$1\\n$2"; fi; }
+desc() { printf '#\n\033[1m%s\033[m\n' "$1"; }
+
+##########################################################################
+
+
+
+desc 'initial backup and verify'
+
+(
+temp=$(mktemp -d) && cd "$temp" || exit 1
+mkdir src
+touch -d2018-01-01T00:00:00 src/a1
+
+"$program" src > log &&
+ok 'backup src > log'
+
+d='000000000000.00' 
+log="$d $temp/src $temp/$(hostname -s)-$(basename src)-$d 2 OKAY"
+eq "$(sed 's/[0-9.]\{15\}/'$d'/g' log)" "$log" 'validate log'
+
+dgst=$(cat ./*.sha256)
+tree="$temp/$(ls ./*.tree.gz)"
+eq "$(gunzip<"$tree"|sha256)" "$dgst" 'validate digest'
+
+pax="$temp/$(ls ./*.pax.gz)"
+mkdir dst && cd dst && pax -pe -rzf "$pax" && 
+ok 'unpack pax'
+
+cd src && gunzip < "$tree" |
+sed 's/time=\([0-9]*\)\.[0-9]*/time=\1.0/' | mtree && 
+ok 'verify mtree spec'
+
+rm -rf "$temp"
+)
+
+
+
+desc 'one incremental backup and verify'
+(
+temp=$(mktemp -d) && cd "$temp" || exit 1
+mkdir src
+touch -d2018-01-01T00:00:00 src/a1
+
+"$program" src > log &&
+ok 'backup src > log'
+
+rm -rf "$temp"
+)
+
+
+
+##########################################################################
+
+echo "1..$total"
+if [ "$nos" -gt 0 ]; then echo "FAILED $nos/$total"; else echo "PASS"; fi

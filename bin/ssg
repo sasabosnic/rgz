@@ -17,6 +17,7 @@
 #
 
 CONF_FILE="$PWD/_ssg.conf"
+# shellcheck disable=SC1090
 [ -f "$CONF_FILE" ] && . "$CONF_FILE"
 [ -n "$DOCS" ] || { echo 'to build set DOCS in _ssg.conf'; exit 1; }
 [ -n "$ROOT" ] || { echo 'to build set ROOT in _ssg.conf'; exit 1; }

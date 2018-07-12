@@ -1,46 +1,43 @@
-# Switch from Vim to vi(1)
+# Upgrade from Vim to vi(1)
 
-Before I [switched to OpenBSD](/setup.html), I had used [Vim](/vim.html)
-as my default text editor and used [vi(1)](https://man.openbsd.org/vi.1)
-only on servers. Recently I decided to switch to vi(1) fulltime.
+Before [switching to OpenBSD](/setup.html), I used [Vim](/vim.html)
+as the default text editor and used [vi(1)](https://man.openbsd.org/vi.1)
+on servers. Recently I decided to switch to vi(1) full time.
 
-On major BSD systems (OpenBSD, FreeBSD, and NetBSD) vi(1) is actually
-[nvi](https://sites.google.com/a/bostic.com/keithbostic/vi) (new vi).
-It was written by Keith Bostic and currently seems to be frozen at
-version 1.79.
+On OpenBSD vi(1) is actually
+[nvi](https://sites.google.com/a/bostic.com/keithbostic/vi)
+based on version 1.79, written by Keith Bostic.
 
-## Why did I switch back to nvi?
+## Why did I switch to nvi?
 
 - nvi is lighter and faster than Vim,
 - nvi is in OpenBSD base,
-- almost all missing Vim features I care about can be replaced with
-  POSIX commands and utilities,
-- nvi forces me to learn OpenBSD and POSIX tools.
+- almost all of the missing Vim features I care about are replaced with
+  POSIX utilities,
+- nvi makes me learn OpenBSD and POSIX tools.
 
-## What's missing?
+## What is missing?
 
-For few Vim features I couldn't find any workarounds yet and really miss
+For several Vim features, I couldn't find any workarounds and really miss
 them:
 
-Insert-mode completion,
-text objects,
-viminfo (save command history, marks, registers between Vim sessions),
-searching for words under cursor.
+Insert-mode completion, text objects, viminfo (save command history,
+marks, registers), search for words under the cursor.
 
-For some features I've managed to find workarounds.
+For some features, I managed to find workarounds.
 
 For example, for rare cases when I need Unicode, I use
 [nvi2](https://github.com/lichray/nvi2):
 
     # pkg_add nvi
 
-Instead of syntax highlighting I use cleaner formatting and linters, but
-I understand this can be a deal breaker for ~~hipsters~~ modern software
-developers.
+Instead of syntax highlighting, I use cleaner formatting and linters,
+but I understand that this may not work for ~~hipsters~~ some
+software developers.
 
-For many other features there are POSIX utilities and shell scripts:
+I've replaced some features with utilities and shell scripts:
 
-Vim feature                  | nvi 1.79
+Vim feature                  | nvi workaround
 :--                          | :--
 sort                         | `/usr/bin/sort`
 spell checking               | `/usr/bin/spell`
@@ -53,28 +50,26 @@ macros                       | `/bin/sh`
 automatic commands           | `/bin/sh`
 scripts and expressions      | `/bin/sh`
 
-Finally, there are Vim features I didn't use, so I haven't check for
-alternatives:
-
-folding,
-printing,
-mouse support,
-editing binary files,
-netrw,
-virtualedit.
-
 ## nvi tricks
 
+To edit multiple files: `vi file1 file2`, then `:n[ext]`, `:prev` to
+switch, and `:ar[gs]` to list them all.
+
+To open one more file `:e[dit] file`, then `^6` to alternate between two.
+
+To open in a split `:E[dit] file`, then `^W` to switch between windows,
+and to set the window height to 20 lines `:res[ize] 20`.
+
 Undo and redo: Press `u` to undo previous edit, then press `.` (dot)
-to undo further, to redo press `u` again.
+to undo, to redo press `u` again.
 
 Increment a number: place cursor at the first digit and press `#`.
 
 To redraw the screen press `^L`.
 
-If you miss _Visual_ mode, try marks. They are useful. For example, mark
-the line by pressing `mm`, then move to the line you need, then delete
-from the current line to the marked one with `d'm`.
+If you miss _Visual_ mode, try marks. For example, mark the line
+by pressing `mm`, then move to the line you need, then delete from
+the current to the marked line with `d'm`.
 
 Break lines at column 72 in _Insert_ and _Append_ modes.
 

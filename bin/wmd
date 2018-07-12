@@ -1,8 +1,0 @@
-#!/bin/sh
-
-html="${1%\.md}.html"
-[ -z "$1" ] && { echo "Usage: wmd <file.md>"; exit 1; }
-[ ! -f "$1" ] && { echo "$1: No such file"; exit 1; }
-[ -f "$html" ] && rm -i "$html"
-{ sleep 1 && firefox "file://$PWD/$html" & }
-ls "$1" | entr md "$1"

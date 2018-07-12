@@ -1,5 +1,5 @@
 bind-key M-Return       terminal
-bind-key M-e            menu-exec
+bind-key M-e            menu-cmd
 bind-key M-j            window-cycle
 bind-key M-k            window-cycle
 bind-key M-t            window-maximize
@@ -33,3 +33,11 @@ color    activeborder   "#444444"
 color    inactiveborder "#000000"
 fontname fixed-13
 sticky   yes
+
+command  calc           "xcalc"
+command  chrome         "chrome"
+command  console        "xconsole"
+command  firefox        "firefox"
+command  gimp           "gimp"
+command  office         "libreoffice"
+command  paint          "mtpaint"

@@ -41,9 +41,9 @@ start)
 	h=$(( $(echo "$odd_size"|cut -d'x' -f2) / 2 * 2))
 	size="${w}x${h}"
 
-	date="$(date +%Y%m%d-%H%M%S)"
-	dir="$HOME/downloads/screencasts/${date%-*}"
+	dir="$HOME/downloads/screen/"
 	mkdir -p "$dir"
+	date="$(date +%Y%m%d-%H%M%S)"
 	output="$dir/${date}-$size.mp4"
 
 	logger "screencast: capture $size from $input to $output"

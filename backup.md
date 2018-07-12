@@ -1,17 +1,24 @@
-<meta http-equiv="refresh" content="0;
-url=/borg.html">
+**DRAFT**
 
-<h1>Backup</h1>
+# Backup with mtree(8) and pax(1)
 
-You are about to be redirected to <a
-href="borg.html">Backup with borg</a>.  I
+<bin/backup>
 
-<!-- 
+Files to backup
 
-# Automated tested incremental backup with dump(1) and restore(1)
+/etc
+/root
+/var
+/home
 
 ---
 
 _Tested with OpenBSD 6.3_
 
--->
+---
+
+## See also 
+
+[checklist(5)](https://man.openbsd.org/checklist.5),
+[mtree(8)](https://man.openbsd.org/mtree.8),
+[pax(1)](https://man.openbsd.org/pax.1)

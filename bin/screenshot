@@ -7,7 +7,7 @@
 #
 set -e
 
-dir="$HOME/downloads/screenshots/"
+dir="$HOME/downloads/screen/"
 
 area="$(slop -o)"
 date="$(date +%Y%m%d-%H%M%S)"
@@ -16,5 +16,5 @@ output="$dir/${date}-$area.png"
 import -window root -crop "$area" "$output"
 [ -n "$1" ] && convert -scale "${1}%" "$output" "$output"
 xclip -selection c -t image/png -i "$output"
-num=$(ls -1 "$dir"|wc -l)
+num=$(find "$dir"|wc -l)
 sxiv -Ztoprn "$num" "$dir" | xargs rm
