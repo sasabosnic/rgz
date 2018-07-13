@@ -1,5 +1,5 @@
-> "...thanks for article itself this can help many people to give <a
-href="https://mobile.twitter.com/hashtag/OpenBSD">#OpenBSD</a> a chance."<br>
+> "...thanks for article itself this can help many people to give
+#OpenBSD a chance."<br>&mdash;
 [Ve Telko](https://mobile.twitter.com/vetelko/status/985095582174900224 "14 Apr 2018")
 (@vetelko)
 

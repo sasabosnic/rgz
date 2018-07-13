@@ -1,8 +1,8 @@
-<img src="/avatar.jpeg"
+<img src="/avatar120.jpeg"
   style="border: 0; width: 60px; height: 60px; border-radius: 60px;"
   width="60" height="60"
   alt="Roman's avatar"
-  title="Go to the home page"></a>
+  title="Go to the home page">
 
 Hi, my name is **Roman**. I run a [job board](https://www.bsdjobs.com/)
 and make tutorials for BSD users. I'm fan of [OpenBSD](/openbsd/why.html),
@@ -11,6 +11,9 @@ POSIX-shell, and vi.
 I'm here to help you to learn about web development, BSD userland, text
 editors, single board and fanless computers, mechanical keyboards, and
 low tech.
+
+Thank you for **[your donations](/sponsors.html)** and [your kind
+words](/words.html)!
 
 # How to...
 
@@ -56,78 +59,5 @@ low tech.
 - [host static website on GitHub Pages](/github-pages.html "18 Aug 2016")
 - [decide if you need a website](/website.html "15 Aug 2016")
 
-## How to support this site
+&copy; 2008-2018 Roman Zolotarev
 
-[Become a sponsor](/sponsors.html).
-
-Thank you for your support! My current goal is quite modest. I'd
-like to test Patreon and how donations work for sites like mine.
-
-<progress style="display: block; width: 100%; border: none;" value="34" max="100"></progress>
-$34 of $100 per month
-
-If you're not ready to become a patron yet, your kind tweets help me too. :)
-
-> "I like your style, you go to the root!"<br>
-[Jonas B. Rossi](https://mobile.twitter.com/rossijonas/status/1005544513438445568 "9 Jun 2018")
-(@rossijonas)
-
-> "Special thanks to @romanzolotarev without whom I wouldn't venture
-many things - including this one &#x1F44F;"<br>
-[Marina Kuznetsova](https://mobile.twitter.com/healdementia/status/998623049506279424 "21 May 2018")
-(@healdementia)
-
-> "Hey Roman, I absolutely love watching your adventure through BSD land
-via Twitter!"<br>
-[Ben Brunzel](https://mobile.twitter.com/asciijungle/status/996991681579929601 "17 May 2018")
-(@asciijungle)
-
-> "<a
-href="https://mobile.twitter.com/romanzolotarev">@romanzolotarev</a>
-inspired me to create my new #webpage - I'll test some ideas there. I'm
-going to learn so much :-)"<br>
-[Peter Kotr&#x10D;ka](https://mobile.twitter.com/kotrckap/status/996695819792330754 "16 May 2018")
-(@kotrckap)
-
-> "<a
-href="https://mobile.twitter.com/romanzolotarev">@romanzolotarev</a>
-your tweets made me write my first ed(1) powered refactoring. I thought
-you would've been proud to know. ;)"<br>
-[Giulio Eulisse](https://mobile.twitter.com/ktf/status/996055510179827712 "14 May 2018")
-(@ktf)
-
-> "Roman thanks for sharing all this information. Really is helpful
-especially to new comers to the project."<br>
-[Josh Stephens](https://mobile.twitter.com/tuxbsd/status/987336763508183041 "20 Apr 2018")
-(@tuxbsd)
-
-
-> "Dagnabbit. Now you've got me interested in (re)learning some CVS to
-(re)gain some proficiency at it. I thought I had one of the O'Reilly
-books ("Essential CVS" or "CVS Pocket Reference") in my ebook collection
-but apparently not. &#x1F914;"<br>
-[Tim Chase](https://mobile.twitter.com/gumnos/status/984781565875146753 "13 Apr 2018")
-(@gumnos)
-
-> "Damn you are a machine!! Building tons of stuff."<br>
-[EssentialOS=OpenBSD](https://mobile.twitter.com/BrutusUnix/status/986417139425869825 "18 Apr 2018")
-(@BrutusUnix)
-
----
-
-    https://www.romanzolotarev.com/
-    Copyright 2008-2018 Roman Zolotarev <hi@romanzolotarev.com>
-
-    Permission to use, copy, modify, and/or distribute this software for
-    any purpose with or without fee is hereby granted, provided that the
-    above copyright notice and this permission notice appear in all
-    copies.
-
-    THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL
-    WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED
-    WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE
-    AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL
-    DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA
-    OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER
-    TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
-    PERFORMANCE OF THIS SOFTWARE.

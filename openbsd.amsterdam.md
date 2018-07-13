@@ -4,15 +4,6 @@
 [vmd(8)](https://man.openbsd.org/vmd.8) servers to host opinionated
 VMs.
 
-<a style="border: none;" href="https://openbsd.amsterdam"><img
-  src="/openbsd/amsterdam-avatar.png"
-  style="border: 0; width: 60px; height: 60px; border-radius: 60px;"
-  width="60" height="60"
-  alt="OpenBSD in Amsterdam"
-  title="OpenBSD in Amsterdam"></a>
-
----
-
 Send your name, email address, hostname, username, and public SSH key to OpenBSDAms
 via [contact form](https://openbsd.amsterdam/contact.html),
 [Twitter](https://mobile.twitter.com/OpenBSDAms), or
@@ -26,12 +17,9 @@ For example:
 	romanzolotarev
 	ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIqh7BmO... 1500469202
 
-You'll get IPv4 (and IPv6) address as soon as your VM is deployed.
-
----
-
-Login to the VM (assuming your private SSH key is in its default
-location):
+Please allow few hours for your VM to be started. You'll get IPv4
+(and IPv6) address as soon as your VM is deployed. Login to the
+VM (assuming your private SSH key is in its default location):
 
 <pre>
 $ <b>ssh <i>username@XXX.XXX.XXX.XXX</i></b>
@@ -46,11 +34,8 @@ latest version of the code. With bug reports, please try to
 ensure that enough information to reproduce the problem is
 enclosed, and if a known fix for it exists, include that as
 well.
-
 $
 </pre>
-
----
 
 Get a password from `~/pass.txt` and switch to `root`.
 
@@ -62,17 +47,12 @@ password:
 #
 </pre>
 
-
-## Configure `doas`
-
 Add your _username_ to `/etc/doas.conf`:
 
 <pre>
 # <b>echo 'permit <i>username</i>' > /etc/doas.conf</b>
 #
 </pre>
-
-## Disable remote login for `root`
 
 Edit `/etc/ssh/sshd_config`:
 
@@ -91,20 +71,13 @@ sshd(ok)
 #
 </pre>
 
-## Fix time counter
-
-Run `sysctl` to set the time counter:
+Run `sysctl` to set the time counter then run `ntpd` to set the
+local clock and terminate it by pressing `^C`.
 
 <pre>
+# <b>echo 'kern.timecounter.hardware=tsc' > /etc/sysctl.conf</b>
 # <b>sysctl kern.timecounter.hardware=tsc</b>
 kern.timecounter.hardware: i8254 -> tsc
-# <b>echo 'kern.timecounter.hardware=tsc' > /etc/sysctl.conf</b>
-#
-</pre>
-
-Run `ntpd` to set the local clock and terminate it by pressing `^C`.
-
-<pre>
 # <b>ntpd -sd</b>
 /var/db/ntpd.drift is empty
 ntp engine ready
@@ -117,15 +90,10 @@ Terminating
 #
 </pre>
 
-## Configure IPv6
-
 Edit `/etc/hostname.vio0`:
 
 	inet 46.23.xx.xx 255.255.255.0
 	inet6 2a03:6000:xxxx::xxx 64 -soii
-
-Note: `-soii` disables IPv6 persistent _Semantically Opaque Interface
-Identifiers_ on the interface.
 
 Edit `/etc/mygate`:
 
@@ -138,8 +106,6 @@ Reinitialize the network:
 # <b>sh /etc/netstart vio0</b>
 #
 </pre>
-
----
 
 Update `/etc/pf.conf`, test, and load it:
 
@@ -158,8 +124,6 @@ pass in quick proto ipv6-icmp all
 #
 </pre>
 
-## Disable audio server
-
 Stop and disable `sndiod`:
 
 <pre>
@@ -168,9 +132,6 @@ sndiod(ok)
 # <b>rcctl disable sndiod</b>
 #
 </pre>
-
-
-## Apply patches
 
 Check [6.3 errata](https://www.openbsd.org/errata63.html) and apply
 available patches.

@@ -1,31 +1,33 @@
 > "I envy @romanzolotarev fanless desktop. Thanks to him, my next
-PC will be fanless :D"<br>
+PC will be fanless :D"<br>&mdash;
 [minimalist_unix](https://mobile.twitter.com/minimalist_unix/status/996764784090648577 "16 May 2018")
 (@minimalist_unix)
 
 > "Fellow OpenBSD, YubiKey, Kensington Orbit Trackball, & ErgoDox
-user - I salute you!"<br>
+user - I salute you!"<br>&mdash;
 [equalunique](https://mobile.twitter.com/no1evanrowley/status/992498136118677505 "4 May 2018")
 (@no1evanrowley)
 
-> "Dope setup"<br>
+> "Dope setup"<br>&mdash;
 [nixCraft](https://mobile.twitter.com/nixcraft/status/991738751666794497 "2 May 2018")
 (@nixcraft)
 
 > "I am in love with this setup. Simple. Awesome. Functional.
-Efficient."<br>
+Efficient."<br>&mdash;
 [BuildItBenjamin](https://mobile.twitter.com/liddy_io/status/989840013650288640 "27 Apr 2018")
 (@liddy_io)
 
 > "my X1 Carbon was delayed yet again... That @romanzolotarev will
 be ready with his OpenBSD setup by the time it finally ships is the
-only good thing about the delay. Tot stealing his work"<br>
+only good thing about the delay. Tot stealing his work"<br>&mdash;
 [Vlad Kozin](https://mobile.twitter.com/zeRusski/status/930362868440162304 "14 Nov 2017")
 (@zeRusski)
 
-> "Sweet rig, I know what I'm asking for on my next birthday!"<br>
+> "Sweet rig, I know what I'm asking for on my next birthday!"<br>&mdash;
 [Sean](https://mobile.twitter.com/smhhms/status/909899624948920320 "18 Sep 2017")
 (@smhhms)
+
+---
 
 # OpenBSD on my fanless desktop computer
 
@@ -83,7 +85,7 @@ Firefox.
 ![cwm](/cwm.jpeg)
 
 > "It’s a nice .cwmrc! I even modeled mine after it. Recommended.
-5&nbsp;stars."<br>
+5&nbsp;stars."<br>&mdash;
 [(((Mischa &#x1F576; &#x1F421; RCX)))](https://mobile.twitter.com/mischapeters/status/987004963682430976 "19 Apr 2018")
 (@mischapeters)
 
@@ -122,8 +124,8 @@ _Zotac CI527 with [RUNBSD](http://runbsd.info/) sticker on the top_
 If you're curious about the sticker, here is how it found me:
 
 > [RZ](https://mobile.twitter.com/romanzolotarev/status/925424605367623680
-"31 Oct 2017"): Hi <a href="https://mobile.twitter.com/FiLiS">@FiLiS</a>,
-where can I buy those wonderful RUN BSD stickers?
+"31 Oct 2017"): Hi @FiLiS, where can I buy those wonderful RUN BSD
+stickers?
 
 > [FiLiS](https://mobile.twitter.com/FiLiS/status/925425396941770755
 "31 Oct 2017"): > you can't. You can DM me your address and I'll
@@ -132,10 +134,7 @@ send you some. :)
 Two weeks later...
 
 > [RZ](https://mobile.twitter.com/romanzolotarev/status/931467864896409600
-"17 Nov 2017"): <a
-href="https://mobile.twitter.com/hashtag/RUNBSD">#RUNBSD</a> It's
-official now. Thank you <a
-href="https://mobile.twitter.com/FiLiS">@FiLiS</a>
+"17 Nov 2017"): #RUNBSD It's official now. Thank you @FiLiS
 
 > [FiLiS](https://mobile.twitter.com/FiLiS/status/931619067185811459
 "17 Nov 2017"): You're welcome. :)
@@ -155,7 +154,7 @@ shouldn't](https://marc.info/?l=openbsd-cvs&m=140511572108715&w=2).
 for it to be salvageable, it was treated like a network protocol
 which turned out to be the wrong design. Commit message suggests
 it also simply didn't work: <a
-href="https://marc.info/?l=openbsd-cvs&m=140511572108715&w=2">marc.info?l=openbsd-cvs...</a>"<br>
+href="https://marc.info/?l=openbsd-cvs&m=140511572108715&w=2">marc.info?l=openbsd-cvs...</a>"<br>&mdash;
 [Bryan
 Steele](https://mobile.twitter.com/canadianbryan/status/984782198887911425
 "13 Apr 2018") (@canadianbryan)
@@ -210,7 +209,7 @@ rate of two hundred pages per year.
 
 ---
 
-> "Bonus points for using the Field Notes ;)"<br>
+> "Bonus points for using the Field Notes ;)"<br>&mdash;
 [BuildItBenjamin](https://mobile.twitter.com/liddy_io/status/910086740223946753
 "19 Sep 2017") (@liddy_io)
 

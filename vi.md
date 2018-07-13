@@ -1,3 +1,10 @@
+> TIL #OpenBSD nvi can do split window... Thanks
+@romanzolotarev!"<br>&mdash;
+[ParadeGrotesque](https://mobile.twitter.com/ParadeGrotesque/status/1002454625272901632 "1 Jun 2018")
+(@ParadeGrotesque)
+
+---
+
 # Upgrade from Vim to vi(1)
 
 Before [switching to OpenBSD](/setup.html), I used [Vim](/vim.html)
