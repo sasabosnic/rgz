@@ -42,18 +42,13 @@ dependencies:
 
 It generates Markdown articles to a static website.
 
-1. It copies the current directory to a temporary on in `/tmp` skipping
-   `.*` and `_*`,
-
+1. It copies the current directory to a temporary one, 
+   skipping `.*` and `_*`,
 1. renders all Markdown articles to HTML,
-
 1. generates [RSS feed](/rss.xml) based on links from  `index.html`,
-
 1. extracts the first `<h1>` tag from every article to generate a
    sitemap and use it as a page title,
-
 1. then wraps articles with a single HTML template,
-
 1. copies everything from the temporary directory to `$DOCS/`.
 
 ![ssg](/ssg.jpeg)
