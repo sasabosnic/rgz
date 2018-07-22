@@ -53,19 +53,30 @@ text formatting (`gqap`)     | `/usr/bin/fmt`
 extended search patterns     | `/usr/bin/sed -E`
 vimgrep                      | `/usr/bin/grep`
 plugins                      | `/bin/sh`
-macros                       | `/bin/sh`
 automatic commands           | `/bin/sh`
 scripts and expressions      | `/bin/sh`
 
 ## nvi tricks
 
+You can't _record_ macros in nvi, but you still can use them. Add
+a sequence of commands into a buffer (for example, `"q...`), then
+apply the macro as usual (with `@q`).
+
 To edit multiple files: `vi file1 file2`, then `:n[ext]`, `:prev` to
 switch, and `:ar[gs]` to list them all.
 
-To open one more file `:e[dit] file`, then `^6` to alternate between two.
+To open one more file `:e[dit] file`, then `^6` to alternate between
+two, or use `:e#` command.
 
 To open in a split `:E[dit] file`, then `^W` to switch between windows,
 and to set the window height to 20 lines `:res[ize] 20`.
+
+To scroll current line to the top `z<Enter>`, to the center `z.`,
+and to the bottom of screen `z-`. Scroll lines with `^Y` and
+`^E` as usual.
+
+To search for the "expression" and place the next occurence of it
+to the center of screen: `/expression/z.`.
 
 Undo and redo: Press `u` to undo previous edit, then press `.` (dot)
 to undo, to redo press `u` again.
@@ -97,7 +108,9 @@ To remove trailing spaces:
 
 To edit command-history:
 
-    :set cedit=^[
+    :set cedit=\<TAB>
+
+Where `<TAB>` is the actual tab character: press `^V`, then `<TAB>`.
 
 To read help:
 
@@ -109,4 +122,5 @@ _Tested on OpenBSD 6.3_
 
 [.exrc](/openbsd/exrc),
 [`.profile`](/openbsd/profile),
-[.tmux.conf](/openbsd/tmux.conf)
+[.tmux.conf](/openbsd/tmux.conf),
+[vi command help guide](http://www.jeffw.com/vi/vi_help.txt) by Jeff W.

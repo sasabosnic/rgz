@@ -37,10 +37,10 @@ well.
 $
 </pre>
 
-Get a password from `~/pass.txt` and switch to `root`.
+Get the password from `~/.ssh/authorized_keys` and switch to `root`.
 
 <pre>
-$ <b>cat pass.txt</b>
+$ <b>head -1 ~/.ssh/authorized_keys| tr ' ' '\n'|tail -1</b>
 <i>XXXXXXXXXXXXXXXXXXXXXXXXXX</i>
 $ <b>su -</b>
 password:

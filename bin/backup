@@ -39,7 +39,7 @@ dgst="${base}.sha256"
 pax="${base}.pax.gz"
 
 
-printf '%s %s %s' "$time" "$src" "$base"
+printf '%s %s %s\n' "$time" "$src" "$base"
 
 mtree -cK sha256digest -p "$src" | gzip   > "$tree"
 zcat "$tree"                     | sha256 > "$dgst"
@@ -47,20 +47,19 @@ zcat "$tree"                     | sha256 > "$dgst"
 
 cd "$(dirname "$src")" &&
 pax $opts -wzx cpio -f "$pax" "$(basename "$src")"
-printf ' %s' "$(du -sk "$pax"|cut -f1)"
-
-
-(temp=$(mktemp -d) &&
-cd "$temp" &&
-pax -pe -rzf "$pax"
-
-if cd "$(basename "$src")" &&
-	gunzip < "$tree" |
-	sed 's/time=\([0-9]*\)\.[0-9]*/time=\1.0/' |
-	mtree
-then status='OKAY'
-else status='ERROR'
-fi
-rm -rf "$temp"
-
-echo " $status")
+# printf ' %s\n' "$(du -sk "$pax"|cut -f1)"
+#
+# (temp=$(mktemp -d) &&
+# cd "$temp" &&
+# pax -pe -rzf "$pax"
+#
+# if cd "$(basename "$src")" &&
+	# gunzip < "$tree" |
+	# sed 's/time=\([0-9]*\)\.[0-9]*/time=\1.0/' |
+	# mtree
+# then status='OKAY'
+# else status='ERROR'
+# fi
+# rm -rf "$temp"
+#
+# echo " $status")
