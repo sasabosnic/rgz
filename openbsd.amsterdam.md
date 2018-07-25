@@ -1,4 +1,10 @@
-# Deploy a VM in Amsterdam
+**DISCLAIMER**<br>
+I'm just a happy customer of _OpenBSD in Amsterdam_.<br>
+[Mischa Peters](https://mobile.twitter.com/mischapeters) runs the place.
+
+_Tested on [OpenBSD](/openbsd/) 6.3_
+
+# Deploy VM on OpenBSD.Amsterdam
 
 [OpenBSD in Amsterdam](https://openbsd.amsterdam) is running dedicated
 [vmd(8)](https://man.openbsd.org/vmd.8) servers to host opinionated
@@ -146,17 +152,13 @@ Relinking to create unique kernel... done.
 Connection to XXX.XXX.XXX.XXX closed.
 </pre>
 
----
-
 Now you may want [to setup a web server](/openbsd/webserver.html).
 
-_Tested on OpenBSD 6.3_
-
 ---
 
-**Thanks** to 
+**Thanks** to
 [Mischa Peters](https://mobile.twitter.com/mischapeters) for reading drafts fo this,
-to [Mike Larkin](https://mobile.twitter.com/mlarkin2012), 
-[Bryan Steele](https://mobile.twitter.com/canadianbryan), 
+to [Mike Larkin](https://mobile.twitter.com/mlarkin2012),
+[Bryan Steele](https://mobile.twitter.com/canadianbryan),
 [h3artbl33d](https://mobile.twitter.com/h3artbl33d), and
 [Jeff Neitzel](https://mobile.twitter.com/v6shell) for tips and hints.

@@ -21,12 +21,16 @@
        url('pico-8.woff') format('woff');
   font-weight: normal; font-style: normal;
 }
-BODY, H1 { font-family: pico8, monospace; }
+BODY {
+  line-height: 26px;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+BODY, H1 { font-family: pico8, monospace; font-size: 11px; }
 H1 { margin-top: 4em; }
 .palette { margin: 2em 0; }
 .palette DIV { padding: 1em; color: #000000; margin: 0 -1em; }
 .palette DIV.black { color: #5F574F; }
-.header P, .article DIV, H1 { font-size: 11px; }
 --></style>
 
 <h1>PICO-8 Color Palette</h1>
@@ -48,14 +52,11 @@ H1 { margin-top: 4em; }
 <div class="pink">        #FF77A8 (255, 119, 168) pink</div>
 <div class="peach">       #FFCCAA (255, 204, 170) peach</div>
 </div>
-<hr>
 <div><a href="/pico-8-color-palette/pico-8.clr">OS X Color Picker palette</a></div>
 <div><a href="/pico-8-color-palette/screenshot.png">Screenshot of v0.1.8</a></div>
 <div><a href="/pico-8-color-palette/palette.png">palette.png</a></div>
-<hr>
 <div><a href="https://www.lexaloffle.com/pico-8.php">console</a>, palette,<br>
 and typeface by <a href="https://www.lexaloffle.com/bbs/?uid=1&mode=about">Joseph White</a></div>
 <div>font by <a href="https://www.lexaloffle.com/bbs/?tid=3109">RhythmLynx</a></div>
-<hr>
 <div>PICO-8 color palette<br>
 is licensed under <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC-0</a></div>

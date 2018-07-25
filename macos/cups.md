@@ -1,25 +1,40 @@
-# Printing from the command line on macOS
+_Tested on [macOS](/macos/) 10.13._
+
+# Print with cups(1) on macOS
 
 Add a printer:
 
-    # lpadmin \
-    -p Printer                      # Arbitrary printer name \
-    -v ipp://192.168.1.10/ipp/print # device URI \
-    -P Vendor-Model.ppd             # path to the PPD file \
-    -E                              # enable accepting jobs
+<pre>
+# <b>lpadmin -E \
+-p Printer \
+-v ipp://192.168.1.10/ipp/print \
+-P Vendor-Model.ppd</b>
+#
+</pre>
+
+_-E_ enables accepting job<br>
+_-p_ an arbitrary printer name<br>
+_-v_ the device URI<br>
+_-P_ a path to the PPD file<br>
 
 Check available printers:
 
-    $ lpstat -a
-    Printer accepting requests since Sat Mar 31 23:59:32 2018
-    $
+<pre>
+$ <b>lpstat -a</b>
+Printer accepting requests since Sat Mar 31 23:59:32 2018
+$
+</pre>
 
 Print a document:
 
-    $ lp -d Printer document.pdf
+<pre>
+$ <b>lp -d Printer document.pdf</b>
+$
+</pre>
 
 Delete the printer:
 
-    # lpadmin -x Printer
-
-_Tested on macOS 10.13._
+<pre>
+# <b>lpadmin -x Printer</b>
+#
+</pre>

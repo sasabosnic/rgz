@@ -3,109 +3,104 @@ without your help!"<br>&mdash;
 [equalunique](https://mobile.twitter.com/no1evanrowley/status/992617178863202304 "5 May 2018")
 (@no1evanrowley)
 
----
+_Tested on [OpenBSD](/openbsd/) 6.3_
 
-# Configure YubiKey for login and SSH on OpenBSD
+# Configure login(1) and sshd(8) for YubiKey on OpenBSD
 
-Make sure [OpenBSD is installed on your computer](/openbsd/install.html),
-you're `root`, and you have at least one
-[YubiKey](https://www.yubico.com/store/). First of all, install and start
-**YubiKey Personalization Tool**:
+The [login_yubikey(8)](http://man.openbsd.com/login_yubikey.8)
+utility is called by [login(1)](https://man.openbsd.org/login.1)
+and others to authenticate the user with
+[YubiKey](https://www.yubico.com/store/) authentication.
 
-    # pkg_add yubikey-personalization-gui
-    quirks-2.414 signed on 2018-03-28T14:24:37Z
-    yubikey-personalization-gui-3.1.25: ok
-    # yubikey-personalization-gui
+## Prepare YubiKey
 
-Insert your YubiKey into USB port. Click **Yubico OTP**, then **Quick**.
-Select **Configuration Slot 1** or **2**. Click **Write Configuration**.
-Important: save the log into `/tmp/yubikey.csv`. Click **Exit**.
+Install and start [YubiKey Personalization
+GUI](https://github.com/Yubico/yubikey-personalization-gui):
 
-As `root` extract _uid_ and _key_ from the log, verify `/var/db/yubikey/*`
+<pre>
+# <b>pkg_add yubikey-personalization-gui</b>
+...
+yubikey-personalization-gui-3.1.25: ok
+# <b>yubikey-personalization-gui</b>
+</pre>
+
+Insert your YubiKey into USB port, select _Yubico OTP > Quick_,
+select **Configuration Slot 1** or **2**, click **Write
+Configuration**, save the log into `/tmp/yubikey.csv`, click
+**Exit**.
+
+Extract _uid_ and _key_ from the log, verify `/var/db/yubikey/*`
 files, and remove `yubikey.csv` file.
 
-    # cd /var/db/yubikey
-    # grep Yubico /tmp/yubikey.csv | cut -f5 -d,>root.uid
-    # grep Yubico /tmp/yubikey.csv | cut -f6 -d,>root.key
-    # chown root:auth root.*
-    # chmod 440 root.*
-    # cat root.*
-    xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-    xxxxxxxxxxxx
-    # rm /tmp/yubikey.csv
+<pre>
+# <b>cd /var/db/yubikey</b>
+# <b>touch romanzolotarev.{uid,key}</b>
+# <b>chown root:auth *</b>
+# <b>chmod 440 *</b>
+# <b>chown root:auth *</b>
+# <b>grep Yubico /tmp/yubikey.csv | cut -f5 -d, > romanzolotarev.uid</b>
+# <b>grep Yubico /tmp/yubikey.csv | cut -f6 -d, > romanzolotarev.key</b>
+# <b>cat *</b>
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+xxxxxxxxxxxx
+# <b>rm /tmp/yubikey.csv</b>
+# <b>ls -l</b>
+-r--r-----  1 root  auth  33 May  1 15:22 romanzolotarev.key
+-r--r-----  1 root  auth  13 May  1 15:22 romanzolotarev.uid
+#
+</pre>
 
-If `/var/db/yubikey/root.ctr` is present, remove it to reset the counter.
+You can uninstall **yubikey-personalization-gui**
 
-    # rm root.ctr
+<pre>
+# <b>pkg_delete yubikey-personalization-gui</b>
+yubikey-personalization-gui-3.1.25: ok
+Read shared items: ok
+# <b>pkg_delete -a</b>
+...
+Read shared items: ok
+#
+</pre>
 
-If you have one more YubiKey, then repeat these steps, but replace
-`root.uid` with `USERNAME.uid` and `root.key` with `USERNAME.uid`, where
-`USERNAME` is a name of your user.
+## Configure login(1) and sshd(8)
 
-Or, if you have only one YubiKey, then just copy those two files.
+Back up [login.conf(5)](https://man.openbsd.org/login.conf.5) and
+[sshd_config(5)](https://man.openbsd.org/sshd_config.5) to be able to
+revert changes.
 
-    # cp root.uid USERNAME.uid
-    # cp root.key USERNAME.key
+<pre>
+# <b>cp /etc/login.conf /etc/login.conf.bak</b>
+# <b>cp /etc/ssh/sshd_config /etc/ssh/ssh_config.bak</b>
+#
+</pre>
 
-The result in my case looks like this:
+Change `auth-defaults` in `/etc/login.conf`:
 
-    # ls -l /var/db/yubikey/*
-    -r--r-----  1 root  auth  33 May  1 15:22 romanzolotarev.key
-    -r--r-----  1 root  auth  13 May  1 15:22 romanzolotarev.uid
-    -r--r-----  1 root  auth  33 May  1 14:59 root.key
-    -r--r-----  1 root  auth  13 May  1 14:59 root.uid
+    auth-defaults:auth=yubikey:
 
-We are about to change two config files, let's back up them first.
+Add this line to `etc/ssh/sshd_config`:
 
-    # cp /etc/login.conf /etc/login.conf.bak
-    # cp /etc/ssh/sshd_config /etc/ssh/ssh_config.bak
-
-In case something goes wrong you'll be able to [boot in a single user
-mode](https://www.openbsd.org/faq/faq8.html), revert changes, reboot and
-login with a regular password as usual.
-
-Now we can change `auth-defaults` in `/etc/login.conf`:
-
-    auth-defaults:auth=yubikey,passwd:
-
-And update `/etc/ssh/sshd_config`:
-
-    PermitRootLogin yes
     AuthenticationMethods publickey,password
-    PasswordAuthentication yes
 
-Restart `sshd`, then verify: when ssh asks for a password---instead of
-entering your regular password---touch YubiKey, if you have used
-slot&nbsp;1 (or touch and hold it for 2-3 seconds for slot&nbsp;2)...
+Restart `sshd` and verify: when ssh asks for a password&mdash;instead
+of entering your regular password&mdash;touch YubiKey, if you
+have used slot&nbsp;1 (or touch and hold it for 2-3 seconds for
+slot&nbsp;2)...
 
-    # rcctl restart sshd
-    # ssh root@localhost
-    root@localhost's password:
-    Last login: Wed May  2 17:11:06 2018 OpenBSD 6.3
-    (GENERIC.MP) #1: Sat Apr 21 14:26:25 CEST 2018
+<pre>
+# <b>rcctl restart sshd</b>
+# <b>ssh root@localhost</b>
+root@localhost's password:
+Last login: Wed May  2 17:11:06 2018 OpenBSD 6.3
+(GENERIC.MP) #1: Sat Apr 21 14:26:25 CEST 2018
 
-    Welcome to OpenBSD: The proactively secure Unix-like
-    operating system.
+Welcome to OpenBSD: The proactively secure Unix-like
+operating system.
 
-    Please use the sendbug(1) utility to report bugs in the
-    system. Before reporting a bug, please try to reproduce it
-    with the latest version of the code. With bug reports,
-    please try to ensure that enough information to reproduce
-    the problem is enclosed, and if a known fix for it exists,
-    include that as well.
-
-
-...then exit and reboot:
-
-    # exit
-    # reboot
-
-_Tested on OpenBSD 6.3._
-
-P.S. Also [tweak your login screen](/openbsd/login.html) if you wish.
-
-## See also
-
-[login.conf(5)](http://man.openbsd.com/login.conf.5),
-[login_yubikey(8)](http://man.openbsd.com/login_yubikey.8),
-[YubiKey Personalization GUI](https://github.com/Yubico/yubikey-personalization-gui)
+Please use the sendbug(1) utility to report bugs in the system.
+Before reporting a bug, please try to reproduce it with the
+latest version of the code. With bug reports, please try to
+ensure that enough information to reproduce the problem is
+enclosed, and if a known fix for it exists, include that as well.
+# exit
+</pre>

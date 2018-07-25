@@ -1,31 +1,30 @@
+_Tested on [macOS](/macos/) 10.13 with ruby and jekyll_
+
 # Make a static website with Jekyll
 
-Jekyll is a static website generator. It converts your
-[markdown](/markdown.html) files to web pages which you can publish with a
-single command or few clicks.
+[Jekyll](https://jekyllrb.com) is a static website generator. It converts your
+[markdown](/markdown.html) files to web pages which you can publish
+with a single command or few clicks.
 
-## Recipe
-
-If you are on a Mac, both Ruby and Jekyll are most likely installed. If
-they aren't, install
-[Ruby](https://www.ruby-lang.org/en/documentation/installation/) and then
-Jekyll.
-
-    $ gem install jekyll
+If you are on a Mac, both Ruby and Jekyll are pre-installed.
 
 Create a new directory for your project and run Jekyll.
 
-    $ mkdir hello-world
-    $ cd hello-world
-    $ jekyll s
+<pre>
+$ <b>mkdir hello-world</b>
+$ <b>cd hello-world</b>
+$ <b>jekyll s</b>
+$
+</pre>
 
 
-Create an `index.md` file in your favorite text editor with the following
-content:
+Create an `index.md` file:
 
-    ---
-    ---
-    # Hello, World!
+```
+---
+---
+# Hello, World!
+```
 
 Those dashes separate the Jekyll _front matter_ from your Markdown
 content. Jekyll needs front matter even if it's empty.
@@ -71,25 +70,28 @@ Here's how to enable live reload:
 
 Install Bundler:
 
-    $ gem install bundler
+<pre>
+$ <b>gem install bundler</b>
+</pre>
 
 Add `Gemfile`:
 
-    source 'https://rubygems.org'
-    gem 'jekyll', group: :jekyll_plugins
-    group 'jekyll_plugins' do
-      gem 'jekyll-livereload'
-    end
+```
+source 'https://rubygems.org'
+gem 'jekyll', group: :jekyll_plugins
+group 'jekyll_plugins' do
+  gem 'jekyll-livereload'
+end
+```
 
 Install and run:
 
-    $ bundle install
-    $ bundle exec jekyll serve -L
-
-_Tested on macOS 10.13_
+<pre>
+$ <b>bundle install</b>
+$ <b>bundle exec jekyll serve -L</b>
+</pre>
 
 ## See also
 
 [Jekyll Minimalist](https://romanzolotarev.github.io/jekyll-minimalist/),
-[Jekyll](https://jekyllrb.com),
 [GitHub Pages](https://pages.github.com)

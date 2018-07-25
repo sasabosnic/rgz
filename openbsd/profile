@@ -1,12 +1,10 @@
 #!/bin/sh
 
-PATH="$HOME/bin:$PATH"
 LC_ALL='en_US.UTF-8'
-VISUAL='vi'
+PATH="$HOME/bin:$PATH"
 PS1='\w '
-export PATH LC_ALL VISUAL PS1
-
-quits() { aucat -i "$HOME/src/www/quits.wav"; }
+VISUAL='vi'
+export LC_ALL PATH PS1 VISUAL
 
 start_tmux() {
   if ! tmux new-session -As 0 -n "$1" "cd $2 && $3" 2>/dev/null;then
@@ -29,7 +27,7 @@ o()   { start_tmux 'o'   "$HOME/prv/openvpn" 'doas openvpn --config default.ovpn
 www() { start_tmux 'www' "$HOME/src/www"     'vi index.md'; }
 
 s() { ssg watch --clean||return; }
-sync_logs() { [ -n "$1" ] && { rsync -azvPc "$1:/var/www/logs/*" "$HOME/prv/logs/$1/"; quits & }; }
+sync_logs() { [ -n "$1" ] && { rsync -azvPc "$1:/var/www/logs/*" "$HOME/prv/logs/$1/"; }; }
 
 png() { optipng -preserve -keep -strip all -o7 "$1"; }
 jpeg() { cp "$1" "$1.bak" && jpegoptim --strip-all --preserve --preserve-perms --verbose -m80 "$1"; }
@@ -42,6 +40,7 @@ alias l='ls -aF'
 alias ll='ls -lahF'
 alias mv='mv -i'
 alias rm='rm -i'
+
 alias b="vi \$HOME/.profile && . \$HOME/.profile"
 
 # shellcheck disable=SC2086
@@ -51,22 +50,17 @@ update_complete_pass() {
   set -A complete_pass_add -- $pass_list
   set -A complete_pass_edit -- $pass_list
   set -A complete_pass_export -- $pass_list
-  set -A complete_pass_mv -- $pass_list
   set -A complete_pass_show -- $pass_list
 }
 update_complete_pass
-pass_show() { pass show "$1" && update_complete_pass; }
 pass_add() { pass add "$1" && update_complete_pass; }
 pass_edit() { pass edit "$1"; }
-pass_export() { pass export "$1" && update_complete_pass; }
-
-LOCAL_PKG_PATH="$HOME/pub/OpenBSD/$(uname -r)/packages/$(uname -m)"
-pkg_add_from_cache() { doas env PKG_PATH="$LOCAL_PKG_PATH" pkg_add "$@"; }
-pkg_add_with_cache() { mkdir -p "$LOCAL_PKG_PATH" && doas env PKG_CACHE="$LOCAL_PKG_PATH" pkg_add "$@"; }
+pass_export() { pass export "$1"; }
+pass_show() { pass show "$1"; }
 
 mnt() { [ -n "$1" ] && doas mkdir -p "/mnt/$1" && doas mount "/dev/$1" "/mnt/$1" && cd "/mnt/$1"||return; }
 umnt() { [ -n "$1" ] && doas umount "/dev/$1"; }
-pics() {  mnt sd1i && cd DCIM && rsync -avPc --chown=romanzolotarev:romanzolotarev . "$HOME/downloads/pics" && cd "$HOME/downloads/pics" && umnt sd1i; }
+pics() {  mnt sd1i && cd DCIM && rsync -avPc --chown=$(whoami) . "$HOME/downloads/pics" && cd "$HOME/downloads/pics" && umnt sd1i; }
 x() { sxiv -tor "${1:-.}" | xargs -r rm; }
 
 aria() { mkdir -p "$HOME/downloads" && (cd "$HOME/downloads" && aria2c "$1"); }

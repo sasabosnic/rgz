@@ -1,41 +1,48 @@
-# Strong password generator
+_Tested on [OpenBSD](/openbsd/) 6.3 and [macOS](/macos/) 10.13_
 
-[diceware](/bin/diceware) is a POSIX-compliant shell script. It generates
-a random combination of words from the predefined list. It uses
-`/dev/urandom` as the source of entropy, so make sure your operating
+# Generate passphrases with random(4)
+
+[diceware](/bin/diceware) is a random passphrase generator. It uses
+[random(4)][random] as a source of entropy. Make sure your operating
 system provides good enough randomness.
 
+[random]: https://man.openbsd.org/random.4
 
-Download and run `diceware`. Assuming `./bin` is in `PATH`.
+## Install
 
-    $ cd bin
-    $ ftp https://www.romanzolotarev.com/bin/diceware
-    $ chmod +x diceware
-    $ diceware
-    uerrilla agnostic backdoor glove jealous mummy myth sloth
-    $
+<pre>
+$ <b>cd bin</b>
+$ <b>ftp -V https://www.romanzolotarev.com/bin/diceware</b>
+diceware     100% |********************| 18711       00:00
+$ <b>chmod +x diceware</b>
+</pre>
 
-On every run it generates a random 8-word pass phrase. You can write this
-phrase down, just memorize it, or you can pipe it to your [favorite
-password manager](/pass.html):
+## Roll dice
 
-    $ diceware | pass import twitter
-    $
+On every run it generates a random passphrase, 8-word long by
+default.
 
-Each word adds about 10 bits of entropy, so for passwords use 8 words or
-more. Need more words? Easy:
+<pre>
+$ <b>diceware</b>
+guerrilla agnostic backdoor glove jealous mummy myth sloth
+$ <b>diceware 20</b>
+khaki hemoglobin artichoke cyclist coverless dictionary
+vegetable sardine datebook ruined purse cytoplasm
+absorbing narrator snapshot smitten cuticle journal
+fiscally neither
+$
+</pre>
 
-    $ diceware 20
-    khaki hemoglobin artichoke cyclist coverless dictionary
-    vegetable sardine datebook ruined purse cytoplasm
-    absorbing narrator snapshot smitten cuticle journal
-    fiscally neither
-    $
+Pipe it to [your favorite password manager](/pass.html):
 
-_Tested on OpenBSD 6.3 and macOS 10.13_
+<pre>
+$ <b>diceware | pass import twitter</b>
+Enter pass phrase for /home/romanzolotarev/.pass/.key:
+$
+</pre>
 
-## See also
+---
 
-[Diceware](https://en.m.wikipedia.org/wiki/Diceware),
-[Deep Dive: EFF's New Wordlists for Random Passphrases](https://www.eff.org/deeplinks/2016/07/new-wordlists-random-passphrases) by Joseph Bonneau,
-[xkcd: Password Strength](https://m.xkcd.com/936/)
+**Thanks** to
+Randall Munroe for [the inspiration](https://m.xkcd.com/936/),<br>
+Joseph Bonneau for [the wordlist](https://www.eff.org/deeplinks/2016/07/new-wordlists-random-passphrases).

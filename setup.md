@@ -14,8 +14,8 @@ user - I salute you!"<br>&mdash;
 
 > "I am in love with this setup. Simple. Awesome. Functional.
 Efficient."<br>&mdash;
-[BuildItBenjamin](https://mobile.twitter.com/liddy_io/status/989840013650288640 "27 Apr 2018")
-(@liddy_io)
+[BuildItBenjamin](https://mobile.twitter.com/bl4nk_io/status/989840013650288640 "27 Apr 2018")
+(@bl4nk_io)
 
 > "my X1 Carbon was delayed yet again... That @romanzolotarev will
 be ready with his OpenBSD setup by the time it finally ships is the
@@ -27,13 +27,11 @@ only good thing about the delay. Tot stealing his work"<br>&mdash;
 [Sean](https://mobile.twitter.com/smhhms/status/909899624948920320 "18 Sep 2017")
 (@smhhms)
 
----
-
 # OpenBSD on my fanless desktop computer
 
 You asked me about my setup. Here you go.
 
-I've been using [OpenBSD](/openbsd/why.html) on servers for years
+I've been using [OpenBSD](/openbsd/) on servers for years
 as a web developer, but never had a chance to dive in to system
 administration before. If you appreciate the simplicity of OpenBSD
 and you have to give it a try on your desktop.
@@ -62,10 +60,11 @@ Item                                           | Price, USD
 
 ## OpenBSD
 
-I tried few times to install OpenBSD on my MacBooks---I heard some
-models are compatible with it,---but in my case it was a bit of a
-fiasco (thanks to Nvidia and Broadcom). That's why I bought a new
-computer, just to be able to run this wonderful operating system.
+I tried few times to install OpenBSD on my MacBooks&mdash;I heard
+some models are compatible with it,&mdash;but in my case it was a
+bit of a fiasco (thanks to Nvidia and Broadcom). That's why I bought
+a new computer, just to be able to run this wonderful operating
+system.
 
 Now I run [`-stable`](https://www.openbsd.org/stable.html) on my
 desktop and servers. Servers are supposed to be reliable, that's
@@ -119,8 +118,6 @@ load. It cools down in five minutes.
 ![Zotac CI527](/zotac-ci527.jpeg)
 _Zotac CI527 with [RUNBSD](http://runbsd.info/) sticker on the top_
 
----
-
 If you're curious about the sticker, here is how it found me:
 
 > [RZ](https://mobile.twitter.com/romanzolotarev/status/925424605367623680
@@ -138,8 +135,6 @@ Two weeks later...
 
 > [FiLiS](https://mobile.twitter.com/FiLiS/status/931619067185811459
 "17 Nov 2017"): You're welcome. :)
-
----
 
 Almost all the hardware is supported by OpenBSD 6.3 out-of-the-box.
 For Intel network devices (LAN and WiFi) you'll need firmware binary
@@ -161,27 +156,7 @@ Steele](https://mobile.twitter.com/canadianbryan/status/984782198887911425
 
 ## ErgoDox EZ V3
 
-The ErgoDox is a DIY keyboard project initiated by Dominic Beauchamp.
-The design is ergonomic, split in two separate halves with a columnar
-layout.
-
-![ErgoDox](/ergodox-ez.jpeg) _The right half of ErgoDox EZ_
-
-Why EZ, not DIY kit? Wrist rest and tilt kit. High quality. Excellent
-service. 2-year warranty. I have chosen ErgoDox with Cherry MX Brown
-switches, blank DCS keycaps, and my custom single-layer layout.
-
-Why Cherry MX Brown? Blue switches are louder than brown; other
-switches are not that good for typing. If you are not sure, browns
-are the great default choice.
-
-Why DCS? I tried DSA for a month, but during that experiment, my
-accuracy was lower than with DCS. With sculpted keycaps my fingers
-"know" where they are, while it is a bit harder with DSA profile
-keycaps to find home row.
-
-Why blank keycaps? When I'm typing I look at my screen, not my
-keyboard.
+This keyboard is [my favorite part of my setup](/ergodox.html).
 
 ## Asus VZ249HE
 
@@ -207,19 +182,15 @@ For notes I use [Field Notes 48-page Memo Books][m]. In those rare
 moments when I'm away from my computer I can jot things down at the
 rate of two hundred pages per year.
 
----
-
 > "Bonus points for using the Field Notes ;)"<br>&mdash;
-[BuildItBenjamin](https://mobile.twitter.com/liddy_io/status/910086740223946753
-"19 Sep 2017") (@liddy_io)
+[BuildItBenjamin](https://mobile.twitter.com/bl4nk_io/status/910086740223946753
+"19 Sep 2017") (@bl4nk_io)
 
 ![Field Notes Memo Book](/field-notes-memo-book.jpeg) _Space pen and 48-page
 memo book._
 
 Another thing is [Field Notes Space Pen][s], which lasts forever:
 one refill per thousand memo book pages.
-
----
 
 ![Nokia 105](/nokia-105.jpeg) _USB cable, phone, memo book ruler._
 
@@ -235,8 +206,6 @@ display and keyboard too far away from my [IKEA desk][i].
 [s]: https://fieldnotesbrand.com/products/space-pen
 [m]: https://fieldnotesbrand.com/products/original-kraft
 [i]: https://www.ikea.com/us/en/catalog/products/S39932699/
-
----
 
 Have questions? Want to show your setup? [Let's discuss on
 Twitter](https://mobile.twitter.com/romanzolotarev/status/909807483149066248).

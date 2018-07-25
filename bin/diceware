@@ -1,7 +1,7 @@
 #!/bin/sh
 #
-# diceware generates random phrases with
-# 10 bits of entropy per word. For passwords use 8 words or more.
+# diceware generates random phrases with 10 bits of entropy per
+# word. For a passphrase use 8 words or more.
 #
 # https://www.romanzolotarev.com/bin/diceware
 # Copyright 2017 Roman Zolotarev <hi@romanzolotarev.com>

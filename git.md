@@ -1,18 +1,19 @@
-# Host your Git repositories
+_Tested on [OpenBSD](/openbsd/) 6.3 with git-2.16.2_
 
-[Deploy OpenBSD server on Vultr](/vultr.html) and login into it.
+# Host Git repositories on OpenBSD
 
-## On the remote host
+[Deploy a server](/openbsd/) and login into it.
 
-Install [git(1)](https://git-scm.com/):
+Install [git(1)](https://mirrors.edge.kernel.org/pub/software/scm/git/docs/):
 
 <pre>
 # <b>pkg_add git</b>
-quirks-2.414 signed on 2018-03-28T14:24:37Z
+...
 git-2.16.2: ok
 The following new rcscripts were installed: /etc/rc.d/gitdaemon
 See rcctl(8) for details.
 Look in /usr/local/share/doc/pkg-readmes for extra documentation.
+#
 </pre>
 
 Add `git` user:
@@ -22,7 +23,7 @@ Add `git` user:
 # <b>user add git</b>
 </pre>
 
-Add your public SSH keys:
+Add your public [SSH key](/ssh.html):
 
 <pre>
 # <b>mkdir -m 700 /home/git/.ssh</b>
@@ -62,12 +63,10 @@ To REMOTE_SERVER:REPOSITORY.git
 $
 </pre>
 
-Done! Now you may want [to publish your Git repositories on the web](/stagit.html).
-
-_Tested on OpenBSD 6.3 with git-2.16.2_
+[Publish Git repositories](/stagit.html).
 
 ---
 
-**Thanks** to 
+**Thanks** to
 [Luclu7_](https://mobile.twitter.com/Luclu7_/status/1015396970112978950)
 for catching typos.

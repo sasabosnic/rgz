@@ -2,8 +2,6 @@
 [Peter Kotr&#x10D;ka](https://mobile.twitter.com/kotrckap/status/996695819792330754 "17 May 2018")
 (@kotrckap)
 
----
-
 # Screencasts for programmers
 
 Looking for top-notch screencasts? You are on the right page.
@@ -24,10 +22,6 @@ and techniques you never knew existed, one little thing at a time.
 All the screencasts listed on this page are well made and cover everything
 you need to know as a professional programmer: from command line tools and
 text editors to advanced programming practices and lambda calculus.
-
-Beware: My selection is a bit skewed to the web development world.
-
-## Screencasts
 
 [**Destroy All Software**](https://www.destroyallsoftware.com/screencasts)
 by Gary Bernhardt
@@ -157,7 +151,7 @@ by Avdi Grimm
 by Michael Kennedy
 <br>Python, MongoDB, Pyramid, REST, SQL
 
-[**NSScreencast**](http://nsscreencast.com/)
+[**NSScreencast**](http://nsscreencast.com/episodes)
 by Ben Scheirman
 <br>iOS, Swift, Objective-C, Xcode
 
@@ -195,8 +189,6 @@ by Dave Kimura
 
 ## Schools and Stores
 
-Explore these online schools and stores to find more courses.
-
 [**Egghead**](https://egghead.io/)
 <br>Angular, React, Elm, JavaScript, RxJs, Node.js, D3
 
@@ -213,9 +205,6 @@ Explore these online schools and stores to find more courses.
 [**Linux Academy**](https://linuxacademy.com/)
 <br>Linux, AWS, Azure, OpenStack, DevOps, BigData
 
-[**Code School**](https://www.codeschool.com/)
-<br>HTML, CSS, Ruby, JavaScript, Python, iOS, Git, .Net, SQL, MongoDB
-
 [**Caster IO**](https://caster.io/)
 <br>Android, RxJava, Material Design, Espresso
 
@@ -225,6 +214,4 @@ Explore these online schools and stores to find more courses.
 [**Packt**](https://www.packtpub.com/)
 <br>Swift, Python, JavaScript, Java, and many more
 
-I do not include some good education platforms (like Udemy, Udacity,
-Treehouse, Coursera, Envato Tuts+, and Codeacademy) because their catalogs
-are kind of broad.
+See also Udemy, Udacity, Treehouse, Coursera, Envato Tuts+, and Codeacademy.

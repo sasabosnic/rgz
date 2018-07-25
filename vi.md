@@ -3,60 +3,13 @@
 [ParadeGrotesque](https://mobile.twitter.com/ParadeGrotesque/status/1002454625272901632 "1 Jun 2018")
 (@ParadeGrotesque)
 
----
+_Tested on [OpenBSD](/openbsd/) 6.3_
 
-# Upgrade from Vim to vi(1)
+# Edit text with vi(1)
 
-Before [switching to OpenBSD](/setup.html), I used [Vim](/vim.html)
-as the default text editor and used [vi(1)](https://man.openbsd.org/vi.1)
-on servers. Recently I decided to switch to vi(1) full time.
-
-On OpenBSD vi(1) is actually
-[nvi](https://sites.google.com/a/bostic.com/keithbostic/vi)
-based on version 1.79, written by Keith Bostic.
-
-## Why did I switch to nvi?
-
-- nvi is lighter and faster than Vim,
-- nvi is in OpenBSD base,
-- almost all of the missing Vim features I care about are replaced with
-  POSIX utilities,
-- nvi makes me learn OpenBSD and POSIX tools.
-
-## What is missing?
-
-For several Vim features, I couldn't find any workarounds and really miss
-them:
-
-Insert-mode completion, text objects, viminfo (save command history,
-marks, registers), search for words under the cursor.
-
-For some features, I managed to find workarounds.
-
-For example, for rare cases when I need Unicode, I use
-[nvi2](https://github.com/lichray/nvi2):
-
-    # pkg_add nvi
-
-Instead of syntax highlighting, I use cleaner formatting and linters,
-but I understand that this may not work for ~~hipsters~~ some
-software developers.
-
-I've replaced some features with utilities and shell scripts:
-
-Vim feature                  | nvi workaround
-:--                          | :--
-sort                         | `/usr/bin/sort`
-spell checking               | `/usr/bin/spell`
-diff mode                    | `/usr/bin/diff`
-text formatting (`gqap`)     | `/usr/bin/fmt`
-extended search patterns     | `/usr/bin/sed -E`
-vimgrep                      | `/usr/bin/grep`
-plugins                      | `/bin/sh`
-automatic commands           | `/bin/sh`
-scripts and expressions      | `/bin/sh`
-
-## nvi tricks
+On OpenBSD [vi(1)](https://man.openbsd.org/vi.1) is based on [nvi
+1.79](https://sites.google.com/a/bostic.com/keithbostic/vi), written
+by Keith Bostic.
 
 You can't _record_ macros in nvi, but you still can use them. Add
 a sequence of commands into a buffer (for example, `"q...`), then
@@ -116,7 +69,14 @@ To read help:
 
     :help
 
-_Tested on OpenBSD 6.3_
+If you need Unicode, use [nvi2](https://github.com/lichray/nvi2):
+
+<pre>
+# <b>pkg_add nvi</b>
+...
+nvi-2.1.3p1-iconv: ok
+#
+</pre>
 
 ## See also
 

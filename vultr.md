@@ -7,16 +7,19 @@ I build."<br>
 [EssentialOS=OpenBSD](https://mobile.twitter.com/BrutusUnix/status/987485038630572032 "21 Apr 2018")
 (@BrutusUnix)
 
----
+**DISCLAIMER**<br>
+I'm a customer of Vultr and the yellow button is a referal link.
 
-# Deploy a VPS on Vultr
+_Tested on [OpenBSD](/openbsd/) 6.3_
 
-If you need a new server, make sure you have your [public SSH
-key](/ssh.html) handy, then register at
-[Vultr](https://www.vultr.com/?ref=7035749 "Disclaimer: It's a referal
-link") and deploy your server.
+# Deploy OpenBSD VPS on Vultr
 
-For example:
+If you need a new OpenBSD server, make sure you have your [public
+SSH key](/ssh.html) handy, then...
+
+<a href="https://www.vultr.com/pricing/?ref=7035749" class="button">sign up at Vultr</a>
+
+Deploy an instance, for example:
 
 1. Server Location: **Miami**
 1. Server Type: 64 bit OS, **OpenBSD 6 x64**
@@ -46,10 +49,7 @@ and your private SSH key (assuming it's in the default location:
 
     www#
 
-Yes, `root` login is enabled on Vultr servers by default. We better
-harden a server right after its first boot, but this topic deserves its
-own post.
+Read [afterboot(8)](https://man.openbsd.org/afterboot.8).
 
-Now you can [setup a web server](/openbsd/webserver.html).
+[Setup a web server](/openbsd/webserver.html).
 
-_Tested on OpenBSD 6.3_

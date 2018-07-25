@@ -3,122 +3,137 @@ This shell script uses parts of OpenSSL/LibreSSL, which are intended for
 testing purposes only. **You may loose your passwords.** Use it at your
 own risk.
 
----
-
 > "zOMG! This is AWESOME! Great job, going to set this up first thing in
 the morning. &#x1F495;"<br>
 [H3artbl33d](https://mobile.twitter.com/h3artbl33d/status/983827387409403904 "11 Apr 2018")
 (@h3artbl33d)
 
-# Password manager powered by LibreSSL
+_Tested on [OpenBSD](/openbsd/) 6.3_
 
-[pass](/bin/pass) is a POSIX-compliant shell script. It works on OpenBSD
-and macOS out-of-the-box, because it depends only on the software in the
-base (for example: sh, openssl, tar, grep, cat).
+# Manage passwords with openssl(1) and oathtool(1)
 
-Frankly, it has one 3rd-party dependency, if you need time-based one-time
-passwords. If that is the case you need to install
+[pass](/bin/pass) is a password manager writen in shell and powered
+by [openssl(1)](https://man.openbsd.org/openssl.1) and
 [oathtool(1)](http://www.nongnu.org/oath-toolkit/oathtool.1.html).
 
-    # pkg_add oath-toolkit
+## Install
+
+<pre>
+# <b>pkg_add oath-toolkit</b>
+...
+oath-toolkit-2.6.2p0: ok
+#
+</pre>
 
 Download and run `pass`. Assuming `./bin` is in `PATH`.
 
-    $ cd bin
-    $ ftp https://www.romanzolotarev.com/bin/pass
-    $ chmod +x pass
-    $ pass
-    usage: export BASE_DIR=~/.pass
-           export PRIVATE_KEY=~/.pass/.key
-           export PUBLIC_KEY=~/.pass/.key.pub
+<pre>
+$ <b>cd bin</b>
+$ <b>ftp https://www.romanzolotarev.com/bin/pass</b>
+$ <b>chmod +x pass</b>
+$ <b>pass</b>
+usage: export BASE_DIR=~/.pass
+       export PRIVATE_KEY=~/.pass/.key
+       export PUBLIC_KEY=~/.pass/.key.pub
 
-           pass init
-              | passphrase
-              | add        id
-              | import     id <pass>
-              | show       id
-              | export     id <pass>
-              | ls        <id>
+       pass init
+          | passphrase
+          | add        id
+          | import     id &lt;pass&gt;
+          | show       id
+          | export     id &lt;pass&gt;
+          | ls        &lt;id&gt;
+</pre>
 
 ## Initialization
 
 Create a directory for your passwords and generate your key pair.
-Please pick [a strong master pass phrase](/diceware.html) for your keys.
+Generate a strong pass phrase. For example, with [diceware](/diceware.html).
 
-    $ pass init
-    Generating public/private key pair.
-    New pass phrase:
-    Confirm:
-    Generating RSA private key, 2048 bit long modulus
-    ..........................+++
-    ..................+++
-    e is 65537 (0x10001)
-    writing RSA key
-    $ ls -1 ~/.pass
-    .key
-    .key.pub
-    $
+<pre>
+$ <b>pass init</b>
+Generating public/private key pair.
+New pass phrase:
+Confirm:
+Generating RSA private key, 2048 bit long modulus
+..........................+++
+..................+++
+e is 65537 (0x10001)
+writing RSA key
+$ <b>ls -1 ~/.pass</b>
+.key
+.key.pub
+$
+</pre>
 
-Yep, as result you will get two files in `~/.pass` directory. These files are
-your keys and they are protected with your master passphrase.
+As result you get two files in `~/.pass` directory. These files are
+your keys and they are protected with your master pass phrase.
 
----
-
-**Important!** Backup these files, you won't be able to recover any of
-your passwords without the private key. Also make sure you remember your
-pass phrase, there is no way to recover it either.
-
----
+**Important!** Backup those files, you won't be able to recover any
+of your passwords without the private key. Also make sure you
+remember your pass phrase, there is no way to recover it either.
 
 ## Change pass phrase
 
-You can always change the master pass phrase for your private key.
+Change the master pass phrase for your private key.
 
-    $ pass passphrase
-    Changing /home/romanzolotarev/.pass/.key pass phrase.
-    Current pass phrase:
-    New pass phrase:
-    Confirm:
-    Pass phrase changed.
-    $
+<pre>
+$ <b>pass passphrase</b>
+Changing /home/username/.pass/.key pass phrase.
+Current pass phrase:
+New pass phrase:
+Confirm:
+Pass phrase changed.
+$
+</pre>
 
 ## Add a password
 
-Ready for the next step? Let's add your first password. Run the following
-command and enter your master pass phrase, then type-in the password and
-hit Enter. In the second line type username and in the third line type
-url. Press Enter and CTRL-D to save the password.
+Add the first password. 
 
-    $ pass add github
-    Pass phrase:
-    Press Enter and CTRL-D to complete.
-    always mule boots jaguar agnostic singles dalmatian vixen
-    username: romanzolotarev
-    url: https://github.com
-    $
+Run the following command and enter your master pass phrase, then
+type-in the password and hit Enter. In the second line type username
+and in the third line type url. Press Enter and **CTRL-D** to save
+the password.
+
+<pre>
+$ <b>pass add github</b>
+Pass phrase
+Press Enter and CTRL-D to complete.
+<b>always mule boots jaguar agnostic singles dalmatian vixen
+username: username
+url: https://github.com</b>
+$
+</pre>
 
 ## Import a password
 
 Instead of typing your passwords manually you can pipe [your favorite password
 generator](/diceware.html) right into `pass`.
 
-    $ diceware | pass import twitter
-    Enter pass phrase for /home/romanzolotarev/.pass/.key:
-    $
+<pre>
+$ <b>diceware | pass import twitter</b>
+Enter pass phrase for /home/username/.pass/.key:
+$
+</pre>
 
 ## Edit the password
 
 If you want to update your password run:
 
-    $ pass edit github
-    Enter pass phrase for /home/romanzolotarev/.pass/.key:
+<pre>
+$ <b>pass edit github</b>
+Enter pass phrase for /home/username/.pass/.key:
+</pre>
 
-As soon as you enter the pass phrase `pass` opens `vi` with the content of
-your password file. Let's enable [2FA at
+As soon as you enter the pass phrase `pass` opens `vi` with the
+content of your password file. Let's enable [2FA at
 GitHub](https://help.github.com/articles/providing-your-2fa-authentication-code/)
 paste the TOTP seed from GitHub into the password file. For example:
 
-    totp: fx33dwhsbw7esrda
+```
+totp: fx33dwhsbw7esrda
+```
 
 When you're done press `ZZ` to save and exit `vi`.
 
@@ -126,48 +141,60 @@ When you're done press `ZZ` to save and exit `vi`.
 
 To show a password you can run:
 
-    $ pass show twitter
-    pelican mule satchel headband yo-yo lemon luscious older
-    $
+<pre>
+$ <b>pass show twitter</b>
+pelican mule satchel headband yo-yo lemon luscious older
+$
+</pre>
 
 But if a password file has a line staring with `totp:`, then `pass` shows
 one time password in the second line.
 
-    $ pass show github
-    Enter pass phrase for /home/romanzolotarev/.pass/.key:
-    always mule boots jaguar agnostic singles dalmatian vixen
-    122635
-    $
+<pre>
+$ <b>pass show github</b>
+Enter pass phrase for /home/username/.pass/.key:
+always mule boots jaguar agnostic singles dalmatian vixen
+122635
+$
+</pre>
 
 ## Export the password
 
 If you want to see all lines of your password file, you can use `export`
 
-    $ pass export github
-    always mule boots jaguar agnostic singles dalmatian vixen
-    username: romanzolotarev
-    url: https://github.com
-    $
+<pre>
+$ <b>pass export github</b>
+Enter pass phrase for /home/username/.pass/.key:
+always mule boots jaguar agnostic singles dalmatian vixen
+username: username
+url: https://github.com
+$
+</pre>
 
 ## List all passwords
 
 To list all your passwords run:
 
-    $ pass ls
-    github
-    twitter
-    $
+<pre>
+$ <b>pass ls</b>
+github
+twitter
+$
+</pre>
 
 ## Files
 
-    .pass
-    |-- .key           - RSA private key protected by pass phrase
-    |-- .key.pub       - RSA public key
-    |-- github         - tar archive of two files:
-    |   |-- github.key - AES key encrypted with RSA public key
-    |   `-- github.enc - text file encrypted with AES key
-    |-- github.sig     - signature of tar archive created with
-    |                    RSA private key
+```
+.pass
+|-- .key           - RSA private key protected by pass phrase
+|-- .key.pub       - RSA public key
+|-- github         - tar archive of two files:
+|   |-- github.key - AES key encrypted with RSA public key
+|   `-- github.enc - text file encrypted with AES key
+|-- github.sig     - signature of tar archive created with
+|                    RSA private key
+...
+```
 
 Every time you change your password file `pass` generates tar archive with
 a new AES key and a new signature. `pass` verifies the signature every
@@ -178,35 +205,43 @@ time you show or export the password.
 To change path to the working directory or your keys, define
 environment variables `BASE_DIR`, `PRIVATE_KEY`, `PUBLIC_KEY`. For example:
 
-    $ BASE_DIR=~/.pass \
-    PRIVATE_KEY=~/.pass/.key \
-    PUBLIC_KEY=~/.pass/.key.pub pass init
-    ...
+<pre>
+$ <b>BASE_DIR=~/.pass \
+PRIVATE_KEY=~/.pass/.key \
+PUBLIC_KEY=~/.pass/.key.pub pass init</b>
+...
+</pre>
 
 ## Completions in Korn shell
 
 If you run `pass` on OpenBSD you may want to add completions in
-[ksh(1)](https://man.openbsd.org/ksh.1)---its default shell. Add these
-functions to your `~/.profile`:
+[ksh(1)](https://man.openbsd.org/ksh.1)&mdash;its default shell.
+Add these functions to your `~/.profile`:
 
-    update_complete_pass() {
-      pass_list=$(pass ls)
-      set -A complete_pass_edit -- $pass_list
-      set -A complete_pass_export -- $pass_list
-      set -A complete_pass_show -- $pass_list
-    }
-    update_complete_pass
-    pass_edit() { pass edit "$1"; }
-    pass_export() { pass export "$1" && update_complete_pass; }
-    pass_show() { pass show "$1" && update_complete_pass; }
-
+```
+update_complete_pass() {
+  pass_list=$(pass ls)
+  set -A complete_pass_edit -- $pass_list
+  set -A complete_pass_export -- $pass_list
+  set -A complete_pass_show -- $pass_list
+}
+update_complete_pass
+pass_edit() { pass edit "$1"; }
+pass_export() { pass export "$1" && update_complete_pass; }
+pass_show() { pass show "$1" && update_complete_pass; }
+```
 
 Now open a terminal or source `~/.profile` and try `pass`:
 
-    $ pass <Tab>
-    init  passphrase  add  import  show  export  ls
+<pre>
+$ <b>pass&lt;Tab&gt;</b>
+init  passphrase  add  import  show  export  ls
+$ <b>pass</b>
 
 Or most importantly try `pass_show`:
 
-    $ pass_show twit<Tab>
-    twitch  twitter
+<pre>
+$ <b>pass_show twit&lt;Tab&gt;</b>
+twitch  twitter
+$ <b>pass_show twit</b>
+</pre>

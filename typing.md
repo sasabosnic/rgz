@@ -32,7 +32,7 @@ and finally reached 40 WPM in two weeks.
 Phew...
 
 As soon as I returned to my original speed and accuracy, I decided to
-upgrade my keyboard to an ergonomic one. Two months later [ErgoDox][ez]
+upgrade my keyboard to an ergonomic one. Two months later [ErgoDox][eg]
 arrived. And of course, I wanted to try an alternative keyboard layout
 on it. After a quick analysis, I picked the Norman layout: it's easy to
 learn, and it significantly reduces distance traveled from the home row.
@@ -45,7 +45,7 @@ days and stopped all typing lessons.
 Today I am a happy ErgoDox user. My average speed on Norman is 60 WPM,
 and it's increasing every month, slowly but steadily.
 
-[ez]: https://ergodox-ez.com/
+[eg]: /ergodox.html
 [keybr]: https://www.keybr.com/
 [keyhero]: https://www.keyhero.com/free-typing-test/
 
@@ -79,17 +79,14 @@ ergonomics. (Surprise!) As with any split keyboard, you can sit (or
 stand) straight, so your posture is healthier, and it's simply more
 relaxing.
 
-My initial goal was just to improve my typing speed. Of course, high
-speed is necessary, but when I started using ErgoDox, I realized that
-comfort is the primary reward: my hands, shoulders, and back are much
-happier now.  Yes, ErgoDox costs three hundred dollars, but it's the
-best keyboard available today for that price, and the keyboard is the
-most important part of my workplace. If you're typing all day long, you
-can connect your awesome keyboard to [a nine-dollar
-computer](https://getchip.com/) and be productive in no time.
-
-[Check my current setup and why I've chosen ErgoDox
-EZ](/setup.html#ErgoDox%20EZ%20V3).
+My initial goal was just to improve my typing speed. Of course,
+high speed is necessary, but when I started using ErgoDox, I realized
+that comfort is the primary reward: my hands, shoulders, and back
+are much happier now.  Yes, ErgoDox costs three hundred dollars,
+but it's the best keyboard available today for that price, and the
+keyboard is the most important part of my workplace. If you're
+typing all day long, you can connect your awesome keyboard to any
+cheap computer and be productive in no time.
 
 ## Alternative keyboard layout
 
@@ -118,7 +115,7 @@ fifteen-key difference from QWERTY.
 [aaron]: https://twitter.com/search?q=from%3Atenderlove%20norman
 [gary]: https://twitter.com/search?q=from%3Agarybernhardt%20norman
 [kla]: http://patorjk.com/keyboard-layout-analyzer/
-[ted]: http://www.tedmor.in/blog/posts/ive-been-typing-for-little-while
+[ted]: http://teds.space/posts/ive-been-typing-for-little-while
 
 ![Norman layout on ErgoDox](/typing-norman.png)
 

@@ -29,20 +29,18 @@ users, etc. I felt I should mention that to you &#x1F600;"<br>&mdash;
 [H3artbl33d](https://mobile.twitter.com/h3artbl33d/status/985173503103074304 "14 Apr 2018")
 (@h3artbl33d)
 
----
+_Tested on [OpenBSD](/openbsd/) 6.3_
 
-# Static site generator with rsync and lowdown
+# Make a static site with lowdown(1) and rsync(1)
 
-[ssg](/bin/ssg) is a tiny POSIX-compliant shell script with few
-dependencies:
+[ssg](/bin/ssg) is a static site generator writen in shell and powered by
+[lowdown(1)](https://kristaps.bsd.lv/lowdown/),
+[rsync(1)](https://rsync.samba.org/), and
+[entr(1)](http://entrproject.org/).
 
-- [lowdown(1)](https://kristaps.bsd.lv/lowdown/) to parse markdown,
-- [rsync(1)](https://rsync.samba.org/) to copy temporary files, and
-- [entr(1)](http://entrproject.org/) to watch file changes.
+It generates a site from HTML and Markdown articles.
 
-It generates Markdown articles to a static website.
-
-1. It copies the current directory to a temporary one, 
+1. It copies the current directory to a temporary one,
    skipping `.*` and `_*`,
 1. renders all Markdown articles to HTML,
 1. generates [RSS feed](/rss.xml) based on links from  `index.html`,
@@ -76,10 +74,8 @@ tools.
 **100 pps**. On modern computers `ssg` generates a hundred pages
 per second.  Half of a time for markdown rendering and another half
 for wrapping articles into the template. I heard good static site
-generators work---twice as fast---at 200 pps, so there's lots of
+generators work&mdash;twice as fast&mdash;at 200 pps, so there's lots of
 performance that can be gained. ;)
-
----
 
 ## Install
 
@@ -87,16 +83,17 @@ If you agree with the license, feel free to use this script, its
 HTML and CSS or/and re-write them for your needs.
 
 Install dependencies and download `ssg`. For example, on OpenBSD:
-as root install `entr`, `rsync`, and `lowdown`.
+as root install rsync(1), lowdown(1), and entr(1).
 
 <pre>
-# <b>pkg_add entr rsync-3.1.3-iconv lowdown</b>
+# <b>pkg_add rsync-3.1.3-iconv lowdown entr</b>
 quirks-2.414 signed on 2018-03-28T14:24:37Z
-entr-4.0: ok
 rsync-3.1.3-iconv: ok
 lowdown-0.3.1: ok
+entr-4.0: ok
 The following new rcscripts were installed: /etc/rc.d/rsyncd
 See rcctl(8) for details.
+#
 </pre>
 
 Then as a regular user change into `~/.bin` directory.
@@ -109,11 +106,10 @@ Requesting https://www.romanzolotarev.com/bin/ssg
 100% |****************************************|  7257       00:00
 7257 bytes received in 0.00 seconds (2.99 MB/s)
 $ <b>chmod +x ssg</b>
+$
 </pre>
 
 Let's customize your `ssg` setup.
-
----
 
 ## Configuration
 
@@ -132,12 +128,14 @@ You can set all those variables in enviornment with `export` or
 `env`, but I recommend to create `_ssg.conf` file. For example, here
 is mine:
 
-	#!/bin/sh
-	: "${DOCS:=/var/www/htdocs/www.romanzolotarev.com}"
-	ROOT='https://www.romanzolotarev.com'
-	WEBSITE_TITLE='Roman Zolotarev'
-	RSS_AUTHOR='hi@romanzolotarev.com (Roman Zolotarev)'
-	RSS_DESCRIPTION='Personal website'
+```
+#!/bin/sh
+: "${DOCS:=/var/www/htdocs/www.romanzolotarev.com}"
+ROOT='https://www.romanzolotarev.com'
+WEBSITE_TITLE='Roman Zolotarev'
+RSS_AUTHOR='hi@romanzolotarev.com (Roman Zolotarev)'
+RSS_DESCRIPTION='Personal website'
+```
 
 Note: in this example if `$DOCS` is set, then `ssg` uses the original
 value, **not** the value from `_ssg.conf`.
@@ -150,17 +148,21 @@ There is only one file required:
 
 Example of `index.md`:
 
-    # Jack
+```
+# Jack
 
-    - [About](/about.html "01 Aug 2016")
+- [About](/about.html "01 Aug 2016")
+```
 
 `ssg` renders `index.md` to `index.html` and then generates the RSS feed
 based on first 20 links, if they have the following syntax (it only uses
 page URL and date from `<a>` tag):
 
-    ...
-    <li><a href="/about.html" title="01 Aug 2016">About</a></li>
-    ...
+```
+...
+<li><a href="/about.html" title="01 Aug 2016">About</a></li>
+...
+```
 
 ## Optional files
 
@@ -184,9 +186,11 @@ There are also reserved filenames, these files are generated when you run
 
 Let's create `about.html` with one header and some text about your site.
 
-    # About this site
+```
+# About this site
 
-    ...
+...
+```
 
 `ssg` converts all `.md` article into `.html` and then uses content of the
 first `<h1>` tag as a page title.
@@ -198,13 +202,15 @@ Nota bene: **Don't use `=====` in titles**.
 Now we are ready to build. If your current source directory looks like
 this:
 
-    .
-    |-- .git/
-    |-- _footer.html
-    |-- _header.html
-    |-- _styles.css
-    |-- about.md
-    `-- index.md
+```
+.
+|-- .git/
+|-- _footer.html
+|-- _header.html
+|-- _styles.css
+|-- about.md
+`-- index.md
+```
 
 After you run `ssg` (don't forget to set `$DOCS`):
 
@@ -216,12 +222,14 @@ $
 
 You have your static website ready in `/var/www/htdocs/www`.
 
-    .
-    |
-    |-- about.html
-    |-- index.html
-    |-- rss.xml
-    `-- sitemap.xml
+```
+.
+|
+|-- about.html
+|-- index.html
+|-- rss.xml
+`-- sitemap.xml
+```
 
 ## Preview
 
@@ -245,7 +253,7 @@ watching /home/jack/src/www
 building /var/www/htdocs/www  2018-04-10T11:04:11+0000 4pp
 </pre>
 
-`entr(1)` watches changes in `*.html`, `*.md`, `*.css`, `*.txt` files and
+entr(1) watches changes in `*.html`, `*.md`, `*.css`, `*.txt` files and
 runs `ssg build` on every file change.
 
 ## Clean
@@ -269,10 +277,10 @@ building /home/jack/src/www/docs --clean
 2018-04-16T09:04:25+0000 4pp
 </pre>
 
-## Deploy with `rsync`
+## Deploy with rsync(1)
 
 If you don't have a public server yet, [try Vultr](/vultr.html).
-To deploy to remote server you can use `rsync(1)` like this:
+To deploy to remote server you can use rsync(1) like this:
 
 <pre>
 $ <b> rsync -avPc     /var/www/htdocs/www \
@@ -285,13 +293,14 @@ Or if you want to clean up the target directory on the remote server use:
 $ <b>rsync -avPc --delete-excluded \
                 /var/www/htdocs/www \
 www.example.com:/var/www/htdocs/</b>
+$
 </pre>
 
-## Deploy with Git `post-receive` hook
+## Deploy with Git _post-receive_ hook
 
 [Set up Git on your server](/git.html).
 
-As root install `rsync` and `lowdown` packages on that server.
+As root install rsync(1) and lowdown(1) packages on that server.
 
 <pre>
 # <b>pkg_add rsync-3.1.3-iconv lowdown</b>
@@ -300,6 +309,7 @@ rsync-3.1.3-iconv: ok
 lowdown-0.3.1: ok
 The following new rcscripts were installed: /etc/rc.d/rsyncd
 See rcctl(8) for details.
+#
 </pre>
 
 Then as `git` user download `ssg` on the server:
@@ -315,23 +325,26 @@ Requesting https://www.romanzolotarev.com/bin/ssg
 100% |****************************************|  7257       00:00
 7257 bytes received in 0.00 seconds (2.99 MB/s)
 $ <b>chmod +x ssg</b>
+$
 </pre>
 
 Then add these lines to `/home/git/REPOSITORY.git/hooks/post-receive`:
 
-	TMPDIR="$(mktemp -d)"
-	git archive --format=tar HEAD | (cd "$TMPDIR" && tar xf -)
-	cd "$TMPDIR"
-	DOCS='/var/www/htdocs/www.romanzolotarev.com' \
-	/home/git/ssg build --clean
+```
+#!/bin/sh
+TMPDIR="$(mktemp -d)"
+git archive --format=tar HEAD | (cd "$TMPDIR" && tar xf -)
+cd "$TMPDIR"
+DOCS='/var/www/htdocs/www.romanzolotarev.com' \
+/home/git/ssg build --clean
+```
 
 As root make sure `git` user owns `$DOCS` directory:
 
 <pre>
 # <b>chown -R git:git /var/www/htdocs/www.romanzolotarev.com</b>
+$
 </pre>
-
-_Tested on OpenBSD 6.3_
 
 ---
 

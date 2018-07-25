@@ -1,5 +1,5 @@
 ImageMagick--
-checkbashisms--
+aria2--
 chromium--
 cmus--
 diction--
@@ -7,10 +7,10 @@ entr--
 expect--
 ffmpeg--
 firefox--
+gifsicle--
 gimp--
 git--
 gphoto--
-ii--
 inkscape--
 ja-fonts-funet--
 ja-fonts-gnu--
@@ -19,11 +19,10 @@ jpegoptim--
 jq--
 libgit2--
 libreoffice--
+logswan--
 lowdown--
 mpv--
-mtpaint--
 mupdf--
-newsboat--
 node--
 noto-emoji--
 noto-fonts--
@@ -32,7 +31,6 @@ openvpn--
 optipng--
 quirks--
 ranger--
-sc--
 scrypt--
 shellcheck--
 slop--

@@ -1,0 +1,36 @@
+#!/bin/sh
+#
+# arc - a directory archiver with compression
+#
+# https://www.romanzolotarev.com/bin/arc
+# Copyright 2018 Roman Zolotarev <hi@romanzolotarev.com>
+#
+usage() { >&2 echo "usage: arc src archive"; exit 1; }
+[ -z "$1" ] && usage
+[ -z "$2" ] && usage
+
+src="$(readlink -f "$1")"
+archive="$(readlink -f "$2")"
+tree="${archive}.tree.gz"
+dgst="${archive}.tree.sha256"
+
+test -d "$src" || { >&2 echo "$src is not a directory"; exit 2; }
+test -e "$archive" && { >&2 echo "$archive already exists"; exit 3; }
+test -e "$tree" && { >&2 echo "$tree already exists"; exit 3; }
+test -e "$dgst" && { >&2 echo "$dgst already exists"; exit 3; }
+
+printf '%s %s %s ' "$src" "$(du -sk "$src"|cut -f1)" "$archive"
+mtree -cK sha256digest -p "$src" | gzip   > "$tree"
+zcat "$tree"                     | sha256 > "$dgst"
+
+cd "$src" || exit
+
+pax -wzx cpio -f "$archive" .
+	# TODO
+	#
+	# to exclude '.*/foo/.*' and '.*bar.*'
+	#
+	# -'s,.*/foo/.*,,' \
+	# -'s,.*bar.*,,' \
+
+du -sk "$archive"|cut -f1

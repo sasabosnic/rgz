@@ -1,0 +1,28 @@
+#!/bin/sh
+#
+# arc_extract - an extractor for archives created by arc
+#
+# https://www.romanzolotarev.com/bin/arc_extract
+# Copyright 2018 Roman Zolotarev <hi@romanzolotarev.com>
+#
+usage() { >&2 echo "usage: arc_extract archive"; exit 1; }
+[ -z "$1" ] && usage
+
+archive="$(readlink -f "$1")"
+
+
+tree="${archive}.tree.gz"
+dgst="${archive}.tree.sha256"
+
+test -f "$archive" || { >&2 echo "$archive is not a file"; exit 2; }
+test -f "$tree" || { >&2 echo "$tree is not a file"; exit 4; }
+test -f "$dgst" || { >&2 echo "$dgst is not a file"; exit 4; }
+
+[ "$(gunzip < "$tree"|sha256)" = "$(cat "$dgst")" ] ||
+	{ >&2 echo "$dgst doesn't match $tree"; exit 5; }
+
+pax -pe -rzf "$archive"
+
+gunzip < "$tree" |
+sed 's/time=\([0-9]*\)\.[0-9]*/time=\1.0/' |
+mtree

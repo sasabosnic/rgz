@@ -1,9 +1,14 @@
 #!/bin/sh
 setxkbmap -option grp:alt_space_toggle us,ru &
-xinput --set-prop 7 'Device Accel Constant Deceleration' 5 &
-xset mouse 3 3 &
-xset -b &
-xidle &
 unclutter -root -idle 2 -noevents &
+xidle &
+xinput set-button-map 7 1 2 3 5 4 7 6 &
+# xinput set-prop 7 'Device Accel Constant Deceleration' 1 &
+xinput set-prop 7 'Device Accel Constant Deceleration' 5 &
+xinput set-prop 8 'Device Accel Constant Deceleration' 5 &
+xset -b &
+xset mouse 3 3 &
+xsetroot -solid black &
 xterm -e 'LC_ALL=en_US.UTF-8 tmux new -As 0' &
+
 exec cwm

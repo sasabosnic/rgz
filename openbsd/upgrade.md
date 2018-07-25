@@ -1,37 +1,61 @@
+_Tested on [OpenBSD](/openbsd/) 6.2 and 6.3_
+
 # Upgrade OpenBSD
 
-[Read the official FAQ first](https://www.openbsd.org/faq/upgrade63.html).
-Backup all your data first, then verify your backups. Download the install
-image and verify its checksum:
+[Read the official FAQ](https://www.openbsd.org/faq/upgrade63.html).
 
-    # PKG_PATH='http://fastly.cdn.openbsd.org/pub/OpenBSD'
-    # ftp $PKG_PATH/6.3/amd64/install63.fs
-    # ftp $PKG_PATH/6.3/amd64/SHA256.sig
-    # sha256 -C SHA256.sig install63.fs
-    (SHA256) install63.fs: OK
+Backup your data.
 
-Plug in and check your USB flash drive:
+Download OpenBSD installer and verify its checksum:
 
-    # dmesg | grep removable | tail -n1
-    sd3 at scsibus5 targ 1 lun 0: <Vendor, Model, 1.11>
-    SCSI3 0/direct removable serial.12345678901234567890987654
+<pre>
+# <b>PKG_PATH='http://fastly.cdn.openbsd.org/pub/OpenBSD'</b>
+# <b>ftp $PKG_PATH/6.3/amd64/install63.fs</b>
+# <b>ftp $PKG_PATH/6.3/amd64/SHA256.sig</b>
+# <b>sha256 -C SHA256.sig install63.fs</b>
+(SHA256) install63.fs: OK
+#
+</pre>
 
-In my case it appears as `sd3`. Now you can copy the installer image to
-the USB flash drive. **Be extremely cautious**:
+Plug in USB flash drive:
 
-    # dd if=install63.fs of=/dev/rsd3c bs=1m
+<pre>
+# <b>dmesg | grep removable | tail -n1</b>
+sd3 at scsibus5 targ 1 lun 0: <Vendor, Model, 1.11>
+SCSI3 0/direct removable serial.12345678901234567890987654
+</pre>
 
-Boot from that USB drive, then choose the `(S)hell` option to mount your
-[encrypted disk](/openbsd/fde.html).
+In this case it appears as _sd3_.
 
-    # bioctl -c C -l /dev/sd0c softraid0
-    passphrase:
-    scsibus1 at softraid0: 1 targets
-    sd2 at scsibus2 targ 0 lun 0: <OPENBSD, SR RAID 1, 005>
-    SCSI2 0/direct fixed
-    sd2: 10244MB, 512 bytes/sec, 20980362 sec total
-    # exit
+Copy the installer image to the USB flash drive.
 
-Choose the `(U)pgrade` option and follow the prompts.
+**Be extremely cautious**:
 
-_Tested on OpenBSD 6.2 and 6.3._
+<pre>
+# <b>dd if=install63.fs of=/dev/rsd3c bs=1m</b>
+...
+#
+</pre>
+
+Boot from that USB drive, then choose the `(S)hell` option to mount
+the encrypted drive.
+
+<pre>
+# <b>bioctl -c C -l /dev/sd0c softraid0</b>
+passphrase:
+scsibus1 at softraid0: 1 targets
+sd2 at scsibus2 targ 0 lun 0: <OPENBSD, SR RAID 1, 005>
+SCSI2 0/direct fixed
+sd2: 10244MB, 512 bytes/sec, 20980362 sec total
+# <b>exit</b>
+</pre>
+
+Choose the `(U)pgrade` option and follow the prompts similar to (install.html).
+
+When OpenBSD upgrade is done, upgrade installed packages.
+
+<pre>
+# pkg_add -u
+...
+#
+</pre>

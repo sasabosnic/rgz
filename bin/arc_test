@@ -1,0 +1,49 @@
+#!/bin/sh
+#
+# https://www.romanzolotarev.com/bin/arc_test
+# Copyright 2018 Roman Zolotarev <hi@romanzolotarev.com>
+#
+program="$(dirname "$(readlink -f "$0")")/arc"
+
+total=0; nos=0
+no() { total=$((total+1)); echo "no ok $total - $1"; nos=$((nos+1)); }
+ok() { total=$((total+1)); echo "ok $total - $1"; }
+eq() { if [ "$1" = "$2" ]; then ok "$3"; else no "$3\\n$1\\n$2"; fi; }
+desc() { printf '#\n\033[1m%s\033[m\n' "$1"; }
+
+##########################################################################
+
+
+desc 'archive and verify'
+
+temp=$(mktemp -d) && cd "$temp" || exit 1
+mkdir src
+dd if=/dev/zero of=src/a1 bs=1m count=1 2>/dev/null
+touch -d2018-01-01T00:00:00 src/a1
+
+"$program" src archive > log &&
+ok 'backup src archive > log'
+
+log="$temp/src 1042 $temp/archive 2"
+eq "$(cat log)" "$log" 'validate log'
+
+dgst=$(cat ./archive.tree.sha256)
+tree="$temp/archive.tree.gz"
+eq "$(gunzip<"$tree"|sha256)" "$dgst" 'validate digest'
+
+archive="$temp/archive"
+mkdir -p restored && cd restored &&
+pax -pe -rzf "$archive" &&
+ok 'unpack pax'
+
+gunzip < "$tree" |
+sed 's/time=\([0-9]*\)\.[0-9]*/time=\1.0/' | mtree &&
+ok 'verify mtree spec'
+
+rm -rf "$temp"
+
+
+##########################################################################
+
+echo "1..$total"
+if [ "$nos" -gt 0 ]; then echo "FAILED $nos/$total"; else echo "PASS"; fi

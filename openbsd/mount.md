@@ -1,53 +1,61 @@
-# Mount drives on OpenBSD
+_Tested on [OpenBSD](/openbsd/) 6.3._
 
-Only `root` can [mount(8)](http://man.openbsd.com/mount.8) file systems on
-OpenBSD, a regular user should use
+# mount(1) on OpenBSD
+
+Only _root_ can [mount(8)](http://man.openbsd.com/mount.8) file
+systems on OpenBSD, a regular user should run mount(8) via
 [doas(1)](http://man.openbsd.com/doas.1).
 
-Plug in your USB drive and check system messages:
+Plug in a USB drive and check system messages:
 
-    # dmesg
-    sd1 at scsibus2 targ 1 lun 0: <Vendor, Model, 1.26>
-    SCSI3 0/direct removable serial.12345678901234568789
-    sd1: 7633MB, 512 bytes/sector, 15633408 sectors
+<pre>
+# <b>dmesg</b>
+sd1 at scsibus2 targ 1 lun 0: <Vendor, Model, 1.26>
+SCSI3 0/direct removable serial.12345678901234568789
+sd1: 7633MB, 512 bytes/sector, 15633408 sectors
+#
+</pre>
 
 Check partitions:
 
-    # disklabel sd1
-    ...
-              size     offset  fstype [fsize bsize   cpg]
-      a:    736256       1024  4.2BSD   2048 16384 16142
-      c:  15633408          0  unused
-      i:       960         64   MSDOS
+<pre>
+# <b>disklabel sd1</b>
+...
+      size     offset  fstype [fsize bsize   cpg]
+a:    736256       1024  4.2BSD   2048 16384 16142
+c:  15633408          0  unused
+i:       960         64   MSDOS
+#
+</pre>
 
-Let's say you want to mount the first partition (`a:`), then the device
-you're looking for is `/dev/sd1a`. Create the mount point directory, say
-`/mnt/usb-drive`, and mount the drive:
+To mount a partition, for example, _a:_), use _/dev/sd1a_ device.
 
-    # mkdir -p /mnt/usb-drive
-    # mount /dev/sd1a /mnt/usb-drive
-    # ls /mnt/usb-drive
-    ...
+Create a mount point directory, for example, _/mnt/usb-drive_, and
+mount the drive:
 
-Hooray! Now it's mounted.
+<pre>
+# <b>mkdir -p /mnt/usb-drive</b>
+# <b>mount /dev/sd1a /mnt/usb-drive</b>
+# <b>ls /mnt/usb-drive</b>
+...
+#
+</pre>
 
-Before disconnecting the drive from the USB port, make sure it's
-unmounted, to that you'll need to leave mount point directory and then
-use it as an argument for [unmount(8)](https://man.openbsd.org/umount.8).
+It's mounted.
 
-    # cd
-    # umount /mnt/usb-drive
-    #
+Before disconnecting the drive from the USB port, unmount it. Leave
+mount point directory and then use it as an argument for
+[unmount(8)](https://man.openbsd.org/umount.8).
+
+<pre>
+# <b>cd</b>
+# <b>umount /mnt/usb-drive</b>
+#
+</pre>
 
 Or you can address your device directly:
 
-    # cd
-    # umount /dev/sd1a
-    #
-
-That's it.
-
-If you'd like to automate these steps, check `mnt()` and `umnt()`
-functions from my [~/.profile](/openbsd/profile).
-
-_Tested on OpenBSD 6.3._
+<pre>
+# <b>umount /dev/sd1a</b>
+#
+</pre>

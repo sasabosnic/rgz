@@ -1,68 +1,108 @@
-# Install OpenBSD on your desktop
+_Tested on [OpenBSD](/openbsd/) 6.3_
 
-Why OpenBSD as a desktop? I like how simple and reliable it is. This guide
-is the shortest way to try OpenBSD on your hardware. This may take just
-few minutes. [Read the official FAQ
-first](https://www.openbsd.org/faq/faq4.html).
+# Install OpenBSD on a desktop
 
-Prepare a bootable USB drive. By the way, here is [the step-by-step
-instruction for macOS](/macos/openbsd.html).
+Prepare an USB drive with OpenBSD installer.<br>
+[For example, on macOS](/macos/openbsd-installer.html).
 
-Backup everything. As you follow this guide you may accidentally erase
-your drives, so before we continue, please **back up all your data** and
-verify your backups.
+Backup everything.
 
-## Boot the installer
+Check BIOS: _Secure Boot_ disabled, _UEFI Boot_ enabled.<br>
+[For example, on ThinkPad X1C5](/openbsd/lenovo-thinkpad-x1c5.html).
 
-[Enable full disk encryption](/openbsd/fde.html), if you want to.
+Boot the installer.
 
-Boot from that USB drive. If you can't boot OpenBSD try to enable
-legacy-boot in your BIOS.
+Select **(S)hell** to create encrypt the drive.
 
-## Install OpenBSD base
+<pre>
+# <b>sysctl hw.disknames</b>
+hw.disknames=sd0:xxxxxxxxxxxxxxxx,rd0:xxxxxxxxxxxxxxxx,sd1:xxxxxxxxxxxxxxxx
+</pre>
 
-Select `(I)nstall` and answer the questions. Some hints:
+In this case _sd0_ is the target drive.<br>
+_rd0_ is ramdisk for installer kernel.<br>
+_sd1_ is USB drive with OpenBSD installer.
 
-- Location of sets: `disk`
-- Which disk contains the install media: `sd1`
-- Continue without verification: `yes`
+**Erase all data on _sd0_.** Create GUID Partition Table (GPT) and
+a partition layout.
 
-If everything is okay:
+<pre>
+# <b>dd if=/dev/urandom of=/dev/rsd0c bs=1m</b>
+# <b>fdisk -iy -g -b 960 sd0</b>
+# <b>printf 'a a\n\n\nRAID\nw\nq\n'|disklabel -E sd0</b>
+</pre>
 
-    $ reboot
+Generate a strong passphrase.
+Use [diceware](/diceware.html), for example.
 
-...and unplug the flash drive.
+<pre>
+# <b>bioctl -c C -l sd0a softraid0</b>
+New passphrase:
+Re-type passphrase:
+sd2 at scsibus2 targ 1 lun 0: <OPENBSD, SR CRYPTO, 006> SCSI2 0/direct fixed
+sd2: 244190MB, 512 bytes/sector, 500102858 sectors
+softraid0: CRYPTO volume attached as sd2
+# <b>cd /dev && sh MAKEDEV sd2</b>
+# <b>dd if=/dev/zero of=/dev/rsd2c bs=1m count=1</b>
+# <b>exit</b>
+</pre>
 
-## After the first boot
+Select `(I)nstall` and answer questions.
 
-Boot OpenBSD from your drive, login as root, and run:
+<pre>
+Do you want the X Window System = <b>yes</b>
+Use (W)hole disk MBR = <b>g</b>
+Location of sets = <b>disk</b>
+Which disk contains the install media = <b>sd1</b>
+Continue without verification = <b>yes</b>
+</pre>
 
-Set URL to download packages and updates
+Unplug USB drive with the installer and boot OpenBSD from the target
+drive, login as _root_.
 
-    echo 'https://cloudflare.cdn.openbsd.org/pub/OpenBSD'\
-    > /etc/installurl
+Set install URL and run [syspatch(8)](https://man.openbsd.org/syspatch.8):
 
-Allow the user to run commands as root
+<pre>
+# <b>echo 'https://fastly.cdn.openbsd.org/pub/OpenBSD'>/etc/installurl</b>
+# <b>syspatch</b>
+...
+Relinking to create unique kernel... done.
+#
+</pre>
 
-```
-echo 'permit nopass romanzolotarev'\
-> /etc/doas.conf
-```
+Update [fstab(5)](https://man.openbsd.org/fstab.5) to add _softdep_ and _noatime_:
 
-Done. Reboot and login as a regular user.
+<pre>
+# <b>cp /etc/fstab /etc/fstab.bak</b>
+# <b>sed -i 's/rw/rw,softdep,noatime/' /etc/fstab</b>
+#
+</pre>
 
-## Post-install
+Update [login.conf(5)](https://man.openbsd.org/login.conf.5) to
+increase memory limits:
 
-Install a tilling window manager and Firefox.
+<pre>
+# <b>cp /etc/login.conf /etc/login.conf.bak</b>
+# sed -i 's/datasize-cur=768M/datasize-cur=4096M/' /etc/login.conf</b>
+# sed -i 's/datasize-max=768M/datasize-max=4096M/' /etc/login.conf</b>
+#
+</pre>
 
-    doas pkg_add firefox
+Enable [apmd(8)](https://man.openbsd.org/apmd.8):
 
-Make `cwm` your default window manager and start X11.
+<pre>
+# <b>rcctl enable apmd</b>
+# <b>rcctl set apmd flags -A -z 7</b>
+# <b>rcctl start apmd</b>
+ampd (ok)
+#
+</pre>
 
-    echo 'cwm' >> ~/.xinitrc
-    startx
+Add your _username_ `/etc/doas.conf`:
 
-As you may expect, these steps are easy to automate as well. [Check my
-post-install script](/openbsd/setup.sh).
+<pre>
+# <b>echo 'permit <i>username</i>' > /etc/doas.conf</b>
+#
+</pre>
 
-_Tested on OpenBSD 6.3._
+Reboot and login as a regular user.

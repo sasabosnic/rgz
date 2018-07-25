@@ -1,42 +1,52 @@
+_Tested on [OpenBSD 6.3](/openbsd/) with newsboat-2.10.2_
+
 # Configure newsboat(1) to read RSS feeds in&nbsp;terminal
 
 Install [newsboat(1)](https://www.newsboat.org/). For example, on OpenBSD:
 
-    # pkg_add newsboat
-    quirks-2.414 signed on 2018-03-28T14:24:37Z
-    newsboat-2.10.2: ok
-    #
+<pre>
+# <b>pkg_add newsboat</b>
+...
+newsboat-2.10.2: ok
+#
+</pre>
 
 Add the first feed to your `.newsboat/urls`:
 
-    $ mkdir -p "$HOME/.newsboat"
-    $ echo 'https://www.romanzolotarev.com/rss.xml' \
-    > "$HOME/.newsboat/urls"
-    $
+<pre>
+$ <b>mkdir -p "$HOME/.newsboat"</b>
+$ <b>echo 'https://www.romanzolotarev.com/rss.xml' \
+> "$HOME/.newsboat/urls"</b>
+$
+</pre>
 
-By the way, check out [my list of feeds](/blogroll.txt).
+Check out my [.newsboat/urls](/blogroll.txt).
 
-Optionally add `.newsboat/config`:
+Add `.newsboat/config`:
 
-    browser         "firefox"
-    player          "mpv"
-    download-path   "~/downloads/%n"
-    save-path       "~/downloads"
-    reload-threads  20
-    cleanup-on-quit yes
-    text-width      74
+```
+browser         "firefox"
+player          "mpv"
+download-path   "~/downloads/%n"
+save-path       "~/downloads"
+reload-threads  20
+cleanup-on-quit yes
+text-width      74
 
-    bind-key - quit
-    bind-key G end
-    bind-key g home
-    bind-key j down
-    bind-key k up
+bind-key - quit
+bind-key G end
+bind-key g home
+bind-key j down
+bind-key k up
+```
 
-Run `newsboat`:
+Run newsboat(1):
 
     $ newsboat
 
-You'll get a list of feeds, select the first one and get the list of items:
+You'll get a list of feeds.
+
+Select the first one and get the list of items:
 
     newsboat 2.10.2 - Articles in feed 'Roman Zolotarev' (1 unread, 21 total) - http
        1 N  May 06   2.2K  Configure newsboat(1) to read RSS feeds interminal
@@ -63,19 +73,15 @@ You'll get a list of feeds, select the first one and get the list of items:
     -:Quit ENTER:Open s:Save r:Reload n:Next Unread A:Mark All Read /:Search ?:Help
 
 
-As you can see in my configuration, I bind `j`, `k`, `G`, `g`, `-`
-keys to navigate feeds and articles.
+Navigate with  `j`, `k`, `G`, `g`, `-`.
 
-There are useful default key bindings, though:
+Default key bindings:
 
-- `Enter` - open the feed or the article
-- `n` - jump to the next unread article
-- `p` - jump to the previous unread article
-- `o` - open an article in your browser
-- `e` - enqueue podcast for `podboat`
-- `E` - edit the list of your feeds in `~/.newsboat/urls`
-- `r` - reload the feed
-- `q` - go up or quit
-
----
-Tested on OpenBSD 6.3 with newsboat-2.10.2.
+`Enter` - open the feed or the article<br>
+`n` - jump to the next unread article<br>
+`p` - jump to the previous unread article<br>
+`o` - open an article in your browser<br>
+`e` - enqueue podcast for `podboat`<br>
+`E` - edit the list of your feeds in `~/.newsboat/urls`<br>
+`r` - reload the feed<br>
+`q` - go up or quit

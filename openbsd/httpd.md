@@ -1,47 +1,51 @@
-# Configure OpenBSD httpd(8) on your web server
+_Tested on [OpenBSD](/openbsd/) 6.3._
 
-[Deploy and login to your OpenBSD server first](/vultr.html).
+# Configure httpd(8) on OpenBSD
 
-As soon as you're there you can enable an
-[httpd(8)](http://man.openbsd.org/httpd.8) daemon, it's already installed
-on OpenBSD, you just need to configure it:
+[Deploy and login to your server](/vultr.html).
 
-    www# vi /etc/httpd.conf
+Edit `/etc/httpd.conf`. Add two `server` sections&mdash;one for
+`www` and another for naked domain (all requests are redirected to
+`www`).
 
-Add two `server` sections---one for `www` and another for naked domain
-(all requests are redirected to `www`).
+```
+server "www.example.com" {
+  listen on * port 80
+  root "/htdocs/www.example.com"
+}
 
-    server "www.example.com" {
-      listen on * port 80
-      root "/htdocs/www.example.com"
-    }
+server "example.com" {
+  listen on * port 80
+  block return 301 "http://www.example.com$REQUEST_URI"
+}
+```
 
-    server "example.com" {
-      listen on * port 80
-      block return 301 "http://www.example.com$REQUEST_URI"
-    }
+[httpd(8)](https://man.openbsd.org/httpd.8) is chrooted to `/var/www`
+by default, so let's make a document root directory:
 
-`httpd` is chrooted to `/var/www` by default, so let's make a document
-root directory:
+<pre>
+# <b>mkdir -p /var/www/htdocs/www.example.com</b>
+#
+</pre>
 
-    www# mkdir -p /var/www/htdocs/www.example.com
+Save and check the configuration. Enable httpd(8) and start it.
 
-Save and check this configuration:
-
-    www# httpd -n
-    configuration ok
-
-Enable `httpd(8)` daemon and start it.
-
-    www# rcctl enable httpd
-    www# rcctl start httpd
+<pre>
+# <b>httpd -n</b>
+configuration ok
+# <b>rcctl enable httpd</b>
+# <b>rcctl start httpd</b>
+#
+</pre>
 
 ## Publish your website
 
 Copy your website content into `/var/www/htdocs/www.example.com` and then
 test it your web browser.
 
-    http://XXX.XXX.XXX.XXX/
+<pre>
+http://XXX.XXX.XXX.XXX/
+</pre>
 
 Your web server should be up and running.
 
@@ -52,18 +56,31 @@ to redirect all HTTPS requests to HTTP.
 
 Now as your new server is ready you can update DNS records accordingly.
 
-        example.com. 300 IN     A XXX.XXX.XXX.XXX
-    www.example.com. 300 IN     A XXX.XXX.XXX.XXX
+```
+    example.com. 300 IN     A XXX.XXX.XXX.XXX
+www.example.com. 300 IN     A XXX.XXX.XXX.XXX
+```
 
 Examine your DNS is propagated.
 
-    $ dig example.com www.example.com
+<pre>
+$ <b>dig example.com www.example.com</b>
+...
+;; ANSWER SECTION:
+example.com.         299     IN      A       XXX.XXX.XXX.XXX
+...
+;; ANSWER SECTION:
+www.example.com.     299     IN      A       XXX.XXX.XXX.XXX
+...
+$
+</pre>
 
-Check IP addresses it answer sections. If they are correct, you should be
-able to access your new web server by its domain name.
+Check IP addresses in answer sections.
 
-    http://www.example.com/
+Open your website in a browser.
 
-What's next? [Enable HTTPS on your server](/openbsd/acme-client.html).
+```
+http://www.example.com/
+```
 
-_Tested on OpenBSD 6.3._
+[Enable HTTPS on your server](/openbsd/acme-client.html).
