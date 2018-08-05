@@ -4,8 +4,9 @@ CRYPTO](/openbsd/bioctl-crypto.html),
 [openssl(1)](https://man.openbsd.org/openssl.1), or
 [scrypt](https://www.tarsnap.com/scrypt.html).
 
-If you are looking for a deduplicating archiver, try _[borg](/borg.html)_.
+If you are looking for a deduplicating archiver, try [borg(1)](/borg.html).
 
+_Tested on [OpenBSD](/openbsd/) 6.3_
 
 # Archive with mtree(8) and pax(1)
 
@@ -18,10 +19,6 @@ compressed archive with [pax(1)][p] and [gzip(1)][g].
 [p]: https://man.openbsd.org/pax.1
 [s]: https://man.openbsd.org/sed.1
 [h]: https://man.openbsd.org/sha256.1
-
-_Tested with OpenBSD 6.3_
-
----
 
 ## Install
 

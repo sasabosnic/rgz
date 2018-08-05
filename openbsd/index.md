@@ -33,6 +33,7 @@ My dotfiles
 
 ## Misc
 
+- [Archive with mtree(8) and pax(1)](/arc.html)
 - [Set time zone](timezone.html)
 - [Manage passwords with openssl(1) and oathtool(1)](/pass.html)
 - [Edit text with vi(1)](/vi.html)
