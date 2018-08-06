@@ -33,7 +33,7 @@ add these sections to `/etc/acme-client.conf`:
       alternative names { example.com }
       domain key "/etc/ssl/private/www.example.com.key"
       domain certificate "/etc/ssl/www.example.com.crt"
-      domain full chain certificate "/etc/ssl/www.example.com.fullchain.pem"
+      domain full chain certificate "/etc/ssl/www.example.com.pem"
       sign with letsencrypt
     }
 
@@ -81,7 +81,7 @@ Let's run `acme-client` to create new account and domain keys.
 # <b>acme-client -vAD www.example.com</b>
 ...
 acme-client: /etc/ssl/www.example.com.crt: created
-acme-client: /etc/ssl/www.example.com.fullchain.pem: created
+acme-client: /etc/ssl/www.example.com.pem: created
 #
 </pre>
 
@@ -113,7 +113,7 @@ server "www.example.com" {
   listen on * tls port 443
   root "/htdocs/www.example.com"
   tls {
-    certificate "/etc/ssl/www.example.com.fullchain.pem"
+    certificate "/etc/ssl/www.example.com.pem"
     key "/etc/ssl/private/www.example.com.key"
   }
   location "/.well-known/acme-challenge/*" {
@@ -124,7 +124,7 @@ server "www.example.com" {
 server "example.com" {
   listen on * tls port 443
   tls {
-    certificate "/etc/ssl/www.example.com.fullchain.pem"
+    certificate "/etc/ssl/www.example.com.pem"
     key "/etc/ssl/private/www.example.com.key"
   }
   location "/.well-known/acme-challenge/*" {
@@ -182,7 +182,7 @@ server "new.example.com" {
   listen on * tls port 443
   root "/htdocs/new.example.com"
   tls {
-    certificate "/etc/ssl/www.example.com.fullchain.pem"
+    certificate "/etc/ssl/www.example.com.pem"
     key "/etc/ssl/private/www.example.com.key"
   }
   location "/.well-known/acme-challenge/*" {
@@ -199,7 +199,7 @@ Request a new certificate with the new alternative new in it. Verify
 # <b>acme-client -vFAD www.example.com</b>
 ...
 acme-client: /etc/ssl/www.example.com.crt: created
-acme-client: /etc/ssl/www.example.com.fullchain.pem: created
+acme-client: /etc/ssl/www.example.com.pem: created
 # <b>httpd -n</b>
 configuration ok
 # <b>rcctl restart httpd</b>

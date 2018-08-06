@@ -37,7 +37,6 @@ files, and remove `yubikey.csv` file.
 # <b>touch romanzolotarev.{uid,key}</b>
 # <b>chown root:auth *</b>
 # <b>chmod 440 *</b>
-# <b>chown root:auth *</b>
 # <b>grep Yubico /tmp/yubikey.csv | cut -f5 -d, > romanzolotarev.uid</b>
 # <b>grep Yubico /tmp/yubikey.csv | cut -f6 -d, > romanzolotarev.key</b>
 # <b>cat *</b>

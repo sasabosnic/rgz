@@ -1,10 +1,10 @@
 **DISCLAIMER**<br>
-I'm just a happy customer of _OpenBSD in Amsterdam_.<br>
+I'm just a happy customer of _OpenBSD Amsterdam_.<br>
 [Mischa Peters](https://mobile.twitter.com/mischapeters) runs the place.
 
 _Tested on [OpenBSD](/openbsd/) 6.3_
 
-# Deploy VM on OpenBSD.Amsterdam
+# Deploy VM on OpenBSD Amsterdam
 
 [OpenBSD in Amsterdam](https://openbsd.amsterdam) is running dedicated
 [vmd(8)](https://man.openbsd.org/vmd.8) servers to host opinionated
@@ -17,11 +17,13 @@ via [contact form](https://openbsd.amsterdam/contact.html),
 
 For example:
 
-	Roman Zolotarev
-	hi@romanzolotarev.com
-	www.romanzolotarev.com
-	romanzolotarev
-	ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIqh7BmO... 1500469202
+```
+Roman Zolotarev
+hi@romanzolotarev.com
+www.romanzolotarev.com
+romanzolotarev
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIqh7BmO... 1500469202
+```
 
 Please allow few hours for your VM to be started. You'll get IPv4
 (and IPv6) address as soon as your VM is deployed. Login to the
@@ -145,7 +147,7 @@ available patches.
 <pre>
 # <b>syspatch</b>
 ...
-Get/Verify syspatch63-011_perl.tgz 100% |***************| 24401       00:00
+Get/Verify syspatch63-011_perl.tgz 100% |***************| 24401 00:00
 Installing patch 011_perl
 Relinking to create unique kernel... done.
 # <b>reboot</b>

@@ -6,6 +6,8 @@ I'm here to help you with [OpenBSD](/openbsd/). I'm a fan of [shell
 scripts](/bin/), [vi](/vi.html), [ThinkPad](/thinkpad/), and
 [ErgoDox](/ergodox.html).
 
+By the way, here is [my setup](/setup.html).
+
 Thank you for **[your donations](/sponsors.html)** and [kind
 words](/words.html)!
 
@@ -29,7 +31,6 @@ words](/words.html)!
 - [archive with borg(1)](/borg.html "02 Mar 2018")
 - [mount(1) on OpenBSD](/openbsd/mount.html "01 Mar 2018")
 - [print with cups(1) on macOS](/macos/cups.html "27 Feb 2018")
-- **[set up a fanless desktop computer powered by OpenBSD](/setup.html "17 Nov 2017")**
 - **[manage passwords with openssl(1) and oathtool(1)](/pass.html "10 Oct 2017")**
 - [install OpenBSD on a desktop](/openbsd/install.html "20 Sep 2017")
 - [prepare a bootable USB drive with OpenBSD installer on macOS](/macos/openbsd-installer.html "19 Sep 2017")

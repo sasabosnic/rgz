@@ -83,7 +83,7 @@ supported, please consider supporting them too:
 
 - [Etsh Project](https://etsh.io/ "23 Jul 2018") [Logo, media kit](/etsh.io/)
 - [High5!](https://high5.nl/ "Since 20 Jun 2018") 60.00 EUR
-- [OpenBSD in Amsterdam](https://openbsd.amsterdam/ "Since 10 Jun 2018") [Logo, media kit, website](/openbsd.amsterdam/)
+- [OpenBSD Amsterdam](https://openbsd.amsterdam/ "Since 10 Jun 2018") [Logo, media kit, website](/openbsd.amsterdam/)
 - [Ingo Schwarze](https://www.patreon.com/IngoSchwarze "Since 1 Jun 2018") 5.00 USD Patreon
 - [The OpenBSD Store](https://www.openbsdstore.com/ "6 May 2018 41389") 73.21 GBP
 - [Bryan Steele](https://brynet.biz.tm/ "16 Apr 2018 5M5560322U154440G") 10.00 CAD

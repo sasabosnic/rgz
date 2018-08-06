@@ -1,3 +1,5 @@
+_This is part of [my setup](/setup.html)_
+
 # ErgoDox
 
 The ErgoDox is a DIY keyboard project initiated by Dominic Beauchamp.

@@ -24,6 +24,12 @@ _[Why OpenBSD?](why.html) Simple and secure._
 
 [![cwm](/cwm.jpeg)](/cwm.png)
 
+Now I run [-stable](https://www.openbsd.org/stable.html) on [my
+desktop](/setup.html) and servers. Servers are supposed to be
+reliable, that's obvious, why not run _-current_ on a desktop? Even
+six month release cycle is too fast for me. I prefer [slow
+fashion](https://www.youtube.com/watch?v=Wiw3YcwGwrU).
+
 My dotfiles
 [.xsession](xsession)
 [.Xdefaults](Xdefaults)

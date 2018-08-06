@@ -1,8 +1,12 @@
 body {
   margin: 0 auto;
-  max-width: 600px;
+  max-width: 800px;
   padding: 10px;
-  font-family: Noto Sans, sans-serif;
+  font-family: Noto Serif, serif;
+}
+
+body, p code {
+  font-size: 22px;
 }
 
 h2 {
@@ -13,14 +17,19 @@ li {
   padding: 5px 0;
 }
 
+pre {
+  font-size: 18px;
+  overflow-x: auto;
+}
+
+pre,
+blockquote {
+  margin-bottom: 40px;
+}
+
 p img,
 table {
   width: 100%;
-}
-
-pre {
-  margin-bottom: 40px;
-  overflow-x: auto;
 }
 
 .button {

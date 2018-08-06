@@ -74,8 +74,8 @@ $ <b>mkdir -p /tmp/restored && cd /tmp/restored</b>
 $ <b>pax -pe -rzf /tmp/archive</b>
 $ <b>gunzip < /tmp/archive.tree.gz > /tmp/archive.tree</b>
 $ <b>sha256 < tree; cat /tmp/archive.tree.sha256</b>
-a4bc68e9d1144b3d7ece8dfea77fa4db3ab32460b3d6296bdb1085d5a074e37f
-a4bc68e9d1144b3d7ece8dfea77fa4db3ab32460b3d6296bdb1085d5a074e37f
+a4bc68...
+a4bc68...
 $ <b>sed 's/time=\([0-9]*\)\.[0-9]*/time=\1.0/' /tmp/archive.tree|mtree</b>
 $
 </pre>

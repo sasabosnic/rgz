@@ -63,3 +63,4 @@ $ <b>vis uninstall</b>
 $ <b>/usr/bin/ruby uninstall --help</b>
 ...
 $
+</pre>

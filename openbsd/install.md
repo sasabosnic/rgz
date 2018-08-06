@@ -16,7 +16,7 @@ Select **(S)hell** to create encrypt the drive.
 
 <pre>
 # <b>sysctl hw.disknames</b>
-hw.disknames=sd0:xxxxxxxxxxxxxxxx,rd0:xxxxxxxxxxxxxxxx,sd1:xxxxxxxxxxxxxxxx
+hw.disknames=sd0:xxxxxxxxxxx,rd0:xxxxxxxxxxx,sd1:xxxxxxxxxxx
 </pre>
 
 In this case _sd0_ is the target drive.<br>

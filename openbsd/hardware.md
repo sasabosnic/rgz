@@ -3,7 +3,7 @@ submit your dmesg to [_NYC_*BUG](http://dmesgd.nycbug.org/index.cgi?do=submit) a
 [tweet the link at me](https://mobile.twitter.com/romanzolotarev).<br>
 Don't forget to send dmesg to [developers](https://www.openbsd.org/faq/faq4.html#SendDmesg),<br>
 
-_Tested on various [OpenBSD](/openbsd/) releases_
+_Tested on various [OpenBSD](/openbsd/) releases. Check [my current setup](/setup.html)_
 
 # OpenBSD compatible hardware
 
@@ -90,8 +90,32 @@ on Core&trade; i3, i5, i7.
 these computers are not well supported yet. For example, they have
 an issue with suspend/resume.
 
+**Can I run OpenBSD on MacBook?**
+
+Probably. I heard some models are compatible.
+
+I've tried few times to install OpenBSD on my [MacBooks](/macbook/),
+but it was a bit of a fiasco (thanks to Nvidia and Broadcom). That's
+why I bought new computers, just to run this wonderful operating
+system.
+
 **Any known issues?**
 
-[Only few wireless chipsets](https://man.openbsd.org/?query=wireless&apropos=1) are supported.<br>
-Bluetooth, NVIDIA&reg; video chipsets, and USB3 audio are not supported.
+For Intel network devices (LAN and WiFi) OpenBSD downloads and
+install firmware on its first boot.
 
+[Only few wireless
+chipsets](https://man.openbsd.org/?query=wireless&apropos=1) are
+supported.<br> NVIDIA&reg; video chipsets, and USB3 audio are not
+supported.
+
+Bluetooth doesn't work because, well, [it has been
+removed](https://marc.info/?l=openbsd-cvs&m=140511572108715&w=2).
+
+> "I'm not very familiar, but the implementation had too many issues
+for it to be salvageable, it was treated like a network protocol
+which turned out to be the wrong design. Commit message suggests
+it also simply didn't work: <a
+href="https://marc.info/?l=openbsd-cvs&m=140511572108715&w=2">marc.info?l=openbsd-cvs...</a>"<br>&mdash;
+[Bryan Steele](https://mobile.twitter.com/canadianbryan/status/984782198887911425 "13 Apr 2018")
+(@canadianbryan)
