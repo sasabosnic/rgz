@@ -8,6 +8,9 @@ scripts](/bin/), [vi](/vi.html), [ThinkPad](/thinkpad/), and
 
 By the way, here is [my setup](/setup.html).
 
+I help [OpenBSD Amsterdam](/openbsd.amsterdam/) and [etsh.to](/etsh.io/)
+with their logos, avatars, and websites.
+
 Thank you for **[your donations](/sponsors.html)** and [kind
 words](/words.html)!
 

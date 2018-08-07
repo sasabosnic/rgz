@@ -1,11 +1,8 @@
 _This is part of [my setup](/setup.html)_
 
-# Run BSD
+# RUN BSD
 
-![Zotac CI527](/zotac-ci527.jpeg)
-_[Zotac CI527](/zotac-ci527.html) with RUN BSD sticker on its top_
-
-If you're curious about [RUN BSD sticker](http://runbsd.info/),
+If you're curious about [RUN BSD](http://runbsd.info/) sticker,
 here is how it found me:
 
 > [RZ](https://mobile.twitter.com/romanzolotarev/status/925424605367623680
@@ -23,3 +20,6 @@ Two weeks later...
 
 > [FiLiS](https://mobile.twitter.com/FiLiS/status/931619067185811459
 "17 Nov 2017"): You're welcome. :)
+
+![RUN BSD](/runbsd.jpeg)
+_RUN BSD stickers and the envelope_

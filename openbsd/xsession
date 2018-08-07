@@ -2,7 +2,7 @@
 setxkbmap -option grp:alt_space_toggle us,ru &
 unclutter -root -idle 2 -noevents &
 xidle &
-xinput set-button-map 7 1 2 3 5 4 7 6 &
+# xinput set-button-map 7 1 2 3 5 4 7 6 &
 # xinput set-prop 7 'Device Accel Constant Deceleration' 1 &
 xinput set-prop 7 'Device Accel Constant Deceleration' 5 &
 xinput set-prop 8 'Device Accel Constant Deceleration' 5 &

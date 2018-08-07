@@ -29,8 +29,8 @@ project boosts my morale enormously. Thank you.
 
 All goods and services you donate go directly to support this website,
 to promote other software projects I use (for example, [OpenBSD
-Project](https://www.openbsdfoundation.org/donations.html), [Run
-BSD](http://runbsd.info/)).
+Project](https://www.openbsdfoundation.org/donations.html), [RUN
+BSD](/runbsd.html)).
 
 Your money covers [hosting](/vultr.html) and [domain
 registration](https://iwantmyname.com/) fees for this website.
@@ -54,7 +54,7 @@ Roman
 P.S. Here are all received donations. Please ping me, if yours hasn't
 been listed, or if you want to remove your name from the list.
 
-Updated on 2 Aug 2018.
+Updated on 7 Aug 2018.
 
 - [Jeffrey Allen Neitzel](https://jan.etsh.io/ "24 Jul 2018") 15.00 USD
 - [Dylan Thiedeke](https://www.patreon.com/user/creators?u=2300411 "24 Jun 2018") 1.00 USD
@@ -84,7 +84,8 @@ supported, please consider supporting them too:
 - [Etsh Project](https://etsh.io/ "23 Jul 2018") [Logo, media kit](/etsh.io/)
 - [High5!](https://high5.nl/ "Since 20 Jun 2018") 60.00 EUR
 - [OpenBSD Amsterdam](https://openbsd.amsterdam/ "Since 10 Jun 2018") [Logo, media kit, website](/openbsd.amsterdam/)
-- [Ingo Schwarze](https://www.patreon.com/IngoSchwarze "Since 1 Jun 2018") 5.00 USD Patreon
+- [Michael W Lucas](https://www.patreon.com/mwlucas "Since 1 Jul 2018") 10.00 USD Patreon
+- [Ingo Schwarze](https://www.patreon.com/IngoSchwarze "Since 1 Jun 2018") 7.00 USD Patreon
 - [The OpenBSD Store](https://www.openbsdstore.com/ "6 May 2018 41389") 73.21 GBP
 - [Bryan Steele](https://brynet.biz.tm/ "16 Apr 2018 5M5560322U154440G") 10.00 CAD
 - [Michael W Lucas](https://www.michaelwlucas.com/tools/relayd "1 Apr 2018") 10.00 USD Relayd and Httpd Mastery
