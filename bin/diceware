@@ -1322,18 +1322,19 @@ wordlist=$(cat << EOF
 EOF
 )
 
-dice() {
-  random_int=$(od -vAn -N4 -tu4 < /dev/urandom|tr -d ' \n'|sed 's/^0*//')
-  echo $(( random_int % 6 + 1 ))
-}
-
 i=$(echo "$1"|tr -cd '[:digit:]'|sed 's/^0*//')
 [ -z "$i" ] && i=8
 
-while [ $i -ne 0 ]; do
-  number="$(dice)$(dice)$(dice)$(dice)"
-  echo "$wordlist"|grep "$number"|cut -d' ' -f2|tr '\n' ' '
-  i=$((i - 1))
+dice() {
+	tr -cd '1-6'</dev/urandom|fold -w 4|head -n "$1"
+}
+
+for num in $(dice "$i")
+do
+	echo "$wordlist"|
+	grep "$num"|
+	cut -d' ' -f2|
+	tr '\n' ' '
 done
 
 echo
