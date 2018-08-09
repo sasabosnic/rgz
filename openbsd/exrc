@@ -1,4 +1,4 @@
-map gS {!}sort -r
+map gS {j!}sort -r
 map gc :%!prettier --parser=css --write
 map gd :r!date +\%Y-\%m-\%d
 map gf {!}fmt -p}}{j

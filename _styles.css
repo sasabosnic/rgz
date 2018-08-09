@@ -5,7 +5,8 @@ body {
   font-family: Noto Serif, serif;
 }
 
-body, p code {
+body,
+p code {
   font-size: 22px;
 }
 
@@ -43,4 +44,8 @@ table {
   display: inline-block;
   text-align: center;
   text-decoration: none;
+}
+
+.small {
+  width: 200px;
 }

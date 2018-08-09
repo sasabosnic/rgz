@@ -1,6 +1,8 @@
 **DISCLAIMER**<br>
-I'm just a happy customer of _OpenBSD Amsterdam_.<br>
+I'm just a happy customer of _OpenBSD Amsterdam_.
 [Mischa Peters](https://mobile.twitter.com/mischapeters) runs the place.
+When you sign up, Mischa donates 10% to
+[OpenBSD Foundation](https://www.openbsdfoundation.org).
 
 _Tested on [OpenBSD](/openbsd/) 6.3_
 

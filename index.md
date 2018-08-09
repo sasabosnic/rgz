@@ -1,4 +1,6 @@
-<img src="/avatar120.jpeg" style="border: 0; width: 60px; height: 60px; border-radius: 60px;" width="60" height="60" alt="Roman's avatar"
+<img src="/avatar120.jpeg"
+  style="border: 0; width: 60px; height: 60px; border-radius: 60px;"
+  width="60" height="60" alt="Roman's avatar"
   title="Go to the home page">
 
 Hi, my name is **Roman**. I run a [job board](https://www.bsdjobs.com/).
@@ -8,11 +10,12 @@ scripts](/bin/), [vi](/vi.html), [ThinkPad](/thinkpad/), and
 
 By the way, here is [my setup](/setup.html).
 
-I help [OpenBSD Amsterdam](/openbsd.amsterdam/) and [etsh.to](/etsh.io/)
+I help [OpenBSD Amsterdam](/openbsd.amsterdam/) and [etsh.io](/etsh.io/)
 with their logos, avatars, and websites.
 
-Thank you for **[your donations](/sponsors.html)** and [kind
-words](/words.html)!
+Thank you for
+**[your donations](/sponsors.html)** and
+[kind words](/words.html)!
 
 # How to...
 
