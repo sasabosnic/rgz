@@ -176,7 +176,7 @@ by Casey Muratori
 <br>C++, Win32
 
 [**Brackeys**](https://www.youtube.com/c/brackeys)
-by Asbjørn Thirslund
+by Asbj&oslash;rn Thirslund
 <br>C#, JavaScript, Unity
 
 [**Game Development Tutorials**](https://www.youtube.com/user/Cercopithecan)
