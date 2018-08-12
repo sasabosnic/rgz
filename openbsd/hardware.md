@@ -1,7 +1,7 @@
 If your computer **works with OpenBSD out-of-the-box**,<br>
 submit your dmesg to
 [_NYC_*BUG](http://dmesgd.nycbug.org/index.cgi?do=submit) and
-[tweet the link at me](https://mobile.twitter.com/romanzolotarev).<br>
+[tweet the link at me](https://twitter.com/romanzolotarev).<br>
 Don't forget to send dmesg to
 [developers](https://www.openbsd.org/faq/faq4.html#SendDmesg),<br>
 
@@ -16,7 +16,7 @@ _Tested on various [OpenBSD](/openbsd/) releases. Check [my current setup](/setu
 <pre>
 14" FHD/WQHD, 7th Gen Intel i5/i7, 1.13 kg
 
-tested by  <a href="https://mobile.twitter.com/romanzolotarev/status/1019920973653569536">romanzolotarev</a>
+tested by  <a href="https://twitter.com/romanzolotarev/status/1019920973653569536">romanzolotarev</a>
            <a href="https://jcs.org/2017/09/01/thinkpad_x1c">jcs</a>
 
 <b><s>fpr</s></b>        <a href="https://bsd.network/@kristapsdz/100391368292782019">patch for libfprint required</a>
@@ -79,7 +79,7 @@ sd         ok
 
 7th Gen Intel i3, passive cooling
 
-tested by  <a href="https://mobile.twitter.com/romanzolotarev/status/909807608252551169">romanzolotarev</a>
+tested by  <a href="https://twitter.com/romanzolotarev/status/909807608252551169">romanzolotarev</a>
 
 <b><s>zzz</s></b>        doesn't resume from suspend
 <b>video</b>      S3 resume doesn't work, the rest is ok
@@ -150,5 +150,5 @@ for it to be salvageable, it was treated like a network protocol
 which turned out to be the wrong design. Commit message suggests
 it also simply didn't work: <a
 href="https://marc.info/?l=openbsd-cvs&m=140511572108715&w=2">marc.info?l=openbsd-cvs...</a>"<br>&mdash;
-[Bryan Steele](https://mobile.twitter.com/canadianbryan/status/984782198887911425 "13 Apr 2018")
+[Bryan Steele](https://twitter.com/canadianbryan/status/984782198887911425 "13 Apr 2018")
 (@canadianbryan)

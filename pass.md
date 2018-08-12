@@ -5,7 +5,7 @@ own risk.
 
 > "zOMG! This is AWESOME! Great job, going to set this up first thing in
 the morning. &#x1F495;"<br>
-[H3artbl33d](https://mobile.twitter.com/h3artbl33d/status/983827387409403904 "11 Apr 2018")
+[H3artbl33d](https://twitter.com/h3artbl33d/status/983827387409403904 "11 Apr 2018")
 (@h3artbl33d)
 
 _Tested on [OpenBSD](/openbsd/) 6.3_

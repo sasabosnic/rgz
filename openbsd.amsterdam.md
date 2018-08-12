@@ -1,6 +1,6 @@
 **DISCLAIMER**<br>
 I'm just a happy customer of _OpenBSD Amsterdam_.
-[Mischa Peters](https://mobile.twitter.com/mischapeters) runs the place.
+[Mischa Peters](https://twitter.com/mischapeters) runs the place.
 When you sign up, Mischa donates 10% to
 [OpenBSD Foundation](https://www.openbsdfoundation.org).
 
@@ -14,7 +14,7 @@ VMs.
 
 Send your name, email address, hostname, username, and public SSH key to OpenBSDAms
 via [contact form](https://openbsd.amsterdam/contact.html),
-[Twitter](https://mobile.twitter.com/OpenBSDAms), or
+[Twitter](https://twitter.com/OpenBSDAms), or
 [Mastodon](https://bsd.network/@OpenBSDAms), before you pay.
 
 For example:
@@ -161,8 +161,8 @@ Now you may want [to setup a web server](/openbsd/webserver.html).
 ---
 
 **Thanks** to
-[Mischa Peters](https://mobile.twitter.com/mischapeters) for reading drafts fo this,
-to [Mike Larkin](https://mobile.twitter.com/mlarkin2012),
-[Bryan Steele](https://mobile.twitter.com/canadianbryan),
-[h3artbl33d](https://mobile.twitter.com/h3artbl33d), and
-[Jeff Neitzel](https://mobile.twitter.com/v6shell) for tips and hints.
+[Mischa Peters](https://twitter.com/mischapeters) for reading drafts fo this,
+to [Mike Larkin](https://twitter.com/mlarkin2012),
+[Bryan Steele](https://twitter.com/canadianbryan),
+[h3artbl33d](https://twitter.com/h3artbl33d), and
+[Jeff Neitzel](https://twitter.com/v6shell) for tips and hints.

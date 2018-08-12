@@ -146,5 +146,5 @@ $
 ---
 
 **Thanks** to
-[Adriano Barbosa](https://mobile.twitter.com/barbosaaob)
+[Adriano Barbosa](https://twitter.com/barbosaaob)
 for catching a bug in httpd.conf.

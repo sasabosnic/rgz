@@ -1,6 +1,6 @@
 > "...thanks for article itself this can help many people to give
 #OpenBSD a chance."<br>&mdash;
-[Ve Telko](https://mobile.twitter.com/vetelko/status/985095582174900224 "14 Apr 2018")
+[Ve Telko](https://twitter.com/vetelko/status/985095582174900224 "14 Apr 2018")
 (@vetelko)
 
 _Tested on [OpenBSD](/openbsd/) 6.3_

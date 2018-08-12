@@ -1,6 +1,6 @@
 > "Thank you & thanks again because I wouldn't be using a YubiKey
 without your help!"<br>&mdash;
-[equalunique](https://mobile.twitter.com/no1evanrowley/status/992617178863202304 "5 May 2018")
+[equalunique](https://twitter.com/no1evanrowley/status/992617178863202304 "5 May 2018")
 (@no1evanrowley)
 
 _Tested on [OpenBSD](/openbsd/) 6.3_

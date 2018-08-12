@@ -68,5 +68,5 @@ $
 ---
 
 **Thanks** to
-[Luclu7_](https://mobile.twitter.com/Luclu7_/status/1015396970112978950)
+[Luclu7_](https://twitter.com/Luclu7_/status/1015396970112978950)
 for catching typos.

@@ -2,7 +2,7 @@
 already written, and probably not once. Now I feel kind of tickle
 going to write something (in fact anything, I've got so many things
 to tell about), but didn't find spare couple hours yet :)"<br>
-[Marina Kuznetsova](https://mobile.twitter.com/healdementia/status/987440001142095873 "21 Apr 2018")
+[Marina Kuznetsova](https://twitter.com/healdementia/status/987440001142095873 "21 Apr 2018")
 (@healdementia)
 
 # Do you need a&nbsp;website?

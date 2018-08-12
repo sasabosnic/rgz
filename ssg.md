@@ -1,32 +1,32 @@
 > "ssg by @romanzolotarev seems to be working a treat and great
 option for those of us who prefer static sites ..."<br>&mdash;
-[Dylan](https://mobile.twitter.com/GrimSysadmin/status/1010736946899894278 "24 Jun 2018")
+[Dylan](https://twitter.com/GrimSysadmin/status/1010736946899894278 "24 Jun 2018")
 (@GrimSysadmin)
 
 > "...Thanks for providing ssg! It is helping me
 to (slowly) put my #OpenBSD musings into words..."<br>&mdash;
-[fd0](https://mobile.twitter.com/fd0_nl/status/1008026424362586113 "16 Jun 2018")
+[fd0](https://twitter.com/fd0_nl/status/1008026424362586113 "16 Jun 2018")
 (@fd0_nl)
 
 > "...thanx again for ssg! Starting to move gists
 to my site and it couldn't have been more simple."<br>&mdash;
-[(((Mischa &#x1F576; &#x1F421; RCX)))](https://mobile.twitter.com/mischapeters/status/1005464189807353857 "9 Jun 2018")
+[(((Mischa &#x1F576; &#x1F421; RCX)))](https://twitter.com/mischapeters/status/1005464189807353857 "9 Jun 2018")
 (@mischapeters)
 
 > "I am loving @romanzolotarev's romanzolotarev.com/ssg.html"<br>&mdash;
-[Doppelvizsla](https://mobile.twitter.com/doppelvizsla/status/988742307368271872 "24 Apr 2018")
+[Doppelvizsla](https://twitter.com/doppelvizsla/status/988742307368271872 "24 Apr 2018")
 (@doppelvizsla)
 
 > "Thanks to @romanzolotarev's static site generator, I'm back on
 my "static site sausage machine for some extra pocket peanuts" kick
 again."<br>&mdash;
-[pr1ntf](https://mobile.twitter.com/pr1ntf/status/988605007556571136 "24 Apr 2018")
+[pr1ntf](https://twitter.com/pr1ntf/status/988605007556571136 "24 Apr 2018")
 (@pr1ntf)
 
 > "It's really inspiring to see you give back much to the community. I
 appreciate your work - ssg, your how-to's for less familiar
 users, etc. I felt I should mention that to you &#x1F600;"<br>&mdash;
-[H3artbl33d](https://mobile.twitter.com/h3artbl33d/status/985173503103074304 "14 Apr 2018")
+[H3artbl33d](https://twitter.com/h3artbl33d/status/985173503103074304 "14 Apr 2018")
 (@h3artbl33d)
 
 _Tested on [OpenBSD](/openbsd/) 6.3_
@@ -349,10 +349,10 @@ $
 ---
 
 **Thanks** to
-[Denis Borovikov](https://mobile.twitter.com/metallerden) for reading the draft of this,
-[h3artbl33d](https://mobile.twitter.com/h3artbl33d), and
-[Mischa Peters](https://mobile.twitter.com/mischapeters), and
-[Tom Atkinson](https://mobile.twitter.com/hir0pr0tagonist) for testing `ssg`,
+[Denis Borovikov](https://twitter.com/metallerden) for reading the draft of this,
+[h3artbl33d](https://twitter.com/h3artbl33d), and
+[Mischa Peters](https://twitter.com/mischapeters), and
+[Tom Atkinson](https://twitter.com/hir0pr0tagonist) for testing `ssg`,
 [Kristaps Dzonsons](https://www.divelog.blue/) for
 [lowdown(1)](https://kristaps.bsd.lv/lowdown/) and
 [Eric Radman](http://eradman.com) for

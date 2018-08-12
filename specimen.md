@@ -1,12 +1,12 @@
 > "I like that specimen.txt, man. Good stuff."<br>
-[&#x1F47D;V6Shell(Jeff)&#x1F421;](https://mobile.twitter.com/v6shell/status/997128363859902464 "17 May 2018")
+[&#x1F47D;V6Shell(Jeff)&#x1F421;](https://twitter.com/v6shell/status/997128363859902464 "17 May 2018")
 (@v6shell)
 
 # Specimen
 
 What is your favorite font for your terminal or web browser? Make
 a [screenshot](/bin/screenshot) and [tweet at
-me](https://mobile.twitter.com/romanzolotarev).
+me](https://twitter.com/romanzolotarev).
 
 <pre>
 $ <b>curl https://www.romanzolotarev.com/specimen.txt</b>

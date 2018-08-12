@@ -1,10 +1,10 @@
 > "Roman you have inspired me. I'm starting a project this weekend on <a
-href="https://mobile.twitter.com/vultr">@vultr</a> with <a
-href="https://mobile.twitter.com/hashtag/OpenBSD">#OpenBSD</a> and <a
-href="https://mobile.twitter.com/hashtag/Erlang">#Erlang</a>. Will be
+href="https://twitter.com/vultr">@vultr</a> with <a
+href="https://twitter.com/hashtag/OpenBSD">#OpenBSD</a> and <a
+href="https://twitter.com/hashtag/Erlang">#Erlang</a>. Will be
 sharing more soon still brainstorming the project. Will post every step as
 I build."<br>
-[EssentialOS=OpenBSD](https://mobile.twitter.com/BrutusUnix/status/987485038630572032 "21 Apr 2018")
+[EssentialOS=OpenBSD](https://twitter.com/BrutusUnix/status/987485038630572032 "21 Apr 2018")
 (@BrutusUnix)
 
 **DISCLAIMER**<br> I'm a customer of Vultr and the yellow button

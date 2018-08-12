@@ -1,5 +1,5 @@
 > "Bonus points for using the Field Notes ;)"<br>&mdash;
-[BuildItBenjamin](https://mobile.twitter.com/bl4nk_io/status/910086740223946753 "19 Sep 2017")
+[BuildItBenjamin](https://twitter.com/bl4nk_io/status/910086740223946753 "19 Sep 2017")
 (@bl4nk_io)
 
 _This is part of [my setup](/setup.html)_

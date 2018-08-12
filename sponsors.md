@@ -2,23 +2,23 @@
 
 In 2017 I decided to document everything I learn as I go and one day [I
 tweeted
-](https://mobile.twitter.com/romanzolotarev/status/909807483149066248)
+](https://twitter.com/romanzolotarev/status/909807483149066248)
 about [my fanless OpenBSD setup](/setup.html). You retweeted and liked
 that tweet, and then
-[@mischapeters](https://mobile.twitter.com/mischapeters) sent me a
+[@mischapeters](https://twitter.com/mischapeters) sent me a
 T-shirt and almost at the same time
-[@FiLiS](https://mobile.twitter.com/FiLiS) mailed me few stickers...
+[@FiLiS](https://twitter.com/FiLiS) mailed me few stickers...
 
-> [Mischa](https://mobile.twitter.com/mischapeters/status/910019073223872512 "19 Sep 2017"):
+> [Mischa](https://twitter.com/mischapeters/status/910019073223872512 "19 Sep 2017"):
 "Nice setup! That needs a RUN BSD shirt!"
 
-> [FiLiS](https://mobile.twitter.com/FiLiS/status/925425396941770755 "31 Oct 2017"):
+> [FiLiS](https://twitter.com/FiLiS/status/925425396941770755 "31 Oct 2017"):
 "...DM me your address and I'll send you some."
 
 Few months later Mischa has helped me again and hosted [an European
 mirror of this very website](https://hi.romanzolotarev.com/).
 
-> [Mischa](https://mobile.twitter.com/mischapeters/status/984827416215457794 "13 Apr 2018"):
+> [Mischa](https://twitter.com/mischapeters/status/984827416215457794 "13 Apr 2018"):
 "Let me know if you need an OpenBSD VPS on VMM in Amsterdam."
 
 That's how it all started.
@@ -58,7 +58,7 @@ Updated on 7 Aug 2018.
 
 - [Jeffrey Allen Neitzel](https://jan.etsh.io/ "24 Jul 2018") 15.00 USD
 - [Dylan Thiedeke](https://www.patreon.com/user/creators?u=2300411 "24 Jun 2018") 1.00 USD
-- [Gabriel Francisco](https://mobile.twitter.com/fgbreel "8 Jun 2018") 10.00 EUR _"I love your blog and the content you share about OpenBSD! Keep rocking!"_
+- [Gabriel Francisco](https://twitter.com/fgbreel "8 Jun 2018") 10.00 EUR _"I love your blog and the content you share about OpenBSD! Keep rocking!"_
 - [Vultr](https://www.vultr.com/?ref=7035749 "8 Jun 2018") 50.00 USD
 - [micah](https://www.patreon.com/user/creators?u=4721204 "28 May 2018") 6.00 USD Patreon
 - [Peter Kotr&#x10D;ka](https://www.patreon.com/pkotrcka/creators "Since 16 May 2018") 4.00 USD Patreon
@@ -68,13 +68,13 @@ Updated on 7 Aug 2018.
 - [Tom Smyth](https://www.patreon.com/user/creators?u=10913897 "Since 24 Apr 2018") 30.00 USD Patreon
 - [wireless connect ltd](http://wirelessconnect.eu "24 Apr 2018") 10.00 EUR _"keep up good work Roman"_
 - [Aleksey Popov](https://www.patreon.com/user?u=10910753 "Since 24 Apr 2018") 15.00 USD Patreon
-- [Adam Dymitruk](https://mobile.twitter.com/adymitruk "24 Apr 2018") 83,800 Satoshi
+- [Adam Dymitruk](https://twitter.com/adymitruk "24 Apr 2018") 83,800 Satoshi
 - [Ilmari Vacklin](https://www.patreon.com/user?u=2288738 "Since 23 Apr 2018") 4.00 USD Patreon
 - [Tom Atkinson](https://www.patreon.com/user?u=10778845 "Since 16 Apr 2018") 15.00 USD Patreon
 - [Wesley Moore](https://www.patreon.com/wezm "15 Apr 2018") 15.00 USD Patreon
-- [Mischa Peters](https://mobile.twitter.com/mischapeters "13 Apr 2018") [VPS](https://openbsd.amsterdam)
-- [Evander Sinque](https://mobile.twitter.com/FiLiS "31 Oct 2017") _Run BSD_ Stickers
-- [Mischa Peters](https://mobile.twitter.com/mischapeters "19 Sep 2017") _Run BSD_ T-shirt
+- [Mischa Peters](https://twitter.com/mischapeters "13 Apr 2018") [VPS](https://openbsd.amsterdam)
+- [Evander Sinque](https://twitter.com/FiLiS "31 Oct 2017") _Run BSD_ Stickers
+- [Mischa Peters](https://twitter.com/mischapeters "19 Sep 2017") _Run BSD_ T-shirt
 
 ## People and projects to support
 
