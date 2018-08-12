@@ -41,37 +41,6 @@ usb-c      ok
 sd         ok
 </pre>
 
-## Dell XPS 15
-
-<img src="/hardware/lenovo-thinkpad-x1c5.png" style="width: 200px;">
-
-<pre>
-14" FHD/WQHD, 7th Gen Intel i5/i7, 1.13 kg
-
-tested by  <a href="http://dmesgd.nycbug.org/index.cgi?do=view&id=3695">wezm</a>
-           <a href="https://jcs.org/2017/09/01/thinkpad_x1c">jcs</a>
-
-<b>cam</b>        not tested
-<b>hdmi</b>       not tested
-<b>usb-c</b>      not tested
-<b>eth</b>        n/a
-<b>fpr</b>        no
-<b>headphones</b> no sound
-<b>zzz</b>        had to run netstart after resuming, ok
-<b>wifi</b>       no
-<b>ZZZ</b>        no
-<b>mic</b>        no
-<b>speakers</b>   no
-battery    can't read status
-lcd        backlight at 100%, ok
-
-kbrd       keyboard backlight, mute, vol up/down, ok
-video      ok
-trackpad   ok
-usb        ok
-sd         ok
-</pre>
-
 ## [ZOTAC CI527 Nano](https://www.zotac.com/us/product/mini_pcs/ci527-nano)
 
 <pre>

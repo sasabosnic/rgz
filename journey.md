@@ -69,7 +69,7 @@ _Check [my current setup](/setup.html)._
 - 2012 sed, tr, cut
 - 2008 git
 - 1999 ssh, sshd
-- 1997 telnet, sh, grep
+- 1997 telnet, sh, grep, tail, head
 
 ## Web development
 
@@ -86,46 +86,27 @@ _Check [my current setup](/setup.html)._
 - 2005-2017 PGP, GnuPG
 - 2004 SSL/TLS, public key infrastructure, OpenSSL
 - 2000 RSS
-- 1999 JavaScript (ES2 and ES3)
+- 1998 JavaScript (ES2 and ES3)
 - 1997 HTML, CSS
 - 1993 MS Windows
-
-
-## Visual design for web and print
-
-## Text editors
-
-- 1999 [Vim](/vim.html) &mdash; I learned the basics of Vim in 1999 to tweak configuration files on remote servers. Fifteen years later I have switched to Vim full-time.
-- 2010-2014 Sublime Text
-
 - 2010-2016 Balsamiq Mockups
 - 2012-2015 CoffeeScript
 - 2008-2014 PostgreSQL
-- 2008-2010 Ubuntu on desktop
-- 1994-1998 Print design
-- 1992-1996 BASIC and Pascal
-
-## Languages
-
-- 1988 English
-- native Russian
 
 ## Text editors
 
-I switched to [vi(1)](/vi.html) for writing code, documentation,
-editing configuration files, and taking notes. It works great for
-me. If it's not your cup of tea, that's okay. There are many other
-text editors today.
+[vi](vi.html) is my only text editor these days.
 
-I used to use other editors as well:
-[Norton Commander](https://en.m.wikipedia.org/wiki/Norton_Commander),
-[Microsoft Notepad](https://en.m.wikipedia.org/wiki/Microsoft_Notepad),
-[Far Manager](https://en.m.wikipedia.org/wiki/Far_Manager),
-[GNU nano](https://en.m.wikipedia.org/wiki/GNU_nano),
-[gedit](https://en.m.wikipedia.org/wiki/Gedit),
-[BBEdit](https://en.m.wikipedia.org/wiki/BBEdit),
-[TextEdit](https://en.m.wikipedia.org/wiki/TextEdit),
-and [Sublime Text](https://en.m.wikipedia.org/wiki/Sublime_Text).
+- 2014-2018 [Vim](vim.html)
+- 2010-2017 [TextEdit](https://en.m.wikipedia.org/wiki/TextEdit)
+- 2010-2014 [Sublime Text](https://en.m.wikipedia.org/wiki/Sublime_Text)
+- 2010-2010 [BBEdit](https://en.m.wikipedia.org/wiki/BBEdit)
+- 2006-2010 [gedit](https://en.m.wikipedia.org/wiki/Gedit)
+- 2006-2006 [GNU nano](https://en.m.wikipedia.org/wiki/GNU_nano)
+- 2000-2000 [Microsoft Notepad](https://en.m.wikipedia.org/wiki/Microsoft_Notepad)
+- 1999 [vi](vi.html)
+- 1996-2000 [Far Manager](https://en.m.wikipedia.org/wiki/Far_Manager)
+- 1991-1996 [Norton Commander](https://en.m.wikipedia.org/wiki/Norton_Commander)
 
 I tried
 [Atom](https://en.m.wikipedia.org/wiki/Atom_(text_editor)),
@@ -134,13 +115,16 @@ I tried
 [VSCode](https://en.m.wikipedia.org/wiki/Visual_Studio_Code),
 [Xcode](https://en.m.wikipedia.org/wiki/Xcode),
 [WebStorm](https://en.m.wikipedia.org/wiki/JetBrains#WebStorm),
-[TextMate](https://en.m.wikipedia.org/wiki/TextMate),
-[Light Table](https://en.m.wikipedia.org/wiki/Light_Table_(software)),
-and few others, but not longer than for few days. Maybe someday I
-should try Emacs again.
+[TextMate](https://en.m.wikipedia.org/wiki/TextMate), [Light
+Table](https://en.m.wikipedia.org/wiki/Light_Table_(software)),
+and few others, but not longer than for few days. 
 
-I used to use
-[Microsoft Word](https://en.m.wikipedia.org/wiki/Microsoft_Word),
-[Pages.app](https://en.m.wikipedia.org/wiki/Pages_(word_processor)), and
-[Google Docs](https://en.m.wikipedia.org/wiki/Google_Docs,_Sheets,_and_Slides) a lot,
-now I prefer [plain text](/plaintext.html).
+## Languages
+
+- 2016-2018 Haskell 
+- 2015-2018 Elm
+- 1998 JavaScript
+- 1997 sh, HTML, CSS
+- 1992-1996 BASIC and Pascal
+- 1988 English
+- native Russian
