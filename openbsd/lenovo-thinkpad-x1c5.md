@@ -1,3 +1,5 @@
+_Tested on [OpenBSD](/openbsd/) 6.3_
+
 # Prepare ThinkPad X1&nbsp;Carbon&nbsp;Gen&nbsp;5 for OpenBSD
 
 Turn ThinkPad on and press **F1** to enter _Setup_.
