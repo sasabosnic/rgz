@@ -33,3 +33,5 @@ $ <b>curl https://www.romanzolotarev.com/specimen.txt</b>
  &#1071;&#1063;&#1057;&#1052;&#1048;&#1061; &#1066;&#1047;&#1068;&#1041;&#1070;&#1069
 $
 </pre>
+
+...or try [Markus Kuhn's verison](specimen-utf8.txt).
