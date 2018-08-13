@@ -6,7 +6,7 @@ technical writers_
 # Text-based UI
 
 No configuration required.<br>
-No X11 required, but [nice to have](gui.html).<br>
+No X11 required, but [nice to have](/gui/).<br>
 Most of programs are from [OpenBSD] base.
 
 Use case      | Programs
