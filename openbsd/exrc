@@ -8,4 +8,4 @@ map gp :r!xclip -o -s clipboard
 map gs {!}sort
 map gt mm:%s/[[:space:]]\{1,\}$//g`m
 set leftright
-set cedit=\	
+set cedit=\

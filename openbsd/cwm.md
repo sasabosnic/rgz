@@ -22,4 +22,4 @@ windows open. On the left side: [tmux](/tmux.html) in
 [xterm(1)](http://man.openbsd.org/xterm.1). On the right side:
 Firefox.
 
-[![cwm](/cwm.jpeg)](/cwm.png)
+[![desktop](desktop.jpeg)](desktop.png)

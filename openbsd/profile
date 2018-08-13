@@ -30,11 +30,11 @@ bsd() { start_tmux 'bsdjobs' "$HOME/src/bsdjobs" 'vi index.md'; }
 s() { ssg watch --clean||return; }
 sync_logs() { [ -n "$1" ] && { rsync -azvPc "$1:/var/www/logs/*" "$HOME/prv/logs/$1/"; }; }
 
-png() { optipng -preserve -keep -strip all -o7 "$1"; }
-jpeg() { cp "$1" "$1.bak" && jpegoptim --strip-all --preserve --preserve-perms --verbose -m80 "$1"; }
-fit() { cp "$1" "$1.original" && convert -resize 1200 "$1.original" "$1"; }
-fit50() { cp "$1" "$1.original" && convert -resize 50 "$1.original" "$1"; }
-fit120() { cp "$1" "$1.original" && convert -resize 120 "$1.original" "$1"; }
+png() { optipng -preserve -strip all -o7 "$1"; }
+jpeg() { jpegoptim --strip-all --preserve --preserve-perms --verbose -m80 "$1"; }
+fit() { convert -resize 1200 "$1" "$1"; }
+fit50() { convert -resize 50 "$1" "$1"; }
+fit120() { convert -resize 120 "$1" "$1"; }
 
 alias cp='cp -i'
 alias l='ls -aF'

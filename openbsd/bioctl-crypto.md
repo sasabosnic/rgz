@@ -52,6 +52,34 @@ softraid0: CRYPTO volume attached as sd4
 #
 </pre>
 
+## Check file system consistency
+
+A drive was accidentally disconnected (before you could unmount it properly).
+That happens. Run [fsck(8)](https://man.openbsd.org/fsck.8):
+
+<pre>
+# <b>bioctl -c C -l sd3a softraid0</b>
+softraid0: sd4 was not shutdown properly
+Passphrase:
+softraid0: sd4 was not shutdown properly
+softraid0: CRYPTO volume attached as sd4
+# <b>fsck /dev/sd4i</b>
+** /dev/rsd4i
+** Last Mounted on /mnt/sd4i
+** Phase 1 - Check Blocks and Sizes
+** Phase 2 - Check Pathnames
+** Phase 3 - Check Connectivity
+** Phase 4 - Check Reference Counts
+** Phase 5 - Check Cyl groups
+38996 files, 58177423 used, 62950830 free
+(10766 frags, 7867508 blocks, 0.0% fragmentation)
+
+MARK FILE SYSTEM CLEAN? [Fyn?] <b>y</b>
+
+***** FILE SYSTEM WAS MODIFIED *****
+#
+</pre>
+
 ## Change the passphrase
 
 <pre>

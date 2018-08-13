@@ -22,7 +22,7 @@ _[Why OpenBSD?](why.html) Simple and secure._
 - [Use X11 clipboard with xclip(1)](/xclip.html)
 - [Set default programs with xdg-mime(1)](/xdg-mime.html)
 
-[![cwm](/cwm.jpeg)](/cwm.png)
+[![desktop](desktop.jpeg)](desktop.png)
 
 Now I run [-stable](https://www.openbsd.org/stable.html) on [my
 desktop](/setup.html) and servers. Servers are supposed to be
