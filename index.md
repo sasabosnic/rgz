@@ -20,7 +20,7 @@ Thank you for
 # How to...
 
 - [Prepare ThinkPad X1&nbsp;Carbon&nbsp;Gen&nbsp;5 for OpenBSD](/openbsd/lenovo-thinkpad-x1c5.html "13 Aug 2018")
-- [Encrypt disk with bioctl(8) and CRYPTO](bioctl-crypto.html "12 Aug 2018")
+- [Encrypt disk with bioctl(8) and CRYPTO](/openbsd/bioctl-crypto.html "12 Aug 2018")
 - [deploy VM on OpenBSD.Amsterdam](/openbsd.amsterdam.html "1 Jul 2018")
 - [publish Git repositories with stagit(1) on OpenBSD](/stagit.html "7 Jun 2018")
 - [host Git repositories on OpenBSD](/git.html "7 Jun 2018")
