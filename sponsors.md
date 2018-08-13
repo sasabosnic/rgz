@@ -1,3 +1,5 @@
+_Thank you for your [kind words](words.html) and support!_
+
 # My dear sponsor,
 
 In 2017 I decided to document everything I learn as I go and one day [I

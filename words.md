@@ -1,6 +1,12 @@
-_Thank you for your likes and tweets!_
+_Thank you for your kind words and [support](sponsors.html)!_
 
 # People are saying...
+
+> "...@romanzolotarev has some good articles too and is always willing
+to help. Contrary to popular belief the #OpenBSD community is pretty
+damn friendly and always willing to help."<br>&mdash;
+[Ross Timson](https://twitter.com/rosstimson/status/1015692436864208899 "7 Jul 2018")
+(@rosstimson)
 
 > "...Roman's tutorials on his page are awesome. Become a patron and
 support his effort"<br>&mdash;

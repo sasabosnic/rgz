@@ -1,3 +1,8 @@
+> "the acme client docs you wrote helped to set this up in no time.
+Thanks!"<br>&mdash;
+[Tom Van Looy](https://twitter.com/tvlooy/status/1014649340739104768 "5 Jul 2018")
+(@tvlooy)
+
 > "...thanks for article itself this can help many people to give
 #OpenBSD a chance."<br>&mdash;
 [Ve Telko](https://twitter.com/vetelko/status/985095582174900224 "14 Apr 2018")
