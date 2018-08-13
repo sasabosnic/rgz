@@ -1,3 +1,9 @@
+> "SSG by @romanzolotarev is an impressively small static site
+generator with a tiny installed footprint. Really good for when you
+just need the core features."<br>&mdash;
+[Simon Dann](https://twitter.com/carbontwelve/status/1028936035143757825 "13 Aug 2018")
+(@carbontwelve)
+
 > "ssg by @romanzolotarev seems to be working a treat and great
 option for those of us who prefer static sites ..."<br>&mdash;
 [Dylan](https://twitter.com/GrimSysadmin/status/1010736946899894278 "24 Jun 2018")

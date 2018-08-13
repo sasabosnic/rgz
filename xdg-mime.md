@@ -1,3 +1,7 @@
+> "I wish I've read this earlier. ...thanks @romanzolotarev"<br>&mdash;
+[antranigv](https://mobile.twitter.com/antranigv/status/1028217849154809856 "11 Aug 2018")
+(@antranigv)
+
 _Tested on [OpenBSD 6.3](/openbsd/) with mupdf-1.11p2, firefox-59.0.2,
 and libreoffice-6.0.2.1v0_
 
