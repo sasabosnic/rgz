@@ -1,7 +1,6 @@
-You can use bioctl(8) for [full-disk encryption of OpenBSD
-installation](/openbsd/fde.html).
+_Tested on [OpenBSD](/openbsd/) 6.3_
 
-# Encrypt disk with _bioctl_ and CRYPTO
+# Encrypt disk with bioctl(8) and CRYPTO
 
 [bioctl(8)][b] is a RAID management interface with CRYPTO discipline
 for disk encryption.

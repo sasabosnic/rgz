@@ -19,6 +19,7 @@ Thank you for
 
 # How to...
 
+- [Encrypt disk with bioctl(8) and CRYPTO](bioctl-crypto.html "12 Aug 2018")
 - [deploy VM on OpenBSD.Amsterdam](/openbsd.amsterdam.html "1 Jul 2018")
 - [publish Git repositories with stagit(1) on OpenBSD](/stagit.html "7 Jun 2018")
 - [host Git repositories on OpenBSD](/git.html "7 Jun 2018")
