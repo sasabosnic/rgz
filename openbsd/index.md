@@ -11,6 +11,9 @@ _[Why OpenBSD?](why.html) Simple and secure._
 - [Host Git repositories](/git.html)
 - [Publish Git repositories with stagit(1)](/stagit.html)
 
+_I heard [ARP Networks](https://arpnetworks.com/vps) provides OpenBSD
+VPS for $10/month._
+
 ## ...on desktops
 
 - [Try OpenBSD in VirtualBox](/virtualbox/openbsd.html)
