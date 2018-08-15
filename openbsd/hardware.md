@@ -1,5 +1,5 @@
-> "Knowing which Laptop to buy. Yet @romanzolotarev's reports on
-the X1C5 are making me seriously consider diving right in."<br>&mdash;
+> "...@romanzolotarev's reports on the X1C5 are making me seriously
+consider diving right in."<br>&mdash;
 [surryhill](https://twitter.com/surryhill/status/1025788422227718145 "4 Aug 2018")
 (@surryhill)
 

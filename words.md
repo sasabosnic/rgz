@@ -13,12 +13,12 @@ with the exact characters you see in my logo now. It was a good
 investment for me. I donated almost what I donate to OpenBSD each
 month. Thanks Roman :)"<br>&mdash;
 [V6Shell(Jeff)@BSD](https://bsd.network/@v6shell/100533143813396001 "12 Aug 2018")
-(@v6shell@bsd.network)
+(@v6shell@bsd\.network)
 
 > "btw. nice website. 10KB, loads fast, elegant CSS, no JS
 <3"<br>&mdash;
 [Wolf480pl](https://niu.moe/@Wolf480pl/100519536664966948 "11 Aug 2018")
-(@Wolf480pl@niu.moe)
+(@Wolf480pl@niu\.moe)
 
 > "You're the [@AllanJude](https://twitterc.com/AllanJude) of OpenBSD
 :)"<br>&mdash;
@@ -52,7 +52,7 @@ sane and secure.  Thank you @mischa for @OpenBSDAms.  Thank you
 @romanzolotarev for writing proper tutorials, which I can sent to
 colleagues..."<br>&mdash;
 [h3artbl33d](https://bsd.network/@h3artbl33d/100445426269783287)
-(@h3artbl33d@bsd.network)
+(@h3artbl33d@bsd\.network)
 
 > "...@romanzolotarev has some good articles too and is always willing
 to help. Contrary to popular belief the #OpenBSD community is pretty
