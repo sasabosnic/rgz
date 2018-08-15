@@ -3,6 +3,8 @@ system administrators,
 software developers, and
 technical writers_
 
+_Learned text-based UI? Try [graphical UI for OpenBSD](/gui/)._
+
 # Text-based UI
 
 No configuration required.<br>

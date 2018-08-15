@@ -1,0 +1,20 @@
+#!/bin/sh
+
+if [ -z "$1" ]
+then
+	date="$(date +%Y%m%d)"
+else
+	date="$1"
+fi
+
+log_dir="$HOME/log/speedtest"
+
+log="$log_dir/$date.log"
+csv="$log_dir/$date.csv"
+svg="$log_dir/$date.svg"
+index="$log_dir/index.html"
+
+jq -c '.output.data.speeds.download'<$log>$csv
+
+gnuplot -p -e "set terminal svg;plot '$csv' with steps">"$svg"
+echo '<meta http-equiv="refresh" content="60"><h1>'"$(date)"'</h1><img src="'"$date"'.svg">'>"$index"

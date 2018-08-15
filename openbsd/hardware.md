@@ -1,3 +1,8 @@
+> "Knowing which Laptop to buy. Yet @romanzolotarev's reports on
+the X1C5 are making me seriously consider diving right in."<br>&mdash;
+[surryhill](https://twitter.com/surryhill/status/1025788422227718145 "4 Aug 2018")
+(@surryhill)
+
 If your computer **works with OpenBSD out-of-the-box**,<br>
 submit your dmesg to
 [_NYC_*BUG](http://dmesgd.nycbug.org/index.cgi?do=submit) and
@@ -16,8 +21,8 @@ _Tested on various [OpenBSD](/openbsd/) releases. Check [my current setup](/setu
 <pre>
 14" FHD/WQHD, 7th Gen Intel i5/i7, 1.13 kg
 
-tested by  <a href="https://twitter.com/romanzolotarev/status/1019920973653569536">romanzolotarev</a>
-           <a href="https://jcs.org/2017/09/01/thinkpad_x1c">jcs</a>
+tested by  <a href="https://twitter.com/romanzolotarev/status/1019920973653569536">romanzolotarev</a> on 6.3-stable
+           <a href="https://jcs.org/2017/09/01/thinkpad_x1c">jcs</a> on 6.2-current (2017-12-14)
 
 <b><s>fpr</s></b>        <a href="https://bsd.network/@kristapsdz/100391368292782019">patch for libfprint required</a>
 <b>cam</b>        not tested
@@ -48,7 +53,7 @@ sd         ok
 
 7th Gen Intel i3, passive cooling
 
-tested by  <a href="https://twitter.com/romanzolotarev/status/909807608252551169">romanzolotarev</a>
+tested by  <a href="https://twitter.com/romanzolotarev/status/909807608252551169">romanzolotarev</a> on 6.3-stable
 
 <b><s>zzz</s></b>        doesn't resume from suspend
 <b>video</b>      S3 resume doesn't work, the rest is ok

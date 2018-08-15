@@ -4,6 +4,10 @@ just need the core features."<br>&mdash;
 [Simon Dann](https://twitter.com/carbontwelve/status/1028936035143757825 "13 Aug 2018")
 (@carbontwelve)
 
+> "Thanks for writing ssg ;)"<br>&mdash;
+[nixfloyd](https://twitter.com/nixfloyd/status/1025279453642014720 "3 Aug 2018")
+(@nixfloyd)
+
 > "ssg by @romanzolotarev seems to be working a treat and great
 option for those of us who prefer static sites ..."<br>&mdash;
 [Dylan](https://twitter.com/GrimSysadmin/status/1010736946899894278 "24 Jun 2018")

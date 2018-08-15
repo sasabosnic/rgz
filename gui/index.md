@@ -1,4 +1,4 @@
-Graphic UI for OpenBSD users.
+_Graphic UI for OpenBSD users. Start with [text-based UI](/tui/)_
 
 # GUI
 

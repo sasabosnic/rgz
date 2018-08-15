@@ -2,6 +2,28 @@ _Thank you for your kind words and [support](sponsors.html)!_
 
 # People are saying...
 
+> "I've used #OpenBSD on email servers and firewalls since 3.0
+(2001) and briefly as my family home computer ~3.6 (2004). But kudos
+to @romanzolotarev whose consistent advocacy and engagement in the
+community has spurred me to move my main work laptop there for the
+first time. Thx!"<br>&mdash;
+[Seth Hanford](https://twitter.com/SethHanford/status/1027491291569909760 "9 Aug 2018")
+(@SethHanford)
+
+> "Really like how much awareness you create for the bsd cause.
+:-)"<br>&mdash;
+[Bas Langernberg](https://twitter.com/BasLangenberg/status/1027258660332994565 "8 Aug 2018")
+(@BasLangenberg)
+
+> "Be the change. Congrats Roman, it takes courage to swim upstream
+instead of drifting along with the current."<br>&mdash;
+[Adam Wo&#x142;k](https://twitter.com/mulander/status/1027150795848990721 "8 Aug 2018")
+(@mulander)
+
+> "Thanks for giving the BSDs more visibility."<br>&mdash;
+[raichoo](https://twitter.com/raichoo/status/1027166529220210688 "8 Aug 2018")
+(@raichoo)
+
 > "...@romanzolotarev has some good articles too and is always willing
 to help. Contrary to popular belief the #OpenBSD community is pretty
 damn friendly and always willing to help."<br>&mdash;

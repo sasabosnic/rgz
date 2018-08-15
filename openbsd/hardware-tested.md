@@ -1,3 +1,5 @@
+_Check [OpenBSD compatible hardware](hardware.html)._
+
 # Hardware tested on OpenBSD
 
 ## Dell XPS 15
@@ -7,7 +9,7 @@
 <pre>
 15", 7th Gen Intel i7
 
-tested by  <a href="http://dmesgd.nycbug.org/index.cgi?do=view&id=3695">wezm</a>
+tested by  <a href="http://dmesgd.nycbug.org/index.cgi?do=view&id=3695">wezm</a> on 6.3-current (2018-04-19)
 
 <b>eth</b>        n/a
 <b>cam</b>        not tested

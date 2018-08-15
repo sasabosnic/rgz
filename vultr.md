@@ -1,9 +1,16 @@
-> "Roman you have inspired me. I'm starting a project this weekend on <a
-href="https://twitter.com/vultr">@vultr</a> with <a
-href="https://twitter.com/hashtag/OpenBSD">#OpenBSD</a> and <a
-href="https://twitter.com/hashtag/Erlang">#Erlang</a>. Will be
-sharing more soon still brainstorming the project. Will post every step as
-I build."<br>
+> "Just launched my first OpenBSD instance on @Vultr! I'm excited
+to *finally* dig into it. I blame @romanzolotarev"<br>&mdash;
+[lambdanerd](https://mobile.twitter.com/lambdanerd/status/1027817634434371584 "20 Aug 2018")
+(@lambdanerd)
+
+> "about to deploy my first #OpenBSD web server on vultr with special
+thanks to @romanzolotarev for the helpful guide"<br>&mdash;
+[The Electron User](https://twitter.com/thebadposts/status/1027644226547240960 "9 Aug 2018")
+(@thebadposts)
+
+> "Roman you have inspired me. I'm starting a project this weekend
+on @vultr with #OpenBSD and #Erlang. Will be sharing more soon still
+brainstorming the project. Will post every step as I build."<br>&mdash;
 [EssentialOS=OpenBSD](https://twitter.com/BrutusUnix/status/987485038630572032 "21 Apr 2018")
 (@BrutusUnix)
 
