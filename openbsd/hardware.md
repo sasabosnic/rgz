@@ -8,7 +8,7 @@ submit your dmesg to
 [_NYC_*BUG](http://dmesgd.nycbug.org/index.cgi?do=submit) and
 [tweet the link at me](https://twitter.com/romanzolotarev).<br>
 Don't forget to send dmesg to
-[developers](https://www.openbsd.org/faq/faq4.html#SendDmesg),<br>
+[developers](https://www.openbsd.org/faq/faq4.html#SendDmesg).<br>
 
 _Tested on various [OpenBSD](/openbsd/) releases. Check [my current setup](/setup.html)_
 

@@ -2,6 +2,24 @@ _Thank you for your kind words and [support](sponsors.html)!_
 
 # People are saying...
 
+> "your tireless efforts for the BSD community are greatly
+appreciated."<br>&mdash;
+[Wesley Moore](https://twitter.com/wezm/status/1029674316252688384 "15 Aug 2018")
+(@wezm)
+
+> "Roman implemented what I asked him to and adjusted my X rgb.txt
+green to a nicer one. I simply sent him the output of 2 echo commands
+with the exact characters you see in my logo now. It was a good
+investment for me. I donated almost what I donate to OpenBSD each
+month. Thanks Roman :)"<br>&mdash;
+[V6Shell(Jeff)@BSD](https://bsd.network/@v6shell/100533143813396001 "12 Aug 2018")
+(@v6shell@bsd.network)
+
+> "btw. nice website. 10KB, loads fast, elegant CSS, no JS
+<3"<br>&mdash;
+[Wolf480pl](https://niu.moe/@Wolf480pl/100519536664966948 "11 Aug 2018")
+(@Wolf480pl@niu.moe)
+
 > "You're the [@AllanJude](https://twitterc.com/AllanJude) of OpenBSD
 :)"<br>&mdash;
 [Farhan Yusufzai](https://mobile.twitter.com/FarhanYusufzai/status/1025475485197914112 "3 Aug 2018")
@@ -28,6 +46,13 @@ instead of drifting along with the current."<br>&mdash;
 > "Thanks for giving the BSDs more visibility."<br>&mdash;
 [raichoo](https://twitter.com/raichoo/status/1027166529220210688 "8 Aug 2018")
 (@raichoo)
+
+> "Thank you to all OpenBSD developers for making every workday
+sane and secure.  Thank you @mischa for @OpenBSDAms.  Thank you
+@romanzolotarev for writing proper tutorials, which I can sent to
+colleagues..."<br>&mdash;
+[h3artbl33d](https://bsd.network/@h3artbl33d/100445426269783287)
+(@h3artbl33d@bsd.network)
 
 > "...@romanzolotarev has some good articles too and is always willing
 to help. Contrary to popular belief the #OpenBSD community is pretty
