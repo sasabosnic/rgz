@@ -2,6 +2,11 @@ _Thank you for your kind words and [support](sponsors.html)!_
 
 # People are saying...
 
+> "You're the [@AllanJude](https://twitterc.com/AllanJude) of OpenBSD
+:)"<br>&mdash;
+[Farhan Yusufzai](https://mobile.twitter.com/FarhanYusufzai/status/1025475485197914112 "3 Aug 2018")
+(@FarhanYusufzai)
+
 > "I've used #OpenBSD on email servers and firewalls since 3.0
 (2001) and briefly as my family home computer ~3.6 (2004). But kudos
 to @romanzolotarev whose consistent advocacy and engagement in the
