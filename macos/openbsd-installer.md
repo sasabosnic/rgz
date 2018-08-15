@@ -25,7 +25,8 @@ Replace `/dev/diskX` with the identifier of the flash drive.
 **All data on `/dev/diskX` will be erased!**
 
 <pre>
-$ <b>sudo dd if=install62.fs of=/dev/diskX bs=1m</b>
+$ <b>sudo diskutil unmount /dev/diskX</b>
+$ <b>sudo dd if=install63.fs of=/dev/diskX bs=1m</b>
 ...
 $
 </pre>
