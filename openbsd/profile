@@ -61,7 +61,7 @@ pass_show() { pass show "$1"; }
 
 mnt() { [ -n "$1" ] && doas mkdir -p "/mnt/$1" && doas mount "/dev/$1" "/mnt/$1" && cd "/mnt/$1"||return; }
 umnt() { [ -n "$1" ] && doas umount "/dev/$1"; }
-pics() {  mnt sd1i && cd DCIM && rsync -avPc --chown=$(whoami) . "$HOME/downloads/pics" && cd "$HOME/downloads/pics" && umnt sd1i; }
+pics() { mnt sd1i && cd DCIM && rsync -avPc --chown=$(whoami) . "$HOME/downloads/pics" && cd "$HOME/downloads/pics" && umnt sd1i; }
 x() { sxiv -tor "${1:-.}" | xargs -r rm; }
 
 aria() { mkdir -p "$HOME/downloads" && (cd "$HOME/downloads" && aria2c "$1"); }
@@ -69,3 +69,4 @@ yt() { mkdir -p "$HOME/downloads" && (cd "$HOME/downloads" && youtube-dl "$1"); 
 yl() { mkdir -p "$HOME/downloads" && (cd "$HOME/downloads" && youtube-dl -f 'bestvideo[height<=144]+bestaudio/best[height<=144]' "$1"); }
 
 p() { PS1='$ '; clear; }
+t() { [ -n "$1" ] && ls "$1" | entr -c "./$@"; }
