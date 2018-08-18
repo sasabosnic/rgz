@@ -59,8 +59,8 @@ It generates a site from HTML and Markdown articles.
 1. then wraps articles with a single HTML template,
 1. copies everything from the temporary directory to `$DOCS/`.
 
-![ssg](/ssg.jpeg)
-_299 LoC in Vim with Terminus 8px. [Enlarge, enhance, zoom!](/ssg.png)_
+[![ssg](ssg.jpeg)](ssg.png)
+_240 LoC. [Enlarge, enhance, zoom!](ssg.png)_
 
 ## Why not Jekyll or "$X"?
 
