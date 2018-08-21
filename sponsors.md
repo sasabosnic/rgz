@@ -56,8 +56,10 @@ Roman
 P.S. Here are all received donations. Please ping me, if yours hasn't
 been listed, or if you want to remove your name from the list.
 
-Updated on 7 Aug 2018.
+Updated on 21 Aug 2018.
 
+- [Ales Tepina](https://twitter.com/alestepi "21 Aug 2018") 10.00 USD
+- [Wesley Mouedine Assaby](https://twitter.com/wesley974 "20 Aug 2018") 5.00 USD Patreon
 - [Jeffrey Allen Neitzel](https://jan.etsh.io/ "24 Jul 2018") 15.00 USD
 - [Dylan Thiedeke](https://www.patreon.com/user/creators?u=2300411 "24 Jun 2018") 1.00 USD
 - [Gabriel Francisco](https://twitter.com/fgbreel "8 Jun 2018") 10.00 EUR _"I love your blog and the content you share about OpenBSD! Keep rocking!"_
