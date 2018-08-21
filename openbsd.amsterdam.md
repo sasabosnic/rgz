@@ -85,7 +85,7 @@ Run `sysctl` to set the time counter then run `ntpd` to set the
 local clock and terminate it by pressing `^C`.
 
 <pre>
-# <b>echo 'kern.timecounter.hardware=tsc' > /etc/sysctl.conf</b>
+# <b>echo 'kern.timecounter.hardware=tsc' >> /etc/sysctl.conf</b>
 # <b>sysctl kern.timecounter.hardware=tsc</b>
 kern.timecounter.hardware: i8254 -> tsc
 # <b>ntpd -sd</b>

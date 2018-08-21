@@ -24,8 +24,10 @@ j()   { start_tmux 'j'   "$HOME/prv/j"       'vi my.journal'; }
 m()   { start_tmux 'm'   "$HOME/pub/music"   'cmus'; }
 n()   { start_tmux 'n'   "$HOME/downloads"   'newsboat'; }
 o()   { start_tmux 'o'   "$HOME/prv/openvpn" 'doas openvpn --config default.ovpn'; }
-www() { start_tmux 'www'     "$HOME/src/www"     'vi index.md'; }
-bsd() { start_tmux 'bsdjobs' "$HOME/src/bsdjobs" 'vi index.md'; }
+
+book() { start_tmux 'book'    "$HOME/prv/books"   'vi index.md'; }
+bsd()  { start_tmux 'bsdjobs' "$HOME/src/bsdjobs" 'vi index.md'; }
+www()  { start_tmux 'www'     "$HOME/src/www"     'vi index.md'; }
 
 s() { ssg watch --clean||return; }
 sync_logs() { [ -n "$1" ] && { rsync -azvPc "$1:/var/www/logs/*" "$HOME/prv/logs/$1/"; }; }
@@ -42,7 +44,7 @@ alias ll='ls -lahF'
 alias mv='mv -i'
 alias rm='rm -i'
 
-alias b="vi \$HOME/.profile && . \$HOME/.profile"
+alias a="vi \$HOME/.profile && . \$HOME/.profile"
 
 # shellcheck disable=SC2086
 update_complete_pass() {
