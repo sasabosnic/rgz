@@ -29,7 +29,16 @@ a partition layout.
 <pre>
 # <b>dd if=/dev/urandom of=/dev/rsd0c bs=1m</b>
 # <b>fdisk -iy -g -b 960 sd0</b>
-# <b>printf 'a a\n\n\nRAID\nw\nq\n'|disklabel -E sd0</b>
+# <b>disklabel -E sd0</b>
+Label editor (enter '?' for help at any prompt)
+> <b>a a</b>
+offset: [0]
+size: [39825135]
+FS type: [4.2BSD] <b>RAID</b>
+> <b>w</b>
+> <b>q</b>
+No label changes.
+#
 </pre>
 
 Generate a strong passphrase.
