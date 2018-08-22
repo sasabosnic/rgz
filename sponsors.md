@@ -56,8 +56,9 @@ Roman
 P.S. Here are all received donations. Please ping me, if yours hasn't
 been listed, or if you want to remove your name from the list.
 
-Updated on 21 Aug 2018.
+Updated on 22 Aug 2018.
 
+- [Joan Catala](https://twitter.com/joancatala "22 Aug 2018") 10.00 USD
 - [Ales Tepina](https://twitter.com/alestepi "21 Aug 2018") 10.00 USD
 - [Wesley Mouedine Assaby](https://twitter.com/wesley974 "20 Aug 2018") 5.00 USD Patreon
 - [Jeffrey Allen Neitzel](https://jan.etsh.io/ "24 Jul 2018") 15.00 USD
