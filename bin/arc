@@ -19,7 +19,7 @@ test -e "$archive" && { >&2 echo "$archive already exists"; exit 3; }
 test -e "$tree" && { >&2 echo "$tree already exists"; exit 3; }
 test -e "$dgst" && { >&2 echo "$dgst already exists"; exit 3; }
 
-printf '%s %s %s ' "$src" "$(du -sk "$src"|cut -f1)" "$archive"
+printf '%s %s %s ' "$src" "$(du -sh "$src"|cut -f1)" "$archive"
 mtree -cK sha256digest -p "$src" | gzip   > "$tree"
 zcat "$tree"                     | sha256 > "$dgst"
 
@@ -33,4 +33,4 @@ pax -wzx cpio -f "$archive" .
 	# -'s,.*/foo/.*,,' \
 	# -'s,.*bar.*,,' \
 
-du -sk "$archive"|cut -f1
+du -sh "$archive"|cut -f1

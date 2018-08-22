@@ -72,3 +72,5 @@ yl() { mkdir -p "$HOME/downloads" && (cd "$HOME/downloads" && youtube-dl -f 'bes
 
 p() { PS1='$ '; clear; }
 t() { [ -n "$1" ] && ls "$1" | entr -c "./$@"; }
+
+alias cabal='env TMPDIR=/usr/local/cabal/build/ cabal'

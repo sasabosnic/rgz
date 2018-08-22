@@ -24,7 +24,7 @@ touch -d2018-01-01T00:00:00 src/a1
 "$program" src archive > log &&
 ok 'backup src archive > log'
 
-log="$temp/src 1042 $temp/archive 2"
+log="$temp/src 1.0M $temp/archive 2.0K"
 eq "$(cat log)" "$log" 'validate log'
 
 dgst=$(cat ./archive.tree.sha256)

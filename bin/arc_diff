@@ -1,0 +1,24 @@
+#!/bin/sh
+#
+# https://www.romanzolotarev.com/bin/arc_diff
+# Copyright 2018 Roman Zolotarev <hi@romanzolotarev.com>
+#
+
+if [ -f "$1" ] && [ -f "$2" ]
+then
+	tree="$1"
+	dgst=$(cat "$2")
+else
+	echo 'usage: arc_diff <tree> <tree_sha256>'
+	exit 1
+fi
+
+if [ "$(gunzip<"$tree"|sha256)" != "$dgst" ]
+then
+	echo 'invalid digest'
+	exit 2
+fi
+
+gunzip < "$tree" |
+sed 's/time=\([0-9]*\)\.[0-9]*/time=\1.0/' |
+mtree

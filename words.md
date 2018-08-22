@@ -129,6 +129,10 @@ on @vultr with #OpenBSD and #Erlang..."<br>&mdash;
 [BrutusUnix](https://twitter.com/BrutusUnix/status/987485038630572032 "21 Apr 2018")
 (@BrutusUnix)
 
+> "@romanzolotarev motivated me to spend some more time in OpenBSD"<br>&mdash;
+[Wesley Moore](https://twitter.com/wezm/status/987251788821684224 "20 Apr 2018")
+(@wezm)
+
 > "I enjoyed reading your posts. Great content. There's a few things
 I'm going to research now. Thanks!"<br>&mdash;
 [z2h](https://twitter.com/_1gbps/status/987207291576332288 "20 Apr 2018")
