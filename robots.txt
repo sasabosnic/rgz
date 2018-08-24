@@ -1,2 +1,6 @@
-User-agent: *
-Sitemap: /sitemap.xml
+user-agent: *
+sitemap: /sitemap.xml
+disallow: /cv
+disallow: /refs
+disallow: /src
+disallow: /tech

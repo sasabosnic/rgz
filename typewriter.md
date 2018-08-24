@@ -1,7 +1,7 @@
-# Mechanical typewriter Ukrain
+# Mechanical typewriter Ukraina
 
 
-![Typewriter](typewriter-ukrain.jpeg)
+![Typewriter](typewriter.jpeg)
 
 <pre>
 Cyrillic type, incl. lowercase
@@ -9,13 +9,13 @@ Fixed-width characters
 &#1081;&#1094;&#1091;&#1082;&#1077;&#1085; layout
 Tabulation
 Black dried ink tape
-Made in Ufa, Russia
+Made in Ufa, USSR
 </pre>
 
 Print sample made with a _similar_ typewriter:
 
 <img
-  class="small"
+  style="width: 200px;"
   src="typewriter-specimen.jpeg"
   title="&#1081;&#1094;&#1091;&#1082;&#1077;&#1085;"><br>
 

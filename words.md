@@ -2,6 +2,17 @@ _Thank you for your kind words and [support](sponsors.html)!_
 
 # People are saying...
 
+> "Finally found a good deal on a thinkpad and got a T430. Installing
+OpenBSD. This is your fault @romanzolotarev! &#x1F609;"<br>&mdash;
+[Carlos Fenollosa](https://twitter.com/cfenollosa/status/1033280550663008256 "25 Aug 2018")
+(@cfenollosa)
+
+> "I'd like to take a moment to thank @romanzolotarev for his BSD
+advocacy efforts. You're doing amazing work and it's fun to read
+all these stories."<br>&mdash;
+[Shawn Webb](https://twitter.com/lattera/status/1033030028773093376 "24 Aug 2018")
+(@lattera)
+
 > "your tireless efforts for the BSD community are greatly
 appreciated."<br>&mdash;
 [Wesley Moore](https://twitter.com/wezm/status/1029674316252688384 "15 Aug 2018")

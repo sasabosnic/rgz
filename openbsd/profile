@@ -25,7 +25,7 @@ m()   { start_tmux 'm'   "$HOME/pub/music"   'cmus'; }
 n()   { start_tmux 'n'   "$HOME/downloads"   'newsboat'; }
 o()   { start_tmux 'o'   "$HOME/prv/openvpn" 'doas openvpn --config default.ovpn'; }
 
-book() { start_tmux 'book'    "$HOME/prv/books"   'vi index.md'; }
+book() { start_tmux 'book'    "$HOME/prv/book"   'vi index.md'; }
 bsd()  { start_tmux 'bsdjobs' "$HOME/src/bsdjobs" 'vi index.md'; }
 www()  { start_tmux 'www'     "$HOME/src/www"     'vi index.md'; }
 
@@ -34,9 +34,9 @@ sync_logs() { [ -n "$1" ] && { rsync -azvPc "$1:/var/www/logs/*" "$HOME/prv/logs
 
 png() { optipng -preserve -strip all -o7 "$1"; }
 jpeg() { jpegoptim --strip-all --preserve --preserve-perms --verbose -m80 "$1"; }
-fit() { convert -resize 1200 "$1" "$1"; }
-fit50() { convert -resize 50 "$1" "$1"; }
-fit120() { convert -resize 120 "$1" "$1"; }
+fit() { convert -resize 1200 "$1" "$1"; jpeg "$1"; }
+fit50() { convert -resize 50 "$1" "$1"; jpeg "$1"; }
+fit120() { convert -resize 120 "$1" "$1"; jpeg "$1"; }
 
 alias cp='cp -i'
 alias l='ls -aF'

@@ -1,7 +1,6 @@
-_This is part of [my setup](/setup.html)_
+_This is a part of [my setup](/setup.html)_
 
 # Kensington Orbit Trackball
-
 
 First, I use [my keyboard](/ergodox.html) a lot, rarely touch any
 pointing devices, just to select text or make a screenshot. Okay,

@@ -1,4 +1,4 @@
-_This is part of [my setup](/setup.html)_
+_This is a part of [my setup](/setup.html)_
 
 # Asus VZ249HE
 

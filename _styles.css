@@ -2,16 +2,18 @@ body {
   margin: 0 auto;
   max-width: 800px;
   padding: 10px;
-  font-family: Noto Serif, serif;
-}
-
-body,
-p code {
+  font-family: "Noto Serif", serif;
   font-size: 22px;
 }
 
+hr,
+h1,
 h2 {
-  margin-top: 40px;
+  margin-top: 60px;
+}
+
+hr {
+  border: 0;
 }
 
 li {
@@ -19,7 +21,7 @@ li {
 }
 
 pre {
-  font-size: 18px;
+  font-size: 16px;
   overflow-x: auto;
 }
 
@@ -33,6 +35,12 @@ table {
   width: 100%;
 }
 
+.avatar {
+  width: 60px;
+  heigth: 60px;
+  border-radius: 60px;
+}
+
 .button {
   -webkit-appearance: none;
   background-color: #ffc439;
@@ -44,8 +52,4 @@ table {
   display: inline-block;
   text-align: center;
   text-decoration: none;
-}
-
-.small {
-  width: 200px;
 }

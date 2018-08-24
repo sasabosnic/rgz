@@ -1,12 +1,16 @@
-<img src="/avatar120.jpeg"
-  style="border: 0; width: 60px; height: 60px; border-radius: 60px;"
-  width="60" height="60" alt="Roman's avatar"
-  title="Go to the home page">
+<a href="https://www.romanzolotarev.com/"
+  class="h-card"><img src="avatar120.jpeg" class="avatar"></a>
 
-Hi, my name is **Roman**. I run a [job board](https://www.bsdjobs.com/).
-I'm here to help you with [OpenBSD](/openbsd/). I'm a fan of [shell
-scripts](/bin/), [vi](/vi.html), [ThinkPad](/thinkpad/), and
-[ErgoDox](/ergodox.html).
+<p class="p-note">
+Hi, my name is <b class="p-name">Roman</b>.
+I run a <a href="https://www.bsdjobs.com/">job board</a>.
+I'm here to help you with <a href="/openbsd/">OpenBSD</a>.
+I'm a fan of
+<a href="/bin/">shell scripts</a>,
+<a href="/vi.html">vi</a>,
+<a href="/thinkpad/">ThinkPad</a>, and
+<a href="/ergodox.html">ErgoDox</a>.
+</p>
 
 By the way, here is [my setup](/setup.html).
 
