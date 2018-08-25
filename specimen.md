@@ -5,8 +5,8 @@
 # Specimen
 
 What is your favorite font for your terminal or web browser? Make
-a [screenshot](/bin/screenshot) and [tweet at
-me](https://twitter.com/romanzolotarev).
+a [screenshot](/bin/screenshot) and [toot at
+me](https://bsd.network/@romanzolotarev).
 
 <pre>
 $ <b>curl https://www.romanzolotarev.com/specimen.txt</b>

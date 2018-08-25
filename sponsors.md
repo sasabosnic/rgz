@@ -40,7 +40,8 @@ registration](https://iwantmyname.com/) fees for this website.
 To keep this website alive:
 
 - Read and share these web pages
-- Like and retweet my tweets
+- Like and retweet [my tweets](https://twitter.com/romanzolotarev)
+- [Boost my toots](https://bsd.network/@romanzolotarev)
 - Try my how-to guides, review, run and my scripts
 - Send me some feedback via DMs on Twitter and/or email
 - **[Become my patron on Patreon](/patreon.html)**
