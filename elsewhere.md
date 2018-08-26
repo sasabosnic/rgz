@@ -5,13 +5,13 @@ _I run two websites: this one and [bsdjobs.com](https://www.bsdjobs.com/)._
 _romanzolotarev_ on
 [**Patreon**](https://patreon.com/romanzolotarev),
 [**PayPal**](https://www.paypal.me/romanzolotarev),
-[**Twitter**](https://twitter.com/romanzolotarev),
 [**bsd.network**](https://bsd.network/@romanzolotarev),
 [Freenode.net](https://freenode.net/),
 [GitHub](https://github.com/romanzolotarev),
 [Google+](https://plus.google.com/+romanzolotarev),
 [Gumroad](https://gumroad.com/romanzolotarev),
 [Lobsters](https://lobste.rs/u/romanzolotarev),
+[Twitter](https://twitter.com/romanzolotarev),
 [YouTube](https://youtube.com/romanzolotarev),
 and...
 
