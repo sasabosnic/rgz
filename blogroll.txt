@@ -1,5 +1,6 @@
 https://www.romanzolotarev.com/rss.xml
 
+http://bitcannon.net/index.xml
 http://blather.michaelwlucas.com/feed http://blog.tintagel.pl/feed.xml
 http://bsdly.blogspot.com/feeds/posts/default
 http://matt.might.net/articles/feed.rss http://n-gate.com/index.rss
@@ -12,6 +13,7 @@ http://www.feyrer.de/NetBSD/bx/blosxom.cgi/index.rss
 http://www.joelonsoftware.com/rss.xml
 http://www.magicreadalong.com/episode?format=rss
 http://www.tedunangst.com/flak/rss
+http://www.wezm.net/feed/
 https://blog.iandreev.com/?feed=rss2&cat=3 https://bsdmag.org/feed/
 https://dataswamp.org/~solene/rss.xml
 https://feeds.feedburner.com/WaitingForTheJobsToFinish
