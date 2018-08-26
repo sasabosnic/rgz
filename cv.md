@@ -8,7 +8,7 @@
 
            --------independent-web . . . . . . . . . .
                        ------b2c
-                         ad-tech
+                         adtech
                    -b2b
 </pre>
 

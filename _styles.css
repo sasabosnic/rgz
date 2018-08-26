@@ -4,7 +4,9 @@ body {
   padding: 10px;
 }
 
-body, input, button {
+body,
+input,
+button {
   font-family: "Noto Serif", serif;
   font-size: 22px;
 }

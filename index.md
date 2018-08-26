@@ -43,7 +43,7 @@ Subscribe to [RSS](https://www.romanzolotarev.com/rss.xml) or find me [elsewhere
 - [edit text with vi(1)](/vi.html "12 May 2018")
 - [configure newsboat(1) to read RSS feeds in&nbsp;terminal](/newsboat.html "6 May 2018")
 - [set default programs with xdg-mime(1)](/xdg-mime.html "1 May 2018")
-- [customize xenodm(8) login screen](/openbsd/xenodm.html "1 May 2018")
+- [customize xenodm(1) login screen](/openbsd/xenodm.html "1 May 2018")
 - [enable HTTPS with acme-client(1) and Let's Encrypt on OpenBSD](/openbsd/acme-client.html "13 Apr 2018")
 - [configure httpd(8) on OpenBSD](/openbsd/httpd.html "12 Apr 2018")
 - [deploy OpenBSD VPS on Vultr](/vultr.html "11 Apr 2018")

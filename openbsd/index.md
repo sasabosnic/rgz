@@ -19,7 +19,7 @@ VPS for $10/month._
 - [Try OpenBSD in VirtualBox](/virtualbox/openbsd.html)
 - [Pick hardware](hardware.html)
 - **[Install OpenBSD](install.html)**
-- [Customize xenodm(8) login screen](xenodm.html)
+- [Customize xenodm(1) login screen](xenodm.html)
 - [Configure login.conf(5) and sshd(8) for YubiKey](yubikey.html)
 - [Manage terminals with tmux(1)](/tmux.html)
 - [Use X11 clipboard with xclip(1)](/xclip.html)

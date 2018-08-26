@@ -1,10 +1,10 @@
 _Tested on [OpenBSD](/openbsd/) 6.3_
 
-# Customize xenodm(8) login screen
+# Customize xenodm(1) login screen
 
 ![login screen](xenodm.png)
 
-Enable [xenodm(8)](https://man.openbsd.org/xenodm.8):
+Enable [xenodm(1)](https://man.openbsd.org/xenodm.1):
 
 <pre>
 # <b>rcctl enable xenodm</b>

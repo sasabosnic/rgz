@@ -1,5 +1,4 @@
 # Twitter
 
-[My Twitter account](https://twitter.com/romanzolotarev) has been locked for unknown reason. 
-
-Please [follow me on Mastodon](https://bsd.network/@romanzolotarev) instead.
+Follow me on [Twitter](https://twitter.com/romanzolotarev)...
+and don't forget to follow on [Mastodon](https://bsd.network/@romanzolotarev). 
