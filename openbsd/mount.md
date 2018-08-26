@@ -10,7 +10,7 @@ Plug in a USB drive and check system messages:
 
 <pre>
 # <b>dmesg</b>
-sd1 at scsibus2 targ 1 lun 0: <Vendor, Model, 1.26>
+sd1 at scsibus2 targ 1 lun 0: &lt;Vendor, Model, 1.26&gt;
 SCSI3 0/direct removable serial.12345678901234568789
 sd1: 7633MB, 512 bytes/sector, 15633408 sectors
 #

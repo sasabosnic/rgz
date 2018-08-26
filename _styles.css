@@ -2,6 +2,9 @@ body {
   margin: 0 auto;
   max-width: 800px;
   padding: 10px;
+}
+
+body, input, button {
   font-family: "Noto Serif", serif;
   font-size: 22px;
 }
@@ -40,12 +43,17 @@ table {
   heigth: 60px;
   border-radius: 60px;
 }
-
+.email {
+  -webkit-appearance: none;
+  background-color: #ffffff;
+  border: solid 1px #000000;
+  color: #000000;
+  padding: 15px;
+}
 .button {
   -webkit-appearance: none;
   background-color: #ffc439;
-  border-radius: 30px;
-  border: none;
+  border: solid 1px #ffc439;
   color: #000000;
   font-weight: bold;
   padding: 15px;

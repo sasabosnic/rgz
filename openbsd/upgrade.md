@@ -21,7 +21,7 @@ Plug in USB flash drive:
 
 <pre>
 # <b>dmesg | grep removable | tail -n1</b>
-sd3 at scsibus5 targ 1 lun 0: <Vendor, Model, 1.11>
+sd3 at scsibus5 targ 1 lun 0: &lt;Vendor, Model, 1.11&gt;
 SCSI3 0/direct removable serial.12345678901234567890987654
 </pre>
 
@@ -44,7 +44,7 @@ the encrypted drive.
 # <b>bioctl -c C -l /dev/sd0c softraid0</b>
 passphrase:
 scsibus1 at softraid0: 1 targets
-sd2 at scsibus2 targ 0 lun 0: <OPENBSD, SR RAID 1, 005>
+sd2 at scsibus2 targ 0 lun 0: &lt;OPENBSD, SR RAID 1, 005&gt;
 SCSI2 0/direct fixed
 sd2: 10244MB, 512 bytes/sec, 20980362 sec total
 # <b>exit</b>

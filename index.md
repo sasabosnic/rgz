@@ -21,6 +21,17 @@ Thank you for
 **[your donations](/sponsors.html)** and
 [kind words](/words.html)!
 
+---
+
+**Type-in your email** to get my newsletter:
+
+<form method="post" action="https://tinyletter.com/romanzolotarev">
+<input class="email" name="email" type="email" placeholder="email@example.com">
+<button class="button" type="submit">Subscribe</button>
+</form>
+
+Subscribe to [RSS](https://www.romanzolotarev.com/rss.xml) or find me [elsewhere](elsewhere.html).
+
 # How to...
 
 - [Prepare ThinkPad X1&nbsp;Carbon&nbsp;Gen&nbsp;5 for OpenBSD](/openbsd/lenovo-thinkpad-x1c5.html "13 Aug 2018")
