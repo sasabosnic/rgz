@@ -88,6 +88,7 @@ local clock and terminate it by pressing `^C`.
 # <b>echo 'kern.timecounter.hardware=tsc' >> /etc/sysctl.conf</b>
 # <b>sysctl kern.timecounter.hardware=tsc</b>
 kern.timecounter.hardware: i8254 -> tsc
+# <b>rcctl set ntpd flags -s</b>
 # <b>ntpd -sd</b>
 /var/db/ntpd.drift is empty
 ntp engine ready
