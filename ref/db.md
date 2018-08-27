@@ -1,17 +1,16 @@
+_This is a reference letter. [See more](./)._
+
 # &nbsp;
 
-<img src="db.jpeg" class="avatar">
+<p class="quote">&#8220;Hello, I'm Denis Borovikov, a senior Software
+Engineer at Cinarra Systems.  I&nbsp;met Roman in 2011, when I
+joined his team as a frontend web developer.</p>
 
-Hello, I'm Denis Borovikov, a senior Software Engineer at [Cinarra
-Systems](https://www.cinarra.com/).
-
-I met Roman in 2011, when I joined to his team as a remote software
-developer (frontend). We were working on several long term web
-projects. To name a few, building a media portal for an international
-telecom company, making e-commerce and registry websites, and an
-advertizing platform. Roman was managing the team of a few remote
-software developers, communicating with our clients, developing
-architectures and UI of those web apps.
+We were working on several long term web projects. To name a few,
+building a media portal for an international telecom company, making
+e-commerce and registry websites, and an advertizing platform. Roman
+was managing the team of a few remote software developers, communicating
+with our clients, developing architectures and UI of those web apps.
 
 By the time I joined Roman in Singapore, Roman had been a Senior
 User Interface Architect at Cinarra, where he and his team developed
@@ -36,10 +35,18 @@ focused on efficiency. I value Roman as a mentor, who never stops
 learning and sharing what he learned with everyone he can reach.
 Roman is a conversationalist and a dear friend of mine.
 
-Find me on [Twitter](https://twitter.com/metallerden) or email
-me, if you have any question about Roman and his skills and
-professsional experience.
+Find me on Twitter or email me, if you have any question about Roman
+and his skills and professsional experience.&#8221;
+
+---
+
+<img src="db.jpeg" class="avatar">
 
 **Denis Borovikov**<br>
-<https://twitter.com/metallerden><br>
+_Senior Software Engineer_<br>
 <denis.borovikov@cinarra.com><br>
+[twitter.com/metallerden](https://twitter.com/metallerden)
+
+**Cinarra Systems**<br>
+[cinarra.com](https://www.cinarra.com/)<br>
+Singapore

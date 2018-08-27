@@ -1,14 +1,14 @@
+_This is a reference letter. [See more](./)._
+
 # &nbsp;
 
-<img src="is.jpeg" class="avatar">
-
-Hey! I'm Ivan Starkov, an author of a few open source JavaScript
-libraries, and a software developer at
-[RealAdvisor](https://realadvisor.ch).
+<p class="quote">&#8220;Hey! I'm Ivan Starkov, an author of a few
+open source JavaScript libraries, and a software developer at
+RealAdvisor.</p>
 
 In 2015 I was looking for a job as a JavaScript developer and as
 soon as tweeted about that, Roman replied and invited me to join
-[Cinarra Systems].
+[Cinarra Systems](https://www.cinarra.com).
 
 We started working together on a web application written by Roman
 in CoffeeScript and powered by Meteor. I introduced my JS libraries
@@ -30,10 +30,17 @@ of modern web technologies.  As a developer he advocates and supports
 a good code culture, he sets the bar high, even higher than in any
 other projects I worked with.
 
-Feel free to email me for any questions.
+Feel free to email me for any questions.&#8221;
+
+---
+
+<img src="is.jpeg" class="avatar">
 
 **Ivan Starkov**<br>
-https://github.com/istarkov<br>
+_Software Developer_<br>
+[github.com/istarkov](https://github.com/istarkov)<br>
 istarkov@gmail.com
 
-[Cinarra Systems]: https://www.cinarra.com/
+**RealAdvisor**<br>
+[realadvisor.ch](https://realadvisor.ch)<br>
+Switzerland

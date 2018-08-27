@@ -11,6 +11,9 @@ button {
   font-size: 22px;
 }
 
+h1 {
+  margin-bottom: 60px;
+}
 hr,
 h1,
 h2 {
@@ -45,6 +48,13 @@ table {
   heigth: 60px;
   border-radius: 60px;
 }
+
+.quote {
+  text-indent: -18px;
+  font-size: 40px;
+  line-height: 46px;
+}
+
 .email {
   -webkit-appearance: none;
   background-color: #ffffff;
@@ -52,6 +62,7 @@ table {
   color: #000000;
   padding: 15px;
 }
+
 .button {
   -webkit-appearance: none;
   background-color: #ffc439;

@@ -1,10 +1,10 @@
+_This is a reference letter. [See more](./)._
+
 # &nbsp;
 
-<img src="tda.jpeg" class="avatar">
-
-Hi! I'm Tran Dac Anh (known to others as Fred), a software developer
-working on smallholder farmers solutions at [Singapore Digital Hub
-of Yara](https://www.yara.com/).
+<p class="quote">&#8220;Hi! I'm Tran Dac Anh (known to others as
+Fred), a software developer working on smallholder farmers solutions
+at Singapore Digital Hub of Yara.</p>
 
 In 2017 I joined Cinarra Systems to develop UI for mobile ad
 management and planning platform. Roman was leading the frontend
@@ -42,8 +42,19 @@ philosophy is minimal and clean. Most developers could learn a thing
 or two from this man and all Engineering Managers could really learn
 from him.
 
-Find me on GitHub or email me any time.
+Find me on Twitter, GitHub, or email me any time.&#8221;
+
+
+---
+
+<img src="tda.jpeg" class="avatar">
 
 **Tran Dac Anh**<br>
+_Software Developer_<br>
+[github.com/cheshireCode](https://github.com/cheshireCode)<br>
+[twitter.com/chesireCode](https://twitter.com/chesireCode)<br>
 dac4158@gmail.com<br>
-https://github.com/cheshireCode
+
+**Yara**<br>
+[yara.com](https://www.yara.com/)<br>
+Singapore<br>
