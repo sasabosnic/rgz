@@ -7,7 +7,12 @@ keep saying all these _kind words_.
 For your convinience, recently I started [collecting them on one
 page](/words.html). _I&nbsp;recommend you to do the same._
 
-# My peers say...
+# My dear peers say...
+
+[<img src="mp.jpeg" class="avatar left">
+**Mischa Peters**](mp.html)<br>
+_Founder_<br>
+OpenBSD Amsterdam
 
 [<img src="db.jpeg" class="avatar left">
 **Denis Borovikov**](db.html)<br>

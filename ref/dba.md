@@ -1,10 +1,11 @@
-_This reference letter is a part of my [curriculum vitae](/cv.html). [See&nbsp;more](./)._
+_This reference letter is a part of my [curriculum vitae](/cv.html).
+[See&nbsp;more](./)._
 
 # &nbsp;
 
 <p class="quote">&#8220;Hi! My name is Denis and I'm an aircraft
-pilot in my free time. At my $dayjob I'm a software developer at
-<a href="https://www.adjust.com">adjust</a>, where my team makes
+pilot in my free time. By day I'm a software developer at <a
+href="https://www.adjust.com">adjust</a>, where my team makes
 software for a high-load system. It runs on 400+ bare metal fine
 tuned for extreme performance machines. These days we process around
 10PB monthly.</p>

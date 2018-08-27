@@ -57,6 +57,7 @@ Help BSD developers and system administrators to find a&nbsp;job.
 Support BSD related projects and the community.  Write how-to guides
 for beginners.  Advocate for the free and independent web.
 
+[<img src="ref/mp.jpeg" class="avatar">](ref/mp.html)
 [<img src="ref/rs.jpeg" class="avatar">](ref/rs.html)
 
 ---
