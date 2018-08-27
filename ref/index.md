@@ -9,6 +9,11 @@ page](/words.html). _I&nbsp;recommend you to do the same._
 
 # Reference letters
 
+[<img src="dba.jpeg" class="avatar"><br>
+Denis Baranov](dba.html)<br>
+_Senior Software Developer_<br>
+adjust
+
 [<img src="mt.jpeg" class="avatar"><br>
 Marat Tukhvatullin](mt.html)<br>
 _Software Developer_<br>

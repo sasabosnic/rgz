@@ -3,8 +3,8 @@ _This is a reference letter. [See more](./)._
 # &nbsp;
 
 <p class="quote">&#8220;Hi! My name is Denis and I'm an aircraft
-pilot in my free time. At my $dayjob I'm a Senior Software Developer
-at <a href="https://www.adjust.com">adjust</a>, where my team makes
+pilot in my free time. At my $dayjob I'm a software developer at
+<a href="https://www.adjust.com">adjust</a>, where my team makes
 software for a high-load system. It runs on 400+ bare metal fine
 tuned for extreme performance machines. These days we process around
 10PB monthly.</p>
@@ -32,12 +32,11 @@ You can reach me via email.
 
 <img src="dba.jpeg" class="avatar">
 
-
 **Denis Baranov**<br>
-_Senior Software Engineer_<br>
+_Senior Software Developer_<br>
 dan.baranov@gmail.com<br>
 [github.com/danbaranov](https://github.com/danbaranov)
 
 **adjust**<br>
 [adjust.com](https://www.adjust.com/)<br>
-
+Berlin, Germany
