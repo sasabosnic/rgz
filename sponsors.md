@@ -42,7 +42,7 @@ To keep this website alive:
 - Read and share these web pages
 - Like and retweet [my tweets](https://twitter.com/romanzolotarev)
 - [Boost my toots](https://bsd.network/@romanzolotarev)
-- Try my how-to guides, review, run and my scripts
+- Try my how-to guides, review and run my scripts
 - Send me some feedback via DMs on Twitter and/or email
 - **[Become my patron on Patreon](/patreon.html)**
 - Send satoshis to [`3MZ9d6NTsirYfjx9iJVieT2WCHnzBZckHd`](bitcoin://3MZ9d6NTsirYfjx9iJVieT2WCHnzBZckHd)
