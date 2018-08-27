@@ -57,6 +57,8 @@ Help BSD developers and system administrators to find a&nbsp;job.
 Support BSD related projects and the community.  Write how-to guides
 for beginners.  Advocate for the free and independent web.
 
+[<img src="ref/rs.jpeg" class="avatar">](ref/rs.html)
+
 ---
 
 **[Self-employed] Software Developer**<br>
@@ -66,6 +68,8 @@ _Web developement, Russia, 2016&ndash;present_<br>
 Develop software for the web. Take care of the full stack: frontend
 and backend.  Manage all strategic and operational marketing,
 customer relationship activities, and sales.
+
+[<img src="ref/db.jpeg" class="avatar">](ref/db.html)
 
 ---
 
@@ -77,6 +81,13 @@ Design, develop, and deploy web applications (campagin management
 and reporting for advertising agencies).  Hire and on-board software
 developers. Manage a&nbsp;team of web developers.
 
+[<img src="ref/sn.jpeg" class="avatar">](ref/sn.html)
+[<img src="ref/mt.jpeg" class="avatar">](ref/mt.html)
+[<img src="ref/db.jpeg" class="avatar">](ref/db.html)
+[<img src="ref/rs.jpeg" class="avatar">](ref/rs.html)
+[<img src="ref/tda.jpeg" class="avatar">](ref/tda.html)
+[<img src="ref/is.jpeg" class="avatar">](ref/is.html)
+
 ---
 
 **[Self-employed] Software Developer**<br>
@@ -86,6 +97,9 @@ _Web development, Russia, 2009&ndash;2015_<br>
 Develop software for clients from California, Singapore, Tokyo, and
 Moscow. Focus on frontend development (user interfaces, user
 experience, interaction design).
+
+[<img src="ref/db.jpeg" class="avatar">](ref/db.html)
+[<img src="ref/dba.jpeg" class="avatar">](ref/dba.html)
 
 ---
 
@@ -102,6 +116,8 @@ software developers.
 _System Integrator, Moscow, 2007&ndash;2009_
 
 Build a content delivery network for telecom companies.
+
+[<img src="ref/dba.jpeg" class="avatar">](ref/dba.html)
 
 ---
 

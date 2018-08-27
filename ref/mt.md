@@ -1,4 +1,4 @@
-_This is a reference letter. [See more](./)._
+_This reference letter is a part of my [curriculum vitae](/cv.html). [See&nbsp;more](./)._
 
 # &nbsp;
 

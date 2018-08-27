@@ -49,6 +49,11 @@ table {
   border-radius: 60px;
 }
 
+.left {
+  float: left;
+  margin: 8px 24px 24px 0;
+}
+
 .quote {
   text-indent: -18px;
   font-size: 40px;
