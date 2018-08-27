@@ -2,6 +2,11 @@ _Thank you for your kind words and [support](sponsors.html)!_
 
 # People are saying...
 
+> "Thanks for your inspiring work in promoting #RUNBSD. Your
+inspiration made me rework my website and move it to @OpenBSDAms."<br>&mdash;
+[Bruno Fl&uuml;ckiger](https://bsd.network/@buf/100620687627502708 "27 Aug 2018")
+(@buf)
+
 > "Finally found a good deal on a thinkpad and got a T430. Installing
 OpenBSD. This is your fault @romanzolotarev! &#x1F609;"<br>&mdash;
 [Carlos Fenollosa](https://twitter.com/cfenollosa/status/1033280550663008256 "25 Aug 2018")
