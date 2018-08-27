@@ -97,7 +97,7 @@ line_to_rss_item() {
 	title="$(awk "$fst_h1" "$file")"
 
 	# replace relative URIs with absolute URIs
-	href='s#href="#href="'"$ROOT"'#g'
+	href='s#href="#href="'"$ROOT"'/#g'
 	src='s#src="#src="'"$ROOT"'#g'
 	article=$(sed "$href;$src" "$file")
 
