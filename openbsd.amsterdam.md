@@ -161,7 +161,7 @@ Now you may want [to setup a web server](/openbsd/webserver.html).
 ---
 
 **Thanks** to
-[Mischa Peters](https://twitter.com/mischapeters) for reading drafts fo this,
+[Mischa Peters](https://twitter.com/mischapeters) for reading drafts of this,
 to [Mike Larkin](https://twitter.com/mlarkin2012),
 [Bryan Steele](https://twitter.com/canadianbryan),
 [h3artbl33d](https://twitter.com/h3artbl33d), and

@@ -3,9 +3,10 @@ _This is a reference letter. [See more](./)._
 # &nbsp;
 
 <p class="quote">&#8220;Hello, I'm Marat, a software developer at
-freshcells systems engineeing. I started working with Roman in 2012
-at adtech startup Cinarra Systems, we were very first employees and
-started building and developing the project from scratch.
+<a href="https://www.freshcells.de">freshcells systems engineeing</a>.
+I started working with Roman in 2012 at adtech startup Cinarra
+Systems, we were very first employees and started building and
+developing the project from scratch.
 
 At first, Roman had been UI architect and engineer. He worked
 remotely as a contractor and I was working as full-stack web developer
