@@ -1,6 +1,18 @@
 _This is a part of my [curriculum vitae](/cv.html)._
 
+I'm the modest (and statisticly inaccurate) person, but also I'm
+lucky to work and meet the kindest people in the world, and they
+keep saying all these _kind words_.
+
+For your convinience, recently I started [collecting them on one
+page](/words.html). _I&nbsp;recommend you to do the same._
+
 # Reference letters
+
+[<img src="mt.jpeg" class="avatar"><br>
+Marat Tukhvatullin](mt.html)<br>
+_Software Developer_<br>
+freshcells systems engineering
 
 [<img src="sn.jpeg" class="avatar"><br>
 Sath Nelakonda](sn.html)<br>
