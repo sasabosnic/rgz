@@ -102,6 +102,7 @@ line_to_rss_item() {
 	article=$(sed "$href;$src" "$file")
 
 	printf "%s" "$(cat << EOF
+
 <item>
 <title>$title</title>
 <guid>${ROOT}$url</guid>
@@ -162,10 +163,11 @@ EOF
 			/index.html) title='Home';;
 			*) title="${line#*====}";;
 		esac
-		printf "<tr><td><code>" >> "$SITEMAP_HTML"
-		printf "<a href=\"$url\">${url#/*}</a>" >> "$SITEMAP_HTML"
-		printf "</code></td>" >> "$SITEMAP_HTML"
-		printf "<td>$title</td></tr>\n" >> "$SITEMAP_HTML"
+		{
+		printf '<tr><td><code>'
+		printf '<a href="%s">%s</a>' "$url" "${url#/*}"
+		printf '</code></td><td>%s</td></tr>\n' "$title"
+		} >> "$SITEMAP_HTML"
 		cat >> "$SITEMAP" << EOF
 <url>
 <loc>${ROOT}$url</loc>
