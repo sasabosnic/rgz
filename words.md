@@ -2,6 +2,11 @@ _Thank you for your kind words and [support](sponsors.html)!_
 
 # People are saying...
 
+> "Thanx @romanzolotarev for the great "corporate" identity! Love
+the logo and images."<br>&mdash;
+[OpenBSD Amsterdam](https://twitter.com/OpenBSDAms/status/1006095521004642305 "11 Jun 2018")
+(@OpenBSDAms)
+
 > "Thanks for your inspiring work in promoting #RUNBSD. Your
 inspiration made me rework my website and move it to @OpenBSDAms."<br>&mdash;
 [Bruno Fl&uuml;ckiger](https://bsd.network/@buf/100620687627502708 "27 Aug 2018")

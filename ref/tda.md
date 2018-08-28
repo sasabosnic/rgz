@@ -6,7 +6,7 @@ _This reference letter is a part of my [curriculum vitae](/cv.html). [See&nbsp;m
 Fred), a software developer working on smallholder farmers solutions
 at Singapore Digital Hub of Yara.</p>
 
-In 2017 I joined Cinarra Systems to develop UI for mobile ad
+In 2015 I joined Cinarra Systems to develop UI for mobile ad
 management and planning platform. Roman was leading the frontend
 developers and we have been friends since.
 

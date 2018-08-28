@@ -28,7 +28,9 @@ Advertising.
 <a href="mailto:hi@romanzolotarev.com"
   class="u-email" rel="me">hi@romanzolotarev.com</a><br>
 <a href="https://www.romanzolotarev.com/"
-  class="u-url" rel="me">romanzolotarev.com</a>
+  class="u-url" rel="me">romanzolotarev.com</a><br>
+<a href="https://linkedin.com/in/romanzolotarev"
+  class="u-url" rel="me">linkedin.com/in/romanzolotarev</a>
 </p>
 
 <a href="https://www.romanzolotarev.com/"
@@ -51,7 +53,9 @@ Advertising.
 
 **Founder and Maintainer, [BSDjobs]** &#x1f421;<br>
 _Job board and community, Russia, 2018&ndash;present_<br>
-[bsdjobs.com][BSDjobs]
+[bsdjobs.com][BSDjobs]<br>
+[People who run BSD](https://www.bsdjobs.com/people/)<br>
+[twitter.com/bsdjobscom](https://twitter.com/bsdjobscom)
 
 Help BSD developers and system administrators to find a&nbsp;job.
 Support BSD related projects and the community.  Write how-to guides
@@ -64,13 +68,17 @@ for beginners.  Advocate for the free and independent web.
 
 **[Self-employed] Software Developer**<br>
 _Web developement, Russia, 2016&ndash;present_<br>
-[romanzolotarev.com](/)
+[romanzolotarev.com](/)<br>
+[twitter.com/romanzolotarev](https://twitter.com/romanzolotarev)<br>
+[bsd.network/@romanzolotarev](https://bsd.network/@romanzolotarev)<br>
+[People are saying...](/words.html)
 
-Develop software for the web. Take care of the full stack: frontend
-and backend.  Manage all strategic and operational marketing,
-customer relationship activities, and sales.
+Develop software for the web. Manage all strategic and operational
+marketing, customer relationship activities, and sales.
 
 [<img src="ref/db.jpeg" class="avatar">](ref/db.html)
+[<img src="/openbsd.amsterdam/avatar.png" class="avatar">](/openbsd.amsterdam/)
+[<img src="/etsh.io/logo.png" class="avatar">](/etsh.io/)
 
 ---
 
