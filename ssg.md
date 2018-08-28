@@ -1,3 +1,7 @@
+**KNOWN ISSUE**<br>
+If you use relative links on your pages (as I do),
+`rss.xml` won't render them properly. Work in progress...
+
 > "SSG by @romanzolotarev is an impressively small static site
 generator with a tiny installed footprint. Really good for when you
 just need the core features."<br>&mdash;
