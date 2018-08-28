@@ -44,6 +44,14 @@ alias ll='ls -lahF'
 alias mv='mv -i'
 alias rm='rm -i'
 
+alias ga='git add . -p'
+alias gc='git commit'
+alias gf='git commit -amf'
+alias gl='git log --oneline'
+alias gp='git push www && git push'
+alias gr='git rebase -i HEAD~20'
+alias st='git status'
+
 alias a="vi \$HOME/.profile && . \$HOME/.profile"
 
 # shellcheck disable=SC2086
