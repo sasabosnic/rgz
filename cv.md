@@ -176,5 +176,5 @@ Maintain the computer network and support users.
 
 ## Education
 
-**Master in Computer Engineering, [Kazan State Technical University]**<br>
+**Master of Computer Science, [Kazan State Technical University]**<br>
 _Diploma with honors, 2004_
