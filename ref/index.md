@@ -1,4 +1,4 @@
-_This is a part of my [curriculum vitae](/cv.html)._
+_This is a part of my ~~m&eacute;moires~~ [curriculum vitae](/cv.html)._
 
 I'm the modest (and statisticly inaccurate) person, but also I'm
 lucky to work and meet the kindest people in the world, and they
@@ -8,6 +8,11 @@ For your convinience, recently I started [collecting them on one
 page](/words.html). _I&nbsp;recommend you to do the same._
 
 # My dear peers say...
+
+[<img src="an.jpeg" class="avatar left">
+**Alexis Nazarbaev**](an.html)<br>
+_Founder and CEO_<br>
+Cyberflash
 
 [<img src="mp.jpeg" class="avatar left">
 **Mischa Peters**](mp.html)<br>

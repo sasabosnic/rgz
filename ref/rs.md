@@ -24,7 +24,7 @@ Roman acted as an excellent mentor, guiding my introduction to
 CoffeeScript as well as promoting high-standard engineering and
 coding practices overall. Perhaps the simplest and clearest code
 I've seen anyone produce. It's always a pleasure working with other
-A players that inspire you to perform at your peak.
+A&nbsp;players that inspire you to perform at your peak.
 
 You can find me on Twitter or email me any questions you might have
 about Roman's specific skills and experience.&#8221;

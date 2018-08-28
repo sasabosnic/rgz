@@ -12,7 +12,6 @@
                    -b2b
 </pre>
 
-
 # Roman Zolotarev
 
 <p class="p-note">
@@ -108,6 +107,7 @@ Moscow. Focus on frontend development (user interfaces, user
 experience, interaction design).
 
 [<img src="ref/db.jpeg" class="avatar">](ref/db.html)
+[<img src="ref/an.jpeg" class="avatar">](ref/an.html)
 [<img src="ref/dba.jpeg" class="avatar">](ref/dba.html)
 
 ---
@@ -126,6 +126,7 @@ _System Integrator, Moscow, 2007&ndash;2009_
 
 Build a content delivery network for telecom companies.
 
+[<img src="ref/an.jpeg" class="avatar">](ref/an.html)
 [<img src="ref/dba.jpeg" class="avatar">](ref/dba.html)
 
 ---

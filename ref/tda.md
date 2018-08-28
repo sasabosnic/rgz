@@ -1,4 +1,5 @@
-_This reference letter is a part of my [curriculum vitae](/cv.html). [See&nbsp;more](./)._
+_This reference letter is a part of my [curriculum vitae](/cv.html).
+[See&nbsp;more](./)._
 
 # &nbsp;
 
@@ -43,7 +44,6 @@ or two from this man and all Engineering Managers could really learn
 from him.
 
 Find me on Twitter, GitHub, or email me any time.&#8221;
-
 
 ---
 

@@ -24,7 +24,7 @@ company distributed across the globe.
 
 Roman is one of the best managers I worked with, because he is
 always calm in any situations. Now in my daily work I'm trying to
-be like Roman &mdash; to be calm and friendly.
+be like Roman&mdash;to be calm and friendly.
 
 Roman is eager to learn and stays hands on with a good knowledge
 of modern web technologies.  As a developer he advocates and supports

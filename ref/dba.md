@@ -22,10 +22,10 @@ client's expectations.
 
 It's a great pleasure to work with Roman. He demonstrates exceptional
 dedication, engagement, and professionalism regardless of tasks and
-circustances.
+circumstances.
 
 In recent years we mostly keep in touch online as we both move from
-city to city and usually we are few hour flight apart.
+city to city and usually we are few hours flight apart.
 
 You can reach me via email.
 
