@@ -14,7 +14,7 @@ allow us to push out features and initiate a migration to React.js
 and also to a newer design for our UI frontend application.
 
 Roman is articulate and communicating with Roman was fairly easy
-and as he spoke English without much problems. Even during the
+and as he spoke English without much trouble. Even during the
 trying and crazy times Roman was patient and advocated a simple
 design and worked with the backend engineers to get well-tested
 APIs to ensure fewer surprises.&#8221;

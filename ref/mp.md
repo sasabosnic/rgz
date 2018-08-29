@@ -23,10 +23,10 @@ logo](https://www.romanzolotarev.com/openbsd.amsterdam/), and [pretty
 much overall
 communication](https://twitter.com/search?q=from:@romanzolotarev+@openbsdams).
 
-I have come to know Roman as a very positive, passionate and detailed
-oriented person. All qualities I appreciate a lot in people. It is
-always a pleasure having discussions with Roman even though we are
-miles apart.
+I have come to know Roman as a very positive, passionate and
+detail-oriented person. All qualities I appreciate a lot in people.
+It is always a pleasure having discussions with Roman even though
+we are miles apart.
 
 You can find me on Twitter or contact me via email.
 

@@ -4,7 +4,7 @@ _This reference letter is a part of my [curriculum vitae](/cv.html).
 # &nbsp;
 
 <p class="quote">&#8220;I met Roman in 2008. Back then I run one
-of my first startups &mdash; Neonray. It was a cloud-based remote
+of my first startups&mdash;Neonray. It was a cloud-based remote
 desktop solution, built on top of Amazon Web Services, and Roman
 carried out the due diligence on behalf of an angel investor.</p>
 
@@ -13,7 +13,7 @@ thoroughness with which he studies our project.
 
 In just a year we already worked at JumpIDEA &mdash; an investment
 project focused on seed-funding for technology startups. Together
-we'd run due diligence of dozens of teams directly participatiing
+we'd run due diligence of dozens of teams directly participating
 in the formation of the early venture capital market in Russia.
 
 A couple of years later we're developing web services, file and
@@ -26,9 +26,9 @@ those times in building the service.
 Swoosh! &#x1F4A8; &nbsp; ...six years flew by and we are working
 together again on a new IT consulting project.
 
-What I've always liked in Roman (and continues to like):
+What I've always liked in Roman (and continue to like):
 
-- His broad technological knowledge;
+- his broad technological knowledge;
 - deep understanding of information technologies and
   the latest trends;
 - pedantry and accuracy, especially in implementation;

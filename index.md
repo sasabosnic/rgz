@@ -23,7 +23,7 @@ Thank you for
 
 ---
 
-**Type-in your email** to get my [Making the Web](n.html) newsletter:
+**Type-in your email** to get my [Mastering the Web](n.html) newsletter:
 
 <form method="post" action="https://tinyletter.com/romanzolotarev">
 <input class="email" name="email" type="email" placeholder="email@example.com">

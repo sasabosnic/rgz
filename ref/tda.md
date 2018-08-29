@@ -19,7 +19,7 @@ part, was that the whole team was remote.
 Working with Roman and team was my first exposure to serious React
 development and also the first remote job. I came in as a
 mid-level/senior engineer with Ad Tech experiences to help quicken
-the pace and deliver a tight product. The team taught me alot and
+the pace and deliver a tight product. The team taught me a lot and
 we were aligned in shipping decent products to end users. After
 Roman decided to pursure other interests outside Cinarra and another
 left, I took over the lead duties.
@@ -30,7 +30,7 @@ and the engineers in Russia. Roman was always the one distilling
 requirements from stakeholders down to common frontend development
 tasks, diagrams and made sure we understood what we were building
 with follow-ups and validations. In that aspect, he shielded us
-from alot of downwards pressure and provided clarity whenever
+from a lot of downwards pressure and provided clarity whenever
 required, either to other developers or non-engineering groups.
 
 Roman is one of the most well-rounded engineers I've known and

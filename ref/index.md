@@ -1,6 +1,7 @@
 _This is a part of my ~~m&eacute;moires~~ [curriculum vitae](/cv.html)._
 
-I'm the modest (and statisticly inaccurate) person, but also I'm
+
+I'm the modest (and statistically inaccurate) person, but also I'm
 lucky to work and meet the kindest people in the world, and they
 keep saying all these _kind words_.
 

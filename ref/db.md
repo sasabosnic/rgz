@@ -25,7 +25,7 @@ been spread across multiple time zones. Roman handled all communications
 among product owners, sales team, backend developers, and devops.
 
 Inspite all the difficulties we have as a highly distributed team
-(Cupertino, Singapore, Moscow, Kazan, and Tokyo), Roman had keep
+(Cupertino, Singapore, Moscow, Kazan, and Tokyo), Roman had kept
 up with the pace of a growing startup and streamlined our work
 process.
 

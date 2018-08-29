@@ -1,4 +1,4 @@
-# Making the Web &mdash; Newsletter
+# Mastering the Web &mdash; Newsletter
 
 _Self-hosted websites.<br>
 Shell scripts and text editors.<br>

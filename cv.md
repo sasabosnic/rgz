@@ -16,11 +16,13 @@
 
 <p class="p-note">
 <i>
-A web developer and entrepreneur with solid business and
-<a href="tech.html">technical background</a> in
-Software as a Service,
-E-Commerce, and
-Advertising.
+
+An entrepreneur, software developer, minimalist web designer with
+the solid business and <a href="tech.html">technical background</a>
+in fundamental parts of the web.<br>
+
+Die-hard webmaster.<br>
+
 </i>
 </p>
 <p>
@@ -29,10 +31,11 @@ Advertising.
 <a href="https://www.romanzolotarev.com/"
   class="u-url" rel="me">romanzolotarev.com</a><br>
 <a href="https://linkedin.com/in/romanzolotarev"
+  title="almost a parody"
   class="u-url" rel="me">linkedin.com/in/romanzolotarev</a>
 </p>
 
-<a href="https://www.romanzolotarev.com/"
+<a href="about.html"
   class="h-card"><img src="avatar.jpeg"
   style="width: 200px; height: 200px;"></a>
 
@@ -43,12 +46,13 @@ Advertising.
 
 ## Skills
 
+- [Mastering the Web](/n.html).
 - Designing and building software for the web.
 - Hiring and educating software developers and designers.
-- Building distributed team and working remotely.
-- Technical writing.
+- Managing distributed team and working remotely.
+- Selling software products and services.
 
-## Experience
+## Current projects
 
 **Founder and Maintainer, [BSDjobs]** &#x1f421;<br>
 _Job board and community, Russia, 2018&ndash;present_<br>
@@ -60,13 +64,12 @@ Help BSD developers and system administrators to find a&nbsp;job.
 Support BSD related projects and the community.  Write how-to guides
 for beginners.  Advocate for the free and independent web.
 
-[<img src="ref/mp.jpeg" class="avatar">](ref/mp.html)
 [<img src="ref/rs.jpeg" class="avatar">](ref/rs.html)
 
 ---
 
 **[Self-employed] Software Developer**<br>
-_Web developement, Russia, 2016&ndash;present_<br>
+_Web development, Russia, 2016&ndash;present_<br>
 [romanzolotarev.com](/)<br>
 [twitter.com/romanzolotarev](https://twitter.com/romanzolotarev)<br>
 [bsd.network/@romanzolotarev](https://bsd.network/@romanzolotarev)<br>
@@ -75,11 +78,12 @@ _Web developement, Russia, 2016&ndash;present_<br>
 Develop software for the web. Manage all strategic and operational
 marketing, customer relationship activities, and sales.
 
-[<img src="ref/db.jpeg" class="avatar">](ref/db.html)
+[<img src="ref/mp.jpeg" class="avatar">](ref/mp.html)
 [<img src="/openbsd.amsterdam/avatar.png" class="avatar">](/openbsd.amsterdam/)
 [<img src="/etsh.io/logo.png" class="avatar">](/etsh.io/)
+[<img src="ref/db.jpeg" class="avatar">](ref/db.html)
 
----
+## Past experience
 
 **Senior User Interface Architect, [Cinarra Systems]**<br>
 _Advertising Technology, Singapore, 2015&ndash;2016_<br>
