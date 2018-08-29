@@ -1,7 +1,7 @@
 <p class="quote p-note">&#8220;Hi, my name is
 <span class="p-name">Roman</span>.<br>
-I run a <a href="https://www.bsdjobs.com/">job board</a>.
-I'm here to help you with <a href="/openbsd/">OpenBSD</a>.
+I'm here to help you with <a href="/openbsd/">OpenBSD</a>.<br>
+Also I run a <a href="https://www.bsdjobs.com/">job board</a>.<br>
 </p>
 
 I help [OpenBSD
