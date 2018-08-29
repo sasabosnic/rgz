@@ -10,6 +10,11 @@ page](/words.html). _I&nbsp;recommend you to do the same._
 
 # My dear peers say...
 
+[<img src="tg.jpeg" class="avatar left">
+**Timur Goldobin**](tg.html)<br>
+_Co-founder_<br>
+Leto24
+
 [<img src="an.jpeg" class="avatar left">
 **Alexis Nazarbaev**](an.html)<br>
 _Founder and CEO_<br>

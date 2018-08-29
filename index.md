@@ -1,27 +1,34 @@
-<a href="https://www.romanzolotarev.com/"
-  class="h-card"><img src="avatar120.jpeg" class="avatar"></a>
-
-<p class="p-note">
-Hi, my name is <b class="p-name">Roman</b>.
+<p class="quote p-note">&#8220;Hi, my name is
+<span class="p-name">Roman</span>.<br>
 I run a <a href="https://www.bsdjobs.com/">job board</a>.
 I'm here to help you with <a href="/openbsd/">OpenBSD</a>.
+</p>
+
+I help [OpenBSD
+Amsterdam](/openbsd.amsterdam/) and [etsh.io](/etsh.io/) with their
+logos and websites.<br>
 I'm a fan of
 <a href="/bin/">shell scripts</a>,
 <a href="/vi.html">vi</a>,
 <a href="/thinkpad/">ThinkPad</a>, and
-<a href="/ergodox.html">ErgoDox</a>.
-</p>
-
-By the way, here is [my setup](/setup.html).
-
-I help [OpenBSD Amsterdam](/openbsd.amsterdam/) and [etsh.io](/etsh.io/)
-with their logos, avatars, and websites.
-
-Thank you for
-**[your donations](/sponsors.html)** and
-[kind words](/words.html)!
+<a href="/ergodox.html">ErgoDox</a>.<br>
+By the way, here is [my setup](/setup.html).<br>
+Thank you for **[your
+donations](/sponsors.html)** and [kind words](/words.html)!&#8221;
 
 ---
+
+<a href="https://www.romanzolotarev.com/"
+  class="h-card"><img src="avatar120.jpeg" class="avatar"></a>
+
+**Roman Zolotarev**<br>
+_Die-hard webmaster_<br>
+hi@romanzolotarev.com<br>
+[twitter.com/romanzolotarev](https://twitter.com/romanzolotarev)<br>
+[bsd.network/@romanzolotarev](https://bsd.network/@romanzolotarev)
+
+---
+
 
 **Type-in your email** to get my [Mastering the Web](n.html) newsletter:
 
