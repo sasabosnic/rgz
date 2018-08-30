@@ -21,8 +21,6 @@ An entrepreneur, software developer, minimalist web designer with
 the solid business and <a href="tech.html">technical background</a>
 in fundamental parts of the web.<br>
 
-Die-hard webmaster.<br>
-
 </i>
 </p>
 <p>
@@ -44,18 +42,10 @@ Die-hard webmaster.<br>
 [BSDjobs]: https://www.bsdjobs.com/
 [Cinarra Systems]: https://www.cinarra.com/
 
-## Skills
-
-- [Mastering the Web](/n.html).
-- Designing and building software for the web.
-- Hiring and educating software developers and designers.
-- Managing distributed team and working remotely.
-- Selling software products and services.
-
 ## Current projects
 
 **Founder and Maintainer, [BSDjobs]** &#x1f421;<br>
-_Job board and community, Russia, 2018&ndash;present_<br>
+_Job board, 2018&ndash;present_<br>
 [bsdjobs.com][BSDjobs]<br>
 [People who run BSD](https://www.bsdjobs.com/people/)<br>
 [twitter.com/bsdjobscom](https://twitter.com/bsdjobscom)
@@ -66,22 +56,23 @@ for beginners.  Advocate for the free and independent web.
 
 [<img src="ref/rs.jpeg" class="avatar">](ref/rs.html)
 
----
+**Full-stack Web Developer, [Self-employed]**<br>
+_Design, development, deployment, 2016&ndash;present_<br>
 
-**[Self-employed] Software Developer**<br>
-_Web development, Russia, 2016&ndash;present_<br>
+Develop software for the web. Manage all strategic and operational
+marketing, customer relationship activities, and sales.
+
+**Die-hard Webmaster, [romanzolotarev.com](/)**<br>
+_Technical writing, 2008&ndash;present_<br>
+
 [romanzolotarev.com](/)<br>
 [twitter.com/romanzolotarev](https://twitter.com/romanzolotarev)<br>
 [bsd.network/@romanzolotarev](https://bsd.network/@romanzolotarev)<br>
 [People are saying...](/words.html)
 
-Develop software for the web. Manage all strategic and operational
-marketing, customer relationship activities, and sales.
-
 [<img src="ref/mp.jpeg" class="avatar">](ref/mp.html)
 [<img src="/openbsd.amsterdam/avatar.png" class="avatar">](/openbsd.amsterdam/)
 [<img src="/etsh.io/logo.png" class="avatar">](/etsh.io/)
-[<img src="ref/db.jpeg" class="avatar">](ref/db.html)
 
 ## Past experience
 
@@ -102,7 +93,7 @@ developers. Manage a&nbsp;team of web developers.
 
 ---
 
-**[Self-employed] Software Developer**<br>
+**Software Developer, [Self-employed]**<br>
 _Web development, Russia, 2009&ndash;2015_<br>
 [romanzolotarev.com](/)
 
@@ -160,8 +151,9 @@ a&nbsp;small team.
 
 ---
 
-**Software Engineer, Center**<br>
-_System Integrator, Kazan, 1999&ndash;2000_
+**Software Engineer, [Center](https://cg.ru)**<br>
+_System Integrator, Kazan, 1999&ndash;2000_<br>
+[cg.ru](https://cg.ru)
 
 Build software for in-house web applications.
 

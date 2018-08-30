@@ -11,7 +11,7 @@ to know what I've learned in a month or so, then you should subscribe.
 
 **Why not Twitter (or not other social networking services)?** I
 don't like the idea that my account can be locked for no apparent
-reason (happened to me few times already).
+reason (happened to me and some of my friends few times already).
 
 As software developers and system administrators we are responsible
 for **keeping the web independent**. We shouldn't rely on the mercy of

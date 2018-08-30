@@ -7,7 +7,7 @@ You are so damn cool.  I love your approach to things.&#8221;</p>
 
 <img src="/ref/ds.jpeg" class="avatar"><br>
 **Derek Sivers**<br>
-_Entrepreneur and book publisher_<br>
+_Entrepreneur and Book Publisher_<br>
 [sivers.org](https://sivers.org "25 Apr 2018")
 
 ---

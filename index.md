@@ -1,7 +1,7 @@
 <p class="quote p-note">&#8220;Hi, my name is
 <span class="p-name">Roman</span>.<br>
 I'm here to help you with <a href="/openbsd/">OpenBSD</a>.<br>
-Also I run a <a href="https://www.bsdjobs.com/">job board</a>.<br>
+Also I run <a href="https://www.bsdjobs.com/">a job board</a>.<br>
 </p>
 
 I help [OpenBSD
@@ -22,7 +22,7 @@ donations](/sponsors.html)** and [kind words](/words.html)!&#8221;
   class="h-card"><img src="avatar120.jpeg" class="avatar"></a>
 
 **Roman Zolotarev**<br>
-_Die-hard webmaster_<br>
+_Die-hard Webmaster_<br>
 hi@romanzolotarev.com<br>
 [twitter.com/romanzolotarev](https://twitter.com/romanzolotarev)<br>
 [bsd.network/@romanzolotarev](https://bsd.network/@romanzolotarev)
