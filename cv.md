@@ -41,47 +41,79 @@ the business and <a href="tech.html">technical background</a>.<br>
 
 ## Current projects
 
-**Technical Writer and Designer, [Mastering the Web](/n.html)**<br>
-_Publishing, 2018-present_
+**Technical Writer and Designer, [Mastering the Web](n.html)**
+&#29983;&#12365;&#30002;&#26000;<br>
+_Publishing, 2018-present_<br>
+[romanzolotarev.com/n.html](n.html)
 
-Write how-to guides for beginners.<br>
-Advocate for the independent web.<br>
-Support BSD related projects and the community.
+<pre>
+700,000 tweet impressions per month (+4500% in a year)
+1600+ followers on Twitter (+570% in a  year)
+300+ followers on Mastodon (from zero in two months)
+300+ subscribers (from zero in a week)
++50 reviews 
+</pre>
 
-[romanzolotarev.com](/)<br>
-[People are saying...](/words.html)<br>
-[OpenBSD Amsterdam media kit](/openbsd.amsterdam/)<br>
-[Etsh media kit](/etsh.io/)<br>
-[twitter.com/romanzolotarev](https://twitter.com/romanzolotarev)<br>
-[bsd.network/@romanzolotarev](https://bsd.network/@romanzolotarev)
+Writing [how-to guides](/) for beginners.<br>
+Advocating for the independent web on [Twitter] and [Mastodon].<br>
+Serving to [a very kind BSD community](words.html).
 
-[<img src="ref/mp.jpeg" class="avatar">](ref/mp.html)
-[<img src="ref/je.jpeg" class="avatar">](/words.html#je)
-[<img src="ref/mk.jpeg" class="avatar">](ref/mk.html)
+[Twitter]: https://twitter.com/romanzolotarev
+[Mastodon]: https://bsd.network/@romanzolotarev
 
-**Maintainer, [BSDjobs]** &#x1f421;<br>
-_Job board, 2018&ndash;present_<br>
-[bsdjobs.com][BSDjobs]<br>
-[People who run BSD](https://www.bsdjobs.com/people/)<br>
-[twitter.com/bsdjobscom](https://twitter.com/bsdjobscom)
+Supporting Unix/BSD related projects and [mentoring developers](ref/mk.html).
+#IndieWeb #RUNBSD #BSDjobs #OpenBSD &#x1f421;<br>
 
-Help BSD developers and system administrators to find a&nbsp;job.
+Maintaining [a media kit](/openbsd.amsterdam/) for and website for
+[OpenBSD Amsterdam](https://openbsd.amsterdam).<br>
+Created [a logo](/etsh.io) for [Jeff](words.html#je)'s [Etsh](https://etsh.io/).<br>
+Helping [Mischa](ref/mp.html) to promote OpenBSD Amsterdam.
 
-[<img src="ref/rs.jpeg" class="avatar">](ref/rs.html)
-
-**Full-stack Web Developer, self-employed**<br>
-_Software development, Russia, 2016&ndash;present_<br>
-
-Develop software for the web. Manage all strategic and operational
-marketing, customer relationship activities, and sales.
+Writing and maintaining [shell scripts](/bin/) (licenced under
+[ISC](https://en.m.wikipedia.org/wiki/ISC_license)).
 
 [arc](/arc.html) &mdash; an archiver<br>
 [diceware](/diceware.html) &mdash; a passphrase generator<br>
 [pass](/pass.html) &mdash; a password manager<br>
 [ssg](/ssg.html) &mdash; a static site generator<br>
-_[more?](bin/)_
 
-[<img src="ref/ds.jpeg" class="avatar">](/words.html#ds)
+[<img src="ref/mp.jpeg" class="avatar">](ref/mp.html "Mischa")
+[<img src="ref/je.jpeg" class="avatar">](words.html#je "Jeff")
+[<img src="ref/ds.jpeg" class="avatar">](words.html#ds "Derek")
+[<img src="ref/mk.jpeg" class="avatar">](ref/mk.html "Marina")
+
+---
+
+**Maintainer, [BSDjobs]**<br>
+_Job board, 2018&ndash;present_<br>
+[bsdjobs.com][BSDjobs]
+
+<pre>
+100+ job ads posted
+50+ user stories published
+First people hired
+Profitable since week two :)
+</pre>
+
+Selling and [posting job ads][BSDjobs].<br>
+Promoting BSD companies on [Twitter](https://twitter.com/bsdjobscom).<br>
+Interviewing the community and hosting [user stories](https://www.bsdjobs.com/people/).<br>
+
+[Raman](ref/rs.html) is inspiring and advising.<br>
+h/t [Reyk](words.html#rf) for being my first customer right after the project launch.
+
+[<img src="ref/rs.jpeg" class="avatar">](ref/rs.html "Raman")
+[<img src="ref/rf.jpeg" class="avatar">](words.html#rf "Reyk")
+
+---
+
+**Full-stack Web Developer, self-employed**<br>
+_Software development, Russia, 2016&ndash;present_<br>
+[romanzolotarev.com](/)
+
+Developing software for the web. Managing all strategic and operational
+marketing, customer relationship activities, and sales.
+
 
 ---
 
@@ -91,17 +123,38 @@ _[more?](bin/)_
 _Advertising Technology, Singapore, 2015&ndash;2016_<br>
 [cinarra.com][Cinarra Systems]
 
-Design, develop, and deploy web applications (ad campaign management
-and reporting for advertising agencies).  Hire and on-board software
-developers. Manage a&nbsp;team of web developers.
+> &#8220;Cinarra is a technology startup that is addressing the changing
+economics of an increasingly mobile society. By uniting mobile
+operators and their unique "always on" data assets with the advertising
+ecosystem. Cinarra unlocks real life data that makes it possible
+for advertisers to match campaigns to consumers' activities in the
+real world. Through groundbreaking technology, Cinarra is creating
+the foundation for a new mobile Internet economy.&#8221;
 
-[<img src="ref/sn.jpeg" class="avatar">](ref/sn.html)
-[<img src="ref/db.jpeg" class="avatar">](ref/db.html)
-[<img src="ref/mt.jpeg" class="avatar">](ref/mt.html)
-[<img src="ref/rs.jpeg" class="avatar">](ref/rs.html)
-[<img src="ref/tda.jpeg" class="avatar">](ref/tda.html)
-[<img src="ref/is.jpeg" class="avatar">](ref/is.html)
-<img src="ref/az.jpeg" class="avatar">
+> Leading investors: SoftBank, Almaz Capital, and Cisco Systems.
+
+I designed, developed, and deployed web applications (ad campaign
+management and reporting for advertising agencies).  Hired, on-boarded,
+and managed web developers of a frontend team.
+
+My team
+([Denis](ref/db.html),
+[Raman](ref/rs.html),
+[Fred](ref/tda.html), and
+[Ivan](ref/is.html))
+developed the web application frontend of the ad campaign manager.
+
+[Marat](ref/mt.html) with the backend team architected and implemented
+API, database, and web applicaton server.
+
+[Sath](ref/sn.html) orchestrated all engineering teams within the company.
+
+[<img src="ref/db.jpeg" class="avatar">](ref/db.html "Denis")
+[<img src="ref/rs.jpeg" class="avatar">](ref/rs.html "Raman")
+[<img src="ref/tda.jpeg" class="avatar">](ref/tda.html "Fred")
+[<img src="ref/is.jpeg" class="avatar">](ref/is.html "Ivan")
+[<img src="ref/mt.jpeg" class="avatar">](ref/mt.html "Marat")
+[<img src="ref/sn.jpeg" class="avatar">](ref/sn.html "Sath")
 
 ---
 
@@ -109,31 +162,31 @@ developers. Manage a&nbsp;team of web developers.
 _Software development, Russia, 2009&ndash;2015_<br>
 [romanzolotarev.com](/)
 
-Develop software for clients from California, Singapore, Tokyo, and
-Moscow. Focus on frontend development (user interfaces, user
-experience, interaction design).
+Developed software for clients from California, Singapore, Tokyo,
+and Moscow. I was focused on frontend development (user interfaces,
+user experience, interaction design).
 
-[<img src="ref/tg.jpeg" class="avatar">](ref/tg.html)
-<img src="ref/az.jpeg" class="avatar">
-[<img src="ref/db.jpeg" class="avatar">](ref/db.html)
-[<img src="ref/an.jpeg" class="avatar">](ref/an.html)
-[<img src="ref/dba.jpeg" class="avatar">](ref/dba.html)
+[<img src="ref/tg.jpeg" class="avatar">](ref/tg.html "Timur")
+<img src="ref/az.jpeg" class="avatar" "Alex">
+[<img src="ref/db.jpeg" class="avatar">](ref/db.html "Denis")
+[<img src="ref/an.jpeg" class="avatar">](ref/an.html "Alexis")
+[<img src="ref/dba.jpeg" class="avatar">](ref/dba.html "Denis")
 
 ---
 
 **Director, Dubbee**<br>
 _SaaS, Moscow, Russia, 2008&ndash;2009_
 
-Develop online text-to-speech service. Manage relationships with
-angel investors, sales and marketing. Hire and manage a&nbsp;team&nbsp;of
-software developers.
+Developed online text-to-speech service. Managed relationships with
+angel investors. Hired and managed a&nbsp;team of&nbsp;software
+developers.
 
 ---
 
 **Director, Geotel**<br>
 _System Integrator, Moscow, Russia, 2007&ndash;2009_
 
-Build a content delivery network for telecom companies.
+Built a content delivery network for telecom companies.
 
 [<img src="ref/an.jpeg" class="avatar">](ref/an.html)
 [<img src="ref/dba.jpeg" class="avatar">](ref/dba.html)
@@ -144,46 +197,46 @@ Build a content delivery network for telecom companies.
 **Deputy Director, Microcom**<br>
 _System Integrator, Moscow, Russia, 2006&ndash;2007_
 
-Deploy ERP for a&nbsp;government agency. Manage a&nbsp;team of
-engineers and technical writers.
+Deployed ERP system for a&nbsp;government agency and managed
+a&nbsp;team of&nbsp;engineers and technical writers.
 
 ---
 
 **Director, Volga Region CA**<br>
 _Certificate Authority, Kazan, Russia, 2005&ndash;2006_
 
-Provide infosec solutions (e.g. public key infrastructure and digital
-signature) to government companies. Manage a&nbsp;team of security
-engineers and software developers.
+Provided infosec solutions (e.g. public key infrastructure and
+digital signature) to government companies. Managed a&nbsp;team of
+security engineers and software developers.
 
 ---
 
 **Director, IBN**<br>
 _Web Design Studio, Kazan, Russia, 2000&ndash;2005_
 
-Make and support websites. Design, develop, and host sites. Manage
-a&nbsp;small team.
+Made and supported websites. Designed, developed, and hosted sites.
+Managed a&nbsp;small team.
 
 ---
 
 **Web Developer, Center**<br>
 _System Integrator, Kazan, Russia, 1999&ndash;2000_<br>
 
-Build software for in-house web applications.
+Built software for in-house web applications.
 
 ---
 
 **Print and Web Designer, Idel&mdash;Tesma and TSK**<br>
 _Advertising Agencies, Kazan, Russia, 1994-1999_
 
-Design and typography for print, outdoor ads, and web.
+Designed ads for print, outdoor, and the web.
 
 ---
 
 **Network Administrator, School 7**<br>
 _Secondary School, Tchaikovsky, Russia, 1991&ndash;1994_
 
-Maintain the computer network and support users.
+Maintained the computer network and supported users.
 
 ## Education
 

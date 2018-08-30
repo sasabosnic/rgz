@@ -1,7 +1,7 @@
 _This reference letter is a part of my [curriculum vitae](/cv.html).
 [See&nbsp;more](./)._
 
-# &nbsp;
+# Marina says...
 
 <p class="quote">&#8220; When you adore minimalism and strive for
 perfection, and then you suddenly find a mentor who is a minimalist

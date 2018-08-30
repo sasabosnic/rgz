@@ -1,7 +1,7 @@
 _This reference letter is a part of my [curriculum vitae](/cv.html).
 [See&nbsp;more](./)._
 
-# &nbsp;
+# Ivan says...
 
 <p class="quote">&#8220;Hey! I'm Ivan Starkov, an author of a few
 open source JavaScript libraries, and a software developer at

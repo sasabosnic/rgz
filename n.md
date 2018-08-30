@@ -35,8 +35,13 @@ or find me [elsewhere](elsewhere.html).
 <a href="https://www.romanzolotarev.com/"
   class="h-card"><img src="avatar120.jpeg" class="avatar"></a>
 
+**Roman Zolotarev**<br>
+_Die-hard Webmaster_<br>
+hi@romanzolotarev.com<br>
+[twitter.com/romanzolotarev](https://twitter.com/romanzolotarev)<br>
+[bsd.network/@romanzolotarev](https://bsd.network/@romanzolotarev)
+
 If you need my help with your Unix/BSD related projects, web
-development, or anything really, email me at <hi@romanzolotarev.com>
-any time.<br>
+development, or anything really, ping me any time.
 
 If you run a newsletter on a related topic, ping me, I'll subscribe!

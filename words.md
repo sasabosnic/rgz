@@ -146,7 +146,7 @@ that I wouldn't have discovered on my own)"<br>&mdash;
 <img src="/ref/mp.jpeg" class="avatar"><br>
 **Mischa Peters**<br>
 _Founder_<br>
-[twitter.com/OpenBSDAms](https://twitter.com/OpenBSDAms/status/1006095521004642305 "11 Jun 2018")
+[@OpenBSDAms](https://twitter.com/OpenBSDAms/status/1006095521004642305 "11 Jun 2018")
 
 **OpenBSD Amsterdam**<br>
 [openbsd.amsterdam](https://openbsd.amsterdam/)
@@ -161,6 +161,22 @@ _Founder_<br>
 many things - including this one &#x1F44F;"<br>&mdash;
 [Marina Kuznetsova](https://twitter.com/healdementia/status/998623049506279424 "21 May 2018")
 (@healdementia)
+
+---
+
+<p id="rf" class="quote">&#8220;We hired a new dev; thank you a
+lot, he found us on bsdjobs.com!<br>Great idea!&#8221;</p>
+
+<img src="/ref/rf.jpeg" class="avatar"><br>
+**Reyk Fl&ouml;ter**<br>
+_OpenBSD developer_<br>
+[@reykfloeter](https://twitter.com/reykfloeter "10 Jun 2018")<br>
+[reykfloeter.com](https://reykfloeter.com/)
+
+**ARCATrust**<br>
+[arcatrust.io](https://arcatrust.io/)
+
+---
 
 "Hey Roman, I absolutely love watching your adventure through BSD
 land via Twitter!"<br>&mdash;

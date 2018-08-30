@@ -1,7 +1,7 @@
 _This reference letter is a part of my [curriculum vitae](/cv.html).
 [See&nbsp;more](./)._
 
-# &nbsp;
+# Fred says...
 
 <p class="quote">&#8220;Hi! I'm Tran Dac Anh (known to others as
 Fred), a software developer working on smallholder farmers solutions
