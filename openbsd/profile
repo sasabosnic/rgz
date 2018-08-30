@@ -33,7 +33,9 @@ s() { ssg watch --clean||return; }
 sync_logs() { [ -n "$1" ] && { rsync -azvPc "$1:/var/www/logs/*" "$HOME/prv/logs/$1/"; }; }
 
 png() { optipng -preserve -strip all -o7 "$1"; }
-jpeg() { jpegoptim --strip-all --preserve --preserve-perms --verbose -m80 "$1"; }
+jpeg() { jpegoptim --strip-all --preserve --preserve-perms --verbose -m80 $@; }
+jpeg50() { jpegoptim --strip-all --preserve --preserve-perms --verbose -m50 $@; }
+jpeg20() { jpegoptim --strip-all --preserve --preserve-perms --verbose -m20 $@; }
 fit() { convert -resize 1200 "$1" "$1"; jpeg "$1"; }
 fit50() { convert -resize 50 "$1" "$1"; jpeg "$1"; }
 fit120() { convert -resize 120 "$1" "$1"; jpeg "$1"; }

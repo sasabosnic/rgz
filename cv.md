@@ -1,4 +1,9 @@
 <pre>
+
+           &mdash; Where do you see yourself in five years?
+                              &mdash; Here, I guess.
+                                      |
+                                      |
       -----------------programming . . . . . . . . . .
             -------web-development . . . . . . . . . .
         -----------    --design-ui . . . . . . . . . .
@@ -15,13 +20,10 @@
 # Roman Zolotarev
 
 <p class="p-note">
-<i>
-
-An entrepreneur, software developer, minimalist web designer with
-the business and <a href="tech.html">technical background</a>.<br>
-
-</i>
+<i>An entrepreneur, software developer, minimalist web designer with
+the business and <a href="tech.html">technical background</a>.</i>
 </p>
+
 <p>
 <a href="https://www.romanzolotarev.com/"
   class="u-url" rel="me">romanzolotarev.com</a><br>
@@ -29,8 +31,8 @@ the business and <a href="tech.html">technical background</a>.<br>
   class="u-email" rel="me">hi@romanzolotarev.com</a><br>
 <a href="https://twitter.com/romanzolotarev"
   class="u-url" rel="me">twitter.com/romanzolotarev</a><br>
-<a href="https://bsd.network.com/@romanzolotarev"
-  class="u-url" rel="me">bsdnetwork.com/@romanzolotarev</a><br>
+<a href="https://bsd.network/@romanzolotarev"
+  class="u-url" rel="me">bsd.network/@romanzolotarev</a><br>
 <a href="https://linkedin.com/in/romanzolotarev"
   title="almost a parody"
   class="u-url" rel="me">linkedin.com/in/romanzolotarev</a>
@@ -45,25 +47,24 @@ the business and <a href="tech.html">technical background</a>.<br>
 
 ## Current projects
 
-**Technical Writer and Designer, [Mastering the Web](n.html)**
-&#29983;&#12365;&#30002;&#26000;<br>
-_Publishing, 2018-present_<br>
+**Founder, Technical Writer, Designer, [Mastering the Web](n.html)**<br>
+_Publishing, 2018&ndash;present_<br>
 [romanzolotarev.com/n.html](n.html)
 
 <pre>
-                                      Y/Y %
-700,000 tweet impressions monthly  +4,500 
-23,000+ words published            +1,200
-22,000+ tweets                       +320
-1600+ Twitter followers              +570
-300+ Mastodon followers                +&infin; in few months
-+50 reviews                            +&infin; in few months 
-300+ newsletter subscribers            +&infin; in few days
+35-40 hours a week
+700,000 tweet impressions monthly
+23,000+ words published
+22,000+ tweets
+1600+ Twitter followers
+300+ Mastodon followers
+50+ reviews
+300+ newsletter subscribers
 </pre>
 
 Writing [how-to guides](/) for beginners.<br>
-Advocating for the independent web on [Twitter] and [Mastodon].<br>
-Serving to [a very kind BSD community](words.html).
+Advocating simple web development tools on [Twitter] and [Mastodon].<br>
+Serving [a very kind BSD community](words.html).
 
 [Twitter]: https://twitter.com/romanzolotarev
 [Mastodon]: https://bsd.network/@romanzolotarev
@@ -71,12 +72,12 @@ Serving to [a very kind BSD community](words.html).
 Supporting Unix/BSD related projects and [mentoring developers](ref/mk.html).
 #IndieWeb #RUNBSD #BSDjobs #OpenBSD &#x1f421;<br>
 
-Maintaining [a media kit](/openbsd.amsterdam/) for and website for
+Maintaining [a media kit](/openbsd.amsterdam/) and website for
 [OpenBSD Amsterdam](https://openbsd.amsterdam).<br>
 Created [a logo](/etsh.io) for [Jeff](words.html#je)'s [Etsh](https://etsh.io/).<br>
 Helping [Mischa](ref/mp.html) to promote OpenBSD Amsterdam.
 
-Writing and maintaining [shell scripts](/bin/) (licenced under
+Writing and maintaining [shell scripts](/bin/) (licensed under
 [ISC](https://en.m.wikipedia.org/wiki/ISC_license)).
 
 [arc](/arc.html) &mdash; an archiver<br>
@@ -89,13 +90,27 @@ Writing and maintaining [shell scripts](/bin/) (licenced under
 [<img src="ref/ds.jpeg" class="avatar">](words.html#ds "Derek")
 [<img src="ref/mk.jpeg" class="avatar">](ref/mk.html "Marina")
 
+_Why?_ &#29983;&#12365;&#30002;&#26000;<br> The modern web is slow,
+bloated, and intrusive.  Our community (developers,
+system administrators, technical writers) must promote high code
+standards, support free software projects. For example, OpenBSD
+project&mdash;the invisible backbone of the Internet&mdash;software
+for routers, firewalls, mail, web, DNS servers, etc.
+Who else can save internet kittens?
+
+_Challenges?_ We need to (re-)educate few hundred thousand of web
+developers. I heard number of programmers doubles every five years.
+So half of us are inexperienced juniors. We'd better keep up.
+Everyone should become a tutor.
+
 ---
 
-**Maintainer, [BSDjobs]**<br>
+**Founder, [BSDjobs]**<br>
 _Job board, 2018&ndash;present_<br>
 [bsdjobs.com][BSDjobs]
 
 <pre>
+5-10 hours a week
 100+ job ads posted
 50+ user stories published
 First people hired
@@ -111,6 +126,14 @@ h/t [Reyk](words.html#rf) for being my first customer right after the project la
 
 [<img src="ref/rs.jpeg" class="avatar">](ref/rs.html "Raman")
 [<img src="ref/rf.jpeg" class="avatar">](words.html#rf "Reyk")
+
+_Why?_ I love to help BSD people to find their dream jobs. More
+people run BSD means more BSD projects receive better support. Good
+software wins!
+
+_Challenges?_ We need more companies to run BSD, to educate
+companies about BSD and its business values, make BSD systems
+compatible with existing infrastructure (hardware and software).
 
 ---
 
@@ -184,7 +207,7 @@ user experience, interaction design).
 _Venture Capital Fund, 2007&ndash;2009_
 
 Managed a team of advisors, handled all communications with angel
-investors. Provided help to a dozen internet startups.
+investors. Provided help to a dozen of internet startups.
 
 [<img src="ref/an.jpeg" class="avatar">](ref/an.html "Alexis")
 [<img src="ref/ik.jpeg" class="avatar">](ref/ik.html "Ivan")

@@ -14,21 +14,9 @@ I'm a fan of
 <a href="/ergodox.html">ErgoDox</a>.<br>
 By the way, here is [my setup](/setup.html).<br>
 Thank you for **[your
-donations](/sponsors.html)** and [kind words](/words.html)!&#8221;
+donations](/sponsors.html)** and [kind words](/words.html)!
 
 ---
-
-<a href="https://www.romanzolotarev.com/"
-  class="h-card"><img src="avatar120.jpeg" class="avatar"></a>
-
-**Roman Zolotarev**<br>
-_Die-hard Webmaster_<br>
-hi@romanzolotarev.com<br>
-[twitter.com/romanzolotarev](https://twitter.com/romanzolotarev)<br>
-[bsd.network/@romanzolotarev](https://bsd.network/@romanzolotarev)
-
----
-
 
 **Type-in your email** to get my [Mastering the Web](n.html) newsletter:
 
@@ -37,7 +25,17 @@ hi@romanzolotarev.com<br>
 <button class="button" type="submit">Subscribe</button>
 </form>
 
-Subscribe to [RSS](https://www.romanzolotarev.com/rss.xml) or find me [elsewhere](elsewhere.html).
+or subscribe to [RSS](https://www.romanzolotarev.com/rss.xml),
+or find me [elsewhere](elsewhere.html).&#8221;
+
+---
+
+<a href="https://www.romanzolotarev.com/"
+  class="h-card"><img src="avatar120.jpeg" class="avatar"></a>
+
+**Roman Zolotarev**<br>
+_Die-hard Webmaster_<br>
+hi@romanzolotarev.com
 
 # How to...
 
@@ -79,4 +77,4 @@ Subscribe to [RSS](https://www.romanzolotarev.com/rss.xml) or find me [elsewhere
 - [start a standalone website](/standalone.html "23 Aug 2016")
 - [decide if you need a website](/website.html "15 Aug 2016")
 
-&copy; 2012&ndash;2018 Roman Zolotarev
+&copy; 2008&ndash;2018 Roman Zolotarev
