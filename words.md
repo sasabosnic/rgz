@@ -2,7 +2,7 @@ _Thank you for your kind words and [support](sponsors.html)!_
 
 # People are saying...
 
-<p class="quote">&#8220;I just found <a href="/ssg.html">ssg</a>!
+<p id="ds" class="quote">&#8220;I just found <a href="/ssg.html">ssg</a>!
 You are so damn cool.  I love your approach to things.&#8221;</p>
 
 <img src="/ref/ds.jpeg" class="avatar"><br>
@@ -36,11 +36,11 @@ appreciated."<br>&mdash;
 
 ---
 
-<p class="quote">&#8220;Roman implemented what I asked him to and adjusted my X rgb.txt
-green to a nicer one. I simply sent him the output of 2 echo commands
-with the exact characters you see in my logo now. It was a good
-investment for me. I donated almost what I donate to OpenBSD each
-month. Thanks Roman :)&#8221;</p>
+<p id="je" class="quote">&#8220;Roman implemented what I asked him
+to and adjusted my X rgb.txt green to a nicer one. I simply sent
+him the output of 2 echo commands with the exact characters you see
+in my logo now. It was a good investment for me. I donated almost
+what I donate to OpenBSD each month. Thanks Roman :)&#8221;</p>
 
 <img src="/ref/je.jpeg" class="avatar"><br>
 **Jeffrey Allen Neitzel**<br>
@@ -140,8 +140,8 @@ that I wouldn't have discovered on my own)"<br>&mdash;
 
 ---
 
-<p class="quote">&#8220;Thanx @romanzolotarev for the great "corporate"
-identity! Love the logo and images.&#8221;</p>
+<p id="mp" class="quote">&#8220;Thanx @romanzolotarev for the great
+"corporate" identity! Love the logo and images.&#8221;</p>
 
 <img src="/ref/mp.jpeg" class="avatar"><br>
 **Mischa Peters**<br>

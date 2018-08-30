@@ -20,9 +20,14 @@ OpenBSD Amsterdam
 _Founder_<br>
 Crypto Jobs List
 
+[<img src="mk.jpeg" class="avatar left">
+**Marina Kuznetcova**](mk.html)<br>
+_Web Developer_<br>
+Piano
+
 [<img src="an.jpeg" class="avatar left">
 **Alexis Nazarbaev**](an.html)<br>
-_Founder and CEO_<br>
+_Founder_<br>
 Cyberflash
 
 [<img src="db.jpeg" class="avatar left">
