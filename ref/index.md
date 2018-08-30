@@ -30,6 +30,11 @@ Piano
 _Founder_<br>
 Cyberflash
 
+[<img src="ik.jpeg" class="avatar left">
+**Ivan Kuznetzov**](ik.html)<br>
+_Chief Executive Officer_<br>
+Investex
+
 [<img src="db.jpeg" class="avatar left">
 **Denis Borovikov**](db.html)<br>
 _Senior Software Engineer_<br>

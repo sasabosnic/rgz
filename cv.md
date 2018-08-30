@@ -23,10 +23,14 @@ the business and <a href="tech.html">technical background</a>.<br>
 </i>
 </p>
 <p>
-<a href="mailto:hi@romanzolotarev.com"
-  class="u-email" rel="me">hi@romanzolotarev.com</a><br>
 <a href="https://www.romanzolotarev.com/"
   class="u-url" rel="me">romanzolotarev.com</a><br>
+<a href="mailto:hi@romanzolotarev.com"
+  class="u-email" rel="me">hi@romanzolotarev.com</a><br>
+<a href="https://twitter.com/romanzolotarev"
+  class="u-url" rel="me">twitter.com/romanzolotarev</a><br>
+<a href="https://bsd.network.com/@romanzolotarev"
+  class="u-url" rel="me">bsdnetwork.com/@romanzolotarev</a><br>
 <a href="https://linkedin.com/in/romanzolotarev"
   title="almost a parody"
   class="u-url" rel="me">linkedin.com/in/romanzolotarev</a>
@@ -47,11 +51,14 @@ _Publishing, 2018-present_<br>
 [romanzolotarev.com/n.html](n.html)
 
 <pre>
-700,000 tweet impressions per month (+4500% in a year)
-1600+ followers on Twitter (+570% in a  year)
-300+ followers on Mastodon (from zero in two months)
-300+ subscribers (from zero in a week)
-+50 reviews 
+                                      Y/Y %
+700,000 tweet impressions monthly  +4,500 
+23,000+ words published            +1,200
+22,000+ tweets                       +320
+1600+ Twitter followers              +570
+300+ Mastodon followers                +&infin; in few months
++50 reviews                            +&infin; in few months 
+300+ newsletter subscribers            +&infin; in few days
 </pre>
 
 Writing [how-to guides](/) for beginners.<br>
@@ -114,7 +121,6 @@ _Software development, Russia, 2016&ndash;present_<br>
 Developing software for the web. Managing all strategic and operational
 marketing, customer relationship activities, and sales.
 
-
 ---
 
 ## Past experience
@@ -144,8 +150,8 @@ My team
 [Ivan](ref/is.html))
 developed the web application frontend of the ad campaign manager.
 
-[Marat](ref/mt.html) with the backend team architected and implemented
-API, database, and web applicaton server.
+[Marat](ref/mt.html) with the backend team designed and implemented
+API, database, and web application server.
 
 [Sath](ref/sn.html) orchestrated all engineering teams within the company.
 
@@ -174,6 +180,17 @@ user experience, interaction design).
 
 ---
 
+**Founder, JumpIDEA**<br>
+_Venture Capital Fund, 2007&ndash;2009_
+
+Managed a team of advisors, handled all communications with angel
+investors. Provided help to a dozen internet startups.
+
+[<img src="ref/an.jpeg" class="avatar">](ref/an.html "Alexis")
+[<img src="ref/ik.jpeg" class="avatar">](ref/ik.html "Ivan")
+
+---
+
 **Director, Dubbee**<br>
 _SaaS, Moscow, Russia, 2008&ndash;2009_
 
@@ -187,10 +204,6 @@ developers.
 _System Integrator, Moscow, Russia, 2007&ndash;2009_
 
 Built a content delivery network for telecom companies.
-
-[<img src="ref/an.jpeg" class="avatar">](ref/an.html)
-[<img src="ref/dba.jpeg" class="avatar">](ref/dba.html)
-<img src="ref/ik.jpeg" class="avatar">
 
 ---
 
