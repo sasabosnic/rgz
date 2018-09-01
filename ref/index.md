@@ -22,18 +22,8 @@ Crypto Jobs List
 
 [<img src="mk.jpeg" class="avatar left">
 **Marina Kuznetcova**](mk.html)<br>
-_Web Developer_<br>
+_Frontend Engineer_<br>
 Piano
-
-[<img src="an.jpeg" class="avatar left">
-**Alexis Nazarbaev**](an.html)<br>
-_Founder_<br>
-Cyberflash
-
-[<img src="ik.jpeg" class="avatar left">
-**Ivan Kuznetzov**](ik.html)<br>
-_Chief Executive Officer_<br>
-Investex
 
 [<img src="db.jpeg" class="avatar left">
 **Denis Borovikov**](db.html)<br>
@@ -55,12 +45,28 @@ RealAdvisor
 _Software Developer_<br>
 freshcells systems engineering
 
+[<img src="ik.jpeg" class="avatar left">
+**Ivan Kuznetzov**](ik.html)<br>
+_Chief Executive Officer_<br>
+Investex
+
 [<img src="dba.jpeg" class="avatar left">
 **Denis Baranov**](dba.html)<br>
 _Senior Software Developer_<br>
 adjust
 
+[<img src="an.jpeg" class="avatar left">
+**Alexis Nazarbaev**](an.html)<br>
+_Founder_<br>
+Cyberflash
+
+
 ## My mentors and managers...
+
+[<img src="az.jpeg" class="avatar left">
+**Alex Zinin**](az.html)<br>
+_Founder_<br>
+Pr3vision Consulting
 
 [<img src="sn.jpeg" class="avatar left">
 **Sath Nelakonda**](sn.html)<br>

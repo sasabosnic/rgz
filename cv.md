@@ -184,6 +184,7 @@ API, database, and web application server.
 [<img src="ref/is.jpeg" class="avatar">](ref/is.html "Ivan")
 [<img src="ref/mt.jpeg" class="avatar">](ref/mt.html "Marat")
 [<img src="ref/sn.jpeg" class="avatar">](ref/sn.html "Sath")
+[<img src="ref/az.jpeg" class="avatar">](ref/az.html "Alex")
 
 ---
 
@@ -196,7 +197,7 @@ and Moscow. I was focused on frontend development (user interfaces,
 user experience, interaction design).
 
 [<img src="ref/tg.jpeg" class="avatar">](ref/tg.html "Timur")
-<img src="ref/az.jpeg" class="avatar" "Alex">
+[<img src="ref/az.jpeg" class="avatar">](ref/az.html "Alex")
 [<img src="ref/db.jpeg" class="avatar">](ref/db.html "Denis")
 [<img src="ref/an.jpeg" class="avatar">](ref/an.html "Alexis")
 [<img src="ref/dba.jpeg" class="avatar">](ref/dba.html "Denis")
