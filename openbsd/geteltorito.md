@@ -1,4 +1,4 @@
-# Update ThinkPad firware with geteltorio(1)
+# Update ThinkPad firware with geteltorito(1)
 
 <pre>
 # pkg_add geteltorito
