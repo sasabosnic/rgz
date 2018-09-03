@@ -33,9 +33,6 @@ the business and <a href="tech.html">technical background</a>.</i>
   class="u-url" rel="me">twitter.com/romanzolotarev</a><br>
 <a href="https://bsd.network/@romanzolotarev"
   class="u-url" rel="me">bsd.network/@romanzolotarev</a><br>
-<a href="https://linkedin.com/in/romanzolotarev"
-  title="almost a parody"
-  class="u-url" rel="me">linkedin.com/in/romanzolotarev</a>
 </p>
 
 <a href="about.html"
@@ -280,3 +277,72 @@ Maintained the computer network and supported users.
 **Master of Computer Science**<br>
 Kazan National Research Technical University<br>
 _Diploma with honors, Kazan, Russia, 2004_
+
+## References
+
+[<img src="ref/az.jpeg" class="avatar left">
+**Alex Zinin**](ref/az.html)<br>
+_Founder_<br>
+Pr3vision Consulting
+
+[<img src="ref/sn.jpeg" class="avatar left">
+**Sath Nelakonda**](ref/sn.html)<br>
+_VP of Engineering_<br>
+Cinarra Systems
+
+[<img src="ref/tg.jpeg" class="avatar left">
+**Timur Goldobin**](ref/tg.html)<br>
+_Co-founder_<br>
+Leto24
+
+[<img src="ref/mp.jpeg" class="avatar left">
+**Mischa Peters**](ref/mp.html)<br>
+_Founder_<br>
+OpenBSD Amsterdam
+
+[<img src="ref/rs.jpeg" class="avatar left">
+**Raman Shalupau**](ref/rs.html)<br>
+_Founder_<br>
+Crypto Jobs List
+
+[<img src="ref/mk.jpeg" class="avatar left">
+**Marina Kuznetcova**](ref/mk.html)<br>
+_Frontend Engineer_<br>
+Piano
+
+[<img src="ref/db.jpeg" class="avatar left">
+**Denis Borovikov**](ref/db.html)<br>
+_Senior Software Engineer_<br>
+Cinarra Systems
+
+[<img src="ref/tda.jpeg" class="avatar left">
+**Tran Dac Anh**](ref/tda.html)<br>
+_Software Developer_<br>
+Yara
+
+[<img src="ref/is.jpeg" class="avatar left">
+**Ivan Starkov**](ref/is.html)<br>
+_Software Developer_<br>
+RealAdvisor
+
+[<img src="ref/mt.jpeg" class="avatar left">
+**Marat Tukhvatullin**](ref/mt.html)<br>
+_Software Developer_<br>
+freshcells systems engineering
+
+[<img src="ref/ik.jpeg" class="avatar left">
+**Ivan Kuznetzov**](ref/ik.html)<br>
+_Chief Executive Officer_<br>
+Investex
+
+[<img src="ref/dba.jpeg" class="avatar left">
+**Denis Baranov**](ref/dba.html)<br>
+_Senior Software Developer_<br>
+adjust
+
+[<img src="ref/an.jpeg" class="avatar left">
+**Alexis Nazarbaev**](ref/an.html)<br>
+_Founder_<br>
+Cyberflash
+
+Also [people are saying...](/words.html)
