@@ -6,7 +6,7 @@ _This is a reference letter for_
 _Software Developer_<br>
 [metaller.ru](http://metaller.ru)
 
-# Roman says...
+# &nbsp;
 
 <p class="quote">&#8220;In 2011 my friends and I were building web
 application for a few long term projects, and we were lucky Denis

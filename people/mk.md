@@ -6,7 +6,7 @@ _This is a reference letter for_
 _Frontend Web Developer_<br>
 [marinakuznetcova.com](http://www.marinakuznetcova.com)
 
-# Roman says...
+# &nbsp;
 
 <p class="quote">&#8220;We met almost a year ago, when Marina was
 switching her career to frontend web development. A month later she

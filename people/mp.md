@@ -6,7 +6,7 @@ _This is a reference letter for_
 _Founder_<br>
 [openbsd.amsterdam](https://openbsd.amsterdam)
 
-# Roman says...
+# &nbsp;
 
 <p class="quote">&#8220;Hey! I'm Roman Zolotarev and I run <a
 href="https://www.bsdjobs.com">BSDjobs.com</a>.  I&nbsp;was so lucky

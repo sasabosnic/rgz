@@ -1,7 +1,7 @@
 _This reference letter is a part of my [curriculum vitae](/cv.html).
 [See&nbsp;more](./)._
 
-# &nbsp;
+# Ivan says...
 
 <p class="quote">&#8220;I met Roman in 2008, when I was working
 on one of my startups.  Just after a few quick chats Roman invited
