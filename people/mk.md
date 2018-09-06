@@ -1,9 +1,8 @@
 _This is a reference letter for_
 
-
 <img src="/ref/mk.jpeg" class="avatar">
 
-**Marina Kuznetsova**<br>
+**Marina Kuznetcova**<br>
 _Frontend Web Developer_<br>
 [marinakuznetcova.com](http://www.marinakuznetcova.com)
 
