@@ -17,13 +17,13 @@ His launch of [BSDjobs](https://www.bsdjobs.com/) and subsequent
 "[people who run BSD](https://www.bsdjobs.com/people/)" was great
 to see and shows well his unique combination of clear and concise
 writing and technical skills. Our first proper project together was
-when [OpenBSD Amsterdam] started and Roman was willing to take care
-of the project's [style guide,
-logo](https://www.romanzolotarev.com/openbsd.amsterdam/), and [pretty
+when [OpenBSD Amsterdam](https://openbsd.amsterdam) started and
+Roman was willing to take care of the project's [style
+guide](/openbsd.amsterdam/), [logo](/openbsd.amsterdam/), and [pretty
 much overall
 communication](https://twitter.com/search?q=from:@romanzolotarev+@openbsdams).
 
-I have come to know Roman as a very positive, passionate and
+I have come to know Roman as a very positive, passionate, and
 detail-oriented person. All qualities I appreciate a lot in people.
 It is always a pleasure having discussions with Roman even though
 we are miles apart.
