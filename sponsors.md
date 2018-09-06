@@ -47,7 +47,7 @@ To keep this website alive:
 - **[Become my patron on Patreon](/patreon.html)**
 - Send satoshis to [`3MZ9d6NTsirYfjx9iJVieT2WCHnzBZckHd`](bitcoin://3MZ9d6NTsirYfjx9iJVieT2WCHnzBZckHd)
 
-<a class="button" href="/paypal.html">Donate via PayPal</a>
+<a href="/paypal.html"><span class="button">Donate via PayPal</span></a>
 
 Don't hesitate to contact me if you have questions or need my help.
 
