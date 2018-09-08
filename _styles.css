@@ -70,21 +70,22 @@ table {
   line-height: 46px;
 }
 
+.button,
 .email {
   -webkit-appearance: none;
-  background-color: #ffffff;
-  border: solid 1px #888888;
   color: #000000;
   padding: 15px;
 }
 
+.email {
+  background-color: #ffffff;
+  border: solid 1px #888888;
+}
+
 .button {
-  -webkit-appearance: none;
-  background-color: #ffc439;
-  border: solid 1px #ffc439;
-  color: #000000;
+  background-color: #ffc469;
+  border: solid 1px #ffc469;
   font-weight: bold;
-  padding: 15px;
   display: inline-block;
   text-align: center;
   text-decoration: none;

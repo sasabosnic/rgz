@@ -79,6 +79,8 @@ pics() { mnt sd1i && cd DCIM && rsync -avP --chown=$(whoami) . "$HOME/downloads/
 xrm() { sxiv -tor "${1:-.}" | xargs -r rm; }
 x() { sxiv -tor "${1:-.}"; }
 
+utf2html() { [ -f "$1" ] && cp "$1" "$1.orig" && uconv -f utf-8 -t ascii --callback escape-xml-dec "$1.orig" > "$1"; }
+
 aria() { mkdir -p "$HOME/downloads" && (cd "$HOME/downloads" && aria2c "$1"); }
 yt() { mkdir -p "$HOME/downloads" && (cd "$HOME/downloads" && youtube-dl "$1"); }
 yl() { mkdir -p "$HOME/downloads" && (cd "$HOME/downloads" && youtube-dl -f 'bestvideo[height<=144]+bestaudio/best[height<=144]' "$1"); }
