@@ -32,8 +32,8 @@ a partition layout.
 # <b>disklabel -E sd0</b>
 Label editor (enter '?' for help at any prompt)
 > <b>a a</b>
-offset: [0]
-size: [39825135]
+offset: [1024]
+size: [500117105]
 FS type: [4.2BSD] <b>RAID</b>
 > <b>w</b>
 > <b>q</b>
@@ -48,26 +48,46 @@ Use [diceware](/diceware.html), for example.
 # <b>bioctl -c C -l sd0a softraid0</b>
 New passphrase:
 Re-type passphrase:
-sd2 at scsibus2 targ 1 lun 0: <OPENBSD, SR CRYPTO, 006> SCSI2 0/direct fixed
-sd2: 244190MB, 512 bytes/sector, 500102858 sectors
+<span class="kernel">sd2 at scsibus2 targ 1 lun 0: &lt;OPENBSD, SR CRYPTO, 006&gt; SCSI2 0/direct fixed
+sd2: 244190MB, 512 bytes/sector, 500102858 sectors</span>
 softraid0: CRYPTO volume attached as sd2
 # <b>cd /dev && sh MAKEDEV sd2</b>
 # <b>dd if=/dev/zero of=/dev/rsd2c bs=1m count=1</b>
+1+0 records in
+1+0 records out
+1048576 bytes transferred in 0.003 secs (265557618 bytes/sec)
 # <b>exit</b>
 </pre>
 
 Select `(I)nstall` and answer questions.
 
 <pre>
-Do you want the X Window System = <b>yes</b>
-Use (W)hole disk MBR = <b>g</b>
-Location of sets = <b>disk</b>
-Which disk contains the install media = <b>sd1</b>
-Continue without verification = <b>yes</b>
+System hostname? = <b>foo</b>
+Which network interface do you wish to configure? = <b>em0</b>
+DNS domain name? = <b>romanzolotarev.com</b>
+Password for root account? = <b>**************************</b>
+Do you want the X Window System to be started by xenodm(1)? = <b>yes</b>
+Setup a user? = <b>romanzolotarev</b>
+Full name for user romanzolotarev? = <b>Roman Zolotarev</b>
+Password for user romanzolotarev? = <b>*******************</b>
+What timezone are you in? = <b>UTC</b>
+Which disk is the root disk? = <b>sd2</b>
+Use (W)hole disk MBR, whole disk (G)PT or (E)dit? = <b>gpt</b>
+Location of sets? = <b>disk</b>
+Is the disk partition already mounted? = <b>no</b>
+Which disk contains the install media? = <b>sd1</b>
+Directory does not contain SHA256.sig. Continue without verification? = <b>yes</b>
 </pre>
 
 Unplug USB drive with the installer and boot OpenBSD from the target
-drive, login as _root_.
+drive. Login as a regular user and run this command in [xterm(1)](https://man.openbsd.org/xterm.1)
+to switch to _root_.
+
+<pre>
+$ <b>su -</b>
+Password:
+#
+</pre>
 
 Set install URL and run [syspatch(8)](https://man.openbsd.org/syspatch.8):
 
@@ -79,11 +99,11 @@ Relinking to create unique kernel... done.
 #
 </pre>
 
-Update [fstab(5)](https://man.openbsd.org/fstab.5) to add _softdep_ and _noatime_:
+Update [fstab(5)](https://man.openbsd.org/fstab.5) to add _noatime_:
 
 <pre>
 # <b>cp /etc/fstab /etc/fstab.bak</b>
-# <b>sed -i 's/rw/rw,softdep,noatime/' /etc/fstab</b>
+# <b>sed -i 's/rw/rw,noatime/' /etc/fstab</b>
 #
 </pre>
 

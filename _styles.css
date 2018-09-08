@@ -53,13 +53,14 @@ table {
 }
 
 .avatar {
-  width: 60px;
-  heigth: 60px;
-  border-radius: 60px;
+  width: 80px;
+  heigth: 80px;
+  border-radius: 80px;
 }
 
 .left {
   float: left;
+  clear: both;
   margin: 8px 24px 24px 0;
 }
 
