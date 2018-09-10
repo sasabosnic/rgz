@@ -53,7 +53,7 @@ _Publishing, 2018&ndash;present_<br>
 700,000 tweet impressions monthly
 23,000+ words published
 22,000+ tweets
-1600+ Twitter followers
+1700+ Twitter followers
 300+ Mastodon followers
 50+ reviews
 300+ newsletter subscribers
@@ -195,6 +195,7 @@ user experience, interaction design).
 
 [<img src="ref/tg.jpeg" class="avatar">](ref/tg.html "Timur")
 [<img src="ref/az.jpeg" class="avatar">](ref/az.html "Alex")
+[<img src="ref/kk.jpeg" class="avatar">](ref/kk.html "Kirill")
 [<img src="ref/db.jpeg" class="avatar">](ref/db.html "Denis")
 [<img src="ref/an.jpeg" class="avatar">](ref/an.html "Alexis")
 [<img src="ref/dba.jpeg" class="avatar">](ref/dba.html "Denis")
@@ -329,6 +330,10 @@ RealAdvisor
 **Marat Tukhvatullin**](ref/mt.html)<br>
 _Software Developer_<br>
 freshcells systems engineering
+
+[<img src="ref/kk.jpeg" class="avatar left">
+**Kirill Kouterguine**](ref/kk.html)<br>
+_Serial Entrepreneur_
 
 [<img src="ref/ik.jpeg" class="avatar left">
 **Ivan Kuznetzov**](ref/ik.html)<br>

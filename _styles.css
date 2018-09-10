@@ -52,6 +52,10 @@ table {
   width: 100%;
 }
 
+p {
+  clear: both;
+}
+
 .avatar {
   width: 80px;
   heigth: 80px;
@@ -60,7 +64,6 @@ table {
 
 .left {
   float: left;
-  clear: both;
   margin: 8px 24px 24px 0;
 }
 

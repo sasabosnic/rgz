@@ -45,6 +45,10 @@ RealAdvisor
 _Software Developer_<br>
 freshcells systems engineering
 
+[<img src="kk.jpeg" class="avatar left">
+**Kirill Kouterguine**](kk.html)<br>
+_Serial Entrepreneur_
+
 [<img src="ik.jpeg" class="avatar left">
 **Ivan Kuznetzov**](ik.html)<br>
 _Chief Executive Officer_<br>
