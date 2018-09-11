@@ -28,12 +28,13 @@ m() { . start_tmux 'm' "$HOME/pub/music"   'cmus'; }
 n() { . start_tmux 'n' "$HOME/downloads"   'newsboat'; }
 o() { . start_tmux 'o' "$HOME/prv/openvpn" 'doas openvpn --config default.ovpn'; }
 
-book() { . start_tmux 'book'    "$HOME/prv/book"    'vi index.md'; }
-bsd()  { . start_tmux 'bsdjobs' "$HOME/src/bsdjobs" 'vi index.md'; }
-www()  { . start_tmux 'www'     "$HOME/src/www"     'vi index.md'; }
+b()   { . start_tmux 'b'   "$HOME/prv/b"   'vi index.md'; }
+bj()  { . start_tmux 'bj'  "$HOME/src/bj"  'vi index.md'; }
+oa()  { . start_tmux 'oa'  "$HOME/src/oa"  'vi index.md'; }
+www() { . start_tmux 'www' "$HOME/src/www" 'vi index.md'; }
 
 
-s() { ssg watch --clean || return; }
+sw() { ssg watch --clean || return; }
 sync_logs() { [ -n "$1" ] && { rsync -azvPc "$1:/var/www/logs/*" "$HOME/prv/logs/$1/"; }; }
 
 utf2html() { [ -f "$1" ] && cp "$1" "$1.orig" && uconv -f utf-8 -t ascii --callback escape-xml-dec "$1.orig" > "$1"; }
@@ -78,8 +79,10 @@ alias gc='git commit'
 alias gd='git diff'
 alias gf='git commit -amf'
 alias gl='git log --oneline'
-alias gp='git push www && git push'
-alias gpf='git push -f www && git push -f'
+alias gp='git push'
+alias gpf='git push -f'
+alias gppf='git push -f www && git push -f'
+alias gpp='git push www && git push'
 alias gr='git rebase -i HEAD~20'
 alias gs='git status'
 
