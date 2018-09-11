@@ -5,10 +5,13 @@
 
 set -e
 
-script="$1" 
+script="$1"
 test="$1_test"
 
 cmd1="vi $script"
 cmd2="find $script $test | entr -c sh -c 'shellcheck '$script' && echo \"$script\" && \"$test\"'"
-tmux new-window -n "$script" "$cmd1"
+tmux select-window -t "$script" ||
+{
+tmux new-window -n "$script" "$cmd1" &&
 tmux split-window -dh "$cmd2"
+}

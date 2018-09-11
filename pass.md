@@ -3,14 +3,9 @@ This shell script uses parts of OpenSSL/LibreSSL, which are intended for
 testing purposes only. **You may loose your passwords.** Use it at your
 own risk.
 
-> "Thanks @romanzolotarev for your password management tool."<br>&mdash;
+"Thanks @romanzolotarev for your password management tool."<br>&mdash;
 [minimalist_unix](https://twitter.com/minimalist_unix/status/1022544604082647040 "26 Jul 2018")
 (@minimalist_unix)
-
-> "zOMG! This is AWESOME! Great job, going to set this up first thing in
-the morning. &#x1F495;"<br>&mdash;
-[H3artbl33d](https://twitter.com/h3artbl33d/status/983827387409403904 "11 Apr 2018")
-(@h3artbl33d)
 
 _Tested on [OpenBSD](/openbsd/) 6.3_
 

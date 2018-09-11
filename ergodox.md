@@ -1,4 +1,4 @@
-> "...thank you for pointing me to the @ergodoxez keyboard. Thank
+"...thank you for pointing me to the @ergodoxez keyboard. Thank
 you! It's a nice replacement for my "das keyboard"."<br>&mdash;
 [Special J](https://twitter.com/blockophilia/status/1020289142784217088 "20 Jul 2018")
 (@blockophilia)

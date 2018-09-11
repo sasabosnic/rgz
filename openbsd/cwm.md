@@ -1,4 +1,4 @@
-> "It's a nice .cwmrc! I even modeled mine after it. Recommended.
+"It's a nice .cwmrc! I even modeled mine after it. Recommended.
 5&nbsp;stars."<br>&mdash;
 [(((Mischa &#x1F576; &#x1F421; RCX)))](https://twitter.com/mischapeters/status/987004963682430976 "19 Apr 2018")
 (@mischapeters)

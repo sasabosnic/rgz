@@ -1,31 +1,7 @@
-> "I envy @romanzolotarev fanless desktop. Thanks to him, my next
+"I envy @romanzolotarev fanless desktop. Thanks to him, my next
 PC will be fanless :D"<br>&mdash;
 [minimalist_unix](https://twitter.com/minimalist_unix/status/996764784090648577 "16 May 2018")
 (@minimalist_unix)
-
-> "Fellow OpenBSD, YubiKey, Kensington Orbit Trackball, & ErgoDox
-user - I salute you!"<br>&mdash;
-[equalunique](https://twitter.com/no1evanrowley/status/992498136118677505 "4 May 2018")
-(@no1evanrowley)
-
-> "Dope setup"<br>&mdash;
-[nixCraft](https://twitter.com/nixcraft/status/991738751666794497 "2 May 2018")
-(@nixcraft)
-
-> "I am in love with this setup. Simple. Awesome. Functional.
-Efficient."<br>&mdash;
-[BuildItBenjamin](https://twitter.com/bl4nk_io/status/989840013650288640 "27 Apr 2018")
-(@bl4nk_io)
-
-> "my X1 Carbon was delayed yet again... That @romanzolotarev will
-be ready with his OpenBSD setup by the time it finally ships is the
-only good thing about the delay. Tot stealing his work"<br>&mdash;
-[Vlad Kozin](https://twitter.com/zeRusski/status/930362868440162304 "14 Nov 2017")
-(@zeRusski)
-
-> "Sweet rig, I know what I'm asking for on my next birthday!"<br>&mdash;
-[Sean](https://twitter.com/smhhms/status/909899624948920320 "18 Sep 2017")
-(@smhhms)
 
 # My setup
 

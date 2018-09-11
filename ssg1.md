@@ -1,18 +1,15 @@
+**WARNING**<br>
+This version of `ssg` has been retired. Check [the current version](/ssg.html).
+
 **KNOWN ISSUE**<br>
 If you use relative links on your pages (as I do),
-`rss.xml` won't render them properly. Work in progress...
-
-"SSG by @romanzolotarev is an impressively small static site
-generator with a tiny installed footprint. Really good for when you
-just need the core features."<br>&mdash;
-[Simon Dann](https://twitter.com/carbontwelve/status/1028936035143757825 "13 Aug 2018")
-(@carbontwelve)
+`rss.xml` won't render them properly.
 
 _Tested on [OpenBSD](/openbsd/) 6.3_
 
 # Make a static site with lowdown(1) and rsync(1)
 
-[ssg](/bin/ssg) is a static site generator writen in shell and powered by
+[ssg1](/bin/ssg1) is a static site generator writen in shell and powered by
 [lowdown(1)](https://kristaps.bsd.lv/lowdown/),
 [rsync(1)](https://rsync.samba.org/), and
 [entr(1)](http://entrproject.org/).
@@ -28,29 +25,29 @@ It generates a site from HTML and Markdown articles.
 1. then wraps articles with a single HTML template,
 1. copies everything from the temporary directory to `$DOCS/`.
 
-[![ssg](ssg.jpeg)](ssg.png)
-_240 LoC. [Enlarge, enhance, zoom!](ssg.png)_
+[![ssg1](ssg1.jpeg)](ssg1.png)
+_240 LoC. [Enlarge, enhance, zoom!](ssg1.png)_
 
 ## Why not Jekyll or "$X"?
 
-`ssg` is **one hundred times smaller** than Jekyll.
+`ssg1` is **one hundred times smaller** than Jekyll.
 
-`ssg` and its dependencies are about 800KB _combined_. Compare that
-to 78MB of ruby with Jekyll and all the gems. So `ssg` can be
+`ssg1` and its dependencies are about 800KB _combined_. Compare that
+to 78MB of ruby with Jekyll and all the gems. So `ssg1` can be
 installed in just few seconds on almost any Unix-like operating
 system.
 
-Obviously, `ssg` is tailored for my needs, it has all features I
+Obviously, `ssg1` is tailored for my needs, it has all features I
 need and only those I use.
 
-Keeping `ssg` helps you to master your Unix-shell skills: `awk`,
+Keeping `ssg1` helps you to master your Unix-shell skills: `awk`,
 `grep`, `sed`, `sh`, `cut`, `tr`. As a web developer you work with
 lots of text: code and data. So you better master these wonderful
 tools.
 
 ## Performance
 
-**100 pps**. On modern computers `ssg` generates a hundred pages
+**100 pps**. On modern computers `ssg1` generates a hundred pages
 per second.  Half of a time for markdown rendering and another half
 for wrapping articles into the template. I heard good static site
 generators work&mdash;twice as fast&mdash;at 200 pps, so there's lots of
@@ -61,7 +58,7 @@ performance that can be gained. ;)
 If you agree with the license, feel free to use this script, its
 HTML and CSS or/and re-write them for your needs.
 
-Install dependencies and download `ssg`. For example, on OpenBSD:
+Install dependencies and download `ssg1`. For example, on OpenBSD:
 as root install rsync(1), lowdown(1), and entr(1).
 
 <pre>
@@ -79,20 +76,20 @@ Then as a regular user change into `~/.bin` directory.
 
 <pre>
 $ <b>cd ~/.bin</b>
-$ <b>ftp https://www.romanzolotarev.com/bin/ssg</b>
+$ <b>ftp https://www.romanzolotarev.com/bin/ssg1</b>
 Trying 140.82.28.210...
-Requesting https://www.romanzolotarev.com/bin/ssg
+Requesting https://www.romanzolotarev.com/bin/ssg1
 100% |****************************************|  7257       00:00
 7257 bytes received in 0.00 seconds (2.99 MB/s)
-$ <b>chmod +x ssg</b>
+$ <b>chmod +x ssg1</b>
 $
 </pre>
 
-Let's customize your `ssg` setup.
+Let's customize your `ssg1` setup.
 
 ## Configuration
 
-To configure `ssg` you need to set two variables:
+To configure `ssg1` you need to set two variables:
 
 - `$DOCS` - path to web server document root directory
 - `$ROOT` - root URL of your web site
@@ -116,7 +113,7 @@ RSS_AUTHOR='hi@romanzolotarev.com (Roman Zolotarev)'
 RSS_DESCRIPTION='Personal website'
 ```
 
-Note: in this example if `$DOCS` is set, then `ssg` uses the original
+Note: in this example if `$DOCS` is set, then `ssg1` uses the original
 value, **not** the value from `_ssg.conf`.
 
 ## Required files
@@ -133,7 +130,7 @@ Example of `index.md`:
 - [About](/about.html "01 Aug 2016")
 ```
 
-`ssg` renders `index.md` to `index.html` and then generates the RSS feed
+`ssg1` renders `index.md` to `index.html` and then generates the RSS feed
 based on first 20 links, if they have the following syntax (it only uses
 page URL and date from `<a>` tag):
 
@@ -156,7 +153,7 @@ into `<div class="footer>...</div>`.
 ## Reserved file names
 
 There are also reserved filenames, these files are generated when you run
-`ssg build`. Don't use these names.
+`ssg1 build`. Don't use these names.
 
 1. `rss.xml` - reserved for RSS feed
 1. `sitemap.xml` - for the sitemap
@@ -171,7 +168,7 @@ Let's create `about.html` with one header and some text about your site.
 ...
 ```
 
-`ssg` converts all `.md` article into `.html` and then uses content of the
+`ssg1` converts all `.md` article into `.html` and then uses content of the
 first `<h1>` tag as a page title.
 
 Nota bene: **Don't use `=====` in titles**.
@@ -191,10 +188,10 @@ this:
 `-- index.md
 ```
 
-After you run `ssg` (don't forget to set `$DOCS`):
+After you run `ssg1` (don't forget to set `$DOCS`):
 
 <pre>
-$ <b>ssg build</b>
+$ <b>ssg1 build</b>
 building /var/www/htdocs/www  2018-04-10T10:56:52+0000 4pp
 $
 </pre>
@@ -227,13 +224,13 @@ Serving HTTP on 0.0.0.0 port 8000...
 To re-build pages on change run:
 
 <pre>
-$ <b>ssg watch</b>
+$ <b>ssg1 watch</b>
 watching /home/jack/src/www
 building /var/www/htdocs/www  2018-04-10T11:04:11+0000 4pp
 </pre>
 
 entr(1) watches changes in `*.html`, `*.md`, `*.css`, `*.txt` files and
-runs `ssg build` on every file change.
+runs `ssg1 build` on every file change.
 
 ## Clean
 
@@ -241,7 +238,7 @@ If you'd like to delete all files in the destination directory during
 build, then run:
 
 <pre>
-$ <b>ssg build --clean</b>
+$ <b>ssg1 build --clean</b>
 building /home/jack/src/www/docs --clean
 2018-04-16T09:03:32+0000 4pp
 $
@@ -250,7 +247,7 @@ $
 The same option works for watching.
 
 <pre>
-$ <b>ssg watch --clean</b>
+$ <b>ssg1 watch --clean</b>
 watching /home/jack/src/www
 building /home/jack/src/www/docs --clean
 2018-04-16T09:04:25+0000 4pp
@@ -291,23 +288,23 @@ See rcctl(8) for details.
 #
 </pre>
 
-Then as `git` user download `ssg` on the server:
+Then as `git` user download `ssg1` on the server:
 
 <pre>
 # <b>cd /home/git</b>
 # <b>su git</b>
 $ <b>mkdir -p /home/git/bin</b>
 $ <b>cd /home/git/bin</b>
-$ <b>ftp https://www.romanzolotarev.com/bin/ssg</b>
+$ <b>ftp https://www.romanzolotarev.com/bin/ssg1</b>
 Trying 140.82.28.210...
-Requesting https://www.romanzolotarev.com/bin/ssg
+Requesting https://www.romanzolotarev.com/bin/ssg1
 100% |****************************************|  7257       00:00
 7257 bytes received in 0.00 seconds (2.99 MB/s)
-$ <b>chmod +x ssg</b>
+$ <b>chmod +x ssg1</b>
 $
 </pre>
 
-Then add these lines to `.../.git/hooks/post-receive`:
+Then add these lines to `/home/git/REPOSITORY.git/hooks/post-receive`:
 
 ```
 #!/bin/sh
@@ -315,7 +312,7 @@ TMPDIR="$(mktemp -d)"
 git archive --format=tar HEAD | (cd "$TMPDIR" && tar xf -)
 cd "$TMPDIR"
 DOCS='/var/www/htdocs/www.romanzolotarev.com' \
-/home/git/ssg build --clean
+/home/git/ssg1 build --clean
 ```
 
 As root make sure `git` user owns `$DOCS` directory:
@@ -331,7 +328,7 @@ $
 [Denis Borovikov](https://twitter.com/metallerden) for reading the draft of this,
 [h3artbl33d](https://twitter.com/h3artbl33d), and
 [Mischa Peters](https://twitter.com/mischapeters), and
-[Tom Atkinson](https://twitter.com/hir0pr0tagonist) for testing `ssg`,
+[Tom Atkinson](https://twitter.com/hir0pr0tagonist) for testing `ssg1`,
 [Kristaps Dzonsons](https://www.divelog.blue/) for
 [lowdown(1)](https://kristaps.bsd.lv/lowdown/) and
 [Eric Radman](http://eradman.com) for

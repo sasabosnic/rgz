@@ -2,26 +2,10 @@
   font-family: "Comic Sans MS", "Chalkboard SE", "Comic Neue";
 }--></style>
 
-> "@romanzolotarev motivated me to spend some more time in
+"@romanzolotarev motivated me to spend some more time in
 OpenBSD"<br>&mdash;
 [Wesley Moore](https://twitter.com/wezm/status/987251788821684224 "20 Apr 2018")
 (@wezm)
-
-> "Oh god. The first paragraph is so spot on it's almost spooky. I've
-always dreamed of being able to boot into the terminal then open web
-browser just when I needed."<br>&mdash;
-[jes&uacute;s gollonet](https://twitter.com/jesusgollonet/status/930376114110951424 "14 Nov 2017")
-(@jesusgollonet)
-
-> "I've said it before, but @mwlauthor and @romanzolotarev are the
-reasons I use OpenBSD"<br>&mdash;
-[Tom A](https://twitter.com/hir0pr0tagonist/status/986292987566149632 "17 Apr 2018")
-(@hir0pr0tagonist)
-
-> "Guy knows what he's talking about folks."<br>&mdash;
-[Sean](https://twitter.com/smhhms/status/930470965754114052 "14 Nov 2017")
-(@smhhms)
-
 
 # Why OpenBSD?
 

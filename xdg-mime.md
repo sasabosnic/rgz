@@ -1,4 +1,4 @@
-> "I wish I've read this earlier. ...thanks @romanzolotarev"<br>&mdash;
+"I wish I've read this earlier. ...thanks @romanzolotarev"<br>&mdash;
 [antranigv](https://mobile.twitter.com/antranigv/status/1028217849154809856 "11 Aug 2018")
 (@antranigv)
 

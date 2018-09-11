@@ -1,4 +1,4 @@
-> "Oh wow, this is something for my long and boring night shifts."<br>
+"Oh wow, this is something for my long and boring night shifts."<br>
 [Peter Kotr&#x10D;ka](https://twitter.com/kotrckap/status/996695819792330754 "17 May 2018")
 (@kotrckap)
 

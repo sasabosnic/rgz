@@ -1,4 +1,4 @@
-> "Thank you & thanks again because I wouldn't be using a YubiKey
+"Thank you & thanks again because I wouldn't be using a YubiKey
 without your help!"<br>&mdash;
 [equalunique](https://twitter.com/no1evanrowley/status/992617178863202304 "5 May 2018")
 (@no1evanrowley)

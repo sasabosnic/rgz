@@ -4,18 +4,6 @@ usage() { >&2 echo "usage: ${0##*/} <window> <path> <command>"; exit 1; }
 [ -z "$2" ] && usage
 [ -z "$3" ] && usage
 
-if ! tmux new-session -As 0 -n "$1" "cd $2 && $3" 2>/dev/null
-then
-	if tmux select-window -t "$1" 2>/dev/null
-	then
-		if tmux list-windows | grep ": ${1}\\*" >/dev/null
-		then cd "$2" || return
-		fi
-	else
-		if tmux show-window-option automatic-rename | 
-			grep off >/dev/null
-		then tmux new-window -n "$1" -c "$2" sh -c "$3"
-		else tmux rename-window "$1" && cd "$2" && sh -c "$3"
-		fi
-	fi
-fi
+tmux select-window -t "$1" 2>/dev/null ||
+tmux rename-window "$1"
+cd "$2" && sh -c "$3"

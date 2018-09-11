@@ -1,4 +1,4 @@
-> "...@romanzolotarev's reports on the X1C5 are making me seriously
+"...@romanzolotarev's reports on the X1C5 are making me seriously
 consider diving right in."<br>&mdash;
 [surryhill](https://twitter.com/surryhill/status/1025788422227718145 "4 Aug 2018")
 (@surryhill)
@@ -119,7 +119,7 @@ supported.
 Bluetooth doesn't work because, well, [it has been
 removed](https://marc.info/?l=openbsd-cvs&m=140511572108715&w=2).
 
-> "I'm not very familiar, but the implementation had too many issues
+"I'm not very familiar, but the implementation had too many issues
 for it to be salvageable, it was treated like a network protocol
 which turned out to be the wrong design. Commit message suggests
 it also simply didn't work: <a

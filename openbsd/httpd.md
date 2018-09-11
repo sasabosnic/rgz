@@ -1,4 +1,4 @@
-> "...Thank you @romanzolotarev for the awesome guide on setting this up!"<br>&mdash;
+"...Thank you @romanzolotarev for the awesome guide on setting this up!"<br>&mdash;
 [lamdanerd](https://twitter.com/lambdanerd/status/1028018221729730560 "10 Aug 2018")
 (@lambdanerd)
 

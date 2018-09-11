@@ -2,7 +2,6 @@ _Tested on [macOS](/macos/) 10.13 with [VirtualBox](/virtualbox/) 5.2_
 
 # Create OpenBSD VM in VirtualBox
 
-
 Download [ISO
 image](https://cdn.openbsd.org/pub/OpenBSD/6.3/amd64/install63.iso)
 of the OpenBSD installer.

@@ -1,4 +1,4 @@
-> "I like that specimen.txt, man. Good stuff."<br>
+"I like that specimen.txt, man. Good stuff."<br>
 [&#x1F47D;V6Shell(Jeff)&#x1F421;](https://twitter.com/v6shell/status/997128363859902464 "17 May 2018")
 (@v6shell)
 
