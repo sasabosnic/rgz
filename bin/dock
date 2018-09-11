@@ -1,0 +1,16 @@
+#!/bin/sh
+
+xrandr | grep 'HDMI-1 connected' || exit 1
+
+if [ "$1" == 'dual' ]
+then xrandr --output HDMI-1 --auto --output eDP-1 --auto --right-of HDMI-1
+else xrandr --output HDMI-1 --auto --output eDP-1 --off
+fi
+xinput set-button-map 8 1 2 3 4 5 6 7 &
+xinput set-prop 8 'Device Accel Constant Deceleration' 5 &
+
+echo 'Xft.dpi: 92' | xrdb -override
+echo 'XTerm*font: -misc-fixed-medium-r-normal--15-140-75-75-c-90-iso10646-1' | xrdb -override
+echo 'XTerm*faceName:' | xrdb -override
+
+doas sysctl machdep.lidaction=0

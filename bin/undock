@@ -1,0 +1,12 @@
+#!/bin/sh
+
+xrandr | grep 'eDP-1 connected' || exit 1
+
+xrandr --output eDP-1 --auto --output HDMI-1 --off
+xinput set-button-map 7 1 2 3 5 4 7 6 &
+xinput set-prop 7 'Device Accel Constant Deceleration' 1 &
+
+echo 'Xft.dpi: 133' | xrdb -override
+echo 'XTerm*faceName: DejaVu Sans Mono:size=12' | xrdb -override
+
+doas sysctl machdep.lidaction=1

@@ -1,0 +1,26 @@
+#!/bin/sh
+#
+# https://www.romanzolotarev.com/bin/PROGRAM_test
+# Copyright 2018 Roman Zolotarev <hi@romanzolotarev.com>
+#
+program="$(dirname "$0")/PROGRAM"
+
+total=0; nos=0
+no() { total=$((total+1)); echo "no ok $total - $1"; nos=$((nos+1)); }
+ok() { total=$((total+1)); echo "ok $total - $1"; }
+eq() { if [ "$1" = "$2" ]; then ok "$3"; else no "$3\\n$1\\n$2"; fi; }
+desc() { printf '#\n\033[1m%s\033[m\n' "$1"; }
+
+##########################################################################
+
+
+desc 'run PROGRAM with no args'
+
+2>/dev/null "$program"
+[ "$?" = 1 ] && ok 'exit 1' || no 'exit 1'
+
+
+##########################################################################
+
+echo "1..$total"
+if [ "$nos" -gt 0 ]; then echo "FAILED $nos/$total"; else echo "PASS"; fi

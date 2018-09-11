@@ -5,7 +5,7 @@
 # https://www.romanzolotarev.com/bin/arc_extract
 # Copyright 2018 Roman Zolotarev <hi@romanzolotarev.com>
 #
-usage() { >&2 echo "usage: arc_extract archive"; exit 1; }
+usage() { >&2 echo "usage: ${0##*/" <archive>"; exit 1; }
 [ -z "$1" ] && usage
 
 archive="$(readlink -f "$1")"

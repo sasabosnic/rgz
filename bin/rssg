@@ -1,0 +1,83 @@
+#!/bin/sh
+#
+# https://www.romanzolotarev.com/bin/rssg
+# Copyright 2018 Roman Zolotarev <hi@romanzolotarev.com>
+#
+# Permission to use, copy, modify, and/or distribute this software for any
+# purpose with or without fee is hereby granted, provided that the above
+# copyright notice and this permission notice appear in all copies.
+#
+# THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+# WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+# MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+# ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+# WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+# ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+# OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+#
+
+CONF_FILE="$PWD/_rssg.conf"
+# shellcheck disable=SC1090
+[ -f "$CONF_FILE" ] && . "$CONF_FILE"
+[ -n "$FEED" ] || { echo 'to build set FEED in _rssg.conf'; exit 1; }
+[ -n "$ROOT" ] || { echo 'to build set ROOT in _rssg.conf'; exit 1; }
+
+INDEX_HTML_FILE="$TEMP_DIR/index.html"
+RSS_FILE="$TEMP_DIR/rss.xml"
+RSS_URL="$ROOT/rss.xml"
+
+##########################################################################
+
+usage() {
+	echo 'usage: rssg'
+	exit 1
+}
+
+# filter first 20 lines with links and link titles (dates)
+# shellcheck disable=SC2016
+fst_h1='/<[h1]*( id=".*")?>/{gsub(/<[^>]*>/,"");print($0);exit;}'
+a='^<li>.*<a href="\(.*\)" title="\([^<]*\)">.*<\/a>.*<\/li>.*'
+
+line_to_rss_item() {
+	url=$(echo "$line"|sed "s/$a/\\1/g")
+	date=$(echo "$line"|sed "s/$a/\\2/g")
+	file="${TEMP_DIR}${url}"
+	[ ! -f "$file" ] && return
+
+	title="$(awk "$fst_h1" "$file")"
+
+	# replace relative URIs with absolute URIs
+	href='s#href="#href="'"$ROOT"'/#g'
+	src='s#src="#src="'"$ROOT"'#g'
+	article=$(sed "$href;$src" "$file")
+
+	printf "%s" "$(cat << EOF
+
+<item>
+<title>$title</title>
+<guid>${ROOT}$url</guid>
+<link>${ROOT}$url</link>
+<pubDate>$date 00:00:00 +0000</pubDate>
+<description><![CDATA[$article]]></description>
+</item>
+EOF
+)"|sed 's/\&nbsp;/ /g' >> "$RSS_FILE"
+}
+
+date_rfc_822=$(date "+%a, %d %b %Y %H:%M:%S %z")
+
+cat > "$RSS_FILE" << EOF
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+<atom:link href="$RSS_URL" rel="self" type="application/rss+xml" />
+<title>$WEBSITE_TITLE</title>
+<description>$RSS_DESCRIPTION</description>
+<link>$ROOT/</link>
+<lastBuildDate>$date_rfc_822</lastBuildDate>
+<managingEditor>$RSS_AUTHOR</managingEditor>
+EOF
+grep "$a" "$INDEX_HTML_FILE" |
+head -n20 |
+while read -r line; do line_to_rss_item "$line"; done
+echo '</channel></rss>' >> "$RSS_FILE"

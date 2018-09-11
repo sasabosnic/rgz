@@ -1,0 +1,17 @@
+#!/bin/sh
+[ -z "$1" ] && { >&2 echo "usage: ${0##*/} <new_script>"; exit 1; }
+
+set -e
+
+script="$1"
+test="$1_test"
+
+[ ! -e "$test" ] && {
+	sed "s#PROGRAM#$script#g" "$HOME/bin/_test" > "$test" &&
+	chmod +x "$test"
+}
+
+[ ! -e "$script" ] && {
+	echo '#!/bin/sh' > "$script" &&
+	chmod +x "$script"
+}

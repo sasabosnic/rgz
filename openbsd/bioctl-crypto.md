@@ -51,6 +51,28 @@ softraid0: CRYPTO volume attached as sd4
 #
 </pre>
 
+Check out my helpers
+[mnt_crypto](/bin/mnt_crypto) and
+[umnt_crypto](/bin/umnt_crypto) and how to use them:
+
+	# bin/mnt_crypto  'XXXXXXXXXXXXXXXX.x' 'YYYYYYYYYYYYYYYY.y'
+	# bin/umnt_crypto 'XXXXXXXXXXXXXXXX.x'
+
+Where `XXXXXXXXXXXXXXXX.x` is DUID and partition of a CRYPTO
+volume and `YYYYYYYYYYYYYYYY.y`&mdash;of a physical device.
+
+You can find DUIDs by running this:
+
+<pre>
+# <b>disklabel /dev/sd3a | grep -E 'duid|RAID'</b>
+duid: XXXXXXXXXXXXXXXX
+  a:          7716864                 0    RAID
+# <b>disklabel /dev/sd4i | grep -E 'duid|BSD'</b>
+duid: YYYYYYYYYYYYYYYY
+  i:          7716864                64    4.2BSD   4096 32768 26062
+#
+</pre>
+
 ## Check file system consistency
 
 A drive was accidentally disconnected (before you could unmount it properly).

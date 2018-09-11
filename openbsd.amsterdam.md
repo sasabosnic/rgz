@@ -27,13 +27,13 @@ romanzolotarev
 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIqh7BmO... 1500469202
 ```
 
-Please allow few hours for your VM to be started. You'll get IPv4
-(and IPv6) address as soon as your VM is deployed. Login to the
+Please allow few hours for your VM to be started. You'll get a IPv4
+and IPv6 address as soon as your VM is deployed. Login to the
 VM (assuming your private SSH key is in its default location):
 
 <pre>
 $ <b>ssh <i>username@XXX.XXX.XXX.XXX</i></b>
-OpenBSD 6.3 (GENERIC) #4: Sun Jun 17 11:09:51 CEST 2018
+OpenBSD 6.3 (GENERIC) #100: Sat Mar 24 14:17:45 MDT 2018
 
 Welcome to OpenBSD: The proactively secure Unix-like operating
 system.
@@ -101,15 +101,22 @@ Terminating
 #
 </pre>
 
-Edit `/etc/hostname.vio0`:
+It has been reported by some users that IPv6 needs `-soii` in order
+to work properly.  In that case you can edit `/etc/hostname.vio0`:
+
+	dhcp
+	inet6 2a03:6000:9xxx::xxx 64 -soii
+
+When you don't want the IPv4 address to be provided by dhcpd you
+can change `/etc/hostname.vio0` to:
 
 	inet 46.23.xx.xx 255.255.255.0
-	inet6 2a03:6000:xxxx::xxx 64 -soii
+	inet6 2a03:6000:9xxx::xxx 64 -soii
 
-Edit `/etc/mygate`:
+When you do, make sure to edit `/etc/mygate`:
 
 	46.23.xx.1
-	2a03:6000:xxxx::1
+	2a03:6000:9xxx::1
 
 Reinitialize the network:
 
@@ -149,9 +156,11 @@ available patches.
 
 <pre>
 # <b>syspatch</b>
+Get/Verify syspatch63-001_perl.tgz 100% |**************|  4922 KB 00:00
+Installing patch 001_perl
 ...
-Get/Verify syspatch63-011_perl.tgz 100% |***************| 24401 00:00
-Installing patch 011_perl
+Get/Verify syspatch63-018_vmml1tf... 100% |************| 38639 KB 00:11
+Installing patch 018_vmml1tf
 Relinking to create unique kernel... done.
 # <b>reboot</b>
 Connection to XXX.XXX.XXX.XXX closed.

@@ -4,11 +4,11 @@
 for file in $(find "$2" -name 'access*'|sort -nr)
 do
 	logs="$(zgrep "$1" "$file" | cut -d' ' -f2-)"
-	stats="$(echo "$logs" | logswan - 2>/dev/null)" 
+	stats="$(echo "$logs" | logswan - 2>/dev/null)"
 
 	printf '%s %s %s %s \n' \
-        $file \
-	$(echo "$logs" | head -1 | sed -E 's/.*\[(.*):.*\].*/\1/') \
-  	$(echo "$logs" | tail -1 | sed -E 's/.*\[(.*):.*\].*/\1/') \
-        $(echo "$stats" | jq '.visits.total')
+	"$file" \
+	"$(echo "$logs" | head -1 | sed -E 's/.*\[(.*):.*\].*/\1/')" \
+	"$(echo "$logs" | tail -1 | sed -E 's/.*\[(.*):.*\].*/\1/')" \
+	"$(echo "$stats" | jq '.visits.total')"
 done
