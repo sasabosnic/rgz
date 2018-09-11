@@ -1,0 +1,36 @@
+#!/bin/sh
+[ -f "$1" ] || { >&2 echo "usage: ${0##*/} <existing_site>"; exit 1; }
+[ -x "$(which ssg)" ] || exit 2
+[ -x "$(which smg)" ] || exit 2
+[ -x "$(which rssg)" ] || exit 2
+[ -x "$(which entr)" ] || exit 2
+
+set -e
+
+site="$1" 
+
+cmd1="cd $HOME/src/$site"
+cmd2="find ssg2"
+
+	cd "$HOME/src/$site"
+	cmd2="entr -d $HOME/bin/ssg2"
+	echo "watching $PWD"
+	while :; do
+		find "$PWD" -type f \
+			\( -name "$(basename "$0")" \
+			-or -name '*.conf' \
+			-or -name '*.md' \
+			-or -name '*.html' \
+			-or -name '*.css' \
+			-or -name '*.js' \
+			-or -name '*.txt' \
+			-or -name '*.jpeg' \
+			-or -name '*.png' \)\
+			! -name ".*" \
+			! -path "*/.*" \
+			! -path "${DOCUMENT_ROOT}*" |
+			$cmd
+	done
+
+tmux new-window -n "$site" "$cmd1"
+tmux split-window -dv "$cmd2"
