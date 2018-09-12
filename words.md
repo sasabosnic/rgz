@@ -13,8 +13,16 @@ _Entrepreneur and Book Publisher_<br>
 ---
 
 "I followed another one of @romanzolotarev's awesome guides to set up a remote git host on #OpenBSD. My mind is still blown because of how easy it was! Thanks, Roman!"<br>&mdash;
-[@lambdanerd](https://mobile.twitter.com/lambdanerd/status/1036823248158289920 "04 Sep 2018")
+[@lambdanerd](https://twitter.com/lambdanerd/status/1036823248158289920 "04 Sep 2018")
 (@lambdanerd)
+
+"Thanks to @romanzolotarev again, his shell skills are neat."<br>&mdash;
+[Dio Oktarianos Putra](https://twitter.com/diooktput/status/1034610991806304256 "29 Aug 2018")
+(@diooktput)
+
+"I just upgraded my personal server to OpenBSD 6.4. I took advantage of opportunity to replace Jekyll with ssg as a static site generator.  ssg is a shell script with all features I need (simply generating a website from markdown). Thanks to @romanzolotarev !"<br>&mdash;
+[Miguel Vidal](https://twitter.com/mvidallopez/status/1034116416243490816 "27 Aug 2018")
+(@mvidallopez)
 
 "Thanks for your inspiring work in promoting #RUNBSD. Your inspiration made me rework my website and move it to @OpenBSDAms."<br>&mdash;
 [Bruno Fl&uuml;ckiger](https://bsd.network/@buf/100620687627502708 "27 Aug 2018")
@@ -42,23 +50,27 @@ _Cofounder of HardenedBSD_<br>
 (@monolit0)
 
 "Just launched my first OpenBSD instance on @Vultr! I'm excited to *finally* dig into it. I blame @romanzolotarev"<br>&mdash;
-[lambdanerd](https://mobile.twitter.com/lambdanerd/status/1027817634434371584 "20 Aug 2018")
+[lambdanerd](https://twitter.com/lambdanerd/status/1027817634434371584 "20 Aug 2018")
 (@lambdanerd)
 
 "...@romanzolotarev is a guru tho"<br>&mdash;
-[,':&#8364;,'](https://mobile.twitter.com/strangeqargo/status/1031238456855474176 "19 Aug 2018")
+[,':&#8364;,'](https://twitter.com/strangeqargo/status/1031238456855474176 "19 Aug 2018")
 (@strangeqargo)
 
 "...can confirm that Roman is the must follow for #everythingOpenBSD :-)"<br>&mdash;
-[WhiteHatScum](https://mobile.twitter.com/WhiteHatScum/status/1031239569394548737 "19 Aug 2018")
+[WhiteHatScum](https://twitter.com/WhiteHatScum/status/1031239569394548737 "19 Aug 2018")
 (@WhiteHatScum)
+
+"Got full control over my #OpenBSD VM at @OpenBSDAms @mischapeters and @romanzolotarev are doing great work for users and community."<br>&mdash;
+[Vetelko](https://twitter.com/vetelko/status/1029832649177817093 "15 Aug 2018")
+(@vetelko)
 
 "your tireless efforts for the BSD community are greatly appreciated."<br>&mdash;
 [Wesley Moore](https://twitter.com/wezm/status/1029674316252688384 "15 Aug 2018")
 (@wezm)
 
 "Read stories of people running #BSD at [bsdjobs.com/people](https://www.bsdjobs.com/people/) it is interesting and motivating. It is edifying experience."<br>&mdash;
-[Vetelko](https://mobile.twitter.com/vetelko/status/1029833892382089217 "15 Aug 2018")
+[Vetelko](https://twitter.com/vetelko/status/1029833892382089217 "15 Aug 2018")
 (@vetelko)
 
 "SSG by @romanzolotarev is an impressively small static site generator with a tiny installed footprint. Really good for when you just need the core features."<br>&mdash;
@@ -82,7 +94,7 @@ _Cofounder of HardenedBSD_<br>
 (@Wolf480pl@niu\.moe)
 
 "I wish I've read this earlier. ...thanks @romanzolotarev"<br>&mdash;
-[antranigv](https://mobile.twitter.com/antranigv/status/1028217849154809856 "11 Aug 2018")
+[antranigv](https://twitter.com/antranigv/status/1028217849154809856 "11 Aug 2018")
 (@antranigv)
 
 "...Thank you @romanzolotarev for the awesome guide on setting this up!"<br>&mdash;
@@ -121,7 +133,7 @@ the current.&#8221;</p>
 (@surryhill)
 
 "You're the [@AllanJude](https://twitterc.com/AllanJude) of OpenBSD :)"<br>&mdash;
-[Farhan Yusufzai](https://mobile.twitter.com/FarhanYusufzai/status/1025475485197914112 "3 Aug 2018")
+[Farhan Yusufzai](https://twitter.com/FarhanYusufzai/status/1025475485197914112 "3 Aug 2018")
 (@FarhanYusufzai)
 
 "Thanks for writing ssg ;)"<br>&mdash;

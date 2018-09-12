@@ -17,7 +17,7 @@ $ <b>xrandr --output HDMI-1 --auto --output eDP-1 --auto --right-of HDMI-1</b>
 $
 </pre>
 
-## Mouse and trackpad
+## Mouse and touchpad
 
 
 List all connected devices with
@@ -35,7 +35,7 @@ $ <b>xinput</b>
 </pre>
 
 Then adjust button mapping and pointer acceleration. For example,
-reverse trackpad scrolling (`id=7`) and slow down trackball (`id=8`).
+reverse touchpad scrolling (`id=7`) and slow down trackball (`id=8`).
 
 <pre>
 $ <b>xinput set-button-map 7 1 2 3 5 4 7 6</b>
