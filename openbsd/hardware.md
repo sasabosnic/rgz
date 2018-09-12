@@ -26,24 +26,16 @@ tested by  <a href="https://twitter.com/romanzolotarev/status/101992097365356953
 
 <b><s>fpr</s></b>        <a href="https://bsd.network/@kristapsdz/100391368292782019">patch for libfprint required</a>
 <b>cam</b>        not tested
-<b>wifi</b>       iwm(4) required, ok
-<b>lcd</b>        xbacklight(1), ok
+<b>wifi</b>       iwm(4) required
+<b>lcd</b>        xbacklight(1)
 
-<b>&#x2744;</b>          fan is off most of a time (turns on, when CPU > 60&deg;C)
-batt       9 hours, ok
-kbrd       keyboard backlight, mute, vol up/down, ok
-tp         touchpad, trackpoint, ok
-eth        em, ok
-video      ok
-hdmi       ok
-headphones ok
-mic        ok
-speakers   ok
-ZZZ        ok
-zzz        ok
-usb        ok
-usb-c      ok
-sd         ok
+<b>&#x2744;</b>          fan is off most of a time 
+           turns on, when CPU > 60&deg;C
+
+eth, video, HDMI, headphones, mic, speakers,
+keyboard backlight, mute, vol up/down,
+touchpad, trackpoint usb, usb-c, sd,
+batt (9 hours), ZZZ, zzz
 </pre>
 
 ## [ZOTAC CI527 Nano](https://www.zotac.com/us/product/mini_pcs/ci527-nano)
@@ -61,16 +53,23 @@ tested by  <a href="https://twitter.com/romanzolotarev/status/909807608252551169
 <b>usb-c</b>      not tested
 
 <b>wifi</b>       iwm(4) required
-
 <b>&#x2744;</b>          43&deg;C, fanless
-eth        re, em, ok
-HDMI       ok
-headphones ok
-mic        ok
-ZZZ        ok
-usb        ok
-sd         ok
-mic        ok
+
+eth (re, em), HDMI, 
+headphones, mic,
+usb, sd, ZZZ
+</pre>
+
+## [Toshiba Portege R935-ST4N01](https://support.toshiba.com/support/modelHome?freeText=3574912)
+
+<pre>
+3rd Gen Intel i5
+tested by  <a href="http://dmesgd.nycbug.org/index.cgi?do=view&id=3706">armandch</a> on 6.3-stable
+
+eth, wifi, video, HDMI, lcd backlight, 
+headphones, mic, speakers, camera, 
+kbrd backlight, touchpad, 
+usb, sd, battery, ZZZ, zzz
 </pre>
 
 ---
