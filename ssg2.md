@@ -4,7 +4,7 @@
 &#9492;&#9472;&#9496;&#9492;&#9472;&#9496;&#9492;&#9472;&#9496;
 </pre>
 
-# Static Site Generator 2
+# Make a static site with lowdown(1)
 
 ## Changes
 
@@ -20,6 +20,14 @@ env vars and `_ssg.conf`                 | removed RSS related props
 dependencies: `rsync`, `lowdown`, `entr` | `lowdown`
 
 The previous version: [ssg1](ssg1.html)
+
+## How the new version works?
+
+1. Convert *.md to *.html
+1. Generate a sitemap from *.html with `<H1>`
+1. Wrap *.html with header, footer, styles, scripts
+1. Copy other files, excluding `.*` and `_*`, to htdocs
+
 
 	$ cat page1.md # md pages converted to html
 	# Title 1

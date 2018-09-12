@@ -5,11 +5,11 @@
 # https://www.romanzolotarev.com/bin/arc_extract
 # Copyright 2018 Roman Zolotarev <hi@romanzolotarev.com>
 #
-usage() { >&2 echo "usage: ${0##*/" <archive>"; exit 1; }
+set -e
+usage() { >&2 echo "usage: ${0##*/} <archive>"; exit 1; }
 [ -z "$1" ] && usage
 
 archive="$(readlink -f "$1")"
-
 
 tree="${archive}.tree.gz"
 dgst="${archive}.tree.sha256"

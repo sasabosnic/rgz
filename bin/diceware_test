@@ -20,10 +20,6 @@ word_count=$(echo "$words"|wc -w|tr -d ' ')
 echo $words
 equal "$word_count" "12" '12 words if the argument is 12'
 
-words=$("$INIT_DIR/diceware" 01w)
-word_count=$(echo "$words"|wc -w|tr -d ' ')
-equal "$word_count" "1" '1 word if the argument is 01w'
-
 a=$("$INIT_DIR/diceware")
 b=$("$INIT_DIR/diceware")
 not_equal "$a" "$b" 'Two calls return two different phrases'

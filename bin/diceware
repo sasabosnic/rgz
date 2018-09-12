@@ -21,6 +21,7 @@
 # The word list: CC BY 3.0 US 2016 Electronic Frontier Foundation
 # https://www.eff.org/deeplinks/2016/07/new-wordlists-random-passphrases
 #
+set -e
 
 wordlist=$(cat << EOF
 1111 aardvark
@@ -1322,14 +1323,11 @@ wordlist=$(cat << EOF
 EOF
 )
 
-i=$(echo "$1"|tr -cd '[:digit:]'|sed 's/^0*//')
-[ -z "$i" ] && i=8
-
 dice() {
 	tr -cd '1-6'</dev/urandom|fold -w 4|head -n "$1"
 }
 
-for num in $(dice "$i")
+for num in $(dice "${1:-8}")
 do
 	echo "$wordlist"|
 	grep "$num"|

@@ -23,14 +23,17 @@ logswan--
 lowdown--
 mpv--
 mupdf--
+newsboat--
 node--
 noto-emoji--
 noto-fonts--
+nvi--iconv
 oath-toolkit--
 openvpn--
 optipng--
 quirks--
 ranger--
+rsync--
 scrypt--
 shellcheck--
 slop--

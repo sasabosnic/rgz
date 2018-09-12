@@ -1,17 +1,12 @@
 #!/bin/sh
+set -e
 [ -f "$1" ] || { >&2 echo "usage: ${0##*/} <existing_script>"; exit 1; }
 [ -x "$(which entr)" ] || exit 2
 [ -x "$(which shellcheck)" ] || exit 3
 
-set -e
-
-script="$1"
-test="$1_test"
-
-cmd1="vi $script"
-cmd2="find $script $test | entr -c sh -c 'shellcheck '$script' && echo \"$script\" && \"$test\"'"
-tmux select-window -t "$script" ||
+tmux select-window -t "$1" 2>/dev/null ||
 {
-tmux new-window -n "$script" "$cmd1" &&
-tmux split-window -dh "$cmd2"
+tmux new-window -n "$1" "vi $1 && tmux kill-window -t $1"
+tmux split-window -p 40 -dh \
+"ls $1 $1_test | entr -c sh -c 'shellcheck $1 && echo $1 && $1_test'"
 }

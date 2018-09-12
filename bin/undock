@@ -7,7 +7,8 @@ xinput set-button-map 7 1 2 3 5 4 7 6 &
 xinput set-prop 7 'Device Accel Constant Deceleration' 1 &
 xinput set-prop 8 'Device Accel Constant Deceleration' 2 &
 
-echo 'Xft.dpi: 133' | xrdb -override
-echo 'XTerm*faceName: DejaVu Sans Mono:size=12' | xrdb -override
+xrdb "$HOME/.Xdefaults"
+echo 'Xft.dpi: 133' | xrdb -merge
+echo 'XTerm*faceName: DejaVu Sans Mono:size=12' | xrdb -merge
 
 doas sysctl machdep.lidaction=1

@@ -1,9 +1,8 @@
 #!/bin/sh
+set -e
 usage() { >&2 echo "usage: ${0##*/} <src> <archive_dir>"; exit 1; }
 [ -e "$1" ] || usage
 [ -n "$2" ] || usage
-
-set -e
 
 src=$(readlink -f "$1")
 archive_dir=$(readlink -f "$2")

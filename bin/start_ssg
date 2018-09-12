@@ -1,0 +1,13 @@
+#!/bin/sh
+set -e
+usage() { >&2 echo "usage: ${0##*/} <name> <dir>"; exit 1; }
+[ -n "$1" ] || usage
+[ -d "$2" ] || usage
+[ -x "$(which ssg)" ] || exit 2
+[ -x "$(which entr)" ] || exit 2
+
+tmux select-window -t "$1" 2>/dev/null ||
+{
+tmux new-window -n "$1" -c "$2"
+tmux split-window -l 3 -d -c "$2" 'ssg watch --clean'
+}
