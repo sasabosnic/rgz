@@ -8,6 +8,6 @@ map gg 1G
 map gj :%!prettier --write
 map gp :r!xclip -o -selection clipboard
 map gs {!}sort
-map gt mm:%s/[[:space:]]\{1,\}$//g`m
+map gt mm:%s/[[:space:]]*$//`m
 set cedit=\
 set leftright

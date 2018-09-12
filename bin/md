@@ -1,6 +1,0 @@
-#!/bin/sh
-
-html="${1%\.md}.html"
-[ -z "$1" ] || [ "${1%\.md}" = "$1" ] && { echo "usage: md <file.md>"; exit 1; }
-echo "$html $(date '+%Y-%m-%dT%H:%M:%S%z')" 
-lowdown -D html-skiphtml "$1" > "$html"

@@ -5,5 +5,4 @@ usage() { >&2 echo "usage: ${0##*/} <window> <path> <command>"; exit 1; }
 [ -z "$3" ] && usage
 
 tmux select-window -t "$1" 2>/dev/null ||
-tmux rename-window "$1"
-cd "$2" && sh -c "$3"
+tmux new-window -n "$1" -c "$2" "$3"

@@ -4,7 +4,7 @@ _This is a part of my [curriculum vitae](cv.html)._
 
 ## Languages
 
-- 2016-now  Haskell 
+- 2016-now  Haskell
 - 2015-now  Elm
 - 1998-now  JavaScript
 - 1997-now  sh, HTML, CSS
@@ -88,7 +88,7 @@ I tried
 [WebStorm](https://en.m.wikipedia.org/wiki/JetBrains#WebStorm),
 [TextMate](https://en.m.wikipedia.org/wiki/TextMate), [Light
 Table](https://en.m.wikipedia.org/wiki/Light_Table_(software)),
-and few others, but not longer than for few days. 
+and few others, but not longer than for few days.
 
 ## Keyboards
 

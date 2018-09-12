@@ -28,7 +28,7 @@ m() { . start_tmux 'm' "$HOME/pub/music"   'cmus'; }
 n() { . start_tmux 'n' "$HOME/downloads"   'newsboat'; }
 o() { . start_tmux 'o' "$HOME/prv/openvpn" 'doas openvpn --config default.ovpn'; }
 
-b()   { start_ssg 'b' "$HOME/prv/b"; }
+b()   { start_ssg 'b' "$HOME/src/b"; }
 bj()  { start_ssg 'bj' "$HOME/src/bj"; }
 oa()  { start_ssg 'oa' "$HOME/src/oa"; }
 www() { start_ssg 'www' "$HOME/src/www"; }
@@ -82,3 +82,5 @@ alias gr='git rebase -i HEAD~20'
 alias gs='git status'
 
 alias a="vi \$HOME/.profile && . \$HOME/.profile"
+alias tws='sed -i s/[[:space:]]*$//'
+alias fws='grep -rIlE "[[:blank:]]+$" .| grep -v ".git/"'

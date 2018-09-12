@@ -12,6 +12,10 @@ _Entrepreneur and Book Publisher_<br>
 
 ---
 
+"I followed another one of @romanzolotarev's awesome guides to set up a remote git host on #OpenBSD. My mind is still blown because of how easy it was! Thanks, Roman!"<br>&mdash;
+[@lambdanerd](https://mobile.twitter.com/lambdanerd/status/1036823248158289920 "04 Sep 2018")
+(@lambdanerd)
+
 "Thanks for your inspiring work in promoting #RUNBSD. Your inspiration made me rework my website and move it to @OpenBSDAms."<br>&mdash;
 [Bruno Fl&uuml;ckiger](https://bsd.network/@buf/100620687627502708 "27 Aug 2018")
 (@buf)
@@ -33,13 +37,29 @@ _Cofounder of HardenedBSD_<br>
 
 ---
 
+"So... it works! Thanks @romanzolotarev for your guide ! More details in a few minutes"<br>&mdash;
+[V](https://twitter.com/monolit0/status/1031486483885182977 "20 Aug 2018")
+(@monolit0)
+
 "Just launched my first OpenBSD instance on @Vultr! I'm excited to *finally* dig into it. I blame @romanzolotarev"<br>&mdash;
 [lambdanerd](https://mobile.twitter.com/lambdanerd/status/1027817634434371584 "20 Aug 2018")
 (@lambdanerd)
 
+"...@romanzolotarev is a guru tho"<br>&mdash;
+[,':&#8364;,'](https://mobile.twitter.com/strangeqargo/status/1031238456855474176 "19 Aug 2018")
+(@strangeqargo)
+
+"...can confirm that Roman is the must follow for #everythingOpenBSD :-)"<br>&mdash;
+[WhiteHatScum](https://mobile.twitter.com/WhiteHatScum/status/1031239569394548737 "19 Aug 2018")
+(@WhiteHatScum)
+
 "your tireless efforts for the BSD community are greatly appreciated."<br>&mdash;
 [Wesley Moore](https://twitter.com/wezm/status/1029674316252688384 "15 Aug 2018")
 (@wezm)
+
+"Read stories of people running #BSD at [bsdjobs.com/people](https://www.bsdjobs.com/people/) it is interesting and motivating. It is edifying experience."<br>&mdash;
+[Vetelko](https://mobile.twitter.com/vetelko/status/1029833892382089217 "15 Aug 2018")
+(@vetelko)
 
 "SSG by @romanzolotarev is an impressively small static site generator with a tiny installed footprint. Really good for when you just need the core features."<br>&mdash;
 [Simon Dann](https://twitter.com/carbontwelve/status/1028936035143757825 "13 Aug 2018")
