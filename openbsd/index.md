@@ -24,7 +24,7 @@ VPS for $10/month._
 - [Manage terminals with tmux(1)](/tmux.html)
 - [Use X11 clipboard with xclip(1)](/xclip.html)
 - [Set default programs with xdg-mime(1)](/xdg-mime.html)
-- [dock (and undock) a laptop with with xrandr(1), xinput(1), xrdb(1), and sysctl(8)](dock.html)
+- [Dock laptop with with xrandr(1), xinput(1), xrdb(1), and sysctl(8)](dock.html)
 
 [![desktop](desktop.jpeg)](desktop.png)
 

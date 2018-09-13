@@ -1,0 +1,13 @@
+#!/bin/sh
+
+find . -type 'd' -maxdepth 1 |
+	while read -r dir
+	do
+	(
+		cd "$dir" &&
+		git status -s >/dev/null 2>&1 &&
+		git fetch &&
+		echo "$dir" &&
+		git status -sb
+	)
+	done

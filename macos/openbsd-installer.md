@@ -21,7 +21,7 @@ Plug in the USB drive. Its size should be at least 400 MB. Run
 `diskutil list` to find an identifier of the flash drive. Usually
 it's `/dev/disk2`.
 
-Replace `/dev/diskX` with the identifier of the flash drive.
+Replace `/dev/diskX` with the identifier of the flash drive.<br>
 **All data on `/dev/diskX` will be erased!**
 
 <pre>

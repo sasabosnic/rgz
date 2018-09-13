@@ -1,6 +1,6 @@
 _Tested on [OpenBSD](/openbsd/) 6.3 and [ThinkPad X1C5](/openbsd/hardware.html)_
 
-# Dock a laptop with xrandr(1), xinput(1), xrdb(1), and sysctl(8)
+# Dock laptop with xrandr(1), xinput(1), xrdb(1), and sysctl(8)
 
 Check out my two helpers: [dock](/bin/dock) and [undock](/bin/undock).
 

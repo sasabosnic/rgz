@@ -6,7 +6,6 @@ PS1='\w '
 VISUAL='vi'
 export LC_ALL PATH PS1 VISUAL
 
-
 # shellcheck disable=SC2086
 update_complete_pass() {
   pass_list=$(pass ls)
@@ -23,10 +22,10 @@ pass_export() { pass export "$1"; }
 pass_show() { pass show "$1"; }
 
 
-j() { . start_tmux 'j' "$HOME/prv/j"       'vi my.journal'; }
-m() { . start_tmux 'm' "$HOME/pub/music"   'cmus'; }
-n() { . start_tmux 'n' "$HOME/downloads"   'newsboat'; }
-o() { . start_tmux 'o' "$HOME/prv/openvpn" 'doas openvpn --config default.ovpn'; }
+j() { start_tmux 'j' "$HOME/prv/j"       'vi my.journal'; }
+m() { start_tmux 'm' "$HOME/pub/music"   'cmus'; }
+n() { start_tmux 'n' "$HOME/downloads"   'newsboat'; }
+o() { start_tmux 'o' "$HOME/prv/openvpn" 'doas openvpn --config default.ovpn'; }
 
 b()   { start_ssg 'b' "$HOME/src/b"; }
 bj()  { start_ssg 'bj' "$HOME/src/bj"; }
@@ -36,6 +35,10 @@ www() { start_ssg 'www' "$HOME/src/www"; }
 sync_logs() { [ -n "$1" ] && { rsync -azvPc "$1:/var/www/logs/*" "$HOME/prv/logs/$1/"; }; }
 
 utf2html() { [ -f "$1" ] && uconv -f utf-8 -t ascii --callback escape-xml-dec "$1"; }
+
+tws() { sed -i 's/[[:space:]]$//'; }
+fws() { grep -rl '[[:blank:]]$' "${1:-.}" 2>/dev/null | grep -v ".git/"; }
+fws2() { find "${1:-.}" \( -type d -name "*.git" -prune \) -o \( -type f -exec grep -l "[[:space:]]$" {} + \); }
 
 png() { optipng -preserve -strip all -o7 "$1"; }
 jpeg() { jpegoptim --strip-all --preserve --preserve-perms --verbose -m80 "$1"; }
@@ -79,9 +82,6 @@ alias gf='git commit -amf'
 alias gl='git log --oneline -30'
 alias gp='git push www && git push'
 alias gr='git rebase -i HEAD~20'
-alias gs='git status'
+alias gs='git status -sb'
 
 alias a="vi \$HOME/.profile && . \$HOME/.profile"
-
-alias tws='sed -i s/[[:space:]]*$//'
-alias fws='grep -rlIE "[[:blank:]]+$" .| grep -v ".git/"'
