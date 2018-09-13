@@ -2,7 +2,7 @@
 [lamdanerd](https://twitter.com/lambdanerd/status/1028018221729730560 "10 Aug 2018")
 (@lambdanerd)
 
-_Tested on [OpenBSD](/openbsd/) 6.3._
+_Tested on [OpenBSD](/openbsd/) 6.3_
 
 # Configure httpd(8) on OpenBSD
 

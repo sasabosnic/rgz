@@ -1,7 +1,9 @@
 [user]
-  name = Roman Zolotarev
-  email = hi@romanzolotarev.com
+	name = Roman Zolotarev
+	email = hi@romanzolotarev.com
 [github]
-  user = romanzolotarev
+	user = romanzolotarev
 [push]
-  default = simple
+	default = simple
+[core]
+	whitespace = trailing-space,-space-before-tab,indent-with-non-tab,cr-at-eol
