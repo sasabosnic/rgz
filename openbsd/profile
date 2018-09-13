@@ -27,18 +27,15 @@ m() { start_tmux 'm' "$HOME/pub/music"   'cmus'; }
 n() { start_tmux 'n' "$HOME/downloads"   'newsboat'; }
 o() { start_tmux 'o' "$HOME/prv/openvpn" 'doas openvpn --config default.ovpn'; }
 
-b()   { start_ssg 'b' "$HOME/src/b"; }
-bj()  { start_ssg 'bj' "$HOME/src/bj"; }
-oa()  { start_ssg 'oa' "$HOME/src/oa"; }
-www() { start_ssg 'www' "$HOME/src/www"; }
+# shellcheck disable=SC1091
+{
+b()   { . start_ssg 'b' "$HOME/src/b"; }
+bj()  { . start_ssg 'bj' "$HOME/src/bj"; }
+oa()  { . start_ssg 'oa' "$HOME/src/oa"; }
+www() { . start_ssg 'www' "$HOME/src/www"; }
+}
 
 sync_logs() { [ -n "$1" ] && { rsync -azvPc "$1:/var/www/logs/*" "$HOME/prv/logs/$1/"; }; }
-
-utf2html() { [ -f "$1" ] && uconv -f utf-8 -t ascii --callback escape-xml-dec "$1"; }
-
-tws() { sed -i 's/[[:space:]]$//'; }
-fws() { grep -rl '[[:blank:]]$' "${1:-.}" 2>/dev/null | grep -v ".git/"; }
-fws2() { find "${1:-.}" \( -type d -name "*.git" -prune \) -o \( -type f -exec grep -l "[[:space:]]$" {} + \); }
 
 png() { optipng -preserve -strip all -o7 "$1"; }
 jpeg() { jpegoptim --strip-all --preserve --preserve-perms --verbose -m80 "$1"; }

@@ -1,0 +1,3 @@
+#!/bin/sh
+[ -f "$1" ] &&
+uconv -f utf-8 -t ascii --callback escape-xml-dec "$1"
