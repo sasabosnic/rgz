@@ -5,17 +5,17 @@
 
 _Tested on [OpenBSD](/openbsd/) 6.3_
 
-# Configure cwm(1)  
+# Configure cwm(1)
 
 [cwm(1)](http://man.openbsd.org/cwm.1) is my favorite window manager
 for X11. It has tiling mode, so I don't have to rearrange windows
-manually. 
+manually.
 
 cwm(1) is in OpenBSD base.
 
 <pre>
 $ echo 'exec cwm' >> ~/.xsession
-</pre> 
+</pre>
 
 Here is my [.cwmrc](/openbsd/cwmrc). Quite often I keep just two
 windows open. On the left side: [tmux](/tmux.html) in

@@ -18,4 +18,4 @@ _Comparison of Norman layout with QWERTY_
 Note for [Vim](/vim.html)/[vi](/vi.html) users: I don't remap any
 keys and **HJKL** works just fine for me.
 
-P.S. I still use QWERTY on regular keyboards. 
+P.S. I still use QWERTY on regular keyboards.

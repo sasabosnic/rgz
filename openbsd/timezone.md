@@ -10,7 +10,7 @@ Thu Apr  5 12:26:43 UTC 2018
 #
 </pre>
 
-The local timezone is _UTC_. 
+The local timezone is _UTC_.
 
 Check `/etc/localtime` with [readlink(1)][readlink]:
 

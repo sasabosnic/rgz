@@ -47,7 +47,7 @@ cat > "$temp/src/index.md" << EOF
  [a](a "01 Jan 1970")
 EOF
 
-mkdir "$temp/src/a" "$temp/src/a/b" 
+mkdir "$temp/src/a" "$temp/src/a/b"
 
 echo '# .' > "$temp/src/a.md"
 echo '# .' > "$temp/src/a/b.md"

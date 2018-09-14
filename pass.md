@@ -88,7 +88,7 @@ $
 
 ## Add a password
 
-Add the first password. 
+Add the first password.
 
 Run the following command and enter your master pass phrase, then
 type-in the password and hit Enter. In the second line type username

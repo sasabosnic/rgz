@@ -33,7 +33,7 @@ What I've always liked in Roman (and continue to like):
   the latest trends;
 - pedantry and accuracy, especially in implementation;
 - ability to identify _weak_ and _strong_ points of a project;
-- ability to communicate his thoughts concisely; 
+- ability to communicate his thoughts concisely;
 - ability _to listen_;
 - his persistency and enthusiasm.
 

@@ -11,7 +11,7 @@ _Founder_<br>
 <p class="quote">&#8220;Hey! I'm Roman Zolotarev and I run <a
 href="https://www.bsdjobs.com">BSDjobs.com</a>.  I&nbsp;was so lucky
 to meet Mischa on my first days within BSD community. He always has
-been very supportive and helpful.</p> 
+been very supportive and helpful.</p>
 
 In 2018 Mischa launched <a href="https://openbsd.amsterdam">OpenBSD
 Amsterdam</a> and I'm so thankful for his help to the community. I

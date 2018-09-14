@@ -1,7 +1,7 @@
 #!/bin/sh
 find "${1:-.}" \
 	\( -type d -name '*.git' -prune \) -o \
-	\( -type f -print0 \) | 
+	\( -type f -print0 \) |
 xargs -0 \
 	-P "$(sysctl -n hw.ncpu)" \
 	-r 2>/dev/null grep -Il '[[:space:]]$'

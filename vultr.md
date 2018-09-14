@@ -22,7 +22,7 @@ Deploy an instance, for example:
 
 1. Server Location: _pick your prefered location_
 1. Server Type: 64 bit OS, **OpenBSD 6.3 x64**
-1. Server Size: 
+1. Server Size:
    - _For IPv6 only_: **$2.50/mo** 20 GB SSD 512MB Memory
    - _IPv4 and IPv6_: **$5.00/mo** 25 GB SSD 1024MB Memory
 1. Additional Features: **None**
@@ -53,4 +53,3 @@ and your private SSH key (assuming it's in the default location:
 Read [afterboot(8)](https://man.openbsd.org/afterboot.8).
 
 [Setup a web server](/openbsd/webserver.html).
-

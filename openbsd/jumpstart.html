@@ -163,10 +163,10 @@ blockquote { margin: 0; padding: 0; }
       var yUp = e.touches[0].clientY;
       var dx = xDown - xUp;
       var dy = yDown - yUp;
-      if ( Math.abs(dx) > Math.abs(dy) ) { 
+      if ( Math.abs(dx) > Math.abs(dy) ) {
         dx > 0 ? next() : prev();
-      } else {  
-        dy > 0 ? next() : prev(); 
+      } else {
+        dy > 0 ? next() : prev();
       }
     }, 100));
 

@@ -20,7 +20,7 @@ _This is a part of [my setup](/setup.html)_
     Wifi 802.11ac
 
 [This machine](https://www.zotac.com/us/product/mini_pcs/ci527-nano)
-is silent, thanks to passive cooling, has no moving parts. 
+is silent, thanks to passive cooling, has no moving parts.
 
 According to [sysctl(8)](https://man.openbsd.org/sysctl.8) its CPU
 is at 45&deg;C when idle and up to 80&deg;C at the maximum load.
