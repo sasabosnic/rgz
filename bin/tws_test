@@ -1,0 +1,79 @@
+#!/bin/sh
+
+program="$(dirname "$(readlink -f "$0")")/tws"
+
+total=0; nos=0
+no() { total=$((total+1)); echo "no ok $total - $1"; nos=$((nos+1)); }
+ok() { total=$((total+1)); echo "ok $total - $1"; }
+d() { if o=$(diff "$1" "$2"); then ok "$3"; else no "$3\n$o"; fi; }
+eq() { if [ "$1" = "$2" ]; then ok "$3"; else no "$3\\n$1\\n$2"; fi; }
+says() { if grep -e "$1" >/dev/null; then ok "$2"; else no "$2"; fi; }
+desc() { printf '#\n\033[1m%s\033[m\n' "$1"; }
+
+##########################################################################
+
+
+temp=$(mktemp -d) && cd "$temp" || exit 1
+
+
+
+desc 'trim trailing whitespace empty lines'
+
+printf 'spaces  \n' > $temp/in
+printf 'spaces\n' > $temp/model
+$program < $temp/in > $temp/out
+d "$temp/model" "$temp/out" 'spaces'
+
+printf '  indented spaces  \n' > $temp/in
+printf '  indented spaces\n' > $temp/model
+$program < $temp/in > $temp/out
+d "$temp/model" "$temp/out" 'indented spaces'
+
+printf 'empty lines at the EOF\n\n\n' > $temp/in
+printf 'empty lines at the EOF\n' > $temp/model
+$program < $temp/in > $temp/out
+d "$temp/model" "$temp/out" 'empty lines at the EOF'
+
+printf '\n\nempty lines\ninside\n' > $temp/in
+printf '\n\nempty lines\ninside\n' > $temp/model
+$program < $temp/in > $temp/out
+d "$temp/model" "$temp/out" 'empty lines inside'
+
+
+desc 'args'
+
+cat > $temp/in << EOF
+	tabs			
+  spaces  
+
+empty lines
+
+
+EOF
+
+cat > $temp/model << EOF
+	tabs
+  spaces
+
+empty lines
+EOF
+
+cat $temp/in | $program > $temp/out
+d "$temp/model" "$temp/out" "stdin"
+
+$program $temp/in > $temp/out
+d "$temp/model" "$temp/out" "file1"
+
+$program $temp/in $temp/in 2>&1 |
+says 'usage:' 'show usage'
+
+$program $temp/XXX 2>&1 |
+says "awk: can't open file" "can't open" 
+
+rm -rf "$temp"
+
+
+##########################################################################
+
+echo "1..$total"
+if [ "$nos" -gt 0 ]; then echo "FAILED $nos/$total"; else echo "PASS"; fi

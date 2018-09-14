@@ -63,7 +63,7 @@ start)
 	;;
 
 stop)
-	if ! pgrep -q ffmpeg; then 
+	if ! pgrep -q ffmpeg; then
 		logger 'screencast: nothing to stop'
 		exit 1
 	fi

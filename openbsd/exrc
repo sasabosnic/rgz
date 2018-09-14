@@ -1,8 +1,9 @@
 map gS {j!}sort -r
+map gT :%!a=$(cat %);echo "$a"
+map ga :E %_test
 map gc :%!prettier --parser=css --write
 map gd :r!date +\%Y-\%m-\%d
-map ge :E 	
-map ga :E %_test
+map ge :E
 map gf {!}fmt -p}}{j
 map gg 1G
 map gj :%!prettier --write

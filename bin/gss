@@ -6,8 +6,8 @@ find . -type 'd' -maxdepth 1 |
 	(
 		cd "$dir" &&
 		git status -s >/dev/null 2>&1 &&
-		git fetch &&
+		git fetch 2>/dev/null &&
 		echo "$dir" &&
-		git status -sb
+		git status -sb 2>/dev/null
 	)
 	done
