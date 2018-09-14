@@ -1,20 +1,13 @@
 #!/bin/sh
-find "${1:-.}" \
+fs=$(find "${1:-.}" \
 	\( -type d -name '*.git' -prune \) -o \
 	\( -type f -print0 \) |
 xargs -0 \
 	-P "$(sysctl -n hw.ncpu)" \
 	-r 2>/dev/null grep -Il '[[:space:]]$'
-
-# find "${1:-.}" \
-	# \( -type d -iname "*.git" -prune \) -o \
-	# \( -type f \
-	# -iname "*.png" -o \
-	# -iname "*.jpg" -o \
-	# -iname "*.jpeg" -o \
-	# -iname "*.gif" -o \
-	# -iname "*.woff*" \
-	# -prune \) -o \
-	# \( -type f -print0 \) |
-# xargs -0 \
-	# -r awk '/[[:space:]]$/ {print FILENAME; nextfile}'
+)
+if [ -n "$fs" ]
+then echo "$fs" && exit 1
+else exit 0
+fi
+}

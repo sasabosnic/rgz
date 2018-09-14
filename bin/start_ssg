@@ -6,9 +6,12 @@ usage() { >&2 echo "usage: ${0##*/} <name> <dir>"; exit 1; }
 [ -x "$(which ssg)" ] || exit 2
 [ -x "$(which entr)" ] || exit 2
 
+src="$HOME/$1"
+cmd="$HOME/bin/s '$HOME/$1' '$2'"
+
 if tmux select-window -t "$1" 2>/dev/null
-then cd "$2"
+then cd "$src"
 else
-	tmux new-window -n "$1" -c "$2"
-	tmux split-window -l 3 -d -c "$2" 'ssg watch --clean'
+	tmux new-window -n "$1" -c "$src"
+	tmux split-window -l 3 -d -c "$src" "$cmd"
 fi

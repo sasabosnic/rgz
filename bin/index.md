@@ -14,7 +14,7 @@ _openssl, tar, oathtool, $EDITOR_
 
 [ssg](/ssg.html)
 &mdash; a static site generator<br>
-_lowdown, rsync, entr, find, date, cat, awk, sed, head, rm, ls, pgrep_
+_lowdown, find, grep, cat, awk, sed, cpio_
 
 [screenshot](screenshot)
 &mdash; a screenshot tool<br>

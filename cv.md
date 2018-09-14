@@ -54,7 +54,7 @@ _Publishing, 2018&ndash;present_<br>
 23,000+ words published
 22,000+ tweets
 1700+ Twitter followers
-300+ Mastodon followers
+350+ Mastodon followers
 50+ reviews
 300+ newsletter subscribers
 </pre>

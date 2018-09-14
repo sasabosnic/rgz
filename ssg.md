@@ -1,6 +1,12 @@
-**KNOWN ISSUE**<br>
-If you use relative links on your pages (as I do),
-`rss.xml` won't render them properly. Work in progress...
+<p id="ds" class="quote">&#8220;I just found <b>ssg</b>!  You are so damn
+cool.  I love your approach to things.&#8221;</p>
+
+<img src="/ref/ds.jpeg" class="avatar"><br>
+**Derek Sivers**<br>
+_Entrepreneur and Book Publisher_<br>
+[sivers.org](https://sivers.org "25 Apr 2018")
+
+---
 
 "SSG by @romanzolotarev is an impressively small static site
 generator with a tiny installed footprint. Really good for when you
@@ -8,331 +14,155 @@ just need the core features."<br>&mdash;
 [Simon Dann](https://twitter.com/carbontwelve/status/1028936035143757825 "13 Aug 2018")
 (@carbontwelve)
 
+---
+
 _Tested on [OpenBSD](/openbsd/) 6.3_
 
-# Make a static site with lowdown(1) and rsync(1)
+# Make a static site with find(1), grep(1), and lowdown(1)
 
-[ssg](/bin/ssg) is a static site generator writen in shell and powered by
-[lowdown(1)](https://kristaps.bsd.lv/lowdown/),
-[rsync(1)](https://rsync.samba.org/), and
-[entr(1)](http://entrproject.org/).
+[ssg2](/bin/ssg2) is a static site generator writen in shell and powered by
+[lowdown(1)](https://kristaps.bsd.lv/lowdown/).
 
-It generates a site from HTML and Markdown articles.
+It converts `*.md` files to HTML.<br>
+Extracts page titles from `<H1>` tags.<br>
+Wraps those HTML pages with header, footer, styles, scripts.<br>
+Then copies the rest of files (excluding `.*` and `_*`) to `dst` directory.
 
-1. It copies the current directory to a temporary one,
-   skipping `.*` and `_*`,
-1. renders all Markdown articles to HTML,
-1. generates [RSS feed](/rss.xml) based on links from  `index.html`,
-1. extracts the first `<h1>` tag from every article to generate a
-   sitemap and use it as a page title,
-1. then wraps articles with a single HTML template,
-1. copies everything from the temporary directory to `$DOCS/`.
-
-[![ssg](ssg.jpeg)](ssg.png)
-_240 LoC. [Enlarge, enhance, zoom!](ssg.png)_
-
-## Why not Jekyll or "$X"?
-
-`ssg` is **one hundred times smaller** than Jekyll.
-
-`ssg` and its dependencies are about 800KB _combined_. Compare that
-to 78MB of ruby with Jekyll and all the gems. So `ssg` can be
-installed in just few seconds on almost any Unix-like operating
-system.
-
-Obviously, `ssg` is tailored for my needs, it has all features I
-need and only those I use.
-
-Keeping `ssg` helps you to master your Unix-shell skills: `awk`,
-`grep`, `sed`, `sh`, `cut`, `tr`. As a web developer you work with
-lots of text: code and data. So you better master these wonderful
-tools.
-
-## Performance
-
-**100 pps**. On modern computers `ssg` generates a hundred pages
-per second.  Half of a time for markdown rendering and another half
-for wrapping articles into the template. I heard good static site
-generators work&mdash;twice as fast&mdash;at 200 pps, so there's lots of
-performance that can be gained. ;)
+[![ssg2](ssg2.jpeg)](ssg2.png)
+_124 LoC. [Enlarge, enhance, zoom!](ssg2.png)_
 
 ## Install
 
-If you agree with the license, feel free to use this script, its
-HTML and CSS or/and re-write them for your needs.
-
-Install dependencies and download `ssg`. For example, on OpenBSD:
-as root install rsync(1), lowdown(1), and entr(1).
+Download and chmod it:
 
 <pre>
-# <b>pkg_add rsync-3.1.3-iconv lowdown entr</b>
+$ <b>ftp -Vo bin/ssg2 https://www.romanzolotarev.com/bin/ssg2</b>
+ssg2       100% |*********************|    4137      00:00
+$ <b>chmod +x bin/ssg2</b>
+$ <b>doas pkg_add lowdown entr</b>
 quirks-2.414 signed on 2018-03-28T14:24:37Z
-rsync-3.1.3-iconv: ok
 lowdown-0.3.1: ok
 entr-4.0: ok
-The following new rcscripts were installed: /etc/rc.d/rsyncd
-See rcctl(8) for details.
-#
-</pre>
-
-Then as a regular user change into `~/.bin` directory.
-
-<pre>
-$ <b>cd ~/.bin</b>
-$ <b>ftp https://www.romanzolotarev.com/bin/ssg</b>
-Trying 140.82.28.210...
-Requesting https://www.romanzolotarev.com/bin/ssg
-100% |****************************************|  7257       00:00
-7257 bytes received in 0.00 seconds (2.99 MB/s)
-$ <b>chmod +x ssg</b>
 $
 </pre>
 
-Let's customize your `ssg` setup.
-
-## Configuration
-
-To configure `ssg` you need to set two variables:
-
-- `$DOCS` - path to web server document root directory
-- `$ROOT` - root URL of your web site
-
-There are three more variables, but these are optional:
-
-- `$WEBSITE_TITLE` - title (suffix) for all pages
-- `$RSS_AUTHOR` - author's full name for RSS feed
-- `$RSS_DESCRIPTION` - RSS feed description
-
-You can set all those variables in enviornment with `export` or
-`env`, but I recommend to create `_ssg.conf` file. For example, here
-is mine:
-
-```
-#!/bin/sh
-: "${DOCS:=/var/www/htdocs/www.romanzolotarev.com}"
-ROOT='https://www.romanzolotarev.com'
-WEBSITE_TITLE='Roman Zolotarev'
-RSS_AUTHOR='hi@romanzolotarev.com (Roman Zolotarev)'
-RSS_DESCRIPTION='Personal website'
-```
-
-Note: in this example if `$DOCS` is set, then `ssg` uses the original
-value, **not** the value from `_ssg.conf`.
-
-## Required files
-
-There is only one file required:
-
-1. `index.html` or `index.md` - home page
-
-Example of `index.md`:
-
-```
-# Jack
-
-- [About](/about.html "01 Aug 2016")
-```
-
-`ssg` renders `index.md` to `index.html` and then generates the RSS feed
-based on first 20 links, if they have the following syntax (it only uses
-page URL and date from `<a>` tag):
-
-```
-...
-<li><a href="/about.html" title="01 Aug 2016">About</a></li>
-...
-```
-
-## Optional files
-
-1. `_header.html` - header of every page
-1. `_footer.html` - and its footer
-1. `_styles.css` - styles, [take mine and customize](/src/www/raw/_styles.css)
-
-If you use my CSS, don't forget to wrap the content of `_header.html`
-into `<div class="header>...</div>` and the content of `_footer.html`
-into `<div class="footer>...</div>`.
-
-## Reserved file names
-
-There are also reserved filenames, these files are generated when you run
-`ssg build`. Don't use these names.
-
-1. `rss.xml` - reserved for RSS feed
-1. `sitemap.xml` - for the sitemap
-
-## Your first page
-
-Let's create `about.html` with one header and some text about your site.
-
-```
-# About this site
-
-...
-```
-
-`ssg` converts all `.md` article into `.html` and then uses content of the
-first `<h1>` tag as a page title.
-
-Nota bene: **Don't use `=====` in titles**.
-
-## Build
-
-Now we are ready to build. If your current source directory looks like
-this:
-
-```
-.
-|-- .git/
-|-- _footer.html
-|-- _header.html
-|-- _styles.css
-|-- about.md
-`-- index.md
-```
-
-After you run `ssg` (don't forget to set `$DOCS`):
+## Usage
 
 <pre>
-$ <b>ssg build</b>
-building /var/www/htdocs/www  2018-04-10T10:56:52+0000 4pp
+$ <b>mkdir src dst</b>
+$ <b>echo '# Hello, World!' > src/index.md</b>
+$ <b>echo '&lt;p&gt;&lt;a href="/"&gt;Home&lt;/a&gt;&lt;/p&gt;' &gt; src/_header.html</b>
+$ <b>echo '&lt;p&gt;2018 Roman Zolotarev&lt;/p&gt;' &gt; src/_footer.html</b>
+$ <b>ftp -Vo src/_styles.css https://www.romanzolotarev.com/_styles.css</b>
+_styles.css  100% |**************************|  1020       00:00
+$ <b>ssg2 src dst 'Test'</b>
+index.html
+_header.html
+_footer.html
+_styles.css
+[ssg] 4 files
+$ <b>firefox dst/index.html</b>
+</pre>
+
+## Incremental updates
+
+_ssg2_ saves a list of files in `dst/.files` and updates only newer
+files. If no files were modified after that, _ssg2_ does nothing.
+
+<pre>
+$ <b>ssg2 src dst 'Test'</b>
+[ssg] ok
 $
 </pre>
 
-You have your static website ready in `/var/www/htdocs/www`.
-
-```
-.
-|
-|-- about.html
-|-- index.html
-|-- rss.xml
-`-- sitemap.xml
-```
-
-## Preview
-
-For OpenBSD I suggest to run [httpd](/openbsd/httpd.html) locally.
-
-For macOS and Linux you can run:
+To force the update delete `dst/.files` and re-run _ssg2_.
 
 <pre>
-$ <b>cd /var/www/htdocs/www</b>
-$ <b>python -m SimpleHTTPServer</b>
-Serving HTTP on 0.0.0.0 port 8000...
+$ <b>rm dst/.files</b>
+$ <b>ssg2 src dst 'Test'</b>
+index.html
+_header.html
+_footer.html
+_styles.css
+[ssg] 4 files
+$
 </pre>
 
 ## Watch
 
-To re-build pages on change run:
+Add this helper to `~/.bin` to watch file changes and re-run _ssg2_
+with [entr(1)](http://entrproject.org).
 
 <pre>
-$ <b>ssg watch</b>
-watching /home/jack/src/www
-building /var/www/htdocs/www  2018-04-10T11:04:11+0000 4pp
-</pre>
-
-entr(1) watches changes in `*.html`, `*.md`, `*.css`, `*.txt` files and
-runs `ssg build` on every file change.
-
-## Clean
-
-If you'd like to delete all files in the destination directory during
-build, then run:
-
-<pre>
-$ <b>ssg build --clean</b>
-building /home/jack/src/www/docs --clean
-2018-04-16T09:03:32+0000 4pp
-$
-</pre>
-
-The same option works for watching.
-
-<pre>
-$ <b>ssg watch --clean</b>
-watching /home/jack/src/www
-building /home/jack/src/www/docs --clean
-2018-04-16T09:04:25+0000 4pp
-</pre>
-
-## Deploy with rsync(1)
-
-If you don't have a public server yet, [try Vultr](/vultr.html).
-To deploy to remote server you can use rsync(1) like this:
-
-<pre>
-$ <b> rsync -avPc     /var/www/htdocs/www \
-www.example.com:/var/www/htdocs/</b>
-</pre>
-
-Or if you want to clean up the target directory on the remote server use:
-
-<pre>
-$ <b>rsync -avPc --delete-excluded \
-                /var/www/htdocs/www \
-www.example.com:/var/www/htdocs/</b>
-$
-</pre>
-
-## Deploy with Git _post-receive_ hook
-
-[Set up Git on your server](/git.html).
-
-As root install rsync(1) and lowdown(1) packages on that server.
-
-<pre>
-# <b>pkg_add rsync-3.1.3-iconv lowdown</b>
-quirks-2.414 signed on 2018-03-28T14:24:37Z
-rsync-3.1.3-iconv: ok
-lowdown-0.3.1: ok
-The following new rcscripts were installed: /etc/rc.d/rsyncd
-See rcctl(8) for details.
-#
-</pre>
-
-Then as `git` user download `ssg` on the server:
-
-<pre>
-# <b>cd /home/git</b>
-# <b>su git</b>
-$ <b>mkdir -p /home/git/bin</b>
-$ <b>cd /home/git/bin</b>
-$ <b>ftp https://www.romanzolotarev.com/bin/ssg</b>
-Trying 140.82.28.210...
-Requesting https://www.romanzolotarev.com/bin/ssg
-100% |****************************************|  7257       00:00
-7257 bytes received in 0.00 seconds (2.99 MB/s)
-$ <b>chmod +x ssg</b>
-$
-</pre>
-
-Then add these lines to `.../.git/hooks/post-receive`:
-
-```
 #!/bin/sh
-TMPDIR="$(mktemp -d)"
-git archive --format=tar HEAD | (cd "$TMPDIR" && tar xf -)
-cd "$TMPDIR"
-DOCS='/var/www/htdocs/www.romanzolotarev.com' \
-/home/git/ssg build --clean
-```
+while :; do
+	find . -type f ! -path '*/.*' |
+	entr -d "$HOME/bin/ssg" . "$1" "$(date +%s)"
+done
+</pre>
 
-As root make sure `git` user owns `$DOCS` directory:
+Start it and keep it running:
 
 <pre>
-# <b>chown -R git:git /var/www/htdocs/www.romanzolotarev.com</b>
-$
+$ <b>s /var/www/htdocs/www</b>
+[ssg] ok
+</pre>
+
+## Upgrade
+
+_[Previous verison of ssg](ssg1.html) has been retired._
+
+Add a wrapper for `entr(1)`.
+Delete `_ssg.conf`.<br>
+<!--Add `_rss.html` and `_rss.conf` (optionally).<br>-->
+Update run script and `post-*` git hooks.<br>
+Uninstall `rsync(1)`, if you don't use it.<br>
+
+`ssg1`                         | `ssg2`
+:--                            | :--
+&nbsp;                         | &nbsp;
+**performance**                |
+102 pp (31,306 words) 2.08s    | 1.61s
+second run (+1 page)  1.92s    | **0.13s**
+&nbsp;                         | &nbsp;
+**features**                   |
+`rss.xml`                      | _removed_
+`sitemap.xml`                  | _removed_
+&nbsp;                         | &nbsp;
+**content**                    |
+convert MD to HTML             | _same_
+wrap HTML pages                | _same_
+get title from `<h1>`          | _same_
+`_header.html`                 | _same_
+`_footer.html`                 | _same_
+`_styles.css`                  | _same_
+`_scripts.js`                  | _same_
+&nbsp;                         | `_rss.html`
+**command line and env**       |
+env vars and `_ssg.conf`       | _removed_
+&nbsp;                         | `WEBSITE_TITLE` moved to 3rd argument
+`ssg build`                    | `ssg2 src dst/ 'Website Title'`
+`ssg build --clean`            | `rm -rf dst && ssg2 ...`
+`ssg watch`                    | `find . | entr ssg2 ...`
+&nbsp;                         | &nbsp;
+**dependencies**                         |
+`lowdown`				 | `lowdown`
+`entr`                                   | _removed_
+`rsync`                                  | _removed_
+
+---
+
+<pre>
+&#9484;&#9472;&#9488;&#9484;&#9472;&#9488;&#9484;&#9472;&#9488;
+&#9492;&#9472;&#9488;&#9492;&#9472;&#9488;&#9474; &#9516;
+&#9492;&#9472;&#9496;&#9492;&#9472;&#9496;&#9492;&#9472;&#9496;
 </pre>
 
 ---
 
 **Thanks** to
-[Denis Borovikov](https://twitter.com/metallerden) for reading the draft of this,
-[h3artbl33d](https://twitter.com/h3artbl33d), and
-[Mischa Peters](https://twitter.com/mischapeters), and
-[Tom Atkinson](https://twitter.com/hir0pr0tagonist) for testing `ssg`,
+[Mischa Peters](https://twitter.com/mischapeters) for testing and [using this version in production](https://openbsd.amsterdam),
 [Kristaps Dzonsons](https://www.divelog.blue/) for
-[lowdown(1)](https://kristaps.bsd.lv/lowdown/) and
+[lowdown(1)](https://kristaps.bsd.lv/lowdown/), and
 [Eric Radman](http://eradman.com) for
 [entr(1)](http://entrproject.org).

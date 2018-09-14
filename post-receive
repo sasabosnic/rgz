@@ -51,7 +51,8 @@ git archive --format=tar HEAD | (cd "$dst/raw" && tar xf -)
 # Rebuild the website with ssg from raw
 
 cd "$dst/raw" || { echo "[post-receive] can't change to $dst/raw"; exit 1; }
-printf '[ssg] ' && "$HOME/bin/ssg" build --clean
+rm /var/www/htdocs/www.romanzolotarev.com/.files
+"$HOME/bin/ssg2" . /var/www/htdocs/www.romanzolotarev.com 'Roman Zolotarev'
 
 
 # Publish the repository

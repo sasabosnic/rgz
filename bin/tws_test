@@ -6,7 +6,8 @@ total=0; nos=0
 no() { total=$((total+1)); echo "no ok $total - $1"; nos=$((nos+1)); }
 ok() { total=$((total+1)); echo "ok $total - $1"; }
 d() { if o=$(diff "$1" "$2"); then ok "$3"; else no "$3\\n$o"; fi; }
-eq() { if [ "$1" = "$2" ]; then ok "$3"; else no "$3\\n$1\\n$2"; fi; }
+eq() { if [ "$1" = "$2" ]; then ok "$3"; else no "$3"
+	printf '\033[32m%s\n\033[31m%s\n\033[m' "$1" "$2"; fi; }
 says() { if grep -e "$1" >/dev/null; then ok "$2"; else no "$2"; fi; }
 desc() { printf '#\n\033[1m%s\033[m\n' "$1"; }
 
@@ -14,7 +15,6 @@ desc() { printf '#\n\033[1m%s\033[m\n' "$1"; }
 
 
 temp=$(mktemp -d) && cd "$temp" || exit 1
-
 
 
 desc 'trim trailing whitespace empty lines'

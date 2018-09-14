@@ -1,0 +1,47 @@
+#!/bin/sh
+
+apm -H
+
+# echo "ssg1 (clean)"
+# time (for i in $(jot 10); do
+# rm -rf /var/www/htdocs/www.romanzolotarev.com/*
+# rm -rf /var/www/htdocs/www.romanzolotarev.com/.*
+# ssg1 build >/dev/null
+# printf '.'
+# done)
+
+echo "ssg2 (clean)"
+time (for i in $(jot 10); do
+rm -rf /var/www/htdocs/www.romanzolotarev.com/*
+rm -rf /var/www/htdocs/www.romanzolotarev.com/.*
+ssg2 ~/src/www /var/www/htdocs/www.romanzolotarev.com/ 'Roman Zolotarev' >/dev/null
+printf '.'
+done)
+
+echo "ssg3 (clean)"
+time (for i in $(jot 10); do
+rm -rf /var/www/htdocs/www.romanzolotarev.com/*
+rm -rf /var/www/htdocs/www.romanzolotarev.com/.*
+ssg3 ~/src/www /var/www/htdocs/www.romanzolotarev.com/ 'Roman Zolotarev' >/dev/null
+printf '.'
+done)
+
+# echo "ssg1"
+# time (for i in $(jot 10); do
+# ssg1 build >/dev/null
+# printf '.'
+# done)
+
+echo "ssg2 (incremental)"
+time (for i in $(jot 10); do
+ssg2 ~/src/www /var/www/htdocs/www.romanzolotarev.com/ 'Roman Zolotarev' >/dev/null
+printf '.'
+done)
+
+echo "ssg3 (incremental)"
+time (for i in $(jot 10); do
+ssg3 ~/src/www /var/www/htdocs/www.romanzolotarev.com/ 'Roman Zolotarev' >/dev/null
+printf '.'
+done)
+
+apm -A

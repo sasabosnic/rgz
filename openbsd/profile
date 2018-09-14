@@ -22,17 +22,16 @@ pass_export() { pass export "$1"; }
 pass_show() { pass show "$1"; }
 
 
-j() { start_tmux 'j' "$HOME/prv/j"       'vi my.journal'; }
-m() { start_tmux 'm' "$HOME/pub/music"   'cmus'; }
-n() { start_tmux 'n' "$HOME/downloads"   'newsboat'; }
-o() { start_tmux 'o' "$HOME/prv/openvpn" 'doas openvpn --config default.ovpn'; }
+j() { start_tmux 'j' 'prv/j'       'vi my.journal'; }
+m() { start_tmux 'm' 'pub/music'   'cmus'; }
+n() { start_tmux 'n' 'downloads'   'newsboat'; }
+o() { start_tmux 'o' 'prv/openvpn' 'doas openvpn --config default.ovpn'; }
 
 # shellcheck disable=SC1091
 {
-b()   { . start_ssg 'b' "$HOME/src/b"; }
-bj()  { . start_ssg 'bj' "$HOME/src/bj"; }
-oa()  { . start_ssg 'oa' "$HOME/src/oa"; }
-www() { . start_ssg 'www' "$HOME/src/www"; }
+bj()  { . start_ssg 'src/bj'  '/var/www/htdocs/www.bsdjobs.com/'; }
+oa()  { . start_ssg 'src/oa'  '/var/www/htdocs/openbsd.amsterdam/'; }
+www() { . start_ssg 'src/www' '/var/www/htdocs/www.romanzolotarev.com'; }
 }
 
 sync_logs() { [ -n "$1" ] && { rsync -azvPc "$1:/var/www/logs/*" "$HOME/prv/logs/$1/"; }; }

@@ -1,5 +1,3 @@
 #!/bin/sh
 [ -n "$2" ] && { >&2 echo "usage: ${0##*/} [file]"; exit 1; }
-# shellcheck disable=SC2016
-tws='/^$/{a=a"\n";next}{sub(/[[:space:]]+$/,"");print a $0;a=""}'
-awk "$tws" "$1"
+awk '/^$/{a=a"\n";next}{sub(/[[:space:]]+$/,"");print a $0;a=""}' "$1"
