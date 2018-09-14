@@ -17,7 +17,6 @@ equal "$word_count" "8" '8 words by default'
 
 words=$("$INIT_DIR/diceware" 12)
 word_count=$(echo "$words"|wc -w|tr -d ' ')
-echo $words
 equal "$word_count" "12" '12 words if the argument is 12'
 
 a=$("$INIT_DIR/diceware")

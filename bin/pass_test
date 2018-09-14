@@ -29,7 +29,7 @@ EOF
 
 
 describe 'pass init'
-expect >/dev/null << RUN
+>/dev/null expect << RUN
 spawn "$INIT_DIR/pass" init
 expect phrase: {send passphrase\\n}
 expect Confirm: {send passphrase\\n}
@@ -42,14 +42,14 @@ equal "$(head -n1 < "$TEST_DIR/1/.key.pub")" "-----BEGIN PUBLIC KEY-----" "Priva
 
 
 describe 'pass passphrase'
-expect << RUN
+>/dev/null expect << RUN
 spawn "$INIT_DIR/pass" passphrase
 expect phrase: {send passphrase\\n}
 expect phrase: {send newpassphrase\\n}
 expect Confirm: {send newpassphrase\\n}
 expect eof
 RUN
-expect << RUN
+>/dev/null expect << RUN
 spawn "$INIT_DIR/pass" passphrase
 expect phrase: {send newpassphrase\\n}
 expect phrase: {send passphrase\\n}
@@ -62,7 +62,7 @@ equal "$message" "Pass phrase changed." "Pass phrase changed"
 
 
 describe 'pass import A'
-expect >/dev/null << RUN
+>/dev/null expect << RUN
 spawn "$INIT_DIR/pass" import A
 send "$cleartext"
 send \\n\\x04
@@ -76,7 +76,7 @@ exist "$TEST_DIR/1/A.sig" "Signature file created"
 
 
 describe 'pass ls'
-expect >/dev/null << RUN
+>/dev/null expect << RUN
 spawn "$INIT_DIR/pass" ls
 log_file "$TEST_DIR/pass-ls.log"
 expect eof
@@ -86,7 +86,7 @@ equal "$ls" "A\\r" 'Passwords listed'
 
 
 describe 'pass export A'
-expect > /dev/null << RUN
+>/dev/null expect << RUN
 spawn "$INIT_DIR/pass" export A
 log_file "$TEST_DIR/pass-export.log"
 expect /.key: {send passphrase\\n}
@@ -97,7 +97,7 @@ equal "$cleartext_exported" "$cleartext" 'Data file imported and exported'
 
 
 describe 'pass show A'
-expect >/dev/null << RUN
+>/dev/null expect << RUN
 spawn "$INIT_DIR/pass" show A
 log_file "$TEST_DIR/pass-show.log"
 expect /.key: {send passphrase\\n}
@@ -111,7 +111,7 @@ equal "$cleartext_shown" "$cleartext_first_line\\n$totp" 'Password and OTP shown
 
 
 describe 'pass import B passphrase'
-expect >/dev/null << RUN
+>/dev/null expect << RUN
 spawn "$INIT_DIR/pass" import B passphrase
 send "$cleartext"
 send \\n\\x04
@@ -124,7 +124,7 @@ exist "$TEST_DIR/1/B.sig" "Signature file created"
 
 
 describe 'pass export B'
-expect >/dev/null << RUN
+>/dev/null expect << RUN
 spawn "$INIT_DIR/pass" export B
 log_file "$TEST_DIR/pass-export.log"
 expect /.key: {send passphrase\\n}
