@@ -8,5 +8,5 @@ tmux select-window -t "$1" 2>/dev/null ||
 {
 tmux new-window -n "$1" "vi $1 && tmux kill-window -t $1"
 tmux split-window -p 40 -dh \
-"ls $1 $1_test | entr -c sh -c 'shellcheck $1 && echo $1 && $1_test'"
+"ls $1 $1_test | entr -c sh -c 'shellcheck $1 $1_test && echo $1 && $1_test'"
 }
