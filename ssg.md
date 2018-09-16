@@ -140,10 +140,11 @@ get title from `<h1>`          | _same_
 &nbsp;                         | `_rss.html`
 **command line and env**       |
 env vars and `_ssg.conf`       | _removed_
-&nbsp;                         | `WEBSITE_TITLE` moved to 3rd argument
-`ssg build`                    | `ssg2 src dst/ 'Website Title'`
-`ssg build --clean`            | `rm -rf dst && ssg2 ...`
-`ssg watch`                    | `find . | entr ssg2 ...`
+&nbsp;                         | `DOCS` moved to 2rd argument
+&nbsp;                         | `WEBSITE_TITLE`&mdash;to 3rd
+`ssg build`                    | `ssg2 src dst 'Website Title'`
+`ssg build --clean`            | `cd dst && rm -rf * .* && ssg2 ...`
+`ssg watch`                    | `cd src && find . | entr ssg2 ...`
 &nbsp;                         | &nbsp;
 **dependencies**               |
 `lowdown`                      | _same_
