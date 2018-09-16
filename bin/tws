@@ -1,3 +1,4 @@
 #!/bin/sh
 [ -n "$2" ] && { >&2 echo "usage: ${0##*/} [file]"; exit 1; }
-awk '/^$/{a=a"\n";next}{sub(/[[:space:]]+$/,"");print a $0;a=""}' "$1"
+n=$(awk '/^$/{a=a"\n";next}{sub(/[[:space:]]+$/,"");print a $0;a=""}' "$1")
+echo "$n" > "$1"

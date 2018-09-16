@@ -23,10 +23,14 @@ _Tested on [OpenBSD](/openbsd/) 6.3_
 [ssg2](/bin/ssg2) is a static site generator writen in shell and powered by
 [lowdown(1)](https://kristaps.bsd.lv/lowdown/).
 
-It converts `*.md` files to HTML.<br>
-Extracts page titles from `<H1>` tags.<br>
-Wraps those HTML pages with header, footer, styles, scripts.<br>
-Then copies the rest of files (excluding `.*` and `_*`) to `dst` directory.
+It converts `*.md` files to HTML.
+
+If a page has `<H1>` tag _ssg2_ extracts its title, wraps it
+with `_header.html`, `_footer.html`, and injects `_styles.css`,
+`_scripts.js`, `_rss.html` into `<HEAD>`.
+
+Then copies everything (excluding `.*` and `_*`) from `src` to `dst`
+directory.
 
 [![ssg2](ssg2.jpeg)](ssg2.png)
 _124 LoC. [Enlarge, enhance, zoom!](ssg2.png)_
@@ -66,8 +70,9 @@ $ <b>firefox dst/index.html</b>
 
 ## Incremental updates
 
-_ssg2_ saves a list of files in `dst/.files` and updates only newer
-files. If no files were modified after that, _ssg2_ does nothing.
+On every run _ssg2_ saves a list of files in `dst/.files` and updates
+only newer files. If no files were modified after that, _ssg2_ does
+nothing.
 
 <pre>
 $ <b>ssg2 src dst 'Test'</b>
@@ -90,33 +95,35 @@ $
 
 ## Watch
 
-Add this helper to `~/.bin` to watch file changes and re-run _ssg2_
-with [entr(1)](http://entrproject.org).
+Save this helper to `~/bin/s`. It re-runs _ssg2_ with
+[entr(1)](http://entrproject.org) on every file change.
 
 <pre>
+$ <b>cat ~/bin/s</b>
 #!/bin/sh
-while :; do
-	find . -type f ! -path '*/.*' |
-	entr -d "$HOME/bin/ssg" . "$1" "$(date +%s)"
+while :
+do find . -type f ! -path '*/.*' |
+entr -d "$HOME/bin/ssg" . "$1" "$(date)"
 done
+$
 </pre>
 
 Start it and keep it running:
 
 <pre>
-$ <b>s /var/www/htdocs/www</b>
+$ <b>~/bin/s /var/www/htdocs/www</b>
 [ssg] ok
 </pre>
 
 ## Upgrade
 
-_[Previous verison of ssg](ssg1.html) has been retired._
+_[Previous version of ssg](ssg1.html) has been retired._
 
-Add a wrapper for `entr(1)`.
+Add a wrapper for `entr(1)`.<br>
 Delete `_ssg.conf`.<br>
-<!--Add `_rss.html` and `_rss.conf` (optionally).<br>-->
+Add `_rss.html`(optionally).<br>
 Update run script and `post-*` git hooks.<br>
-Uninstall `rsync(1)`, if you don't use it.<br>
+Uninstall `rsync(1)`, if you don't use it.
 
 `ssg1`                         | `ssg2`
 :--                            | :--

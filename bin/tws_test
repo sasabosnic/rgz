@@ -21,26 +21,24 @@ desc 'trim trailing whitespace empty lines'
 
 printf 'spaces  \n' > "$temp/in"
 printf 'spaces\n' > "$temp/model"
-"$program" < "$temp/in" > "$temp/out"
-d "$temp/model" "$temp/out" 'spaces'
+"$program" "$temp/in"
+d "$temp/model" "$temp/in" 'spaces'
 
 printf '  indented spaces  \n' > "$temp/in"
 printf '  indented spaces\n' > "$temp/model"
-"$program" < "$temp/in" > "$temp/out"
-d "$temp/model" "$temp/out" 'indented spaces'
+"$program" "$temp/in"
+d "$temp/model" "$temp/in" 'indented spaces'
 
 printf 'empty lines at the EOF\n\n\n' > "$temp/in"
 printf 'empty lines at the EOF\n' > "$temp/model"
-"$program" < "$temp/in" > "$temp/out"
-d "$temp/model" "$temp/out" 'empty lines at the EOF'
+"$program" "$temp/in"
+d "$temp/model" "$temp/in" 'empty lines at the EOF'
 
 printf '\n\nempty lines\ninside\n' > "$temp/in"
 printf '\n\nempty lines\ninside\n' > "$temp/model"
-"$program" < "$temp/in" > "$temp/out"
-d "$temp/model" "$temp/out" 'empty lines inside'
+"$program" "$temp/in"
+d "$temp/model" "$temp/in" 'empty lines inside'
 
-
-desc 'args'
 
 cat > "$temp/in" << EOF
 	tabs			
@@ -58,14 +56,11 @@ cat > "$temp/model" << EOF
 empty lines
 EOF
 
-"$program" < "$temp/in" > "$temp/out"
-d "$temp/model" "$temp/out" "stdin"
+"$program" "$temp/in"
+d "$temp/model" "$temp/in" 'empty lines at the EOF'
 
-"$program" "$temp/in" > "$temp/out"
-d "$temp/model" "$temp/out" "file1"
 
-"$program" "$temp/in" "$temp/in" 2>&1 |
-says 'usage:' 'show usage'
+desc 'args'
 
 "$program" "$temp/XXX" 2>&1 |
 says "awk: can't open file" "can't open" 

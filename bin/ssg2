@@ -63,9 +63,13 @@ is_dir() { [ -d "$1" ] ||
 copy_dirs() {
 	cd "$1" || exit 3
 	find . -type d ! -name '.' ! -path '*/_*' ! -path '*/.*' |
-	cpio -pmd "$2"
+	cpio -pd "$2"
 }
 
+copy_files() {
+	grep -Ev '.md$|.html$' |
+	(cd "$1" && cpio -p "$2")
+}
 
 get_list_of_files() {
 	cd "$1" || exit 3
@@ -117,14 +121,6 @@ render_md_files() {
 	while read -r f
 	do lowdown -D html-skiphtml -D smarty -d metadata "$1/$f" |
 	render_page "$1" "$3" > "$2/${f%\.md}.html"
-	done
-}
-
-
-copy_files() {
-	grep -Ev '.md$|.html$' |
-	while read -r f
-	do cp "$1/$f" "$2/$f"
 	done
 }
 

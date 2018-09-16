@@ -4,9 +4,13 @@ set -e
 [ -x "$(which entr)" ] || exit 2
 [ -x "$(which shellcheck)" ] || exit 3
 
-tmux select-window -t "$1" 2>/dev/null ||
+a=$(readlink -f "$1")
+b=$(readlink -f "${1}_test")
+w=$(echo "$1"|tr '.' '-')
+
+tmux select-window -t "$a" 2>/dev/null ||
 {
-tmux new-window -n "$1" "vi $1 && tmux kill-window -t $1"
+tmux new-window -n "$w" "vi $a && tmux kill-window -t '$w'"
 tmux split-window -p 40 -dh \
-"ls $1 $1_test | entr -c sh -c 'fws $1 $1_test && shellcheck $1 $1_test && echo $1 && $1_test'"
+"ls $a $b | entr -c sh -c 'fws $a $b && shellcheck $a $b && echo $a && $b'"
 }

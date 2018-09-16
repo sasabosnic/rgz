@@ -3,7 +3,7 @@
 _Self-hosted websites.<br>
 Shell scripts and text editors.<br>
 How-to guides for BSD/Unix users.<br>
-Screencasts for web developers._
+Tutorials for web developers._
 
 **Why should you subscribe?** If you want to get notified when I
 publish a how-to guide or release a shell script, or if you want

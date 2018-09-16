@@ -1,0 +1,21 @@
+#!/bin/sh
+set -e
+[ -d "$1" ] || exit 1
+
+dst="$1"
+src=$(dirname "$(readlink -f "$0")")
+
+# ssg
+"$HOME/bin/ssg2" "$src" "$dst" 'Roman Zolotarev'
+
+# rss
+"$src/rss.xml.sh" > "$dst/rss.xml"
+echo '[rss] ok' >&2
+
+# stagit
+mkdir -p "$dst/src"
+cd "$dst/src"
+cp "$src/stagit/"* .
+stagit "$src"
+ln -fs log.html index.html
+echo '[stagit] ok' >&2

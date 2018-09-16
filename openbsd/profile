@@ -29,9 +29,9 @@ o() { start_tmux 'o' 'prv/openvpn' 'doas openvpn --config default.ovpn'; }
 
 # shellcheck disable=SC1091
 {
-bj()  { . start_ssg 'src/bj'  '/var/www/htdocs/www.bsdjobs.com/'; }
-oa()  { . start_ssg 'src/oa'  '/var/www/htdocs/openbsd.amsterdam/'; }
-www() { . start_ssg 'src/www' '/var/www/htdocs/www.romanzolotarev.com'; }
+bj()  { . start_ssg "$HOME/src/bj"  '/var/www/htdocs/www.bsdjobs.com/'; }
+oa()  { . start_ssg "$HOME/src/oa"  '/var/www/htdocs/openbsd.amsterdam/'; }
+www() { . start_ssg "$HOME/src/www" '/var/www/htdocs/www.romanzolotarev.com'; }
 }
 
 sync_logs() { [ -n "$1" ] && { rsync -azvPc "$1:/var/www/logs/*" "$HOME/prv/logs/$1/"; }; }

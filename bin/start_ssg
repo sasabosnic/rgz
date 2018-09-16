@@ -1,17 +1,19 @@
 #!/bin/sh
 set -e
-usage() { >&2 echo "usage: ${0##*/} <name> <dir>"; exit 1; }
-[ -n "$1" ] || usage
+usage() { >&2 echo "usage: ${0##*/} src dst"; exit 1; }
+[ -d "$1" ] || usage
 [ -d "$2" ] || usage
-[ -x "$(which ssg)" ] || exit 2
 [ -x "$(which entr)" ] || exit 2
 
-src="$HOME/$1"
-cmd="$HOME/bin/s '$HOME/$1' '$2'"
+src="$1"
+[ -x "$src/build" ] || exit 2
+dst="$2"
+w=$(basename "$src")
 
-if tmux select-window -t "$1" 2>/dev/null
+if tmux select-window -t "$w" 2>/dev/null
 then cd "$src"
 else
-	tmux new-window -n "$1" -c "$src"
-	tmux split-window -l 3 -d -c "$src" "$cmd"
+	tmux new-window -n "$w" -c "$src"
+	tmux split-window -l 3 -d -c "$src" \
+	"while :; do cd '$src';find . -type f ! -path '*/.*'|entr -d '$src/build' '$dst'; done"
 fi
