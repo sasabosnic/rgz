@@ -145,10 +145,10 @@ env vars and `_ssg.conf`       | _removed_
 `ssg build --clean`            | `rm -rf dst && ssg2 ...`
 `ssg watch`                    | `find . | entr ssg2 ...`
 &nbsp;                         | &nbsp;
-**dependencies**                         |
-`lowdown`				 | `lowdown`
-`entr`                                   | _removed_
-`rsync`                                  | _removed_
+**dependencies**               |
+`lowdown`                      | _same_
+`entr`                         | _removed_
+`rsync`                        | _removed_
 
 ---
 
