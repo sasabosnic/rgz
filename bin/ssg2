@@ -131,7 +131,7 @@ copy_files() {
 
 render_page() {
 	body=$(cat)
-	title=$(echo "$body" | grep '^<h1' | sed 's/<[^>]*>//g')
+	title=$(echo "$body" | grep '^<h1' | head -1 | sed 's/<[^>]*>//g')
 	[ -z "$title" ] && { echo "$body" && return; }
 
 	cat <<-EOF
