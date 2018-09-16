@@ -1,7 +1,9 @@
 #!/bin/sh
 set -e
+s="(mkdir -p '$2/src';cd '$2/src' && cp '$1/stagit/'* . && stagit '$1' && ln -fs log.html index.html && echo '[stagit] ok')"
 cd "$1" &&
 while :; do
 	find . -type f ! -path '*/.*'|
-	entr -d ssg2 "$1" "$2" "$(date +%s)"
+	entr -d sh -c \
+	"ssg2 '$1' '$2' '$(date)' && $s"
 done
