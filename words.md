@@ -12,6 +12,10 @@ _Entrepreneur and Book Publisher_<br>
 
 ---
 
+"...we have released a new SoloBSD build, based on latest #HardenedBSD 11-STABLE sources and we have added @romanzolotarev ssg2 Static Site Generator"
+[Guillermo Garc&iacute;a R.](https://bsd.network/@SoloBSD/100738517454168701 "17 Sep 2018")
+(@SoloBSD@bsd.network)
+
 "I followed another one of @romanzolotarev's awesome guides to set up a remote git host on #OpenBSD. My mind is still blown because of how easy it was! Thanks, Roman!"<br>&mdash;
 [@lambdanerd](https://twitter.com/lambdanerd/status/1036823248158289920 "04 Sep 2018")
 (@lambdanerd)

@@ -4,17 +4,15 @@ set -e
 
 main () {
 	base="$(dirname "$(readlink -f "$0")")"
-	(cat <<-EOF
-	2018-09-17 2018-09-17.html
-	2018-08-26 2018-08-26.html
-	EOF
-	) | render_items "$base" | render_feed
+
+	render_items "$base" |
+	render_feed
 }
 
 
 render_items() {
-	while read -r item
-	do render_item "$1" "$item"
+	while read -r i
+	do render_item "$1" "$i"
 	done
 }
 
@@ -22,8 +20,10 @@ render_items() {
 render_item() {
 	base="$1"
 	item="$2"
+
 	root="https://www.romanzolotarev.com"
-	# date=$(echo "$item"|awk '{print$1}')
+	date=$(echo "$item"|awk '{print$1}')
+	echo "$date"
 	file=$(echo "$item"|awk '{print$2}')
 	url="/$file"
 	description=$(rel_to_abs_urls "$root" < "$base/$file" | format_text)

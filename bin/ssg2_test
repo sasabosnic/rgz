@@ -15,7 +15,7 @@ desc() { printf '#\n\033[1m%s\033[m\n' "$1"; }
 desc 'args'
 
 temp=$(mktemp -d)
-usage='usage: ssg2 <src> <dst> <title>'
+usage='usage: ssg2 src dst title'
 
 out=$(2>&1 "$program")
 eq "$out" "$usage" 'no args'
@@ -49,30 +49,26 @@ echo '# Title B' > b/b.md
 "$program" "$temp/src" "$temp/dst" 'r' > "$temp/out" 2> "$temp/err"
 
 log=$(cat << EOF
-b/a.png
-b/b.md
-a.jpeg
-_styles.css
-_header.html
-a.html
+./b/a.png
+./b/b.md
+./a.jpeg
+./a.html
 EOF
 )
 
 log2=$(cat << EOF
-b/a.png
+./b/a.png
 EOF
 )
 
 log3=$(cat << EOF
-b/b.md
-_styles.css
-_header.html
-a.html
+./b/b.md
+./a.html
 EOF
 )
 
 eq "$log" "$(cat "$temp/out")" 'out: initial run'
-eq '[ssg] 6 files' "$(cat "$temp/err")" 'err: initial run'
+eq '[ssg] 4 files' "$(cat "$temp/err")" 'err: initial run'
 
 "$program" "$temp/src" "$temp/dst" 'r' > "$temp/out" 2> "$temp/err"
 eq '' "$(cat "$temp/out")" 'out: no changes'
@@ -86,7 +82,7 @@ eq '[ssg] 1 file' "$(cat "$temp/err")" 'err: touch b/a.png'
 touch '_header.html'
 "$program" "$temp/src" "$temp/dst" 'r' > "$temp/out" 2> "$temp/err"
 eq "$log3" "$(cat "$temp/out")" 'out: touch _header.html'
-eq '[ssg] 4 files' "$(cat "$temp/err")" 'err: touch b/a.png'
+eq '[ssg] 2 files' "$(cat "$temp/err")" 'err: touch _header.html'
 
 
 desc "wrap and copy"
@@ -101,7 +97,8 @@ model=$(cat << EOF
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport"
+content="width=device-width, initial-scale=1">
 <link rel="icon" type="image/png" href="/favicon.png">
 <title>Title B - r</title>
 <style></style>

@@ -6,11 +6,11 @@ set -e
 
 a=$(readlink -f "$1")
 b=$(readlink -f "${1}_test")
+[ -f "$b" ] || b="$HOME/bin/no_tests"
 w=$(echo "$1"|tr '.' '-')
 
 tmux select-window -t "$a" 2>/dev/null ||
 {
 tmux new-window -n "$w" "vi $a && tmux kill-window -t '$w'"
-tmux split-window -p 40 -dh \
-"ls $a $b | entr -c sh -c 'fws $a $b && shellcheck $a $b && echo $a && $b'"
+tmux split-window -p 40 -dh "ls $a $b | entr -c sh -c 'echo $a;shellcheck $a $b && $b'"
 }

@@ -1,3 +1,0 @@
-#!/bin/sh
-program="$(dirname "$(readlink -f "$0")")/rss.xml.sh"
-$program

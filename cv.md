@@ -44,9 +44,9 @@ the business and <a href="tech.html">technical background</a>.</i>
 
 ## Current projects
 
-**Founder, Technical Writer, Designer, [Mastering the Web](n.html)**<br>
+**Founder, Technical Writer, Designer, [Mastering the Web](/n/)**<br>
 _Publishing, 2018&ndash;present_<br>
-[romanzolotarev.com/n.html](n.html)
+[romanzolotarev.com/n/](/n/)
 
 <pre>
 35-40 hours a week

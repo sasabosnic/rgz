@@ -9,13 +9,13 @@ src=$(dirname "$(readlink -f "$0")")
 "$HOME/bin/ssg2" "$src" "$dst" 'Roman Zolotarev'
 
 # rss
-"$src/rss.xml.sh" > "$dst/rss.xml"
-echo '[rss] ok' >&2
+"$src/n/rss" < "$src/n/index.txt" > "$dst/n/rss.xml"
+echo '[n/rss] ok' >&2
 
 # stagit
 mkdir -p "$dst/src"
 cd "$dst/src"
-cp "$src/stagit/"* .
+cp "$src/stagit/logo.png" "$src/stagit/style.css" "$dst/src/"
 stagit "$src"
 ln -fs log.html index.html
 echo '[stagit] ok' >&2

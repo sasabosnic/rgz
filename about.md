@@ -23,7 +23,7 @@ computers](setup.html) and the internet, and maybe travel more
 [Where do I see myself in five years?](cv.html) :) There is a chance
 I'll be doing the same at the larger scale. I'll be publishing more
 words to connect more people. My business models may change, but
-my mission has been solid for decades: I'm [mastering the Web](n.html).
+my mission has been solid for decades: I'm [mastering the Web](/n/).
 
 I help internet companies to find people, help my peers to find
 their dream jobs, help them to build fast and accessible web and

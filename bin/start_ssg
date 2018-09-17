@@ -15,5 +15,5 @@ then cd "$src"
 else
 	tmux new-window -n "$w" -c "$src"
 	tmux split-window -l 3 -d -c "$src" \
-	"while :; do cd '$src';find . -type f ! -path '*/.*'|entr -d '$src/build' '$dst'; done"
+	"while :; do cd $src;find . -type f ! -path '*/.*'|entr -d '$src/build' '$dst'; done"
 fi

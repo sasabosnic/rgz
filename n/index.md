@@ -29,11 +29,11 @@ best parts and send them to you. Stay tuned!
 <button class="button" type="submit">Subscribe</button>
 </form>
 
-Subscribe to [RSS](https://www.romanzolotarev.com/rss.xml)
+Subscribe via [RSS](https://www.romanzolotarev.com/n/rss.xml)
 or find me [elsewhere](elsewhere.html).
 
 <a href="https://www.romanzolotarev.com/"
-  class="h-card"><img src="avatar120.jpeg" class="avatar"></a>
+  class="h-card"><img src="/avatar120.jpeg" class="avatar"></a>
 
 **Roman Zolotarev**<br>
 _Die-hard Webmaster_<br>
