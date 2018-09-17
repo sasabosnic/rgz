@@ -7,6 +7,8 @@ David (the layout's author) claims it's **46% less effort than
 QWERTY** and I tend to agree. I'm still fluent in QWERTY on regular
 keyboards, to reach my full speed takes a couple of minutes.
 
+---
+
 ![Norman](/typing-norman.png)
 _Comparison of Norman layout with QWERTY_
 

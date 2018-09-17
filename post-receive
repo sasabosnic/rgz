@@ -52,7 +52,7 @@ git archive --format=tar HEAD | (cd "$dst/raw" && tar xf -)
 
 cd "$dst/raw" || { echo "[post-receive] can't change to $dst/raw"; exit 1; }
 rm /var/www/htdocs/www.romanzolotarev.com/.files
-"$HOME/bin/ssg2" . /var/www/htdocs/www.romanzolotarev.com 'Roman Zolotarev'
+"$HOME/bin/ssg2" . /var/www/htdocs/www.romanzolotarev.com 'Roman Zolotarev' 'https://www.romanzolotarev.com'
 
 
 # Publish the repository

@@ -1,16 +1,21 @@
 #!/bin/sh
 set -e
-[ -d "$1" ] || exit 1
+[ -d "$1" ] || { echo "usage: ${0##*/} dst"; exit 1; }
 
 dst="$1"
 src=$(dirname "$(readlink -f "$0")")
 
 # ssg
-"$HOME/bin/ssg2" "$src" "$dst" 'Roman Zolotarev'
+"$HOME/bin/ssg2" "$src" "$dst" 'Roman Zolotarev' 'https://www.romanzolotarev.com'
 
 # rss
-"$src/n/rss" < "$src/n/index.txt" > "$dst/n/rss.xml"
-echo '[n/rss] ok' >&2
+"$HOME/bin/rssg" \
+'Mastering the Web' \
+'Newsletters: Self-hosted websites. Shell scripts and text editors. How-to guides for BSD/Unix users. Tutorials for web developers.' \
+'hi@romanzolotarev.com (Roman Zolotarev)' \
+'https://www.romanzolotarev.com/n/rss.xml' \
+"$src/n/index.txt" > "$dst/n/rss.xml"
+echo "[n/rss] $(grep -c '<item>' "$dst/n/rss.xml") items" >&2
 
 # stagit
 mkdir -p "$dst/src"
@@ -18,4 +23,4 @@ cd "$dst/src"
 cp "$src/stagit/logo.png" "$src/stagit/style.css" "$dst/src/"
 stagit "$src"
 ln -fs log.html index.html
-echo '[stagit] ok' >&2
+echo "[stagit] $(grep -c '"commit' "$dst/src/log.html") commits" >&2

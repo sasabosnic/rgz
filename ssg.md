@@ -59,7 +59,7 @@ $ <b>echo '&lt;p&gt;&lt;a href="/"&gt;Home&lt;/a&gt;&lt;/p&gt;' &gt; src/_header
 $ <b>echo '&lt;p&gt;2018 Roman Zolotarev&lt;/p&gt;' &gt; src/_footer.html</b>
 $ <b>ftp -Vo src/_styles.css https://www.romanzolotarev.com/_styles.css</b>
 _styles.css  100% |**************************|  1020       00:00
-$ <b>ssg2 src dst 'Test'</b>
+$ <b>ssg2 src dst 'Test' 'https://www.romanzolotarev.com'</b>
 index.html
 _header.html
 _footer.html
@@ -84,7 +84,7 @@ To force the update delete `dst/.files` and re-run _ssg2_.
 
 <pre>
 $ <b>rm dst/.files</b>
-$ <b>ssg2 src dst 'Test'</b>
+$ <b>ssg2 src dst 'Test' 'https://www.romanzolotarev.com'</b>
 index.html
 _header.html
 _footer.html
@@ -103,7 +103,7 @@ $ <b>cat ~/bin/s</b>
 #!/bin/sh
 while :
 do find . -type f ! -path '*/.*' |
-entr -d "$HOME/bin/ssg" . "$1" "$(date)"
+entr -d "$HOME/bin/ssg" . "$1" "$(date)" '//www'
 done
 $
 </pre>
@@ -134,7 +134,7 @@ second run (+1 page)  1.92s    | **0.13s**
 &nbsp;                         | &nbsp;
 **features**                   |
 `rss.xml`                      | _removed_
-`sitemap.xml`                  | _removed_
+`sitemap.xml`                  | _same_
 &nbsp;                         | &nbsp;
 **content**                    |
 convert MD to HTML             | _same_
@@ -149,7 +149,7 @@ get title from `<h1>`          | _same_
 env vars and `_ssg.conf`       | _removed_
 &nbsp;                         | `DOCS` moved to 2rd argument
 &nbsp;                         | `WEBSITE_TITLE`&mdash;to 3rd
-`ssg build`                    | `ssg2 src dst 'Website Title'`
+`ssg build`                    | `ssg2 src dst ...`
 `ssg build --clean`            | `cd dst && rm -rf * .* && ssg2 ...`
 `ssg watch`                    | `cd src && find . | entr ssg2 ...`
 &nbsp;                         | &nbsp;

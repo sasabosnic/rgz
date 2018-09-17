@@ -1,8 +1,5 @@
 #!/bin/sh
-#
-# https://www.romanzolotarev.com/bin/rssg_test
-# Copyright 2018 Roman Zolotarev <hi@romanzolotarev.com>
-#
+
 program="$(dirname "$(readlink -f "$0")")/rssg"
 
 total=0; nos=0
@@ -15,74 +12,53 @@ desc() { printf '#\n\033[1m%s\033[m\n' "$1"; }
 ##########################################################################
 
 
-desc 'ssg'
+desc 'args'
+
+usage='usage: rssg title description author url items.txt > rss.xml'
+
+err=$(2>&1 "$program")
+eq "$err" "$usage" 'no args'
+
+desc 'out'
 
 temp=$(mktemp -d)
-mkdir "$temp/src" "$temp/docs"
-cat > "$temp/src/_rssg.conf" << EOF
-#!/bin/sh
-FEED="$temp/docs/rss.xml"
-ROOT='https://www.romanzolotarev.com'
-TITLE='Roman Zolotarev'
-AUTHOR='hi@romanzolotarev.com (Roman Zolotarev)'
-DESCRIPTION='Personal website'
+
+cat > "$temp/items.txt" << EOF
+2018-09-17 2018-09-17.html
+2018-08-26 2018-08-26.html
 EOF
 
-cat > "$temp/src/index.md" << EOF
-# Title
+model=$(cat << EOF
+EOF
+)
 
-- [a.html](a/b.html "01 Jan 1970")
+cat > "$temp/2018-08-26.html" << EOF
+<h1>title1</h1>
 
----
+<p>desc1</p>
 
- [/a/b.html](/a/b.html "01 Jan 1970")
- [a/b.html](/a/b.html "01 Jan 1970")
+<p>
+<a href="2018-09-17.html">rel</a><br>
+<a href="/n/2018-09-17.html">abs path</a><br>
+<a href="/n/">dir</a><br>
+<a href="https://www/n/">full</a><br>
+</p>
+EOF
+cat > "$temp/2018-09-17.html" << EOF
+<h1>title2</h1>
 
- [/a/b/c.html](a/b/c.html "01 Jan 1970")
- [a/b/c.html](a/b/c.html "01 Jan 1970")
-
- [/a/](/a/ "01 Jan 1970")
- [/a](/a "01 Jan 1970")
- [a/](a/ "01 Jan 1970")
- [a](a "01 Jan 1970")
+<p>desc2</p>
 EOF
 
-mkdir "$temp/src/a" "$temp/src/a/b"
+"$program" 'Newletter' 'Monthly updates' 'Roman' 'https://www/rss.xml' "$temp/items.txt" > "$temp/rss.xml"
 
-echo '# .' > "$temp/src/a.md"
-echo '# .' > "$temp/src/a/b.md"
-echo '<h1>.</h1>' > "$temp/src/a/b/c.md"
+out=$(sed 's#Date>.*</#Date>XXX, XX XXX XXXX XX:XX:XX +XXXX<#' \
+"$temp/rss.xml")
 
-cat > "$temp/src/a.md" << EOF
-# a.md
-
-[/a.html](/a.html)
-[a.html](a.html)
-[a/b.html](a/b.html)
-[/a/b.html](/a/b.html)
-EOF
-
-cd "$temp/src" && "$program" build
-s_date='s#lastBuildDate>.*<#lastBuildDate>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX<#'
-a=$(sed "$s_date" "$temp/docs/rss.xml")
+eq "$model" "$out" ''
 
 
-e="$(cat << EOF
-<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-<channel>
-<atom:link href="https://www.romanzolotarev.com/rss.xml" rel="self" type="application/rss+xml" />
-<title>Roman Zolotarev</title>
-<description>Personal website</description>
-<link>https://www.romanzolotarev.com/</link>
-<lastBuildDate>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</lastBuildDate>
-<managingEditor>hi@romanzolotarev.com (Roman Zolotarev)</managingEditor>
-</channel></rss>
-EOF
-)"
-eq "$a" "$e" 'rss.xml'
-
-rm -rf "$temp"
+rm -rf "${temp:?}"
 
 
 ##########################################################################

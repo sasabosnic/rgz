@@ -1,6 +1,2 @@
 user-agent: *
-sitemap: /sitemap.xml
-disallow: /cv
-disallow: /refs
-disallow: /src
-disallow: /tech
+sitemap: https://www.romanzolotarev.com/sitemap.xml
