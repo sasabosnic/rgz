@@ -1,17 +1,14 @@
 #!/bin/sh
 set -e
-[ -f "$1" ] || { >&2 echo "usage: ${0##*/} <existing_script>"; exit 1; }
-[ -x "$(which entr)" ] || exit 2
-[ -x "$(which shellcheck)" ] || exit 3
+test -f "$1" || { >&2 echo "usage: ${0##*/} <existing_script>"; exit 1; }
+test -x "$(which entr)" || exit 2
+test -x "$(which shellcheck)" || exit 3
 
 a=$(readlink -f "$1")
 b=$(readlink -f "${1}_test")
-[ -f "$b" ] || b="$HOME/bin/no_tests"
-# w=$(echo "$1"|tr '.' '-')
 
-# tmux select-window -t "$a" 2>/dev/null ||
-# {
-# tmux new-window -n "$w" "vi $a && tmux kill-window -t '$w'"
-tmux split-window -p 80 "vi $a"
-tmux split-window -p 40 -dh "ls $a $b | entr -c sh -c 'echo $a;shellcheck $a $b && $b'"
-# }
+test -f "$b" || b="$HOME/bin/no_tests"
+
+tmux split-window -p 90 "vi $a"
+tmux split-window -p 40 -dh \
+"ls $a $b | entr -c sh -c 'echo $a;shellcheck $a $b && $b'"

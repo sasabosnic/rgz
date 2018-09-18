@@ -11,7 +11,7 @@ _Tested on [OpenBSD](/openbsd/) 6.3_
 
 # Manage passwords with openssl(1) and oathtool(1)
 
-[pass](/bin/pass) is a password manager writen in shell and powered
+[pass](/bin/pass) is a password manager written in shell and powered
 by [openssl(1)](https://man.openbsd.org/openssl.1) and
 [oathtool(1)](http://www.nongnu.org/oath-toolkit/oathtool.1.html).
 

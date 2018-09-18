@@ -1,4 +1,4 @@
-# Mastering the Web &mdash; Newsletter
+# Mastering the Web
 
 _Self-hosted websites.<br>
 Shell scripts and text editors.<br>
@@ -37,7 +37,7 @@ or find me [elsewhere](elsewhere.html).
 
 **Roman Zolotarev**<br>
 _Die-hard Webmaster_<br>
-hi@romanzolotarev.com<br>
+<hi@romanzolotarev.com><br>
 [twitter.com/romanzolotarev](https://twitter.com/romanzolotarev)<br>
 [bsd.network/@romanzolotarev](https://bsd.network/@romanzolotarev)
 
@@ -45,3 +45,14 @@ If you need my help with your Unix/BSD related projects, web
 development, or anything really, ping me any time.
 
 If you run a newsletter on a related topic, ping me, I'll subscribe!
+
+## Archive
+
+<!--
+
+- [More BSD stories](2018-09-26.md)
+- [A new ssg and the first release of rssg](2018-09-19.md)
+
+-->
+
+- [Making the web](2018-08-26.html "2018-09-26")

@@ -31,19 +31,7 @@ run_rssg() {
 	src="$1"
 	dst="$2"
 
-	desc="$(cat <<-EOF
-        Newsletters: Self-hosted websites. Shell scripts and text
-        editors. How-to guides for BSD/Unix users. Tutorials for
-        web developers.
-	EOF
-	)"
-
-	"$HOME/bin/rssg" \
-		'Mastering the Web' \
-		"$desc" \
-		'hi@romanzolotarev.com (Roman Zolotarev)' \
-		'https://www.romanzolotarev.com/n/rss.xml' \
-		"$src/n/index.txt" > "$dst/n/rss.xml"
+	"$HOME/bin/rssg" "$dst/n/index.html" > "$dst/n/rss.xml"
 	echo "[n/rss] $(grep -c '<item>' "$dst/n/rss.xml") items" >&2
 }
 

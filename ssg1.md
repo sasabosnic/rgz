@@ -9,7 +9,7 @@ _Tested on [OpenBSD](/openbsd/) 6.3_
 
 # Make a static site with lowdown(1) and rsync(1)
 
-[ssg1](/bin/ssg1) is a static site generator writen in shell and powered by
+[ssg1](/bin/ssg1) is a static site generator written in shell and powered by
 [lowdown(1)](https://kristaps.bsd.lv/lowdown/),
 [rsync(1)](https://rsync.samba.org/), and
 [entr(1)](http://entrproject.org/).

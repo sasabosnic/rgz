@@ -11,31 +11,67 @@ desc() { printf '#\n\033[1m%s\033[m\n' "$1"; }
 
 ##########################################################################
 
+temp=$(mktemp -d)
 
 desc 'args'
 
-usage='usage: rssg title description author url items.txt > rss.xml'
+usage='usage: rssg index.html > rss.xml'
+no_file="rssg: $temp/index.html: No such file"
 
-err=$(2>&1 "$program")
-eq "$err" "$usage" 'no args'
+eq "$(2>&1 "$program")" "$usage" 'no args'
+eq "$(2>&1 "$program" "$temp/index.html")" "$no_file" 'index.html'
+
+
+cat > "$temp/model" << EOF
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+<atom:link href="" rel="self" type="application/rss+xml" />
+<title></title>
+<description></description>
+<link>/</link>
+<lastBuildDate>XXX, XX XXX XXXX XX:XX:XX +XXXX</lastBuildDate>
+<managingEditor> ()</managingEditor>
+
+</channel></rss>
+EOF
+touch "$temp/index.html"
+
+"$program" "$temp/index.html" > "$temp/rss.xml"
+
+sed 's#Date>.*</#Date>XXX, XX XXX XXXX XX:XX:XX +XXXX</#' \
+"$temp/rss.xml" > "$temp/out"
+
+if diff "$temp/model" "$temp/out"
+then ok 'empty RSS'
+else no 'empty RSS'
+fi
+
 
 desc 'out'
 
-temp=$(mktemp -d)
+cat > "$temp/index.html" << EOF
+<h1>People who run BSD</h1>
 
-cat > "$temp/items.txt" << EOF
-2018-09-17 2018-09-17.html
-2018-08-26 2018-08-26.html
+<p>
+Stories written by users of BSD operating systems.
+Hosted by <a href="mailto:hi@romanzolotarev.com">Roman Zolotarev</a>
+</p>
+
+<p>
+Subscribe via <a href="https://bsdjobs.com/people/rss.xml">RSS</a>
+</p>
+
+<ul>
+<li><a href="mischapeters.html" title="2018-08-07">Mischa Peters</a></li>
+<li><a href="h3artbl33d.html" title="2018-08-06">h3artbl33d</a></li>
+</ul>
 EOF
 
-model=$(cat << EOF
-EOF
-)
+cat > "$temp/mischapeters.html" << EOF
+<H1>Mischa Peters runs OpenBSD(html)</h1>
 
-cat > "$temp/2018-08-26.html" << EOF
-<h1>title1</h1>
-
-<p>desc1</p>
+<p>Description 1</p>
 
 <p>
 <a href="2018-09-17.html">rel</a><br>
@@ -43,20 +79,85 @@ cat > "$temp/2018-08-26.html" << EOF
 <a href="/n/">dir</a><br>
 <a href="https://www/n/">full</a><br>
 </p>
+
+<p>
+<img src="m.png">
+<img src="/n/m.jpeg">
+<img src="/n.jpeg">
+<img src="https://www/n.png">
+</p>
 EOF
-cat > "$temp/2018-09-17.html" << EOF
-<h1>title2</h1>
 
-<p>desc2</p>
+cat > "$temp/h3artbl33d.html" << EOF
+<h1>h3artbl33d runs OpenBSD</h1>
+
+<p>Description 2</p>
 EOF
 
-"$program" 'Newletter' 'Monthly updates' 'Roman' 'https://www/rss.xml' "$temp/items.txt" > "$temp/rss.xml"
+cat > "$temp/model" << EOF
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+<atom:link href="https://bsdjobs.com/people/rss.xml" rel="self" type="application/rss+xml" />
+<title>People who run BSD</title>
+<description>
+Stories written by users of BSD operating systems.
+Hosted by <a href="mailto:hi@romanzolotarev.com">Roman Zolotarev</a></description>
+<link>https://bsdjobs.com/</link>
+<lastBuildDate>XXX, XX XXX XXXX XX:XX:XX +XXXX</lastBuildDate>
+<managingEditor>hi@romanzolotarev.com (Roman Zolotarev)</managingEditor>
 
-out=$(sed 's#Date>.*</#Date>XXX, XX XXX XXXX XX:XX:XX +XXXX<#' \
-"$temp/rss.xml")
+<item>
+<guid>https://bsdjobs.com/people/mischapeters.html</guid>
+<link>https://bsdjobs.com/people/mischapeters.html</link>
+<pubDate>XXX, XX XXX XXXX XX:XX:XX +XXXX</pubDate>
+<title></title>
+<description><![CDATA[
 
-eq "$model" "$out" ''
 
+<p>Description 1</p>
+
+<p>
+<a href="https://bsdjobs.com/people/2018-09-17.html">rel</a><br>
+<a href="https://bsdjobs.com/n/2018-09-17.html">abs path</a><br>
+<a href="https://bsdjobs.com/n/">dir</a><br>
+<a href="https://www/n/">full</a><br>
+</p>
+
+<p>
+<img src="https://bsdjobs.com/people/m.png">
+<img src="https://bsdjobs.com/n/m.jpeg">
+<img src="https://bsdjobs.com/n.jpeg">
+<img src="https://www/n.png">
+</p>
+
+]]></description>
+</item>
+
+<item>
+<guid>https://bsdjobs.com/people/h3artbl33d.html</guid>
+<link>https://bsdjobs.com/people/h3artbl33d.html</link>
+<pubDate>XXX, XX XXX XXXX XX:XX:XX +XXXX</pubDate>
+<title></title>
+<description><![CDATA[
+
+
+<p>Description 2</p>
+
+]]></description>
+</item>
+</channel></rss>
+EOF
+
+"$program" "$temp/index.html" > "$temp/rss.xml"
+
+sed 's#Date>.*</#Date>XXX, XX XXX XXXX XX:XX:XX +XXXX</#' \
+"$temp/rss.xml" > "$temp/out"
+
+if diff "$temp/model" "$temp/out"
+then ok 'RSS'
+else no 'RSS'
+fi
 
 rm -rf "${temp:?}"
 

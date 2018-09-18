@@ -17,5 +17,6 @@ via [vmctl(8)](https://man.openbsd.org/vmctl.8).
 	* HelenOS      no  hangs at kernel monitor prompt
 	* TempleOS     no
 	* Minix 3      no  VGA to Serial stuff breaks down
+	* tor-ramdisk  no  serial console doesn't work, no network traffic
 
 `*` tested by [Jon Williams](https://bsd.network/@jon/100719091239815531)

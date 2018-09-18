@@ -4,34 +4,69 @@ set -e
 
 main () {
 	test -n "$1" || usage
-	test -n "$2" || usage
-	test -n "$3" || usage
-	test -n "$4" || usage
-	test -n "$5" || usage
-	test -f "$5" || no_file "$5"
+	test -f "$1" || no_file "$1"
+	index_html_file="$1"
 
-	title="$1"
-	desc="$2"
-	author="$3"
-	url="$4"
-	items="$5"
+	base="$(dirname "$(readlink -f "$index_html_file")")"
+	base_url="$(
+			get_url "$(
+				cat "$index_html_file"
+			)" | sed 's#\(.*\)/[^/]*#\1#'
+	)"
 
-	base="$(dirname "$(readlink -f "$items")")"
-	base_url="$(echo "$url" | cut -d '/' -f1-3)"
-
-	render_items "$base" "$base_url" < "$items" |
-	render_feed "$title" "$desc" "$author" "$url"
+	get_items "$(cat "$index_html_file")" |
+	render_items "$base" "$base_url" |
+	render_feed "$index_html_file"
 }
+
 
 usage() {
-	echo "usage: ${0##*/} title description author url items.txt > rss.xml" >&2
+	echo "usage: ${0##*/} index.html > rss.xml" >&2
 	exit 1
 }
+
 
 no_file() {
 	echo "${0##*/}: $1: No such file" >&2
 	exit 2
 }
+
+
+get_title() {
+	echo "$1" | grep -i '^<h1' | head -1 |
+	sed 's#.*>\(.*\)<.*#\1#'
+}
+
+
+get_email() {
+	echo "$1" | grep -i 'mailto:' | head -1 |
+	sed 's/.*href="mailto:\(.*\)".*/\1/'
+}
+
+
+get_name() {
+	echo "$1" | grep -i 'mailto:' | head -1 |
+	sed 's#.*>\(.*\)<.*#\1#'
+}
+
+
+get_url() {
+	echo "$1" | grep -i '<a .*rss' | head -1 |
+	sed 's#.*href="\(.*\)".*#\1#'
+}
+
+
+get_items() {
+	echo "$1" | grep -i 'href=".*" title="' |
+	sed 's#.*href="\(.*\)" title="\(.*\)">\(.*\)</a>.*#\1 \2 \3#'
+}
+
+
+get_description() {
+	echo "$1" |
+	awk -v s='[[:space:]]' 'sub("^.*<"s"*[Pp]("s"[^>]*)?>",""),sub("</"s"*[Pp]"s"*>.*","")&&x=1;x{exit}'
+}
+
 
 render_items() {
 	while read -r i
@@ -40,38 +75,8 @@ render_items() {
 }
 
 
-render_item() {
-	base="$1"
-	base_url="$2"
-	item="$3"
-	cur_path="$(dirname "$3")"
-
-	date=$(echo "$item"|awk '{print$1}')
-	echo "$date"
-	file=$(echo "$item"|awk '{print$2}')
-	url="/$file"
-	description=$(rel_to_abs_urls "$base_url" "$cur_path" < "$base/$file" | format_text)
-	title=$(echo "$description" | grep '^<h1' | head -1 | sed 's/<[^>]*>//g')
-
-	cat <<-EOF
-
-	<item>
-	<guid>$base_url$url</guid>
-	<link>$base_url$url</link>
-	<pubDate>20 Sep 2018 00:00:00 +0000</pubDate>
-	<title>$title</title>
-	<description><![CDATA[
-
-	$description
-
-	]]></description>
-	</item>
-	EOF
-}
-
-
 format_text() {
-	sed 's/\&nbsp;/ /g'
+	sed 's/\&nbsp;/ /g' | grep -vi '<h1>'
 }
 
 
@@ -83,14 +88,55 @@ rel_to_abs_urls() {
 }
 
 
-render_feed() {
-	title="$1"
-	desc="$2"
-	author="$3"
-	url="$4"
-	base_url="$(echo "$url" | cut -d '/' -f1-3)"
+date_rfc_822() {
+	date -j '+%a, %d %b %Y %H:%M:%S %z' \
+	"$(echo "$1"| tr -cd '[:digit:]')0000"
+}
 
-	date_rfc_822=$(stat -f%Sm -t "%a, %d %b %Y %H:%M:%S %z" "$0")
+
+render_item() {
+	base="$1"
+	base_url="$2"
+	item="$3"
+	cur_path="$(dirname "$3")"
+	echo base="$1"
+	echo base_url="$2"
+	echo item="$3"
+	echo cur_path="$(dirname "$3")"
+
+	file=$(echo "$item"|awk '{print$1}')
+	date=$(echo "$item"|awk '{print$2}')
+	url="/$file"
+	description=$(rel_to_abs_urls "$base_url" "$cur_path" < "$base/$file" | format_text)
+	title=$(get_title "$description")
+
+	cat <<-EOF
+
+	<item>
+	<guid>$base_url$url</guid>
+	<link>$base_url$url</link>
+	<pubDate>$(date_rfc_822 "$date")</pubDate>
+	<title>$title</title>
+	<description><![CDATA[
+
+	$description
+
+	]]></description>
+	</item>
+	EOF
+}
+
+
+render_feed() {
+	index_html_file="$1"
+	html=$(cat "$index_html_file")
+	base="$(dirname "$(readlink -f "$index_html_file")")"
+	title=$(get_title "$html")
+	description=$(get_description "$html")
+	email=$(get_email "$html")
+	name=$(get_name "$html")
+	url=$(get_url "$html")
+	base_url="$(echo "$url" | cut -d '/' -f1-3)"
 
 	cat <<-EOF
 	<?xml version="1.0" encoding="UTF-8"?>
@@ -98,10 +144,10 @@ render_feed() {
 	<channel>
 	<atom:link href="$url" rel="self" type="application/rss+xml" />
 	<title>$title</title>
-	<description>$desc</description>
+	<description>$description</description>
 	<link>$base_url/</link>
-	<lastBuildDate>$date_rfc_822</lastBuildDate>
-	<managingEditor>$author</managingEditor>
+	<lastBuildDate>$(date_rfc_822 date)</lastBuildDate>
+	<managingEditor>$email ($name)</managingEditor>
 	$(cat)
 	</channel></rss>
 	EOF

@@ -20,7 +20,7 @@ _Tested on [OpenBSD](/openbsd/) 6.3_
 
 # Make a static site with find(1), grep(1), and lowdown(1)
 
-[ssg2](/bin/ssg2) is a static site generator writen in shell and powered by
+[ssg2](/bin/ssg2) is a static site generator written in shell and powered by
 [lowdown(1)](https://kristaps.bsd.lv/lowdown/).
 
 It converts `*.md` files to HTML.
