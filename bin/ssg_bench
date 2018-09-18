@@ -14,7 +14,7 @@ echo "ssg2 (clean)"
 time (for i in $(jot 10); do
 rm -rf /var/www/htdocs/www.romanzolotarev.com/*
 rm -rf /var/www/htdocs/www.romanzolotarev.com/.*
-ssg2 ~/src/www /var/www/htdocs/www.romanzolotarev.com/ 'Roman Zolotarev' >/dev/null 2>&1
+ssg2 ~/src/www /var/www/htdocs/www.romanzolotarev.com/ 'Roman Zolotarev' 'http://www' >/dev/null 2>&1
 printf '.'
 done)
 
@@ -22,7 +22,7 @@ done)
 # time (for i in $(jot 10); do
 # rm -rf /var/www/htdocs/www.romanzolotarev.com/*
 # rm -rf /var/www/htdocs/www.romanzolotarev.com/.*
-# ssg ~/src/www /var/www/htdocs/www.romanzolotarev.com/ 'Roman Zolotarev' >/dev/null  2>&1
+# ssg ~/src/www /var/www/htdocs/www.romanzolotarev.com/ 'Roman Zolotarev' 'http:/www' >/dev/null  2>&1
 # printf '.'
 # done)
 
@@ -34,7 +34,7 @@ done)
 
 echo "ssg2 (incremental)"
 time (for i in $(jot 10); do
-ssg2 ~/src/www /var/www/htdocs/www.romanzolotarev.com/ 'Roman Zolotarev' >/dev/null 2>&1
+ssg2 ~/src/www /var/www/htdocs/www.romanzolotarev.com/ 'Roman Zolotarev' 'http:/www' >/dev/null 2>&1
 printf '.'
 done)
 

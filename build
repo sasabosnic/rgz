@@ -1,26 +1,68 @@
 #!/bin/sh
 set -e
-[ -d "$1" ] || { echo "usage: ${0##*/} dst"; exit 1; }
 
-dst="$1"
-src=$(dirname "$(readlink -f "$0")")
 
-# ssg
-"$HOME/bin/ssg2" "$src" "$dst" 'Roman Zolotarev' 'https://www.romanzolotarev.com'
+main() {
+	test -d "$1" || { echo "usage: ${0##*/} dst"; exit 1; }
+	dst="$1"
 
-# rss
-"$HOME/bin/rssg" \
-'Mastering the Web' \
-'Newsletters: Self-hosted websites. Shell scripts and text editors. How-to guides for BSD/Unix users. Tutorials for web developers.' \
-'hi@romanzolotarev.com (Roman Zolotarev)' \
-'https://www.romanzolotarev.com/n/rss.xml' \
-"$src/n/index.txt" > "$dst/n/rss.xml"
-echo "[n/rss] $(grep -c '<item>' "$dst/n/rss.xml") items" >&2
+	src=$(dirname "$(readlink -f "$0")")
 
-# stagit
-mkdir -p "$dst/src"
-cd "$dst/src"
-cp "$src/stagit/logo.png" "$src/stagit/style.css" "$dst/src/"
-stagit "$src"
-ln -fs log.html index.html
-echo "[stagit] $(grep -c '"commit' "$dst/src/log.html") commits" >&2
+ 	run_ssg "$src" "$dst" 2>&1
+	run_rssg "$src" "$dst" 2>&1
+	run_stagit "$src" "$dst" 2>&1
+}
+
+
+run_ssg() {
+	src="$1"
+	dst="$2"
+
+
+	"$HOME/bin/ssg2" \
+		"$src" \
+		"$dst" \
+		'Roman Zolotarev' \
+		'https://www.romanzolotarev.com'
+}
+
+
+run_rssg() {
+	src="$1"
+	dst="$2"
+
+	desc="$(cat <<-EOF
+        Newsletters: Self-hosted websites. Shell scripts and text
+        editors. How-to guides for BSD/Unix users. Tutorials for
+        web developers.
+	EOF
+	)"
+
+	"$HOME/bin/rssg" \
+		'Mastering the Web' \
+		"$desc" \
+		'hi@romanzolotarev.com (Roman Zolotarev)' \
+		'https://www.romanzolotarev.com/n/rss.xml' \
+		"$src/n/index.txt" > "$dst/n/rss.xml"
+	echo "[n/rss] $(grep -c '<item>' "$dst/n/rss.xml") items" >&2
+}
+
+
+run_stagit() {
+	src="$1"
+	dst="$2"
+
+	cd "$src"
+	if git status | grep 'nothing to commit' >/dev/null
+	then
+		mkdir -p "$dst/src"
+		cd "$dst/src"
+		cp "$src/stagit/logo.png" "$src/stagit/style.css" "$dst/src/"
+		stagit "$src"
+		ln -fs log.html index.html
+		echo "[stagit] $(grep -c '"commit' "$dst/src/log.html") commits" >&2
+	fi
+}
+
+
+time main "$@"

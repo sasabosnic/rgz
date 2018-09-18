@@ -23,8 +23,8 @@ main() {
 	test -n "$2" || usage
 	test -n "$3" || usage
 	test -n "$4" || usage
- 	test -d "$1" || not_dir "$1"
- 	test -d "$2" || not_dir "$2"
+ 	test -d "$1" || no_dir "$1"
+ 	test -d "$2" || no_dir "$2"
 
 	src=$(readlink -f "$1")
 	dst=$(readlink -f "$2")
@@ -127,7 +127,7 @@ usage() {
 }
 
 
-not_dir() {
+no_dir() {
 	echo "${0##*/}: $1: No such directory" >&2
 	exit 2
 }
