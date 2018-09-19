@@ -3,12 +3,12 @@ _Tested on [OpenBSD](/openbsd/) 6.3_
 # Install OpenBSD on a desktop
 
 Prepare an USB drive with OpenBSD installer.<br>
-[For example, on macOS](/macos/openbsd-installer.html).
+For example, [on macOS](/macos/openbsd-installer.html).
 
 Backup everything.
 
 Check BIOS: _Secure Boot_ disabled, _UEFI Boot_ enabled.<br>
-[For example, on ThinkPad X1C5](/openbsd/lenovo-thinkpad-x1c5.html).
+For example, [on ThinkPad X1C5](/openbsd/lenovo-thinkpad-x1c5.html).
 
 Boot the installer.
 

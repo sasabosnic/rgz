@@ -51,3 +51,4 @@ My dotfiles
 - [Generate SSH keys](/ssh.html)
 - [mount(1)](mount.html)
 - [Upgrade OpenBSD](upgrade.html)
+- [Make bootable image geteltorito(1)](geteltorito.html)
