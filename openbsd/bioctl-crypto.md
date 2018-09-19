@@ -20,7 +20,7 @@ Plug the drive in. Assuming it's **sd3**.
 # <b>bioctl -c C -l sd3a softraid0</b>
 New passphrase:
 Re-type passphrase:
-softraid0: CRYPTO volume attached as sd4
+<span class="blue">softraid0: CRYPTO volume attached as sd4</span>
 # <b>dd if=/dev/zero of=/dev/rsd4c bs=1m count=1</b>
 # fdisk -iy sd4
 # <b>printf 'a i\n\n\nRAID\nw\nq\n'|disklabel -E sd4</b>

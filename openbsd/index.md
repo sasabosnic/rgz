@@ -49,6 +49,7 @@ My dotfiles
 - [Manage passwords with openssl(1) and oathtool(1)](/pass.html)
 - [Edit text with vi(1)](/vi.html)
 - [Generate SSH keys](/ssh.html)
-- [mount(1)](mount.html)
+- [Mount disks with... mount(1)](mount.html)
+- [Find disk name and partition with sysctl(1) and dmesg(1)](/openbsd/disk.html)
 - [Upgrade OpenBSD](upgrade.html)
 - [Make bootable image geteltorito(1) and dd(1)](geteltorito.html)

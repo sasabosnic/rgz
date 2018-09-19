@@ -93,3 +93,10 @@ p {
   text-align: center;
   text-decoration: none;
 }
+.blue {
+  background-color: #0000cc;
+  color: #ffffff;
+}
+.yell {
+  background-color: #ffeeaa;
+}

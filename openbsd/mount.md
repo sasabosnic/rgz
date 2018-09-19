@@ -1,6 +1,6 @@
 _Tested on [OpenBSD](/openbsd/) 6.3._
 
-# mount(1) on OpenBSD
+# Mount disk with... mount(1)
 
 Only _root_ can [mount(8)](http://man.openbsd.com/mount.8) file
 systems on OpenBSD, a regular user should run mount(8) via

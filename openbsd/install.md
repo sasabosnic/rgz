@@ -48,7 +48,7 @@ Use [diceware](/diceware.html), for example.
 # <b>bioctl -c C -l sd0a softraid0</b>
 New passphrase:
 Re-type passphrase:
-<span class="kernel">sd2 at scsibus2 targ 1 lun 0: &lt;OPENBSD, SR CRYPTO, 006&gt; SCSI2 0/direct fixed
+<span class="blue">sd2 at scsibus2 targ 1 lun 0: &lt;OPENBSD, SR CRYPTO, 006&gt; SCSI2 0/direct fixed
 sd2: 244190MB, 512 bytes/sector, 500102858 sectors</span>
 softraid0: CRYPTO volume attached as sd2
 # <b>cd /dev && sh MAKEDEV sd2</b>
