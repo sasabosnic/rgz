@@ -1,13 +1,13 @@
 _Tested on [OpenBSD](/openbsd/) 6.3_
 
-# Make bootable image with geteltorito(1)
+# Make bootable image with geteltorito(1) and dd(1)
 
-Find the BIOS Update ISO.
 
-For example, [BIOS Update 1.30 6 Sep 2018](https://pcsupport.lenovo.com/de/en/products/LAPTOPS-AND-NETBOOKS/THINKPAD-X-SERIES-LAPTOPS/THINKPAD-X1-CARBON-6TH-GEN-TYPE-20KH-20KG/downloads/DS502282)<br>
-for ThinkPad X1 Carbon 6th gen.
+For example, make a bootable USB disk to update BIOS on ThinkPad
+X1 Carbon 6th gen with [ISO provided by
+Lenovo](https://pcsupport.lenovo.com/de/en/products/LAPTOPS-AND-NETBOOKS/THINKPAD-X-SERIES-LAPTOPS/THINKPAD-X1-CARBON-6TH-GEN-TYPE-20KH-20KG/downloads/DS502282).
 
-Download and verify the checksum:
+Download _BIOS Update 1.30 06 Sep 2018_ and verify the checksum:
 
 <pre>
 $ <b>ftp -V https://download.lenovo.com/pccbbs/mobiles/n23ur11w.iso</b>
@@ -32,12 +32,27 @@ $ <b>sha256 bios.img</b>
 SHA256 (bios.img) = c6a11b...
 </pre>
 
-Plug in the USB drive.<br> Copy the image (replace `/dev/rsdXc`
-with your drive).<br> **All data on `sdX` will
+Plug in a USB drive:
+
+<pre>
+$ <b>dmesg | grep removable | tail -n1</b>
+sd3 at scsibus5 targ 1 lun 0: &lt;Vendor, Model, 1.11&gt;
+SCSI3 0/direct removable serial.12345678901234567890987654
+</pre>
+
+In this case it appears as _sd3_.
+
+Copy the image (replace `/dev/rsdXc` with your drive).  For example,
+for `sd3` that would be <code>/dev/r<b>sd3</b>c</code>, where `r`
+means _raw_ and `c` is a whole device.  **All data on `sdX` will
 be erased!**
 
 <pre>
-$ <b>doas dd if=bios.img of=/dev/rsdXc bs=1m</b>
+# <b>dd if=bios.img of=/dev/rsdXc bs=1m</b>
+21+0 records in
+21+0 records out
+22020096 bytes transferred in 2.201 secs (10002851 bytes/sec)
+#
 </pre>
 
 Check the content of the drive:

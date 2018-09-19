@@ -17,7 +17,7 @@ Download OpenBSD installer and verify its checksum:
 #
 </pre>
 
-Plug in USB flash drive:
+Plug in a USB drive:
 
 <pre>
 # <b>dmesg | grep removable | tail -n1</b>

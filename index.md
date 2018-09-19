@@ -39,7 +39,7 @@ hi@romanzolotarev.com
 
 # How to...
 
-- [make bootable image geteltorito(1)](/openbsd/geteltorito.html "19 Sep 2018")
+- [make bootable image geteltorito(1) and dd(1)](/openbsd/geteltorito.html "19 Sep 2018")
 - [dock laptop with with xrandr(1), xinput(1), xrdb(1), and sysctl(8)](/openbsd/dock.html "12 Sep 2018")
 - [prepare ThinkPad X1&nbsp;Carbon&nbsp;Gen&nbsp;5 for OpenBSD](/openbsd/lenovo-thinkpad-x1c5.html "13 Aug 2018")
 - [encrypt disk with bioctl(8) and CRYPTO](/openbsd/bioctl-crypto.html "12 Aug 2018")

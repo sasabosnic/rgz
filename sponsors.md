@@ -58,8 +58,10 @@ Roman
 P.S. Here are all received donations. Please ping me, if yours hasn't
 been listed, or if you want to remove your name from the list.
 
-Updated on 22 Aug 2018.
+Updated on 19 Sep 2018.
 
+- [Mikko Nyman](https://www.patreon.com/user/creators?u=13641444 "18 Sep 2018") 10.00 USD Patreon
+- [Paul Kelly](https://www.patreon.com/user?u=13444615 "08 Sep 2018") 1.00 USD Patreon
 - [Joan Catala](https://twitter.com/joancatala "22 Aug 2018") 10.00 USD
 - [Ales Tepina](https://twitter.com/alestepi "21 Aug 2018") 10.00 USD
 - [Wesley Mouedine Assaby](https://twitter.com/wesley974 "20 Aug 2018") 5.00 USD Patreon
