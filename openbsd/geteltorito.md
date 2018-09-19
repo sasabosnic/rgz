@@ -30,6 +30,7 @@ Boot media type is: harddisk
 El Torito image starts at sector 27 and has 43008 sector(s) of 512 Bytes
 $ <b>sha256 bios.img</b>
 SHA256 (bios.img) = c6a11b...
+$
 </pre>
 
 Plug in a USB drive:
