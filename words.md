@@ -11,8 +11,11 @@ _Entrepreneur and Book Publisher_<br>
 [sivers.org](https://sivers.org "25 Apr 2018")
 
 ---
+"Your articles are awesome, really readable ! Thank's for such work and  such free sharing."<br>&mdash;
+[Wesley](https://twitter.com/wesley974/status/1042455560736698368 "19 Sep 2018")
+(@wesley974)
 
-"...we have released a new SoloBSD build, based on latest #HardenedBSD 11-STABLE sources and we have added @romanzolotarev ssg2 Static Site Generator"
+"...we have released a new SoloBSD build, based on latest #HardenedBSD 11-STABLE sources and we have added @romanzolotarev ssg2 Static Site Generator"<br>&mdash;
 [Guillermo Garc&iacute;a R.](https://bsd.network/@SoloBSD/100738517454168701 "17 Sep 2018")
 (@SoloBSD@bsd.network)
 
