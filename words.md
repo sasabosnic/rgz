@@ -11,6 +11,11 @@ _Entrepreneur and Book Publisher_<br>
 [sivers.org](https://sivers.org "25 Apr 2018")
 
 ---
+
+"Thanks for the inspiration. I ordered Absolute OpenBSD and spun up a vps for learning & practice. I'm going to do exactly what you suggest and work through all the man pages. I've been in GNU land all my linux life, so this is something exciting and new."<br>&mdash;
+[Tomasino](https://mastodon.sdf.org/@tomasino/100755249279108392 "19 Sep 2018")
+(@tomasino@mastodon.sdf.org)
+
 "Your articles are awesome, really readable ! Thank's for such work and  such free sharing."<br>&mdash;
 [Wesley](https://twitter.com/wesley974/status/1042455560736698368 "19 Sep 2018")
 (@wesley974)
