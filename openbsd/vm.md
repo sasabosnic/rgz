@@ -7,19 +7,20 @@ via [vmctl(8)](https://man.openbsd.org/vmctl.8).
 
 Works       | &nbsp;
 :--         | :--
-Debian 9    | [@vext01]
+Ubuntu 18   | [@canadianbryan](https://twitter.com/canadianbryan/status/1042791776271171584)
+Debian 9    | [@vext01] needs qemu
 Alpine      | [@voutilad]
-boot2docker | [@jon]: needs a dummy disc to boot off ISO (fixed in 6.4)
+boot2docker | [@jon]: needs a dummy disc to boot off ISO
 &nbsp;      |
-**Doesn't** |
-netboot.xyz | [@jon][@jon2]
-xv6         | [@jon]: hangs with 100% CPU after "Booting from 0000:7c00"
+<br>**Doesn't** |
+OpenIndiana Hipster | [@jon](https://bsd.network/@jon/100754685568019558)
+netboot.xyz | [@jon](https://bsd.network/@jon/100754685568019558)
+xv6         | [@jon]: hangs after _Booting from 0000:7c00_
 HelenOS     | [@jon]: hangs at kernel monitor prompt
 TempleOS    | [@jon]
 Minix 3     | [@jon]: VGA to Serial stuff breaks down
-tor-ramdisk | [@jon]: serial console doesn't work, no network traffic
+tor-ramdisk | [@jon]: no serial console, no network traffic
 
 [@voutilad]: https://gist.github.com/voutilad/a5080909e88e8dcffd1960312b5f9510
 [@jon]: https://bsd.network/@jon/100719091239815531
 [@vext01]: https://github.com/vext01/recipes/blob/master/recipes/debian9_inside_vmm.md
-[@jon2]: https://bsd.network/@jon/100754359458914508
