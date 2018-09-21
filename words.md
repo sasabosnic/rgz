@@ -12,6 +12,10 @@ _Entrepreneur and Book Publisher_<br>
 
 ---
 
+"thank you for showing interest. You have given me a huge boost in motivation &#128640;"<br>&mdash;
+[Simon](https://phpc.social/@carbontwelve/100759694750752133 "20 Sep 2018")
+(@carbontwelve@phpc.social)
+
 "Thanks for the inspiration. I ordered Absolute OpenBSD and spun up a vps for learning & practice. I'm going to do exactly what you suggest and work through all the man pages. I've been in GNU land all my linux life, so this is something exciting and new."<br>&mdash;
 [Tomasino](https://mastodon.sdf.org/@tomasino/100755249279108392 "19 Sep 2018")
 (@tomasino@mastodon.sdf.org)
@@ -19,6 +23,10 @@ _Entrepreneur and Book Publisher_<br>
 "Your articles are awesome, really readable ! Thank's for such work and  such free sharing."<br>&mdash;
 [Wesley](https://twitter.com/wesley974/status/1042455560736698368 "19 Sep 2018")
 (@wesley974)
+
+"Your post is the only reason for the recent discovery so thank you!"<br>&mdash;
+[Daryl Turner](https://twitter.com/Packet_Plumber/status/1041977610140639232 "18 Sep 2018")
+(@Packet_Plumber)
 
 "...we have released a new SoloBSD build, based on latest #HardenedBSD 11-STABLE sources and we have added @romanzolotarev ssg2 Static Site Generator"<br>&mdash;
 [Guillermo Garc&iacute;a R.](https://bsd.network/@SoloBSD/100738517454168701 "17 Sep 2018")
