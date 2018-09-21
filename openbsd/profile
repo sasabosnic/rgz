@@ -54,12 +54,15 @@ yl() { mkdir -p "$HOME/downloads" && (cd "$HOME/downloads" && youtube-dl -f 'bes
 
 p() { PS1='$ '; clear; }
 
-mnt_sd()  { doas "$HOME/bin/mnt_crypto"  'cca0df756b5bea87.a' '2ee857f508c168b8.a'; }
-umnt_sd() { doas "$HOME/bin/umnt_crypto" 'cca0df756b5bea87.a'; }
+mnt_sd()   { doas "$HOME/bin/mnt_crypto"  'f9058830e975d586.a' 'e95dad56805ef489.a'; }
+umnt_sd()  { doas "$HOME/bin/umnt_crypto" 'f9058830e975d586.a'; }
+mnt_sd2()  { doas "$HOME/bin/mnt_crypto"  'cca0df756b5bea87.a' '2ee857f508c168b8.a'; }
+umnt_sd2() { doas "$HOME/bin/umnt_crypto" 'cca0df756b5bea87.a'; }
 mnt_hdd()  { doas "$HOME/bin/mnt_crypto"  '31b1a7c06ca4e505.i' 'c8c569a177ce539a.a'; }
 umnt_hdd() { doas "$HOME/bin/umnt_crypto" '31b1a7c06ca4e505.i'; }
 
-arc_to_sd() { doas "$HOME/bin/arc_with_timestamp" "$1" '/mnt/cca0df756b5bea87.a'; }
+arc_to_sd()  { doas "$HOME/bin/arc_with_timestamp" "$1" '/mnt/f9058830e975d586.a'; }
+arc_to_sd2() { doas "$HOME/bin/arc_with_timestamp" "$1" '/mnt/cca0df756b5bea87.a'; }
 arc_to_hdd() { doas "$HOME/bin/arc_with_timestamp" "$1" '/mnt/31b1a7c06ca4e505.i'; }
 
 
@@ -70,6 +73,8 @@ alias l='ls -aF'
 alias ll='ls -lahF'
 alias mv='mv -i'
 alias rm='rm -i'
+
+g() { grep -Irle "$1" . ; }
 
 alias ga='git add --all -p'
 alias gc='git commit'
