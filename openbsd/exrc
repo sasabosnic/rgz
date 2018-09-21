@@ -6,7 +6,7 @@ map gd :r!date +\%Y-\%m-\%d
 map ge :E
 map gf {!}fmt -p}}{j
 map gg 1G
-map gj :%!prettier --write
+map gj :%!prettier --parser=flow --write
 map gp :r!xclip -o -selection clipboard
 map gs {!}sort
 map gt mm:%s/[[:space:]]*$//`m
