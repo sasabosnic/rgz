@@ -1,0 +1,11 @@
+#!/bin/sh
+set -e
+test -f "$1" || { >&2 echo "usage: ${0##*/} <existing_script>"; exit 1; }
+test -x "$(which entr)" || exit 2
+test -x "$(which prettier)" || exit 3
+
+a=$(readlink -f "$1")
+
+tmux split-window -p 90 "vi $a"
+tmux split-window -p 40 -dh \
+"ls $a | entr -c sh -c 'echo $a;prettier $a'"
