@@ -12,72 +12,61 @@ desc() { printf '#\n\033[1m%s\033[m\n' "$1"; }
 ##########################################################################
 
 temp=$(mktemp -d)
+mkdir "$temp/news"
 
 desc 'args'
 
-usage='usage: rssg index.html > rss.xml'
-no_file="rssg: $temp/index.html: No such file"
+usage='usage: rssg index.{html,md} > rss.xml'
+no_file="rssg: $temp/news/index.html: No such file"
 
 eq "$(2>&1 "$program")" "$usage" 'no args'
-eq "$(2>&1 "$program" "$temp/index.html")" "$no_file" 'index.html'
-
-
-cat > "$temp/model" << EOF
-<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-<channel>
-<atom:link href="" rel="self" type="application/rss+xml" />
-<title></title>
-<description></description>
-<link>/</link>
-<lastBuildDate>XXX, XX XXX XXXX XX:XX:XX +XXXX</lastBuildDate>
-<managingEditor> ()</managingEditor>
-
-</channel></rss>
-EOF
-touch "$temp/index.html"
-
-"$program" "$temp/index.html" > "$temp/rss.xml"
-
-sed 's#Date>.*</#Date>XXX, XX XXX XXXX XX:XX:XX +XXXX</#' \
-"$temp/rss.xml" > "$temp/out"
-
-if diff "$temp/model" "$temp/out"
-then ok 'empty RSS'
-else no 'empty RSS'
-fi
+eq "$(2>&1 "$program" "$temp/news/index.html")" "$no_file" 'index.html'
 
 
 desc 'out'
 
-cat > "$temp/index.html" << EOF
+cat > "$temp/news/index.md" << EOF
+# People who run BSD
+
+Stories written by users of BSD operating systems.
+Hosted by [Roman Zolotarev](mailto:hi@romanzolotarev.com)
+
+Subscribe via [RSS](https://bsdjobs.com/people/rss.xml)
+
+- [Aaa Aaa](aaa.html "2018-08-07")
+- [bbb](bbb.html "2018-08-06")
+EOF
+
+cat > "$temp/news/index.html" << EOF
 <h1>People who run BSD</h1>
 
-<p>
-Stories written by users of BSD operating systems.
-Hosted by <a href="mailto:hi@romanzolotarev.com">Roman Zolotarev</a>
-</p>
+<p>Stories written by users of BSD operating systems.
+Hosted by <a href="mailto:hi@romanzolotarev.com">Roman Zolotarev</a></p>
 
-<p>
-Subscribe via <a href="https://bsdjobs.com/people/rss.xml">RSS</a>
-</p>
+<p>Subscribe via <a href="https://bsdjobs.com/people/rss.xml">RSS</a></p>
 
 <ul>
-<li><a href="mischapeters.html" title="2018-08-07">Mischa Peters</a></li>
-<li><a href="h3artbl33d.html" title="2018-08-06">h3artbl33d</a></li>
+<li><a href="aaa.html" title="2018-08-07">Aaa Aaa</a></li>
+<li><a href="bbb.html" title="2018-08-06">bbb</a></li>
 </ul>
 EOF
 
-cat > "$temp/mischapeters.html" << EOF
-<H1>Mischa Peters runs OpenBSD(html)</h1>
+cat > "$temp/news/aaa.html" << EOF
+<H1>Aaa Aaa runs OpenBSD</h1>
 
 <p>Description 1</p>
 
+<p>Set up <a href="/git.html">git</a> and <a href="/openbsd/httpd.html">httpd</a>.</p>
+
 <p>
-<a href="2018-09-17.html">rel</a><br>
-<a href="/n/2018-09-17.html">abs path</a><br>
-<a href="/n/">dir</a><br>
-<a href="https://www/n/">full</a><br>
+<a href="2018-09-17.html">rel</a>
+<a href="/n/2018-09-17.html">abs path</a>
+<a href="/n/">dir</a>
+<a href="/a/a.html">aa</a><a href="/b/b.html">bb</a>
+<a href="https://www/n/">full</a>
+<a href="http://www/n/">http</a>
+<a href="mailto:hi@com">email</a>
+<a href="ftp://ftp">ftp</a>
 </p>
 
 <p>
@@ -88,8 +77,8 @@ cat > "$temp/mischapeters.html" << EOF
 </p>
 EOF
 
-cat > "$temp/h3artbl33d.html" << EOF
-<h1>h3artbl33d runs OpenBSD</h1>
+cat > "$temp/news/bbb.html" << EOF
+<h1>bbb runs OpenBSD</H1>
 
 <p>Description 2</p>
 EOF
@@ -100,28 +89,33 @@ cat > "$temp/model" << EOF
 <channel>
 <atom:link href="https://bsdjobs.com/people/rss.xml" rel="self" type="application/rss+xml" />
 <title>People who run BSD</title>
-<description>
-Stories written by users of BSD operating systems.
-Hosted by <a href="mailto:hi@romanzolotarev.com">Roman Zolotarev</a></description>
+<description>Stories written by users of BSD operating systems.
+Hosted by Roman Zolotarev</description>
 <link>https://bsdjobs.com/</link>
 <lastBuildDate>XXX, XX XXX XXXX XX:XX:XX +XXXX</lastBuildDate>
-<managingEditor>hi@romanzolotarev.com (Roman Zolotarev)</managingEditor>
 
 <item>
-<guid>https://bsdjobs.com/people/mischapeters.html</guid>
-<link>https://bsdjobs.com/people/mischapeters.html</link>
+<guid>https://bsdjobs.com/people/aaa.html</guid>
+<link>https://bsdjobs.com/people/aaa.html</link>
 <pubDate>XXX, XX XXX XXXX XX:XX:XX +XXXX</pubDate>
-<title></title>
+<title>Aaa Aaa runs OpenBSD</title>
 <description><![CDATA[
 
+<H1>Aaa Aaa runs OpenBSD</h1>
 
 <p>Description 1</p>
 
+<p>Set up <a href="https://bsdjobs.com/git.html">git</a> and <a href="https://bsdjobs.com/openbsd/httpd.html">httpd</a>.</p>
+
 <p>
-<a href="https://bsdjobs.com/people/2018-09-17.html">rel</a><br>
-<a href="https://bsdjobs.com/n/2018-09-17.html">abs path</a><br>
-<a href="https://bsdjobs.com/n/">dir</a><br>
-<a href="https://www/n/">full</a><br>
+<a href="https://bsdjobs.com/people/2018-09-17.html">rel</a>
+<a href="https://bsdjobs.com/n/2018-09-17.html">abs path</a>
+<a href="https://bsdjobs.com/n/">dir</a>
+<a href="https://bsdjobs.com/a/a.html">aa</a><a href="https://bsdjobs.com/b/b.html">bb</a>
+<a href="https://www/n/">full</a>
+<a href="http://www/n/">http</a>
+<a href="mailto:hi@com">email</a>
+<a href="ftp://ftp">ftp</a>
 </p>
 
 <p>
@@ -135,12 +129,13 @@ Hosted by <a href="mailto:hi@romanzolotarev.com">Roman Zolotarev</a></descriptio
 </item>
 
 <item>
-<guid>https://bsdjobs.com/people/h3artbl33d.html</guid>
-<link>https://bsdjobs.com/people/h3artbl33d.html</link>
+<guid>https://bsdjobs.com/people/bbb.html</guid>
+<link>https://bsdjobs.com/people/bbb.html</link>
 <pubDate>XXX, XX XXX XXXX XX:XX:XX +XXXX</pubDate>
-<title></title>
+<title>bbb runs OpenBSD</title>
 <description><![CDATA[
 
+<h1>bbb runs OpenBSD</H1>
 
 <p>Description 2</p>
 
@@ -149,14 +144,25 @@ Hosted by <a href="mailto:hi@romanzolotarev.com">Roman Zolotarev</a></descriptio
 </channel></rss>
 EOF
 
-"$program" "$temp/index.html" > "$temp/rss.xml"
+"$program" "$temp/news/index.html" > "$temp/news/rss.xml"
 
 sed 's#Date>.*</#Date>XXX, XX XXX XXXX XX:XX:XX +XXXX</#' \
-"$temp/rss.xml" > "$temp/out"
+"$temp/news/rss.xml" > "$temp/out"
+
 
 if diff "$temp/model" "$temp/out"
-then ok 'RSS'
-else no 'RSS'
+then ok 'html -> RSS'
+else no 'html -> RSS'
+fi
+
+"$program" "$temp/news/index.md" > "$temp/news/rss.xml"
+
+sed 's#Date>.*</#Date>XXX, XX XXX XXXX XX:XX:XX +XXXX</#' \
+"$temp/news/rss.xml" > "$temp/out"
+
+if diff "$temp/model" "$temp/out"
+then ok 'md -> RSS'
+else no 'md -> RSS'
 fi
 
 rm -rf "${temp:?}"

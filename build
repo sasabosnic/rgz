@@ -31,7 +31,10 @@ run_rssg() {
 	src="$1"
 	dst="$2"
 
-	"$HOME/bin/rssg" "$dst/n/index.html" > "$dst/n/rss.xml"
+	"$HOME/bin/rssg" "$src/index.md" > "$dst/rss.xml"
+	echo "[rss] $(grep -c '<item>' "$dst/rss.xml") items" >&2
+
+	"$HOME/bin/rssg" "$src/n/index.md" > "$dst/n/rss.xml"
 	echo "[n/rss] $(grep -c '<item>' "$dst/n/rss.xml") items" >&2
 }
 

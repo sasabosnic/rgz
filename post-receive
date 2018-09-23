@@ -54,6 +54,12 @@ cd "$dst/raw" || { echo "[post-receive] can't change to $dst/raw"; exit 1; }
 rm /var/www/htdocs/www.romanzolotarev.com/.files
 "$HOME/bin/ssg2" . /var/www/htdocs/www.romanzolotarev.com 'Roman Zolotarev' 'https://www.romanzolotarev.com'
 
+"$HOME/bin/rssg" "$dst/raw/index.md" > "/var/www/htdocs/www.romanzolotarev.com/rss.xml"
+echo "[rss] $(grep -c '<item>' "/var/www/htdocs/www.romanzolotarev.com/rss.xml") items" >&2
+
+"$HOME/bin/rssg" "$dst/raw/n/index.md" > "/var/www/htdocs/www.romanzolotarev.com/n/rss.xml"
+echo "[n/rss] $(grep -c '<item>' "/var/www/htdocs/www.romanzolotarev.com/n/rss.xml") items" >&2
+
 
 # Publish the repository
 

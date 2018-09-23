@@ -48,11 +48,5 @@ If you run a newsletter on a related topic, ping me, I'll subscribe!
 
 ## Archive
 
-<!--
-
-- [More BSD stories](2018-09-26.md)
-- [A new ssg and the first release of rssg](2018-09-19.md)
-
--->
-
-- [Making the web](2018-08-26.html "2018-09-26")
+- [A new ssg and more BSD stories](2018-09-23.html "2018-09-23")
+- [Making the web](2018-08-26.html "2018-08-26")

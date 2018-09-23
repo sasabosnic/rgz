@@ -6,12 +6,11 @@ usage() { >&2 echo "usage: ${0##*/} src dst"; exit 1; }
 [ -x "$(which entr)" ] || exit 2
 
 src="$1"
-[ -x "$src/build" ] || exit 2
 dst="$2"
 w=$(basename "$src")
 
 if tmux select-window -t "$w" 2>/dev/null
-then cd "$src"
+then cd "$src" || exit
 else
 	tmux new-window -n "$w" -c "$src"
 	tmux split-window -l 5 -d -c "$src" \

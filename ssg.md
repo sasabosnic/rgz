@@ -33,7 +33,7 @@ Then copies everything (excluding `.*` and `_*`) from `src` to `dst`
 directory.
 
 [![ssg2](ssg2.jpeg)](ssg2.png)
-_124 LoC. [Enlarge, enhance, zoom!](ssg2.png)_
+_212 LoC. [Enlarge, enhance, zoom!](ssg2.png)_
 
 ## Install
 
@@ -133,7 +133,7 @@ Uninstall `rsync(1)`, if you don't use it.
 second run (+1 page)  1.92s    | **0.13s**
 &nbsp;                         | &nbsp;
 **features**                   |
-`rss.xml`                      | _removed_
+`rss.xml`                      | _extracted to [rssg](rssg.html)_
 `sitemap.xml`                  | _same_
 &nbsp;                         | &nbsp;
 **content**                    |
