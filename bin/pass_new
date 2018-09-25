@@ -1,2 +1,2 @@
 #!/bin/sh
-tr -cd '[:alnum:]'</dev/urandom|fold -w ${1:-30}|head -1
+tr -cd '[:alnum:]'</dev/urandom|fold -w ${1:-20}|head -1

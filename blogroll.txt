@@ -22,6 +22,7 @@ https://feeds.feedburner.com/codinghorror/
 https://feeds.feedburner.com/planet-openbsd
 https://kristaps.bsd.lv/sblg/atom.xml http://akpoff.com/rss.xml
 https://l33tsource.com/atom.xml https://reykfloeter.com/atom.xml
+https://solar.lowtechmagazine.com/feeds/all.rss.xml
 https://threema.ch/en/blog/feeds/rss https://wildauer.io/atom.xml
 https://utcc.utoronto.ca/~cks/space/blog/?atom
 https://www.bsdhowto.ch/feed.atom

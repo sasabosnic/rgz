@@ -7,8 +7,13 @@ map ge :E
 map gf {!}fmt -p}}{j
 map gg 1G
 map gj :%!prettier --parser=flow --write
-map gp :r!xclip -o -selection clipboard
+
+map gp :r!tmux show-buffer
+map gy !'mtmux load-buffer -u
+
+map gP :r!xclip -o -selection clipboard
+
 map gs {!}sort
-map gt mm:%s/[[:space:]]*$//`m
+map gt mM:%s/[[:space:]]*$//`M
 set cedit=\
 set leftright

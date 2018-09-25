@@ -30,7 +30,7 @@ best parts and send them to you. Stay tuned!
 </form>
 
 Subscribe via [RSS](https://www.romanzolotarev.com/n/rss.xml)
-or find me [elsewhere](elsewhere.html).
+or find me [elsewhere](/elsewhere.html).
 
 <a href="https://www.romanzolotarev.com/"
   class="h-card"><img src="/avatar120.jpeg" class="avatar"></a>

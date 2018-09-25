@@ -12,6 +12,10 @@ _Entrepreneur and Book Publisher_<br>
 
 ---
 
+"Your shell kung fu is too awesome &#128077;"<br>&mdash;
+[Ashish Kurian Thomas](https://twitter.com/sadhya_mafia/status/1043226587666112512 "21 Sep 2018")
+(@sadhya_mafia)
+
 "thank you for showing interest. You have given me a huge boost in motivation &#128640;"<br>&mdash;
 [Simon](https://phpc.social/@carbontwelve/100759694750752133 "20 Sep 2018")
 (@carbontwelve@phpc.social)
@@ -31,6 +35,10 @@ _Entrepreneur and Book Publisher_<br>
 "...we have released a new SoloBSD build, based on latest #HardenedBSD 11-STABLE sources and we have added @romanzolotarev ssg2 Static Site Generator"<br>&mdash;
 [Guillermo Garc&iacute;a R.](https://bsd.network/@SoloBSD/100738517454168701 "17 Sep 2018")
 (@SoloBSD@bsd.network)
+
+"openbsd.amsterdam now powered by ssg2! Static pages coming even faster at you! Thank you @romanzolotarev for replacing us with a tiny shell script."<br>&mdash;
+[OpenBSD Amsterdam](https://twitter.com/OpenBSDAms/status/1040930347582672896 "15 Sep 2018")
+(@OpenBSDAms)
 
 "I followed another one of @romanzolotarev's awesome guides to set up a remote git host on #OpenBSD. My mind is still blown because of how easy it was! Thanks, Roman!"<br>&mdash;
 [@lambdanerd](https://twitter.com/lambdanerd/status/1036823248158289920 "04 Sep 2018")
