@@ -217,18 +217,16 @@ If you run `pass` on OpenBSD you may want to add completions in
 [ksh(1)](https://man.openbsd.org/ksh.1)&mdash;its default shell.
 Add these functions to your `~/.profile`:
 
-```
-update_complete_pass() {
-  pass_list=$(pass ls)
-  set -A complete_pass_edit -- $pass_list
-  set -A complete_pass_export -- $pass_list
-  set -A complete_pass_show -- $pass_list
-}
-update_complete_pass
-pass_edit() { pass edit "$1"; }
-pass_export() { pass export "$1" && update_complete_pass; }
-pass_show() { pass show "$1" && update_complete_pass; }
-```
+	update_complete_pass() {
+	  pass_list=$(pass ls)
+	  set -A complete_pass_edit -- $pass_list
+	  set -A complete_pass_export -- $pass_list
+	  set -A complete_pass_show -- $pass_list
+	}
+	update_complete_pass
+	pass_edit() { pass edit "$1"; }
+	pass_export() { pass export "$1" && update_complete_pass; }
+	pass_show() { pass show "$1" && update_complete_pass; }
 
 Now open a terminal or source `~/.profile` and try `pass`:
 
@@ -236,6 +234,7 @@ Now open a terminal or source `~/.profile` and try `pass`:
 $ <b>pass&lt;Tab&gt;</b>
 init  passphrase  add  import  show  export  ls
 $ <b>pass</b>
+</pre>
 
 Or most importantly try `pass_show`:
 
@@ -244,3 +243,7 @@ $ <b>pass_show twit&lt;Tab&gt;</b>
 twitch  twitter
 $ <b>pass_show twit</b>
 </pre>
+
+## See also
+
+[diceware](diceware.html), [random](random.html)

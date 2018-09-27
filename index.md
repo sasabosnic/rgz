@@ -39,6 +39,7 @@ hi@romanzolotarev.com
 
 # How to...
 
+- [generate random string with random(4)](random.html "2018-09-27")
 - [find and remove whitespaces with grep(1) and sed(1)](ws.html "2018-09-23")
 - [find disk name and partition with sysctl(1) and dmesg(1)](openbsd/disk.html "2018-09-19")
 - [make bootable image geteltorito(1) and dd(1)](openbsd/geteltorito.html "2018-09-12")

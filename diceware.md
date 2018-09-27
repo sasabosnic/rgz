@@ -41,8 +41,12 @@ Enter pass phrase for /home/romanzolotarev/.pass/.key:
 $
 </pre>
 
+## See also
+
+[random](random.html), [pass](pass.html)
+
 ---
 
 **Thanks** to
-Randall Munroe for [the inspiration](https://m.xkcd.com/936/),<br>
-Joseph Bonneau for [the wordlist](https://www.eff.org/deeplinks/2016/07/new-wordlists-random-passphrases).
+[Randall Munroe](https://m.xkcd.com/936/) and
+[Joseph Bonneau](https://www.eff.org/deeplinks/2016/07/new-wordlists-random-passphrases).
