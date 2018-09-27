@@ -41,6 +41,7 @@ hi@romanzolotarev.com
 
 - [generate random string with random(4)](random.html "2018-09-27")
 - [find and remove whitespaces with grep(1) and sed(1)](ws.html "2018-09-23")
+- **[generate RSS feeds with grep(1), sed(1), and awk(1)](rssg.html "2018-09-21")**
 - [find disk name and partition with sysctl(1) and dmesg(1)](openbsd/disk.html "2018-09-19")
 - [make bootable image geteltorito(1) and dd(1)](openbsd/geteltorito.html "2018-09-12")
 - [dock laptop with with xrandr(1), xinput(1), xrdb(1), and sysctl(8)](openbsd/dock.html "2018-09-12")
