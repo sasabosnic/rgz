@@ -106,6 +106,10 @@ zM+i3ms6UGh8TkS4azknU+ncMIY=
 $
 </pre>
 
+> "I'd be wary of using openssl(1)&rarr;[Base64](https://en.wikipedia.org/wiki/Base64#Output_padding) unless you know that "=" can only come at the end because it's used as padding and so it's not adding anything extra to the password's entropy."<br>&mdash;
+[Tim Chase](https://twitter.com/gumnos/status/1045268053997617153 "27 Sep 2018")
+(@gumnos)
+
 ## See also
 
 [diceware](diceware.html), [pass](pass.html)
