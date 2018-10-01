@@ -73,7 +73,6 @@ _This is a part of my [curriculum vitae](cv.html)._
 - 2010-2014 [Sublime Text](https://en.m.wikipedia.org/wiki/Sublime_Text)
 - 2010-2010 [BBEdit](https://en.m.wikipedia.org/wiki/BBEdit)
 - 2006-2010 [gedit](https://en.m.wikipedia.org/wiki/Gedit)
-- 2006-2006 [GNU nano](https://en.m.wikipedia.org/wiki/GNU_nano)
 - 2000-2000 [Microsoft Notepad](https://en.m.wikipedia.org/wiki/Microsoft_Notepad)
 - 1999-now  [vi](vi.html)
 - 1996-2000 [Far Manager](https://en.m.wikipedia.org/wiki/Far_Manager)
