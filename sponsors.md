@@ -2,53 +2,21 @@ _Thank you for your [kind words](words.html) and support!_
 
 # My dear sponsor,
 
-In 2017 I decided to document everything I learn as I go and one day [I
-tweeted
-](https://twitter.com/romanzolotarev/status/909807483149066248)
-about [my fanless OpenBSD setup](/setup.html). You retweeted and liked
-that tweet, and then
-[@mischapeters](https://twitter.com/mischapeters) sent me a
-T-shirt and almost at the same time
-[@FiLiS](https://twitter.com/FiLiS) mailed me few stickers...
-
-> [Mischa](https://twitter.com/mischapeters/status/910019073223872512 "19 Sep 2017"):
-"Nice setup! That needs a RUN BSD shirt!"
-
-> [FiLiS](https://twitter.com/FiLiS/status/925425396941770755 "31 Oct 2017"):
-"...DM me your address and I'll send you some."
-
-Few months later Mischa has helped me again and hosted [an European
-mirror of this very website](https://hi.romanzolotarev.com/).
-
-> [Mischa](https://twitter.com/mischapeters/status/984827416215457794 "13 Apr 2018"):
-"Let me know if you need an OpenBSD VPS on VMM in Amsterdam."
-
-That's how it all started.
-
-First of all, your feedback and tangible support is a priceless source
-of motivation. Knowing that a stranger from the internet supports my
-project boosts my morale enormously. Thank you.
-
-All goods and services you donate go directly to support this website,
-to promote other software projects I use (for example, [OpenBSD
-Project](https://www.openbsdfoundation.org/donations.html), [RUN
-BSD](/runbsd.html)).
-
-Your money covers [hosting](/vultr.html) and [domain
-registration](https://iwantmyname.com/) fees for this website.
+Your feedback and tangible support is an infinite source of motivation.
+Knowing that a stranger from the internet supports my project boosted
+my morale enormously. Thank you.
 
 To keep this website alive:
 
-- Read and share these web pages
-- Like and retweet [my tweets](https://twitter.com/romanzolotarev)
-- [Boost my toots](https://bsd.network/@romanzolotarev)
-- Try my how-to guides, review and run my scripts
-- Send me some feedback via DMs on Twitter and/or email
-- **[Become my patron on Patreon](/patreon.html)**
+- try my how-to guides, review, and run my scripts,
+- email me your feedback,
+- retweet [my tweets](https://twitter.com/romanzolotarev),
+- boost [my toots](https://bsd.network/@romanzolotarev),
+- **[become my patron on Patreon](/patreon.html)**, or...
 
-<!-- - Send satoshis to [`3MZ9d6NTsirYfjx9iJVieT2WCHnzBZckHd`](bitcoin://3MZ9d6NTsirYfjx9iJVieT2WCHnzBZckHd) -->
+<!-- - send satoshis to [`3MZ9d6NTsirYfjx9iJVieT2WCHnzBZckHd`](bitcoin://3MZ9d6NTsirYfjx9iJVieT2WCHnzBZckHd), -->
 
-<a href="/paypal.html"><span class="button">Donate via PayPal</span></a>
+<a href="/paypal.html"><span class="button">donate via PayPal</span></a>
 
 Don't hesitate to contact me if you have questions or need my help.
 
@@ -58,8 +26,9 @@ Roman
 P.S. Here are all received donations. Please ping me, if yours hasn't
 been listed, or if you want to remove your name from the list.
 
-Updated on 1 Oct 2018.
+_Updated on 1 Oct 2018_
 
+- [Tuomo Sahipakka](https://twitter.com/tuomosa "01 Oct 2018") 25.00 EUR _"Keep up good work!"_
 - [Mischa Peters](https://www.patreon.com/user/creators?u=13855226 "29 Sep 2018") 10.00 USD Patreon
 - [Mikko Nyman](https://www.patreon.com/user/creators?u=13641444 "18 Sep 2018") 10.00 USD Patreon
 - [Paul Kelly](https://www.patreon.com/user?u=13444615 "08 Sep 2018") 1.00 USD Patreon
@@ -67,21 +36,21 @@ Updated on 1 Oct 2018.
 - [Ales Tepina](https://twitter.com/alestepi "21 Aug 2018") 10.00 USD
 - [Wesley Mouedine Assaby](https://twitter.com/wesley974 "20 Aug 2018") 5.00 USD Patreon
 - [Jeffrey Allen Neitzel](https://jan.etsh.io/ "24 Jul 2018") 15.00 USD
-- [Dylan Thiedeke](https://www.patreon.com/user/creators?u=2300411 "24 Jun 2018") 1.00 USD
+- [Dylan Thiedeke](https://www.patreon.com/user/creators?u=2300411 "24 Jun 2018") 3.00 USD
 - [Gabriel Francisco](https://twitter.com/fgbreel "8 Jun 2018") 10.00 EUR _"I love your blog and the content you share about OpenBSD! Keep rocking!"_
 - [Vultr](https://www.vultr.com/?ref=7035749 "8 Jun 2018") 50.00 USD
-- [micah](https://www.patreon.com/user/creators?u=4721204 "28 May 2018") 6.00 USD Patreon
+- [micah](https://www.patreon.com/user/creators?u=4721204 "28 May 2018") 7.00 USD Patreon
 - [Peter Kotr&#x10D;ka](https://www.patreon.com/pkotrcka/creators "Since 16 May 2018") 4.00 USD Patreon
-- [Alexander Gudulin](https://www.patreon.com/agudulin/creators "Since 14 May 2018") 3.00 USD Patreon
-- [Drew Bell](https://www.patreon.com/droob/creators "Since 29 Apr 2018") 4.00 USD Patreon
-- [Denis Borovikov](https://www.patreon.com/user/creators?u=10926064 "Since 25 Apr 2018") 15.00 USD Patreon
-- [Tom Smyth](https://www.patreon.com/user/creators?u=10913897 "Since 24 Apr 2018") 30.00 USD Patreon
+- [Alexander Gudulin](https://www.patreon.com/agudulin/creators "Since 14 May 2018") 4.00 USD Patreon
+- [Drew Bell](https://www.patreon.com/droob/creators "Since 29 Apr 2018") 5.00 USD Patreon
+- [Denis Borovikov](https://www.patreon.com/user/creators?u=10926064 "Since 25 Apr 2018") 25.00 USD Patreon
+- [Tom Smyth](https://www.patreon.com/user/creators?u=10913897 "Since 24 Apr 2018") 50.00 USD Patreon
 - [wireless connect ltd](http://wirelessconnect.eu "24 Apr 2018") 10.00 EUR _"keep up good work Roman"_
-- [Aleksey Popov](https://www.patreon.com/user?u=10910753 "Since 24 Apr 2018") 15.00 USD Patreon
+- [Aleksey Popov](https://www.patreon.com/user?u=10910753 "Since 24 Apr 2018") 25.00 USD Patreon
 - [Adam Dymitruk](https://twitter.com/adymitruk "24 Apr 2018") 83,800 Satoshi
-- [Ilmari Vacklin](https://www.patreon.com/user?u=2288738 "Since 23 Apr 2018") 4.00 USD Patreon
-- [Tom Atkinson](https://www.patreon.com/user?u=10778845 "Since 16 Apr 2018") 15.00 USD Patreon
-- [Wesley Moore](https://www.patreon.com/wezm "15 Apr 2018") 15.00 USD Patreon
+- [Ilmari Vacklin](https://www.patreon.com/user?u=2288738 "Since 23 Apr 2018") 5.00 USD Patreon
+- [Tom Atkinson](https://www.patreon.com/user?u=10778845 "Since 16 Apr 2018") 25.00 USD Patreon
+- [Wesley Moore](https://www.patreon.com/wezm "15 Apr 2018") 25.00 USD Patreon
 - [Mischa Peters](https://twitter.com/mischapeters "13 Apr 2018") [VPS](https://openbsd.amsterdam)
 - [Evander Sinque](https://twitter.com/FiLiS "31 Oct 2017") _Run BSD_ Stickers
 - [Mischa Peters](https://twitter.com/mischapeters "19 Sep 2017") _Run BSD_ T-shirt
