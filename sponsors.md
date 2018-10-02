@@ -28,6 +28,7 @@ been listed, or if you want to remove your name from the list.
 
 _Updated on 2 Oct 2018_
 
+- [Eric LeBlanc](https://www.patreon.com/user/creators?u=845703 "02 Oct 2018") 10.00 USD Patreon
 - [David Carlier](https://twitter.com/devnexen "01 Oct 2018") 20.00 USD
 - Hans Solo 4.00 USD
 - [Tuomo Sahipakka](https://twitter.com/tuomosa "01 Oct 2018") 25.00 EUR _"Keep up good work!"_
