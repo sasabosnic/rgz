@@ -26,8 +26,10 @@ Roman
 P.S. Here are all received donations. Please ping me, if yours hasn't
 been listed, or if you want to remove your name from the list.
 
-_Updated on 1 Oct 2018_
+_Updated on 2 Oct 2018_
 
+- [David Carlier](https://twitter.com/devnexen "01 Oct 2018") 20.00 USD
+- Hans Solo 4.00 USD
 - [Tuomo Sahipakka](https://twitter.com/tuomosa "01 Oct 2018") 25.00 EUR _"Keep up good work!"_
 - [Mischa Peters](https://www.patreon.com/user/creators?u=13855226 "29 Sep 2018") 10.00 USD Patreon
 - [Mikko Nyman](https://www.patreon.com/user/creators?u=13641444 "18 Sep 2018") 10.00 USD Patreon
