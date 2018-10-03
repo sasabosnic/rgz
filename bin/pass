@@ -253,7 +253,7 @@ edit)
   ${EDITOR:-$(which vi)} "$cleartext_file"
   after=$(cat "$cleartext_file")
   rm "$cleartext_file"
-  if [ "$(echo "$cleartext"|sha256)" = "$(echo "$after"|sha256)" ]; then
+  if [ "$(echo "$cleartext"|openssl dgst -r -sha256)" = "$(echo "$after"|openssl dgst -r -sha256)" ]; then
     echo "No changes in $ID"
   else
     echo "$after"|encrypt "$PUBLIC_KEY" "$BASE_DIR/$ID"
