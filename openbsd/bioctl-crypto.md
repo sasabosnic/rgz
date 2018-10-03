@@ -29,7 +29,7 @@ Re-type passphrase:
 # <b>mount /dev/sd4i /mnt/sd4i</b>
 # ...
 # <b>umount /dev/sd4i</b>
-# <b>bictl -d sd4</b>
+# <b>bioctl -d sd4</b>
 #
 </pre>
 
@@ -47,7 +47,7 @@ softraid0: CRYPTO volume attached as sd4
 # <b>mount /dev/sd4i /mnt/sd4i</b>
 ...
 # <b>umount /dev/sd4i</b>
-# <b>bictl -d sd4</b>
+# <b>bioctl -d sd4</b>
 #
 </pre>
 
