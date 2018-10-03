@@ -12,8 +12,9 @@ _Tested on [OpenBSD](/openbsd/) 6.3_
 [vmd(8)](https://man.openbsd.org/vmd.8) servers to host opinionated
 VMs.
 
-Send your name, email address, hostname, username, and public SSH key to OpenBSDAms
-via [contact form](https://openbsd.amsterdam/contact.html),
+Send your name, email address, hostname, username, and public SSH
+key to OpenBSDAms via [contact
+form](https://openbsd.amsterdam/contact.html),
 [Twitter](https://twitter.com/OpenBSDAms), or
 [Mastodon](https://bsd.network/@OpenBSDAms), before you pay.
 
@@ -50,7 +51,7 @@ $
 Get the password from `~/.ssh/authorized_keys` and switch to `root`.
 
 <pre>
-$ <b>head -1 ~/.ssh/authorized_keys| tr ' ' '\n'|tail -1</b>
+$ <b>awk '{print$NF}' .ssh/authorized_keys</b>
 <i>XXXXXXXXXXXXXXXXXXXXXXXXXX</i>
 $ <b>su -</b>
 password:
@@ -81,24 +82,18 @@ sshd(ok)
 #
 </pre>
 
-Run `sysctl` to set the time counter then run `ntpd` to set the
-local clock and terminate it by pressing `^C`.
+_Fixed for new VMs. Skip this step._<br>
+~~Run `sysctl` to set the time counter, then enable and restart `ntpd`.~~
 
-<pre>
+<pre><del>
 # <b>echo 'kern.timecounter.hardware=tsc' >> /etc/sysctl.conf</b>
 # <b>sysctl kern.timecounter.hardware=tsc</b>
 kern.timecounter.hardware: i8254 -> tsc
+# <b>rcctl enable ntpd</b>
 # <b>rcctl set ntpd flags -s</b>
-# <b>ntpd -sd</b>
-/var/db/ntpd.drift is empty
-ntp engine ready
-...
-sensor vmmci0: offset 44.961541
-set local clock to Sat Jun 30 21:15:05 CEST 2018 (offset 44.961541s)
-...
-^Cntp engine exiting
-Terminating
-#
+# <b>rcctl restart ntpd</b>
+ntpd(ok)
+#</del>
 </pre>
 
 It has been reported by some users that IPv6 needs `-soii` in order

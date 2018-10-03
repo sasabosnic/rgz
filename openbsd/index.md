@@ -4,8 +4,8 @@ _[Why OpenBSD?](why.html) Simple and secure._
 
 ## ...on servers
 
-- **[Deploy OpenBSD VPS on Vultr](/vultr.html)**<br>starts at [$2.5/month](https://www.vultr.com/pricing/?ref=7035749) (min $10 deposit), 15 locations
-- [Deploy VM on  _OpenBSD.Amsterdam_](/openbsd.amsterdam.html) &euro;60/year
+- **[Deploy VM on OpenBSD.Amsterdam](/openbsd.amsterdam.html) &euro;60/year**
+- [Deploy OpenBSD VPS on Vultr](/vultr.html)<br>starts at [$2.5/month](https://www.vultr.com/pricing/?ref=7035749) (min $10 deposit), 15 locations
 - [Configure httpd(8)](httpd.html)
 - [Enable HTTPS with acme-client(1) and Let's Encrypt](acme-client.html)
 - [Host Git repositories](/git.html)
