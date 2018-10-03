@@ -134,23 +134,32 @@ no_dir() {
 
 
 list_dirs() {
-	cd "$1" && find . -type d ! -name '.' ! -path '*/.*' ! -path '*/_*'
+	cd "$1" &&
+	find . -type d \
+	! -name '.' ! -path '*/.*' ! -path '*/CVS/*' ! -path '*/_*'
 }
 
 
 list_files() {
-	cd "$1" && find . -type f ! -name '.' ! -path '*/.*' ! -path '*/_*'
+	cd "$1" &&
+	find . -type f \
+	! -name '.' ! -path '*/.*' ! -path '*/CVS/*' ! -path '*/_*'
 }
 
 
 list_dependant_files () {
-	cd "$1" && find . -type f ! -name '.' ! -path '*/.*' ! -path '*/_*' \
+	cd "$1" &&
+	find . -type f \
+	! -name '.' ! -path '*/.*' ! -path '*/CVS/*' ! -path '*/_*' \
 	\( -name '*.html' -o -name '*.md' -o -name '*.css' -o -name '*.js' \)
 }
 
 
 list_newer_files() {
-	cd "$1" && find . -type f ! -name '.' ! -path '*/.*' -newer "$2"
+	cd "$1" &&
+	find . -type f \
+	! -name '.' ! -path '*/.*' ! -path '*/CVS/*' \
+	-newer "$2"
 }
 
 

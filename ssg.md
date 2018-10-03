@@ -29,8 +29,8 @@ If a page has `<H1>` tag _ssg2_ extracts its title, wraps it
 with `_header.html`, `_footer.html`, and injects `_styles.css`,
 `_scripts.js`, `_rss.html` into `<HEAD>`.
 
-Then copies everything (excluding `.*` and `_*`) from `src` to `dst`
-directory.
+Then copies everything (excluding `.*`, `CVS`, and `_*`) from `src`
+to `dst` directory.
 
 [![ssg2](ssg2.jpeg)](ssg2.png)
 _212 LoC. [Enlarge, enhance, zoom!](ssg2.png)_
