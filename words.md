@@ -12,6 +12,10 @@ _Entrepreneur and Book Publisher_<br>
 
 ---
 
+"Thanks to @romanzolotarev help I got the installer running and pulling packages right now. Installation in progress."<br>&mdash;
+[8008](https://twitter.com/l8n8dude/status/1047896838496505863 "04 Oct 2018")
+(@l8n8dude)
+
 "Your shell kung fu is too awesome &#128077;"<br>&mdash;
 [Ashish Kurian Thomas](https://twitter.com/sadhya_mafia/status/1043226587666112512 "21 Sep 2018")
 (@sadhya_mafia)
