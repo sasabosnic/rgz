@@ -8,7 +8,7 @@ via [vmctl(8)](https://man.openbsd.org/vmctl.8).
 Works       | &nbsp;
 :--         | :--
 Ubuntu 18   | [@canadianbryan](https://twitter.com/canadianbryan/status/1042791776271171584)
-Debian 9    | [@vext01] needs qemu
+Debian 9    | [@ben_bai](http://www.netzbasis.de/openbsd/vmd-debian/index.html) [@vext01]
 Alpine      | [@voutilad]
 boot2docker | [@jon]: needs a dummy disc to boot off ISO
 &nbsp;      |
