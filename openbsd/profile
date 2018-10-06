@@ -27,13 +27,10 @@ m() { start_tmux 'm' 'pub/music'   'cmus'; }
 n() { start_tmux 'n' 'downloads'   'newsboat'; }
 o() { start_tmux 'o' 'prv/openvpn' 'doas openvpn --config default.ovpn'; }
 
-# shellcheck disable=SC1091
-{
-bj()   { . start_ssg "$HOME/src/bj"   '/var/www/htdocs/www.bsdjobs.com/'; }
-leto() { . start_ssg "$HOME/src/leto" '/var/www/htdocs/leto/'; }
-oa()   { . start_ssg "$HOME/src/oa"   '/var/www/htdocs/openbsd.amsterdam/'; }
-www()  { . start_ssg "$HOME/src/www"  '/var/www/htdocs/www.romanzolotarev.com'; }
-}
+alias bj='start_ssg bj'
+alias leto='start_ssg leto'
+alias oa='start_ssg oa'
+alias www='start_ssg www'
 
 sync_logs() { [ -n "$1" ] && { rsync -azvPc "$1:/var/www/logs/*" "$HOME/prv/logs/$1/"; }; }
 
