@@ -4,66 +4,38 @@ export LC_CTYPE
 
 src="$(pwd)"
 name=$(basename "$src")
+dst="/var/www/htdocs/$(basename "$name" ".git")"
 
-
-# Check if git push is forced
-
-force=0
-while read -r old new ref; do
-	[ "$old" = '0000000000000000000000000000000000000000' ] && continue
-	[ "$new" = '0000000000000000000000000000000000000000' ] && continue
-	hasrevs=$(git rev-list "$old" "^$new" | sed 1q)
-	[ -n "$hasrevs" ] && { force=1; break; }
-done
-
-
-# Publish HTML files with stagit(1)
-
-dst="/var/www/src/$(basename "$name" ".git")"
-mkdir -p "$dst"
-cd "$dst" || { echo "[post-receive] can't change to $dst"; exit 1; }
-
-# Delete commit directory when push is forced
-[ "$force" = "1" ] && rm -rf "commit"
-
-repos="$(find "$src"/.. -maxdepth 2|grep '\.git$'|sed s#/\.git##|tr '\n' ' ')"
-[ -n "$repos" ] && {
-	echo "[stagit] building $(dirname "$src")"
-	stagit-index $repos > "$dst"/../index.html
-}
-
-echo "[stagit] building $dst"
-stagit "$src"
-ln -sf log.html index.html
-ln -sf ../style.css style.css
-ln -sf ../logo.png logo.png
-
-
-# Copy HEAD to raw directory
+[ -d "$dst" ] || { echo "[post-receive] $dst: not such directory"; exit 1; }
 
 echo "[post-receive] copy HEAD to $dst/raw"
-[ -d "$dst/raw" ] && rm -rf "$dst/raw"
+rm -rf "$dst/raw"
 mkdir -p "$dst/raw"
-cd "$src" || { echo "[post-receive] can't change to $src"; exit 1; }
+cd "$src" || { echo "[post-receive] can't change to $src"; exit 3; }
 git archive --format=tar HEAD | (cd "$dst/raw" && tar xf -)
 
+echo "[stagit] building $dst/src"
+mkdir -p "$dst/src"
+cd "$dst/src" || { echo "[post-receive] can't change to $dst"; exit 2; }
+rm -rf "commits"
+stagit "$src"
+cp -f log.html index.html
+cp -f "$dst/raw/stagit/style.css" style.css
+cp -f "$dst/raw/stagit/logo.png" logo.png
 
-# Rebuild the website with ssg from raw
+cd "$dst/raw" || { echo "[post-receive] can't change to $dst/raw"; exit 4; }
+rm -f "$dst/.files"
+"$HOME/bin/ssg2" . "$dst" 'Roman Zolotarev' 'https://www.romanzolotarev.com'
 
-cd "$dst/raw" || { echo "[post-receive] can't change to $dst/raw"; exit 1; }
-rm /var/www/htdocs/www.romanzolotarev.com/.files
-"$HOME/bin/ssg2" . /var/www/htdocs/www.romanzolotarev.com 'Roman Zolotarev' 'https://www.romanzolotarev.com'
+"$HOME/bin/rssg" "$dst/raw/index.md" > "$dst/rss.xml"
+echo "[rss] $(grep -c '<item>' "$dst/rss.xml") items"
 
-"$HOME/bin/rssg" "$dst/raw/index.md" > "/var/www/htdocs/www.romanzolotarev.com/rss.xml"
-echo "[rss] $(grep -c '<item>' "/var/www/htdocs/www.romanzolotarev.com/rss.xml") items" >&2
+"$HOME/bin/rssg" "$dst/raw/index.md" > "$dst/n/rss.xml"
+echo "[n/rss] $(grep -c '<item>' "$dst/n/rss.xml") items"
 
-"$HOME/bin/rssg" "$dst/raw/n/index.md" > "/var/www/htdocs/www.romanzolotarev.com/n/rss.xml"
-echo "[n/rss] $(grep -c '<item>' "/var/www/htdocs/www.romanzolotarev.com/n/rss.xml") items" >&2
+echo "[post-receive] clone $src repository to $dst/.git"
+rm -rf "$dst/.git"
+git clone --bare "$src" "$dst/.git"
+cd "$dst/.git" && git update-server-info
 
-
-# Publish the repository
-
-echo "[post-receive] clone ${src} repository to ${dst}.git"
-[ -d "${dst}.git" ] && rm -rf "${dst}.git"
-git clone --bare "$src" "${dst}.git"
-# cd "${dst}.git" && git status #git update-server-info --bare
+hostname > "$dst/hostname"
