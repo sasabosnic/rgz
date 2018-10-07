@@ -25,11 +25,11 @@ pass_show() { pass show "$1"; }
 j() { start_tmux 'j' 'prv/j'       'vi my.journal'; }
 m() { start_tmux 'm' 'pub/music'   'cmus'; }
 n() { start_tmux 'n' 'downloads'   'newsboat'; }
-o() { start_tmux 'o' 'prv/openvpn' 'doas openvpn --config default.ovpn'; }
+v() { start_tmux 'v' 'prv/openvpn' 'doas openvpn --config default.ovpn'; }
 
-alias bj='start_ssg bj'
+alias bsdj='start_ssg bsdj'
 alias leto='start_ssg leto'
-alias oa='start_ssg oa'
+alias oams='start_ssg oams'
 alias www='start_ssg www'
 
 sync_logs() { [ -n "$1" ] && { rsync -azvPc "$1:/var/www/logs/*" "$HOME/prv/logs/$1/"; }; }
