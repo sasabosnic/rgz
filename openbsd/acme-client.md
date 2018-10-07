@@ -127,12 +127,7 @@ server "example.com" {
     certificate "/etc/ssl/www.example.com.pem"
     key "/etc/ssl/private/www.example.com.key"
   }
-  location "/.well-known/acme-challenge/*" {
-    root { "/acme", strip 2 }
-  }
-  location * {
-    block return 301 "https://www.example.com$REQUEST_URI"
-  }
+  block return 301 "https://www.example.com$REQUEST_URI"
 }
 
 server "www.example.com" {
