@@ -85,22 +85,15 @@ $
 
 Edit a hook script `/home/git/REPOSITORY.git/hooks/post-receive`:
 
-```
-#!/bin/sh
-export LC_CTYPE='en_US.UTF-8'
-src="$(pwd)"
-name=$(basename "$src")
-dst="/var/www/src/$(basename "$name" '.git')"
-mkdir -p "$dst"
-cd "$dst" || exit 1
+	#!/bin/sh
+	set -e
+	dst="/var/www/htdocs/$(basename "$(pwd)" '.git')"
 
-echo "[stagit] building $dst"
-stagit "$src"
+	mkdir -p "$dst/src"
+	cd "$dst/src" && stagit "$src"
+	cp -f "$dst/src/log.html" "$dst/src/index.html"
+	cp -f "$dst/stagit/"* "$dst/src/"
 
-ln -sf log.html index.html
-ln -sf ../style.css style.css
-ln -sf ../logo.png logo.png
-```
 
 Or download a bit more advanced [post-receive](/post-receive) hook:
 
