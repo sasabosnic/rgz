@@ -8,6 +8,8 @@ not_found() { >&2 echo "${0##*/}: $1: No such directory"; exit 2; }
 name="$1"
 src="$HOME/src/$1"
 dst="/var/www/htdocs/$1"
+title="$1"
+url="http://$1"
 
 [ -d "$src" ] || not_found "$src"
 [ -d "$dst" ] || not_found "$dst"
@@ -17,5 +19,5 @@ then cd "$src" || exit
 else
 	tmux new-window -n "$name" -c "$src"
 	tmux split-window -l 5 -d -c "$src" \
-	"while :; do cd $src;find . -type f ! -path '*/.*'|entr -d '$src/build' '$dst'; done"
+	"while :; do cd $src;find . -type f ! -path '*/.*'|entr -d ssg2 '$src' '$dst' '$title' '$url'; done"
 fi

@@ -1,36 +1,21 @@
 #!/bin/sh
-LC_CTYPE="en_US.UTF-8"
-export LC_CTYPE
+set -e
 
-src="$(pwd)"
-name=$(basename "$src")
-dst="/var/www/htdocs/$(basename "$name" ".git")"
+dst="/var/www/htdocs/$(basename "$(pwd)" '.git')"
+src="$dst/raw"
 
-[ -d "$dst" ] || { echo "[post-receive] $dst: not such directory"; exit 1; }
-
-echo "[post-receive] copy HEAD to $dst/raw"
-rm -rf "$dst/raw"
-mkdir -p "$dst/raw"
-cd "$src" || { echo "[post-receive] can't change to $src"; exit 3; }
-git archive --format=tar HEAD | (cd "$dst/raw" && tar xf -)
-
-echo "[stagit] building $dst/src"
-mkdir -p "$dst/src"
-cd "$dst/src" || { echo "[post-receive] can't change to $dst"; exit 2; }
-rm -rf "commits"
-stagit "$src"
-cp -f log.html index.html
-cp -f "$dst/raw/stagit/style.css" style.css
-cp -f "$dst/raw/stagit/logo.png" logo.png
-
-cd "$dst/raw" || { echo "[post-receive] can't change to $dst/raw"; exit 4; }
 rm -f "$dst/.files"
-"$HOME/bin/ssg2" . "$dst" 'Roman Zolotarev' 'https://www.romanzolotarev.com'
+rm -rf "$src"
+git clone . "$src"
 
-"$HOME/bin/rssg" "$dst/raw/index.md" > "$dst/rss.xml"
-echo "[rss] $(grep -c '<item>' "$dst/rss.xml") items"
+"$HOME/bin/ssg2" "$src" "$dst" 'Roman Zolotarev' 'https://www.romanzolotarev.com'
+"$HOME/bin/rssg" "$src/index.md" > "$dst/rss.xml"
+"$HOME/bin/rssg" "$src/n/index.md" > "$dst/n/rss.xml"
 
-"$HOME/bin/rssg" "$dst/raw/index.md" > "$dst/n/rss.xml"
-echo "[n/rss] $(grep -c '<item>' "$dst/n/rss.xml") items"
+mkdir -p "$dst/src"
+(cd "$dst/src" && stagit "$src")
+cp -f "$dst/src/log.html" "$dst/src/index.html"
+cp -f "$dst/stagit/"* "$dst/src/"
+>&2 echo "[stagit] $(grep -c '"commit' "$dst/src/log.html") commits"
 
 hostname > "$dst/hostname"

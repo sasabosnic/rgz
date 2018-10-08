@@ -144,7 +144,7 @@ Hosted by Roman Zolotarev</description>
 </channel></rss>
 EOF
 
-"$program" "$temp/news/index.html" > "$temp/news/rss.xml"
+"$program" "$temp/news/index.html" > "$temp/news/rss.xml" 2>/dev/null
 
 sed 's#Date>.*</#Date>XXX, XX XXX XXXX XX:XX:XX +XXXX</#' \
 "$temp/news/rss.xml" > "$temp/out"
@@ -155,7 +155,7 @@ then ok 'html -> RSS'
 else no 'html -> RSS'
 fi
 
-"$program" "$temp/news/index.md" > "$temp/news/rss.xml"
+"$program" "$temp/news/index.md" > "$temp/news/rss.xml" 2>/dev/null
 
 sed 's#Date>.*</#Date>XXX, XX XXX XXXX XX:XX:XX +XXXX</#' \
 "$temp/news/rss.xml" > "$temp/out"

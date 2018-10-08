@@ -30,7 +30,6 @@ main() {
 	dst=$(readlink -f "$2")
 
 
-
 	# files
 
 	title="$3"

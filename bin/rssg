@@ -38,9 +38,12 @@ main () {
 
 	items=$(	echo "$html" | get_items)
 
-	echo "$items" |
-	render_items "$base" "$base_url" |
-	render_feed "$url" "$title" "$description"
+	rss=$(		echo "$items" |
+			render_items "$base" "$base_url" |
+			render_feed "$url" "$title" "$description")
+
+	>&2 echo "[rssg] ${index_file##$(pwd)/} $(echo "$rss" | grep -c '<item>') items"
+	echo "$rss"
 }
 
 
