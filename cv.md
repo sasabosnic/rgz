@@ -51,12 +51,12 @@ _Publishing, 2018&ndash;present_<br>
 <pre>
 35-40 hours a week
 700,000 tweet impressions monthly
-23,000+ words published
-22,000+ tweets
-1720+ Twitter followers
-360+ Mastodon followers
-50+ reviews
-300+ newsletter subscribers
+24,000+ words published
+23,000+ tweets
+1800+ Twitter followers
+400+ Mastodon followers
+90+ reviews
+380+ newsletter subscribers
 </pre>
 
 Writing [how-to guides](/) for beginners.<br>
