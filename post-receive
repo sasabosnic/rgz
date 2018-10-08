@@ -33,9 +33,4 @@ echo "[rss] $(grep -c '<item>' "$dst/rss.xml") items"
 "$HOME/bin/rssg" "$dst/raw/index.md" > "$dst/n/rss.xml"
 echo "[n/rss] $(grep -c '<item>' "$dst/n/rss.xml") items"
 
-echo "[post-receive] clone $src repository to $dst/.git"
-rm -rf "$dst/.git"
-git clone --bare "$src" "$dst/.git"
-cd "$dst/.git" && git update-server-info
-
 hostname > "$dst/hostname"

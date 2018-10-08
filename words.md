@@ -16,6 +16,14 @@ _Entrepreneur and Book Publisher_<br>
 [8008](https://twitter.com/l8n8dude/status/1047896838496505863 "04 Oct 2018")
 (@l8n8dude)
 
+"Nice how to website: by @romanzolotarev Zolotarev covering lots of #OpenBSD topics"<br>&mdash;
+[Rajesh Krishna Nandanwar](https://twitter.com/rnandanwark/status/1047586217154342912 "03 Oct 2018")
+(@rnandanwark)
+
+"Subscribed via RSS. Thanks for your great work!"<br>&mdash;
+[Eric LeBlanc](https://twitter.com/Erc_LeBlanc/status/1045044448361496576 "26 Sep 2018")
+(@Erc_LeBlanc)
+
 "Your shell kung fu is too awesome &#128077;"<br>&mdash;
 [Ashish Kurian Thomas](https://twitter.com/sadhya_mafia/status/1043226587666112512 "21 Sep 2018")
 (@sadhya_mafia)
@@ -31,6 +39,19 @@ _Entrepreneur and Book Publisher_<br>
 "Your articles are awesome, really readable ! Thank's for such work and  such free sharing."<br>&mdash;
 [Wesley](https://twitter.com/wesley974/status/1042455560736698368 "19 Sep 2018")
 (@wesley974)
+
+---
+
+<p id="h3artbl33d2" class="quote">&#8220;Roman Zolotarev &mdash; A true
+inspiration. His insights, writings and occasional ramblings are
+what pushed me to write and share. And he continues to be the number
+one drive. Roman, you redefine awesome. Thank you!&#8221;</p>
+
+<img src="/ref/h3artbl33d.jpeg" class="avatar"><br>
+**h3artbl33d**<br>
+[h3artbl33d.nl](https://h3artbl33d.nl/blog/about "18 Sep 2018")
+
+---
 
 "Your post is the only reason for the recent discovery so thank you!"<br>&mdash;
 [Daryl Turner](https://twitter.com/Packet_Plumber/status/1041977610140639232 "18 Sep 2018")
@@ -151,7 +172,8 @@ _Cofounder of HardenedBSD_<br>
 it takes courage to swim upstream instead of drifting along with
 the current.&#8221;</p>
 
-<img src="/ref/mulander.jpeg" class="avatar"><br> **Adam Wo&#x142;k**<br> _OpenBSD developer_<br>
+<img src="/ref/mulander.jpeg" class="avatar"><br> **Adam Wo&#x142;k**<br>
+_OpenBSD developer_<br>
 [@mulander](https://twitter.com/mulander/status/1027150795848990721 "8 Aug 2018")
 
 ---
@@ -264,7 +286,8 @@ the current.&#8221;</p>
 
 <p id="rf" class="quote">&#8220;We hired a new dev; thank you a lot, he found us on bsdjobs.com!<br>Great idea!&#8221;</p>
 
-<img src="/ref/rf.jpeg" class="avatar"><br> **Reyk Fl&ouml;ter**<br> _OpenBSD developer_<br>
+<img src="/ref/rf.jpeg" class="avatar"><br> **Reyk Fl&ouml;ter**<br>
+_OpenBSD developer_<br>
 [@reykfloeter](https://twitter.com/reykfloeter "10 Jun 2018")<br>
 [reykfloeter.com](https://reykfloeter.com/)
 
@@ -411,3 +434,7 @@ etc. I felt I should mention that to you &#x1F600;&#8221;</p>
 "Bonus points for using the Field Notes ;)"<br>&mdash;
 [BuildItBenjamin](https://twitter.com/bl4nk_io/status/910086740223946753 "19 Sep 2017")
 (@bl4nk_io)
+
+---
+
+_89 quotes, but who's counting ;)_
