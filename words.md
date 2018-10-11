@@ -20,6 +20,14 @@ _Entrepreneur and Book Publisher_<br>
 [Rajesh Krishna Nandanwar](https://twitter.com/rnandanwark/status/1047586217154342912 "03 Oct 2018")
 (@rnandanwark)
 
+"Really like what you're doing with your tips, scripts and other contributions concerning OpenBSD :) I think it's just in line with the thinking behind OpenBSD (and UNIX in general); simple but powerful tools with clear instructions."<br>&mdash;
+[Hans Solo](http://digitalwoodsman.se/)
+(@pikkabird)
+
+"...I adore your bsd texts."<br>&mdash;
+[Isak Holmstr&#246;m](https://fosstodon.org/@iah/100812865116456317 "30 Sep 2018")
+(@iah@fosstodon.org)
+
 "Subscribed via RSS. Thanks for your great work!"<br>&mdash;
 [Eric LeBlanc](https://twitter.com/Erc_LeBlanc/status/1045044448361496576 "26 Sep 2018")
 (@Erc_LeBlanc)
@@ -437,4 +445,4 @@ etc. I felt I should mention that to you &#x1F600;&#8221;</p>
 
 ---
 
-_89 quotes, but who's counting ;)_
+_91 quotes, but who's counting ;)_
