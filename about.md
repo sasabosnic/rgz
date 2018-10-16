@@ -38,6 +38,7 @@ the time and I look dead serious._
 
 ---
 
-The site is hosted on [Vultr](vultr.html) and served to you by
-[httpd](/openbsd/httpd.html). All pages are crafted in Markdown or
-plain HTML and then rendered into a website by [ssg](ssg.html).
+The site is hosted on [OpenBSD Amsterdam](https://openbsd.amsterdam)
+and served to you by [httpd](/openbsd/httpd.html). All pages are
+crafted in Markdown or plain HTML and then rendered into a website
+by [ssg](ssg.html).
