@@ -20,29 +20,29 @@ _Tested on [OpenBSD](/openbsd/) 6.3_
 
 # Make a static site with find(1), grep(1), and lowdown(1)
 
-[ssg](/bin/ssg3) is a static site generator written in shell and powered by
+[ssg2](/bin/ssg2) is a static site generator written in shell and powered by
 [lowdown(1)](https://kristaps.bsd.lv/lowdown/).
 
 It converts `*.md` files to HTML.
 
-Unless a page has `<HTML>` tag _ssg3_ extracts its title, wraps it
+If a page has `<H1>` tag _ssg2_ extracts its title, wraps it
 with `_header.html`, `_footer.html`, and injects `_styles.css`,
 `_scripts.js`, `_rss.html` into `<HEAD>`.
 
 Then copies everything (excluding `.*`, `CVS`, and `_*`) from `src`
 to `dst` directory.
 
-[![ssg3](ssg3.png)](ssg3.png)
-_214 LoC. [Enlarge, enhance, zoom!](ssg3.png)_
+[![ssg2](ssg2.png)](ssg2.png)
+_212 LoC. [Enlarge, enhance, zoom!](ssg2.png)_
 
 ## Install
 
 Download and chmod it:
 
 <pre>
-$ <b>ftp -Vo bin/ssg https://www.romanzolotarev.com/bin/ssg</b>
-ssg3       100% |*********************|    4137      00:00
-$ <b>chmod +x bin/ssg3</b>
+$ <b>ftp -Vo bin/ssg2 https://www.romanzolotarev.com/bin/ssg2</b>
+ssg2       100% |*********************|    4137      00:00
+$ <b>chmod +x bin/ssg2</b>
 $ <b>doas pkg_add lowdown entr</b>
 quirks-2.414 signed on 2018-03-28T14:24:37Z
 lowdown-0.3.1: ok
@@ -59,7 +59,7 @@ $ <b>echo '&lt;p&gt;&lt;a href="/"&gt;Home&lt;/a&gt;&lt;/p&gt;' &gt; src/_header
 $ <b>echo '&lt;p&gt;2018 Roman Zolotarev&lt;/p&gt;' &gt; src/_footer.html</b>
 $ <b>ftp -Vo src/_styles.css https://www.romanzolotarev.com/_styles.css</b>
 _styles.css  100% |**************************|  1020       00:00
-$ <b>ssg3 src dst 'Test' 'https://www.romanzolotarev.com'</b>
+$ <b>ssg2 src dst 'Test' 'https://www.romanzolotarev.com'</b>
 index.html
 _header.html
 _footer.html
@@ -70,21 +70,21 @@ $ <b>firefox dst/index.html</b>
 
 ## Incremental updates
 
-On every run _ssg3_ saves a list of files in `dst/.files` and updates
-only newer files. If no files were modified after that, _ssg3_ does
+On every run _ssg2_ saves a list of files in `dst/.files` and updates
+only newer files. If no files were modified after that, _ssg2_ does
 nothing.
 
 <pre>
-$ <b>ssg3 src dst 'Test'</b>
+$ <b>ssg2 src dst 'Test'</b>
 [ssg] ok
 $
 </pre>
 
-To force the update delete `dst/.files` and re-run _ssg3_.
+To force the update delete `dst/.files` and re-run _ssg2_.
 
 <pre>
 $ <b>rm dst/.files</b>
-$ <b>ssg3 src dst 'Test' 'https://www.romanzolotarev.com'</b>
+$ <b>ssg2 src dst 'Test' 'https://www.romanzolotarev.com'</b>
 index.html
 _header.html
 _footer.html
@@ -95,7 +95,7 @@ $
 
 ## Watch
 
-Save this helper to `~/bin/s`. It re-runs _ssg3_ with
+Save this helper to `~/bin/s`. It re-runs _ssg2_ with
 [entr(1)](http://entrproject.org) on every file change.
 
 <pre>
@@ -117,13 +117,46 @@ $ <b>~/bin/s /var/www/htdocs/www</b>
 
 ## Upgrade
 
-_[Previous version of ssg](ssg2.html) has been retired._
+_[Previous version of ssg](ssg1.html) has been retired._
 
-Add `<HTML>` tag for pages your want to be excluded from parsing.
+Add a wrapper for `entr(1)`.<br>
+Delete `_ssg.conf`.<br>
+Add `_rss.html`(optionally).<br>
+Update run script and `post-*` git hooks.<br>
+Uninstall `rsync(1)`, if you don't use it.
 
-`ssg2`                       | `ssg3`
-:--                          | :--
-Wraps pages with `<H1>` tag. | Doesn't wrap pages with `<HTML>` tag.
+`ssg1`                         | `ssg2`
+:--                            | :--
+&nbsp;                         | &nbsp;
+**performance**                |
+102 pp (31,306 words) 2.08s    | 1.61s
+second run (+1 page)  1.92s    | **0.13s**
+&nbsp;                         | &nbsp;
+**features**                   |
+`rss.xml`                      | _extracted to [rssg](rssg.html)_
+`sitemap.xml`                  | _same_
+&nbsp;                         | &nbsp;
+**content**                    |
+convert MD to HTML             | _same_
+wrap HTML pages                | _same_
+get title from `<h1>`          | _same_
+`_header.html`                 | _same_
+`_footer.html`                 | _same_
+`_styles.css`                  | _same_
+`_scripts.js`                  | _same_
+&nbsp;                         | `_rss.html`
+**command line and env**       |
+env vars and `_ssg.conf`       | _removed_
+&nbsp;                         | `DOCS` moved to 2rd argument
+&nbsp;                         | `WEBSITE_TITLE`&mdash;to 3rd
+`ssg build`                    | `ssg2 src dst ...`
+`ssg build --clean`            | `cd dst && rm -rf * .* && ssg2 ...`
+`ssg watch`                    | `cd src && find . | entr ssg2 ...`
+&nbsp;                         | &nbsp;
+**dependencies**               |
+`lowdown`                      | _same_
+`entr`                         | _removed_
+`rsync`                        | _removed_
 
 ---
 
