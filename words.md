@@ -77,10 +77,6 @@ one drive. Roman, you redefine awesome. Thank you!&#8221;</p>
 [@lambdanerd](https://twitter.com/lambdanerd/status/1036823248158289920 "04 Sep 2018")
 (@lambdanerd)
 
-"Thanks to @romanzolotarev again, his shell skills are neat."<br>&mdash;
-[Dio Oktarianos Putra](https://twitter.com/diooktput/status/1034610991806304256 "29 Aug 2018")
-(@diooktput)
-
 "I just upgraded my personal server to OpenBSD 6.4. I took advantage of opportunity to replace Jekyll with ssg as a static site generator.  ssg is a shell script with all features I need (simply generating a website from markdown). Thanks to @romanzolotarev !"<br>&mdash;
 [Miguel Vidal](https://twitter.com/mvidallopez/status/1034116416243490816 "27 Aug 2018")
 (@mvidallopez)
@@ -445,4 +441,4 @@ etc. I felt I should mention that to you &#x1F600;&#8221;</p>
 
 ---
 
-_91 quotes, but who's counting ;)_
+_90 quotes, but who's counting ;)_
