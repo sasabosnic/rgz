@@ -40,13 +40,13 @@ _214 LoC. [Enlarge, enhance, zoom!](ssg3.png)_
 Download and chmod it:
 
 <pre>
-$ <b>ftp -Vo bin/ssg https://www.romanzolotarev.com/bin/ssg</b>
-ssg3       100% |*********************|    4137      00:00
+$ <b>mkdir -p bin</b>
+$ <b>ftp -Vo bin/ssg3 https://www.romanzolotarev.com/bin/ssg3</b>
+ssg3       100% |*********************|    5025      00:00
 $ <b>chmod +x bin/ssg3</b>
-$ <b>doas pkg_add lowdown entr</b>
+$ <b>doas pkg_add lowdown</b>
 quirks-2.414 signed on 2018-03-28T14:24:37Z
 lowdown-0.3.1: ok
-entr-4.0: ok
 $
 </pre>
 
@@ -59,13 +59,15 @@ $ <b>echo '&lt;p&gt;&lt;a href="/"&gt;Home&lt;/a&gt;&lt;/p&gt;' &gt; src/_header
 $ <b>echo '&lt;p&gt;2018 Roman Zolotarev&lt;/p&gt;' &gt; src/_footer.html</b>
 $ <b>ftp -Vo src/_styles.css https://www.romanzolotarev.com/_styles.css</b>
 _styles.css  100% |**************************|  1020       00:00
-$ <b>ssg3 src dst 'Test' 'https://www.romanzolotarev.com'</b>
-index.html
-_header.html
-_footer.html
-_styles.css
-[ssg] 4 files
-$ <b>firefox dst/index.html</b>
+$ <b>bin/ssg3 src dst 'Test' 'https://www'</b>
+./index.md
+[ssg] 1 file, 1 url
+$ <b>find dst</b>
+dst
+dst/.files
+dst/index.html
+dst/sitemap.xml
+$ <b>open dst/index.html</b>
 </pre>
 
 ## Incremental updates
@@ -75,8 +77,8 @@ only newer files. If no files were modified after that, _ssg3_ does
 nothing.
 
 <pre>
-$ <b>ssg3 src dst 'Test'</b>
-[ssg] ok
+$ <b>bin/ssg3 src dst 'Test' 'https://www'</b>
+[ssg] no files, 1 url
 $
 </pre>
 
@@ -84,12 +86,9 @@ To force the update delete `dst/.files` and re-run _ssg3_.
 
 <pre>
 $ <b>rm dst/.files</b>
-$ <b>ssg3 src dst 'Test' 'https://www.romanzolotarev.com'</b>
-index.html
-_header.html
-_footer.html
-_styles.css
-[ssg] 4 files
+$ <b>bin/ssg3 src dst 'Test' 'https://www'</b>
+index.md
+[ssg] 1 file, 1 url
 $
 </pre>
 
@@ -99,20 +98,29 @@ Save this helper to `~/bin/s`. It re-runs _ssg3_ with
 [entr(1)](http://entrproject.org) on every file change.
 
 <pre>
-$ <b>cat ~/bin/s</b>
+$ <b>cat $HOME/bin/s</b>
 #!/bin/sh
 while :
 do find . -type f ! -path '*/.*' |
-entr -d "$HOME/bin/ssg" . "$1" "$(date)" '//www'
+	entr -d "$HOME/bin/ssg3" . "$1" "$(date)" '//www'
 done
 $
 </pre>
 
-Start it and keep it running:
+Install entr(1):
+
+<pre>
+$ <b>doas pkg_add entr</b>
+quirks-2.414 signed on 2018-03-28T14:24:37Z
+entr-4.0: ok
+$
+</pre>
+
+Start the helper and keep it running:
 
 <pre>
 $ <b>~/bin/s /var/www/htdocs/www</b>
-[ssg] ok
+[ssg] 1 file, 1 url
 </pre>
 
 ## Upgrade

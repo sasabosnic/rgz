@@ -230,7 +230,7 @@ render_html_file() {
 list_pages() {
 	cd "$1" && find . -type f ! -path '*/.*' ! -path '*/_*' \
 	\( -name '*.html' -o -name '*.md' \) |
-	sed 's#^./##;s#.md$#.html#;s#index.html$##'
+	sed 's#^./##;s#.md$#.html#;s#/index.html$#/#'
 }
 
 
