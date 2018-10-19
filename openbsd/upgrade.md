@@ -1,8 +1,8 @@
-_Tested on [OpenBSD](/openbsd/) 6.2 and 6.3_
+_Tested on [OpenBSD](/openbsd/) 6.2, 6.3, and 6.4_
 
 # Upgrade OpenBSD
 
-[Read the official FAQ](https://www.openbsd.org/faq/upgrade63.html).
+[Read the official FAQ](https://www.openbsd.org/faq/upgrade64.html).
 
 Backup your data.
 
@@ -10,10 +10,11 @@ Download OpenBSD installer and verify its checksum:
 
 <pre>
 # <b>PKG_PATH='http://fastly.cdn.openbsd.org/pub/OpenBSD'</b>
-# <b>ftp $PKG_PATH/6.3/amd64/install63.fs</b>
-# <b>ftp $PKG_PATH/6.3/amd64/SHA256.sig</b>
-# <b>sha256 -C SHA256.sig install63.fs</b>
-(SHA256) install63.fs: OK
+# <b>ftp -V $PKG_PATH/6.4/amd64/install64.fs</b>
+# <b>ftp -V $PKG_PATH/6.4/amd64/SHA256.sig</b>
+# <b>signify -C -p /etc/signify/openbsd-64-base.pub -x SHA256.sig install64.fs</b>
+Signature Verified
+install63.fs: OK
 #
 </pre>
 
@@ -32,7 +33,7 @@ Copy the installer image to the USB flash drive.
 **Be extremely cautious**:
 
 <pre>
-# <b>dd if=install63.fs of=/dev/rsd3c bs=1m</b>
+# <b>dd if=install64.fs of=/dev/rsd3c bs=1m</b>
 ...
 #
 </pre>
@@ -41,12 +42,12 @@ Boot from that USB drive, then choose the `(S)hell` option to mount
 the encrypted drive.
 
 <pre>
-# <b>bioctl -c C -l /dev/sd0c softraid0</b>
+# <b>bioctl -c C -l /dev/sd0a softraid0</b>
 passphrase:
 <span class="blue">scsibus1 at softraid0: 1 targets
-sd2 at scsibus2 targ 0 lun 0: &lt;OPENBSD, SR RAID 1, 005&gt;
+sd3 at scsibus2 targ 0 lun 0: &lt;OPENBSD, SR RAID 1, 005&gt;
 SCSI2 0/direct fixed</span>
-sd2: 10244MB, 512 bytes/sec, 20980362 sec total
+sd3: 10244MB, 512 bytes/sec, 20980362 sec total
 # <b>exit</b>
 </pre>
 
@@ -55,7 +56,7 @@ Choose the `(U)pgrade` option and follow the prompts similar to (install.html).
 When OpenBSD upgrade is done, upgrade installed packages.
 
 <pre>
-# pkg_add -u
+# <b>pkg_add -uv</b>
 ...
 #
 </pre>
