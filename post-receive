@@ -8,7 +8,7 @@ rm -f "$dst/.files"
 rm -rf "$src"
 git clone . "$src"
 
-"$HOME/bin/ssg2" "$src" "$dst" 'Roman Zolotarev' 'https://www.romanzolotarev.com'
+"$HOME/bin/ssg3" "$src" "$dst" 'Roman Zolotarev' 'https://www.romanzolotarev.com' > /dev/null
 "$HOME/bin/rssg" "$src/index.md" > "$dst/rss.xml"
 "$HOME/bin/rssg" "$src/n/index.md" > "$dst/n/rss.xml"
 
