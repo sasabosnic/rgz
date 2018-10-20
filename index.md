@@ -39,6 +39,7 @@ hi@romanzolotarev.com
 
 # How to...
 
+- [upgrade OpenBSD to 6.4](openbsd/upgrade.html "2018-10-18")
 - [generate random string with random(4)](random.html "2018-09-27")
 - [find and remove whitespaces with grep(1) and sed(1)](ws.html "2018-09-23")
 - **[generate RSS feeds with grep(1), sed(1), and awk(1)](rssg.html "2018-09-21")**
@@ -59,7 +60,6 @@ hi@romanzolotarev.com
 - [configure httpd(8) on OpenBSD](openbsd/httpd.html "2018-04-12")
 - [deploy OpenBSD VPS on Vultr](vultr.html "2018-04-11")
 - **[make a static site with lowdown(1) and rsync(1)](ssg.html "2018-04-07")**
-- [upgrade OpenBSD to 6.3](openbsd/upgrade.html "2018-04-03")
 - **[generate passphrases with random(4)](diceware.html "2018-03-30")**
 - [change time zone on OpenBSD](openbsd/timezone.html "2018-03-16")
 - [archive with borg(1)](borg.html "2018-03-02")
