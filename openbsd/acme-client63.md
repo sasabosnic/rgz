@@ -3,7 +3,7 @@ Thanks!"<br>&mdash;
 [Tom Van Looy](https://twitter.com/tvlooy/status/1014649340739104768 "5 Jul 2018")
 (@tvlooy)
 
-_Tested on [OpenBSD](/openbsd/) 6.4_
+_Tested on [OpenBSD](/openbsd/) 6.3_
 
 # Enable HTTPS with acme-client(1) and Let's Encrypt on OpenBSD
 
@@ -54,8 +54,7 @@ server "www.example.com" {
   listen on * port 80
   root "/htdocs/www.example.com"
   location "/.well-known/acme-challenge/*" {
-    root "/acme"
-    request strip 2
+    root { "/acme", strip 2 }
   }
 }
 
@@ -118,8 +117,7 @@ server "www.example.com" {
     key "/etc/ssl/private/www.example.com.key"
   }
   location "/.well-known/acme-challenge/*" {
-    root "/acme"
-    request strip 2
+    root { "/acme", strip 2 }
   }
 }
 
@@ -183,8 +181,7 @@ server "new.example.com" {
     key "/etc/ssl/private/www.example.com.key"
   }
   location "/.well-known/acme-challenge/*" {
-    root "/acme"
-    request strip 2
+    root { "/acme", strip 2 }
   }
 }
 ...
