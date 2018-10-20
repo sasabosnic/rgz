@@ -255,7 +255,7 @@ building /home/jack/src/www/docs --clean
 
 ## Deploy with rsync(1)
 
-If you don't have a public server yet, [try Vultr](/vultr.html).
+If you don't have a public server yet, [try Vultr](/openbsd/vultr.html).
 To deploy to remote server you can use rsync(1) like this:
 
 <pre>

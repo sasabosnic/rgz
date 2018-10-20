@@ -6,7 +6,7 @@ _Tested on [OpenBSD](/openbsd/) 6.3 and 6.4_
 
 # Configure httpd(8) on OpenBSD
 
-[Deploy and login to your server](/vultr.html).
+[Install OpenBSD](install.html).
 
 Edit `/etc/httpd.conf`. Add two `server` sections&mdash;one for
 `www` and another for naked domain (all requests are redirected to
@@ -60,10 +60,8 @@ to redirect all HTTPS requests to HTTP.
 
 Now as your new server is ready you can update DNS records accordingly.
 
-```
-    example.com. 300 IN     A XXX.XXX.XXX.XXX
-www.example.com. 300 IN     A XXX.XXX.XXX.XXX
-```
+	    example.com. 300 IN     A XXX.XXX.XXX.XXX
+	www.example.com. 300 IN     A XXX.XXX.XXX.XXX
 
 Examine your DNS is propagated.
 
@@ -83,8 +81,6 @@ Check IP addresses in answer sections.
 
 Open your website in a browser.
 
-```
-http://www.example.com/
-```
+	http://www.example.com/
 
 [Enable HTTPS on your server](/openbsd/acme-client.html).
