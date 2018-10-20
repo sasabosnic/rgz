@@ -1,4 +1,4 @@
-_Tested on [OpenBSD](/openbsd/) 6.3 (amd64 platform)_
+_Tested on [OpenBSD](/openbsd/) 6.3 and 6.4 (amd64)_
 
 # Find disk name and partition with sysctl(1) and dmesg(1)
 

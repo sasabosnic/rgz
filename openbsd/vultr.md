@@ -8,9 +8,9 @@ is a referral link.  When you [sign
 up](https://www.vultr.com/pricing/?ref=7035749), Vultr adds few
 weeks of hosting for this site. Thank you.
 
-_Tested on [OpenBSD](/openbsd/) 6.3_
+_Tested on [OpenBSD](/openbsd/) 6.3 and 6.4_
 
-# Deploy OpenBSD VPS on Vultr
+# Install OpenBSD on Vultr
 
 If you need a new OpenBSD server, make sure you have your [public
 SSH key](/ssh.html) handy, then...
@@ -35,20 +35,18 @@ In a minute your sever will be deployed. Login using the new IP address
 and your private SSH key (assuming it's in the default location:
 `~/.ssh/id_ed25519`):
 
-    $ ssh root@XXX.XXX.XXX.XXX
-    OpenBSD 6.3 (GENERIC.MP) #107: Sat Mar 24 14:21:59 MDT 2018
+	$ ssh root@XXX.XXX.XXX.XXX
+	OpenBSD 6.4 (GENERIC) #349: Thu Oct 11 13:25:13 MDT 2018
 
-    Welcome to OpenBSD: The proactively secure Unix-like operating
-    system.
+	Welcome to OpenBSD: The proactively secure Unix-like operating system.
 
-    Please use the sendbug(1) utility to report bugs in the system.
-    Before reporting a bug, please try to reproduce it with the
-    latest version of the code. With bug reports, please try to
-    ensure that enough information to reproduce the problem is
-    enclosed, and if a known fix for it exists, include that as
-    well.
+	Please use the sendbug(1) utility to report bugs in the system.
+	Before reporting a bug, please try to reproduce it with the latest
+	version of the code.  With bug reports, please try to ensure that
+	enough information to reproduce the problem is enclosed, and if a
+	known fix for it exists, include that as well.
 
-    www#
+	www#
 
 Read [afterboot(8)](https://man.openbsd.org/afterboot.8).
 

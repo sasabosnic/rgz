@@ -58,7 +58,7 @@ hi@romanzolotarev.com
 - [customize xenodm(1) login screen](openbsd/xenodm.html "2018-05-01")
 - [enable HTTPS with acme-client(1) and Let's Encrypt on OpenBSD](openbsd/acme-client.html "2018-04-13")
 - [configure httpd(8) on OpenBSD](openbsd/httpd.html "2018-04-12")
-- [deploy OpenBSD VPS on Vultr](vultr.html "2018-04-11")
+- [install OpenBSD on Vultr](/openbsd/vultr.html "2018-04-11")
 - **[make a static site with lowdown(1) and rsync(1)](ssg.html "2018-04-07")**
 - **[generate passphrases with random(4)](diceware.html "2018-03-30")**
 - [change time zone on OpenBSD](openbsd/timezone.html "2018-03-16")
