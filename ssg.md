@@ -94,11 +94,11 @@ $
 
 ## Watch
 
-Save this helper to `~/bin/s`. It re-runs _ssg3_ with
+Save this helper to `~/bin/sssg`. It re-runs _ssg3_ with
 [entr(1)](http://entrproject.org) on every file change.
 
 <pre>
-$ <b>cat $HOME/bin/s</b>
+$ <b>cat $HOME/bin/sssg</b>
 #!/bin/sh
 while :
 do find . -type f ! -path '*/.*' |
