@@ -16,7 +16,7 @@ XTerm*loginShell:        true
 XTerm*scrollBar:         false
 XTerm*selectToClipboard: true
 
-XTerm*background:        #141414
+XTerm*background:        #000000
 XTerm*foreground:        #eeeeee
 XTerm*color0:   #000000
 XTerm*color1:   #ff6c60

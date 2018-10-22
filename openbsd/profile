@@ -32,6 +32,7 @@ alias leto='start_ssg leto'
 alias oams='start_ssg oams'
 alias runbsd='start_ssg runbsd'
 alias www='start_ssg www'
+alias zine='start_ssg zine'
 
 sync_logs() { [ -n "$1" ] && { rsync -azvPc "$1:/var/www/logs/*" "$HOME/prv/logs/$1/"; }; }
 
