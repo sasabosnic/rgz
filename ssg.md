@@ -16,7 +16,7 @@ just need the core features."<br>&mdash;
 
 ---
 
-_Tested on [OpenBSD](/openbsd/) 6.3_
+_Tested on [OpenBSD](/openbsd/) 6.3 and 6.4_
 
 # Make a static site with find(1), grep(1), and lowdown(1)
 
@@ -101,7 +101,8 @@ Save this helper to `~/bin/sssg`. It re-runs _ssg3_ with
 $ <b>cat $HOME/bin/sssg</b>
 #!/bin/sh
 while :
-do find . -type f ! -path '*/.*' |
+do
+	find . -type f ! -path '*/.*' |
 	entr -d "$HOME/bin/ssg3" . "$1" "$(date)" '//www'
 done
 $
