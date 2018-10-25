@@ -49,7 +49,6 @@ _Publishing, 2018&ndash;present_<br>
 [romanzolotarev.com/n/](/n/)
 
 <pre>
-35-40 hours a week
 700,000 tweet impressions monthly
 24,000+ words published
 23,000+ tweets
@@ -107,7 +106,6 @@ _Job board, 2018&ndash;present_<br>
 [bsdjobs.com][BSDjobs]
 
 <pre>
-5-10 hours a week
 100+ job ads posted
 50+ user stories published
 First people hired
