@@ -24,3 +24,7 @@ _import, slop, sxiv, xclip, mkdir, date_
 &mdash; a screen capture tool<br>
 _ffmpeg, mpv, stat, rm, mkdir, logger, date, cut, pgrep_
 
+[mnt_crypto](mnt_crypto) and
+[umnt_crypto](umnt_crypto)
+&mdash; mount and unmount crypto volumes<br>
+_mount, umount, bioctl, fsck, mkdir, df_

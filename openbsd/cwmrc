@@ -31,7 +31,7 @@ bind-key M-s            "bin/screenshot"
 bind-key MS-s           "bin/screenshot 200"
 
 color    activeborder   "#444444"
-color    inactiveborder "#000000"
+color    inactiveborder "#111111"
 fontname fixed-13
 snapdist 20
 sticky   yes
