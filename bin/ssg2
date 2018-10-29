@@ -163,7 +163,7 @@ list_newer_files() {
 
 
 has_partials() {
-	grep -E '^./_.*html$|^./_.*js$|^./_.*css$' >/dev/null
+	grep -qE '^./_.*html$|^./_.*js$|^./_.*css$'
 }
 
 

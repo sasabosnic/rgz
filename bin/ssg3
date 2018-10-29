@@ -55,7 +55,7 @@ main() {
 	then
 		echo "$fs" | tee "$dst/.files"
 
-		if echo "$fs" | grep '.md$' > /dev/null
+		if echo "$fs" | grep -q '.md$'
 		then test -x "$(which lowdown)" || exit 3
 		fi
 		echo "$fs" | grep '.md$' |
@@ -157,7 +157,7 @@ list_newer_files() {
 
 
 has_partials() {
-	grep -E '^./_.*html$|^./_.*js$|^./_.*css$' >/dev/null
+	grep -qE '^./_.*html$|^./_.*js$|^./_.*css$'
 }
 
 
@@ -200,7 +200,7 @@ render_html_file() {
 	header="$4"
 	footer="$5"
 
-	if echo "$body" | grep '<html' > /dev/null
+	if echo "$body" | grep -q '<html'
 	then echo "$body"
 	else
 		title=$(echo "$body" | grep '^<h1' | head -1 | sed 's/<[^>]*>//g')
