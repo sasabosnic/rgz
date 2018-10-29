@@ -79,51 +79,35 @@ Resize the pane       | `PREFIX c-up`
 
 ## Workflow
 
-Keep one session at a time and use one window per task. Inside each
-window open multiple panes.
+Keep one session at a time and use one window per task. Each window
+may have multiple panes.
 
-To start tmux(1) use this shell function:
+To start tmux(1) use this shell script, `~/bin/stmux`:
 
-```
-start_tmux() {
-  if ! tmux new-session \
-    -As 0 -n "$1" "cd $2 && $3" 2>/dev/null;then
-    if tmux select-window -t "$1" 2>/dev/null;then
-      if tmux list-windows|
-        grep ": ${1}\\*">/dev/null;then
-        cd "$2"||return
-      fi
-    else
-      if tmux show-window-option \
-        automatic-rename|grep off>/dev/null;then
-        tmux new-window -n "$1" -c "$2" sh -c "$3"
-      else
-        tmux rename-window "$1" && cd "$2" && sh -c "$3"
-      fi
-    fi
-  fi
-}
-```
+	#!/bin/sh
+	usage() { >&2 echo "usage: ${0##*/} window path command"; exit 1; }
+	[ -z "$1" ] && usage
+	[ -z "$2" ] && usage
+	[ -z "$3" ] && usage
 
-`start_tmux()` requires three arguments: a window name, its working
-directory, and initial command.
+	tmux select-window -t "$1" 2>/dev/null ||
+	tmux new-window -n "$1" -c "$HOME/$2" "$3"
+
+`stmux` requires three arguments: a window name, a path to the
+working directory, and an initial command.
 
 Here is a shortcut:
 
-```
-www() { start_tmux 'www' "$HOME/src/www" 'vi index.md'; }
-```
+	m() { "$HOME/bin/stmux" m pub/music cmus; }
 
-Run `www` from anywhere:
+Run `m` from anywhere:
 
 <pre>
-$ <b>www</b>
+$ <b>m</b>
 </pre>
 
-It tries to create a new session (`0`),
-if the session already exists and  the window (`www`) is selected,
-it changes to the working directory (`$HOME/src/www`), otherwise
-it creates that window (`www`) and runs the initial command (`vi index.md`),
+It tries to select the window named `m` and if it fails, it
+creates that window and runs `cmus` from `pub/music` directory.
 
 ## See also
 
