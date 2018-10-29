@@ -18,7 +18,6 @@
 set -e
 
 main() {
-	test -x "$(which lowdown)" || exit 3
 	test -n "$1" || usage
 	test -n "$2" || usage
 	test -n "$3" || usage
@@ -54,21 +53,20 @@ main() {
 
 	if test -n "$fs"
 	then
-		echo "$fs" |
-		tee "$dst/.files"
+		echo "$fs" | tee "$dst/.files"
 
-		echo "$fs" |
-		grep '.html$' |
-		render_html_files "$src" "$dst" \
-		"$title" "$head" "$header" "$footer"
-
-		echo "$fs" |
-		grep '.md$' |
+		if echo "$fs" | grep '.md$' > /dev/null
+		then test -x "$(which lowdown)" || exit 3
+		fi
+		echo "$fs" | grep '.md$' |
 		render_md_files "$src" "$dst" \
 		"$title" "$head" "$header" "$footer"
 
-		echo "$fs" |
-		grep -Ev '.md$|.html$' |
+		echo "$fs" | grep '.html$' |
+		render_html_files "$src" "$dst" \
+		"$title" "$head" "$header" "$footer"
+
+		echo "$fs" | grep -Ev '.md$|.html$' |
 		(cd "$src" && cpio -pu "$dst")
 	fi
 

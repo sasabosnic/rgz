@@ -20,10 +20,9 @@ _Tested on [OpenBSD](/openbsd/) 6.3 and 6.4_
 
 # Make a static site with find(1), grep(1), and lowdown(1)
 
-[ssg](/bin/ssg3) is a static site generator written in shell and powered by
+[ssg](/bin/ssg3) is a static site generator written in shell. Optionally it
+converts Markdown files to HTML with
 [lowdown(1)](https://kristaps.bsd.lv/lowdown/).
-
-It converts `*.md` files to HTML.
 
 Unless a page has `<HTML>` tag _ssg3_ extracts its title, wraps it
 with `_header.html`, `_footer.html`, and injects `_styles.css`,
@@ -50,6 +49,9 @@ lowdown-0.3.1: ok
 $
 </pre>
 
+lowdown(1) is optional. It's required only if there are
+any `*.md` files.
+
 ## Usage
 
 <pre>
@@ -69,6 +71,12 @@ dst/index.html
 dst/sitemap.xml
 $ <b>open dst/index.html</b>
 </pre>
+
+ssg3 renders Markdown files first and then HTML files. In the
+following example `src/a.html` wins:
+
+	src/a.md   -> dst/a.html
+	src/a.html -> dst/a.html
 
 ## Incremental updates
 
@@ -129,10 +137,12 @@ $ <b>~/bin/s /var/www/htdocs/www</b>
 _[Previous version of ssg](ssg2.html) has been retired._
 
 Add `<HTML>` tag for pages your want to be excluded from parsing.
+If you don't use `*.md` files you can uninstall lowdown(1).
 
 `ssg2`                       | `ssg3`
 :--                          | :--
 Wraps pages with `<H1>` tag. | Doesn't wrap pages with `<HTML>` tag.
+lowdown(1) is required.      | lowdown(1) is optional.
 
 ---
 
