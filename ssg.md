@@ -1,21 +1,3 @@
-<p id="ds" class="quote">&#8220;I just found <b>ssg</b>!  You are so damn
-cool.  I love your approach to things.&#8221;</p>
-
-<img src="/ref/ds.jpeg" class="avatar"><br>
-**Derek Sivers**<br>
-_Entrepreneur and Book Publisher_<br>
-[sivers.org](https://sivers.org "25 Apr 2018")
-
----
-
-"SSG by @romanzolotarev is an impressively small static site
-generator with a tiny installed footprint. Really good for when you
-just need the core features."<br>&mdash;
-[Simon Dann](https://twitter.com/carbontwelve/status/1028936035143757825 "13 Aug 2018")
-(@carbontwelve)
-
----
-
 _Tested on [OpenBSD](/openbsd/) 6.3 and 6.4_
 
 # Make a static site with find(1), grep(1), and lowdown(1)
@@ -198,11 +180,24 @@ lowdown(1) is required.      | lowdown(1) is optional.
 &#9492;&#9472;&#9496;&#9492;&#9472;&#9496;&#9492;&#9472;&#9496;
 </pre>
 
+## Users and forks
+
+[blog.solobsd.org](https://blog.solobsd.org/)<br>
+[bsdjobs.com](https://www.bsdjobs.com/)<br>
+[grosu.nl](https://grosu.nl/)<br>
+[high5.nl](https://high5.nl/)<br>
+[matthewgraybosch.com](https://matthewgraybosch.com/)<br>
+[mvidal.net](https://mvidal.net/)<br>
+[openbsd.amsterdam](https://openbsd.amsterdam/)<br>
+[openbsd.space](https://openbsd.space/)<br>
+[romanzolotarev.com](https://www.romanzolotarev.com/) &mdash; obviously ;)<br>
+[runbsd.info](https://www.runbsd.info/)<br>
+[starbreakersaga.com](https://starbreakersaga.com/)<br>
+
 ---
 
 **Thanks** to
-[Mischa Peters](https://twitter.com/mischapeters) for testing and [using this version in production](https://openbsd.amsterdam),
 [Kristaps Dzonsons](https://www.divelog.blue/) for
-[lowdown(1)](https://kristaps.bsd.lv/lowdown/), and
+[lowdown(1)](https://kristaps.bsd.lv/lowdown/) and
 [Eric Radman](http://eradman.com) for
 [entr(1)](http://entrproject.org).
