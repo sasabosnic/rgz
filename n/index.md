@@ -48,5 +48,6 @@ If you run a newsletter on a related topic, ping me, I'll subscribe!
 
 ## Archive
 
+- [OpenBSD 6.4 and ssg3](2018-10-30.html "2018-10-30")
 - [A new ssg and more BSD stories](2018-09-23.html "2018-09-23")
 - [Making the web](2018-08-26.html "2018-08-26")

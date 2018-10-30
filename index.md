@@ -39,7 +39,7 @@ hi@romanzolotarev.com
 
 # How to...
 
-- [upgrade OpenBSD to 6.4](openbsd/upgrade.html "2018-10-18")
+- [upgrade OpenBSD on bare metal](openbsd/upgrade.html "2018-10-18")
 - [generate random string with random(4)](random.html "2018-09-27")
 - [find and remove whitespaces with grep(1) and sed(1)](ws.html "2018-09-23")
 - **[generate RSS feeds with grep(1), sed(1), and awk(1)](rssg.html "2018-09-21")**
