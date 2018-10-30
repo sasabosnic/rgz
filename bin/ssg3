@@ -200,29 +200,28 @@ render_html_file() {
 	header="$4"
 	footer="$5"
 
-	if echo "$body" | grep -q '<html'
-	then echo "$body"
-	else
-		title=$(echo "$body" | grep '^<h1' | head -1 | sed 's/<[^>]*>//g')
-		cat <<-EOF
-		<!DOCTYPE html>
-		<html lang="en">
-		<head>
-		<meta charset="UTF-8">
-		<meta name="viewport"
-		content="width=device-width, initial-scale=1">
-		<link rel="icon" type="image/png" href="/favicon.png">
-		<title>$(test -n "$title" && echo "$title - ")$site_title</title>
-		$head
-		</head>
-		<body>
-		$header
-		$body
-		$footer
-		</body>
-		</html>
-		EOF
-	fi
+	echo "$body" | grep -iq '<html' &&
+	echo "$body" && return
+
+	title=$(echo "$body" | grep -i '^<h1' | head -1 | sed 's/<[^>]*>//g')
+	cat <<-EOF
+	<!DOCTYPE html>
+	<html lang="en">
+	<head>
+	<meta charset="UTF-8">
+	<meta name="generator" content="romanzolotarev.com/bin/ssg3">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/png" href="/favicon.png">
+	<title>$(test -n "$title" && echo "$title - ")$site_title</title>
+	$head
+	</head>
+	<body>
+	$header
+	$body
+	$footer
+	</body>
+	</html>
+	EOF
 }
 
 list_pages() {
