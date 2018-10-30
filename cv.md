@@ -48,16 +48,6 @@ the business and <a href="tech.html">technical background</a>.</i>
 _Publishing, 2018&ndash;present_<br>
 [romanzolotarev.com/n/](/n/)
 
-<pre>
-700,000 tweet impressions monthly
-24,000+ words published
-23,000+ tweets
-1800+ Twitter followers
-400+ Mastodon followers
-90+ reviews
-380+ newsletter subscribers
-</pre>
-
 Writing [how-to guides](/) for beginners.<br>
 Advocating simple web development tools on [Twitter] and [Mastodon].<br>
 Serving [a very kind BSD community](words.html).
