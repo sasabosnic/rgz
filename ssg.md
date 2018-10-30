@@ -72,11 +72,57 @@ dst/sitemap.xml
 $ <b>open dst/index.html</b>
 </pre>
 
-ssg3 renders Markdown files first and then HTML files. In the
+## Markdown and HTML files
+
+_ssg3_ renders Markdown files first and then HTML files. In the
 following example `src/a.html` wins:
 
 	src/a.md   -> dst/a.html
 	src/a.html -> dst/a.html
+
+## Favicon
+
+Every page wrapped by _ssg3_ has this HTML.
+
+	<!DOCTYPE html>
+	<html lang="en">
+	<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+	content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/png" href="/favicon.png">
+
+So make sure you have `/favicon.png` in place.
+
+Some browsers fetch `/favicon.ico` despite what you specified in
+the `<LINK>` tag, so you can use [an empty one](/favicon.ico) (180
+bytes) as a placeholder.
+
+## JavaScript
+
+To inject JS to all pages add it to `_scripts.js`.
+I recommend to avoid JS whenever possible, though.
+
+## CSS
+
+To inject CSS to all pages add it to `_styles.css`.<br>
+Use my [_styles.css](/raw/_styles.css) as a starting point.
+
+## Sitemap
+
+_ssg3_ generates `sitemap.xml` with the list of all page.  Don't
+forget to add absolute URL of the sitemap to your `robot.txt`.<br>For
+example:
+
+	user-agent: *
+	sitemap: https://www.romanzolotarev.com/sitemap.xml
+
+## RSS
+
+To generate RSS feeds use [rssg](rssg.html), then add their URLs
+to `_rss.xml`.<br>For example:
+
+	<link rel="alternate" type="application/atom+xml" href="/rss.xml">
 
 ## Incremental updates
 
@@ -139,7 +185,7 @@ _[Previous version of ssg](ssg2.html) has been retired._
 Add `<HTML>` tag for pages your want to be excluded from parsing.
 If you don't use `*.md` files you can uninstall lowdown(1).
 
-`ssg2`                       | `ssg3`
+_ssg2_                       | _ssg3_
 :--                          | :--
 Wraps pages with `<H1>` tag. | Doesn't wrap pages with `<HTML>` tag.
 lowdown(1) is required.      | lowdown(1) is optional.
