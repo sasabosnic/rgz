@@ -1,5 +1,6 @@
 body {
   font-family: monospace;
+  color: #444444;
 }
 
 img {
@@ -13,20 +14,23 @@ h2 {
 }
 
 a {
+  color: #204fd5;
   text-decoration: none;
 }
-
+a:visited {
+  color: #334f83;
+}
 a:hover {
+  color: #204fd5;
   text-decoration: underline;
 }
 
 #blob a {
-  color: #777;
+  color: #777777;
   padding: 0 5px 0 0;
 }
 
 #blob a:hover {
-  color: blue;
   text-decoration: none;
 }
 
@@ -48,7 +52,7 @@ table td {
 #index tr:hover td,
 #log tr:hover td,
 #files tr:hover td {
-  background-color: #eee;
+  background-color: #eeeeee;
 }
 
 #index tr td:nth-child(2),
@@ -76,17 +80,19 @@ pre {
 }
 
 pre a.h {
-  color: #00a;
+  color: #888888;
 }
 
 span.i,
 pre a.i {
-  color: #070;
+  color: #24292e;
+  background-color: #e6ffed;
 }
 
 span.d,
 pre a.d {
-  color: #e00;
+  color: #24292e;
+  background-color: #ffeef0;
 }
 
 pre a.h:hover,
