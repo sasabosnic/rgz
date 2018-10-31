@@ -12,6 +12,10 @@ _Entrepreneur and Book Publisher_<br>
 
 ---
 
+"Updated my web server to OpenBSD 6.4 with help from @romanzolotarev. Thanks again for all your work!"<br>&mdash;
+[d4rk_0men](https://mobile.twitter.com/d4rk_0men/status/1054764230023364609 "23 Oct 2018")
+(@d4rk_0men)
+
 "Thanks to @romanzolotarev help I got the installer running and pulling packages right now. Installation in progress."<br>&mdash;
 [8008](https://twitter.com/l8n8dude/status/1047896838496505863 "04 Oct 2018")
 (@l8n8dude)
