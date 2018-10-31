@@ -184,6 +184,7 @@ lowdown(1) is required.      | lowdown(1) is optional.
 
 [blog.solobsd.org](https://blog.solobsd.org/)<br>
 [bsdjobs.com](https://www.bsdjobs.com/)<br>
+[cryogenix.net](https://cryogenix.net)<br>
 [grosu.nl](https://grosu.nl/)<br>
 [high5.nl](https://high5.nl/)<br>
 [matthewgraybosch.com](https://matthewgraybosch.com/)<br>
