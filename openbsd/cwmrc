@@ -37,7 +37,7 @@ snapdist 20
 sticky   yes
 
 command  calc           "xcalc"
-command  chrome         "chrome"
+command  chrome         "chrome --enable-unveil"
 command  console        "xconsole"
 command  firefox        "firefox"
 command  gimp           "gimp"
