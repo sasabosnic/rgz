@@ -2,8 +2,9 @@ _I run two websites: this one and [bsdjobs.com](https://www.bsdjobs.com/)._
 
 # Find me elsewhere
 
-[Mastodon](https://bsd.network/@romanzolotarev) (bsd.network)<br>
 [Twitter](https://twitter.com/romanzolotarev)<br>
+[DEV](https://dev.to/romanzolotarev)<br>
+[Mastodon](https://bsd.network/@romanzolotarev) (bsd.network)<br>
 [Patreon](https://patreon.com/romanzolotarev)<br>
 [PayPal](https://www.paypal.me/romanzolotarev)<br>
 [TinyLetter](https://tinyletter.com/romanzolotarev)<br>
