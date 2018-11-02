@@ -55,18 +55,18 @@ main() {
 	then
 		echo "$fs" | tee "$dst/.files"
 
-		if echo "$fs" | grep -q '.md$'
+		if echo "$fs" | grep -q '\.md$'
 		then test -x "$(which lowdown)" || exit 3
 		fi
-		echo "$fs" | grep '.md$' |
+		echo "$fs" | grep '\.md$' |
 		render_md_files "$src" "$dst" \
 		"$title" "$head" "$header" "$footer"
 
-		echo "$fs" | grep '.html$' |
+		echo "$fs" | grep '\.html$' |
 		render_html_files "$src" "$dst" \
 		"$title" "$head" "$header" "$footer"
 
-		echo "$fs" | grep -Ev '.md$|.html$' |
+		echo "$fs" | grep -Ev '\.md$|\.html$' |
 		(cd "$src" && cpio -pu "$dst")
 	fi
 
@@ -157,7 +157,7 @@ list_newer_files() {
 
 
 has_partials() {
-	grep -qE '^./_.*html$|^./_.*js$|^./_.*css$'
+	grep -qE '^./_.*\.html$|^./_.*\.js$|^./_.*\.css$'
 }
 
 
