@@ -8,3 +8,4 @@ xrdb "$HOME/.Xdefaults"
 echo 'Xft.dpi: 133' | xrdb -merge
 echo 'XTerm*faceName: DejaVu Sans Mono:size=12' | xrdb -merge
 doas sysctl machdep.lidaction=1
+pkill -HUP cwm
