@@ -65,6 +65,7 @@ _Updated on 1 Nov 2018_
 While you are in generous mood, here are people and projects I've
 supported, please consider supporting them too:
 
+- [Bryan Steele](https://brynet.biz.tm/ "02 Nov 2018 2HE50576BY512230V") 20.00 CAD
 - [Etsh Project](https://etsh.io/ "23 Jul 2018") [Logo, media kit](/etsh.io/)
 - [High5!](https://high5.nl/ "Since 20 Jun 2018") 60.00 EUR
 - [OpenBSD Amsterdam](https://openbsd.amsterdam/ "Since 10 Jun 2018") [Logo, media kit, website](/openbsd.amsterdam/)
