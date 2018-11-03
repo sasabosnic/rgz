@@ -26,8 +26,9 @@ Roman
 P.S. Here are all received donations. Please ping me, if yours hasn't
 been listed, or if you want to remove your name from the list.
 
-_Updated on 2 Nov 2018_
+_Updated on 3 Nov 2018_
 
+- [Isak Holmstr&ouml;m](https://www.patreon.com/iah/creators "03 Nov 2018") 1.00 USD Patreon
 - [Thomas Fragstein](https://www.patreon.com/user/creators?u=3821228 "01 Nov 2018") 1.00 USD Patreon
 - [Andrew Vieyra](https://www.patreon.com/andrewvieyra/creators "31 Oct 2018") 10.00 USD Patreon
 - [Eric LeBlanc](https://www.patreon.com/user/creators?u=845703 "02 Oct 2018") 10.00 USD Patreon
@@ -39,23 +40,23 @@ _Updated on 2 Nov 2018_
 - [Paul Kelly](https://www.patreon.com/user?u=13444615 "08 Sep 2018") 1.00 USD Patreon
 - [Joan Catala](https://twitter.com/joancatala "22 Aug 2018") 10.00 USD
 - [Ales Tepina](https://twitter.com/alestepi "21 Aug 2018") 10.00 USD
-- [Wesley Mouedine Assaby](https://twitter.com/wesley974 "20 Aug 2018") 5.00 USD Patreon
+- [Wesley Mouedine Assaby](https://twitter.com/wesley974 "20 Aug 2018") 10.00 USD Patreon
 - [Jeffrey Allen Neitzel](https://jan.etsh.io/ "24 Jul 2018") 15.00 USD
-- [Dylan Thiedeke](https://www.patreon.com/user/creators?u=2300411 "24 Jun 2018") 3.00 USD
+- [Dylan Thiedeke](https://www.patreon.com/user/creators?u=2300411 "24 Jun 2018") 4.00 USD
 - [Gabriel Francisco](https://twitter.com/fgbreel "8 Jun 2018") 10.00 EUR _"I love your blog and the content you share about OpenBSD! Keep rocking!"_
 - [Vultr](https://www.vultr.com/?ref=7035749 "8 Jun 2018") 50.00 USD
-- [micah](https://www.patreon.com/user/creators?u=4721204 "28 May 2018") 7.00 USD Patreon
+- [micah](https://www.patreon.com/user/creators?u=4721204 "28 May 2018") 8.00 USD Patreon
 - [Peter Kotr&#x10D;ka](https://www.patreon.com/pkotrcka/creators "Since 16 May 2018") 4.00 USD Patreon
-- [Alexander Gudulin](https://www.patreon.com/agudulin/creators "Since 14 May 2018") 4.00 USD Patreon
-- [Drew Bell](https://www.patreon.com/droob/creators "Since 29 Apr 2018") 5.00 USD Patreon
-- [Denis Borovikov](https://www.patreon.com/user/creators?u=10926064 "Since 25 Apr 2018") 25.00 USD Patreon
-- [Tom Smyth](https://www.patreon.com/user/creators?u=10913897 "Since 24 Apr 2018") 50.00 USD Patreon
+- [Alexander Gudulin](https://www.patreon.com/agudulin/creators "Since 14 May 2018") 5.00 USD Patreon
+- [Drew Bell](https://www.patreon.com/droob/creators "Since 29 Apr 2018") 6.00 USD Patreon
+- [Denis Borovikov](https://www.patreon.com/user/creators?u=10926064 "Since 25 Apr 2018") 30.00 USD Patreon
+- [Tom Smyth](https://www.patreon.com/user/creators?u=10913897 "Since 24 Apr 2018") 60.00 USD Patreon
 - [wireless connect ltd](http://wirelessconnect.eu "24 Apr 2018") 10.00 EUR _"keep up good work Roman"_
-- [Aleksey Popov](https://www.patreon.com/user?u=10910753 "Since 24 Apr 2018") 25.00 USD Patreon
+- [Aleksey Popov](https://www.patreon.com/user?u=10910753 "Since 24 Apr 2018") 30.00 USD Patreon
 - [Adam Dymitruk](https://twitter.com/adymitruk "24 Apr 2018") 83,800 Satoshi
-- [Ilmari Vacklin](https://www.patreon.com/user?u=2288738 "Since 23 Apr 2018") 5.00 USD Patreon
-- [Tom Atkinson](https://www.patreon.com/user?u=10778845 "Since 16 Apr 2018") 25.00 USD Patreon
-- [Wesley Moore](https://www.patreon.com/wezm "15 Apr 2018") 25.00 USD Patreon
+- [Ilmari Vacklin](https://www.patreon.com/user?u=2288738 "Since 23 Apr 2018") 6.00 USD Patreon
+- [Tom Atkinson](https://www.patreon.com/user?u=10778845 "Since 16 Apr 2018") 30.00 USD Patreon
+- [Wesley Moore](https://www.patreon.com/wezm "15 Apr 2018") 30.00 USD Patreon
 - [Mischa Peters](https://twitter.com/mischapeters "13 Apr 2018") [VPS](https://openbsd.amsterdam)
 - [Evander Sinque](https://twitter.com/FiLiS "31 Oct 2017") _Run BSD_ Stickers
 - [Mischa Peters](https://twitter.com/mischapeters "19 Sep 2017") _Run BSD_ T-shirt
