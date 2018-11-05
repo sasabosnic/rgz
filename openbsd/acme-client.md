@@ -134,8 +134,16 @@ server "example.com" {
 
 server "www.example.com" {
   listen on * port 80
-  alias "example.com"
-  block return 301 "https://www.example.com$REQUEST_URI"
+  root "/htdocs/www.example.com"
+  location "/.well-known/acme-challenge/*" {
+    root "/acme"
+    request strip 2
+  }
+}
+
+server "example.com" {
+  listen on * port 80
+  block return 301 "http://www.example.com$REQUEST_URI"
 }
 ```
 
