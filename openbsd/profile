@@ -54,18 +54,28 @@ yl() { mkdir -p "$HOME/downloads" && (cd "$HOME/downloads" && youtube-dl -f 'bes
 
 p() { PS1='$ '; clear; }
 
-mnt_sd()   { doas "$HOME/bin/mnt_crypto"  '87f25794950c8405.a' '83d9c53850315b14.a'; }
-umnt_sd()  { doas "$HOME/bin/umnt_crypto" '87f25794950c8405.a'; }
+mnt_sd()     { doas "$HOME/bin/mnt_crypto"  '87f25794950c8405.a' '83d9c53850315b14.a'; }
+umnt_sd()    { doas "$HOME/bin/umnt_crypto" '87f25794950c8405.a'; }
 arc_to_sd()  { doas "$HOME/bin/arc_with_timestamp" "$1" '/mnt/87f25794950c8405.a'; }
 
-mnt_sd2()  { doas "$HOME/bin/mnt_crypto"  'cca0df756b5bea87.a' '2ee857f508c168b8.a'; }
-umnt_sd2() { doas "$HOME/bin/umnt_crypto" 'cca0df756b5bea87.a'; }
+mnt_sd2()    { doas "$HOME/bin/mnt_crypto"  'cca0df756b5bea87.a' '2ee857f508c168b8.a'; }
+umnt_sd2()   { doas "$HOME/bin/umnt_crypto" 'cca0df756b5bea87.a'; }
 arc_to_sd2() { doas "$HOME/bin/arc_with_timestamp" "$1" '/mnt/cca0df756b5bea87.a'; }
 
-mnt_hdd()  { doas "$HOME/bin/mnt_crypto"  '31b1a7c06ca4e505.i' 'c8c569a177ce539a.a'; }
-umnt_hdd() { doas "$HOME/bin/umnt_crypto" '31b1a7c06ca4e505.i'; }
+mnt_hdd()    { doas "$HOME/bin/mnt_crypto"  '31b1a7c06ca4e505.i' 'c8c569a177ce539a.a'; }
+umnt_hdd()   { doas "$HOME/bin/umnt_crypto" '31b1a7c06ca4e505.i'; }
 arc_to_hdd() { doas "$HOME/bin/arc_with_timestamp" "$1" '/mnt/31b1a7c06ca4e505.i'; }
 
+mnt_xa()     { doas mkdir -p "/mnt/xa"; doas simple-mtpfs --device 1 "/mnt/xa" -o uid=1000 -o gid=1000 -o allow_other; }
+umnt_xa()    { doas umount "/mnt/xa"; }
+
+mnt_u2()  { doas "$HOME/bin/mnt_crypto"  '4fc37cf1ebe81213.a' '17b4dfdbd3c22759.a'; }
+umnt_u2() { doas "$HOME/bin/umnt_crypto" '4fc37cf1ebe81213.a'; }
+arc_to_u2() { doas "$HOME/bin/arc_with_timestamp" "$1" '/mnt/4fc37cf1ebe81213.a'; }
+
+mnt_u1()  { doas "$HOME/bin/mnt_crypto"  'a38cf81c8435b3cd.i' 'e55a17a697d8240d.a'; }
+umnt_u1() { doas "$HOME/bin/umnt_crypto" 'a38cf81c8435b3cd.i'; }
+arc_to_u1() { doas "$HOME/bin/arc_with_timestamp" "$1" '/mnt/a38cf81c8435b3cd.i'; }
 
 # alias cabal='env TMPDIR=/usr/local/cabal/build/ cabal'
 
