@@ -1,12 +1,23 @@
 _Tested on [OpenBSD](/openbsd/) 6.4 with rsync 3.1.3_
 
-# Copy files with rsync(1)
+# Copy files with rsync
+
+## Install
+
+<pre>
+# <b>pkg_add rsync-3.1.3</b>
+quirks-3.16 signed on 2018-10-12T15:26:25Z
+rsync-3.1.3: ok
+The following new rcscripts were installed: /etc/rc.d/rsyncd
+See rcctl(8) for details.
+#
+</pre>
 
 ## Paths
 
-[rync(1)](https://rsync.samba.org/) copies `src/` to `dst` and on
+[rync](https://rsync.samba.org/) copies `src/` to `dst` and on
 the second run it does nothing if `src/` hasn't changed. But if run
-rsync with `src` (without the trailing slash), it copies `src/` to
+_rsync_ with `src` (without the trailing slash), it copies `src/` to
 `dst/src`.
 
 <pre>
@@ -79,7 +90,7 @@ Where<br>
 
 ## Remote hosts
 
-Source or/and destination can be located on remove hosts.
+A source or/and destination can be located on remove hosts.
 For example, _server_ &mdash; is a remove source.
 
 <pre>
