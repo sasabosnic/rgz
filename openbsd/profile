@@ -32,7 +32,7 @@ alias leto='sssg leto'
 alias oams='sssg oams'
 alias runbsd='sssg runbsd'
 alias www='sssg www'
-alias zine='sssg zine'
+alias hhw='sssg hhw'
 
 sync_logs() { [ -n "$1" ] && { rsync -azvPc "$1:/var/www/logs/*" "$HOME/prv/logs/$1/"; }; }
 
