@@ -97,3 +97,36 @@ For example, _server_ &mdash; is a remove source.
 $ <b>rsync -a server:src/ dst</b>
 $
 </pre>
+
+## Exclude files
+
+<pre>
+$ <b>find src</b>
+src/bar
+src/bar/foo
+src/foo
+src/foobar
+$ <b>rsync -r --exclude='foo' src/ dst</b>
+$ <b>find dst</b>
+dst
+dst/bar
+dst/foobar
+$
+</pre>
+
+You can use patterns. For example:
+
+`*` &mdash; match any path, but stop at slashes.<br>
+`**` &mdash; anything, including slashes.<br>
+`?` &mdash; any character, except a slash.
+
+To delete files from `dst` that don't exist in `src/` use `--delete`
+option and to delete excluded as well use `--delete-excluded`:
+
+<pre>
+$ <b>rsync -r --exclude='foo*' --delete-excluded src/ dst</b>
+$ <b>find dst</b>
+dst
+dst/bar
+$
+</pre>
