@@ -12,6 +12,10 @@ _Entrepreneur and Book Publisher_<br>
 
 ---
 
+"Thank you! I have been wondering about this, so this tip was helpful."<br>&mdash;
+[Stig Atle](https://mobile.twitter.com/stigatle/status/1059769554618990592 "06 Nov 2018")
+(@stigatle)
+
 "Updated my web server to OpenBSD 6.4 with help from @romanzolotarev. Thanks again for all your work!"<br>&mdash;
 [d4rk_0men](https://mobile.twitter.com/d4rk_0men/status/1054764230023364609 "23 Oct 2018")
 (@d4rk_0men)
@@ -445,4 +449,4 @@ etc. I felt I should mention that to you &#x1F600;&#8221;</p>
 
 ---
 
-_90 quotes, but who's counting ;)_
+_91 quotes, but who's counting ;)_
