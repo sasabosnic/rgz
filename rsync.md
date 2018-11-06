@@ -44,7 +44,7 @@ Remember: Add the **trailing slash** to copy contents of `src`.
 To create an exact copy of `src` to `dst` use `-a` option:
 
 <pre>
-$ <b>rsync -a src/ dst</b>
+$ <b>rsync -aH src/ dst</b>
 $
 </pre>
 
@@ -55,7 +55,8 @@ Where<br>
 `-t` &mdash; _time_<br>
 `-g` &mdash; _group_<br>
 `-o` &mdash; _owner_<br>
-`-D` &mdash; _device_ and _special_ files
+`-D` &mdash; _device_ and _special_ files<br>
+`-H` &mdash; preserve hardlinks<br>
 
 ## Don't preserve some attributes
 
@@ -94,9 +95,12 @@ A source or/and destination can be located on remove hosts.
 For example, _server_ &mdash; is a remove source.
 
 <pre>
-$ <b>rsync -a server:src/ dst</b>
+$ <b>rsync -az server:src/ dst</b>
 $
 </pre>
+
+Where<br>
+`-z` &mdash; compress files during transfer.
 
 ## Exclude files
 
