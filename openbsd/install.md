@@ -1,4 +1,4 @@
-_Tested on [OpenBSD](/openbsd/) 6.3_
+_Tested on [OpenBSD](/openbsd/) 6.3 and 6.4_
 
 # Install OpenBSD on a desktop
 
