@@ -12,12 +12,18 @@ _Entrepreneur and Book Publisher_<br>
 
 ---
 
+"A few months ago, after a 10 year hiatus from @openbsd, @romanzolotarev's posts got me installing 6.3...  Fast forward to today (and 6.4), I've consolidated four #Debian boxes into a single Intel NUC and couldn't be happier: small, power efficient and EASY!  Dev laptop is next!"<br>&mdash;
+[Andrew Vieyra](https://twitter.com/andrewvieyra/status/1059804296668217344 "06 Nov 2018")
+(@andrewvieyra)
+
+
+
 "Thank you! I have been wondering about this, so this tip was helpful."<br>&mdash;
-[Stig Atle](https://mobile.twitter.com/stigatle/status/1059769554618990592 "06 Nov 2018")
+[Stig Atle](https://twitter.com/stigatle/status/1059769554618990592 "06 Nov 2018")
 (@stigatle)
 
 "Updated my web server to OpenBSD 6.4 with help from @romanzolotarev. Thanks again for all your work!"<br>&mdash;
-[d4rk_0men](https://mobile.twitter.com/d4rk_0men/status/1054764230023364609 "23 Oct 2018")
+[d4rk_0men](https://twitter.com/d4rk_0men/status/1054764230023364609 "23 Oct 2018")
 (@d4rk_0men)
 
 "Thanks to @romanzolotarev help I got the installer running and pulling packages right now. Installation in progress."<br>&mdash;
@@ -449,4 +455,4 @@ etc. I felt I should mention that to you &#x1F600;&#8221;</p>
 
 ---
 
-_91 quotes, but who's counting ;)_
+_93 quotes, but who's counting ;)_
