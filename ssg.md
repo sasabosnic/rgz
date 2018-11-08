@@ -172,6 +172,35 @@ _ssg2_                       | _ssg3_
 Wraps pages with `<H1>` tag. | Doesn't wrap pages with `<HTML>` tag.
 lowdown(1) is required.      | lowdown(1) is optional.
 
+
+
+## Dependencies
+
+_ssg3_ depends on few programs from OpenBSD base:
+
+<pre>
+$ <b>for f in $(which cat cpio date sh awk find grep printf readlink sort tee wc)</b>
+> <b>do ldd "$f"</b>
+> <b>done | awk '/\//{print$7}' | grep '.' | sort -u</b>
+/bin/cat
+/bin/cpio
+/bin/date
+/bin/sh
+/usr/bin/awk
+/usr/bin/find
+/usr/bin/grep
+/usr/bin/printf
+/usr/bin/readlink
+/usr/bin/sort
+/usr/bin/tee
+/usr/bin/wc
+/usr/lib/libc.so.92.5
+/usr/lib/libm.so.10.1
+/usr/lib/libutil.so.13.0
+/usr/lib/libz.so.5.0
+/usr/libexec/ld.so
+</pre>
+
 ---
 
 <pre>
