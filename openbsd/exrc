@@ -13,4 +13,3 @@ map gp :r!xclip -o -selection clipboard
 map gs {!}sort
 map gt mM:%s/[[:space:]]*$//`M
 set cedit=\
-set leftright
