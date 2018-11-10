@@ -10,13 +10,13 @@ apm -H
 # printf '.'
 # done)
 
-echo "ssg2 (clean)"
-time (for i in $(jot 5); do
-rm -rf /var/www/htdocs/www/*
-rm -rf /var/www/htdocs/www/.*
-ssg2 ~/src/www /var/www/htdocs/www/ 'Roman Zolotarev' 'http://www' >/dev/null 2>&1
-printf '.'
-done)
+# echo "ssg2 (clean)"
+# time (for i in $(jot 5); do
+# rm -rf /var/www/htdocs/www/*
+# rm -rf /var/www/htdocs/www/.*
+# ssg2 ~/src/www /var/www/htdocs/www/ 'Roman Zolotarev' 'http://www' >/dev/null 2>&1
+# printf '.'
+# done)
 
 echo "ssg3 (clean)"
 time (for i in $(jot 5); do
@@ -26,11 +26,11 @@ ssg3 ~/src/www /var/www/htdocs/www/ 'Roman Zolotarev' 'http://www' >/dev/null 2>
 printf '.'
 done)
 
-echo "ssg (clean)"
+echo "ssg3 next (clean)"
 time (for i in $(jot 5); do
 rm -rf /var/www/htdocs/www/*
 rm -rf /var/www/htdocs/www/.*
-ssg ~/src/www /var/www/htdocs/www/ 'Roman Zolotarev' 'http://www' >/dev/null 2>&1
+ssg3-next ~/src/www /var/www/htdocs/www/ 'Roman Zolotarev' 'http://www' >/dev/null 2>&1
 printf '.'
 done)
 
@@ -40,13 +40,13 @@ done)
 # printf '.'
 # done)
 
-echo "ssg2 (incremental)"
-time (for i in $(jot 5); do
-cat ~/src/www/ssg.md > ~/src/www/ssg_bench_test
-ssg2 ~/src/www /var/www/htdocs/www/ 'Roman Zolotarev' 'http:/www' >/dev/null 2>&1
-rm ~/src/www/ssg_bench_test
-printf '.'
-done)
+# echo "ssg2 (incremental)"
+# time (for i in $(jot 5); do
+# cat ~/src/www/ssg.md > ~/src/www/ssg_bench_test
+# ssg2 ~/src/www /var/www/htdocs/www/ 'Roman Zolotarev' 'http:/www' >/dev/null 2>&1
+# rm ~/src/www/ssg_bench_test
+# printf '.'
+# done)
 
 echo "ssg3 (incremental)"
 time (for i in $(jot 5); do
@@ -56,10 +56,10 @@ rm ~/src/www/ssg_bench_test
 printf '.'
 done)
 
-echo "ssg (incremental)"
+echo "ssg3 next (incremental)"
 time (for i in $(jot 5); do
 cat ~/src/www/ssg.md > ~/src/www/ssg_bench_test
-ssg ~/src/www /var/www/htdocs/www/ 'Roman Zolotarev' 'http:/www' >/dev/null 2>&1
+ssg3-next ~/src/www /var/www/htdocs/www/ 'Roman Zolotarev' 'http:/www' >/dev/null 2>&1
 rm ~/src/www/ssg_bench_test
 printf '.'
 done)

@@ -203,25 +203,23 @@ render_html_file() {
 	echo "$body" | grep -iq '<html' &&
 	echo "$body" && return
 
-	title=$(echo "$body" | grep -i '^<h1' | head -1 | sed 's/<[^>]*>//g')
-	cat <<-EOF
-	<!DOCTYPE html>
-	<html lang="en">
-	<head>
-	<meta charset="UTF-8">
-	<meta name="generator" content="romanzolotarev.com/bin/ssg3">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="icon" type="image/png" href="/favicon.png">
-	<title>$(test -n "$title" && echo "$title - ")$site_title</title>
-	$head
-	</head>
-	<body>
-	$header
-	$body
-	$footer
-	</body>
-	</html>
-	EOF
+	title=$(echo "$body" | awk 'tolower($0)~/^<h1/{gsub(/<[^>]*>/,"",$0);print;exit}')
+	echo '<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="romanzolotarev.com/bin/ssg3">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="/favicon.png">
+<title>'"$(test -n "$title" && echo "$title - ")$site_title"'</title>
+'"$head"'
+</head>
+<body>
+'"$header"'
+'"$body"'
+'"$footer"'
+</body>
+</html>'
 }
 
 list_pages() {
@@ -241,27 +239,23 @@ render_urls() {
 render_url() {
 	url="$1"
 	date="$2"
-	cat <<-EOF
-	<url>
-	<loc>$url</loc>
-	<lastmod>$date</lastmod>
-	<priority>1.0</priority>
-	</url>
-	EOF
+	echo '<url>
+<loc>'"$url"'</loc>
+<lastmod>'"$date"'</lastmod>
+<priority>1.0</priority>
+</url>'
 }
 
 
 render_sitemap() {
-	cat <<-EOF
-	<?xml version="1.0" encoding="UTF-8"?>
-	<urlset
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-	http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"
-	xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-	$(cat)
-	</urlset>
-	EOF
+	echo '<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"
+xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+'"$(cat)"'
+</urlset>'
 }
 
 

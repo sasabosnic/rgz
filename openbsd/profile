@@ -34,7 +34,7 @@ alias runbsd='sssg runbsd'
 alias www='sssg www'
 alias hhw='sssg hhw'
 
-sync_logs() { [ -n "$1" ] && { rsync -azcvP "$1:/var/www/logs/*" "$HOME/prv/logs/$1/"; }; }
+sync_logs() { [ -n "$1" ] && { rsync -azcvP "$1:/var/www/logs/*" "$HOME/prv/logs/$(date +%Y-%m-%d)-$1/"; }; }
 
 png() { optipng -preserve -strip all -o7 "$1"; }
 jpeg() { jpegoptim --strip-all --preserve --preserve-perms --verbose -m80 "$1"; }
