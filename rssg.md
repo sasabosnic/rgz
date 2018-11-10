@@ -1,4 +1,4 @@
-_Tested on [OpenBSD](/openbsd/) 6.3_
+_Tested on [OpenBSD](/openbsd/) 6.3 and 6.4_
 
 # Generate RSS feeds with grep(1), sed(1), and awk(1)
 
