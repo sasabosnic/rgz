@@ -1,0 +1,5 @@
+#!/bin/sh
+
+program="${0%_test}"
+body=$(cat "$program")
+echo "$body" | "$program"
