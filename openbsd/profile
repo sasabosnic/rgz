@@ -21,7 +21,7 @@ pass_edit() { pass edit "$1"; }
 pass_export() { pass export "$1"; }
 pass_show() { pass show "$1"; }
 
-
+t() { tmux new -As 0; }
 j() { stmux 'j' 'prv/j'       'vi my.journal'; }
 m() { stmux 'm' 'pub/music'   'cmus'; }
 n() { stmux 'n' 'downloads'   'newsboat'; }

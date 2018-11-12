@@ -9,6 +9,6 @@ b=$(readlink -f "${1}_test")
 
 test -f "$b" || b="$HOME/bin/no_tests"
 
-tmux split-window -p 90 "vi $a"
+tmux split-window -p 95 "vi $a"
 tmux split-window -p 40 -dh \
 "ls $a $b | entr -c sh -c 'echo $a;shellcheck $a $b && $b'"
