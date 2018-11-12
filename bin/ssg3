@@ -25,8 +25,8 @@ main() {
  	test -d "$1" || no_dir "$1"
  	test -d "$2" || no_dir "$2"
 
-	src=$(readlink -f "$1")
-	dst=$(readlink -f "$2")
+	src="$1"
+	dst="$2"
 
 
 	# files
@@ -83,7 +83,6 @@ main() {
 	if test -n "$urls"
 	then
 		echo "$urls" |
-		sort |
 		render_urls "$base_url" "$date" |
 		render_sitemap > "$dst/sitemap.xml"
 	fi
