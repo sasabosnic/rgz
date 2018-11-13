@@ -26,8 +26,10 @@ Roman
 P.S. Here are all received donations. Please ping me, if yours hasn't
 been listed, or if you want to remove your name from the list.
 
-_Updated on 3 Nov 2018_
+_Updated on 13 Nov 2018_
 
+- [Hajime Edakawa](https://twitter.com/hjmedkw "13 Nov 2018") 50.00 USD
+- [Leon Stafford](https://www.patreon.com/beautifulmoalboal "12 Nov 2018") 1.00 USD Patreon
 - [Isak Holmstr&ouml;m](https://www.patreon.com/iah/creators "03 Nov 2018") 1.00 USD Patreon
 - [Thomas Fragstein](https://www.patreon.com/user/creators?u=3821228 "01 Nov 2018") 1.00 USD Patreon
 - [Andrew Vieyra](https://www.patreon.com/andrewvieyra/creators "31 Oct 2018") 10.00 USD Patreon

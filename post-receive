@@ -13,8 +13,9 @@ fi
 dst="/var/www/htdocs/$(basename "$pwd" '.git')"
 src="$dst/raw"
 
-rm -f "$dst/.files"
-rm -rf "$src"
+rm -rf "${dst:?}/.*"
+rm -rf "${dst:?}/*"
+rm -rf "${src:?}"
 git clone . "$src"
 
 "$HOME/bin/ssg3" "$src" "$dst" "$title" "$url" > /dev/null
