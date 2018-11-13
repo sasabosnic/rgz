@@ -36,10 +36,7 @@ fontname fixed-13
 snapdist 20
 sticky   yes
 
-command  calc           "xcalc"
 command  chrome         "chrome --enable-unveil"
-command  console        "xconsole"
-command  firefox        "firefox"
 command  gimp           "gimp"
 command  inkscape       "inkscape"
 command  office         "libreoffice"
