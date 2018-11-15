@@ -54,9 +54,9 @@ yl() { mkdir -p "$HOME/downloads" && (cd "$HOME/downloads" && youtube-dl -f 'bes
 
 p() { PS1='$ '; clear; }
 
-mnt_sd()     { doas "$HOME/bin/mnt_crypto"  '87f25794950c8405.a' '83d9c53850315b14.a'; }
-umnt_sd()    { doas "$HOME/bin/umnt_crypto" '87f25794950c8405.a'; }
-arc_to_sd()  { doas "$HOME/bin/arc_with_timestamp" "$1" '/mnt/87f25794950c8405.a'; }
+mnt_sd()     { doas "$HOME/bin/mnt_crypto"  '36a604aa7599cf63.a' 'fdfc727794396746.a'; }
+umnt_sd()    { doas "$HOME/bin/umnt_crypto" '36a604aa7599cf63.a'; }
+arc_to_sd()  { doas "$HOME/bin/arc_with_timestamp" "$1" '/mnt/36a604aa7599cf63.a'; }
 
 mnt_sd2()    { doas "$HOME/bin/mnt_crypto"  'cca0df756b5bea87.a' '2ee857f508c168b8.a'; }
 umnt_sd2()   { doas "$HOME/bin/umnt_crypto" 'cca0df756b5bea87.a'; }
