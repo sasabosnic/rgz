@@ -2,6 +2,30 @@ _Thank you for your kind words and [support](sponsors.html)!_
 
 # People are saying...
 
+<p id="nixcraft" class="quote">&#8220;Clever. This one is for you @romanzolotarev who recently helped with some css. Give him follow if you are into openbsd and unix like system&#8221;</p>
+
+<img src="/ref/nixcraft.jpeg" class="avatar"><br>
+**Vivek Gite**<br>
+_Author, sysadmin, and trainer_<br>
+[@nixCraft](https://twitter.com/nixcraft/status/1063025318993297408 "15 Nov 2018")<br>
+[cyberciti.biz](https://www.cyberciti.biz/)
+
+---
+
+"Roman is good! Shares his knowlegde"<br>&mdash;
+[PieterHog](https://twitter.com/PieterHog/status/1063029520536690688 "15 Nov 2018")
+(@PieterHog)
+
+"I could not believe, but installing #openbsd on laptop was 5 times easier than installing Ubuntu. 'fw_update' does miracles! Thanks @romanzolotarev and some unknown hero at sohcahtoa.org.uk/openbsd.html"<br>&mdash;
+[Dmytro Gladkyi](https://twitter.com/DmytroGladkyi/status/1063197232135106560 "15 Nov 2018")
+(@DmytroGladkyi)
+
+"A few months ago, after a 10 year hiatus from @openbsd, @romanzolotarev's posts got me installing 6.3...  Fast forward to today (and 6.4), I've consolidated four #Debian boxes into a single Intel NUC and couldn't be happier: small, power efficient and EASY!  Dev laptop is next!"<br>&mdash;
+[Andrew Vieyra](https://twitter.com/andrewvieyra/status/1059804296668217344 "06 Nov 2018")
+(@andrewvieyra)
+
+---
+
 <p id="ds" class="quote">&#8220;I just found <a href="/ssg.html">ssg</a>!
 You are so damn cool.  I love your approach to things.&#8221;</p>
 
@@ -12,15 +36,29 @@ _Entrepreneur and Book Publisher_<br>
 
 ---
 
-"A few months ago, after a 10 year hiatus from @openbsd, @romanzolotarev's posts got me installing 6.3...  Fast forward to today (and 6.4), I've consolidated four #Debian boxes into a single Intel NUC and couldn't be happier: small, power efficient and EASY!  Dev laptop is next!"<br>&mdash;
-[Andrew Vieyra](https://twitter.com/andrewvieyra/status/1059804296668217344 "06 Nov 2018")
-(@andrewvieyra)
+"...your posts are helping me tremendously with my first steps in the OpenBSD world so thank you :)"<br>&mdash;
+[julien](https://mastodon.sdf.org/@julienxx/101064096826284390 "14 Nov 2018")
+(@julienxx@mastodon.sdf.org)
 
+"...I'm always amazed by shell and bsd base system, all that cool native tools. Thx roman to make me discover those tools :)"<br>&mbash;
+[dervishe](https://twitter.com/dervyshe/status/1062346412145496064 "13 Nov 2018")
+(@dervyshe)
 
+"...I'm so happy because now I've learned something new! I'll never forgot your kindness to me, Thank you for you help!"<br>&mdash;
+[Hajime Edakawa](https://twitter.com/hjmedkw/status/1061976063872385024 "12 Nov 2018")
+(@hjmedkw)
+
+"Definitely got me into #OpenBSD by replying with compelling facts vs nerd rage to a fairly ignorant post I made on Twitter :) [patreon.com/romanzolotarev](https://patreon.com/romanzolotarev)<br> $1 a month to @romanzolotarev will come back to me x1000 anyway, in the form of new knowledge and inspiration. Thanks, Roman!"<br>&mdash;
+[Leon Stafford](https://twitter.com/leonvolunteers/status/1061844648799297538 "12 Nov 2018")
+(@leonvolunteers)
 
 "Thank you! I have been wondering about this, so this tip was helpful."<br>&mdash;
 [Stig Atle](https://twitter.com/stigatle/status/1059769554618990592 "06 Nov 2018")
 (@stigatle)
+
+"I'm so glad I can finally make a good use of @romanzolotarev awesome posts like this one [romanzolotarev.com/stagit.html](/stagit.html)"<br>&mdash;
+[julien](https://mastodon.sdf.org/@julienxx/101020641462258473 "05 Nov 2018")
+(@julienxx@mastodon.sdf.org)
 
 "Updated my web server to OpenBSD 6.4 with help from @romanzolotarev. Thanks again for all your work!"<br>&mdash;
 [d4rk_0men](https://twitter.com/d4rk_0men/status/1054764230023364609 "23 Oct 2018")
@@ -455,4 +493,4 @@ etc. I felt I should mention that to you &#x1F600;&#8221;</p>
 
 ---
 
-_93 quotes, but who's counting ;)_
+_101 quotes, but who's counting ;)_
