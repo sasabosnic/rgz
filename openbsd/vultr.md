@@ -1,8 +1,3 @@
-"Just launched my first OpenBSD instance on @Vultr! I'm excited
-to *finally* dig into it. I blame @romanzolotarev"<br>&mdash;
-[lambdanerd](https://mobile.twitter.com/lambdanerd/status/1027817634434371584 "20 Aug 2018")
-(@lambdanerd)
-
 **DISCLAIMER**<br> I'm a customer of Vultr and the yellow button
 is a referral link.  When you [sign
 up](https://www.vultr.com/pricing/?ref=7035749), Vultr adds few
@@ -24,7 +19,7 @@ Deploy an instance, for example:
 1. Server Type: 64 bit OS, **OpenBSD 6.3 x64**
 1. Server Size:
    - _For IPv6 only_: **$2.50/mo** 20 GB SSD 512MB Memory
-   - _IPv4 and IPv6_: **$5.00/mo** 25 GB SSD 1024MB Memory
+   - _IPv4 and IPv6_: **$3.50/mo** 20 GB SSD 512MB Memory
 1. Additional Features: **None**
 1. Start Script: **None**
 1. SSH Keys: **Add new key**
@@ -36,7 +31,7 @@ and your private SSH key (assuming it's in the default location:
 `~/.ssh/id_ed25519`):
 
 	$ ssh root@XXX.XXX.XXX.XXX
-	OpenBSD 6.4 (GENERIC) #349: Thu Oct 11 13:25:13 MDT 2018
+	OpenBSD 6.3 (GENERIC) #349: Thu Oct 11 13:25:13 MDT 2018
 
 	Welcome to OpenBSD: The proactively secure Unix-like operating system.
 

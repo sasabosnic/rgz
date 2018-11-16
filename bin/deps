@@ -1,17 +1,8 @@
 #!/bin/sh
 
-tr -c 'a-z0-9_/' '\n' |
-grep . |
-sort -u |
-while read -r x
-do which "$x" 2>/dev/null
+while read -r f
+do ldd "$f" 2>/dev/null
 done |
-xargs ldd 2>/dev/null |
 awk '/\//{print$7}' |
 grep . |
-sort -u |
-while read -r c
-do du -k "$c"
-done |
-sort -nr |
-awk '{i++;print $0;a=a+$1}END{print a "\t" i}'
+sort -u
