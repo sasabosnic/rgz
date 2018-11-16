@@ -39,7 +39,8 @@ hi@romanzolotarev.com
 
 # How to...
 
-- [mount file system via Media Transfer Protocol on #OpenBSD](openbsd/mtp.html "2018-11-06")
+- [mount exFAT file system on OpenBSD](openbsd/exfat.html "2018-11-16")
+- [mount file system via Media Transfer Protocol on OpenBSD](openbsd/mtp.html "2018-11-06")
 - [upgrade OpenBSD on bare metal](openbsd/upgrade.html "2018-10-18")
 - [generate random string with random(4)](random.html "2018-09-27")
 - [find and remove whitespaces with grep(1) and sed(1)](ws.html "2018-09-23")
