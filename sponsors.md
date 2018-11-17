@@ -16,7 +16,7 @@ To keep this website alive:
 
 <!-- - send satoshis to [`3MZ9d6NTsirYfjx9iJVieT2WCHnzBZckHd`](bitcoin://3MZ9d6NTsirYfjx9iJVieT2WCHnzBZckHd), -->
 
-<a href="/paypal.html"><span class="button">donate via PayPal</span></a>
+<a href="/paypal.html"><span class="form__button">donate via PayPal</span></a>
 
 Don't hesitate to contact me if you have questions or need my help.
 

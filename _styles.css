@@ -1,6 +1,10 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0 auto;
-  max-width: 700px;
+  max-width: 800px;
   padding: 20px;
   background-color: #f4f4f4;
   color: #444444;
@@ -17,8 +21,9 @@ a:hover {
 }
 
 body,
-input,
-button {
+.form__textarea,
+.form__button,
+.form__field {
   font-family: "Noto Serif", serif;
   font-size: 20px;
 }
@@ -73,30 +78,45 @@ p {
   line-height: 40px;
 }
 
-.button,
-.email {
-  -webkit-appearance: none;
-  color: #000000;
-  padding: 15px;
-}
-
-.email {
-  background-color: #ffffff;
-  border: solid 1px #888888;
-}
-
-.button {
-  background-color: #ffc469;
-  border: solid 1px #ffc469;
-  font-weight: bold;
-  display: inline-block;
-  text-align: center;
-  text-decoration: none;
-}
 .blue {
   background-color: #0000cc;
   color: #ffffff;
 }
 .yell {
   background-color: #ffeeaa;
+}
+
+.form__error {
+  font-weight: bold;
+  color: #aa0000;
+}
+.form__label,
+.form__textarea,
+.form__button,
+.form__field {
+  margin-bottom: 10px;
+}
+.form__field,
+.form__textarea {
+  width: 100%;
+  max-width: 400px;
+}
+.form__button,
+.form__textarea,
+.form__field {
+  -webkit-appearance: none;
+  color: #000000;
+  padding: 15px;
+}
+.form__field {
+  background-color: #ffffff;
+  border: solid 1px #888888;
+}
+.form__button {
+  background-color: #ffc469;
+  border: solid 1px #ffc469;
+  font-weight: bold;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
 }

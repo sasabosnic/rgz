@@ -20,9 +20,9 @@ Thank you for
 
 **Type-in your email** to get my [Mastering the Web](n/) newsletter:
 
-<form method="post" action="https://tinyletter.com/romanzolotarev">
-<input class="email" name="email" type="email" placeholder="email@example.com">
-<button class="button" type="submit">Subscribe</button>
+<form class="form" method="post" action="https://tinyletter.com/romanzolotarev">
+<input class="form__field" name="email" type="email" placeholder="email@example.com">
+<button class="form__button" type="submit">Subscribe</button>
 </form>
 
 or subscribe to [RSS](https://www.romanzolotarev.com/rss.xml),

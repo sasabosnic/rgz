@@ -1,0 +1,27 @@
+#!/bin/sh
+set -e
+
+no_dir() { echo "${0##*/}: $1: No such directory" >&2; exit 2; }
+# base64() { echo "=?utf-8?B?$(echo "$1"|b64encode /dev/stdin|sed '1d;$d')?="; }
+
+CHROOT='/var/www'
+DB='/db/www'
+EXP_TIME='3600'
+FROM='hi@romanzolotarev.com'
+NAME='Roman Zolotarev'
+
+POSTS="${CHROOT}$DB/posts"
+TOKENS="${CHROOT}$DB/tokens"
+test -d "$POSTS" || no_dir "$POSTS"
+test -d "$TOKENS" || no_dir "$TOKENS"
+
+find "${POSTS}" -type f |
+while read -r post
+do
+	test -f "$post" || break
+	# sendmail -t -F "$(base64 "$NAME")" -f "$FROM" < "$post"
+	sendmail -t -F "$NAME" -f "$FROM" < "$post"
+	rm "$post"
+done
+
+find "$TOKENS" -type f -cmin "+$(( EXP_TIME / 60 ))" -delete

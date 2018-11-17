@@ -24,9 +24,9 @@ best parts and send them to you. Stay tuned!
 
 **Type-in your email** to get my newsletter:
 
-<form method="post" action="https://tinyletter.com/romanzolotarev">
-<input class="email" name="email" type="email" placeholder="email@example.com">
-<button class="button" type="submit">Subscribe</button>
+<form class="form" method="post" action="https://tinyletter.com/romanzolotarev">
+<input class="form__field" name="email" type="email" placeholder="email@example.com">
+<button class="form__button" type="submit">Subscribe</button>
 </form>
 
 Subscribe via [RSS](https://www.romanzolotarev.com/n/rss.xml)
