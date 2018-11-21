@@ -9,16 +9,15 @@ my morale enormously. Thank you.
 To keep this website alive:
 
 - try my how-to guides, review, and run my scripts,
-- email me your feedback,
+- [email me](mailto:hi@romanzolotarev.com) your feedback,
 - retweet [my tweets](https://twitter.com/romanzolotarev),
 - boost [my toots](https://bsd.network/@romanzolotarev),
-- **[become my patron on Patreon](/patreon.html)**, or...
+- dontate:
 
 <!-- - send satoshis to [`3MZ9d6NTsirYfjx9iJVieT2WCHnzBZckHd`](bitcoin://3MZ9d6NTsirYfjx9iJVieT2WCHnzBZckHd), -->
 
-<a href="/paypal.html"><span class="form__button">donate via PayPal</span></a>
-
-Don't hesitate to contact me if you have questions or need my help.
+<a href="/patreon.html"><span class="form__button patreon">Patreon</span></a>
+<a href="/paypal.html"><span class="form__button paypal">PayPal</span></a>
 
 Truly yours,<br>
 Roman
@@ -26,13 +25,15 @@ Roman
 P.S. Here are all received donations. Please ping me, if yours hasn't
 been listed, or if you want to remove your name from the list.
 
-_Updated on 13 Nov 2018_
+_Updated on 21 Nov 2018_
 
+- [Roger](https://www.patreon.com/solvaholic/creators "21 Nov 2018") 1.00 USD Patreon
 - [Hajime Edakawa](https://twitter.com/hjmedkw "13 Nov 2018") 50.00 USD
 - [Leon Stafford](https://www.patreon.com/beautifulmoalboal "12 Nov 2018") 1.00 USD Patreon
 - [Isak Holmstr&ouml;m](https://www.patreon.com/iah/creators "03 Nov 2018") 1.00 USD Patreon
 - [Thomas Fragstein](https://www.patreon.com/user/creators?u=3821228 "01 Nov 2018") 1.00 USD Patreon
 - [Andrew Vieyra](https://www.patreon.com/andrewvieyra/creators "31 Oct 2018") 10.00 USD Patreon
+- [Mischa Peters](https://twitter.com/mischapeters "14 Oct 2018") OpenBSD Amsterdam T-Shirt x2
 - [Eric LeBlanc](https://www.patreon.com/user/creators?u=845703 "02 Oct 2018") 10.00 USD Patreon
 - [David Carlier](https://twitter.com/devnexen "01 Oct 2018") 20.00 USD
 - Hans Solo 4.00 USD
@@ -60,8 +61,8 @@ _Updated on 13 Nov 2018_
 - [Tom Atkinson](https://www.patreon.com/user?u=10778845 "Since 16 Apr 2018") 30.00 USD Patreon
 - [Wesley Moore](https://www.patreon.com/wezm "15 Apr 2018") 30.00 USD Patreon
 - [Mischa Peters](https://twitter.com/mischapeters "13 Apr 2018") [VPS](https://openbsd.amsterdam)
-- [Evander Sinque](https://twitter.com/FiLiS "31 Oct 2017") _Run BSD_ Stickers
-- [Mischa Peters](https://twitter.com/mischapeters "19 Sep 2017") _Run BSD_ T-shirt
+- [Evander Sinque](https://twitter.com/FiLiS "31 Oct 2017") Run BSD Stickers
+- [Mischa Peters](https://twitter.com/mischapeters "19 Sep 2017") Run BSD T-shirt
 
 ## People and projects to support
 

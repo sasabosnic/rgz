@@ -11,7 +11,7 @@ If you need a new OpenBSD server, make sure you have your [public
 SSH key](/ssh.html) handy, then...
 
 <a href="https://www.vultr.com/pricing/?ref=7035749"><span
-class="form__button">sign up at Vultr</span></a>
+class="form__button vultr">sign up at Vultr</span></a>
 
 Deploy an instance, for example:
 

@@ -105,18 +105,36 @@ p {
 .form__textarea,
 .form__field {
   -webkit-appearance: none;
-  color: #000000;
   padding: 15px;
 }
+.form__textarea,
 .form__field {
   background-color: #ffffff;
+  color: #000000;
   border: solid 1px #888888;
 }
+
 .form__button {
-  background-color: #ffc469;
-  border: solid 1px #ffc469;
+  background-color: #334f83;
+  border: solid 1px #334f83;
+  color: #ffffff;
   font-weight: bold;
   display: inline-block;
   text-align: center;
   text-decoration: none;
+}
+.paypal {
+  background-color: #ffc469;
+  border: solid 1px #ffc469;
+  color: #000000;
+}
+.patreon {
+  background-color: #f96854;
+  border: solid 1px #f96854;
+  color: #ffffff;
+}
+.vultr {
+  background-color: #1e88e5;
+  border: solid 1px #1e88e5;
+  color: #ffffff;
 }
