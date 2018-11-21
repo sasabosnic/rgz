@@ -3,7 +3,11 @@
 
 for file in $(find "$2" -name 'access*'|sort -nr)
 do
-	logs="$(zgrep "$1" "$file" | cut -d' ' -f2-)"
+	logs="$(
+		zgrep "$1" "$file" |
+		grep 'HTTP/1.1" 200 ' |
+		grep -viE 'pingdom|updown' |
+		cut -d' ' -f2-)"
 	stats="$(echo "$logs" | logswan - 2>/dev/null)"
 
 	printf '%s %s %s %s \n' \
