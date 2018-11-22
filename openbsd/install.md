@@ -31,12 +31,12 @@ a partition layout.
 # <b>fdisk -iy -g -b 960 sd0</b>
 # <b>disklabel -E sd0</b>
 Label editor (enter '?' for help at any prompt)
-> <b>a a</b>
+<i><b>a a</b></i>
 offset: [1024]
 size: [500117105]
 FS type: [4.2BSD] <b>RAID</b>
-> <b>w</b>
-> <b>q</b>
+<i><b>w</b></i>
+<i><b>q</b></i>
 No label changes.
 #
 </pre>
@@ -48,8 +48,8 @@ Use [diceware](/diceware.html), for example.
 # <b>bioctl -c C -l sd0a softraid0</b>
 New passphrase:
 Re-type passphrase:
-<span class="blue">sd2 at scsibus2 targ 1 lun 0: &lt;OPENBSD, SR CRYPTO, 006&gt; SCSI2 0/direct fixed
-sd2: 244190MB, 512 bytes/sector, 500102858 sectors</span>
+<strong>sd2 at scsibus2 targ 1 lun 0: &lt;OPENBSD, SR CRYPTO, 006&gt; SCSI2 0/direct fixed
+sd2: 244190MB, 512 bytes/sector, 500102858 sectors</strong>
 softraid0: CRYPTO volume attached as sd2
 # <b>cd /dev && sh MAKEDEV sd2</b>
 # <b>dd if=/dev/zero of=/dev/rsd2c bs=1m count=1</b>
@@ -130,7 +130,7 @@ ampd (ok)
 Add your _username_ `/etc/doas.conf`:
 
 <pre>
-# <b>echo 'permit <i>username</i>' > /etc/doas.conf</b>
+# <b>echo 'permit <em>username</em>' > /etc/doas.conf</b>
 #
 </pre>
 

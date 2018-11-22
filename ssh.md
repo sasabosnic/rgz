@@ -10,7 +10,7 @@ Generate a new SSH key pair and enter that passphrase.
 <pre>
 $ <b>ssh-keygen -t ed25519 -a 100</b>
 Enter file in which to save the key
-(/home/<i>username</i>/.ssh/id_ed25519):
+(/home/<em>username</em>/.ssh/id_ed25519):
 Generating public/private ed25519 key pair.
 Enter passphrase (empty for no passphrase):
 Enter same passphrase again:
@@ -42,7 +42,7 @@ RSA keys as a fallback.
 <pre>
 $ <b>ssh-keygen -t rsa -b 4096 -o -a 100</b>
 Enter file in which to save the key
-(/home/<i>username</i>/.ssh/id_rsa):
+(/home/<em>username</em>/.ssh/id_rsa):
 Enter passphrase (empty for no passphrase):
 Enter same passphrase again:
 Your identification has been saved in ~/.ssh/id_rsa.
@@ -78,10 +78,10 @@ destinations.
 Add all your frequently used hosts to `~/.ssh/config`, like this:
 
 <pre>
-Host <b><i>remote_host</i></b>
-  User <b><i>username_on_remote_host</i></b>
-  Hostname <b><i>www.example.com</i></b>
-  IdentityFile <b>/home/<i>username</i>/.ssh/id_ed25519</b>
+Host <em>remote_host</em>
+  User <em>username_on_remote_host</em>
+  Hostname <em>www.example.com</em>
+  IdentityFile /home/<em>username</em>/.ssh/id_ed25519
 </pre>
 
 After adding this to your SSH configuration you can run `ssh www` instead

@@ -38,7 +38,7 @@ parse them into full path `/dev/rsd0c`.
 
 <pre>
 # <b>disklabel sd1</b>
-# <span class="yell">/dev/rsd1c</span>:
+# <em>/dev/rsd1c</em>:
 ...
 #
 </pre>
@@ -49,7 +49,7 @@ with block devices.
 
 <pre>
 # <b>fdisk /dev/sd1c</b>
-fdisk: <span class="yell">/dev/sd1c</span> is not a character device
+fdisk: <em>/dev/sd1c</em> is not a character device
 #
 </pre>
 
@@ -92,7 +92,7 @@ If you are looking for a just connected USB drive, then grep(1) word
 
 <pre>
 $ <b>dmesg | grep removable | tail -1</b>
-<span class="yell">sd1</span> at scsibus5 ...  SCSI3 0/direct removable ...
+<em>sd1</em> at scsibus5 ...  SCSI3 0/direct removable ...
 $
 </pre>
 
@@ -122,7 +122,7 @@ drivedata: 0
 
 16 partitions:
 #                size      offset  fstype [fsize bsize   cpg]
-<span class="yell">  a:</span>         31260672           0  4.2BSD   2048 16384     1
+<em>  a:</em>         31260672           0  4.2BSD   2048 16384     1
   c:         31260672           0  unused
 #
 </pre>

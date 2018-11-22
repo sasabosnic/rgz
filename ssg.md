@@ -180,8 +180,8 @@ _ssg3_ depends on few programs from OpenBSD base:
 
 <pre>
 $ <b>for f in $(which cat cpio date sh awk find grep printf readlink sort tee wc)</b>
-> <b>do ldd "$f"</b>
-> <b>done | awk '/\//{print$7}' | grep '.' | sort -u</b>
+<i><b>do ldd "$f"</b></i>
+<i><b>done | awk '/\//{print$7}' | grep '.' | sort -u</b></i>
 /bin/cat
 /bin/cpio
 /bin/date

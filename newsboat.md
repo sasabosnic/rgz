@@ -11,44 +11,35 @@ newsboat-2.10.2: ok
 #
 </pre>
 
-Add the first feed to your `.newsboat/urls`:
+Add the first feed to your `.newsboat/urls`, add `.newsboat/config`, run newsboat(1):
 
 <pre>
 $ <b>mkdir -p "$HOME/.newsboat"</b>
-$ <b>echo 'https://www.romanzolotarev.com/rss.xml' \
-> "$HOME/.newsboat/urls"</b>
+$ <b>echo 'https://www.romanzolotarev.com/rss.xml' \</b>
+<i><b>"$HOME/.newsboat/urls"</b></i>
 $
+$ <b>cat &gt; "$HOME/.newsboat/config" &lt;&lt; EOF</b>
+<i>browser         "firefox"</i>
+<i>player          "mpv"</i>
+<i>download-path   "~/downloads/%n"</i>
+<i>save-path       "~/downloads"</i>
+<i>reload-threads  20</i>
+<i>cleanup-on-quit yes</i>
+<i>text-width      74</i>
+<i></i>
+<i>bind-key - quit</i>
+<i>bind-key G end</i>
+<i>bind-key g home</i>
+<i>bind-key j down</i>
+<i>bind-key k up</i>
+<i><b>EOF</b></i>
+$
+$ <b>newsboat</b>
 </pre>
 
-Check out my [.newsboat/urls](/blogroll.txt).
+From a list of feeds select the first one and get the list of items:
 
-Add `.newsboat/config`:
-
-```
-browser         "firefox"
-player          "mpv"
-download-path   "~/downloads/%n"
-save-path       "~/downloads"
-reload-threads  20
-cleanup-on-quit yes
-text-width      74
-
-bind-key - quit
-bind-key G end
-bind-key g home
-bind-key j down
-bind-key k up
-```
-
-Run newsboat(1):
-
-    $ newsboat
-
-You'll get a list of feeds.
-
-Select the first one and get the list of items:
-
-```
+<pre>
 newsboat 2.10.2 - Articles in feed 'Roman Zolotarev' (1 unread
    1 N  May 06   2.2K  Configure newsboat(1) to read RSS feeds
    2    May 01   1.4K  Configure minimalist login on OpenBSD
@@ -72,7 +63,7 @@ newsboat 2.10.2 - Articles in feed 'Roman Zolotarev' (1 unread
   20    Sep 19   1.0K  Prepare a bootable OpenBSD drive on mac
   21    Sep 01   4.2K  Configure YubiKey for login and SSH on
 -:Quit ENTER:Open s:Save r:Reload n:Next Unread A:Mark All Rea
-```
+</pre>
 
 Navigate with  `j`, `k`, `G`, `g`, `-`.
 
@@ -86,3 +77,5 @@ Default key bindings:
 `E` - edit the list of your feeds in `~/.newsboat/urls`<br>
 `r` - reload the feed<br>
 `q` - go up or quit
+
+Check out my [.newsboat/urls](/blogroll.txt).

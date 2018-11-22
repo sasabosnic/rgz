@@ -52,8 +52,8 @@ the encrypted drive.
 <pre>
 # <b>bioctl -c C -l /dev/sd0a softraid0</b>
 passphrase:
-<span class="blue">scsibus1 at softraid0: 1 targets
-sd3 at scsibus2 targ 0 lun 0: &lt;OPENBSD, SR RAID 1, 005&gt; SCSI2 0/direct fixed</span>
+<strong>scsibus1 at softraid0: 1 targets
+sd3 at scsibus2 targ 0 lun 0: &lt;OPENBSD, SR RAID 1, 005&gt; SCSI2 0/direct fixed</strong>
 sd3: 10244MB, 512 bytes/sec, 20980362 sec total
 # <b>exit</b>
 </pre>

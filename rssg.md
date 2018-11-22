@@ -45,10 +45,10 @@ Here is an example of a minimal `index.html` file:
 <pre>
 &lt;h1&gt;<b>People who run BSD</b>&lt;/h1&gt;
 
-&lt;p&gt;<i>
+&lt;p&gt;<em>
 Stories written by users of BSD operating systems.
 Hosted by Roman Zolotarev.
-</i>&lt;/p&gt;
+</em>&lt;/p&gt;
 
 &lt;p&gt;
 Subscribe via &lt;a href="<b>https://bsdjobs.com/people/rss.xml</b>"&gt;RSS&lt;/a&gt;.

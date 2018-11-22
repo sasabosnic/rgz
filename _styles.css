@@ -46,6 +46,19 @@ pre {
   font-size: 15px;
   overflow-x: auto;
 }
+pre strong {
+  background-color: #0000cc;
+  color: #ffffff;
+}
+pre em {
+  background-color: #ffeeaa;
+}
+pre i {
+  font-style: normal;
+}
+pre i::before {
+  content: "> ";
+}
 
 pre,
 blockquote {
@@ -76,14 +89,6 @@ p {
   text-indent: -16px;
   font-size: 32px;
   line-height: 40px;
-}
-
-.blue {
-  background-color: #0000cc;
-  color: #ffffff;
-}
-.yell {
-  background-color: #ffeeaa;
 }
 
 .form__error {

@@ -24,9 +24,9 @@ stagit-0.8: ok
 Add `owner` and `description` to the Git repository:
 
 <pre>
-$ <b>cd <i>REPOSITORY.git</i></b>
-$ <b>echo <i>'OWNER_NAME'</i> > owner</b>
-$ <b>echo <i>'DESCRIPTION'</i> > description</b>
+$ <b>cd <em>REPOSITORY.git</em></b>
+$ <b>echo <em>'OWNER_NAME'</em> > owner</b>
+$ <b>echo <em>'DESCRIPTION'</em> > description</b>
 $
 </pre>
 
@@ -48,7 +48,7 @@ Check out my files: [post-receive](/post-receive) hook and
 To test `post-receive` hook push from your local host to the server:
 
 <pre>
-$ <b>git push <i>REMOTE</i> master</b>
+$ <b>git push <em>REMOTE</em> master</b>
 ...
 $
 </pre>

@@ -76,10 +76,10 @@ $
 Repeat these steps for every of your repositories:
 
 <pre>
-$ <b>cd <i>/home/git/REPOSITORY.git</i></b>
-$ <b>echo <i>'git://REMOTE_SERVER/src/REPOSITORY.git'</i> > url</b>
-$ <b>echo <i>'OWNER_NAME'</i> > owner</b>
-$ <b>echo <i>'DESCRIPTION'</i> > description</b>
+$ <b>cd <em>/home/git/REPOSITORY.git</em></b>
+$ <b>echo <em>'git://REMOTE_SERVER/src/REPOSITORY.git'</em> > url</b>
+$ <b>echo <em>'OWNER_NAME'</em> > owner</b>
+$ <b>echo <em>'DESCRIPTION'</em> > description</b>
 $
 </pre>
 
@@ -131,7 +131,7 @@ $
 To test `post-receive` hook push from your local host to the server:
 
 <pre>
-$ <b>git push <i>REMOTE</i> master</b>
+$ <b>git push <em>REMOTE</em> master</b>
 ...
 $
 </pre>

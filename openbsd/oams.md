@@ -33,7 +33,7 @@ and IPv6 address as soon as your VM is deployed. Login to the
 VM (assuming your private SSH key is in its default location):
 
 <pre>
-$ <b>ssh <i>username@XXX.XXX.XXX.XXX</i></b>
+$ <b>ssh <em>username@XXX.XXX.XXX.XXX</em></b>
 OpenBSD 6.4-current (GENERIC) #358: Sat Oct 20 01:44:18 MDT 2018
 
 Welcome to OpenBSD: The proactively secure Unix-like operating system.
@@ -51,7 +51,7 @@ Get the password from `~/.ssh/authorized_keys` and switch to `root`.
 
 <pre>
 $ <b>awk '{print$NF}' .ssh/authorized_keys</b>
-<i>XXXXXXXXXXXXXXXXXXXXXXXXXX</i>
+<em>XXXXXXXXXXXXXXXXXXXXXXXXXX</em>
 $ <b>su -</b>
 password:
 #
@@ -60,7 +60,7 @@ password:
 Add your _username_ to `/etc/doas.conf`:
 
 <pre>
-# <b>echo 'permit <i>username</i>' > /etc/doas.conf</b>
+# <b>echo 'permit <em>username</em>' > /etc/doas.conf</b>
 #
 </pre>
 

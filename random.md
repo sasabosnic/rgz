@@ -34,8 +34,8 @@ line:
 
 <pre>
 $ <b>tr -cd 1-6 < /dev/urandom |</b>
-> <b>fold -w 20 |</b>
-> <b>head -n 1</b>
+<i><b>fold -w 20 |</b></i>
+<i><b>head -n 1</b></i>
 15521625233645245322
 $
 </pre>
@@ -45,7 +45,7 @@ Another way to take first 20 characters, use
 
 <pre>
 $ <b>tr -cd 1-6 < /dev/urandom |</b>
-> <b>echo $(dd count=20 bs=1 status=none)</b>
+<i><b>echo $(dd count=20 bs=1 status=none)</b></i>
 35611246252555226656
 $
 </pre>
@@ -57,7 +57,7 @@ char, _space_, to _tilde_.
 
 <pre>
 $ <b>tr -cd ' -~' < /dev/urandom |</b>
-> <b>fold -w 20 | head -n 1</b>
+<i><b>fold -w 20 | head -n 1</b></i>
 a(k#$(K ?I?d!^NM^(5x
 $
 </pre>
@@ -66,7 +66,7 @@ Or all _alphanumeric_ characters, _comma_, and _dot_.
 
 <pre>
 $ <b>tr -cd [:alnum:],. < /dev/urandom |</b>
-> <b>fold -w 20 | head -n 1</b>
+<i><b>fold -w 20 | head -n 1</b></i>
 3zgoNRosNuznXUxzENI.
 $
 </pre>

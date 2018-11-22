@@ -34,14 +34,14 @@ the registration):
 
 <pre>
 $ <b>ssh \</b>
-> <b>-p <i>PORT</i> \</b>
-> <b>-e none \</b>
-> <b>-o VerifyHostKeyDNS=ask \</b>
-> <b><i>HOSTNAME</i>.openbsd.amsterdam \</b>
-> <b>vmctl console <i>ID</i></b>
+<i><b>-p <em>PORT</em> \</b></i>
+<i><b>-e none \</b></i>
+<i><b>-o VerifyHostKeyDNS=ask \</b></i>
+<i><b><em>HOSTNAME</em>.openbsd.amsterdam \</b></i>
+<i><b>vmctl console <em>ID</em></b></i>
 </pre>
 
-Hit <span class="yell">_Enter_</span> to see the console.
+Hit _Enter_ to see the console.
 
 ## Upgrade
 
@@ -57,8 +57,8 @@ OpenBSD 6.3 (GENERIC) #100: Sat Mar 24 14:17:45 MDT 2018
 ...
 # <b>reboot</b>
 ...
->> OpenBSD/amd64 BOOT 3.41
-boot> <b>boot /bsd.rd</b>
+&gt;&gt; OpenBSD/amd64 BOOT 3.41
+boot&gt; <b>boot /bsd.rd</b>
 
 booting hd0a:/bsd.rd: 3511114+1500160+3892040+0+598016
 ...
@@ -72,8 +72,8 @@ Welcome to the OpenBSD/amd64 6.4 installation program.
 ...
 CONGRATULATIONS! Your OpenBSD upgrade has been successfully completed!
 ...
->> OpenBSD/amd64 BOOT 3.41
-boot> <b>boot /bsd</b>
+&gt;&gt; OpenBSD/amd64 BOOT 3.41
+boot&gt; <b>boot /bsd</b>
 ...
 
 OpenBSD/amd64 (s1.romanzolotarev.com) (tty00)
@@ -81,7 +81,7 @@ OpenBSD/amd64 (s1.romanzolotarev.com) (tty00)
 login:
 </pre>
 
-Type <span class="yell">`~.`</span> to close the console.
+Type `~.` to close the console.
 
 ## Update packages
 

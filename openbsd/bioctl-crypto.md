@@ -15,15 +15,15 @@ Plug the drive in. Assuming it's **sd3**.
 
 <pre>
 # <b>dd if=/dev/urandom of=/dev/rsd3c bs=1m</b>
-# <b>fdisk -iy  -g -b 960 sd3</b>
-# <b>printf 'a a\n\n\nRAID\nw\nq\n'|disklabel -E sd3</b>
+# <b>fdisk -iy -g -b 960 sd3</b>
+# <b>printf 'a a\\n\\n\\nRAID\\nw\\nq\\n'|disklabel -E sd3</b>
 # <b>bioctl -c C -l sd3a softraid0</b>
 New passphrase:
 Re-type passphrase:
-<span class="blue">softraid0: CRYPTO volume attached as sd4</span>
+<strong>softraid0: CRYPTO volume attached as sd4</strong>
 # <b>dd if=/dev/zero of=/dev/rsd4c bs=1m count=1</b>
-# fdisk -iy sd4
-# <b>printf 'a i\n\n\nRAID\nw\nq\n'|disklabel -E sd4</b>
+# <b>fdisk -iy sd4</b>
+# <b>printf 'a i\\n\\n\\nRAID\\nw\\nq\\n'|disklabel -E sd4</b>
 # <b>newfs sd4i</b>
 # <b>mkdir /mnt/sd4i</b>
 # <b>mount /dev/sd4i /mnt/sd4i</b>
@@ -55,8 +55,10 @@ Check out my helpers
 [mnt_crypto](/bin/mnt_crypto) and
 [umnt_crypto](/bin/umnt_crypto) and how to use them:
 
-	# bin/mnt_crypto  'XXXXXXXXXXXXXXXX.x' 'YYYYYYYYYYYYYYYY.y'
-	# bin/umnt_crypto 'XXXXXXXXXXXXXXXX.x'
+<pre>
+# <b>bin/mnt_crypto  'XXXXXXXXXXXXXXXX.x' 'YYYYYYYYYYYYYYYY.y'</b>
+# <b>bin/umnt_crypto 'XXXXXXXXXXXXXXXX.x'</b>
+</pre>
 
 Where `XXXXXXXXXXXXXXXX.x` is DUID and partition of a CRYPTO
 volume and `YYYYYYYYYYYYYYYY.y`&mdash;of a physical device.

@@ -16,8 +16,8 @@ Then as _root_ install _exfat-fuse_ and mount exFAT file system with your `uid`:
 # <b>pkg_add exfat-fuse</b>
 quirks-3.16 signed on 2018-10-12T15:26:25Z
 exfat-fuse-1.2.8: ok
-# <b>mkdir -p <i>/mnt/sd1i</i></b>
-# <b>mount.exfat -o <i>uid=1000</i> <i>/dev/sd1i /mnt/sd1i</i></b>
+# <b>mkdir -p <em>/mnt/sd1i</em></b>
+# <b>mount.exfat -o <em>uid=1000</em> <em>/dev/sd1i /mnt/sd1i</em></b>
 FUSE exfat 1.2.8
 #
 </pre>

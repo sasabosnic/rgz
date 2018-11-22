@@ -26,7 +26,7 @@ quirks-3.16 signed on 2018-10-12T15:26:25Z
 simple-mtpfs-0.3.0p0:libusb1-1.0.21p1: ok
 simple-mtpfs-0.3.0p0:libmtp-1.1.15: ok
 simple-mtpfs-0.3.0p0: ok
-# <b>mkdir -p <i>/mnt/mtp</i></b>
+# <b>mkdir -p <em>/mnt/mtp</em></b>
 # <b>simple-mtpfs --device 1 /mnt/mtp -o uid=1000 -o gid=1000 -o allow_other</b>
 #
 </pre>
