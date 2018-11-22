@@ -69,27 +69,11 @@ find "$TOKENS" -type f -cmin "+$(( EXP_TIME / 60 ))" -delete
 
 ## Schedule
 
-As `root` create a user:
+As `root` create a user and add a cron table:
 
 <pre>
-# <b>groupdadd _db</b>
-# <b>useradd -g _db -d /var/www/db _db</b>
-# <b>su _db</b>
-</pre>
-
-As `_db` edit `crontab`:
-
-<pre>
-$ <b>crontab -e</b>
-</pre>
-
-Append this line:
-
-	*/5 * * * * /var/www/htdocs/www/bin/dispatch
-
-Save and exit:
-
-<pre>
-crontab: installing new crontab
-$
+# <b>user add -g =uid -o -m db</b>
+# <b>echo '*/2 * * * * /var/www/htdocs/www/bin/dispatch' > /tmp/tab</b>
+# <b>crontab -u db /tmp/tab</b>
+#
 </pre>
