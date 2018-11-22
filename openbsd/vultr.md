@@ -1,5 +1,5 @@
-**DISCLAIMER**<br> I'm a customer of Vultr and the yellow button
-is a referral link.  When you [sign
+**DISCLAIMER**<br> I'm a customer of Vultr and the blue button is
+a referral link.  When you [sign
 up](https://www.vultr.com/pricing/?ref=7035749), Vultr adds few
 weeks of hosting for this site. Thank you.
 
