@@ -10,7 +10,6 @@ Tutorials for web developers.
 <button class="form__button" type="submit">Subscribe</button>
 </form>
 
-
 # Mastering the Web
 
 Subscribe via [RSS](https://www.romanzolotarev.com/n/rss.xml).

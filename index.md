@@ -3,21 +3,21 @@
 I'm here to&nbsp;help&nbsp;you with&nbsp;<a href="openbsd/">OpenBSD</a>.
 </p>
 
-I write shell scripts licensed under [ISC](https://en.m.wikipedia.org/wiki/ISC_license):<br>
-[ssg](/ssg.html) &mdash; a static site generator<br>
+I write [shell scripts](/bin):<br>
+[ssg3](/ssg.html) &mdash; a static site generator<br>
+[rssg](/rssg.html) &mdash; an RSS feed generator<br>
 [form](/form.html) &mdash; a web form handler<br>
 [arc](/arc.html) &mdash; an archiver<br>
 [diceware](/diceware.html) &mdash; a passphrase generator<br>
 [pass](/pass.html) &mdash; a password manager<br>
 [screenshot](bin/screenshot) &mdash; a screenshot tool<br>
 [screencapture](bin/screencapture) &mdash; a screen capture tool<br>
-[mnt_crypto](bin/mnt_crypto) and [umnt_crypto](bin/umnt_crypto) &mdash; mount and unmount crypto volumes<br>
 
 Support Unix/BSD related projects:<br>
 [OpenBSD Amsterdam](openbsd.amsterdam/)<br>
 [Etsh Project (V6Shell)](etsh.io/)
 
-Dispatch a newsletter: [Mastering the Web](n/)
+Dispatch a newsletter: [Mastering&nbsp;the&nbsp;Web](n/)
 
 Oh, and I also publish how-tos.&#8221;
 
