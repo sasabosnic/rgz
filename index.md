@@ -39,6 +39,7 @@ hi@romanzolotarev.com
 
 # How to...
 
+- [forward outgoing mail to a remote SMTP server](smtpd-forward.html "2018-11-23")
 - [mount exFAT file system on OpenBSD](openbsd/exfat.html "2018-11-16")
 - [mount file system via Media Transfer Protocol on OpenBSD](openbsd/mtp.html "2018-11-06")
 - [upgrade OpenBSD on bare metal](openbsd/upgrade.html "2018-10-18")

@@ -47,7 +47,7 @@ _Updated on 21 Nov 2018_
 - [Jeffrey Allen Neitzel](https://jan.etsh.io/ "24 Jul 2018") 15.00 USD
 - [Dylan Thiedeke](https://www.patreon.com/user/creators?u=2300411 "24 Jun 2018") 4.00 USD
 - [Gabriel Francisco](https://twitter.com/fgbreel "8 Jun 2018") 10.00 EUR _"I love your blog and the content you share about OpenBSD! Keep rocking!"_
-- [Vultr](https://www.vultr.com/?ref=7035749 "8 Jun 2018") 50.00 USD
+- [Vultr](https://www.vultr.com/?ref=7035749 "8 Jun 2018") 90.00 USD
 - [micah](https://www.patreon.com/user/creators?u=4721204 "28 May 2018") 8.00 USD Patreon
 - [Peter Kotr&#x10D;ka](https://www.patreon.com/pkotrcka/creators "Since 16 May 2018") 4.00 USD Patreon
 - [Alexander Gudulin](https://www.patreon.com/agudulin/creators "Since 14 May 2018") 5.00 USD Patreon

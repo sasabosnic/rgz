@@ -5,20 +5,19 @@ _Tested on [OpenBSD](/openbsd/) 6.4_
 [form](/bin/form) is a shell script to handle web forms. It validates
 and saves each posted form into a file in `/var/www/db/site/posts` directory.
 
-[Configure httpd(8)](/openbsd/httpd.html).
+[![form](form.png)](form.png)
+_321 LoC. [Enlarge, enhance, zoom!](form.png)_
 
-Enable [slowcgi](https://man.openbsd.org/slowcgi), make a directory
-for posted forms and tokens, then create a user to
-[dispatch](dispatch.html) those forms, copy binaries to `/var/www`,
-download `form`.
+[Configure httpd(8)](/openbsd/httpd.html).<br>
+[Add `db` user for dispatching forms](dispatch.html).
+
+Enable and start [slowcgi(8)], make a directory for posted forms
+and tokens, change owner and group, copy binaries to `/var/www`, download `form`.
 
 <pre>
 # <b>rcctl enable slowcgi</b>
 # <b>rcctl start slowcgi</b>
 #
-# <b>mkdir /home/db</b>
-# <b>useradd db</b>
-# <b>chown db:db /home/db</b>
 # <b>mkdir -p -m 0770 /var/www/db</b>
 # <b>chown www:db /var/www/db</b>
 #
@@ -52,12 +51,11 @@ form       100% |*********************|    6815      00:00
 #
 </pre>
 
-Create a form, template, and success page. Check the new configuration and restart `httpd`:
+Create a form, template, and "success" page. Update `httpd.conf`
+and restart `httpd`:
 
 <pre>
-# <b>cd /var/www/htdocs/www/</b>
-#
-# <b>cat &gt; bin/feedback &lt;&lt; EOF</b>
+# <b>cat &gt; /var/www/htdocs/www/feedback &lt;&lt; EOF</b>
 <i>#!/bin/sh</i>
 <i>MAIL_TO='<em>hi@romanzolotarev.com</em>'</i>
 <i>MAIL_SUBJECT='<em>feedback</em>'</i>
@@ -73,10 +71,10 @@ Create a form, template, and success page. Check the new configuration and resta
 <i>DB='/db/www'</i>
 <i>TEMPLATE='/htdocs/www/feedback.html'</i>
 <i>SUCCESS_URL='/thanks.html'</i>
-<i>. ./form</i>
+<i>. /var/www/bin/form</i>
 <i><b>EOF</b></i>
 #
-# <b>cat &gt; feedback.html &lt;&lt; EOF</b>
+# <b>cat &gt; /var/www/htdocs/www/feedback.html &lt;&lt; EOF</b>
 <i>&ltform action="feedback.html" method="post"&gt;</i>
 <i><em>	&lt;input type="hidden" name="token" value="$token"&gt;</em></i>
 <i><em>	&lt;input type="text"   name="name"  value="$name"&gt;</em></i>
@@ -87,7 +85,7 @@ Create a form, template, and success page. Check the new configuration and resta
 <i>&lt;/form></i>
 <i><b>EOF</b></i>
 #
-# <b>cat &gt; thanks.html &lt;&lt; EOF</b>
+# <b>cat &gt; /var/www/htdocs/www/thanks.html &lt;&lt; EOF</b>
 <i>&lt;h1&gt;Thank you&lt;/h1&gt;</i>
 <i><b>EOF</b></i>
 #
@@ -97,7 +95,7 @@ Create a form, template, and success page. Check the new configuration and resta
 <i>	root "/htdocs/www"</i>
 <i>	location "/feedback.html" {</i>
 <i>		fastcgi</i>
-<i>		root "/htdocs/www/bin/feedback"</i>
+<i>		root "/htdocs/www/feedback"</i>
 <i>	}</i>
 <i>}</i>
 <i><b>EOF</b></i>
@@ -109,3 +107,5 @@ httpd(ok)
 httpd(ok)
 #
 </pre>
+
+[slowcgi(8)]: https://man.openbsd.org/slowcgi.8

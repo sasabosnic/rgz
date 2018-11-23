@@ -1,5 +1,15 @@
 # My shell scripts
 
+[ssg](/ssg.html)
+&mdash; a static site generator<br>
+_lowdown, find, grep, cat, awk, sed, cpio_
+
+[form](/form.html)
+&mdash; a web forms handler<br>
+_slowcgi, awk, b64encode, grep, head, jot, printf, sed, stat, tail, tr_
+
+---
+
 [arc](/arc.html)
 &mdash; an archiver<br>
 _pax, mtree, gzip, sed, sha256, date_
@@ -12,9 +22,6 @@ _/dev/urandom, od, tr, sed, tr, grep, cut_
 &mdash; a password manager<br>
 _openssl, tar, oathtool, $EDITOR_
 
-[ssg](/ssg.html)
-&mdash; a static site generator<br>
-_lowdown, find, grep, cat, awk, sed, cpio_
 
 [screenshot](screenshot)
 &mdash; a screenshot tool<br>

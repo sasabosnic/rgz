@@ -10,6 +10,7 @@ _[Why OpenBSD?](why.html) Simple and secure._
 - [Enable HTTPS with acme-client(1) and Let's Encrypt](acme-client.html)
 - [Host Git repositories](/git.html)
 - [Publish Git repositories with stagit(1)](/stagit.html)
+- [Forward outgoing mail to a remote SMTP server](smtpd-forward.html)
 
 _I heard [ARP Networks](https://arpnetworks.com/vps) provides OpenBSD
 VPS for $10/month._

@@ -2,11 +2,6 @@
   font-family: "Comic Sans MS", "Chalkboard SE", "Comic Neue";
 }--></style>
 
-"@romanzolotarev motivated me to spend some more time in
-OpenBSD"<br>&mdash;
-[Wesley Moore](https://twitter.com/wezm/status/987251788821684224 "20 Apr 2018")
-(@wezm)
-
 # Why OpenBSD?
 
 OpenBSD is a minimalist operating system: my full web development
