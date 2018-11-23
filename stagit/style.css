@@ -1,6 +1,10 @@
 body {
-  font-family: monospace;
+  margin: 0 auto;
+  max-width: 800px;
+  padding: 20px;
+  background-color: #f4f4f4;
   color: #444444;
+  font-family: monospace;
 }
 
 img {

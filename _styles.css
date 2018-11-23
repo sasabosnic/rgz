@@ -28,6 +28,10 @@ body,
   font-size: 20px;
 }
 
+h1 {
+  line-height: 1.25em;
+}
+
 hr,
 h1,
 h2 {
