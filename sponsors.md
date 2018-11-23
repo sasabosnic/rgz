@@ -16,8 +16,8 @@ To keep this website alive:
 
 <!-- - send satoshis to [`3MZ9d6NTsirYfjx9iJVieT2WCHnzBZckHd`](bitcoin://3MZ9d6NTsirYfjx9iJVieT2WCHnzBZckHd), -->
 
-<a href="/patreon.html"><span class="form__button patreon">Patreon</span></a>
-<a href="/paypal.html"><span class="form__button paypal">PayPal</span></a>
+<a href="/patreon.html"><span class="form__button form__button-patreon">Patreon</span></a>
+<a href="/paypal.html"><span class="form__button form__button-paypal">PayPal</span></a>
 
 Truly yours,<br>
 Roman

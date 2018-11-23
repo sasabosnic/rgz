@@ -132,18 +132,26 @@ p {
   text-align: center;
   text-decoration: none;
 }
-.paypal {
+.form__button-paypal {
   background-color: #ffc469;
   border: solid 1px #ffc469;
   color: #000000;
 }
-.patreon {
+.form__button-patreon {
   background-color: #f96854;
   border: solid 1px #f96854;
   color: #ffffff;
 }
-.vultr {
+.form__button-vultr {
   background-color: #1e88e5;
   border: solid 1px #1e88e5;
   color: #ffffff;
+}
+.form__button-oams {
+  background-color: #ec0000;
+  border: solid 1px #ec0000;
+  color: #ffffff;
+}
+.form__button-small {
+  padding: 6px; font-size: 12px;
 }

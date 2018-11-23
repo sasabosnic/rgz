@@ -1,35 +1,27 @@
 <p class="quote p-note">&#8220;Hi, my name is
 <span class="p-name">Roman</span>.<br>
-I'm here to&nbsp;help&nbsp;you with&nbsp;<a href="openbsd/">OpenBSD</a>.<br>
-Also I run <a href="https://www.bsdjobs.com/">a&nbsp;job&nbsp;board</a>.
+I'm here to&nbsp;help&nbsp;you with&nbsp;<a href="openbsd/">OpenBSD</a>.
 </p>
 
-<!--I help [OpenBSD
-Amsterdam](openbsd.amsterdam/) and [etsh.io](etsh.io/) with their
-logos and websites.<br>
-I'm a fan of
-<a href="/bin/">shell scripts</a>,
-<a href="/vi.html">vi</a>,
-<a href="/thinkpad/">ThinkPad</a>, and
-<a href="/ergodox.html">ErgoDox</a>.<br>
-By the way, here is [my setup](setup.html).<br>
-Thank you for
-[your donations](sponsors.html) and [kind words](words.html)!
+I write shell scripts licensed under [ISC](https://en.m.wikipedia.org/wiki/ISC_license):<br>
+[ssg](/ssg.html) &mdash; a static site generator<br>
+[form](/form.html) &mdash; a web form handler<br>
+[arc](/arc.html) &mdash; an archiver<br>
+[diceware](/diceware.html) &mdash; a passphrase generator<br>
+[pass](/pass.html) &mdash; a password manager<br>
+[screenshot](bin/screenshot) &mdash; a screenshot tool<br>
+[screencapture](bin/screencapture) &mdash; a screen capture tool<br>
+[mnt_crypto](bin/mnt_crypto) and [umnt_crypto](bin/umnt_crypto) &mdash; mount and unmount crypto volumes<br>
+
+Support Unix/BSD related projects:<br>
+[OpenBSD Amsterdam](openbsd.amsterdam/)<br>
+[Etsh Project (V6Shell)](etsh.io/)
+
+Dispatch a newsletter: [Mastering the Web](n/)
+
+Oh, and I also publish how-tos.&#8221;
 
 ---
-
-**Type-in your email** to get my [Mastering the Web](n/) newsletter:
-
-<form class="form" method="post" action="https://tinyletter.com/romanzolotarev">
-<input class="form__field" name="email" type="email" placeholder="email@example.com">
-<button class="form__button" type="submit">Subscribe</button>
-</form>
-
-or subscribe to [RSS](https://www.romanzolotarev.com/rss.xml),
-or find me [elsewhere](elsewhere.html).&#8221;
-
----
--->
 
 <a href="https://www.romanzolotarev.com/"
   class="h-card"><img src="avatar120.jpeg" class="avatar"></a>
@@ -38,7 +30,11 @@ or find me [elsewhere](elsewhere.html).&#8221;
 _Die-hard Webmaster_<br>
 hi@romanzolotarev.com
 
+---
+
 # How to...
+
+Subscribe via [RSS](https://www.romanzolotarev.com/rss.xml).
 
 - [forward outgoing mail to a remote SMTP server](openbsd/smtpd-forward.html "2018-11-23")
 - [mount exFAT file system on OpenBSD](openbsd/exfat.html "2018-11-16")

@@ -1,7 +1,7 @@
 **DISCLAIMER**<br>
 I'm just a happy customer of _OpenBSD Amsterdam_.
 [Mischa Peters](https://twitter.com/mischapeters) runs the place.
-When you sign up, Mischa donates 16.7% to
+He donates &euro;10 for every VM per year to
 [OpenBSD Foundation](https://www.openbsdfoundation.org).
 
 _Tested on [OpenBSD](/openbsd/) 6.3 and 6.4_

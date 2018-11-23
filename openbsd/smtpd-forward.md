@@ -6,11 +6,11 @@ Replace [smtpd.conf(5)], add `secrets`, set permissions, test the
 configuration, and restart [smtpd(8)]:
 
 <pre>
-# <b>cat > /etc/mail/smtpd.conf << EOF</b>
+# <b>cat &gt; /etc/mail/smtpd.conf &lt;&lt; EOF</b>
 <i>table aliases file:/etc/mail/aliases</i>
 <i>table secrets file:/etc/mail/secrets</i>
 <i>listen on lo0</i>
-<i>action "local" mbox alias <aliases></i>
+<i>action "local" mbox alias &lt;aliases&gt;</i>
 <i>action "relay" relay host smtp+tls://<em>foo@server:port</em> auth &lt;secrets&gt;</i>
 <i>match for local action "local"</i>
 <i>match for any action "relay"</i>
