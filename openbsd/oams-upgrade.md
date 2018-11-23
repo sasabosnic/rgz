@@ -28,7 +28,7 @@ Update your configuration files, if needed for 6.4.
 
 ## Access the console
 
-Login to your [OpenBSD.Amsterdam](https://openbsd.amsterdam/) server
+Login to your [OpenBSD.Amsterdam](https://openbsd.amsterdam/?rz) server
 (find the _HOSTNAME_, _PORT_, and _ID_ in the email message you got after
 the registration):
 

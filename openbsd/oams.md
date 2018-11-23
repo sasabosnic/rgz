@@ -8,13 +8,13 @@ _Tested on [OpenBSD](/openbsd/) 6.3 and 6.4_
 
 # Deploy VM on OpenBSD Amsterdam
 
-[OpenBSD in Amsterdam](https://openbsd.amsterdam) is running dedicated
+[OpenBSD in Amsterdam](https://openbsd.amsterdam?rz) is running dedicated
 [vmd(8)](https://man.openbsd.org/vmd.8) servers to host opinionated
 VMs.
 
 Send your name, email address, hostname, username, and public SSH
 key to OpenBSDAms via [contact
-form](https://openbsd.amsterdam/contact.html),
+form](https://openbsd.amsterdam/contact.html?rz),
 [Twitter](https://twitter.com/OpenBSDAms), or
 [Mastodon](https://bsd.network/@OpenBSDAms), before you pay.
 

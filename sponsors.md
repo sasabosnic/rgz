@@ -60,7 +60,7 @@ _Updated on 21 Nov 2018_
 - [Ilmari Vacklin](https://www.patreon.com/user?u=2288738 "Since 23 Apr 2018") 6.00 USD Patreon
 - [Tom Atkinson](https://www.patreon.com/user?u=10778845 "Since 16 Apr 2018") 30.00 USD Patreon
 - [Wesley Moore](https://www.patreon.com/wezm "15 Apr 2018") 30.00 USD Patreon
-- [Mischa Peters](https://twitter.com/mischapeters "13 Apr 2018") [VPS](https://openbsd.amsterdam)
+- [Mischa Peters](https://twitter.com/mischapeters "13 Apr 2018") [VPS](https://openbsd.amsterdam/?rz)
 - [Evander Sinque](https://twitter.com/FiLiS "31 Oct 2017") Run BSD Stickers
 - [Mischa Peters](https://twitter.com/mischapeters "19 Sep 2017") Run BSD T-shirt
 
@@ -72,7 +72,7 @@ supported, please consider supporting them too:
 - [Bryan Steele](https://brynet.biz.tm/ "02 Nov 2018 2HE50576BY512230V") 20.00 CAD
 - [Etsh Project](https://etsh.io/ "23 Jul 2018") [Logo, media kit](/etsh.io/)
 - [High5!](https://high5.nl/ "Since 20 Jun 2018") 60.00 EUR
-- [OpenBSD Amsterdam](https://openbsd.amsterdam/ "Since 10 Jun 2018") [Logo, media kit, website](/openbsd.amsterdam/)
+- [OpenBSD Amsterdam](https://openbsd.amsterdam/?rz "Since 10 Jun 2018") [Logo, media kit, website](/openbsd.amsterdam/)
 - [Michael W Lucas](https://www.patreon.com/mwlucas "Since 1 Jul 2018") 10.00 USD Patreon
 - [Ingo Schwarze](https://www.patreon.com/IngoSchwarze "Since 1 Jun 2018") 7.00 USD Patreon
 - [The OpenBSD Store](https://www.openbsdstore.com/ "6 May 2018 41389") 73.21 GBP

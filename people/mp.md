@@ -4,7 +4,7 @@ _This is a reference letter for_
 
 **Mischa Peters**<br>
 _Founder_<br>
-[openbsd.amsterdam](https://openbsd.amsterdam)
+[openbsd.amsterdam](https://openbsd.amsterdam/?rz)
 
 # &nbsp;
 
@@ -13,12 +13,12 @@ href="https://www.bsdjobs.com">BSDjobs.com</a>.  I&nbsp;was so lucky
 to meet Mischa on my first days within BSD community. He always has
 been very supportive and helpful.</p>
 
-In 2018 Mischa launched <a href="https://openbsd.amsterdam">OpenBSD
+In 2018 Mischa launched <a href="https://openbsd.amsterdam/?rz">OpenBSD
 Amsterdam</a> and I'm so thankful for his help to the community. I
 appreciate a lot the tranparency, openness, and minimalist aproach
 of the project. Everything just works, and it feels like magic.  As
 a true magician Mischa [reveals his magic secrets in great
-details](https://openbsd.amsterdam/setup.html), so more people could
+details](https://openbsd.amsterdam/setup.html?rz), so more people could
 follow him and run services based on OpenBSD and vmm(4)/vmd(8).
 
 Everyone who works with Mischa notices immediately: he gets things

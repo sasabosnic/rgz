@@ -17,7 +17,7 @@ His launch of [BSDjobs](https://www.bsdjobs.com/) and subsequent
 "[people who run BSD](https://www.bsdjobs.com/people/)" was great
 to see and shows well his unique combination of clear and concise
 writing and technical skills. Our first proper project together was
-when [OpenBSD Amsterdam](https://openbsd.amsterdam) started and
+when [OpenBSD Amsterdam](https://openbsd.amsterdam/?rz) started and
 Roman was willing to take care of the project's [style
 guide](/openbsd.amsterdam/), [logo](/openbsd.amsterdam/), and [pretty
 much overall
@@ -41,5 +41,5 @@ _Founder and maintainter_<br>
 mischa@openbsd.amsterdam
 
 **OpenBSD Amsterdam**<br>
-[openbsd.amsterdam](https://openbsd.amsterdam)<br>
+[openbsd.amsterdam](https://openbsd.amsterdam/?rz)<br>
 Amsterdam, Netherlands

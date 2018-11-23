@@ -8,7 +8,7 @@ _Tested on [OpenBSD](/openbsd/) 6.3_
 
 # Deploy VM on OpenBSD Amsterdam
 
-[OpenBSD in Amsterdam](https://openbsd.amsterdam) is running dedicated
+[OpenBSD in Amsterdam](https://openbsd.amsterdam?rz) is running dedicated
 [vmd(8)](https://man.openbsd.org/vmd.8) servers to host opinionated
 VMs.
 

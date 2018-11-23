@@ -169,7 +169,7 @@ env vars and `_ssg.conf`       | _removed_
 ---
 
 **Thanks** to
-[Mischa Peters](https://twitter.com/mischapeters) for testing and [using this version in production](https://openbsd.amsterdam),
+[Mischa Peters](https://twitter.com/mischapeters) for testing and [using this version in production](https://openbsd.amsterdam/?rz),
 [Kristaps Dzonsons](https://www.divelog.blue/) for
 [lowdown(1)](https://kristaps.bsd.lv/lowdown/), and
 [Eric Radman](http://eradman.com) for

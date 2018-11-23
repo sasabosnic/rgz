@@ -318,7 +318,7 @@ _OpenBSD developer_<br>
 <img src="/ref/mp.jpeg" class="avatar"><br> **Mischa Peters**<br> _Founder_<br>
 [@OpenBSDAms](https://twitter.com/OpenBSDAms/status/1006095521004642305 "11 Jun 2018")
 
-**OpenBSD Amsterdam**<br> [openbsd.amsterdam](https://openbsd.amsterdam/)
+**OpenBSD Amsterdam**<br> [openbsd.amsterdam](https://openbsd.amsterdam/?rz)
 
 ---
 
