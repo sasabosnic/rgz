@@ -2,7 +2,19 @@ _Check [OpenBSD compatible hardware](hardware.html)._
 
 # Hardware tested on OpenBSD
 
-## Dell XPS 15
+## [Toshiba Portege R935-ST4N01](https://support.toshiba.com/support/modelHome?freeText=3574912)
+
+<pre>
+3rd Gen Intel i5
+tested by  <a href="http://dmesgd.nycbug.org/index.cgi?do=view&id=3706">armandch</a> on 6.3-stable
+
+eth, wifi, video, HDMI, lcd backlight,
+headphones, mic, speakers, camera,
+kbrd backlight, touchpad,
+usb, sd, battery, ZZZ, zzz
+</pre>
+
+## [Dell XPS 15](https://www.dell.com/en-us/shop/dell-laptops/xps-15/spd/xps-15-9560-laptop)
 
 <img src="/hardware/dell-xps-15.jpeg" style="width: 200px;">
 

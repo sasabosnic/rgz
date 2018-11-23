@@ -1,8 +1,3 @@
-"...@romanzolotarev's reports on the X1C5 are making me seriously
-consider diving right in."<br>&mdash;
-[surryhill](https://twitter.com/surryhill/status/1025788422227718145 "4 Aug 2018")
-(@surryhill)
-
 If your computer **works with OpenBSD out-of-the-box**,<br>
 submit your dmesg to
 [_NYC_*BUG](http://dmesgd.nycbug.org/index.cgi?do=submit) and
@@ -58,18 +53,6 @@ tested by  <a href="https://twitter.com/romanzolotarev/status/909807608252551169
 eth (re, em), HDMI,
 headphones, mic,
 usb, sd, ZZZ
-</pre>
-
-## [Toshiba Portege R935-ST4N01](https://support.toshiba.com/support/modelHome?freeText=3574912)
-
-<pre>
-3rd Gen Intel i5
-tested by  <a href="http://dmesgd.nycbug.org/index.cgi?do=view&id=3706">armandch</a> on 6.3-stable
-
-eth, wifi, video, HDMI, lcd backlight,
-headphones, mic, speakers, camera,
-kbrd backlight, touchpad,
-usb, sd, battery, ZZZ, zzz
 </pre>
 
 ---
