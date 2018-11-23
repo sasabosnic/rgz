@@ -4,7 +4,7 @@ I'm here to&nbsp;help&nbsp;you with&nbsp;<a href="openbsd/">OpenBSD</a>.<br>
 Also I run <a href="https://www.bsdjobs.com/">a&nbsp;job&nbsp;board</a>.
 </p>
 
-I help [OpenBSD
+<!--I help [OpenBSD
 Amsterdam](openbsd.amsterdam/) and [etsh.io](etsh.io/) with their
 logos and websites.<br>
 I'm a fan of
@@ -29,6 +29,7 @@ or subscribe to [RSS](https://www.romanzolotarev.com/rss.xml),
 or find me [elsewhere](elsewhere.html).&#8221;
 
 ---
+-->
 
 <a href="https://www.romanzolotarev.com/"
   class="h-card"><img src="avatar120.jpeg" class="avatar"></a>
@@ -39,7 +40,7 @@ hi@romanzolotarev.com
 
 # How to...
 
-- [forward outgoing mail to a remote SMTP server](smtpd-forward.html "2018-11-23")
+- [forward outgoing mail to a remote SMTP server](openbsd/smtpd-forward.html "2018-11-23")
 - [mount exFAT file system on OpenBSD](openbsd/exfat.html "2018-11-16")
 - [mount file system via Media Transfer Protocol on OpenBSD](openbsd/mtp.html "2018-11-06")
 - [upgrade OpenBSD on bare metal](openbsd/upgrade.html "2018-10-18")
