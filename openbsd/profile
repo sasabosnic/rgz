@@ -26,6 +26,7 @@ j() { stmux 'j' 'prv/j'       'vi my.journal'; }
 m() { stmux 'm' 'pub/music'   'cmus'; }
 n() { stmux 'n' 'downloads'   'newsboat'; }
 v() { stmux 'v' 'prv/openvpn' 'doas openvpn --config default.ovpn'; }
+conf() { cd "$HOME/prv/conf"; }
 
 alias bsdj='sssg bsdj'
 alias leto='sssg leto'
