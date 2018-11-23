@@ -28,7 +28,7 @@ Update your configuration files, if needed for 6.4.
 
 ## Access the console
 
-- Login to [my.vultr.com](https://my.vultr.com).
+- Login to [my.vultr.com](https://my.vultr.com/?ref=7035749).
 - Navigate to _Servers > Instances_ and select a server.
 - Click on **View Console** icon.
 - In a pop-up window login with your password.
