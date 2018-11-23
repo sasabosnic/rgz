@@ -28,7 +28,8 @@ Oh, and I also publish how-tos.&#8221;
 
 **Roman Zolotarev**<br>
 _Die-hard Webmaster_<br>
-hi@romanzolotarev.com
+hi@romanzolotarev.com<br>
+[@romanzolotarev](/twitter.html)
 
 ---
 
