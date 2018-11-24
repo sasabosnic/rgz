@@ -7,7 +7,7 @@
 #
 set -e
 
-dir="$HOME/downloads/screen/"
+dir="$HOME/downloads/"
 
 area="$(slop -o)"
 date="$(date +%Y%m%d-%H%M%S)"

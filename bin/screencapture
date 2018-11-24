@@ -41,7 +41,7 @@ start)
 	h=$(( $(echo "$odd_size"|cut -d'x' -f2) / 2 * 2))
 	size="${w}x${h}"
 
-	dir="$HOME/downloads/screen/"
+	dir="$HOME/downloads"
 	mkdir -p "$dir"
 	date="$(date +%Y%m%d-%H%M%S)"
 	output="$dir/${date}-$size.mp4"
