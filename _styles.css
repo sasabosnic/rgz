@@ -8,6 +8,7 @@ body {
   padding: 20px;
   background-color: #f4f4f4;
   color: #444444;
+  line-height: 1.5em;
 }
 
 a {
@@ -49,6 +50,7 @@ li {
 pre {
   font-size: 15px;
   overflow-x: auto;
+  line-height: 1.4em;
 }
 pre strong {
   background-color: #0000cc;
@@ -92,7 +94,7 @@ p {
 .quote {
   text-indent: -16px;
   font-size: 32px;
-  line-height: 40px;
+  line-height: 1.6em;
 }
 
 .form__error {
@@ -153,5 +155,6 @@ p {
   color: #ffffff;
 }
 .form__button-small {
-  padding: 6px; font-size: 12px;
+  padding: 6px;
+  font-size: 12px;
 }

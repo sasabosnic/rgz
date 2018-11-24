@@ -17,8 +17,7 @@ Support Unix/BSD related projects:<br>
 [OpenBSD Amsterdam](openbsd.amsterdam/)<br>
 [Etsh Project (V6Shell)](etsh.io/)
 
-Dispatch a newsletter: [Mastering&nbsp;the&nbsp;Web](n/)
-
+Dispatch a newsletter: [Mastering&nbsp;the&nbsp;Web](n/)<br>
 Oh, and I also publish how-tos.&#8221;
 
 ---
