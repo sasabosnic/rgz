@@ -1,6 +1,6 @@
 <p class="quote p-note">&#8220;Hi, my name is
-<span class="p-name">Roman</span>.<br>
-I'm here to&nbsp;help&nbsp;you with&nbsp;<a href="openbsd/">OpenBSD</a>.
+<span class="p-name">Roman</span><br>
+and I'm <a href="n/">mastering the&nbsp;Web</a>.
 </p>
 
 I write [shell scripts](/bin):<br>
@@ -17,7 +17,7 @@ Support Unix/BSD related projects:<br>
 [OpenBSD Amsterdam](openbsd.amsterdam/)<br>
 [Etsh Project (V6Shell)](etsh.io/)
 
-Dispatch a newsletter: [Mastering&nbsp;the&nbsp;Web](n/)<br>
+I'm here to help you with [OpenBSD](n/).<br>
 Oh, and I also publish how-tos.&#8221;
 
 ---
