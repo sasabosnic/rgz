@@ -1,6 +1,6 @@
 _Thank you for your [kind words](words.html) and support!_
 
-# My dear sponsor,
+# My dear supporter,
 
 Your feedback and tangible support is an infinite source of motivation.
 Knowing that a stranger from the internet supports my project boosted
@@ -12,7 +12,7 @@ To keep this website alive:
 - [email me](mailto:hi@romanzolotarev.com) your feedback,
 - retweet [my tweets](https://twitter.com/romanzolotarev),
 - boost [my toots](https://bsd.network/@romanzolotarev),
-- dontate:
+- donate:
 
 <!-- - send satoshis to [`3MZ9d6NTsirYfjx9iJVieT2WCHnzBZckHd`](bitcoin://3MZ9d6NTsirYfjx9iJVieT2WCHnzBZckHd), -->
 
@@ -25,8 +25,10 @@ Roman
 P.S. Here are all received donations. Please ping me, if yours hasn't
 been listed, or if you want to remove your name from the list.
 
-_Updated on 21 Nov 2018_
+_Updated on 26 Nov 2018_
 
+- [Andrew Vieyra](https://twitter.com/andrewvieyra "26 Nov 2018") 50.00 USD
+- [Ashe](https://www.patreon.com/kivikakk/creators "26 Nov 2018") 5.00 USD Patreon
 - [Roger](https://www.patreon.com/solvaholic/creators "21 Nov 2018") 1.00 USD Patreon
 - [Hajime Edakawa](https://twitter.com/hjmedkw "13 Nov 2018") 50.00 USD
 - [Leon Stafford](https://www.patreon.com/beautifulmoalboal "12 Nov 2018") 1.00 USD Patreon
