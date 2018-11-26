@@ -135,6 +135,7 @@ p {
   text-align: center;
   text-decoration: none;
 }
+
 .form__button-paypal {
   background-color: #ffc469;
   border: solid 1px #ffc469;
@@ -155,7 +156,31 @@ p {
   border: solid 1px #ec0000;
   color: #ffffff;
 }
+
 .form__button-small {
   padding: 0 10px;
   font-size: 12px;
+  background-color: #f4f4f4;
+  border: solid 1px #444444;
+  color: #444444;
+}
+.form__button-paypal-hover:hover {
+  background-color: #ffc469;
+  border: solid 1px #ffc469;
+  color: #000000;
+}
+.form__button-patreon-hover:hover {
+  background-color: #f96854;
+  border: solid 1px #f96854;
+  color: #ffffff;
+}
+.form__button-vultr-hover:hover {
+  background-color: #1e88e5;
+  border: solid 1px #1e88e5;
+  color: #ffffff;
+}
+.form__button-oams-hover:hover {
+  background-color: #ec0000;
+  border: solid 1px #ec0000;
+  color: #ffffff;
 }
