@@ -184,3 +184,8 @@ p {
   border: solid 1px #ec0000;
   color: #ffffff;
 }
+.form__button-hover:hover {
+  background-color: #334f83;
+  border: solid 1px #334f83;
+  color: #ffffff;
+}
