@@ -19,5 +19,4 @@ I'm inactive on
 [Google+](https://plus.google.com/+romanzolotarev),
 [Gumroad](https://gumroad.com/romanzolotarev),
 [YouTube](https://youtube.com/romanzolotarev),
-[Twitch](https://twitch.tv/zolotarevroman),
-and I don't use or/and don't control any other _public accounts_ or _websites_.
+[Twitch](https://twitch.tv/zolotarevroman).

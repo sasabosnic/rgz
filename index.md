@@ -17,7 +17,7 @@ Support Unix/BSD related projects:<br>
 [OpenBSD Amsterdam](openbsd.amsterdam/)<br>
 [Etsh Project (V6Shell)](etsh.io/)
 
-I'm here to help you with [OpenBSD](n/).<br>
+I'm here to help you with [OpenBSD](openbsd/).<br>
 Oh, and I also publish how-tos.&#8221;
 
 ---
