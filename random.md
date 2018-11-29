@@ -19,7 +19,7 @@ Keep characters you need and exclude everything else
 from `1` to `6`.
 
 <pre>
-$ <b>tr -cd 1-6 < /dev/urandom</b>
+$ <b>tr -cd '1-6' < /dev/urandom</b>
 4135234354265156412324163535634456635452512413235
 163421554662651365144426161433312335
 <b>^C</b>
@@ -33,7 +33,7 @@ wide lines, then [head(1)](https://man.openbsd.org/head.1) the first
 line:
 
 <pre>
-$ <b>tr -cd 1-6 < /dev/urandom |</b>
+$ <b>tr -cd '1-6' < /dev/urandom |</b>
 <i><b>fold -w 20 |</b></i>
 <i><b>head -n 1</b></i>
 15521625233645245322
@@ -44,7 +44,7 @@ Another way to take first 20 characters, use
 [dd(1)](https://man.openbsd.org/dd.1):
 
 <pre>
-$ <b>tr -cd 1-6 < /dev/urandom |</b>
+$ <b>tr -cd '1-6' < /dev/urandom |</b>
 <i><b>echo $(dd count=20 bs=1 status=none)</b></i>
 35611246252555226656
 $
@@ -65,7 +65,7 @@ $
 Or all _alphanumeric_ characters, _comma_, and _dot_.
 
 <pre>
-$ <b>tr -cd [:alnum:],. < /dev/urandom |</b>
+$ <b>tr -cd '[:alnum:],.' < /dev/urandom |</b>
 <i><b>fold -w 20 | head -n 1</b></i>
 3zgoNRosNuznXUxzENI.
 $
