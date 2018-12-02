@@ -24,7 +24,6 @@ http://www.wezm.net/feed/
 https://dataswamp.org/~solene/rss.xml
 https://feeds.feedburner.com/WaitingForTheJobsToFinish
 https://feeds.feedburner.com/codinghorror/
-https://feeds.feedburner.com/planet-openbsd
 https://kristaps.bsd.lv/sblg/atom.xml
 https://l33tsource.com/atom.xml
 https://reykfloeter.com/atom.xml
