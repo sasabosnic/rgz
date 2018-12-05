@@ -1,6 +1,6 @@
 **DISCLAIMER**<br> I'm a customer of Vultr and the blue button is
 a referral link.  When you [sign
-up](https://www.vultr.com/pricing/?ref=7035749), Vultr adds few
+up](/vultr.html), Vultr adds few
 weeks of hosting for this site. Thank you.
 
 _Tested on [OpenBSD](/openbsd/) 6.3 and 6.4_
@@ -10,8 +10,8 @@ _Tested on [OpenBSD](/openbsd/) 6.3 and 6.4_
 If you need a new OpenBSD server, make sure you have your [public
 SSH key](/ssh.html) handy, then...
 
-<a href="https://www.vultr.com/pricing/?ref=7035749"><span
-class="form__button form__button-vultr">sign up at Vultr</span></a>
+<a href="/vultr.html"><span class="form__button form__button-vultr">sign
+up at Vultr</span></a>
 
 Deploy an instance, for example:
 

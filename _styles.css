@@ -141,6 +141,11 @@ p {
   border: solid 1px #ffc469;
   color: #000000;
 }
+.form__button-xrp {
+  background-color: #808080;
+  border: solid 1px #808080;
+  color: #ffffff;
+}
 .form__button-patreon {
   background-color: #f96854;
   border: solid 1px #f96854;
