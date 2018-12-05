@@ -169,7 +169,7 @@ model='Status: 301 Moved Permanently
 Location: ?name=a&email=a@aa.aa&comment=a&err=invalid'
 eq "$out" "$model" 'fail on token reuse'
 
-desc 'posts'
+desc 'messages'
 
 model='To: to@example.com
 MIME-Version: 1.0
@@ -207,7 +207,7 @@ post="$(sed '
 s/boundary=".*/boundary="XXXX"/
 s/--[a-z]\{20,20\}/--XXXX/
 s/^www .*/www 127.0.0.1 XXXX/
-' "$temp/db/posts/"*)"
+' "$temp/db/mail_queue/"*)"
 
 eq "$post" "$model" 'html'
 
@@ -227,7 +227,7 @@ www 127.0.0.1 XXXX'
 
 export REQUEST_METHOD='GET'
 "$program" > /dev/null
-rm "${temp:?}/db/posts/"*
+rm "${temp:?}/db/mail_queue/"*
 export REQUEST_METHOD='POST'
 token=$(cd "$temp/db/tokens/" && ls)
 query="name=a&email=a@aa.aa&comment=a&token=$token"
@@ -237,7 +237,7 @@ out=$(printf '%s' "$query" | "$program")
 post="$(sed '
 s/--[a-z]\{20,20\}/--XXXX/
 s/^www .*/www 127.0.0.1 XXXX/
-' "$temp/db/posts/"*)"
+' "$temp/db/mail_queue/"*)"
 eq "$post" "$model" 'plain'
 
 rm -rf "${temp:?}"

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -e
 #
 # https://www.romanzolotarev.com/bin/form
 # Copyright 2018 Roman Zolotarev <hi@romanzolotarev.com>
@@ -15,17 +15,15 @@
 # ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 # OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 #
-set -e
-
 
 main() {
 	test_bin
 	test -n "$DB" || no_def 'DB'
-	POSTS="$DB/posts"
+	MAIL_QUEUE="$DB/mail_queue"
 	TOKENS="$DB/tokens"
-	mkdir -p "$POSTS" || no_dir "$POSTS"
+	mkdir -p "$MAIL_QUEUE" || no_dir "$MAIL_QUEUE"
 	mkdir -p "$TOKENS" || no_dir "$TOKENS"
-	chmod 0770 "$DB" "$POSTS" "$TOKENS"
+	chmod 0770 "$DB" "$MAIL_QUEUE" "$TOKENS"
 
 	test -n "$MAIL_TO" || no_def 'MAIL_TO'
 	test -n "$MAIL_SUBJECT" || no_def 'MAIL_SUBJECT'
@@ -38,9 +36,9 @@ main() {
 	test -n "$FIELDS" || no_def 'FIELDS'
 	test -n "$SUCCESS_URL" || no_def 'SUCCESS_URL'
 
-	test -n "$POSTS" || no_def 'POSTS'
+	test -n "$MAIL_QUEUE" || no_def 'MAIL_QUEUE'
 	test -n "$TOKENS" || no_def 'TOKENS'
-	test -d "$POSTS" || no_dir "$POSTS"
+	test -d "$MAIL_QUEUE" || no_dir "$MAIL_QUEUE"
 	test -d "$TOKENS" || no_dir "$TOKENS"
 
 	test -n "$TEMPLATE" || no_def 'TEMPLATE'
@@ -68,12 +66,12 @@ post() {
 	field_r=$(validate_query "$query") || fail "$field_r" "$query"
 	token_r=$(validate_token "$query") || fail "$token_r" "$query"
 
-	file="$POSTS/$(random_str)"
+	file="$MAIL_QUEUE/form-$(random_str)"
 	case "$MAIL_HTML" in
-		yes) render_post_html "$query" > "$file";;
-		*) render_post_plain "$query" > "$file";;
+		yes) render_message_html "$query" > "$file";;
+		*) render_message_plain "$query" > "$file";;
 	esac
-	chmod 660 "$file"
+	chmod 0660 "$file"
 
 	http301 "$SUCCESS_URL"
 }
@@ -128,7 +126,7 @@ get_params() {
 create_token() {
 	token=$(random_str)
 	echo "$REMOTE_ADDR" > "$TOKENS/$token"
-	chmod 660 "$TOKENS/$token"
+	chmod 0660 "$TOKENS/$token"
 	echo "$token"
 }
 
@@ -256,7 +254,7 @@ get_all_values() {
 }
 
 
-render_post_plain() {
+render_message_plain() {
 	values=$(get_all_values "$1")
 	meta="$SERVER_NAME $REMOTE_ADDR $(date '+%d/%b/%Y:%H:%M:%S %z')"
 
@@ -274,7 +272,7 @@ render_post_plain() {
 }
 
 
-render_post_html() {
+render_message_html() {
 	values=$(get_all_values "$1")
 	meta="$SERVER_NAME $REMOTE_ADDR $(date '+%d/%b/%Y:%H:%M:%S %z')"
 	boundary="$(random_str)"

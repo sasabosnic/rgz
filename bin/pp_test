@@ -1,0 +1,3 @@
+#!/bin/sh
+
+#wrk -c 100 -t 1 http://www/paywalled-page/
