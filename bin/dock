@@ -9,5 +9,5 @@ xrdb "$HOME/.Xdefaults"
 echo 'Xft.dpi: 85' | xrdb -merge
 echo 'XTerm*font: -misc-fixed-medium-r-normal--15-140-75-75-c-90-iso10646-1' | xrdb -merge
 echo 'XTerm*faceName:' | xrdb -merge
-doas sysctl machdep.lidaction=0
 pkill -HUP cwm
+doas sysctl machdep.lidaction=0
