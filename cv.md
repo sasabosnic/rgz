@@ -1,17 +1,17 @@
 <pre>
 
-           &mdash; Where do you see yourself in five years?
-                              &mdash; Here, I guess.
-                                      |
-                                      |
-      -----------------programming . . . . . . . . . .
-            -------web-development . . . . . . . . . .
-        -----------    --design-ui . . . . . . . . . .
-           -------------------unix . . . . . . . . . .
+            &mdash; Where do you see yourself in five years?
+                               &mdash; Here, I guess.
+                                       |
+                                       |
+      ------------------programming . . . . . . . . . .
+            --------web-development . . . . . . . . . .
+        -----------    ---design-ui . . . . . . . . . .
+           --------------------unix . . . . . . . . . .
 
   1990  94  98  02  06  10  14  18  22  26  30  32  36
 
-           --------independent-web . . . . . . . . . .
+           ---------independent-web . . . . . . . . . .
                        ------b2c
                          adtech
                    -b2b
@@ -44,7 +44,7 @@ the business and <a href="tech.html">technical background</a>.</em>
 
 ## Current projects
 
-**Founder, Technical Writer, Designer, [Mastering the Web](/n/)**<br>
+**Founder, Technical Writer, Software Developer, [Mastering the Web](/n/)**<br>
 _Publishing, 2018&ndash;present_<br>
 [romanzolotarev.com/n/](/n/)
 
@@ -60,7 +60,7 @@ Supporting Unix/BSD related projects and [mentoring developers](ref/mk.html).
 
 Maintaining [a media kit](/openbsd.amsterdam/) and website for
 [OpenBSD Amsterdam](https://openbsd.amsterdam).<br>
-Created [a logo](/etsh.io) for [Jeff](words.html#je)'s [Etsh](https://etsh.io/).<br>
+Created [a logo](/etsh.nl) for [Jeff](words.html#je)'s [Etsh](https://etsh.nl/).<br>
 Helping [Mischa](ref/mp.html) to promote OpenBSD Amsterdam.
 
 Writing and maintaining [shell scripts](/bin/) (licensed under
@@ -95,19 +95,12 @@ Everyone should become a tutor.
 _Job board, 2018&ndash;present_<br>
 [bsdjobs.com][BSDjobs]
 
-<pre>
-100+ job ads posted
-50+ user stories published
-First people hired
-Profitable since week two :)
-</pre>
-
-Selling and [posting job ads][BSDjobs].<br>
+[Posting job ads][BSDjobs].<br>
 Promoting BSD companies on [Twitter](https://twitter.com/bsdjobscom).<br>
 Interviewing the community and hosting [user stories](https://www.bsdjobs.com/people/).<br>
 
-[Raman](ref/rs.html) is inspiring and advising.<br>
-h/t [Reyk](words.html#rf) for being my first customer right after the project launch.
+h/t [Raman](ref/rs.html) is inspiring and advising.<br>
+[Reyk](words.html#rf) for being my first customer right after the project launch.
 
 [<img src="ref/rs.jpeg" class="avatar">](ref/rs.html "Raman")
 [<img src="ref/rf.jpeg" class="avatar">](words.html#rf "Reyk")
