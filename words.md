@@ -2,6 +2,13 @@ _Thank you for your kind words and [support](sponsors.html)!_
 
 # People are saying...
 
+"If you haven't met @romanzolotarev yet, this #OpenBSD hacker is the #MacGyver of the web. If aliens invade and take away all the shiny MacBooks and destroy JS (please come!), to Roman we should call for help! With just coreutils + a few packages, he can rebuild the internet 4all"<br>&mdash;
+[Leon Stafford](https://twitter.com/leonvolunteers/status/1070419005691678721 "05 Dec 2018")
+(@leonvolunteers)
+
+
+---
+
 <p id="nixcraft" class="quote">&#8220;Clever. This one is for you @romanzolotarev who recently helped with some css. Give him follow if you are into openbsd and unix like system&#8221;</p>
 
 <img src="/ref/nixcraft.jpeg" class="avatar"><br>
@@ -493,4 +500,4 @@ etc. I felt I should mention that to you &#x1F600;&#8221;</p>
 
 ---
 
-_101 quotes, but who's counting ;)_
+_102 quotes, but who's counting ;)_

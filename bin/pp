@@ -18,7 +18,6 @@
 
 main() {
 	MAIL_TO='hi@romanzolotarev.com'
-	MAIL_SUBJECT='romanzolotarev.com: pp'
 	MAIL_QUEUE='/db/www/mail_queue'
 	CUSTOMERS='/db/www/customers'
 	PAGES='/htdocs/ppp'
@@ -139,16 +138,17 @@ Sent to: '"$email"'
 }
 
 
-render_email_notification() {
-	body="$1"
-
+render_email_subscription() {
 	echo 'To: '"$MAIL_TO"'
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
-Subject: '"${SERVER_NAME##www.}"': New customer
+Subject: '"${SERVER_NAME##www.}"': New subscription
 
-'"$body"
+email: '"$1"'
+customer: '"$2"'
+duration: '"$3"'
+expires_at: '"$4"
 }
 
 
@@ -415,19 +415,21 @@ subscribe() {
 	s_key="${s_key%%;*}"
 	test -f "$CUSTOMERS/$c/sessions/$s_key" || http401 'no session'
 
-	duration="$1"
+	d="$1"
 	now="$(date +%s)"
-
+	e_at="$((now + d))"
 	file="$CUSTOMERS/$c/expires_at"
-	echo "$((now + duration))" > "$file"
+	echo "$e_at" > "$file"
 	chmod 0660 "$file"
 
 	dir="$CUSTOMERS/$c/subscriptions"
 	mkdir -p "$dir" && chmod 0770 "$dir"
-	echo "duration: $duration" > "$dir/$now"
+	echo "duration: $d" > "$dir/$now"
 
 	file="$MAIL_QUEUE/pp-n-$c"
-	render_email_notification "email: $email\ncustomer: $c\nduration: $duration" > "$file"
+	e=$(cat "$CUSTOMERS/$c/email")
+
+	render_email_subscription "$e" "$c" "$d" "$e_at" > "$file"
 	chmod 0660 "$file"
 
 	echo 'Status: 301 Moved Permanently'
