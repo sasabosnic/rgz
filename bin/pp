@@ -16,18 +16,29 @@
 # OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 #
 
+
 main() {
 	MAIL_TO='hi@romanzolotarev.com'
 	MAIL_QUEUE='/db/www/mail_queue'
 	CUSTOMERS='/db/www/customers'
 	PAGES='/htdocs/ppp'
+	BASE_URL='http://www'
+	PAYPAL='/db/www/paypal'
+	PAYPAL_RETURN="/paypal/return"
+	PAYPAL_CANCEL="/paypal/cancel"
+	PAYPAL_CONF="$PAYPAL/paypal.conf"
+
+	test_bin
 	test "$REQUEST_METHOD" = "GET" && get
 	test "$REQUEST_METHOD" = "POST" && post
+
 	http500 'invalid method'
 }
 
-
 get() {
+	test "${REQUEST_URI##$PAYPAL_RETURN\?}" = "${REQUEST_URI}" || paypal_return
+	test "${REQUEST_URI##$PAYPAL_CANCEL\?}" = "${REQUEST_URI}" || paypal_return
+
 	url="${PAGES}${REQUEST_URI%%\?*}"
 	if test "${url%%/}" = "$url"
 	then file="$url"
@@ -53,10 +64,10 @@ get() {
 
 	test -f "$CUSTOMERS/$c/expires_at" || subscribe_form
 
-	echo 'Status: 200 OK
-Content-Type: text/html; charset=utf-8
+	echo 'Status: 200 OK'
+	echo 'Content-Type: text/html; charset=utf-8'
+	echo
 
-'
 	render_log_out_form
 	cat "$file"
 	exit 0
@@ -94,9 +105,8 @@ post() {
 			test -z "$p" && http401 'invalid plan'
 			p=${p%%&*}
 			case "$p" in
-				min) subscribe 60;;
-				month) subscribe 2678400;;
-				year) subscribe 31622400;;
+				year) subscribe 'a';;
+				month) subscribe 'b';;
 				*) http500 'invalid plan';;
 			esac
 			;;
@@ -147,8 +157,8 @@ Subject: '"${SERVER_NAME##www.}"': New subscription
 
 email: '"$1"'
 customer: '"$2"'
-duration: '"$3"'
-expires_at: '"$4"
+amount: '"$3"'
+next billing date: '"$4"
 }
 
 
@@ -179,8 +189,9 @@ encode_value() {
 	test -n "$1" || { echo; return; }
 	echo "$1" | awk '
 	BEGIN {
-		output = ""
-		for (n = 0; n < 256; n++) pack[sprintf("%c", n)] = sprintf("%%%02x", n) } {
+		a = ""
+		for (n = 0; n < 256; n++)
+		pack[sprintf("%c", n)] = sprintf("%%%02x", n) } {
 		sline = ""
 		slen = length($0)
 		for (n = 1; n <= slen; n++) {
@@ -188,9 +199,9 @@ encode_value() {
 			if ( char !~ /^[[:alnum:]_]$/ ) char = pack[char]
 			sline = sline char
 		}
-		output = output ( output ? "%0a" : "" ) sline
+		a = a ( a ? "%0a" : "" ) sline
 	}
-	END { print output }'
+	END { print a }'
 }
 
 
@@ -198,40 +209,70 @@ log_in_form() {
 	e=$(get_value "$QUERY_STRING" 'email')
 	p=$(get_value "$QUERY_STRING" 'pin')
 
-	echo 'Status: 200 OK
-Content-Type: text/html; charset=utf-8
+	echo 'Status: 200 OK'
+	echo 'Content-Type: text/html; charset=utf-8
 
-<form action='"$REQUEST_URI"' method=post>
-<label>email</label>
-<input type="email" autocorrect="off" specllcheck="false" required="required"
-minlength="2" maxlength="255" autofocus="autofocus" name="email" value="'"$e"'">
-<label>pin</label>
-<input type="text" autocorrect="off" specllcheck="false" required="required"
-minlength="4" maxlength="4" name="pin" value="'"$p"'">
-<input name="action" type="submit" value="log_in">
-</form><form action='"$REQUEST_URI"' method=post>
-<input name="action" type="hidden" value="register_again">
-<input type="submit" value="&lt; start over">
-</form>'
+	<form action='"$REQUEST_URI"' method=post>
+		<label>email</label>
+		<input
+			type="email"
+			autocorrect="off"
+			specllcheck="false"
+			required="required"
+			minlength="2"
+			maxlength="255"
+			autofocus="autofocus"
+			name="email"
+			value="'"$e"'" >
+
+		<label>pin</label>
+		<input
+			type="text"
+			autocorrect="off"
+			specllcheck="false"
+			required="required"
+			minlength="4"
+			maxlength="4"
+			name="pin"
+			value="'"$p"'" >
+
+		<input name="action" type="submit" value="log_in">
+	</form>
+
+	<form action='"$REQUEST_URI"' method=post>
+		<input name="action" type="hidden" value="register_again">
+		<input type="submit" value="&lt; start over">
+	</form>'
 	exit 0
 }
 
 
 subscribe_form() {
+	echo 'Status: 200 OK'
+	echo 'Content-Type: text/html; charset=utf-8
 
-	echo 'Status: 200 OK
-Content-Type: text/html; charset=utf-8
+	<form action='"$REQUEST_URI"' method=post>
+		<label>select your plan:</label><br>
+		<input
+			type="radio"
+			name="plan"
+			value="year"
+			checked="checked"
+		>
+		<label>Plan A: 60 EUR/year</label><br>
 
-<form action='"$REQUEST_URI"' method=post>
-<label>select your plan:</label><br>
-<input type="radio" name="plan" value="min"><label>min</label><br>
-<input type="radio" name="plan" checked="checked" value="month"><label>month</label><br>
-<input type="radio" name="plan" value="year"><label>year</label><br>
-<input name="action" type="submit" value="subscribe">
-</form>'
+		<input
+			type="radio"
+			name="plan"
+			value="month"
+		>
+		<label>Plan B: 20 EUR/month</label><br>
+
+		<input name="action" type="submit" value="subscribe">
+	</form>
+	'
 	render_log_out_form
 	exit 0
-
 }
 
 
@@ -271,21 +312,30 @@ render_log_out_form() {
 
 	cd "$CUSTOMERS/$c/sessions"
 	sessions=$(find . -type f ! -name "$s_key"|wc -l|tr -d ' ')
-	echo '<form action='"$REQUEST_URI"' method=post>
-<input name="action" type="submit" value="log_out"></form>'
 
-	if test "$sessions" -ge "1"
-	then
-		echo '<form action='"$REQUEST_URI"' method=post>'
-		echo '<input name="action" type="hidden" value="kill_sessions">'
-		test "$sessions" = 1 && echo 'there is one more active session'
-		test "$sessions" -gt 1 && echo "there are $sessions other active sessions"
-		echo '<br><input type="submit" value="terminate all other sessions">'
-		echo '</form>'
-	fi
+	echo '
+	<form action='"$REQUEST_URI"' method=post>
+		<input name="action" type="submit" value="log_out">
+	</form>'
 
-	echo "<p>customer: $c<br>"
-	echo "session_key: $s_key</p>"
+	echo "<p>customer: $c<br>session_key: $s_key</p>"
+
+	test "$sessions" = "0" && return
+
+	echo '
+	<form action='"$REQUEST_URI"' method=post>
+		<input name="action" type="hidden" value="kill_sessions">'
+
+	test "$sessions" = 1 &&
+	echo 'there is one more active session'
+
+	test "$sessions" -gt 1 &&
+	echo "there are $sessions other active sessions"
+
+	echo '
+		<br>
+		<input type="submit" value="terminate all other sessions">
+	</form>'
 }
 
 
@@ -299,8 +349,9 @@ Content-Type: text/html; charset=utf-8
 
 <form action='"$REQUEST_URI"' method=post>
 <label>email</label>
-<input type="email" autocorrect="off" specllcheck="false" required="required"
-minlength="2" maxlength="255" autofocus="autofocus" name="email" value="'"$e"'">
+<input type="email" autocorrect="off" specllcheck="false"
+required="required" minlength="2" maxlength="255" autofocus="autofocus"
+name="email" value="'"$e"'">
 <input name="action" type="submit" value="register">
 </form>'
 	exit 0
@@ -311,8 +362,8 @@ register_again() {
 	echo 'Status: 301 Moved Permanently'
 	echo "Location: $REQUEST_URI"
 	echo 'Content-Type: text/html; charset=utf-8'
-	echo "Set-Cookie: customer=; HttpOnly"
-	echo "Set-Cookie: await_pin=false; HttpOnly"
+	echo "Set-Cookie: customer=; Path=/; HttpOnly"
+	echo "Set-Cookie: await_pin=false; Path=/; HttpOnly"
 	echo
 	exit 0
 }
@@ -337,9 +388,9 @@ log_out() {
 	echo 'Status: 301 Moved Permanently'
 	echo "Location: ${REQUEST_URI%%\?*}"
 	echo 'Content-Type: text/html; charset=utf-8'
-	echo "Set-Cookie: customer=; HttpOnly"
-	echo "Set-Cookie: session_key=; HttpOnly"
-	echo "Set-Cookie: await_pin=false; HttpOnly"
+	echo "Set-Cookie: customer=; Path=/; HttpOnly"
+	echo "Set-Cookie: session_key=; Path=/; HttpOnly"
+	echo "Set-Cookie: await_pin=false; Path=/; HttpOnly"
 	echo
 	exit 0
 }
@@ -365,8 +416,8 @@ register() {
 	echo 'Status: 301 Moved Permanently'
 	echo "Location: ${REQUEST_URI%%\?*}?email=$(encode_value "$email")"
 	echo 'Content-Type: text/html; charset=utf-8'
-	echo "Set-Cookie: customer=$c; HttpOnly"
-	echo "Set-Cookie: await_pin=true; HttpOnly"
+	echo "Set-Cookie: customer=$c; Path=/; HttpOnly"
+	echo "Set-Cookie: await_pin=true; Path=/; HttpOnly"
 	echo
 	exit 0
 }
@@ -379,7 +430,8 @@ log_in() {
 	c=$(sha256 -qs "$email")
 	p="$CUSTOMERS/$c/pin"
 	test -f "$p" || http401 'pin has not been requested'
-	test "$(cat "$p")" = "$pin $REMOTE_ADDR" || http401 'invalid pin or remote_addr'
+	test "$(cat "$p")" = "$pin $REMOTE_ADDR" ||
+	http401 'invalid pin or remote_addr'
 	rm "$CUSTOMERS/$c/pin"
 
 	file="$CUSTOMERS/$c/email"
@@ -395,15 +447,26 @@ log_in() {
 	echo 'Status: 301 Moved Permanently'
 	echo "Location: ${REQUEST_URI%%\?*}"
 	echo 'Content-Type: text/html; charset=utf-8'
-	echo "Set-Cookie: await_pin=false; HttpOnly"
-	echo "Set-Cookie: session_key=$s_key; HttpOnly"
-	echo "Set-Cookie: customer=$c; HttpOnly"
+	echo "Set-Cookie: await_pin=false; Path=/; HttpOnly"
+	echo "Set-Cookie: session_key=$s_key; Path=/; HttpOnly"
+	echo "Set-Cookie: customer=$c; Path=/; HttpOnly"
 	echo
 	exit 0
 }
 
 
 subscribe() {
+	plan_name="$1"
+
+	paypal_init
+	case "$1" in
+		a) paypal_create_plan a 'An annual  plan' YEAR 60 31536000;;
+		b) paypal_create_plan b 'A monthly plan' MONTH 20 2592000;;
+		*) http500 'invalid plan';;
+	esac
+
+	plan_id=$(cat "$PAYPAL/plans/$plan_name/id")
+
 	c="${HTTP_COOKIE##*customer=}"
 	test "$query" = "$c" ||
 	test -z "$c" && http401 'no customer'
@@ -415,29 +478,225 @@ subscribe() {
 	s_key="${s_key%%;*}"
 	test -f "$CUSTOMERS/$c/sessions/$s_key" || http401 'no session'
 
-	d="$1"
-	now="$(date +%s)"
-	e_at="$((now + d))"
+	agreement=$(paypal_create_agreement "$plan_id" "$plan_name")
+
+	echo "$agreement" > "$CUSTOMERS/$c/agreement"
+	approval_url=$(echo "$agreement" | jq -r '.links[]|select(.rel == "approval_url").href')
+	echo "$approval_url" > "$CUSTOMERS/$c/approval_url"
+
+	agreement_id=${approval_url##*token=}
+	dir="$PAYPAL/agreements"
+	mkdir -p "$dir" && chmod 0770 "$dir"
+	echo "$c" > "$dir/$agreement_id"
+	echo "$REQUEST_URI" > "$CUSTOMERS/$c/return"
+
+	echo 'Status: 301 Moved Permanently'
+	echo "Location: ${approval_url}"
+	echo
+	exit 0
+}
+
+
+##############################################################################
+
+
+paypal_init() {
+	test -f "$PAYPAL_CONF"		|| http500 "no $PAYPAL_CONF"
+	# shellcheck disable=SC1090
+	. "$PAYPAL_CONF"
+
+	test -n "$PAYPAL_API"		|| http500 "no PAYPAL_API"
+	test -n "$PAYPAL_CLIENT_ID"	|| http500 "no PAYPAL_CLIENT_ID"
+	test -n "$PAYPAL_SECRET"	|| http500 "no PAYPAL_SECRET"
+
+	PAYPAL_ACCESS_TOKEN=$(paypal_get_access_token)
+	test -n "$PAYPAL_ACCESS_TOKEN" || http500 'no access token'
+}
+
+
+paypal_get_access_token() {
+	now=$(date +%s)
+
+	read -r a_t e_at < "$PAYPAL/access_token" &&
+	test "$now" -lt "$e_at" &&
+	echo "$a_t" && return
+
+	curl -s "$PAYPAL_API/oauth2/token" \
+	-H "Accept: application/json" \
+	-u "$PAYPAL_CLIENT_ID:$PAYPAL_SECRET" \
+	-d "grant_type=client_credentials" |
+	jq -r '.access_token + " " + (.expires_in | tostring)' | (
+		read -r  a_t e_in
+		echo "$a_t $(( now + e_in - 5 ))" > "$PAYPAL/access_token"
+		echo "$a_t"
+	)
+}
+
+
+paypal_create_plan() {
+	return_url="${BASE_URL}$PAYPAL_RETURN"
+	cancel_url="${BASE_URL}$PAYPAL_CANCEL"
+
+	test -f "$PAYPAL/plans/$1/id" &&
+	plan_id=$(cat "$PAYPAL/plans/$1/id") &&
+	test -n "$plan_id" &&
+	echo "$plan_id" && return
+
+	mkdir -p "$PAYPAL/plans/$1"
+	plan=$(
+		curl -s -X POST "$PAYPAL_API/payments/billing-plans/" \
+		-H 'Content-Type: application/json' \
+		-H "Authorization: Bearer $PAYPAL_ACCESS_TOKEN" \
+		-d '{
+			"name": "Plan '"$1"'",
+			"description": "'"$2"'",
+			"type": "INFINITE",
+			"payment_definitions": [ {
+				"name": "Regular payment",
+				"type": "REGULAR",
+				"frequency": "'"$3"'",
+				"frequency_interval": "1",
+				"amount": {
+					"value": "'"$4"'",
+					"currency": "EUR"
+				},
+				"cycles": "0"
+			} ],
+			"merchant_preferences": {
+				"setup_fee": {
+					"value": "'"$4"'",
+					"currency": "EUR"
+				},
+				"return_url": "'"$return_url"'",
+				"cancel_url": "'"$cancel_url"'",
+				"auto_bill_amount": "YES",
+				"initial_fail_amount_action": "CONTINUE",
+				"max_fail_attempts": "3"
+			}
+		}'
+	)
+	plan_id=$(echo "$plan" | jq -r '.id')
+	echo "$plan" > "$PAYPAL/plans/$1/plan.json"
+	echo "$plan_id" > "$PAYPAL/plans/$1/id"
+	echo "$5" > "$PAYPAL/plans/$1/duration"
+	paypal_activate_plan "$1" "$plan_id"
+
+	echo "$plan_id"
+}
+
+
+paypal_activate_plan() {
+	curl -s -X PATCH "$PAYPAL_API/payments/billing-plans/$2" \
+	-H "Content-Type: application/json" \
+	-H "Authorization: Bearer $PAYPAL_ACCESS_TOKEN" \
+	-d '[{
+		"op": "replace",
+		"path": "/",
+		"value": { "state": "ACTIVE" }
+	}]'
+}
+
+
+paypal_create_agreement() {
+	plan_id="$1"
+	plan_name="$2"
+	start_date=$(date -j -r $(($(date +%s) + 10)) +%Y-%m-%dT%H:%M:%SZ)
+
+	curl -s -X POST "$PAYPAL_API/payments/billing-agreements/" \
+	-H "Content-Type: application/json" \
+	-H "Authorization: Bearer $PAYPAL_ACCESS_TOKEN" \
+	-d '{
+		"name": "Plan '"$plan_name"' agreement",
+		"description": "'"$plan_name"'",
+		"start_date": "'"$start_date"'",
+		"plan": { "id": "'"$plan_id"'" },
+		"payer": { "payment_method": "paypal" }
+	}'
+}
+
+
+paypal_execute_agreement() {
+	a_id="$1"
+	c="$2"
+
+	url="$PAYPAL_API/payments/billing-agreements/$a_id/agreement-execute"
+
+	e=$(
+		curl -s -X POST "$url" \
+		-H "Content-Type: application/json" \
+		-H "Authorization: Bearer $PAYPAL_ACCESS_TOKEN"
+	)
+
+	http500 "$e"
+
+	dir="$PAYPAL/agreements_executed"
+	mkdir -p "$dir" && chmod 0770 "$dir"
+	file="$dir/$c"
+	echo "$e" > "$file"
+	chmod 0660 "$file"
+
+	e_id=$(echo "$e" | jq -r .id)
+	file="$CUSTOMERS/$c/argeement_executed_id"
+	echo "$e_id" > "$file"
+	chmod 0660 "$file"
+
+	nb_date=$(echo "$e" | jq -r '.agreement_details.next_billing_date')
+	e_at=$(date -j +%s "$(
+		echo "$nb_date" |
+		sed -E 's/(.*)-(.*)-(.*)T(.*):(.*):(.*)Z/\1\2\3\4\5.\6/'
+	)")
 	file="$CUSTOMERS/$c/expires_at"
 	echo "$e_at" > "$file"
 	chmod 0660 "$file"
 
-	dir="$CUSTOMERS/$c/subscriptions"
-	mkdir -p "$dir" && chmod 0770 "$dir"
-	echo "duration: $d" > "$dir/$now"
-
+	lp_amount=$(echo "$e" | jq -r '.agreement_details.last_payment_amount.value')
 	file="$MAIL_QUEUE/pp-n-$c"
 	e=$(cat "$CUSTOMERS/$c/email")
-
-	render_email_subscription "$e" "$c" "$d" "$e_at" > "$file"
+	render_email_subscription "$e" "$c" "$lp_amount" "$nb_date" > "$file"
 	chmod 0660 "$file"
 
+	file="$CUSTOMERS/$c/return"
+	if test -f "$file"
+	then url=$(cat "$CUSTOMERS/$c/return")
+	else url='/'
+	fi
+
 	echo 'Status: 301 Moved Permanently'
-	echo "Location: ${REQUEST_URI%%\?*}"
+	echo "Location: ${url%%\?*}"
 	echo 'Content-Type: text/html; charset=utf-8'
 	echo
 	exit 0
 }
+
+
+paypal_return() {
+	a_id=${REQUEST_URI##$PAYPAL_RETURN\?token=}
+
+	payer=$(cat "$PAYPAL/agreements/$a_id")
+
+	c="${HTTP_COOKIE##*customer=}"
+	test -z "$c" && http401 'no customer'
+	c="${c%%;*}"
+
+	s_key="${HTTP_COOKIE##*session_key=}"
+	test "$HTTP_COOKIE" = "$s_key" ||
+	test -z "$s_key" && http401 'no session'
+	s_key="${s_key%%;*}"
+	test -f "$CUSTOMERS/$c/sessions/$s_key" || http401 'no session'
+
+	test "$payer" = "$c" || 'payer does not match customer'
+
+	paypal_init
+	paypal_execute_agreement "$a_id" "$c"
+}
+
+
+paypal_cancel() {
+	http500 'cancel'
+}
+
+
+##############################################################################
 
 
 random_str() {
@@ -466,6 +725,70 @@ http404() {
 	echo
 	echo "404: $1"
 	exit 1
+}
+
+
+DEPS='
+/etc/resolv.conf
+/etc/ssl/cert.pem
+/bin/cat
+/bin/chmod
+/bin/date
+/bin/dd
+/bin/mkdir
+/bin/rm
+/bin/sh
+/bin/sha256
+/usr/bin/awk
+/usr/bin/b64encode
+/usr/bin/find
+/usr/bin/grep
+/usr/bin/head
+/usr/bin/jot
+/usr/bin/printf
+/usr/bin/sed
+/usr/bin/tail
+/usr/bin/tr
+/usr/bin/wc
+/usr/lib/libc.so.92.5
+/usr/lib/libcrypto.so.44.1
+/usr/lib/libm.so.10.1
+/usr/lib/libpthread.so.25.1
+/usr/lib/libssl.so.46.1
+/usr/lib/libutil.so.13.0
+/usr/lib/libz.so.5.0
+/usr/libexec/ld.so
+/usr/local/bin/curl
+/usr/local/bin/jq
+/usr/local/lib/libcurl.so.25.17
+/usr/local/lib/libjq.so.1.0
+/usr/local/lib/libnghttp2.so.0.14
+'
+
+
+test_bin() {
+	echo "$DEPS" | grep 'bin' |
+	while read -r file
+	do test -x "$file" || http500 "$(no_bin "$file")"
+	done
+	echo "$DEPS" | grep -E 'lib|^/etc' |
+	while read -r x
+	do
+		y=$(echo "$x" | sed 's#/usr/local/lib/#/usr/lib/#g')
+		test -f "$y" || http500 "$(no_bin "$y")"
+	done
+}
+
+
+no_bin() {
+ 	echo "$1: no file"
+	echo '# copy binaries'
+	echo "$DEPS" | grep . |
+	while read -r x
+	do
+		y=$(echo "$x" | sed 's#/usr/local/lib/#/usr/lib/#g')
+		echo "cp $x /var/www$y"
+	done
 }
 
 
