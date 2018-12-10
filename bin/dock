@@ -1,5 +1,4 @@
-#!/bin/sh
-set -e
+#!/bin/sh -e
 xrandr | grep 'HDMI-1 connected' || { >&2 echo 'HDMI-1 disconnected'; exit 1; }
 # xrandr --output HDMI-1 --auto --output eDP-1 --auto --right-of HDMI-1
 xrandr --output HDMI-1 --auto --output eDP-1 --off
