@@ -1,0 +1,231 @@
+#!/bin/sh -e
+#
+# https://www.romanzolotarev.com/bin/pp
+# Copyright 2018 Roman Zolotarev <hi@romanzolotarev.com>
+#
+# Permission to use, copy, modify, and/or distribute this software for any
+# purpose with or without fee is hereby granted, provided that the above
+# copyright notice and this permission notice appear in all copies.
+#
+# THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+# WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+# MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+# ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+# WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+# ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+# OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+#
+
+
+main() {
+	# MAIL_TO='hi@romanzolotarev.com'
+	DB='/db/www/'
+
+
+	URI=${REQUEST_URI##/mm/}
+	PAGES='/htdocs/mm'
+
+	case "$REQUEST_METHOD/$URI" in
+		GET/paypal/return?token=*) paypal_return;;
+		GET/paypal/cancel?token=*) paypal_cancel;;
+		GET/*?setup*) setup;;
+		GET/*) render_page;;
+		POST/*) post;;
+		*) http500 'invalid method or uri';;
+	esac
+}
+
+
+##############################################################################
+
+
+post() { http500 post; }
+
+
+##############################################################################
+
+
+is_session_valid() {
+	get_cookie 'member_id'
+	get_cookie 'session_key'
+}
+
+
+render_page() {
+	test "$HTTPS" = 'on' &&
+	server_url="https://$HTTP_HOST" ||
+	server_url="http://$HTTP_HOST"
+
+	#is_session_valid || new_session
+
+	url="${PAGES}/${URI%%\?*}"
+	if test "${url%%/}" = "$url"
+	then f="$url"
+	else f="${url}index.html"
+	fi
+
+	test -f "$f" || http404 "$f: not found"
+	echo 'Status: 200 OK'
+	echo 'Content-Type: text/html; charset=utf-8'
+	echo
+	# h/t Devin Teske
+	# https://twitter.com/freebsdfrau/status/1072538953935454210
+	echo '
+<pre>
+      file  '"$f"'
+server_url  '"$server_url"'
+</pre>
+'
+
+
+	render_m |
+	awk -v f="$f" '
+	BEGIN { while (getline) c = c "\n" $0; c = substr(c, 2) }
+	END { while (getline < f) { gsub(/<!-- m -->/, c); print } }'
+
+	exit 0
+}
+
+
+##############################################################################
+
+
+paypal_return() {
+	http500 "return: $(get_value "$QUERY_STRING" token)"
+}
+
+
+paypal_cancel() {
+	http500 "cancel: $(get_value "$QUERY_STRING" token)"
+}
+
+
+##############################################################################
+
+
+get_value() {
+	# h/t Devin Teske
+	test -n "$1" || { echo; return; }
+	x="${1##*$2=}"
+	test "$x" = "$1" && { echo; return; }
+	# shellcheck disable=1004
+	echo "${x%%&*}" | awk '
+	BEGIN { for (n = 0; n < 256; n++) chr[n] = sprintf("%c",n) } {
+		t = $0
+		a = ""
+		gsub(/\+/, " ", t)
+		while( match(t, /%[[:xdigit:]][[:xdigit:]]/) ) {
+			a = a substr(t, 1, RSTART-1)\
+			chr[ sprintf("%u", "0x" substr(t, RSTART+1, 2))]
+			t = substr(t, RSTART+RLENGTH)
+		}
+		a = a t
+		print a
+	}'
+}
+
+
+##############################################################################
+
+
+http500() {
+	echo 'Status: 500 Internal Server Error'
+	echo
+	echo "$1"
+	exit 1
+}
+
+
+http404() {
+	echo 'Status: 404 Not Found'
+	echo
+	echo "$1"
+	exit 1
+}
+
+
+##############################################################################
+
+
+setup() {
+	errs=$(
+		setup_test_deps
+		setup_test_dirs
+	)
+	test -z "$errs" || http500 "$errs"
+	echo 'Status: 200 OK'
+	echo
+	echo 'ok'
+	exit
+}
+
+
+setup_test_dirs() {
+	test -d "$PAGES" || echo 'PAGES not a dir'
+	test -d "$DB" || echo 'DB not a dir'
+	test -f "$DB/paypal/paypal.conf" || echo 'DB/paypal/paypal.conf not a file'
+}
+
+
+
+setup_test_deps() {
+	test -x '/usr/local/bin/curl' || echo 'pkg_add curl'
+	test -x '/usr/local/bin/jq' || echo 'pkg_add jq'
+	dirs=''
+	echo '
+/etc/resolv.conf
+/etc/ssl/cert.pem
+
+/bin/cat
+/bin/chmod
+/bin/date
+/bin/dd
+/bin/mkdir
+/bin/rm
+/bin/sh
+/bin/sha256
+/usr/bin/awk
+/usr/bin/b64encode
+/usr/bin/find
+/usr/bin/grep
+/usr/bin/head
+/usr/bin/jot
+/usr/bin/printf
+/usr/bin/sed
+/usr/bin/tail
+/usr/bin/tr
+/usr/bin/wc
+/usr/local/bin/curl
+/usr/local/bin/jq
+
+/usr/lib/libc.so.92.5
+/usr/lib/libcrypto.so.44.1
+/usr/lib/libm.so.10.1
+/usr/lib/libpthread.so.25.1
+/usr/lib/libssl.so.46.1
+/usr/lib/libutil.so.13.0
+/usr/lib/libz.so.5.0
+/usr/libexec/ld.so
+/usr/local/lib/libcurl.so.25.17
+/usr/local/lib/libjq.so.1.0
+/usr/local/lib/libnghttp2.so.0.14
+' |
+	while read -r f
+	do
+		test -n "$f" || continue
+		d=${f%/*}
+		if test "${dirs%%:$d}" = "$dirs" &&
+		test "$d" != '/usr/local/lib'
+		then dirs="$dirs:$d" && test -d "$d" || echo "mkdir -p $d"
+		fi
+		test "${f##/usr/local/lib/}" = "$f" &&
+		x="$f" || x="/usr/lib${f##/usr/local/lib}"
+		test -f "$x" || echo "cp $f /var/www$x"
+	done
+}
+
+
+##############################################################################
+
+
+main

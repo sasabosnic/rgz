@@ -37,7 +37,7 @@ main() {
 
 get() {
 	test "${REQUEST_URI##$PAYPAL_RETURN\?}" = "${REQUEST_URI}" || paypal_return
-	test "${REQUEST_URI##$PAYPAL_CANCEL\?}" = "${REQUEST_URI}" || paypal_return
+	test "${REQUEST_URI##$PAYPAL_CANCEL\?}" = "${REQUEST_URI}" || paypal_cancel
 
 	url="${PAGES}${REQUEST_URI%%\?*}"
 	if test "${url%%/}" = "$url"
@@ -397,7 +397,7 @@ log_out() {
 
 
 register() {
-	email="$1"
+	email=$(echo "$1" | tr '[:upper:]' '[:lower:]')
 	pin=$(random_str 4)
 	c=$(sha256 -qs "$email")
 	dir="$CUSTOMERS/$c"
@@ -424,7 +424,7 @@ register() {
 
 
 log_in() {
-	email="$1"
+	email=$(echo "$1" | tr '[:upper:]' '[:lower:]')
 	pin="$2"
 	s_key=$(random_str 20)
 	c=$(sha256 -qs "$email")
@@ -491,7 +491,7 @@ subscribe() {
 	echo "$REQUEST_URI" > "$CUSTOMERS/$c/return"
 
 	echo 'Status: 301 Moved Permanently'
-	echo "Location: ${approval_url}"
+	echo "Location: ${approval_url}?locale.x=en_US"
 	echo
 	exit 0
 }

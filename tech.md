@@ -4,49 +4,50 @@ _This is a part of my [curriculum vitae](cv.html)._
 
 ## Languages
 
-- 2016-now  Haskell
-- 2015-now  Elm
-- 1998-now  JavaScript
-- 1997-now  sh, HTML, CSS
+- 2016 Haskell
+- 2015 Elm
+- 1998 JavaScript
+- 1997 sh, HTML, CSS
 - 1992-1996 BASIC and Pascal
-- 1988-now  English
-- 1977-now  native Russian
+- c.1980s English
+- c.1970s native Russian
 
 ## Web development
 
-- 2017-now  SQLite
-- 2016-now  Haskell
-- 2016-now  ES2016
-- 2015-now  [Elm](elm.html)
-- 2015-now  Ramda
-- 2015-now  ES2015
+- 2017 SQLite
+- 2016 Haskell
+- 2016 ES2016
+- 2015 [Elm](elm.html)
+- 2015 Ramda
+- 2015 ES2015
 - 2015-2016 React, Babel, Webpack
-- 2012-now  Node.js and ES5
+- 2012 Node.js and ES5
 - 2012-2016 MongoDB, Meteor
 - 2012-2015 CoffeeScript
-- 2011-now  [Jekyll](jekyll.html)
+- 2011 [Jekyll](jekyll.html)
 - 2010-2016 Balsamiq Mockups
 - 2008-2014 PostgreSQL
 - 2005-2017 PGP, GnuPG
-- 2004-now  SSL/TLS, public key infrastructure, OpenSSL
-- 2000-now  RSS
-- 1998-now  JavaScript (ES2 and ES3)
-- 1997-now  HTML, CSS
+- 2004 SSL/TLS, public key infrastructure, OpenSSL
+- 2000 RSS
+- 1998 JavaScript (ES2 and ES3)
+- 1997 HTML, CSS
 
 ## Unix userland
 
-- 2018-now  awk
-- 2014-now  tmux
-- 2012-now  sed, tr, cut
-- 2008-now  git
-- 1999-now  ssh, sshd
-- 1997-now  telnet, sh, grep, tail, head
+- 2018 awk
+- 2014 tmux, jq
+- 2012 sed, tr, cut, jot, cpio, readlink, script, tee, which
+- 2010 curl
+- 2008 git, paste, join, column, nl
+- 1999 ssh, sshd
+- 1997 telnet, sh, grep, tail, head, cat, chmod, date, dd, mkdir, rm, find, grep, printf, wc
 
 ## Servers
 
-- 2018-now  [OpenBSD] on [OpenBSD Amsterdam](openbsd.amsterdam.html)
-- 2017-now  [OpenBSD] on [Vultr](vultr.html) &mdash; _this very site_
-- 2015-now  [OpenBSD] servers [httpd(8)](openbsd/httpd.html), Node.js, MongoDB
+- 2018 [OpenBSD] on [OpenBSD Amsterdam](openbsd/oams.html) &mdash; _this very site_
+- 2017 [OpenBSD] on [Vultr](vultr.html)
+- 2015 [OpenBSD] servers [httpd(8)](openbsd/httpd.html), Node.js, MongoDB
 - 2012-2016 Ubuntu, nginx, Node.js, MongoDB
 - 2009-2012 Ubuntu, httpd, Ruby on Rails
 - 2005-2009 Ubuntu, httpd, MySQL, PHP
@@ -57,7 +58,7 @@ _This is a part of my [curriculum vitae](cv.html)._
 
 ## Third party services and APIs
 
-- 2015-now  Vultr
+- 2015 Vultr
 - 2015-2017 Google Firebase
 - 2012-2017 Google Nearline
 - 2012-2017 Amazon S3
@@ -68,13 +69,13 @@ _This is a part of my [curriculum vitae](cv.html)._
 
 [vi](vi.html) is my only text editor these days.
 
-- 2014-now  [Vim](vim.html)
+- 2014 [Vim](vim.html)
 - 2010-2017 [TextEdit](https://en.m.wikipedia.org/wiki/TextEdit)
 - 2010-2014 [Sublime Text](https://en.m.wikipedia.org/wiki/Sublime_Text)
 - 2010-2010 [BBEdit](https://en.m.wikipedia.org/wiki/BBEdit)
 - 2006-2010 [gedit](https://en.m.wikipedia.org/wiki/Gedit)
 - 2000-2000 [Microsoft Notepad](https://en.m.wikipedia.org/wiki/Microsoft_Notepad)
-- 1999-now  [vi](vi.html)
+- 1999 [vi](vi.html)
 - 1996-2000 [Far Manager](https://en.m.wikipedia.org/wiki/Far_Manager)
 - 1991-1996 [Norton Commander](https://en.m.wikipedia.org/wiki/Norton_Commander)
 
@@ -93,12 +94,12 @@ and few others, but not longer than for few days.
 
 [I've been typing](typing.html) almost all my life.
 
-- 2018-now  ThinkPad X1 Carbon built-in keyboadrd with QWERTY
-- 2016-now  [ErgoDox EX](ergodox.html) with [Norman layout](norman-layout.html)
-- 2010-now  MacBook built-in keyboards
+- 2018 ThinkPad X1 Carbon built-in keyboadrd with QWERTY
+- 2016 [ErgoDox EX](ergodox.html) with [Norman layout](norman-layout.html)
+- 2010 MacBook built-in keyboards
 - 2004-2010 Various ThinkPad built-in keyboards
 - 1991-2004 Various mechanical keyboards
-- 1989-now  QWERTY layout
+- 1989 QWERTY layout
 - 1989-1991 Membrane keyboards
 - 1982-1989 _no typing_
 - 1982-1982 [Mechanical typewriter](typewriter.html) with &#1081;&#1094;&#1091;&#1082;&#1077;&#1085; layout
@@ -107,18 +108,18 @@ and few others, but not longer than for few days.
 
 _Check [my current setup](setup.html)._
 
-- 2018-now  [ThinkPad X1 Carbon (5th Gen)](lenovo-thinkpad-x1c5.html) / [OpenBSD] 6.3
-- 2017-now  [Zotac CI527](zotac-ci527.html) / [OpenBSD] 6.2 .. 6.3
-- 2017-now  [Nokia 105](nokia-105.html)
-- 2014-now  iPhone 5 iOS 8-10
-- 2014-now  MacBook Pro (Retina, 15-inch, Mid 2014) / [macOS] 10.9 .. 10.13
-- 2012-now  iPad mini
+- 2018 [ThinkPad X1 Carbon (5th Gen)](lenovo-thinkpad-x1c5.html) / [OpenBSD] 6.3
+- 2017 [Zotac CI527](zotac-ci527.html) / [OpenBSD] 6.2 .. 6.3
+- 2017 [Nokia 105](nokia-105.html)
+- 2014 iPhone 5 iOS 8-10
+- 2014 MacBook Pro (Retina, 15-inch, Mid 2014) / [macOS] 10.9 .. 10.13
+- 2012 iPad mini
 - 2012-2014 iPad 3rd Gen
-- 2011-now  MacBook Air (13-inch, Mid 2011) / [macOS] 10.7 .. 10.13
+- 2011 MacBook Air (13-inch, Mid 2011) / [macOS] 10.7 .. 10.13
 - 2011-2014 iPhone 4s iOS 6-9
 - 2011-2012 iPad 2nd Gen
-- 2010-now  iPhone 3GS iOS 5-6
-- 2010-now  MacBook Pro (13-inch, Mid 2009) / [macOS] 10.6 .. 10.13
+- 2010 iPhone 3GS iOS 5-6
+- 2010 MacBook Pro (13-inch, Mid 2009) / [macOS] 10.6 .. 10.13
 - 2010-2014 Kindle 3rd Gen
 - 2010-2011 iPad 1st Gen
 - 2007-2010 HTC Touch (HTC 3450) Windows Mobile
@@ -134,6 +135,6 @@ _Check [my current setup](setup.html)._
 
 # Networking
 
-- 2003-now  Wi-Fi
-- 1996-now  10BASE-T .. 1000BASE-T Ethernet
+- 2003 Wi-Fi
+- 1996 10BASE-T .. 1000BASE-T Ethernet
 - 1991-1994 10BASE2 Ethernet

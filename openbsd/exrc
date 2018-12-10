@@ -1,5 +1,5 @@
 map gP :r!tmux show-buffer
-map gS {j!}sort -r
+map gS {j!}sort -ur
 map gT :%!a=$(cat %);echo "$a"
 map gY !'mtmux load-buffer -u
 map ga :E %_test
@@ -11,6 +11,6 @@ map gg 1G
 map gj :%!prettier --parser=flow --write
 map gJ :%!prettier --parser=json --write
 map gp :r!xclip -o -selection clipboard
-map gs {!}sort
+map gs {!}sort -u
 map gt mM:%s/[[:space:]]*$//`M
 set cedit=\

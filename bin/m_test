@@ -1,0 +1,33 @@
+#!/bin/sh -e
+server='http://127.0.0.1'
+pages='/var/www/htdocs/mm'
+
+total=0; nos=0
+no() { total=$((total+1)); echo "no ok $total - $1"; nos=$((nos+1)); }
+ok() { total=$((total+1)); echo "ok $total - $1"; }
+has() { if echo "$1" | grep -q "$2"; then ok "$3"; else no "$3\\n$1"; fi }
+eq() { if [ "$1" = "$2" ]; then ok "$3"; else no "$3"
+        printf '\033[32m%s\n\033[31m%s\n\033[m' "$1" "$2"; fi }
+desc() { printf '#\n\033[1m%s\033[m\n' "$1"; }
+
+#######################################################################################
+
+
+desc "GET"
+test -x "$(which curl)" || exit 1
+test -x "$(which jq)" || exit 1
+test -x "$(which wrk)" || exit 1
+
+sleep .2
+has "$(curl -s "$server/mm")" '<title>301 Moved Permanently</title>' '/mm redirect'
+echo '<!-- m --><p>content</p>' > "$pages/page.html"
+has "$(curl -s "$server/mm/page.html")" '/htdocs/mm/page.html' '/mm/ filename'
+has "$(curl -s "$server/mm/?setup")" 'ok' '/mm/?setup ok'
+
+
+#######################################################################################
+
+echo "1..$total"
+if [ "$nos" -gt 0 ]; then echo "FAILED $nos/$total"; else echo "PASS"; fi
+
+#wrk -c 100 -t 1 -d 5 http://www/m/page.html | grep ^Req

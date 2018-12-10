@@ -1,11 +1,10 @@
-#!/bin/sh
+#!/bin/sh -e
 #
 # https://www.romanzolotarev.com/bin/screenshot
 # Copyright 2018 Roman Zolotarev <hi@romanzolotarev.com>
 #
 # pkg_add slop ImageMagick sxiv xclip
 #
-set -e
 
 dir="$HOME/downloads/"
 
