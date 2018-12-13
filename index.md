@@ -36,6 +36,7 @@ hi@romanzolotarev.com<br>
 
 Subscribe via [RSS](https://www.romanzolotarev.com/rss.xml).
 
+- [configure nsd(8) on OpenBSD](openbsd/nsd.html "2018-12-14")
 - [forward outgoing mail to a remote SMTP server](openbsd/smtpd-forward.html "2018-11-23")
 - [mount exFAT file system on OpenBSD](openbsd/exfat.html "2018-11-16")
 - [mount file system via Media Transfer Protocol on OpenBSD](openbsd/mtp.html "2018-11-06")
