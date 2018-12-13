@@ -52,6 +52,10 @@ pre {
   font-size: 15px;
   overflow-x: auto;
   line-height: 1.4em;
+  color: #444444;
+}
+pre b {
+  color: #000000;
 }
 pre strong {
   background-color: #0000cc;
@@ -62,9 +66,11 @@ pre em {
 }
 pre i {
   font-style: normal;
+  color: #444444;
 }
 pre i::before {
   content: "> ";
+  color: #aaaaaa;
 }
 
 pre,

@@ -16,68 +16,68 @@ update_complete_pass() {
   set -A complete_pass_show -- $pass_list
 }
 update_complete_pass
-pass_add() { pass add "$1" && update_complete_pass; }
-pass_edit() { pass edit "$1"; }
-pass_export() { pass export "$1"; }
-pass_show() { pass show "$1"; }
+pass_add()	{ pass add "$1" && update_complete_pass; }
+pass_edit()	{ pass edit "$1"; }
+pass_show()	{ pass show "$1"; }
+pass_export()	{ pass export "$1"; }
 
-t() { tmux new -As 0; }
-j() { stmux 'j' 'prv/j'       'vi my.journal'; }
-m() { stmux 'm' 'pub/music'   'cmus'; }
-n() { stmux 'n' 'downloads'   'newsboat'; }
-v() { stmux 'v' 'prv/openvpn' 'doas openvpn --config default.ovpn'; }
-conf() { cd "$HOME/prv/conf"; }
+c()	{ stmux 'conf' 'prv/conf'; }
+j()	{ stmux 'j' 'prv/j'       'vi my.journal'; }
+m()	{ stmux 'mus' 'pub/music'   'cmus'; }
+t()	{ tmux new -As 0; }
+v()	{ stmux 'v' 'prv/openvpn' 'doas openvpn --config default.ovpn'; }
+nb()	{ stmux 'nb' 'downloads'   'newsboat'; }
 
 alias bsdj='sssg bsdj'
 alias leto='sssg leto'
+alias mm='sssg mm'
 alias oams='sssg oams'
 alias runbsd='sssg runbsd'
 alias www='sssg www'
-alias mm='sssg mm'
 
-sync_logs() { [ -n "$1" ] && { rsync -azcvP "$1:/var/www/logs/*" "$HOME/prv/logs/$(date +%Y-%m-%d)-$1/"; }; }
+s_log()	{ [ -n "$1" ] && { rsync -azcvP "$1:/var/www/logs/*" "$HOME/prv/logs/$(date +%Y-%m-%d)-$1/"; }; }
 
-png() { optipng -preserve -strip all -o7 "$1"; }
-jpeg() { jpegoptim --strip-all --preserve --preserve-perms --verbose -m80 "$1"; }
-jpeg50() { jpegoptim --strip-all --preserve --preserve-perms --verbose -m50 "$1"; }
-jpeg20() { jpegoptim --strip-all --preserve --preserve-perms --verbose -m20 "$1"; }
-fit() { convert -resize 1200 "$1" "$1"; jpeg "$1"; }
-fit50() { convert -resize 50 "$1" "$1"; jpeg "$1"; }
-fit120() { convert -resize 120 "$1" "$1"; jpeg "$1"; }
+png()	{ optipng -preserve -strip all -o7 "$1"; }
+jpeg()	{ jpegoptim --strip-all --preserve --preserve-perms --verbose -m80 "$1"; }
+j50()	{ jpegoptim --strip-all --preserve --preserve-perms --verbose -m50 "$1"; }
+j20() 	{ jpegoptim --strip-all --preserve --preserve-perms --verbose -m20 "$1"; }
+fit()	{ convert -resize 1200 "$1" "$1"; jpeg "$1"; }
+f50()	{ convert -resize 50 "$1" "$1"; jpeg "$1"; }
+f120()	{ convert -resize 120 "$1" "$1"; jpeg "$1"; }
 
-pics() { mnt sd1i && cd DCIM && rsync -avP --chown="$(whoami)" . "$HOME/downloads/pics" && cd "$HOME/downloads/pics" && umnt sd1i; }
-xrm() { sxiv -tor . | xargs -r /bin/rm -v; }
-xmv() { test -n "$1" || return; mkdir -p "$1"; sxiv -tor . | while read -r f; do mv -v "$f" "$1/"; done; }
-x() { sxiv -tor "${1:-.}"; }
+pics()	{ mnt sd1i && cd DCIM && rsync -avP --chown="$(whoami)" . "$HOME/downloads/pics" && cd "$HOME/downloads/pics" && umnt sd1i; }
+xrm()	{ sxiv -tor . | xargs -r /bin/rm -v; }
+xmv()	{ test -n "$1" || return; mkdir -p "$1"; sxiv -tor . | while read -r f; do mv -v "$f" "$1/"; done; }
+x()	{ sxiv -tor "${1:-.}"; }
 
-aria() { mkdir -p "$HOME/downloads" && (cd "$HOME/downloads" && aria2c "$1"); }
-yt() { mkdir -p "$HOME/downloads" && (cd "$HOME/downloads" && youtube-dl "$1"); }
-yl() { mkdir -p "$HOME/downloads" && (cd "$HOME/downloads" && youtube-dl -f 'bestvideo[height<=144]+bestaudio/best[height<=144]' "$1"); }
+aria()	{ mkdir -p "$HOME/downloads" && (cd "$HOME/downloads" && aria2c "$1"); }
+yt()	{ mkdir -p "$HOME/downloads" && (cd "$HOME/downloads" && youtube-dl "$1"); }
+yl()	{ mkdir -p "$HOME/downloads" && (cd "$HOME/downloads" && youtube-dl -f 'bestvideo[height<=144]+bestaudio/best[height<=144]' "$1"); }
 
-p() { PS1='$ '; clear; }
+p() 	{ PS1='$ '; clear; }
 
-mnt_sd()     { doas "$HOME/bin/mnt_crypto"  '36a604aa7599cf63.a' 'fdfc727794396746.a'; }
-umnt_sd()    { doas "$HOME/bin/umnt_crypto" '36a604aa7599cf63.a'; }
-arc_to_sd()  { doas "$HOME/bin/arc_with_timestamp" "$1" '/mnt/36a604aa7599cf63.a'; }
+m_sd()	{ doas "$HOME/bin/mnt_crypto"	'36a604aa7599cf63.a' 'fdfc727794396746.a'; }
+u_sd()	{ doas "$HOME/bin/umnt_crypto"	'36a604aa7599cf63.a'; }
+a_sd()	{ doas "$HOME/bin/arc_with_timestamp" "$1" '/mnt/36a604aa7599cf63.a'; }
 
-mnt_sd2()    { doas "$HOME/bin/mnt_crypto"  'cca0df756b5bea87.a' '2ee857f508c168b8.a'; }
-umnt_sd2()   { doas "$HOME/bin/umnt_crypto" 'cca0df756b5bea87.a'; }
-arc_to_sd2() { doas "$HOME/bin/arc_with_timestamp" "$1" '/mnt/cca0df756b5bea87.a'; }
+m_sd2()	{ doas "$HOME/bin/mnt_crypto"	'cca0df756b5bea87.a' '2ee857f508c168b8.a'; }
+u_sd2()	{ doas "$HOME/bin/umnt_crypto"	'cca0df756b5bea87.a'; }
+a_sd2()	{ doas "$HOME/bin/arc_with_timestamp" "$1" '/mnt/cca0df756b5bea87.a'; }
 
-mnt_hdd()    { doas "$HOME/bin/mnt_crypto"  '31b1a7c06ca4e505.i' 'c8c569a177ce539a.a'; }
-umnt_hdd()   { doas "$HOME/bin/umnt_crypto" '31b1a7c06ca4e505.i'; }
-arc_to_hdd() { doas "$HOME/bin/arc_with_timestamp" "$1" '/mnt/31b1a7c06ca4e505.i'; }
+m_hdd()	{ doas "$HOME/bin/mnt_crypto"	'31b1a7c06ca4e505.i' 'c8c569a177ce539a.a'; }
+u_hdd()	{ doas "$HOME/bin/umnt_crypto"	'31b1a7c06ca4e505.i'; }
+a_hdd()	{ doas "$HOME/bin/arc_with_timestamp" "$1" '/mnt/31b1a7c06ca4e505.i'; }
 
-mnt_xa()     { doas mkdir -p "/mnt/xa"; doas simple-mtpfs --device 1 "/mnt/xa" -o uid=1000 -o gid=1000 -o allow_other; }
-umnt_xa()    { doas umount "/mnt/xa"; }
+m_xa()	{ doas mkdir -p "/mnt/xa"; doas simple-mtpfs --device 1 "/mnt/xa" -o uid=1000 -o gid=1000 -o allow_other; }
+u_xa()	{ doas umount "/mnt/xa"; }
 
-mnt_u2()  { doas "$HOME/bin/mnt_crypto"  '4fc37cf1ebe81213.a' '17b4dfdbd3c22759.a'; }
-umnt_u2() { doas "$HOME/bin/umnt_crypto" '4fc37cf1ebe81213.a'; }
-arc_to_u2() { doas "$HOME/bin/arc_with_timestamp" "$1" '/mnt/4fc37cf1ebe81213.a'; }
+m_u2()	{ doas "$HOME/bin/mnt_crypto"	'4fc37cf1ebe81213.a' '17b4dfdbd3c22759.a'; }
+u_u2()	{ doas "$HOME/bin/umnt_crypto"	'4fc37cf1ebe81213.a'; }
+a_u2()	{ doas "$HOME/bin/arc_with_timestamp" "$1" '/mnt/4fc37cf1ebe81213.a'; }
 
-mnt_u1()  { doas "$HOME/bin/mnt_crypto"  'a38cf81c8435b3cd.i' 'e55a17a697d8240d.a'; }
-umnt_u1() { doas "$HOME/bin/umnt_crypto" 'a38cf81c8435b3cd.i'; }
-arc_to_u1() { doas "$HOME/bin/arc_with_timestamp" "$1" '/mnt/a38cf81c8435b3cd.i'; }
+m_u1()	{ doas "$HOME/bin/mnt_crypto"	'a38cf81c8435b3cd.i' 'e55a17a697d8240d.a'; }
+u_u1()	{ doas "$HOME/bin/umnt_crypto"	'a38cf81c8435b3cd.i'; }
+a_u1()	{ doas "$HOME/bin/arc_with_timestamp" "$1" '/mnt/a38cf81c8435b3cd.i'; }
 
 # alias cabal='env TMPDIR=/usr/local/cabal/build/ cabal'
 

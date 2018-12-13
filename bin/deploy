@@ -1,0 +1,101 @@
+#!/bin/sh -e
+
+main() {
+	test -n "$1" || fail "usage: ${0##*/} action"
+
+	BASE="$HOME/prv/conf"
+	action="$1"
+	now=$(date +%Y%m%d-%H%M%S)
+
+	case "$action" in
+		archive)
+			test -n "$2" || fail "usage: ${0##*/} archive host"
+			host="$2"
+
+			dst="$BASE/archives/$host/$now" && mkdir -p "$dst"
+			ssh "$host" '
+			(cat <<-EOF
+			/etc/doas.conf
+			/etc/fstab
+			/etc/hosts
+			/etc/httpd.conf
+			/etc/login.conf
+			/etc/mail/aliases
+			/etc/mail/secrets
+			/etc/mail/smtpd.conf
+			/etc/myname
+			/etc/pf.conf
+			/etc/rc.conf.local
+			EOF
+			) | doas tar czvf - -I /dev/stdin' | ( cd "$dst" && doas tar xzpf -)
+
+			;;
+
+		test)
+
+			#s1:etc/acme-client.conf	"$ver/s1/etc/"
+			#s1:etc/httpd.conf		"$ver/s1/etc/"
+			#s1:etc/mail/secrets		"$ver/s1/etc/mail/"
+			#s1:etc/mail/smtpd.conf	"$ver/s1/etc/mail/"
+			#s1:etc/ssh/ssh_config	"$ver/s1/etc/ssh/"
+			#s1:etc/ssh/sshd_config	"$ver/s1/etc/ssh/"
+			#s1:etc/ssl/private/s1.key	"$ver/s1/etc/ssl/private/"
+			#s1:etc/ssl/s1.crt		"$ver/s1/etc/ssl/"
+			#s1:etc/ssl/s1.pem		"$ver/s1/etc/ssl/"
+			#s1:var/cron/tabs/root	"$ver/s1/var/cron/tabs/"
+			echo
+			;;
+
+		setup_httpd)
+			ssh s2 'rcctl enable httpd && rcctl enable slowcgi'
+
+			echo 'continue?' && read -r
+			ssh s1 'rcctl enable httpd && rcctl enable slowcgi'
+			;;
+
+		update_httpd)
+			f="$BASE/s1/etc/httpd.conf"
+			test -f "$f" || fail "no $f"
+
+			scp "$f" s2:/etc/httpd.conf
+			ssh s2 'httpd -n && rcctl restart httpd'
+
+			echo 'continue?' && read -r
+			scp "$f" s1:/etc/httpd.conf
+			ssh s1 'httpd -n && rcctl restart httpd'
+			;;
+
+		setup_smtpd)
+			f="$BASE/s1/etc/mail/smtpd.conf"
+			test -f "$f" || fail "no $f"
+			scp "$f" s1:/etc/mail/smtpd.conf
+
+			pass show etc-mail-secrets-s2 |
+			scp /dev/stdin s2:/etc/mail/secrets
+			ssh s2 'smtpd -n && rcctl restart smtpd'
+
+			echo 'continue?' && read -r
+			pass show etc-mail-secrets-s1 |
+			scp /dev/stdin s1:/etc/mail/secrets
+			ssh s1 'smtpd -n && rcctl restart smtpd'
+			;;
+
+
+		install_ssg)
+			f="$HOME/bin/ssg3"
+			test -f "$f" || fail "no $f"
+
+			scp "$f" git@s2:bin/ssg3
+
+			echo 'continue?' && read -r
+			scp "$f" git@s1:bin/ssg3
+			;;
+
+		*) fail 'invalid action';;
+	esac
+
+	}
+
+fail() { echo "$1"; exit 1; }
+
+main "$@"

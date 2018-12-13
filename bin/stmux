@@ -1,8 +1,9 @@
 #!/bin/sh
-usage() { >&2 echo "usage: ${0##*/} window path command"; exit 1; }
-[ -z "$1" ] && usage
-[ -z "$2" ] && usage
-[ -z "$3" ] && usage
+test -z "$1" || test -z "$2" &&
+{ >&2 echo "usage: ${0##*/} window path command"; exit 1; }
 
 tmux select-window -t "$1" 2>/dev/null ||
-tmux new-window -n "$1" -c "$HOME/$2" "$3"
+if test -n "$3"
+then tmux new-window -n "$1" -c "$HOME/$2" "$3"
+else tmux new-window -n "$1" -c "$HOME/$2"
+fi
