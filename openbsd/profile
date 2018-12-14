@@ -87,7 +87,7 @@ alias ll='ls -lahF'
 alias mv='mv -i'
 alias rm='rm -i'
 
-g() { grep -Irle "$1" . ; }
+g() { test -n "$1" && grep -Irle "$1" . ; }
 
 alias ga='git add --all -p'
 alias gc='git commit'
