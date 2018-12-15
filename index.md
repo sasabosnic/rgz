@@ -82,5 +82,3 @@ Subscribe via [RSS](https://www.romanzolotarev.com/rss.xml).
 - [learn Markdown](markdown.html "2016-08-30")
 - [start a standalone website](standalone.html "2016-08-23")
 - [decide if you need a website](website.html "2016-08-15")
-
-&copy; 2008&ndash;2018 Roman Zolotarev

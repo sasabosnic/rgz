@@ -9,33 +9,34 @@ export LC_ALL PATH PS1 VISUAL
 # shellcheck disable=SC2086
 update_complete_pass() {
   pass_list=$(pass ls)
-  set -A complete_pass -- init passphrase add import show export ls
-  set -A complete_pass_add -- $pass_list
-  set -A complete_pass_edit -- $pass_list
-  set -A complete_pass_export -- $pass_list
-  set -A complete_pass_show -- $pass_list
+  set -A complete_pass 		-- init passphrase add import show export ls
+  set -A complete_pass_add	-- $pass_list
+  set -A complete_pass_edit	-- $pass_list
+  set -A complete_pass_export	-- $pass_list
+  set -A complete_pass_show	-- $pass_list
 }
 update_complete_pass
-pass_add()	{ pass add "$1" && update_complete_pass; }
-pass_edit()	{ pass edit "$1"; }
-pass_show()	{ pass show "$1"; }
-pass_export()	{ pass export "$1"; }
+pass_add()	{ pass add	"$1" && update_complete_pass; }
+pass_edit()	{ pass edit	"$1"; }
+pass_show()	{ pass show	"$1"; }
+pass_export()	{ pass export	"$1"; }
 
-c()	{ stmux 'conf' 'prv/conf'; }
-j()	{ stmux 'j' 'prv/j'       'vi my.journal'; }
-m()	{ stmux 'mus' 'pub/music'   'cmus'; }
 t()	{ tmux new -As 0; }
-v()	{ stmux 'v' 'prv/openvpn' 'doas openvpn --config default.ovpn'; }
-nb()	{ stmux 'nb' 'downloads'   'newsboat'; }
+
+c()	{ stmux 'conf'	'prv/conf'; }
+j()	{ stmux 'j'	'prv/j'		'vi my.journal'; }
+mtw()	{ stmux 'mtw'	'prv/mtw'; }
+m()	{ stmux 'mus'	'pub/music'	'cmus'; }
+nb()	{ stmux 'nb'	'downloads'	'newsboat'; }
+v()	{ stmux 'v'	'prv/openvpn'	'doas openvpn --config default.ovpn'; }
 
 alias bsdj='sssg bsdj'
 alias leto='sssg leto'
-alias mm='sssg mm'
 alias oams='sssg oams'
 alias runbsd='sssg runbsd'
 alias www='sssg www'
 
-s_log()	{ [ -n "$1" ] && { rsync -azcvP "$1:/var/www/logs/*" "$HOME/prv/logs/$(date +%Y-%m-%d)-$1/"; }; }
+s_log()	{ test -n "$1" && { rsync -azcvP "$1:/var/www/logs/*" "$HOME/prv/logs/$(date +%Y-%m-%d)-$1/"; }; }
 
 png()	{ optipng -preserve -strip all -o7 "$1"; }
 jpeg()	{ jpegoptim --strip-all --preserve --preserve-perms --verbose -m80 "$1"; }

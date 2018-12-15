@@ -113,6 +113,7 @@ p {
 .form__button,
 .form__field {
   margin-bottom: 10px;
+  display: inline-block;
 }
 .form__field,
 .form__textarea {

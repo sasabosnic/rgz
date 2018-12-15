@@ -18,20 +18,25 @@
 
 
 main() {
-	# MAIL_TO='hi@romanzolotarev.com'
-	DB='/db/www/'
+	BASE_URL='mtw'
+	: "${DB:=/db/www}"
+	: "${PAGES:=/htdocs/$BASE_URL}"
+	: "${ROOT:=}"
+	HEADER="$PAGES/_header.html"
+	FOOTER="$PAGES/_footer.html"
 
-
-	URI=${REQUEST_URI##/mm/}
-	PAGES='/htdocs/mm'
-
-	case "$REQUEST_METHOD/$URI" in
+	URI=${REQUEST_URI##/$BASE_URL}
+	case "$REQUEST_METHOD$URI" in
 		GET/paypal/return?token=*) paypal_return;;
 		GET/paypal/cancel?token=*) paypal_cancel;;
+		GET/*?log_out*) log_out;;
+		GET/*?magic=*) verify_magic_link;;
+		GET/*?paypal=*) paypal;;
 		GET/*?setup*) setup;;
+		GET/*?wait_for_magic_link*) wait_for_magic_link;;
 		GET/*) render_page;;
-		POST/*) post;;
-		*) http500 'invalid method or uri';;
+		POST/*?send_magic_link*) send_magic_link;;
+		*) full_stop 'Wat?';;
 	esac
 }
 
@@ -39,50 +44,181 @@ main() {
 ##############################################################################
 
 
-post() { http500 post; }
+wait_for_magic_link() {
+	u="${REQUEST_URI%%\?*}"
+	m_id=$(get_cookie 'm_id')
+	s_key=$(get_cookie 's_key')
+	f="$DB/members/$m_id/sessions/$s_key"
+	if test -f "$f"
+	then
+	echo 'Status: 303 See Other'
+	echo "Location: $u"
+	echo 'Content-Type: text/html; charset=utf-8'
+	echo
+	exit 0
+	fi
 
-
-##############################################################################
-
-
-is_session_valid() {
-	get_cookie 'member_id'
-	get_cookie 'session_key'
+	http200 '<h1>Check your mail</h1><a href="'"$u"'">Or try again</a>'
 }
 
 
-render_page() {
-	test "$HTTPS" = 'on' &&
-	server_url="https://$HTTP_HOST" ||
-	server_url="http://$HTTP_HOST"
+start_over() {
+	err="$1"
+	u="$2"
 
-	#is_session_valid || new_session
-
-	url="${PAGES}/${URI%%\?*}"
-	if test "${url%%/}" = "$url"
-	then f="$url"
-	else f="${url}index.html"
-	fi
-
-	test -f "$f" || http404 "$f: not found"
-	echo 'Status: 200 OK'
+	test -z "$u" && u="${REQUEST_URI%%\?*}"
+	m_id=$(get_cookie 'm_id')
+	s_key=$(get_cookie 's_key')
+	f="$DB/members/$m_id/sessions/$s_key"
+	if test -f "$f"
+	then
+	echo 'Status: 303 See Other'
+	echo "Location: $u"
 	echo 'Content-Type: text/html; charset=utf-8'
 	echo
-	# h/t Devin Teske
-	# https://twitter.com/freebsdfrau/status/1072538953935454210
-	echo '
-<pre>
-      file  '"$f"'
-server_url  '"$server_url"'
-</pre>
-'
+	exit 0
+	fi
+
+	http200 '<h1>Oops...</h1><p>'"$err"'</p>
+<p><a href="'"$u"'">Start over</a></p>'
+}
 
 
-	render_m |
-	awk -v f="$f" '
-	BEGIN { while (getline) c = c "\n" $0; c = substr(c, 2) }
-	END { while (getline < f) { gsub(/<!-- m -->/, c); print } }'
+full_stop() {
+	err="$1"
+	fb='/feedback.html?comment='"$(encode_value "\"$err\"")"
+	u="${REQUEST_URI%%\?*}"
 
+	http200 '<h1>Sorry</h1>
+<p>Something went wrong, please <a href="'"$fb"'">let me know</a>.</p>
+<p>'"$err"'</p>
+<p><a href="'"$u"'">Try a bit later</a></p>'
+
+}
+
+
+
+verify_magic_link() {
+	u_key_b=$(get_value "$QUERY_STRING" 'magic')
+	test -n "$u_key_b" || start_over 'This magic link is broken'
+
+	u_e_hash=$(get_cookie 'e_hash')
+	u_key_a=$(get_cookie 'key_a')
+	test -z "$u_e_hash" || test -z "$u_key_a" &&
+	start_over 'Looks like you are using a different web browser'
+
+	f="$DB/magic_links/$u_e_hash"
+	test -f "$f" || start_over 'This magic link is expired'
+	test "$(cut -f1 < "$f")" = "$u_key_a:$u_key_b" ||
+	start_over 'This magic link is invalid'
+
+	e=$(cut -f2 < "$f")
+	rm "$f"
+	m_id=$(get_member_id "$e")
+	test -n "$m_id" || create_member "$e"
+
+	s_key=$(create_session "$m_id")
+
+	echo 'Status: 303 See Other'
+	echo "Location: ${REQUEST_URI%%\?*}"
+	echo 'Content-Type: text/html; charset=utf-8'
+	echo "Set-Cookie: m_id=$m_id; Path=/; HttpOnly"
+	echo "Set-Cookie: s_key=$s_key; Path=/; HttpOnly"
+	echo 'Set-Cookie: key_a=; Path=/; HttpOnly'
+	echo 'Set-Cookie: e_hash=; Path=/; HttpOnly'
+	echo
+	exit 0
+}
+
+
+log_out() {
+	m_id=$(get_cookie 'm_id')
+	s_key=$(get_cookie 's_key')
+
+	f="$DB/members/$m_id/sessions/$s_key"
+	test -f "$f" && rm "$f"
+
+	echo 'Status: 303 See Other'
+	echo "Location: ${REQUEST_URI%%\?*}"
+	echo 'Content-Type: text/html; charset=utf-8'
+	echo "Set-Cookie: m_id=; Path=/; HttpOnly"
+	echo "Set-Cookie: s_key=; Path=/; HttpOnly"
+	echo
+	exit 0
+}
+
+
+get_member_id() {
+	e="$1"
+	e_hash=$(echo "$e" | sha256)
+
+	d="$DB/members"
+	test -d "$d" || { echo; return; }
+	f=$(find "$d" -name "$e_hash" -path '*/emails/*' -type f | head -1)
+	m="${f##$d/}"
+	echo "${m%%/*}"
+}
+
+
+create_member() {
+	e="$1"
+	m_id=$(random_str 20)
+	e_hash=$(echo "$e" | sha256)
+
+	make_file "$DB/members/$m_id/created_at" "$(date +%s)"
+	make_file "$DB/members/$m_id/email" "$e"
+	make_file "$DB/members/$m_id/emails/$e_hash" "$e"
+
+	s_key=$(create_session "$m_id")
+
+	echo 'Status: 303 See Other'
+	echo "Location: ${REQUEST_URI%%\?*}"
+	echo 'Content-Type: text/html; charset=utf-8'
+	echo "Set-Cookie: m_id=$m_id; Path=/; HttpOnly"
+	echo "Set-Cookie: s_key=$s_key; Path=/; HttpOnly"
+	echo 'Set-Cookie: key_a=; Path=/; HttpOnly'
+	echo 'Set-Cookie: e_hash=; Path=/; HttpOnly'
+	echo
+	exit 0
+}
+
+
+create_session() {
+	m_id="$1"
+	s_key=$(random_str 20)
+	make_file "$DB/members/$m_id/sessions/$s_key"
+	echo "$s_key"
+}
+
+
+send_magic_link() {
+	query=$(read_query_string_post) || start_over 'Invalid request'
+	e=$(get_value "$query" 'email' | tr '[:upper:]' '[:lower:]')
+	e_hash=$(echo "$e" | sha256)
+	key_a=$(random_str 20)
+	key_b=$(random_str 20)
+
+	make_file "$DB/magic_links/$e_hash" "$key_a:$key_b	$e"
+	make_file "$DB/mail_queue/mtw-$e_hash" 'To: '"$e"'
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Subject: '"${SERVER_NAME##www.}"': here is your magic link
+
+Hey, please open this link in the same browser you requested it from:
+
+'"$HTTP_ORIGIN${REQUEST_URI%%\?*}?magic=$key_b"'
+
+--
+
+The link will expire in an hour. Sent to: '"$e"
+
+	echo 'Status: 303 See Other'
+	echo "Location: ${REQUEST_URI%%\?*}?wait_for_magic_link"
+	echo 'Content-Type: text/html; charset=utf-8'
+	echo "Set-Cookie: key_a=$key_a; Path=/; HttpOnly"
+	echo "Set-Cookie: e_hash=$e_hash; Path=/; HttpOnly"
+	echo
 	exit 0
 }
 
@@ -90,17 +226,402 @@ server_url  '"$server_url"'
 ##############################################################################
 
 
+paypal_get_access_token() {
+	now=$(date +%s)
+	f="$DB/paypal/access_token"
+
+	if test -f "$f"
+	then
+		a_t=$(cut -f1 "$f")
+		e_at=$(cut -f2 "$f")
+		test "$now" -lt "$e_at" &&
+		echo "$a_t" && return
+	fi
+
+	curl -s "$PAYPAL_API/oauth2/token" \
+	-H "Accept: application/json" \
+	-u "$PAYPAL_CLIENT_ID:$PAYPAL_SECRET" \
+	-d "grant_type=client_credentials" |
+	jq -r '.access_token + " " + (.expires_in | tostring)' | (
+		read -r  a_t e_in
+		make_file "$f" "$a_t	$(( now + e_in - 5 ))"
+		echo "$a_t"
+	)
+}
+
+
+paypal_init() {
+	PAYPAL_DOMAIN=$(cat "$DB/paypal/domain")
+	PAYPAL_API="https://api.$PAYPAL_DOMAIN/v1"
+	PAYPAL_CLIENT_ID="$(cat "$DB/paypal/client_id")"
+	PAYPAL_SECRET="$(cat "$DB/paypal/secret")"
+	PAYPAL_ACCESS_TOKEN=$(paypal_get_access_token)
+	test -n "$PAYPAL_ACCESS_TOKEN" ||
+	full_stop 'PayPal has no access token'
+}
+
+
+paypal() {
+	p_name=$(get_value "$QUERY_STRING" paypal)
+
+	paypal_init
+	case "$p_name" in
+		z) p_price=1; p_days=1;;
+		a) p_price=60; p_days=365;;
+		b) p_price=15; p_days=30;;
+		*) full_stop 'Plan is invalid';;
+	esac
+
+	p_id=$(paypal_create_plan "$p_name" "$p_price" "$p_days")
+	a=$(paypal_create_agreement "$p_name" "$p_price" "$p_days" "$p_id")
+	a_u=$(
+		echo "$a" |
+		jq -r '.links[]|select(.rel == "approval_url").href'
+	) || full_stop 'PayPal has no agreement'
+
+	echo 'Status: 303 See Other'
+	echo "Location: ${a_u}?locale.x=en_US&langTgl=en"
+	echo "Set-Cookie: url=${REQUEST_URI%%\?*}; Path=/; HttpOnly"
+
+	echo
+	exit 0
+}
+
+
+paypal_create_plan() {
+	name="$1"
+	price="$2"
+	days="$3"
+
+	f="$DB/paypal/plans/$name/id"
+	test -f "$f" && cat "$f" && return
+
+	test "$HTTPS" = 'on' &&
+	server_url="https://$SERVER_NAME/$BASE_URL" ||
+	server_url="http://$SERVER_NAME/$BASE_URL"
+	return_url="${server_url}/paypal/return"
+	cancel_url="${server_url}/paypal/cancel"
+
+	desc="A member pays $price EUR every $days days."
+
+	p=$(
+		curl -s -X POST "$PAYPAL_API/payments/billing-plans/" \
+		-H 'Content-Type: application/json' \
+		-H "Authorization: Bearer $PAYPAL_ACCESS_TOKEN" \
+		-d '{
+			"name": "Plan '"$name"' with recurring payments",
+			"description": "'"$desc"'",
+			"type": "INFINITE",
+			"payment_definitions": [ {
+				"name": "Regular payment",
+				"type": "REGULAR",
+				"frequency": "DAY",
+				"frequency_interval": "'"$days"'",
+				"amount": {
+					"value": "'"$price"'",
+					"currency": "EUR"
+				},
+				"cycles": "0"
+			} ],
+			"merchant_preferences": {
+				"setup_fee": {
+					"value": "'"$price"'",
+					"currency": "EUR"
+				},
+				"return_url": "'"$return_url"'",
+				"cancel_url": "'"$cancel_url"'",
+				"auto_bill_amount": "YES",
+				"initial_fail_amount_action": "CONTINUE",
+				"max_fail_attempts": "3"
+			}
+		}'
+	)
+	p_id=$(echo "$p" | jq -r '.id')
+	test "$p_id" = 'null' && full_stop 'PayPal has no plan'
+	make_file "$DB/paypal/plans/$name/plan.json" "$p"
+	make_file "$DB/paypal/plans/$name/id" "$p_id"
+	make_file "$DB/paypal/plans/$name/days" "$days"
+
+	paypal_activate_plan "$name" "$p_id"
+	echo "$p_id"
+}
+
+
+paypal_activate_plan() {
+	p=$(curl -s -X PATCH "$PAYPAL_API/payments/billing-plans/$2" \
+	-H "Content-Type: application/json" \
+	-H "Authorization: Bearer $PAYPAL_ACCESS_TOKEN" \
+	-d '[{
+		"op": "replace",
+		"path": "/",
+		"value": { "state": "ACTIVE" }
+	}]'
+	)
+	test -z "$p" || full_stop 'PayPal cannot activate plan'
+}
+
+
+paypal_create_agreement() {
+	p_name="$1"
+	p_price="$2"
+	p_days="$3"
+	p_id="$4"
+
+	s_date=$(date -j -r $((
+	$(date +%s) + ( 86400 * p_days )
+	)) +%Y-%m-%dT%H:%M:%SZ)
+
+	name='Agreement with recurring payments: '\
+"$p_price"' EUR every '"$p_days"' days '\
+'(starting today based on plan '"$p_name"')'
+
+	desc='You agree to pay '\
+"$p_price"' EUR every '"$p_days"' days '\
+'to Roman Zolotarev. Thank you for supporting open-source software.'
+
+	curl -s -X POST "$PAYPAL_API/payments/billing-agreements/" \
+	-H "Content-Type: application/json" \
+	-H "Authorization: Bearer $PAYPAL_ACCESS_TOKEN" \
+	-d '{
+		"name": "'"$name"'",
+		"description": "'"$desc"'",
+		"start_date": "'"$s_date"'",
+		"plan": { "id": "'"$p_id"'" },
+		"payer": { "payment_method": "paypal" }
+	}'
+}
+
+
 paypal_return() {
-	http500 "return: $(get_value "$QUERY_STRING" token)"
+	t=$(get_value "$QUERY_STRING" 'token')
+	m_id=$(get_cookie 'm_id')
+	s_key=$(get_cookie 's_key')
+	test -f "$DB/members/$m_id/sessions/$s_key" ||
+	start_over 'You are not logged in'
+
+	paypal_init
+	url="$PAYPAL_API/payments/billing-agreements/$t/agreement-execute"
+
+	a=$(
+		curl -s -X POST "$url" \
+		-H "Content-Type: application/json" \
+		-H "Authorization: Bearer $PAYPAL_ACCESS_TOKEN"
+	)
+
+	a_id=$(echo "$a" | jq -r .id)
+	a_s=$(echo "$a" | jq -r .state)
+	e=$(echo "$a" | jq -r .payer.payer_info.email)
+
+	make_file "$DB/paypal/agreements/$a_id/$a_s.json" "$a"
+	make_file "$DB/members/$m_id/paypal_email" "$e"
+	make_file "$DB/members/$m_id/paypal_agreement_id" "$a_id"
+
+	e_at=$(($(date +%s) + 3600 * 24))
+	make_file "$DB/members/$m_id/expires_at" "$e_at"
+	make_file "$DB/members/$m_id/paypal_agreement_state" "$a_s"
+
+	url=$(get_cookie 'url')
+	test -z "$url" && url="/$BASE"
+
+	echo 'Status: 303 See Other'
+	echo "Location: $url"
+	echo 'Content-Type: text/html; charset=utf-8'
+	echo
+	exit 0
 }
 
 
 paypal_cancel() {
-	http500 "cancel: $(get_value "$QUERY_STRING" token)"
+	m_id=$(get_cookie 'm_id')
+	s_key=$(get_cookie 's_key')
+	test -f "$DB/members/$m_id/sessions/$s_key" ||
+	start_over 'You are not logged in' "/$BASE_URL/"
+	start_over 'PayPal redirected you back' "/$BASE_URL/"
 }
 
 
 ##############################################################################
+
+
+subscription_form() {
+	f="$1"
+	m_id="$2"
+
+	test -f "$DB/members/$m_id/email" &&
+	e=$(cat "$DB/members/$m_id/email")
+
+	http200 '<p>
+<a href="/"><b>'"${SERVER_NAME##www.}"'</b></a>: '"$e"'
+</p>
+<h1>Subscribe</h1>
+<form
+	method=get
+	action='"${REQUEST_URI%%\?*}"'
+	class="form">
+	<button
+		name="paypal"
+		value="a"
+		class=" form__button
+			form__button-large
+			form__button-paypal-hover">
+		&euro;60 per year
+	</button>
+	<button
+		name="paypal"
+		value="b"
+		class=" form__button
+			form__button-large
+			form__button-paypal-hover">
+		&euro;15 per month
+	</button>
+	<button
+		name="paypal"
+		value="z"
+		class=" form__button
+			form__button-large
+			form__button-paypal-hover">
+		&euro;1 per day
+	</button>
+</form>'"$(tags_to_upper < "$f" | obfuscate)"
+
+}
+
+
+new_session_form() {
+	f="$1"
+	http200 '
+<h1>Register or log in</h1>
+<p>Type-in your email address</p>
+<form
+	method=post
+	action='"${REQUEST_URI%%\?*}"'?send_magic_link
+	class="form">
+	<input
+		type="email"
+		class="form__field"
+		autocorrect="off"
+		specllcheck="false"
+		required="required"
+		minlength="2"
+		maxlength="255"
+		autofocus="autofocus"
+		name="email"
+		value="'"$e"'">
+	<input
+		type="submit"
+		class="form__button"
+		value="Get a magic link">
+</form>'"$(tags_to_upper < "$f" | obfuscate)"
+
+}
+
+
+render_page() {
+	p_uri="${PAGES}${URI%%\?*}"
+	if test "${p_uri%%/}" = "$p_uri"
+	then f="$p_uri"
+	else f="${p_uri}index.html"
+	fi
+	test -f "$f" || http404
+
+	m_id=$(get_cookie 'm_id')
+	s_key=$(get_cookie 's_key')
+	test -f "$DB/members/$m_id/sessions/$s_key" ||
+	new_session_form "$f"
+
+	test -f "$DB/members/$m_id/expires_at" ||
+	subscription_form "$f" "$m_id"
+
+	e_at=$(cat "$DB/members/$m_id/expires_at")
+	e_on=$(date -j -r "$e_at" '+%b %d, %Y')
+	t_l=$(time_left "$e_at")
+
+	test -f "$DB/members/$m_id/email" &&
+	e=$(cat "$DB/members/$m_id/email")
+
+	if test -f "$DB/members/$m_id/paypal_agreement_id" &&
+	test -f "$DB/members/$m_id/paypal_agreement_state"
+	then
+		a_id=$(cat "$DB/members/$m_id/paypal_agreement_id")
+		a_s=$(cat "$DB/members/$m_id/paypal_agreement_state")
+
+		p_d=$(cat "$DB/paypal/domain")
+		a_uri="https://www.$p_d/myaccount/autopay/connect/$a_id"
+
+		case "$a_s" in
+
+			Pending) t="$e"' &mdash;
+<a href="'$a_uri'"
+	title="Processing may take up to 24 hours">Pending</a>...'
+				;;
+
+			Active) t="$e"' &mdash;
+<a href="'$a_uri'"
+	title="Next payment on '"$e_on"'">'"$t_l"'</a>'
+				;;
+
+			Cancelled) t="$e"' &mdash;
+<a href="'$a_uri'"
+	title="Next payments cancelled. Expires on '"$e_on"'">'"$t_l"'</a>'
+				;;
+
+			*) t="$e &mdash; $t_l";;
+		esac
+
+	else t="$e &mdash; $t_l";
+	fi
+
+	http200 '<p><a href="/"><b>'"${SERVER_NAME##www.}"'</b></a>: '\
+"$t"'</p>'"$(cat "$f")"
+
+}
+
+
+time_left() {
+	e_at="$1"
+	e_in=$(( e_at - $(date +%s) ))
+	test "$e_in" -lt 86400 && echo "expires today" && return
+	test "$e_in" -lt 172800 && echo "expires tomorrow" && return
+	test "$e_in" -ge 172800 && echo "$(( e_in / 86400 )) days" && return
+}
+
+
+##############################################################################
+
+
+read_query_string_post() {
+	test -n "$CONTENT_LENGTH" || start_over 'Invalid content'
+	dd bs=1 count="$CONTENT_LENGTH" status=none
+}
+
+
+get_cookie() {
+	c="${HTTP_COOKIE##*$1=}"
+	test -z "$c" ||
+	test "$HTTP_COOKIE" = "$c" &&
+	echo '' && return
+	echo "${c%%;*}"
+}
+
+
+encode_value() {
+	test -n "$1" || { echo; return; }
+	echo "$1" | awk '
+	BEGIN {
+		a = ""
+		for (n = 0; n < 256; n++)
+		pack[sprintf("%c", n)] = sprintf("%%%02x", n) } {
+		sline = ""
+		slen = length($0)
+		for (n = 1; n <= slen; n++) {
+			char = substr($0, n, 1)
+			if ( char !~ /^[[:alnum:]_]$/ ) char = pack[char]
+			sline = sline char
+		}
+		a = a ( a ? "%0a" : "" ) sline
+	}
+	END { print a }'
+}
 
 
 get_value() {
@@ -125,24 +646,84 @@ get_value() {
 }
 
 
+obfuscate() {
+	echo '<p
+	style="font-size: 14px;
+	margin: 60px 0;
+	padding-bottom: 5px;
+	border-bottom: 1px dashed #aaaaaa;">The page is obfuscated</p>'
+	tr '[:lower:]' "$(jot -rcs '' 26 97 122)"
+	echo '<p
+	style="font-size: 14px;
+	margin: 60px 0;
+	padding-top: 5px;
+	border-top: 1px dashed #aaaaaa;">The end</p>'
+}
+
+
+tags_to_upper() {
+	awk '
+	BEGIN {
+		s = "[[:space:]]"
+		while (getline) b = b "\n" $0
+		b = substr (b, 2) }
+	END {
+		t=b
+		while ( match (t,/<[^>]*>/) ) {
+		h = h substr (t, 1, RSTART - 1)
+		r = substr (t, RSTART, RLENGTH)
+		t = substr (t, RSTART + RLENGTH)
+		if ( match (r, /^<s*(\/s*)?[a-zA-Z]+/))
+		r=toupper(substr(r, 1, RLENGTH)) substr (r, RLENGTH + 1)
+		h=h r
+		}
+		h=h t
+		print h
+	}
+	'
+}
+
+
+random_str() {
+	jot -rcs '' "$1" 97 122
+}
+
+
+make_file() {
+	mkdir -p "${1%/*}"
+	chmod 0770 "${1%/*}"
+	echo "$2" > "$1"
+	chmod 0660 "$1"
+}
+
+
 ##############################################################################
 
 
 http500() {
 	echo 'Status: 500 Internal Server Error'
 	echo
-	echo "$1"
+	echo "<pre>$1</pre>"
 	exit 1
 }
-
 
 http404() {
 	echo 'Status: 404 Not Found'
 	echo
-	echo "$1"
-	exit 1
+	cat "$HEADER"
+	echo "<h1>Oops...</h1><p>/$BASE_URL$URI not found</p>"
+	cat "$FOOTER"
+	exit 0
 }
 
+http200() {
+	echo 'Status: 200 OK'
+	echo
+	cat "$HEADER"
+	echo "$1"
+	cat "$FOOTER"
+	exit 0
+}
 
 ##############################################################################
 
@@ -150,28 +731,28 @@ http404() {
 setup() {
 	errs=$(
 		setup_test_deps
-		setup_test_dirs
+		test -d "$PAGES" || echo "$PAGES: not a dir"
+		test -f "$HEADER" || echo "$HEADER: not a file"
+		test -f "$FOOTER" || echo "$FOOTER: not a file"
+		test -d "$DB" || echo "$DB not a dir"
+		test -d "$DB/paypal" || echo "mkdir -p $DB/paypal"
+		test -f "$DB/paypal/domain" ||
+		echo "echo \$PAYPAL_DOMAIN > $DB/paypal/domain"
+		test -f "$DB/paypal/client_id" ||
+		echo "echo \$PAYPAL_CLIENT_ID > $DB/paypal/client_id"
+		test -f "$DB/paypal/secret" ||
+		echo "echo \$PAYPAL_SECRET > $DB/paypal/secret"
 	)
-	test -z "$errs" || http500 "$errs"
-	echo 'Status: 200 OK'
-	echo
-	echo 'ok'
-	exit
+	test -z "$errs" || http500 "$errs\\nFAILED"
+	http200 '<pre>PASS</pre>'
 }
-
-
-setup_test_dirs() {
-	test -d "$PAGES" || echo 'PAGES not a dir'
-	test -d "$DB" || echo 'DB not a dir'
-	test -f "$DB/paypal/paypal.conf" || echo 'DB/paypal/paypal.conf not a file'
-}
-
 
 
 setup_test_deps() {
 	test -x '/usr/local/bin/curl' || echo 'pkg_add curl'
 	test -x '/usr/local/bin/jq' || echo 'pkg_add jq'
 	dirs=''
+
 	echo '
 /etc/resolv.conf
 /etc/ssl/cert.pem
@@ -216,11 +797,13 @@ setup_test_deps() {
 		d=${f%/*}
 		if test "${dirs%%:$d}" = "$dirs" &&
 		test "$d" != '/usr/local/lib'
-		then dirs="$dirs:$d" && test -d "$d" || echo "mkdir -p $d"
+		then
+			dirs="$dirs:$d" && test -d "${ROOT}$d" ||
+			echo "mkdir -p /var/www$d"
 		fi
 		test "${f##/usr/local/lib/}" = "$f" &&
 		x="$f" || x="/usr/lib${f##/usr/local/lib}"
-		test -f "$x" || echo "cp $f /var/www$x"
+		test -f "${ROOT}$x" || echo "cp $f /var/www$x"
 	done
 }
 
