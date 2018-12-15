@@ -1,5 +1,4 @@
-#!/bin/sh
-set -e
+#!/bin/sh -e
 test -f "$1" || { >&2 echo "usage: ${0##*/} <existing_script>"; exit 1; }
 test -x "$(which entr)" || exit 2
 test -x "$(which shellcheck)" || exit 3
@@ -7,8 +6,18 @@ test -x "$(which shellcheck)" || exit 3
 a=$(readlink -f "$1")
 b=$(readlink -f "${1}_test")
 
+if test -n "$2"
+then
+	test -d "$2" || { >&2 echo "$2: no dir"; exit 1; }
+	wa="$2/$1"
+	wb="$2/${1}_test"
+else
+	wa="$a"
+	wb="$b"
+fi
+
 test -f "$b" || b="$HOME/bin/no_tests"
 
 tmux split-window -p 95 "vi $a"
 tmux split-window -p 40 -dh \
-"ls $a $b | entr -c sh -c 'echo $a;shellcheck $a $b && $b'"
+"ls $wa $wb | entr -c sh -c 'echo $a;shellcheck $a $b && $b'"
