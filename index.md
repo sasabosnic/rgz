@@ -4,7 +4,7 @@ and I'm <a href="n/">mastering the&nbsp;Web</a>.
 </p>
 
 I write [shell scripts](/bin):<br>
-[ssg3](/ssg.html) &mdash; a static site generator<br>
+[ssg4](/ssg.html) &mdash; a static site generator<br>
 [rssg](/rssg.html) &mdash; an RSS feed generator<br>
 [form](/form.html) &mdash; a web form handler<br>
 [arc](/arc.html) &mdash; an archiver<br>

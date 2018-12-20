@@ -66,13 +66,13 @@ main() {
 			;;
 
 		install_ssg)
-			f="$HOME/bin/ssg3"
+			f="$HOME/bin/ssg4"
 			test -f "$f" || fail "no $f"
 
-			scp "$f" git@s2:bin/ssg3
+			scp "$f" git@s2:bin/ssg4
 
 			echo 'continue?' && read -r
-			scp "$f" git@s1:bin/ssg3
+			scp "$f" git@s1:bin/ssg4
 			;;
 
 		*) fail 'invalid action';;

@@ -26,11 +26,11 @@ ssg3 ~/src/www /var/www/htdocs/www/ 'Roman Zolotarev' 'http://www' >/dev/null 2>
 printf '.'
 done)
 
-echo "ssg3 next (clean)"
+echo "ssg4 (clean)"
 time (for i in $(jot 5); do
 rm -rf /var/www/htdocs/www/*
 rm -rf /var/www/htdocs/www/.*
-ssg3-next ~/src/www /var/www/htdocs/www/ 'Roman Zolotarev' 'http://www' >/dev/null 2>&1
+ssg4 ~/src/www /var/www/htdocs/www/ 'Roman Zolotarev' 'http://www' >/dev/null 2>&1
 printf '.'
 done)
 
@@ -56,10 +56,10 @@ rm ~/src/www/ssg_bench_test
 printf '.'
 done)
 
-echo "ssg3 next (incremental)"
+echo "ssg4 (incremental)"
 time (for i in $(jot 5); do
 cat ~/src/www/ssg.md > ~/src/www/ssg_bench_test
-ssg3-next ~/src/www /var/www/htdocs/www/ 'Roman Zolotarev' 'http:/www' >/dev/null 2>&1
+ssg4 ~/src/www /var/www/htdocs/www/ 'Roman Zolotarev' 'http:/www' >/dev/null 2>&1
 rm ~/src/www/ssg_bench_test
 printf '.'
 done)

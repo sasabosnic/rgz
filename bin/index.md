@@ -21,7 +21,7 @@ Licensed under [ISC](https://en.m.wikipedia.org/wiki/ISC_license)
 [rssg](/bin/rssg)<br>
 [screencapture](/bin/screencapture)<br>
 [screenshot](/bin/screenshot)<br>
-[ssg3](/bin/ssg3)<br>
+[ssg4](/bin/ssg4)<br>
 [start_ssg](/bin/start_ssg)<br>
 [start_tmux](/bin/start_tmux)<br>
 [status](/bin/status)<br>

@@ -34,7 +34,7 @@ alias leto='sssg leto'
 alias mtw='sssg4 prv/mtw'
 alias oams='sssg oams'
 alias runbsd='sssg runbsd'
-alias www='sssg www'
+alias www='sssg4 src/www'
 
 s_log()	{ test -n "$1" && { rsync -azcvP "$1:/var/www/logs/*" "$HOME/prv/logs/$(date +%Y-%m-%d)-$1/"; }; }
 
