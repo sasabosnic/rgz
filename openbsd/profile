@@ -25,13 +25,13 @@ t()	{ tmux new -As 0; }
 
 c()	{ stmux 'conf'	'prv/conf'; }
 j()	{ stmux 'j'	'prv/j'		'vi my.journal'; }
-mtw()	{ stmux 'mtw'	'prv/mtw'; }
 m()	{ stmux 'mus'	'pub/music'	'cmus'; }
 nb()	{ stmux 'nb'	'downloads'	'newsboat'; }
 v()	{ stmux 'v'	'prv/openvpn'	'doas openvpn --config default.ovpn'; }
 
 alias bsdj='sssg bsdj'
 alias leto='sssg leto'
+alias mtw='sssg4 prv/mtw'
 alias oams='sssg oams'
 alias runbsd='sssg runbsd'
 alias www='sssg www'
