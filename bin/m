@@ -22,8 +22,8 @@ main() {
 	: "${DB:=/db/www}"
 	: "${PAGES:=/htdocs/$BASE_URL}"
 	: "${ROOT:=}"
-	HEADER="$PAGES/_header.html"
-	FOOTER="$PAGES/_footer.html"
+	HEADER="$PAGES/header.html"
+	FOOTER="$PAGES/footer.html"
 
 	URI=${REQUEST_URI##/$BASE_URL}
 	case "$REQUEST_METHOD$URI" in
@@ -450,9 +450,7 @@ subscription_form() {
 	test -f "$DB/members/$m_id/email" &&
 	e=$(cat "$DB/members/$m_id/email")
 
-	http200 '<p>
-<a href="/"><b>'"${SERVER_NAME##www.}"'</b></a>: '"$e"'
-</p>
+	http200 '<p>'"$e"'</p>
 <h1>Subscribe</h1>
 <form
 	method=get
@@ -571,8 +569,7 @@ render_page() {
 	else t="$e &mdash; $t_l";
 	fi
 
-	http200 '<p><a href="/"><b>'"${SERVER_NAME##www.}"'</b></a>: '\
-"$t"'</p>'"$(cat "$f")"
+	http200 '<p>'"$t"'</p>'"$(cat "$f")"
 
 }
 

@@ -18,7 +18,22 @@ Support Unix/BSD related projects:<br>
 [Etsh Project (V6Shell)](etsh.io/)
 
 I'm here to help you with [OpenBSD](openbsd/).<br>
-Oh, and I also publish how-tos.&#8221;
+Oh, and I also publish how-tos.
+
+Thank you for [supporting my projects](sponsors.html) and [your kind words](words.html).&#8221;
+
+<a href="/patreon.html"><span class="form__button
+form__button-small form__button-patreon-hover">Patreon</span></a>
+<a href="/paypal.html"><span class="form__button form__button-small
+form__button-paypal-hover">PayPal</span></a>
+<a href="/xrp.html"><span class="form__button form__button-small
+form__button-xrp-hover">XRP</span></a>
+<a href="/openbsd/vultr.html"><span class="form__button
+form__button-small form__button-vultr-hover">Vultr</span></a>
+<a href="/openbsd/oams.html"><span class="form__button
+form__button-small form__button-oams-hover">OpenBSD Amsterdam</span></a>
+<a href="/n/"><span class="form__button form__button-hover
+form__button-small">Mastering the Web</span></a>
 
 ---
 
