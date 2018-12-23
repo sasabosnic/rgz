@@ -2,8 +2,8 @@ _Tested on [OpenBSD](/openbsd/) 6.4_
 
 # Upgrade OpenBSD on Vultr
 
-If you have [OpenBSD installed on Vultr](vultr.html) and want
-to upgrate it, then backup your data first.
+If you have [OpenBSD installed on Vultr](vultr.html) and want to
+upgrade it, then backup your data first.
 
 ## Prepare
 
