@@ -27,7 +27,7 @@ P.S. Here are all received donations. Please ping me, if yours
 hasn't been listed, or if you want to remove your name from the
 list.
 
-_Updated on 05 Dec 2018_
+_Updated on 24 Dec 2018_
 
 Patreon:
 **[Tom Smyth](https://www.patreon.com/user/creators?u=10913897 "24 Apr 2018 70.00 USD")&nbsp;
@@ -55,18 +55,19 @@ Patreon:
 [Peter Kotr&#x10D;ka](https://octodon.social/@pkotrcka "16 May 2018 4.00 USD")&nbsp;
 
 PayPal:
-**[Andrew Vieyra](https://twitter.com/andrewvieyra "26 Nov 2018 50.00 USD")&nbsp;
-[Hajime Edakawa](https://twitter.com/hjmedkw "13 Nov 2018 50.00 USD")&nbsp;
-[Tuomo Sahipakka](https://twitter.com/tuomosa "01 Oct 2018 25.00 EUR Keep up good work!")&nbsp;**
+**[wireless&nbsp;connect&nbsp;ltd](http://wirelessconnect.eu "24 Apr 2018 10.00 EUR keep up good work Roman
+24 Dec 2018 7,432.14 RUB Thanks for your contribution to the OpenBSD Community...")&nbsp;
+[Andrew Vieyra](https://twitter.com/andrewvieyra "26 Nov 2018 50.00 USD")&nbsp;
+[Hajime Edakawa](https://twitter.com/hjmedkw "13 Nov 2018 50.00 USD")&nbsp;**
+[Tuomo Sahipakka](https://twitter.com/tuomosa "01 Oct 2018 25.00 EUR Keep up good work!")&nbsp;
 [David Carlier](https://twitter.com/devnexen "01 Oct 2018 20.00 USD")&nbsp;
 [Jeffrey Allen Neitzel](https://jan.etsh.io/ "24 Jul 2018 15.00 USD")&nbsp;
 [Joan Catala](https://twitter.com/joancatala "22 Aug 2018 10.00 USD")&nbsp;
 [Ales Tepina](https://twitter.com/alestepi "21 Aug 2018 10.00 USD")&nbsp;
 [Gabriel Francisco](https://twitter.com/fgbreel "8 Jun 2018 10.00 EUR I love your blog and the content you share about OpenBSD! Keep rocking!")&nbsp;
-[wireless&nbsp;connect&nbsp;ltd](http://wirelessconnect.eu "24 Apr 2018 10.00 EUR keep up good work Roman)&nbsp;
 [Hans Solo](https://twitter.com/pikkabird "01 Oct 2018 4.00 USD")&nbsp;
 
-Misc:
+Other forms of support:
 [Mischa Peters](https://twitter.com/mischapeters "14 Oct 2018 OpenBSD Amsterdam T-Shirt x2\n13 Apr 2018 VM\n19 Sep 2017 Run BSD T-shirt")&nbsp;
 [Vultr](/vultr.html "08 Jun 2018 110.00 USD")&nbsp;
 [Evander Sinque](https://twitter.com/FiLiS "31 Oct 2017 Run BSD Stickers")&nbsp;
