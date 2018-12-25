@@ -11,7 +11,8 @@ The ErgoDox is a DIY keyboard project initiated by Dominic Beauchamp.
 The design is ergonomic, split in two separate halves with a columnar
 layout.
 
-I've been a happy user of [ErgoDox EZ](/ergodox/ez.html) since 2016.
+I've been a happy user of [ErgoDox
+EZ](https://people.ergodox-ez.com/roman-zolotarev/) since 2016.
 It's my favorite part of [the setup](/setup.html).
 
 ![ergodox](/ergodox-ez.jpeg)
