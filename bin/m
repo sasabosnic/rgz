@@ -22,8 +22,8 @@ main() {
 	: "${DB:=/db/www}"
 	: "${PAGES:=/htdocs/$BASE_URL}"
 	: "${ROOT:=}"
-	HEADER="$PAGES/header.html"
-	FOOTER="$PAGES/footer.html"
+	HEADER="$PAGES/_header.html"
+	FOOTER="$PAGES/_footer.html"
 
 	URI=${REQUEST_URI##/$BASE_URL}
 	case "$REQUEST_METHOD$URI" in
