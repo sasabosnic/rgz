@@ -205,6 +205,7 @@ $ <b>for f in $(which cat cpio date sh awk find grep printf readlink sort tee)</
 ## Users and forks
 
 [blog.solobsd.org](https://blog.solobsd.org/)<br>
+[bloguslibrus.fr](https://www.bloguslibrus.fr)<br>
 [bsdjobs.com](https://www.bsdjobs.com/)<br>
 [cryogenix.net](https://cryogenix.net)<br>
 [grosu.nl](https://grosu.nl/)<br>
