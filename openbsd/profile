@@ -29,11 +29,11 @@ m()	{ stmux 'mus'	'pub/music'	'cmus'; }
 nb()	{ stmux 'nb'	'downloads'	'newsboat'; }
 v()	{ stmux 'v'	'prv/openvpn'	'doas openvpn --config default.ovpn'; }
 
-alias bsdj='sssg bsdj'
+alias bsdj='sssg4 src/bsdj'
 alias leto='sssg leto'
 alias mtw='sssg4 prv/mtw'
-alias oams='sssg oams'
-alias runbsd='sssg runbsd'
+alias oams='sssg4 src/oams'
+alias runbsd='sssg4 src/runbsd'
 alias www='sssg4 src/www'
 
 s_log()	{ test -n "$1" && { rsync -azcvP "$1:/var/www/logs/*" "$HOME/prv/logs/$(date +%Y-%m-%d)-$1/"; }; }
