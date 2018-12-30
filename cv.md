@@ -63,6 +63,11 @@ Maintaining [a media kit](/openbsd.amsterdam/) and website for
 Created [a logo](/etsh.nl) for [Jeff](words.html#je)'s [Etsh](https://etsh.nl/).<br>
 Helping [Mischa](ref/mp.html) to promote OpenBSD Amsterdam.
 
+Promoting BSD companies on [Twitter](https://twitter.com/bsdjobscom).<br>
+Interviewing the community and hosting [user stories](https://www.bsdjobs.com/people/).<br>
+h/t [Raman](ref/rs.html) is inspiring and advising.<br>
+[Reyk](words.html#rf) for being my first customer right after the project launch.
+
 Writing and maintaining [shell scripts](/bin/) (licensed under
 [ISC](https://en.m.wikipedia.org/wiki/ISC_license)).
 
@@ -75,6 +80,8 @@ Writing and maintaining [shell scripts](/bin/) (licensed under
 [<img src="ref/je.jpeg" class="avatar">](words.html#je "Jeff")
 [<img src="ref/ds.jpeg" class="avatar">](words.html#ds "Derek")
 [<img src="ref/mk.jpeg" class="avatar">](ref/mk.html "Marina")
+[<img src="ref/rs.jpeg" class="avatar">](ref/rs.html "Raman")
+[<img src="ref/rf.jpeg" class="avatar">](words.html#rf "Reyk")
 
 _Why?_ &#29983;&#12365;&#30002;&#26000;<br> The modern web is slow,
 bloated, and intrusive.  Our community (developers,
@@ -88,30 +95,6 @@ _Challenges?_ We need to (re-)educate few hundred thousand of web
 developers. I heard number of programmers doubles every five years.
 So half of us are inexperienced juniors. We'd better keep up.
 Everyone should become a tutor.
-
----
-
-**Founder, [BSDjobs]**<br>
-_Job board, 2018&ndash;present_<br>
-[bsdjobs.com][BSDjobs]
-
-[Posting job ads][BSDjobs].<br>
-Promoting BSD companies on [Twitter](https://twitter.com/bsdjobscom).<br>
-Interviewing the community and hosting [user stories](https://www.bsdjobs.com/people/).<br>
-
-h/t [Raman](ref/rs.html) is inspiring and advising.<br>
-[Reyk](words.html#rf) for being my first customer right after the project launch.
-
-[<img src="ref/rs.jpeg" class="avatar">](ref/rs.html "Raman")
-[<img src="ref/rf.jpeg" class="avatar">](words.html#rf "Reyk")
-
-_Why?_ I love to help BSD people to find their dream jobs. More
-people run BSD means more BSD projects receive better support. Good
-software wins!
-
-_Challenges?_ We need more companies to run BSD, to educate
-companies about BSD and its business values, make BSD systems
-compatible with existing infrastructure (hardware and software).
 
 ---
 
