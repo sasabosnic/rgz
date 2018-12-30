@@ -1,12 +1,12 @@
 _This is a part of [my setup](/setup.html)_
 
-# RUN BSD
+# Run BSD
 
 I host [stories of people who run BSD](https://www.bsdjobs.com/people/)
 to help beginners (mostly developers and system administrators) to
 discover BSD operating systems and related projects.
 
-If you're curious about [RUN BSD](http://runbsd.info/) sticker,
+If you're curious about [Run BSD](http://runbsd.info/) sticker,
 here is how it found me:
 
 > [RZ](https://twitter.com/romanzolotarev/status/925424605367623680
@@ -25,5 +25,5 @@ Two weeks later...
 > [FiLiS](https://twitter.com/FiLiS/status/931619067185811459
 "17 Nov 2017"): You're welcome. :)
 
-![RUN BSD](/runbsd.jpeg)
-_RUN BSD stickers and the envelope_
+![Run BSD](/runbsd.jpeg)
+_Run BSD stickers and the envelope_
