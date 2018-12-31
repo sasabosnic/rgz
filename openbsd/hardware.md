@@ -16,7 +16,7 @@ _Tested on various [OpenBSD](/openbsd/) releases. Check [my current setup](/setu
 <pre>
 14" FHD/WQHD, 7th Gen Intel i5/i7, 1.13 kg
 
-tested by  <a href="https://twitter.com/romanzolotarev/status/1019920973653569536">romanzolotarev</a> on 6.3-stable
+tested by  <a href="https://twitter.com/romanzolotarev/status/1019920973653569536">romanzolotarev</a> on 6.3 and 6.4
            <a href="https://jcs.org/2017/09/01/thinkpad_x1c">jcs</a> on 6.2-current (2017-12-14)
 
 <b><s>fpr</s></b>        <a href="https://bsd.network/@kristapsdz/100391368292782019">patch for libfprint required</a>
@@ -27,10 +27,10 @@ tested by  <a href="https://twitter.com/romanzolotarev/status/101992097365356953
 <b>&#x2744;</b>          fan is off most of a time
            turns on, when CPU > 60&deg;C
 
-eth, video, HDMI, headphones, mic, speakers,
+ethernet (em), video, HDMI, headphones, mic, speakers,
 keyboard backlight, mute, vol up/down,
-touchpad, trackpoint usb, usb-c, sd,
-batt (9 hours), ZZZ, zzz
+touchpad, trackpoint, usb, usb-c, sd,
+battery (9 hours), ZZZ, zzz
 </pre>
 
 ## [ZOTAC CI527 Nano](https://www.zotac.com/us/product/mini_pcs/ci527-nano)
@@ -40,7 +40,7 @@ batt (9 hours), ZZZ, zzz
 
 7th Gen Intel i3, passive cooling
 
-tested by  <a href="https://twitter.com/romanzolotarev/status/909807608252551169">romanzolotarev</a> on 6.3-stable
+tested by  <a href="https://twitter.com/romanzolotarev/status/909807608252551169">romanzolotarev</a> on 6.3 and 6.4
 
 <b><s>zzz</s></b>        doesn't resume from suspend
 <b>video</b>      S3 resume doesn't work, the rest is ok
@@ -50,8 +50,7 @@ tested by  <a href="https://twitter.com/romanzolotarev/status/909807608252551169
 <b>wifi</b>       iwm(4) required
 <b>&#x2744;</b>          43&deg;C, fanless
 
-eth (re, em), HDMI,
-headphones, mic,
+ethernet (re/em), HDMI, headphones, mic,
 usb, sd, ZZZ
 </pre>
 
