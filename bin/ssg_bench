@@ -1,67 +1,51 @@
 #!/bin/sh
 
 apm -H
-
-# echo "ssg1 (clean)"
-# time (for i in $(jot 5); do
-# rm -rf /var/www/htdocs/www/*
-# rm -rf /var/www/htdocs/www/.*
-# (cd ~/src/www && ROOT="https://www" DOCS=/var/www/htdocs/www ssg1 build >/dev/null)
-# printf '.'
-# done)
-
-# echo "ssg2 (clean)"
-# time (for i in $(jot 5); do
-# rm -rf /var/www/htdocs/www/*
-# rm -rf /var/www/htdocs/www/.*
-# ssg2 ~/src/www /var/www/htdocs/www/ 'Roman Zolotarev' 'http://www' >/dev/null 2>&1
-# printf '.'
-# done)
+test -d "$1" || { >&2 echo "usage: ${0##*/} src"; exit 1; }
+src=$(mktemp -d)
+cp -R "$1"/* "$src"
 
 echo "ssg3 (clean)"
 time (for i in $(jot 5); do
-rm -rf /var/www/htdocs/www/*
-rm -rf /var/www/htdocs/www/.*
-ssg3 ~/src/www /var/www/htdocs/www/ 'Roman Zolotarev' 'http://www' >/dev/null 2>&1
+dst=$(mktemp -d)
+ssg3 "$src" "$dst" 'title' 'http://www' >/dev/null 2>&1
+rm -rf "${dst:?}"
 printf '.'
 done)
 
 echo "ssg4 (clean)"
 time (for i in $(jot 5); do
-rm -rf /var/www/htdocs/www/*
-rm -rf /var/www/htdocs/www/.*
-ssg4 ~/src/www /var/www/htdocs/www/ 'Roman Zolotarev' 'http://www' >/dev/null 2>&1
+dst=$(mktemp -d)
+ssg4 "$src" "$dst" 'title' 'http://www' >/dev/null 2>&1
+rm -rf "${dst:?}"
 printf '.'
 done)
 
-# echo "ssg1"
-# time (for i in $(jot 5); do
-# (cd ~/src/www && ROOT="https://www" DOCS=/var/www/htdocs/www ssg1 build >/dev/null)
-# printf '.'
-# done)
-
-# echo "ssg2 (incremental)"
-# time (for i in $(jot 5); do
-# cat ~/src/www/ssg.md > ~/src/www/ssg_bench_test
-# ssg2 ~/src/www /var/www/htdocs/www/ 'Roman Zolotarev' 'http:/www' >/dev/null 2>&1
-# rm ~/src/www/ssg_bench_test
-# printf '.'
-# done)
+dst3=$(mktemp -d)
+dst4=$(mktemp -d)
 
 echo "ssg3 (incremental)"
+ssg3 "$src" "$dst3" 'title' 'http://www' >/dev/null 2>&1
 time (for i in $(jot 5); do
-cat ~/src/www/ssg.md > ~/src/www/ssg_bench_test
-ssg3 ~/src/www /var/www/htdocs/www/ 'Roman Zolotarev' 'http:/www' >/dev/null 2>&1
-rm ~/src/www/ssg_bench_test
+rnd=$(jot -rcs '' 20 97 122)
+echo '.' > "$src/$rnd"
+ssg3 "$src" "$dst3" 'title' 'http://www' >/dev/null 2>&1
 printf '.'
 done)
 
 echo "ssg4 (incremental)"
+ssg4 "$src" "$dst4" 'title' 'http://www' >/dev/null 2>&1
 time (for i in $(jot 5); do
-cat ~/src/www/ssg.md > ~/src/www/ssg_bench_test
-ssg4 ~/src/www /var/www/htdocs/www/ 'Roman Zolotarev' 'http:/www' >/dev/null 2>&1
-rm ~/src/www/ssg_bench_test
+rnd=$(jot -rcs '' 20 97 122)
+echo '.' > "$src/$rnd"
+ssg4 "$src" "$dst4" 'title' 'http://www' >/dev/null 2>&1
 printf '.'
 done)
 
+# diff -r "$dst3" "$dst4"
+
+rm -rf "${dst3:?}"
+rm -rf "${dst4:?}"
+
+rm -rf "${src:?}"
 apm -A
