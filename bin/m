@@ -267,7 +267,7 @@ paypal() {
 	paypal_init
 	case "$p_name" in
 		z) p_price=1; p_days=1;;
-		a) p_price=60; p_days=365;;
+		a) p_price=90; p_days=365;;
 		b) p_price=15; p_days=30;;
 		*) full_stop 'Plan is invalid';;
 	esac
@@ -462,7 +462,7 @@ subscription_form() {
 		class=" form__button
 			form__button-large
 			form__button-paypal-hover">
-		&euro;60 per year
+		&euro;90 per year
 	</button>
 	<button
 		name="paypal"
