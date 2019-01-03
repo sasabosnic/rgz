@@ -27,7 +27,7 @@ P.S. Here are all received donations. Please ping me, if yours
 hasn't been listed, or if you want to remove your name from the
 list.
 
-_Updated on 2 Jan 2019_
+_Updated on 3 Jan 2019_
 
 Patreon:
 **[Tom Smyth](https://www.patreon.com/user/creators?u=10913897 "24 Apr 2018 80.00 USD")&nbsp;
@@ -60,6 +60,7 @@ PayPal:
 [Andrew Vieyra](https://twitter.com/andrewvieyra "26 Nov 2018 50.00 USD")&nbsp;
 [Hajime Edakawa](https://twitter.com/hjmedkw "13 Nov 2018 50.00 USD")&nbsp;**
 [Tuomo Sahipakka](https://twitter.com/tuomosa "01 Oct 2018 25.00 EUR Keep up good work!")&nbsp;
+[Daniel Stocker](https://twitter.com/stoege "03 Jan 2019 25.00 USD")&nbsp;
 [David Carlier](https://twitter.com/devnexen "01 Oct 2018 20.00 USD")&nbsp;
 [Jeffrey Allen Neitzel](https://jan.etsh.io/ "24 Jul 2018 15.00 USD")&nbsp;
 [Joan Catala](https://twitter.com/joancatala "22 Aug 2018 10.00 USD")&nbsp;
@@ -67,8 +68,10 @@ PayPal:
 [Gabriel Francisco](https://twitter.com/fgbreel "8 Jun 2018 10.00 EUR I love your blog and the content you share about OpenBSD! Keep rocking!")&nbsp;
 [Hans Solo](https://twitter.com/pikkabird "01 Oct 2018 4.00 USD")&nbsp;
 
-Other forms of support:
-[Mischa Peters](https://twitter.com/mischapeters "14 Oct 2018 OpenBSD Amsterdam T-Shirt x2\n13 Apr 2018 VM\n19 Sep 2017 Run BSD T-shirt")&nbsp;
+other forms of support:
+[Mischa Peters](https://twitter.com/mischapeters "14 Oct 2018 OpenBSD Amsterdam T-Shirt x2
+13 Apr 2018 VM
+19 Sep 2017 Run BSD T-shirt")&nbsp;
 [Vultr](/vultr.html "08 Jun 2018 110.00 USD")&nbsp;
 [Evander Sinque](https://twitter.com/FiLiS "31 Oct 2017 Run BSD Stickers")&nbsp;
 [Adam Dymitruk](https://twitter.com/adymitruk "24 Apr 2018 83,800 Satoshi")&nbsp;
