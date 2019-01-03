@@ -3,10 +3,11 @@ _This reference letter is a part of my [curriculum vitae](/cv.html).
 
 # Alexis says...
 
-<p class="f3 lh-title ni">&#8220;I met Roman in 2008. Back then I
-run one of my first startups&mdash;Neonray. It was a cloud-based
-remote desktop solution, built on top of Amazon Web Services, and
-Roman carried out the due diligence on behalf of an angel investor.</p>
+<p class="f4 f3-m f3-l lh-title ni">&#8220;I met Roman in 2008.
+Back then I run one of my first startups&mdash;Neonray. It was a
+cloud-based remote desktop solution, built on top of Amazon Web
+Services, and Roman carried out the due diligence on behalf of an
+angel investor.</p>
 
 I immediately liked Roman's wide technological horizon and the
 thoroughness with which he studies our project.

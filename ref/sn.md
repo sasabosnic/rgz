@@ -2,8 +2,9 @@ _This reference letter is a part of my [curriculum vitae](/cv.html). [See&nbsp;m
 
 # Sath says...
 
-<p class="f3 lh-title ni">&#8220;Roman was sole person in-charge
-of the UI development at Cinarra Systems during the early years.
+<p class="f4 f3-m f3-l lh-title ni">&#8220;Roman was sole person
+in-charge of the UI development at Cinarra Systems during the early
+years.
 
 I have worked with Roman on and off during this time.  He was a
 consultant initially with Cinarra and later on he became our first

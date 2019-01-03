@@ -1,4 +1,5 @@
 https://www.romanzolotarev.com/rss.xml
+https://www.romanzolotarev.com/n/rss.xml
 
 http://akpoff.com/rss.xml
 http://bitcannon.net/index.xml

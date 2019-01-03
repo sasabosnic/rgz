@@ -3,9 +3,9 @@ _This reference letter is a part of my [curriculum vitae](/cv.html).
 
 # Denis says...
 
-<p class="f3 lh-title ni">&#8220;Hello, I'm Denis Borovikov, a
-senior Software Engineer at Cinarra Systems.  I&nbsp;met Roman in
-2011, when I joined his team as a frontend web developer.</p>
+<p class="f4 f3-m f3-l lh-title ni">&#8220;Hello, I'm Denis Borovikov,
+a senior Software Engineer at Cinarra Systems.  I&nbsp;met Roman
+in 2011, when I joined his team as a frontend web developer.</p>
 
 We were working on several long term web projects. To name a few,
 building a media portal for an international telecom company, making

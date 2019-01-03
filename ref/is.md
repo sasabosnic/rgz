@@ -3,9 +3,9 @@ _This reference letter is a part of my [curriculum vitae](/cv.html).
 
 # Ivan says...
 
-<p class="f3 lh-title ni">&#8220;Hey! I'm Ivan Starkov, an author
-of a few open source JavaScript libraries, and a software developer
-at RealAdvisor.</p>
+<p class="f4 f3-m f3-l lh-title ni">&#8220;Hey! I'm Ivan Starkov,
+an author of a few open source JavaScript libraries, and a software
+developer at RealAdvisor.</p>
 
 In 2015 I was looking for a job as a JavaScript developer and as
 soon as tweeted about that, Roman replied and invited me to join

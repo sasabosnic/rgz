@@ -3,10 +3,11 @@ _This reference letter is a part of my [curriculum vitae](/cv.html).
 
 # Mischa says...
 
-<p class="f3 lh-title ni">&#8220;I am Mischa Peters. I am running
-a hosting and co-locating company out of Amsterdam as a out-of-hand
-hobby, recently kicking off OpenBSD Amsterdam, and my $dayjob is
-leading a team of Systems Engineers for a security startup.</p>
+<p class="f4 f3-m f3-l lh-title ni">&#8220;I am Mischa Peters. I
+am running a hosting and co-locating company out of Amsterdam as a
+out-of-hand hobby, recently kicking off OpenBSD Amsterdam, and my
+$dayjob is leading a team of Systems Engineers for a security
+startup.</p>
 
 Roman and I got to know each other on Twitter in early 2017 and
 bonded quickly due to common interests in technology, OpenBSD, and

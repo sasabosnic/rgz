@@ -8,8 +8,15 @@ Tutorials for web developers.
 **Type-in your email** to get my monthly newsletter:
 
 <form method="post" action="https://tinyletter.com/romanzolotarev">
-<input class="outline w5 pa3 ba mr1 hover-bg-light-yellow b--dark-gray" name="email" type="email" placeholder="email@example.com">
-<button class="outline dib pa3 b ba white bg-blue b--dark-gray hover-black hover-bg-light-yellow" type="submit">Subscribe</button>
+<input
+	class="outline mw-100 w5 pa3 ba mb2 mr1 hover-bg-light-yellow b--dark-gray"
+	required="required"
+	name="email"
+	type="email"
+	placeholder="email@example.com">
+<button
+	class="outline mw-100 dib pa3 b ba white bg-blue b--dark-gray hover-black hover-bg-light-yellow"
+	type="submit">Subscribe</button>
 </form>
 
 Subscribe via [RSS](https://www.romanzolotarev.com/n/rss.xml).

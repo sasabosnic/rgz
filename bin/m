@@ -459,25 +459,19 @@ subscription_form() {
 	<button
 		name="paypal"
 		value="a"
-		class=" form__button
-			form__button-large
-			form__button-paypal-hover">
+		class="outline dib pa3 b ba black bg-yellow b--dark-gray hover-black hover-bg-light-yellow">
 		&euro;90 per year
 	</button>
 	<button
 		name="paypal"
 		value="b"
-		class=" form__button
-			form__button-large
-			form__button-paypal-hover">
+		class="outline dib pa3 b ba black bg-yellow b--dark-gray hover-black hover-bg-light-yellow">
 		&euro;15 per month
 	</button>
 	<button
 		name="paypal"
 		value="z"
-		class=" form__button
-			form__button-large
-			form__button-paypal-hover">
+		class="outline dib pa3 b ba white bg-blue b--dark-gray hover-black hover-bg-light-yellow">
 		&euro;1 per day
 	</button>
 </form>'"$(tags_to_upper < "$f" | obfuscate)"
@@ -496,7 +490,7 @@ new_session_form() {
 	class="form">
 	<input
 		type="email"
-		class="form__field"
+		class="mw-100 mb2 outline w5 pa3 ba mr1 hover-bg-light-yellow b--dark-gray"
 		autocorrect="off"
 		specllcheck="false"
 		required="required"
@@ -507,7 +501,7 @@ new_session_form() {
 		value="'"$e"'">
 	<input
 		type="submit"
-		class="form__button"
+		class="mw-100 outline dib pa3 b ba white bg-blue b--dark-gray hover-black hover-bg-light-yellow"
 		value="Get a magic link">
 </form>'"$(tags_to_upper < "$f" | obfuscate)"
 

@@ -8,7 +8,7 @@ _Thank you for your kind words and [support](sponsors.html)!_
 
 ---
 
-<p id="nixcraft" class="f3 lh-title ni">&#8220;Clever. This one is
+<p id="nixcraft" class="f4 f3-m f3-l lh-title ni">&#8220;Clever. This one is
 for you @romanzolotarev who recently helped with some css. Give him
 follow if you are into openbsd and unix like system&#8221;</p>
 
@@ -34,7 +34,7 @@ _Author, sysadmin, and trainer_<br>
 
 ---
 
-<p id="ds" class="f3 lh-title ni">&#8220;I just found <a
+<p id="ds" class="f4 f3-m f3-l lh-title ni">&#8220;I just found <a
 href="/ssg.html">ssg</a>!  You are so damn cool.  I love your
 approach to things.&#8221;</p>
 
@@ -111,7 +111,7 @@ _Entrepreneur and Book Publisher_<br>
 
 ---
 
-<p id="h3artbl33d2" class="f3 lh-title ni">&#8220;Roman Zolotarev &mdash; A true
+<p id="h3artbl33d2" class="f4 f3-m f3-l lh-title ni">&#8220;Roman Zolotarev &mdash; A true
 inspiration. His insights, writings and occasional ramblings are
 what pushed me to write and share. And he continues to be the number
 one drive. Roman, you redefine awesome. Thank you!&#8221;</p>
@@ -152,7 +152,7 @@ one drive. Roman, you redefine awesome. Thank you!&#8221;</p>
 
 ---
 
-<p id="lattera" class="f3 lh-title ni">&#8220;I'd like to take a moment to thank
+<p id="lattera" class="f4 f3-m f3-l lh-title ni">&#8220;I'd like to take a moment to thank
 @romanzolotarev for his BSD advocacy efforts. You're doing amazing
 work and it's fun to read all these stories.&#8221;</p>
 
@@ -197,7 +197,7 @@ _Cofounder of HardenedBSD_<br>
 
 ---
 
-<p id="je" class="f3 lh-title ni">&#8220;Roman implemented what I asked him to and adjusted my X rgb.txt green to a nicer one. I simply sent him the output of 2 echo commands with the exact characters you see in my logo now. It was a good investment for me. I donated almost what I donate to OpenBSD each month. Thanks Roman :)&#8221;</p>
+<p id="je" class="f4 f3-m f3-l lh-title ni">&#8220;Roman implemented what I asked him to and adjusted my X rgb.txt green to a nicer one. I simply sent him the output of 2 echo commands with the exact characters you see in my logo now. It was a good investment for me. I donated almost what I donate to OpenBSD each month. Thanks Roman :)&#8221;</p>
 
 <img src="/ref/je.jpeg" class="br-100 w3"><br> **Jeffrey Allen Neitzel**<br> _Author of Etsh_<br>
 [jan.etsh.io](https://jan.etsh.io)<br>
@@ -233,7 +233,7 @@ _Cofounder of HardenedBSD_<br>
 
 ---
 
-<p id="mulander" class="f3 lh-title ni">&#8220;Be the change. Congrats Roman,
+<p id="mulander" class="f4 f3-m f3-l lh-title ni">&#8220;Be the change. Congrats Roman,
 it takes courage to swim upstream instead of drifting along with
 the current.&#8221;</p>
 
@@ -325,7 +325,7 @@ _OpenBSD developer_<br>
 
 ---
 
-<p id="mp" class="f3 lh-title ni">&#8220;Thanx @romanzolotarev for the great
+<p id="mp" class="f4 f3-m f3-l lh-title ni">&#8220;Thanx @romanzolotarev for the great
 "corporate" identity! Love the logo and images.&#8221;</p>
 
 <img src="/ref/mp.jpeg" class="br-100 w3"><br> **Mischa Peters**<br> _Founder_<br>
@@ -353,7 +353,7 @@ _OpenBSD developer_<br>
 
 ---
 
-<p id="rf" class="f3 lh-title ni">&#8220;We hired a new dev; thank you a lot, he found us on bsdjobs.com!<br>Great idea!&#8221;</p>
+<p id="rf" class="f4 f3-m f3-l lh-title ni">&#8220;We hired a new dev; thank you a lot, he found us on bsdjobs.com!<br>Great idea!&#8221;</p>
 
 <img src="/ref/rf.jpeg" class="br-100 w3"><br> **Reyk Fl&ouml;ter**<br>
 _OpenBSD developer_<br>
@@ -410,7 +410,7 @@ _OpenBSD developer_<br>
 
 ---
 
-<p id="mk" class="f3 lh-title ni">&#8220;Two days ago I thought
+<p id="mk" class="f4 f3-m f3-l lh-title ni">&#8220;Two days ago I thought
 that everything I would write about is already written, and probably
 not once. Now I feel kind of tickle going to write something (in
 fact anything, I've got so many things to tell about), but didn't
@@ -471,7 +471,7 @@ find spare couple hours yet :)&#8221;</p>
 
 ---
 
-<p id="h3artbl33d" class="f3 lh-title ni">&#8220;It's really inspiring to see you give back much to the community.
+<p id="h3artbl33d" class="f4 f3-m f3-l lh-title ni">&#8220;It's really inspiring to see you give back much to the community.
 I appreciate your work - ssg, your how-to's for less familiar users,
 etc. I felt I should mention that to you &#x1F600;&#8221;</p>
 

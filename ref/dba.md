@@ -3,9 +3,9 @@ _This reference letter is a part of my [curriculum vitae](/cv.html).
 
 # Denis says...
 
-<p class="f3 lh-title ni">&#8220;Hi! My name is Denis and I'm an
-aircraft pilot in my free time. By day I'm a software developer at
-<a href="https://www.adjust.com">adjust</a>, where my team makes
+<p class="f4 f3-m f3-l lh-title ni">&#8220;Hi! My name is Denis and
+I'm an aircraft pilot in my free time. By day I'm a software developer
+at <a href="https://www.adjust.com">adjust</a>, where my team makes
 software for a high-load system. It runs on 400+ bare metal fine
 tuned for extreme performance machines. These days we process around
 10PB monthly.</p>

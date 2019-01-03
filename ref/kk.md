@@ -3,9 +3,9 @@ _This reference letter is a part of my [curriculum vitae](/cv.html).
 
 # Kirill says...
 
-<p class="f3 lh-title ni">&#8220;I met Roman when I launched one
-of my early startups, Moozone&mdash;a music streaming service,
-around 2008.</p>
+<p class="f4 f3-m f3-l lh-title ni">&#8220;I met Roman when I
+launched one of my early startups, Moozone&mdash;a music streaming
+service, around 2008.</p>
 
 This was before the time of Spotify. At that point Roman was genuinely
 interested in marketing and product development and had the experience

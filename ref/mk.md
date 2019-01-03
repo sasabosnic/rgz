@@ -3,9 +3,9 @@ _This reference letter is a part of my [curriculum vitae](/cv.html).
 
 # Marina says...
 
-<p class="f3 lh-title ni">&#8220;When you adore minimalism and
-strive for perfection, and then you suddenly find a mentor who is
-a minimalist and a perfectionist, you appear to be in a fairytail
+<p class="f4 f3-m f3-l lh-title ni">&#8220;When you adore minimalism
+and strive for perfection, and then you suddenly find a mentor who
+is a minimalist and a perfectionist, you appear to be in a fairytail
 where a wise and kind wizard leads you by the hand, showing you a
 secret path you've been looking for all the time.</p>
 
