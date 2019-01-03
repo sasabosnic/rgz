@@ -2,11 +2,11 @@ _This reference letter is a part of my [curriculum vitae](/cv.html). [See&nbsp;m
 
 # Marat says...
 
-<p class="quote">&#8220;Hello, I'm Marat, a software developer at
-<a href="https://www.freshcells.de">freshcells systems engineeing</a>.
-I started working with Roman in 2012 at adtech startup Cinarra
-Systems, we were very first employees and started building and
-developing the project from scratch.
+<p class="f3 lh-title ni">&#8220;Hello, I'm Marat, a software
+developer at <a href="https://www.freshcells.de">freshcells systems
+engineeing</a>. I started working with Roman in 2012 at adtech
+startup Cinarra Systems, we were very first employees and started
+building and developing the project from scratch.
 
 At first, Roman had been UI architect and engineer. He worked
 remotely as a contractor and I was working as full-stack web developer
@@ -28,7 +28,7 @@ Feel free to contact me via email.&#8221;
 
 ---
 
-<img src="mt.jpeg" class="avatar">
+<img src="mt.jpeg" class="br-100 w3">
 
 **Marat Tukhvatullin**<br>
 _Software Developer_<br>

@@ -1,8 +1,6 @@
 # Me, myself, and I
 
-<p class="quote" title="Am I doing it right?
-Shall I run for President?">
-&#8220;A father, husband, son, and brother. :)<br>
+<p class="f3 lh-title ni">&#8220;A father, husband, son, and brother. :)<br>
 I'm 41 with 27 years of experience.<br>
 A slow fashion webmaster.<br>
 A minimalist.

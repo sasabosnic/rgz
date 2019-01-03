@@ -2,8 +2,8 @@ _This reference letter is a part of my [curriculum vitae](/cv.html). [See&nbsp;m
 
 # Sath says...
 
-<p class="quote">&#8220;Roman was sole person in-charge of the UI
-development at Cinarra Systems during the early years.
+<p class="f3 lh-title ni">&#8220;Roman was sole person in-charge
+of the UI development at Cinarra Systems during the early years.
 
 I have worked with Roman on and off during this time.  He was a
 consultant initially with Cinarra and later on he became our first
@@ -21,7 +21,7 @@ APIs to ensure fewer surprises.&#8221;
 
 ---
 
-<img src="sn.jpeg" class="avatar">
+<img src="sn.jpeg" class="br-100 w3">
 
 **Sath Nelakonda**<br>
 _VP of Engineering_<br>

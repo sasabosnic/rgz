@@ -2,7 +2,7 @@ _This reference letter is a part of my [curriculum vitae](/cv.html). [See&nbsp;m
 
 # Raman says...
 
-<p class="quote">&#8220;Hello &#x1F44B;<br><br> I'm Raman <a
+<p class="f3 lh-title ni">&#8220;Hello &#x1F44B;<br><br> I'm Raman <a
 href="https://twitter.com/ksaitor">@ksaitor</a>, a developer and
 founder of Crypto Jobs List. I'm building apps, helping solve real
 problems, and inspire other makers and devs to do the same.  Recently
@@ -31,7 +31,7 @@ about Roman's specific skills and experience.&#8221;
 
 ---
 
-<img src="rs.jpeg" class="avatar">
+<img src="rs.jpeg" class="br-100 w3">
 
 **Raman Shalupau**<br>
 _Founder_<br>

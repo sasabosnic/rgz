@@ -6,7 +6,7 @@ do
 	logs="$(
 		zgrep "$1" "$file" |
 		grep 'HTTP/1.1" 200 ' |
-		grep -viE 'pingdom|updown' |
+		grep -viE 'pingdom|updown|bot' |
 		cut -d' ' -f2-)"
 	stats="$(echo "$logs" | logswan - 2>/dev/null)"
 

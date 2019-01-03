@@ -1,22 +1,3 @@
-<pre>
-
-            &mdash; Where do you see yourself in five years?
-                               &mdash; Here, I guess.
-                                       |
-                                       |
-      ------------------programming . . . . . . . . . .
-            --------web-development . . . . . . . . . .
-        -----------    ---design-ui . . . . . . . . . .
-           --------------------unix . . . . . . . . . .
-
-  1990  94  98  02  06  10  14  18  22  26  30  32  36
-
-           ---------independent-web . . . . . . . . . .
-                       ------b2c
-                         adtech
-                   -b2b
-</pre>
-
 # Roman Zolotarev
 
 <p class="p-note">
@@ -35,28 +16,44 @@ the business and <a href="tech.html">technical background</a>.</em>
   class="u-url" rel="me">bsd.network/@romanzolotarev</a><br>
 </p>
 
-<a href="about.html"
-  class="h-card"><img src="avatar.jpeg"
-  style="width: 200px; height: 200px;"></a>
+<hr>
+
+<pre>
+            &mdash; Where do you see yourself in five years?
+                               &mdash; Here, I guess.
+                                       |
+                                       |
+      ------------------programming . . . . . . . . . .
+            --------web-development . . . . . . . . . .
+        -----------    ---design-ui . . . . . . . . . .
+           --------------------unix . . . . . . . . . .
+
+  1990  94  98  02  06  10  14  18  22  26  30  32  36
+
+           ---------independent-web . . . . . . . . . .
+                       ------b2c
+                         adtech
+                   -b2b
+</pre>
 
 [BSDjobs]: https://www.bsdjobs.com/
 [Cinarra Systems]: https://www.cinarra.com/
 
 ## Current projects
 
-**Founder, Technical Writer, Software Developer, [Mastering the Web](/n/)**<br>
+**Founder, [Mastering the Web](/n/)**<br>
 _Publishing, 2018&ndash;present_<br>
 [romanzolotarev.com/n/](/n/)
 
 Writing [how-to guides](/) for beginners.<br>
-Advocating simple web development tools on [Twitter] and [Mastodon].<br>
+Advocating simple development tools on [Twitter] and [Mastodon].<br>
 Serving [a very kind BSD community](words.html).
 
 [Twitter]: https://twitter.com/romanzolotarev
 [Mastodon]: https://bsd.network/@romanzolotarev
 
 Supporting Unix/BSD related projects and [mentoring developers](ref/mk.html).
-#IndieWeb #RUNBSD #BSDjobs #OpenBSD &#x1f421;<br>
+#IndieWeb #RunBSD #BSDjobs #OpenBSD &#x1f421;<br>
 
 Maintaining [a media kit](/openbsd.amsterdam/) and website for
 [OpenBSD Amsterdam](https://openbsd.amsterdam).<br>
@@ -71,17 +68,12 @@ h/t [Raman](ref/rs.html) is inspiring and advising.<br>
 Writing and maintaining [shell scripts](/bin/) (licensed under
 [ISC](https://en.m.wikipedia.org/wiki/ISC_license)).
 
-[arc](/arc.html) &mdash; an archiver<br>
-[diceware](/diceware.html) &mdash; a passphrase generator<br>
-[pass](/pass.html) &mdash; a password manager<br>
-[ssg](/ssg.html) &mdash; a static site generator<br>
-
-[<img src="ref/mp.jpeg" class="avatar">](ref/mp.html "Mischa")
-[<img src="ref/je.jpeg" class="avatar">](words.html#je "Jeff")
-[<img src="ref/ds.jpeg" class="avatar">](words.html#ds "Derek")
-[<img src="ref/mk.jpeg" class="avatar">](ref/mk.html "Marina")
-[<img src="ref/rs.jpeg" class="avatar">](ref/rs.html "Raman")
-[<img src="ref/rf.jpeg" class="avatar">](words.html#rf "Reyk")
+[<img src="ref/mp.jpeg" class="br-100 w3">](ref/mp.html "Mischa")
+[<img src="ref/je.jpeg" class="br-100 w3">](words.html#je "Jeff")
+[<img src="ref/ds.jpeg" class="br-100 w3">](words.html#ds "Derek")
+[<img src="ref/mk.jpeg" class="br-100 w3">](ref/mk.html "Marina")
+[<img src="ref/rs.jpeg" class="br-100 w3">](ref/rs.html "Raman")
+[<img src="ref/rf.jpeg" class="br-100 w3">](words.html#rf "Reyk")
 
 _Why?_ &#29983;&#12365;&#30002;&#26000;<br> The modern web is slow,
 bloated, and intrusive.  Our community (developers,
@@ -139,13 +131,13 @@ API, database, and web application server.
 
 [Sath](ref/sn.html) orchestrated all engineering teams within the company.
 
-[<img src="ref/db.jpeg" class="avatar">](ref/db.html "Denis")
-[<img src="ref/rs.jpeg" class="avatar">](ref/rs.html "Raman")
-[<img src="ref/tda.jpeg" class="avatar">](ref/tda.html "Fred")
-[<img src="ref/is.jpeg" class="avatar">](ref/is.html "Ivan")
-[<img src="ref/mt.jpeg" class="avatar">](ref/mt.html "Marat")
-[<img src="ref/sn.jpeg" class="avatar">](ref/sn.html "Sath")
-[<img src="ref/az.jpeg" class="avatar">](ref/az.html "Alex")
+[<img src="ref/db.jpeg" class="br-100 w3">](ref/db.html "Denis")
+[<img src="ref/rs.jpeg" class="br-100 w3">](ref/rs.html "Raman")
+[<img src="ref/tda.jpeg" class="br-100 w3">](ref/tda.html "Fred")
+[<img src="ref/is.jpeg" class="br-100 w3">](ref/is.html "Ivan")
+[<img src="ref/mt.jpeg" class="br-100 w3">](ref/mt.html "Marat")
+[<img src="ref/sn.jpeg" class="br-100 w3">](ref/sn.html "Sath")
+[<img src="ref/az.jpeg" class="br-100 w3">](ref/az.html "Alex")
 
 ---
 
@@ -157,12 +149,12 @@ Developed software for clients from California, Singapore, Tokyo,
 and Moscow. I was focused on frontend development (user interfaces,
 user experience, interaction design).
 
-[<img src="ref/tg.jpeg" class="avatar">](ref/tg.html "Timur")
-[<img src="ref/az.jpeg" class="avatar">](ref/az.html "Alex")
-[<img src="ref/kk.jpeg" class="avatar">](ref/kk.html "Kirill")
-[<img src="ref/db.jpeg" class="avatar">](ref/db.html "Denis")
-[<img src="ref/an.jpeg" class="avatar">](ref/an.html "Alexis")
-[<img src="ref/dba.jpeg" class="avatar">](ref/dba.html "Denis")
+[<img src="ref/tg.jpeg" class="br-100 w3">](ref/tg.html "Timur")
+[<img src="ref/az.jpeg" class="br-100 w3">](ref/az.html "Alex")
+[<img src="ref/kk.jpeg" class="br-100 w3">](ref/kk.html "Kirill")
+[<img src="ref/db.jpeg" class="br-100 w3">](ref/db.html "Denis")
+[<img src="ref/an.jpeg" class="br-100 w3">](ref/an.html "Alexis")
+[<img src="ref/dba.jpeg" class="br-100 w3">](ref/dba.html "Denis")
 
 ---
 
@@ -172,8 +164,8 @@ _Venture Capital Fund, 2007&ndash;2009_
 Managed a team of advisors, handled all communications with angel
 investors. Provided help to a dozen of internet startups.
 
-[<img src="ref/an.jpeg" class="avatar">](ref/an.html "Alexis")
-[<img src="ref/ik.jpeg" class="avatar">](ref/ik.html "Ivan")
+[<img src="ref/an.jpeg" class="br-100 w3">](ref/an.html "Alexis")
+[<img src="ref/ik.jpeg" class="br-100 w3">](ref/ik.html "Ivan")
 
 ---
 
@@ -245,71 +237,71 @@ _Diploma with honors, Kazan, Russia, 2004_
 
 ## References
 
-[<img src="ref/az.jpeg" class="avatar left">
+[<img src="ref/az.jpeg" class="br-100 w3 fl mt2 mr3 mb2">
 **Alex Zinin**](ref/az.html)<br>
 _Founder_<br>
 Pr3vision Consulting
 
-[<img src="ref/sn.jpeg" class="avatar left">
+[<img src="ref/sn.jpeg" class="br-100 w3 fl mt2 mr3 mb2">
 **Sath Nelakonda**](ref/sn.html)<br>
 _VP of Engineering_<br>
 Cinarra Systems
 
-[<img src="ref/tg.jpeg" class="avatar left">
+[<img src="ref/tg.jpeg" class="br-100 w3 fl mt2 mr3 mb2">
 **Timur Goldobin**](ref/tg.html)<br>
 _Co-founder_<br>
 Leto24
 
-[<img src="ref/mp.jpeg" class="avatar left">
+[<img src="ref/mp.jpeg" class="br-100 w3 fl mt2 mr3 mb2">
 **Mischa Peters**](ref/mp.html)<br>
 _Founder_<br>
 OpenBSD Amsterdam
 
-[<img src="ref/rs.jpeg" class="avatar left">
+[<img src="ref/rs.jpeg" class="br-100 w3 fl mt2 mr3 mb2">
 **Raman Shalupau**](ref/rs.html)<br>
 _Founder_<br>
 Crypto Jobs List
 
-[<img src="ref/mk.jpeg" class="avatar left">
+[<img src="ref/mk.jpeg" class="br-100 w3 fl mt2 mr3 mb2">
 **Marina Kuznetcova**](ref/mk.html)<br>
 _Frontend Engineer_<br>
 Piano
 
-[<img src="ref/db.jpeg" class="avatar left">
+[<img src="ref/db.jpeg" class="br-100 w3 fl mt2 mr3 mb2">
 **Denis Borovikov**](ref/db.html)<br>
 _Senior Software Engineer_<br>
 Cinarra Systems
 
-[<img src="ref/tda.jpeg" class="avatar left">
+[<img src="ref/tda.jpeg" class="br-100 w3 fl mt2 mr3 mb2">
 **Tran Dac Anh**](ref/tda.html)<br>
 _Software Developer_<br>
 Yara
 
-[<img src="ref/is.jpeg" class="avatar left">
+[<img src="ref/is.jpeg" class="br-100 w3 fl mt2 mr3 mb2">
 **Ivan Starkov**](ref/is.html)<br>
 _Software Developer_<br>
 RealAdvisor
 
-[<img src="ref/mt.jpeg" class="avatar left">
+[<img src="ref/mt.jpeg" class="br-100 w3 fl mt2 mr3 mb2">
 **Marat Tukhvatullin**](ref/mt.html)<br>
 _Software Developer_<br>
 freshcells systems engineering
 
-[<img src="ref/kk.jpeg" class="avatar left">
+[<img src="ref/kk.jpeg" class="br-100 w3 fl mt2 mr3 mb2">
 **Kirill Kouterguine**](ref/kk.html)<br>
 _Serial Entrepreneur_
 
-[<img src="ref/ik.jpeg" class="avatar left">
+[<img src="ref/ik.jpeg" class="br-100 w3 fl mt2 mr3 mb2">
 **Ivan Kuznetzov**](ref/ik.html)<br>
 _Chief Executive Officer_<br>
 Investex
 
-[<img src="ref/dba.jpeg" class="avatar left">
+[<img src="ref/dba.jpeg" class="br-100 w3 fl mt2 mr3 mb2">
 **Denis Baranov**](ref/dba.html)<br>
 _Senior Software Developer_<br>
 adjust
 
-[<img src="ref/an.jpeg" class="avatar left">
+[<img src="ref/an.jpeg" class="br-100 w3 fl mt2 mr3 mb2">
 **Alexis Nazarbaev**](ref/an.html)<br>
 _Founder_<br>
 Cyberflash

@@ -1,4 +1,5 @@
-<p class="quote p-note">&#8220;Hi, my name is
+
+<p class="f3 lh-title ni">&#8220;Hi, my name is
 <span class="p-name">Roman</span><br>
 and I'm <a href="n/">mastering the&nbsp;Web</a>.
 </p>
@@ -22,32 +23,23 @@ Oh, and I also publish how-tos.
 
 Thank you for [supporting my projects](sponsors.html) and [your kind words](words.html).&#8221;
 
-<a href="/patreon.html"><span class="form__button
-form__button-small form__button-patreon-hover">Patreon</span></a>
-<a href="/paypal.html"><span class="form__button form__button-small
-form__button-paypal-hover">PayPal</span></a>
-<a href="/xrp.html"><span class="form__button form__button-small
-form__button-xrp-hover">XRP</span></a>
-<a href="/openbsd/vultr.html"><span class="form__button
-form__button-small form__button-vultr-hover">Vultr</span></a>
-<a href="/openbsd/oams.html"><span class="form__button
-form__button-small form__button-oams-hover">OpenBSD Amsterdam</span></a>
-<a href="/n/"><span class="form__button form__button-hover
-form__button-small">Mastering the Web</span></a>
-
 ---
-
-<a href="https://www.romanzolotarev.com/"
-  class="h-card"><img src="avatar120.jpeg" class="avatar"></a>
 
 **Roman Zolotarev**<br>
 _Die-hard Webmaster_<br>
 hi@romanzolotarev.com<br>
 [@romanzolotarev](/twitter.html)
 
+<a class="f7 b link ph2 pv1 mb2 dib ba black-60 b--dark-gray hover-white hover-bg-ptrn" href="/patreon.html">Patreon</a>
+<a class="f7 b link ph2 pv1 mb2 dib ba black-60 b--dark-gray hover-white hover-bg-payp" href="/paypal.html">PayPal</a>
+<a class="f7 b link ph2 pv1 mb2 dib ba black-60 b--dark-gray hover-black hover-bg-xrpb" href="/xrp.html">XRP</a>
+<a class="f7 b link ph2 pv1 mb2 dib ba black-60 b--dark-gray hover-white hover-bg-vltr" href="/openbsd/vultr.html">Vultr</a>
+<a class="f7 b link ph2 pv1 mb2 dib ba black-60 b--dark-gray hover-white hover-bg-oams" href="/openbsd/oams.html">OpenBSD&nbsp;Amsterdam</a>
+<a class="f7 b link ph2 pv1 mb2 dib ba black-60 b--dark-gray hover-black hover-bg-gold" href="/n/">Mastering&nbsp;the&nbsp;Web</a>
+
 ---
 
-# How to...
+## How to...
 
 Subscribe via [RSS](https://www.romanzolotarev.com/rss.xml).
 

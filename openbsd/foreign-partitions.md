@@ -1,6 +1,6 @@
 # Foreign disk partitions on OpenBSD
 
-<p class="quote">&#8220;The <code>i</code> partition is part of the
+<p class="f3 lh-title ni">&#8220;The <code>i</code> partition is part of the
 pseudo disklabel that OpenBSD generates for disks, so that there's
 always a disklabel even if it is in memory (or "in-core", as the
 manual states).</p>
@@ -31,7 +31,7 @@ hint as to the purpose.&#8221;
 
 ---
 
-<img src="/ref/brynet.jpeg" class="avatar">
+<img src="/ref/brynet.jpeg" class="br-100 w3">
 
 **Bryan Steele**<br>
 _OpenBSD Developer_<br>

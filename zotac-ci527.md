@@ -27,4 +27,4 @@ is at 45&deg;C when idle and up to 80&deg;C at the maximum load.
 It cools down in five minutes.
 
 ![Zotac CI527](/zotac-ci527.jpeg)
-_Zotac CI527 with [RUN BSD](/runbsd.html) sticker on its top_
+_Zotac CI527 with [Run BSD](/runbsd.html) sticker on its top_

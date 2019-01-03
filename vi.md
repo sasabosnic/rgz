@@ -1,9 +1,4 @@
-"TIL #OpenBSD nvi can do split window... Thanks
-@romanzolotarev!"<br>&mdash;
-[ParadeGrotesque](https://twitter.com/ParadeGrotesque/status/1002454625272901632 "1 Jun 2018")
-(@ParadeGrotesque)
-
-_Tested on [OpenBSD](/openbsd/) 6.3_
+_Tested on [OpenBSD](/openbsd/) 6.3 and 6.4_
 
 # Edit text with vi(1)
 

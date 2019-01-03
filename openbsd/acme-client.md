@@ -1,8 +1,3 @@
-"the acme client docs you wrote helped to set this up in no time.
-Thanks!"<br>&mdash;
-[Tom Van Looy](https://twitter.com/tvlooy/status/1014649340739104768 "5 Jul 2018")
-(@tvlooy)
-
 _Tested on [OpenBSD](/openbsd/) 6.4_
 
 # Enable HTTPS with acme-client(1) and Let's Encrypt on OpenBSD

@@ -3,10 +3,10 @@ _This reference letter is a part of my [curriculum vitae](/cv.html).
 
 # Tim says...
 
-<p class="quote">&#8220;Hi, I'm Timur, a one of founders of
-Leto24&mdash;a nationwide distributor and producer of farming goods
-in Russia.  We've started working with Roman long-long time ago,
-ca. 2003, when he made a web site for one of my companies.</p>
+<p class="f3 lh-title ni">&#8220;Hi, I'm Timur, a one of founders
+of Leto24&mdash;a nationwide distributor and producer of farming
+goods in Russia.  We've started working with Roman long-long time
+ago, ca. 2003, when he made a web site for one of my companies.</p>
 
 We have been connected through dozens of ventures. With Roman I'm
 always confident I can rely on his help: he's always on time and
@@ -20,7 +20,7 @@ Don't hesitate to ask me anything about Roman.
 
 ---
 
-<img src="tg.jpeg" class="avatar">
+<img src="tg.jpeg" class="br-100 w3">
 
 **Timur Goldobin**<br>
 _Co-founder_<br>

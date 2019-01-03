@@ -3,10 +3,10 @@ _This reference letter is a part of my [curriculum vitae](/cv.html).
 
 # Alex says...
 
-<p class="quote">&#8220;Roman and I started working together in the
-late nineties at Center Group, where he was a graphics designer,
-known for his immaculate taste and a very clean approach to
-visuals.</p>
+<p class="f3 lh-title ni">&#8220;Roman and I started working together
+in the late nineties at Center Group, where he was a graphics
+designer, known for his immaculate taste and a very clean approach
+to visuals.</p>
 
 It was no surprise that I invited Roman to join me when I started
 Cinarra Systems&mdash;an advertising platform bridging the worlds
@@ -21,7 +21,7 @@ requiring knowledge of design and latest web UI technologies.&#8221;
 
 ---
 
-<img src="az.jpeg" class="avatar">
+<img src="az.jpeg" class="br-100 w3">
 
 **Alex Zinin**<br>
 _Founder and CEO_<br>

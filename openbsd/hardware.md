@@ -11,7 +11,7 @@ _Tested on various [OpenBSD](/openbsd/) releases. Check [my current setup](/setu
 
 ## [Lenovo ThinkPad X1 Carbon (5th Gen)](https://www.lenovo.com/us/en/laptops/thinkpad/thinkpad-x/ThinkPad-X1-Carbon-5th-Gen/p/22TP2TXX15G)
 
-<img src="/hardware/lenovo-thinkpad-x1c5.png" style="width: 200px;">
+<img src="/hardware/lenovo-thinkpad-x1c5.png" class="w4">
 
 <pre>
 14" FHD/WQHD, 7th Gen Intel i5/i7, 1.13 kg
@@ -36,7 +36,7 @@ battery (9 hours), ZZZ, zzz
 ## [ZOTAC CI527 Nano](https://www.zotac.com/us/product/mini_pcs/ci527-nano)
 
 <pre>
-<img src="/hardware/zotac-ci527nano.jpg" style="width: 200px;">
+<img src="/hardware/zotac-ci527nano.jpg" class="w4">
 
 7th Gen Intel i3, passive cooling
 

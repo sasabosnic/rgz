@@ -1,21 +1,13 @@
 <h1>Say &#8220;hello&#8221;</h1>
 
-<form class="form" action="feedback.html" method="post">
+<form action="feedback.html" method="post">
 <input type="hidden" name="token" value="$token">
-<textarea class="form__textarea" id="comment" autofocus="autofocus" name="comment" rows="9" required="required" minlenght="2" maxlength="280" placeholder="Hi Roman,">$comment</textarea><br>
-
-<label class="form__label" for="name">Your name</label><br>
-<input required="required" class="form__field" type="text" id="name" name="name" value="$name" autocorrect="off" specllcheck="false" required="required" minlength="2" maxlength="255" placeholder="Alice"><br>
-<label class="form__label" for="email">email address</label><br>
-<input required="required" class="form__field" type="email" id="email" name="email" value="$email" autocapitalize="off" autocorrect="off" specllcheck="false" required="required" minlength="7" maxlength="255" placeholder="alice@example.com"><br>
-<p div class="form__error">$err</p>
-<input class="form__button" type="submit" name="send" value="Send">
+<textarea class="mb2 outline w5 pa3 ba mr1 hover-bg-light-yellow b--dark-gray"
+id="comment" autofocus="autofocus" name="comment" rows="9" required="required" minlenght="2" maxlength="280" placeholder="Hi Roman,">$comment</textarea><br>
+<label for="name">Your name</label><br>
+<input class="mb2 outline w5 pa3 ba mr1 hover-bg-light-yellow b--dark-gray" required="required" type="text" id="name" name="name" value="$name" autocorrect="off" specllcheck="false" required="required" minlength="2" maxlength="255" placeholder="Alice"><br>
+<label for="email">email address</label><br>
+<input class="outline w5 pa3 ba mr1 hover-bg-light-yellow b--dark-gray" required="required" type="email" id="email" name="email" value="$email" autocapitalize="off" autocorrect="off" specllcheck="false" required="required" minlength="7" maxlength="255" placeholder="alice@example.com"><br>
+<p div>$err</p>
+<input class="outline dib pa3 b ba white bg-blue b--dark-gray hover-black hover-bg-light-yellow" type="submit" name="send" value="Send">
 </form>
-
-<hr>
-
-<small>
-<b>PRIVACY POLICY</b><br>
-A message with your name, email address, comment, and IP address will be sent to my mailbox.
-I may reply to you using provided email address, name, and comment.
-</small>

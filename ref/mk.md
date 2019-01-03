@@ -3,11 +3,11 @@ _This reference letter is a part of my [curriculum vitae](/cv.html).
 
 # Marina says...
 
-<p class="quote">&#8220;When you adore minimalism and strive for
-perfection, and then you suddenly find a mentor who is a minimalist
-and a perfectionist, you appear to be in a fairytail where a wise
-and kind wizard leads you by the hand, showing you a secret path
-you've been looking for all the time.</p>
+<p class="f3 lh-title ni">&#8220;When you adore minimalism and
+strive for perfection, and then you suddenly find a mentor who is
+a minimalist and a perfectionist, you appear to be in a fairytail
+where a wise and kind wizard leads you by the hand, showing you a
+secret path you've been looking for all the time.</p>
 
 Roman is that wizard. Another guy in his shoes&mdash;being that
 skilled and experienced&mdash;might have turned up his nose at
@@ -31,7 +31,7 @@ encouraging, and inspiring.&#8221;
 
 ---
 
-<img src="mk.jpeg" class="avatar">
+<img src="mk.jpeg" class="br-100 w3">
 
 **Marina Kuznetcova**<br>
 _Frontend Engineer_<br>

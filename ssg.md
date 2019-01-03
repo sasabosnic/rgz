@@ -195,13 +195,7 @@ $ <b>for f in $(which cat cpio date sh awk find grep printf readlink sort tee)</
 
 ---
 
-<pre>
-&#9484;&#9472;&#9488;&#9484;&#9472;&#9488;&#9484;&#9472;&#9488;
-&#9492;&#9472;&#9488;&#9492;&#9472;&#9488;&#9474; &#9516;
-&#9492;&#9472;&#9496;&#9492;&#9472;&#9496;&#9492;&#9472;&#9496;
-</pre>
-
-## Users and forks
+## Users
 
 [blog.solobsd.org](https://blog.solobsd.org/)<br>
 [bloguslibrus.fr](https://www.bloguslibrus.fr)<br>

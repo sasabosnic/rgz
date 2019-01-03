@@ -15,7 +15,7 @@ Made in Ufa, USSR
 Print sample made with a _similar_ typewriter:
 
 <img
-  style="width: 200px;"
+  class="w4"
   src="typewriter-specimen.jpeg"
   title="&#1081;&#1094;&#1091;&#1082;&#1077;&#1085;"><br>
 

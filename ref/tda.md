@@ -3,9 +3,9 @@ _This reference letter is a part of my [curriculum vitae](/cv.html).
 
 # Fred says...
 
-<p class="quote">&#8220;Hi! I'm Tran Dac Anh (known to others as
-Fred), a software developer working on smallholder farmers solutions
-at Singapore Digital Hub of Yara.</p>
+<p class="f3 lh-title ni">&#8220;Hi! I'm Tran Dac Anh (known to
+others as Fred), a software developer working on smallholder farmers
+solutions at Singapore Digital Hub of Yara.</p>
 
 In 2015 I joined Cinarra Systems to develop UI for mobile ad
 management and planning platform. Roman was leading the frontend
@@ -47,7 +47,7 @@ Find me on Twitter, GitHub, or email me any time.&#8221;
 
 ---
 
-<img src="tda.jpeg" class="avatar">
+<img src="tda.jpeg" class="br-100 w3">
 
 **Tran Dac Anh**<br>
 _Software Developer_<br>

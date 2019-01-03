@@ -3,9 +3,9 @@ _This reference letter is a part of my [curriculum vitae](/cv.html).
 
 # Denis says...
 
-<p class="quote">&#8220;Hi! My name is Denis and I'm an aircraft
-pilot in my free time. By day I'm a software developer at <a
-href="https://www.adjust.com">adjust</a>, where my team makes
+<p class="f3 lh-title ni">&#8220;Hi! My name is Denis and I'm an
+aircraft pilot in my free time. By day I'm a software developer at
+<a href="https://www.adjust.com">adjust</a>, where my team makes
 software for a high-load system. It runs on 400+ bare metal fine
 tuned for extreme performance machines. These days we process around
 10PB monthly.</p>
@@ -31,7 +31,7 @@ You can reach me via email.
 
 ---
 
-<img src="dba.jpeg" class="avatar">
+<img src="dba.jpeg" class="br-100 w3">
 
 **Denis Baranov**<br>
 _Senior Software Developer_<br>

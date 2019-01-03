@@ -3,9 +3,9 @@ _This reference letter is a part of my [curriculum vitae](/cv.html).
 
 # Denis says...
 
-<p class="quote">&#8220;Hello, I'm Denis Borovikov, a senior Software
-Engineer at Cinarra Systems.  I&nbsp;met Roman in 2011, when I
-joined his team as a frontend web developer.</p>
+<p class="f3 lh-title ni">&#8220;Hello, I'm Denis Borovikov, a
+senior Software Engineer at Cinarra Systems.  I&nbsp;met Roman in
+2011, when I joined his team as a frontend web developer.</p>
 
 We were working on several long term web projects. To name a few,
 building a media portal for an international telecom company, making
@@ -41,7 +41,7 @@ and his skills and professsional experience.&#8221;
 
 ---
 
-<img src="db.jpeg" class="avatar">
+<img src="db.jpeg" class="br-100 w3">
 
 **Denis Borovikov**<br>
 _Senior Software Engineer_<br>

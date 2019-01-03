@@ -163,7 +163,6 @@ render_md_files() {
 	do
 		lowdown \
 		-D html-skiphtml \
-		-D smarty \
 		-d metadata \
 		-d autolink < "$1/$f" |
 		render_html_file "$3" \
