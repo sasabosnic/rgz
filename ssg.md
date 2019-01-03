@@ -147,12 +147,11 @@ $ <b>~/bin/s /var/www/htdocs/www</b>
 
 _[Previous version of ssg](ssg3.html) has been retired._
 
-Add `<HTML>`, `<HEAD></HEAD>`, and `<BODY>` tags to `_header.html`
-and closing `</BODY>` and `</HTML>` tags to `_footer.html`.
+Add `<!DOCTYPE html>`, `<STYLE>...</STYLE>` with your styles and
+an empty `<TITLE></TITLE>` tags to `_header.html`.
 
-Add an empty `<TITLE></TITLE>` tag to `_header.html`, _ssg4_ captures
-a page title from the first `<H1>` tag of the page and inject it
-into `<TITLE>` tag if it's present and empty.
+_ssg4_ captures page's title from the first `<H1>` tag of the page
+and inject it into `<TITLE>`, if it's present and empty.
 
 Move `_rss.html` to `_header.html`, `_styles.css` to `<STYLE>` tag
 in `_header.html`, and `_scripts.js` to `<SCRIPT>` tag.
