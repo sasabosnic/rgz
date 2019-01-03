@@ -209,6 +209,7 @@ $ <b>for f in $(which cat cpio date sh awk find grep printf readlink sort tee)</
 [bsdjobs.com](https://www.bsdjobs.com/)<br>
 [cryogenix.net](https://cryogenix.net)<br>
 [grosu.nl](https://grosu.nl/)<br>
+[h3artbl33d.nl](https://h3artbl33d.nl/)<br>
 [high5.nl](https://high5.nl/)<br>
 [matthewgraybosch.com](https://matthewgraybosch.com/)<br>
 [mvidal.net](https://mvidal.net/)<br>
