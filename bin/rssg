@@ -31,7 +31,13 @@ main () {
 	base_url="$(echo "$html" | get_url | sed 's#\(.*\)/[^/]*#\1#')"
 
 	url=$(		echo "$html" | get_url)
-	title=$(	echo "$html" | get_title)
+	page_title=$(	echo "$html" | get_title)
+
+	test -n "$2" && test -n "$page_title" && title="$page_title - $2"
+	test -n "$2" && test -z "$page_title" && title="$2"
+	test -z "$2" && test -n "$page_title" && title="$page_title"
+	test -z "$2" && test -z "$page_title" && title=''
+
 	description=$(	echo "$html" | get_description |
 			remove_tags |
 			remove_nbsp )
@@ -48,7 +54,7 @@ main () {
 
 
 usage() {
-	echo "usage: ${0##*/} index.{html,md} > rss.xml" >&2
+	echo "usage: ${0##*/} index.{html,md} [title] > rss.xml" >&2
 	exit 1
 }
 

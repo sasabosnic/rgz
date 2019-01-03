@@ -16,7 +16,7 @@ mkdir "$temp/news"
 
 desc 'args'
 
-usage='usage: rssg index.{html,md} > rss.xml'
+usage='usage: rssg index.{html,md} [title] > rss.xml'
 no_file="rssg: $temp/news/index.html: No such file"
 
 eq "$(2>&1 "$program")" "$usage" 'no args'
