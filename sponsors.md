@@ -16,9 +16,9 @@ To keep this website alive:
 
 <!-- - send satoshis to [`3MZ9d6NTsirYfjx9iJVieT2WCHnzBZckHd`](bitcoin://3MZ9d6NTsirYfjx9iJVieT2WCHnzBZckHd), -->
 
-<a href="/patreon.html"><span class="form__button form__button-patreon">Patreon</span></a>
-<a href="/paypal.html"><span class="form__button form__button-paypal">PayPal</span></a>
-<a href="/xrp.html"><span class="form__button form__button-xrp">XRP</span></a>
+<a class="b link ph2 pv1 mb2 dib ba black-60 b--dark-gray hover-white hover-bg-ptrn" href="/patreon.html">Patreon</a>
+<a class="b link ph2 pv1 mb2 dib ba black-60 b--dark-gray hover-white hover-bg-payp" href="/paypal.html">PayPal</a>
+<a class="b link ph2 pv1 mb2 dib ba black-60 b--dark-gray hover-white hover-bg-xrpb" href="/xrp.html">XRP</a>
 
 Truly yours,<br>
 Roman
@@ -77,7 +77,7 @@ other forms of support:
 [Adam Dymitruk](https://twitter.com/adymitruk "24 Apr 2018 83,800 Satoshi")&nbsp;
 [Jesper Wallin](https://ifconfig.se "05 Dec 2018 100 XRP")&nbsp;
 
-## People and projects to support
+---
 
 While you are in generous mood, here are people and projects I've
 supported, please consider supporting them too:

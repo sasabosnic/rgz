@@ -32,7 +32,7 @@ hi@romanzolotarev.com<br>
 
 <a class="f7 b link ph2 pv1 mb2 dib ba black-60 b--dark-gray hover-white hover-bg-ptrn" href="/patreon.html">Patreon</a>
 <a class="f7 b link ph2 pv1 mb2 dib ba black-60 b--dark-gray hover-white hover-bg-payp" href="/paypal.html">PayPal</a>
-<a class="f7 b link ph2 pv1 mb2 dib ba black-60 b--dark-gray hover-black hover-bg-xrpb" href="/xrp.html">XRP</a>
+<a class="f7 b link ph2 pv1 mb2 dib ba black-60 b--dark-gray hover-white hover-bg-xrpb" href="/xrp.html">XRP</a>
 <a class="f7 b link ph2 pv1 mb2 dib ba black-60 b--dark-gray hover-white hover-bg-vltr" href="/openbsd/vultr.html">Vultr</a>
 <a class="f7 b link ph2 pv1 mb2 dib ba black-60 b--dark-gray hover-white hover-bg-oams" href="/openbsd/oams.html">OpenBSD&nbsp;Amsterdam</a>
 <a class="f7 b link ph2 pv1 mb2 dib ba black-60 b--dark-gray hover-black hover-bg-gold" href="/n/">Mastering&nbsp;the&nbsp;Web</a>
