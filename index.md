@@ -16,7 +16,7 @@ I write [shell scripts](/bin):<br>
 
 Support Unix/BSD related projects:<br>
 [OpenBSD Amsterdam](openbsd.amsterdam/)<br>
-[Etsh Project (V6Shell)](etsh.io/)
+[Etsh Project (V6Shell)](etsh.nl/)
 
 I'm here to help you with [OpenBSD](openbsd/).<br>
 Oh, and I also publish how-tos.

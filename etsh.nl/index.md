@@ -18,8 +18,8 @@ colors          black           #000000  rgb(0, 0, 0)
 made with       ImageMagick-6.9.9.38 and OpenBSD 6.3
 
 media kit       <a href="https://www.romanzolotarev.com">Roman Zolotarev</a> &lt;hi@romanzolotarev.com&gt;
-made for        <a href="https://etsh.io/">etsh.io</a>
-                <a href="https://etsh.io/logo/">etsh.io/logo</a>
+made for        <a href="https://etsh.nl/">etsh.nl</a>
+                <a href="https://etsh.nl/logo/">etsh.nl/logo</a>
 </pre>
 
 ## Usage

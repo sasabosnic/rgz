@@ -200,10 +200,10 @@ _Cofounder of HardenedBSD_<br>
 <p id="je" class="f4 f3-m f3-l lh-title ni">&#8220;Roman implemented what I asked him to and adjusted my X rgb.txt green to a nicer one. I simply sent him the output of 2 echo commands with the exact characters you see in my logo now. It was a good investment for me. I donated almost what I donate to OpenBSD each month. Thanks Roman :)&#8221;</p>
 
 <img src="/ref/je.jpeg" class="br-100 w3"><br> **Jeffrey Allen Neitzel**<br> _Author of Etsh_<br>
-[jan.etsh.io](https://jan.etsh.io)<br>
+[jan.etsh.nl](https://jan.etsh.nl)<br>
 [v6shell@bsd\.network](https://bsd.network/@v6shell/100533143813396001 "12 Aug 2018")
 
-**Etsh**<br> [etsh.io](https://etsh.io/logo/)
+**Etsh**<br> [etsh.nl](https://etsh.nl/logo/)
 
 ---
 

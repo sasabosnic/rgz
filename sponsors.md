@@ -62,7 +62,7 @@ PayPal:
 [Tuomo Sahipakka](https://twitter.com/tuomosa "01 Oct 2018 25.00 EUR Keep up good work!")&nbsp;
 [Daniel Stocker](https://twitter.com/stoege "03 Jan 2019 25.00 USD")&nbsp;
 [David Carlier](https://twitter.com/devnexen "01 Oct 2018 20.00 USD")&nbsp;
-[Jeffrey Allen Neitzel](https://jan.etsh.io/ "24 Jul 2018 15.00 USD")&nbsp;
+[Jeffrey Allen Neitzel](https://jan.etsh.nl/ "24 Jul 2018 15.00 USD")&nbsp;
 [Joan Catala](https://twitter.com/joancatala "22 Aug 2018 10.00 USD")&nbsp;
 [Ales Tepina](https://twitter.com/alestepi "21 Aug 2018 10.00 USD")&nbsp;
 [Gabriel Francisco](https://twitter.com/fgbreel "8 Jun 2018 10.00 EUR I love your blog and the content you share about OpenBSD! Keep rocking!")&nbsp;
@@ -83,7 +83,7 @@ While you are in generous mood, here are people and projects I've
 supported, please consider supporting them too:
 
 [OpenBSD Amsterdam](https://openbsd.amsterdam/?rz "10 Jun 2018 Logo, media kit, website")&nbsp;
-[Etsh Project](https://etsh.io/ "23 Jul 2018 Logo, media kit")&nbsp;
+[Etsh Project](https://etsh.nl/ "23 Jul 2018 Logo, media kit")&nbsp;
 [The&nbsp;OpenBSD&nbsp;Foundation](https://www.openbsdfoundation.org/donations.html "15 Dec 2017 91920137MK9975307 10.00 EUR\n25 Aug 2017 7BF04702TU178773D 100.00 EUR")&nbsp;
 [The&nbsp;OpenBSD&nbsp;Store](https://www.openbsdstore.com/ "6 May 2018 41389 73.21 GBP")&nbsp;
 [High5!](https://high5.nl/ "20 Jun 2018 60.00 EUR")&nbsp;
