@@ -2,6 +2,15 @@ _Thank you for your kind words and [support](sponsors.html)!_
 
 # People are saying...
 
+"@romanzolotarev Thanks for all the Twitter updates over 2018 It is much appreciated...  and is a big help to users of OpenBSD...  Peace out and have a great 2019..."<br>&mdash;
+[Tom Smyth](https://twitter.com/ogmaconnect1/status/1079815117494280192 "31 Dec 2018")
+(@ogmaconnect1)
+
+"Thanks Roman for all your documentation work ... and all your guides for people who have yet to learn the knowledge they seek is in the man pages...  thanks for your Work on making BSD more Accessible ...
+Большое спасибо вам"<br>&mdash;
+[Tom Smyth](https://twitter.com/ogmaconnect1/status/1077710290031165440 "25 Dec 2018")
+(@ogmaconnect1)
+
 "If you haven't met @romanzolotarev yet, this #OpenBSD hacker is the #MacGyver of the web. If aliens invade and take away all the shiny MacBooks and destroy JS (please come!), to Roman we should call for help! With just coreutils + a few packages, he can rebuild the internet 4all"<br>&mdash;
 [Leon Stafford](https://twitter.com/leonvolunteers/status/1070419005691678721 "05 Dec 2018")
 (@leonvolunteers)
@@ -506,4 +515,4 @@ etc. I felt I should mention that to you &#x1F600;&#8221;</p>
 
 ---
 
-_103 quotes, but who's counting ;)_
+_105 quotes, but who's counting ;)_
