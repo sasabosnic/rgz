@@ -72,7 +72,7 @@ other forms of support:
 [Mischa Peters](https://twitter.com/mischapeters "14 Oct 2018 OpenBSD Amsterdam T-Shirt x2
 13 Apr 2018 VM
 19 Sep 2017 Run BSD T-shirt")&nbsp;
-[Vultr](/vultr.html "08 Jun 2018 110.00 USD")&nbsp;
+[Vultr](/vultr.html "08 Jun 2018 120.00 USD")&nbsp;
 [Evander Sinque](https://twitter.com/FiLiS "31 Oct 2017 Run BSD Stickers")&nbsp;
 [Adam Dymitruk](https://twitter.com/adymitruk "24 Apr 2018 83,800 Satoshi")&nbsp;
 [Jesper Wallin](https://ifconfig.se "05 Dec 2018 100 XRP")&nbsp;
