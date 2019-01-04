@@ -56,7 +56,7 @@ Subscribe via [RSS](https://www.romanzolotarev.com/rss.xml).
 - [dock laptop with with xrandr(1), xinput(1), xrdb(1), and sysctl(8)](openbsd/dock.html "2018-09-12")
 - [prepare ThinkPad X1&nbsp;Carbon&nbsp;Gen&nbsp;5 for OpenBSD](openbsd/lenovo-thinkpad-x1c5.html "2018-08-13")
 - [encrypt disk with bioctl(8) and CRYPTO](openbsd/bioctl-crypto.html "2018-08-12")
-- [deploy VM on OpenBSD.Amsterdam](openbsd.amsterdam.html "2018-07-01")
+- [deploy VM on OpenBSD.Amsterdam](openbsd/oams.html "2018-07-01")
 - [publish Git repositories with stagit(1) on OpenBSD](stagit.html "2018-06-07")
 - [host Git repositories on OpenBSD](git.html "2018-06-07")
 - [manage your terminals with tmux(1)](tmux.html "2018-05-18")
