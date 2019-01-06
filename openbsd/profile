@@ -33,6 +33,7 @@ alias bsdj='sssg4 src/bsdj'
 alias leto='sssg leto'
 alias mtw='sssg4 prv/mtw'
 alias oams='sssg4 src/oams'
+alias high5='sssg4 src/high5'
 alias runbsd='sssg4 src/runbsd'
 alias www='sssg4 src/www'
 
