@@ -220,10 +220,16 @@ For the purposes of these Terms, the Subscription Period means a
 period of time (e.g., 30 or 365 days) for which the User subscribes
 and a respective fee is charged.
 
-5.3. Subscription Periods and Fees:
+5.3. Information on the subscription fee, payment methods and the
+Subscription Period as well as information on other privileges
+available with the Subscription can be found at
+<https://www.romanzolotarev.com/pricing.html>.
 
-- 30 days 15 EUR,
-- 365 days 90 EUR.
+This information forms part of this Agreement and is covered by the
+rules of cl. 1.3 of this Agreement. The User understands and agrees
+that the list of privileges available at
+<https://www.romanzolotarev.com/pricing.html>
+may be changed, inter alia, may be extended/shortened.
 
 5.4. The User may be provided with the discount at sole discretion
 of the ST.

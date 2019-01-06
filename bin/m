@@ -266,9 +266,12 @@ paypal() {
 
 	paypal_init
 	case "$p_name" in
-		z) p_price=1; p_days=1;;
-		a) p_price=90; p_days=365;;
-		b) p_price=15; p_days=30;;
+		pm) p_price=5;		p_days=30;;
+		py) p_price=50;		p_days=365;;
+		tm) p_price=55;		p_days=30;;
+		ty) p_price=550;	p_days=365;;
+		em) p_price=550;	p_days=30;;
+		ey) p_price=5500;	p_days=365;;
 		*) full_stop 'Plan is invalid';;
 	esac
 
@@ -451,29 +454,98 @@ subscription_form() {
 	e=$(cat "$DB/members/$m_id/email")
 
 	http200 '<p>'"$e"'</p>
-<h1>Subscribe</h1>
 <form
 	method=get
 	action='"${REQUEST_URI%%\?*}"'
 	class="form">
-	<button
-		name="paypal"
-		value="a"
-		class="outline dib pa3 b ba black bg-yellow b--dark-gray hover-black hover-bg-light-yellow">
-		&euro;90 per year
-	</button>
-	<button
-		name="paypal"
-		value="b"
-		class="outline dib pa3 b ba black bg-yellow b--dark-gray hover-black hover-bg-light-yellow">
-		&euro;15 per month
-	</button>
-	<button
-		name="paypal"
-		value="z"
-		class="outline dib pa3 b ba white bg-blue b--dark-gray hover-black hover-bg-light-yellow">
-		&euro;1 per day
-	</button>
+
+
+        <p class="f7">By clickng <em>Subscribe</em> you accept
+	<a href="/terms.html">User&nbsp;Agreement</a>&nbsp;and
+	<a href="/privacy.html">Privacy&nbsp;Policy</a>.</p>
+
+<div class="cf center mw6 mt2 tc">
+
+	<div class="fl w-100 w-50-m w-50-l">
+	<div class="pv4 ph3 bg-white">
+		<div class="f2 b mb2">Personal</div>
+		<div class="mb2 h3">
+			1 seat<br>
+		</div>
+		<div>
+			<span class="tracked-tight f2">&euro;
+			5</span><span class="b">
+			/&nbsp;month</span>
+		</div>
+		<button name="paypal" value="pm"
+		class="w-100 b link dib ba ph3 pv2 mt3
+		black bg-white b--dark-gray
+		hover-bg-yellow hover-b--yellow
+		hover-black">Subscribe</button>
+		<div class="mt4">or save 16%</div>
+		<button name="paypal" value="py"
+		class="link bn black bg-white pointer">
+			<span class="underline b">&euro;
+			50 /&nbsp;year</span>
+		</button>
+	</div>
+	</div>
+
+	<div class="fl w-100 w-50-m w-50-l">
+	<div class="pv4 ph3 white bg-vltr">
+		<div class="f2 b mb2">Team</div>
+		<div class="mb2 h3">
+			10 seats<br>
+			Virtual machine
+		</div>
+		<div>
+			<span class="tracked-tight f2">&euro;
+			55</span><span class="b">
+			/&nbsp;month</span>
+		</div>
+		<button name="paypal" value="tm"
+		class="w-100 b link dib ba ph3 pv2 mt3
+		white bg-vltr b--white
+		hover-bg-yellow hover-b--yellow
+		hover-black">Subscribe</button>
+		<div class="mt4">2 months free</div>
+		<button name="paypal" value="ty"
+		class="b link bn white bg-vltr pointer">
+			<span class="underline">&euro;
+			550 /&nbsp;year
+		</button>
+	</div>
+	</div>
+
+	<div class="fl w-100 w-50-m w-50-l">
+	<div class="pv4 ph3 white-60 bg-black">
+		<div class="f2 f3-m b mb2">Enterprise</div>
+		<div class="mb2 h3">
+			100 seats<br>
+			Virtual machine<br>
+			Priority support
+		</div>
+		<div>
+			<span class="tracked-tight f2">&euro;
+			550</span><span class="b">
+			/&nbsp;month</span>
+		</div>
+		<button name="paypal" value="em"
+		class="w-100 b link dib ba ph3 pv2 mt3
+		white bg-black b--white
+		hover-b--yellow hover-bg-yellow
+		hover-black">Subscribe</button>
+		<div class="mt4">save &euro; 1,100</div>
+		<button name="paypal" value="ey"
+		class="b link bn white bg-black pointer">
+			<span class="underline">&euro;
+			5,550 /&nbsp;year
+		</button>
+	</div>
+	</div>
+
+</div>
+
 </form>'"$(tags_to_upper < "$f" | obfuscate)"
 
 }

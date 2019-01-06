@@ -18,7 +18,6 @@ To keep this website alive:
 
 <a class="b link ph2 pv1 mb2 dib ba black-60 b--dark-gray hover-white hover-bg-ptrn" href="/patreon.html">Patreon</a>
 <a class="b link ph2 pv1 mb2 dib ba black-60 b--dark-gray hover-white hover-bg-payp" href="/paypal.html">PayPal</a>
-<a class="b link ph2 pv1 mb2 dib ba black-60 b--dark-gray hover-white hover-bg-xrpb" href="/xrp.html">XRP</a>
 
 Truly yours,<br>
 Roman
@@ -27,7 +26,7 @@ P.S. Here are all received donations. Please ping me, if yours
 hasn't been listed, or if you want to remove your name from the
 list.
 
-_Updated on 3 Jan 2019_
+_Updated on 7 Jan 2019_
 
 Patreon:
 **[Tom Smyth](https://www.patreon.com/user/creators?u=10913897 "24 Apr 2018 80.00 USD")&nbsp;
@@ -53,6 +52,7 @@ Patreon:
 [Isak Holmstr&ouml;m](https://www.patreon.com/iah/creators "03 Nov 2018 1.00 USD")&nbsp;
 [Peter Kotr&#x10D;ka](https://octodon.social/@pkotrcka "16 May 2018 4.00 USD")&nbsp;
 [int16h](https://www.patreon.com/0x16h "05 Dec 2018 3.00 USD")&nbsp;
+[Moritz Buhl](https://www.patreon.com/user/creators?u=5130313 "05 Jan 2019 2.00 USD")&nbsp;
 
 PayPal:
 **[wireless&nbsp;connect&nbsp;ltd](http://wirelessconnect.eu "24 Apr 2018 10.00 EUR keep up good work Roman
@@ -60,12 +60,13 @@ PayPal:
 [Andrew Vieyra](https://twitter.com/andrewvieyra "26 Nov 2018 50.00 USD")&nbsp;
 [Hajime Edakawa](https://twitter.com/hjmedkw "13 Nov 2018 50.00 USD")&nbsp;**
 [Tuomo Sahipakka](https://twitter.com/tuomosa "01 Oct 2018 25.00 EUR Keep up good work!")&nbsp;
-[Daniel Stocker](https://twitter.com/stoege "03 Jan 2019 25.00 USD")&nbsp;
+[Daniel Stocker](https://twitter.com/stoege "02 Jan 2019 25.00 USD")&nbsp;
 [David Carlier](https://twitter.com/devnexen "01 Oct 2018 20.00 USD")&nbsp;
 [Jeffrey Allen Neitzel](https://jan.etsh.nl/ "24 Jul 2018 15.00 USD")&nbsp;
+[Gabriel Francisco](https://twitter.com/fgbreel "8 Jun 2018 10.00 EUR I love your blog and the content you share about OpenBSD! Keep rocking!")&nbsp;
 [Joan Catala](https://twitter.com/joancatala "22 Aug 2018 10.00 USD")&nbsp;
 [Ales Tepina](https://twitter.com/alestepi "21 Aug 2018 10.00 USD")&nbsp;
-[Gabriel Francisco](https://twitter.com/fgbreel "8 Jun 2018 10.00 EUR I love your blog and the content you share about OpenBSD! Keep rocking!")&nbsp;
+[Anh Tran Dac](https://twitter.com/chesireCode "07 Jan 2019")&nbsp;
 [Hans Solo](https://twitter.com/pikkabird "01 Oct 2018 4.00 USD")&nbsp;
 
 other forms of support:

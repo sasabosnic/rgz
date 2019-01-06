@@ -2,6 +2,10 @@ _Thank you for your kind words and [support](sponsors.html)!_
 
 # People are saying...
 
+"Been learning a lot of bsd and specifically openbsd from Roman. This is a great website."<br>&mdash;
+[Isak Holmstr&ouml;m](https://lobste.rs/s/fbopnk/roman_zolotarev "06 Jan 2019")
+(iah@fosstodon.org)
+
 "@romanzolotarev Thanks for all the Twitter updates over 2018 It is much appreciated...  and is a big help to users of OpenBSD...  Peace out and have a great 2019..."<br>&mdash;
 [Tom Smyth](https://twitter.com/ogmaconnect1/status/1079815117494280192 "31 Dec 2018")
 (@ogmaconnect1)
@@ -49,7 +53,7 @@ approach to things.&#8221;</p>
 
 <img src="/ref/ds.jpeg" class="br-100 w3"><br>
 **Derek Sivers**<br>
-_Entrepreneur and Book Publisher_<br>
+_Entrepreneur and book publisher_<br>
 [sivers.org](https://sivers.org "25 Apr 2018")
 
 ---
@@ -276,7 +280,7 @@ _OpenBSD developer_<br>
 [minimalist_unix](https://twitter.com/minimalist_unix/status/1022544604082647040 "26 Jul 2018")
 (@minimalist_unix)
 
-"...thank you for pointing me to the @ergodoxez keyboard. Thank you! It's a nice replacement for my "das keyboard"."<br>&mdash;
+"...thank you for pointing me to the @ergodoxez keyboard. Thank you! It's a nice replacement for my _das keyboard_."<br>&mdash;
 [Special J](https://twitter.com/blockophilia/status/1020289142784217088 "20 Jul 2018")
 (@blockophilia)
 
@@ -285,8 +289,8 @@ _OpenBSD developer_<br>
 (@rosstimson)
 
 "...Roman's tutorials on his page are awesome. Become a patron and support his effort"<br>&mdash;
-[Peter Kotr&#x10D;ka](https://twitter.com/kotrckap/status/1015104972185374721 "6 Jul 2018")
-(@kotrckap)
+[Peter Kotr&#x10D;ka](https://twitter.com/pkotrcka/status/1015104972185374721 "6 Jul 2018")
+(@pkotrcka@octodon.social)
 
 "the acme client docs you wrote helped to set this up in no time. Thanks!"<br>&mdash;
 [Tom Van Looy](https://twitter.com/tvlooy/status/1014649340739104768 "5 Jul 2018")
@@ -378,15 +382,17 @@ _OpenBSD developer_<br>
 [Ben Brunzel](https://twitter.com/asciijungle/status/996991681579929601 "17 May 2018")
 (@asciijungle)
 
-"I like that specimen.txt, man. Good stuff."<br> [&#x1F47D;V6Shell(Jeff)&#x1F421;](https://twitter.com/v6shell/status/997128363859902464 "17 May 2018")
+"I like that specimen.txt, man. Good stuff."<br>&mdash;
+[&#x1F47D;V6Shell(Jeff)&#x1F421;](https://twitter.com/v6shell/status/997128363859902464 "17 May 2018")
 (@v6shell)
 
-"Oh wow, this is something for my long and boring night shifts."<br> [Peter Kotr&#x10D;ka](https://twitter.com/kotrckap/status/996695819792330754 "17 May 2018")
-(@kotrckap)
+"Oh wow, this is something for my long and boring night shifts."<br>&mdash;
+[Peter Kotr&#x10D;ka](https://twitter.com/pkotrcka/status/996695819792330754 "17 May 2018")
+(@pkotrcka@octodon.social)
 
 "@romanzolotarev inspired me to create my new #webpage - I'll test some ideas there. I'm going to learn so much :-)"<br>&mdash;
-[Peter Kotr&#x10D;ka](https://twitter.com/kotrckap/status/996695819792330754 "16 May 2018")
-(@kotrckap)
+[Peter Kotr&#x10D;ka](https://twitter.com/pkotrcka/status/996695819792330754 "16 May 2018")
+(@pkotrcka@octodon.social)
 
 "@romanzolotarev your tweets made me write my first ed(1) powered refactoring. I thought you would've been proud to know. ;)"<br>&mdash;
 [Giulio Eulisse](https://twitter.com/ktf/status/996055510179827712 "14 May 2018")
@@ -429,10 +435,6 @@ find spare couple hours yet :)&#8221;</p>
 [@mrnkzntcv](https://twitter.com/mrnkzntcv/status/987440001142095873 "21 Apr 2018")
 
 ---
-
-"Roman you have inspired me. I'm starting a project this weekend on @vultr with #OpenBSD and #Erlang. Will be sharing more soon still brainstorming the project. Will post every step as I build."<br>&mdash;
-[EssentialOS=OpenBSD](https://twitter.com/BrutusUnix/status/987485038630572032 "21 Apr 2018")
-(@BrutusUnix)
 
 "Roman you have inspired me. I'm starting a project this weekend on @vultr with #OpenBSD and #Erlang..."<br>&mdash;
 [BrutusUnix](https://twitter.com/BrutusUnix/status/987485038630572032 "21 Apr 2018")
