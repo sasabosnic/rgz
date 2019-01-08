@@ -11,13 +11,14 @@ Date of publication: 1 Jan 2019
 
 ## 1. General Provisions
 
-1.1. Sole trader Roman Zolotarev (registration number 317169000003180;
-address Kazan, Tatarstan Republic, Russian Federation) (hereinafter
-&mdash; ST) offers Internet users (hereinafter &mdash; the User)
-the opportunity to use its Services on the terms and conditions of
-this User Agreement (hereinafter &mdash; the Agreement, User
-Agreement). This Agreement shall take effect upon the User's express
-agreement with its terms according to Clause 1.4 hereof.
+1.1. Sole trader Roman Zolotarev (TIN 16570847237; registration
+number 317169000003180; address Kazan, Tatarstan Republic, Russian
+Federation) (hereinafter &mdash; ST) offers Internet users (hereinafter
+&mdash; the User) the opportunity to use its Services on the terms
+and conditions of this User Agreement (hereinafter &mdash; the
+Agreement, User Agreement). This Agreement shall take effect upon
+the User's express agreement with its terms according to Clause 1.4
+hereof.
 
 1.2. The ST offers to the User access to Services. All currently
 available Services as well as their development and/or addition of
