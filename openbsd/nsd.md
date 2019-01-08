@@ -65,9 +65,14 @@ Verify your setup with [zonemaster.net](https://zonemaster.net).
 
 ## Update zone
 
-Edit the zone file and **increment the serial** on `ns1`,<br>
-copy the zone file to `ns2`,<br>
-restart nsd(8) on `ns1` and `ns2`.
+Edit the zone file and **increment the serial** on `ns1`,
+copy the zone file to `ns2`, reload nsd(8) on `ns1` and `ns2`.
+
+<pre>
+# <b>rcctl reload nsd</b>
+nsd(ok)
+#
+</pre>
 
 [nsd.conf(5)]: https://man.openbsd.org/nsd.conf.5
 [nsd(8)]: https://man.openbsd.org/nsd.8
