@@ -636,7 +636,6 @@ render_page() {
 	fi
 
 	http200 '<p>'"$t"'</p>'"$(cat "$f")"
-
 }
 
 
