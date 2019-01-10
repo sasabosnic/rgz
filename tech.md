@@ -108,8 +108,8 @@ and few others, but not longer than for few days.
 
 _Check [my current setup](setup.html)._
 
-- 2018 [ThinkPad X1 Carbon (5th Gen)](lenovo-thinkpad-x1c5.html) / [OpenBSD] 6.3
-- 2017 [Zotac CI527](zotac-ci527.html) / [OpenBSD] 6.2 .. 6.3
+- 2018 [ThinkPad X1 Carbon (5th Gen)](lenovo-thinkpad-x1c5.html) / [OpenBSD] 6.3 .. 6.4
+- 2017 [Zotac CI527](zotac-ci527.html) / [OpenBSD] 6.2 .. 6.4
 - 2017 [Nokia 105](nokia-105.html)
 - 2014 iPhone 5 iOS 8-10
 - 2014 MacBook Pro (Retina, 15-inch, Mid 2014) / [macOS] 10.9 .. 10.13
