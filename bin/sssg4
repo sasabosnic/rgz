@@ -17,7 +17,7 @@ url="http://$name"
 if tmux select-window -t "$name" 2>/dev/null
 then cd "$src" || exit
 else
-	tmux new-window -n "$name" -c "$src"
+	tmux new-window -n "$1" -c "$src"
 	tmux split-window -l 2 -d -c "$src" \
 	"while :; do cd $src;find . -type f ! -path '*/.*'|entr -d ssg4 '$src' '$dst' '$title' '$url'; done"
 fi
