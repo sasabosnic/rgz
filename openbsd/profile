@@ -31,7 +31,7 @@ v()	{ stmux 'v'	'prv/openvpn'	'doas openvpn --config default.ovpn'; }
 
 alias bsdj='sssg4 src/bsdj'
 alias leto='sssg leto'
-alias mtw='sssg4 prv/mtw'
+alias wwwm='sssg4 prv/m'
 alias oams='sssg4 src/oams'
 alias high5='sssg4 src/high5'
 alias runbsd='sssg4 src/runbsd'
