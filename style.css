@@ -122,9 +122,6 @@ textarea { overflow: auto; }
   .f5-ns, h3 { font-size: 1rem; }
 }
 @media screen and (min-width: 30em) and (max-width: 60em) {
-  .mw6-m { max-width: 32rem; }
-  .h3-m { height: 4rem; }
-  .h4-m { height: 8rem; }
   .f1-m { font-size: 3rem; }
   .f2-m { font-size: 2.25rem; }
   .f3-m, h1 { font-size: 1.5rem; }
@@ -132,19 +129,20 @@ textarea { overflow: auto; }
   .f5-m, h3 { font-size: 1rem; }
   .f6-m { font-size: .875rem; }
   .f7-m { font-size: .75rem; }
+  .h3-m { height: 4rem; }
+  .h4-m { height: 8rem; }
+  .mw6-m { max-width: 32rem; }
   .pb3-m { padding-bottom: 1rem; }
   .pl2-m { padding-left: .5rem; }
   .pr2-m { padding-right: .5rem; }
-  .w5-m { width: 16rem; }
-  .w4-m { width: 8rem; }
   .w-100-m { width: 100%; }
+  .w-25-m { width: 25%; }
   .w-50-m { width: 50%; }
   .w-third-m { width: 33.33%; }
-  .w-25-m { width: 25%; }
+  .w4-m { width: 8rem; }
+  .w5-m { width: 16rem; }
 }
 @media screen and (min-width: 60em) {
-  .h3-l { height: 4rem; }
-  .h4-l { height: 8rem; }
   .f1-l { font-size: 3rem; }
   .f2-l, h1 { font-size: 2.25rem; }
   .f3-l, h2 { font-size: 1.5rem; }
@@ -152,14 +150,16 @@ textarea { overflow: auto; }
   .f5-l { font-size: 1rem; }
   .f6-l { font-size: .875rem; }
   .f7-l { font-size: .75rem; }
+  .h3-l { height: 4rem; }
+  .h4-l { height: 8rem; }
   .pb3-l { padding-bottom: 1rem; }
-  .pl2-l { padding-left: .5rem; }
   .ph2-l { padding-left: .5rem; padding-right: .5rem; }
+  .pl2-l { padding-left: .5rem; }
   .pr2-l { padding-right: .5rem; }
-  .w5-l { width: 16rem; }
-  .w4-l { width: 8rem; }
   .w-100-l { width: 100%; }
+  .w-25-l { width: 25%; }
   .w-50-l { width: 50%; }
   .w-third-l { width: 33.33%; }
-  .w-25-l { width: 25%; }
+  .w4-l { width: 8rem; }
+  .w5-l { width: 16rem; }
 }
