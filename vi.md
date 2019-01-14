@@ -34,8 +34,8 @@ Increment a number: place cursor at the first digit and press `#`.
 To redraw the screen press `^L`.
 
 If you miss _Visual_ mode, try marks. For example, mark the line
-by pressing `mm`, then move to the line you need, then delete from
-the current to the marked line with `d'm`.
+by pressing `mm`, move to another line, then delete from the current
+to the marked line with `d'm`. Or copy to the buffer with `y'm`.
 
 Break lines at column 72 in _Insert_ and _Append_ modes.
 
