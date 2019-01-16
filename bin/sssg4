@@ -14,7 +14,7 @@ url="http://$name"
 [ -d "$src" ] || not_found "$src"
 [ -d "$dst" ] || not_found "$dst"
 
-if tmux select-window -t "$name" 2>/dev/null
+if tmux select-window -t "$1" 2>/dev/null
 then cd "$src" || exit
 else
 	tmux new-window -n "$1" -c "$src"
