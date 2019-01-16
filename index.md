@@ -1,4 +1,3 @@
-
 <p class="f4 f3-m f3-l lh-title ni">&#8220;Hi, my name is
 <span class="p-name">Roman</span><br>
 and I'm <a href="n/">mastering the&nbsp;Web</a>.
