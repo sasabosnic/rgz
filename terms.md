@@ -7,7 +7,7 @@ found here:<br>
 
 # User Agreement
 
-Date of publication: 1 Jan 2019
+Date of publication: 16 Jan 2019
 
 ## 1. General Provisions
 
@@ -232,6 +232,9 @@ that the list of privileges available at
 <https://www.romanzolotarev.com/pricing.html>
 may be changed, inter alia, may be extended/shortened.
 
+Payment transactions are processed by Paddle. Paddle Buyer Terms
+and Conditions available at <https://paddle.com/legal-buyers/>.
+
 5.4. The User may be provided with the discount at sole discretion
 of the ST.
 
@@ -252,7 +255,7 @@ of payment, until the User refuses to renew the Subscription for
 the next Subscription Period.
 
 The User may ask for a refund for the last Subscription Period
-within 30 days since the most recent charge for User's account.
+within 14 days since the most recent charge for User's account.
 
 5.7. The User understands and agrees that the Subscription, by
 default, is indefinite from when the first Subscription Period is

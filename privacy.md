@@ -7,7 +7,7 @@ found here:<br>
 
 # Privacy Policy
 
-Date of publication: 1 Jan 2019
+Date of publication: 16 Jan 2019
 
 Current version is available at here:<br>
 <https://www.romanzolotarev.com/privacy.html>
@@ -29,6 +29,9 @@ you use websites, programs, products or services owned or operated
 by them. Partners can provide Personal information to the ST only as
 stipulated by applicable laws and regulations and in accordance
 with special agreements between the ST and each of the Partners.
+
+Payment transactions are processed by Paddle. Paddle Buyer Privacy
+Notice available at <https://paddle.com/privacy-buyers/>.
 
 ## 2. Who processes your personal information
 
