@@ -1,8 +1,9 @@
 I run these websites:<br>
 [romanzolotarev.com](https://www.romanzolotarev.com),
-[rzr.be](https://rzr.be),
+[rgz.be](https://rgz.be),
+[rgz.ee](https://rgz.ee),
 [rz0.nl](https://rz0.nl),
-[rgz.be](https://rgz.be)<br>
+[rzr.be](https://rzr.be)<br>
 [bsdjobs.com](https://www.bsdjobs.com/)<br>
 [runbsd.info](https://runbsd.info/)<br>
 
