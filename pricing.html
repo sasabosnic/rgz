@@ -25,173 +25,85 @@
 	pre { font-size: 15px; overflow-x: auto; color: #333; }
 </style>
 
-<body class="mw8 w-100 center">
+<body class="mw6 w-100 center">
 
+<script src="https://cdn.paddle.com/paddle/paddle.js"></script>
+<script type="text/javascript">
+	Paddle.Setup({ vendor: 38540 });
+</script>
 
-<div class="mw6 cf center">
-	<div class="mb2"><a href="/"><img
-		src="/avatar120.jpeg"
-		class="w3 br-100"
-		title="romanzolotarev.com"></a>
-	</div>
-	<h1>Mastering the&nbsp;Web</h1>
-        <p>Learn macOS/BSD userland and help your team to master
-        command line tools for building the web.</p>
+<!--a href="#!" class="link dib ba ph3 pv2 bg-washed-yellow mb3" data-theme="none" id="buy">Test subscription &euro;1.00 / month</a>
 
-        <p class="f7">Here you can subscribe via <b>PayPal directly</b>
-        or via <a href="/patreon.html">Patreon</a>.</p>
+<script type="text/javascript">
+function openCheckout() {
+	var form = document.getElementById('pre-checkout');
+	Paddle.Checkout.open({
+		product: 549725,
+		email: 'hi@rgz.ee',
+		success: '/paddle/success',
+		passthrough: '123'
+	});
+	}
+document.getElementById('buy').addEventListener('click', openCheckout, false);
+</script-->
 
-	<p class="f7"><b>Only personal PayPay accounts are accepted</b> at the moment.  Want to use your business
-        account or another method?  <a
-        href="/feedback.html?comment="I%20would%20like%20pay%20via%20">
-        Let me know</a>.</p>
-
-        <p class="f7">By clickng <em>Subscribe</em> you accept
-	<a href="/terms.html">User&nbsp;Agreement</a>&nbsp;and
-	<a href="/privacy.html">Privacy&nbsp;Policy</a>.</p>
+<div class="mb2"><a href="/"><img
+	src="/avatar120.jpeg"
+	class="w3 br-100"
+	title="romanzolotarev.com"></a>
 </div>
 
+<div class="bg-white pa3 pv2">
 
-<div class="cf center mw8 mw6-m mt2 tc f7 sans-serif">
+<p>Starts from <span class="serif tracked-tight f2">&euro; 5</span>
+<b>/&nbsp;month</b> for the full access</p>
 
-	<div class="fl w-100 w-50-m w-25-l">
-	<div class="pv2 pr2-m pr2-l">
-	<div class="pv4 ph2 bg-white">
-		<div class="f4 b mb2 serif">Student</div>
-		<div class="mb2 h2 h3-l">
-			Email support<br>
-		</div>
-		<div>
-			<span class="serif tracked-tight f2">&euro;
-			5</span><span class="b">
-			/&nbsp;month</span>
-		</div>
-		<button class="f7 w4 b link dib ba ph3 pv2 mt3
-		black bg-white b--dark-gray
-		hover-bg-yellow hover-b--yellow
-		hover-black">Subscribe</button>
-		<div class="mt2">or save 16%</div>
-		<button class="f7 link bn black bg-white pointer">
-			<span class="underline b">&euro;
-			50 /&nbsp;year</span>
-		</button>
-	</div>
-	</div>
-	</div>
+<p>Need a sandbox?
+<b>+&euro;40 / year</b> per virtual machine</p>
 
-	<div class="fl w-100 w-50-m w-25-l">
-	<div class="pv2 pl2-m pl2-l pr2-l">
-	<div class="pv4 ph2 black bg-yellow">
-		<div class="f4 b mb2 serif">Junior</div>
-		<div class="mb2 h2 h3-l">
-			Email support<br>
-			Virtual machine<br>
-		</div>
-		<div>
-			<span class="serif tracked-tight f2">&euro;
-			10</span><span class="b">
-			/&nbsp;month</span>
-		</div>
-		<button class="f7 w4 b link dib ba ph3 pv2 mt3
-		black bg-yellow b--black
-		hover-b--black hover-bg-black
-		hover-white">Subscribe</button>
-		<div class="mt2">or get two months free</div>
-		<button class="f7 b link bn black bg-yellow pointer">
-			<span class="underline">&euro;
-			100 /&nbsp;year
-		</button>
-	</div>
-	</div>
-	</div>
+<p class="f7">The VM (OpenBSD 6.4-stable <b>256M</b> RAM <b>25G</b>
+HDD <b>IPv4/IPv6</b>) provided by <i>OpenBSD.Amsterdam</i>.  They
+donate <b>&euro;6&nbsp;/&nbsp;year</b> for your VM to <i>OpenBSD
+Foundation</i>.</p>
 
-	<div class="fl w-100 w-50-m w-25-l">
-	<div class="pv2 pl2-l pr2-m pr2-l">
-	<div class="pv4 ph2 white bg-vltr">
-		<div class="f4 b mb2 serif">Team</div>
-		<div class="mb2 h3">
-			Email support<br>
-			Virtual machine<br>
-			Five seats<br>
-		</div>
-		<div>
-			<span class="serif tracked-tight f2">&euro;
-			55</span><span class="b">
-			/&nbsp;month</span>
-		</div>
-		<button class="f7 w4 b link dib ba ph3 pv2 mt3
-		white bg-vltr b--white
-		hover-b--yellow hover-bg-yellow
-		hover-black">Subscribe</button>
-		<div class="mt2">or save &euro; 110</div>
-		<button class="f7 b link bn white bg-vltr pointer">
-			<span class="underline">&euro;
-			550 /&nbsp;year
-		</button>
-	</div>
-	</div>
-	</div>
-
-	<div class="fl w-100 w-50-m w-25-l">
-	<div class="pv2 pl2-m pl2-l">
-	<div class="pv4 ph2 white-60 bg-black">
-		<div class="f4 b mb2 serif">Enterprise</div>
-		<div class="mb2 h3">
-			Priority support<br>
-			Virtual machine<br>
-			Fifty seats<br>
-		</div>
-		<div>
-			<span class="serif tracked-tight f2">&euro;
-			550</span><span class="b">
-			/&nbsp;month</span>
-		</div>
-		<button class="f7 w4 b link dib ba ph3 pv2 mt3
-		white bg-black b--white
-		hover-b--yellow hover-bg-yellow
-		hover-black">Subscribe</button>
-		<div class="mt2">or save &euro; 1,100</div>
-		<button class="f7 b link bn white-60 bg-black pointer">
-			<span class="underline">&euro;
-			5,500 /&nbsp;year
-		</button>
-	</div>
-	</div>
-	</div>
+<img src="/openbsd.amsterdam/avatar.png" class="w3 br-100">
 
 </div>
+<div class="bg-light-yellow pa3 pv2">
 
+<p class="f7">VAT/GST will be added if applicable.<br>
+By clickng <em>Subscribe</em> you accept
+<a href="/terms.html">User&nbsp;Agreement</a>&nbsp;and
+<a href="/privacy.html">Privacy&nbsp;Policy</a>.</p>
 
-<div class="mw6 cf center">
+<p class="f7">PayPal, major Credit Cards, Apple Pay, Wire Transfers
+(ACH/SEPA/BACS) are accepted. <b>PADDLE.NET* RGZ.EE</b> will appear on your bank
+statement. Want to use any another method? <a
+href="/feedback.html?comment="I%20would%20like%20pay%20via%20"> Let
+me know</a>.</p>
+
+<button class="mb3 dib ba link pv2 ph3
+bg-light-yellow black b--black
+hover-bg-white hover-black hover-b--black">Subscribe</button>
+</div>
 
 <h2>What you get</h2>
 
-<p>Your subscbription grants access to all content including new
-releases as they happen (usually once a month). You can read, but
-you cannot copy and/or redistribute the content.</p>
+<p>You get access to all the content including new releases as
+they happen (usually once a month).</p>
+
+<p>You can view all the content, but you cannot copy and/or
+redistribute the content.</p>
 
 <p>If you want to share with a friend You can quote few lines though,
 but better send them a link so they could subscribe too.</p>
+
+<h2>Updates</h2>
 
 <p>I review and update my how-tos as a new version of the related
 software released (every six months or so).  <br> Found a typo? <a
 href="/feedback.html?comment=Found%20a%20typo"> Please let me
 know</a></p>
-
-<p>With <b>Junior</b>, <b>Team</b>, and <b>Enterprise</b> plans you
-get a virtual machine provided by <i>OpenBSD.Amsterdam</i> (they
-donate <b>&euro;6&nbsp;per&nbsp;year</b> for your VM to <i>OpenBSD
-Foundation</i>).</p>
-
-<p>Your VM configuration:</p>
-
-<pre class="tl">
-OpenBSD 6.4-stable
-<b>256M</b> RAM <b>25G</b> HDD
-IPv4/IPv6
-</pre>
-
-<p><img src="/openbsd.amsterdam/avatar-black.png" class="w3 br-100"></p>
 
 
 <h2>People are saying...</h2>
@@ -474,9 +386,6 @@ support during regular business hours (Monday&ndash;Friday,
 <p class="f7">
 &copy; Roman&nbsp;Zolotarev
 </p>
-
-
-</div>
 
 </body>
 </html>

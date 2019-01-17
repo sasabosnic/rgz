@@ -1,7 +1,7 @@
 #!/bin/sh -e
 #
 # https://www.romanzolotarev.com/bin/m
-# Copyright 2018 Roman Zolotarev <hi@romanzolotarev.com>
+# Copyright 2018-2019 Roman Zolotarev <hi@romanzolotarev.com>
 #
 # Permission to use, copy, modify, and/or distribute this software for any
 # purpose with or without fee is hereby granted, provided that the above
@@ -18,7 +18,7 @@
 
 
 main() {
-	BASE_URL='mtw'
+	BASE_URL='m'
 	: "${DB:=/db/www}"
 	: "${PAGES:=/htdocs/$BASE_URL}"
 	: "${ROOT:=}"
@@ -27,11 +27,8 @@ main() {
 
 	URI=${REQUEST_URI##/$BASE_URL}
 	case "$REQUEST_METHOD$URI" in
-		GET/paypal/return?token=*) paypal_return;;
-		GET/paypal/cancel?token=*) paypal_cancel;;
 		GET/*?log_out*) log_out;;
 		GET/*?magic=*) verify_magic_link;;
-		GET/*?paypal=*) paypal;;
 		GET/*?setup*) setup;;
 		GET/*?wait_for_magic_link*) wait_for_magic_link;;
 		GET/*) render_page;;
@@ -58,7 +55,14 @@ wait_for_magic_link() {
 	exit 0
 	fi
 
-	http200 '<h1>Check your mail</h1><a href="'"$u"'">Or try again</a>'
+	http200 '
+<div class="pa3 bg-washed-yellow dark-gray f7">
+<div class="mb2">
+Sending a magic link to you in a minute.<br>
+Please <b>check your mailbox</b>.<br><br>
+<a href="'"$u"'">Or try again</a></div>
+</div>
+'
 }
 
 
@@ -199,7 +203,7 @@ send_magic_link() {
 	key_b=$(random_str 20)
 
 	make_file "$DB/magic_links/$e_hash" "$key_a:$key_b	$e"
-	make_file "$DB/mail_queue/mtw-$e_hash" 'To: '"$e"'
+	make_file "$DB/mail_queue/m-$e_hash" 'To: '"$e"'
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
@@ -226,221 +230,6 @@ The link will expire in an hour. Sent to: '"$e"
 ##############################################################################
 
 
-paypal_get_access_token() {
-	now=$(date +%s)
-	f="$DB/paypal/access_token"
-
-	if test -f "$f"
-	then
-		a_t=$(cut -f1 "$f")
-		e_at=$(cut -f2 "$f")
-		test "$now" -lt "$e_at" &&
-		echo "$a_t" && return
-	fi
-
-	curl -s "$PAYPAL_API/oauth2/token" \
-	-H "Accept: application/json" \
-	-u "$PAYPAL_CLIENT_ID:$PAYPAL_SECRET" \
-	-d "grant_type=client_credentials" |
-	jq -r '.access_token + " " + (.expires_in | tostring)' | (
-		read -r  a_t e_in
-		make_file "$f" "$a_t	$(( now + e_in - 5 ))"
-		echo "$a_t"
-	)
-}
-
-
-paypal_init() {
-	PAYPAL_DOMAIN=$(cat "$DB/paypal/domain")
-	PAYPAL_API="https://api.$PAYPAL_DOMAIN/v1"
-	PAYPAL_CLIENT_ID="$(cat "$DB/paypal/client_id")"
-	PAYPAL_SECRET="$(cat "$DB/paypal/secret")"
-	PAYPAL_ACCESS_TOKEN=$(paypal_get_access_token)
-	test -n "$PAYPAL_ACCESS_TOKEN" ||
-	full_stop 'PayPal has no access token'
-}
-
-
-paypal() {
-	p_name=$(get_value "$QUERY_STRING" paypal)
-
-	paypal_init
-	case "$p_name" in
-		pm) p_price=5;		p_days=30;;
-		py) p_price=50;		p_days=365;;
-		tm) p_price=55;		p_days=30;;
-		ty) p_price=550;	p_days=365;;
-		em) p_price=550;	p_days=30;;
-		ey) p_price=5500;	p_days=365;;
-		*) full_stop 'Plan is invalid';;
-	esac
-
-	p_id=$(paypal_create_plan "$p_name" "$p_price" "$p_days")
-	a=$(paypal_create_agreement "$p_name" "$p_price" "$p_days" "$p_id")
-	a_u=$(
-		echo "$a" |
-		jq -r '.links[]|select(.rel == "approval_url").href'
-	) || full_stop 'PayPal has no agreement'
-
-	echo 'Status: 303 See Other'
-	echo "Location: ${a_u}?locale.x=en_US&langTgl=en"
-	echo "Set-Cookie: url=${REQUEST_URI%%\?*}; Path=/; HttpOnly"
-
-	echo
-	exit 0
-}
-
-
-paypal_create_plan() {
-	name="$1"
-	price="$2"
-	days="$3"
-
-	f="$DB/paypal/plans/$name/id"
-	test -f "$f" && cat "$f" && return
-
-	test "$HTTPS" = 'on' &&
-	server_url="https://$SERVER_NAME/$BASE_URL" ||
-	server_url="http://$SERVER_NAME/$BASE_URL"
-	return_url="${server_url}/paypal/return"
-	cancel_url="${server_url}/paypal/cancel"
-
-	desc="A member pays $price EUR every $days days."
-
-	p=$(
-		curl -s -X POST "$PAYPAL_API/payments/billing-plans/" \
-		-H 'Content-Type: application/json' \
-		-H "Authorization: Bearer $PAYPAL_ACCESS_TOKEN" \
-		-d '{
-			"name": "Plan '"$name"' with recurring payments",
-			"description": "'"$desc"'",
-			"type": "INFINITE",
-			"payment_definitions": [ {
-				"name": "Regular payment",
-				"type": "REGULAR",
-				"frequency": "DAY",
-				"frequency_interval": "'"$days"'",
-				"amount": {
-					"value": "'"$price"'",
-					"currency": "EUR"
-				},
-				"cycles": "0"
-			} ],
-			"merchant_preferences": {
-				"setup_fee": {
-					"value": "'"$price"'",
-					"currency": "EUR"
-				},
-				"return_url": "'"$return_url"'",
-				"cancel_url": "'"$cancel_url"'",
-				"auto_bill_amount": "YES",
-				"initial_fail_amount_action": "CONTINUE",
-				"max_fail_attempts": "3"
-			}
-		}'
-	)
-	p_id=$(echo "$p" | jq -r '.id')
-	test "$p_id" = 'null' && full_stop 'PayPal has no plan'
-	make_file "$DB/paypal/plans/$name/plan.json" "$p"
-	make_file "$DB/paypal/plans/$name/id" "$p_id"
-	make_file "$DB/paypal/plans/$name/days" "$days"
-
-	paypal_activate_plan "$name" "$p_id"
-	echo "$p_id"
-}
-
-
-paypal_activate_plan() {
-	p=$(curl -s -X PATCH "$PAYPAL_API/payments/billing-plans/$2" \
-	-H "Content-Type: application/json" \
-	-H "Authorization: Bearer $PAYPAL_ACCESS_TOKEN" \
-	-d '[{
-		"op": "replace",
-		"path": "/",
-		"value": { "state": "ACTIVE" }
-	}]'
-	)
-	test -z "$p" || full_stop 'PayPal cannot activate plan'
-}
-
-
-paypal_create_agreement() {
-	p_name="$1"
-	p_price="$2"
-	p_days="$3"
-	p_id="$4"
-
-	s_date=$(date -j -r $((
-	$(date +%s) + ( 86400 * p_days )
-	)) +%Y-%m-%dT%H:%M:%SZ)
-
-	name='Agreement with recurring payments: '\
-"$p_price"' EUR every '"$p_days"' days '\
-'(starting today based on plan '"$p_name"')'
-
-	desc='You agree to pay '\
-"$p_price"' EUR every '"$p_days"' days '\
-'to Roman Zolotarev. Thank you for supporting open-source software.'
-
-	curl -s -X POST "$PAYPAL_API/payments/billing-agreements/" \
-	-H "Content-Type: application/json" \
-	-H "Authorization: Bearer $PAYPAL_ACCESS_TOKEN" \
-	-d '{
-		"name": "'"$name"'",
-		"description": "'"$desc"'",
-		"start_date": "'"$s_date"'",
-		"plan": { "id": "'"$p_id"'" },
-		"payer": { "payment_method": "paypal" }
-	}'
-}
-
-
-paypal_return() {
-	t=$(get_value "$QUERY_STRING" 'token')
-	m_id=$(get_cookie 'm_id')
-	s_key=$(get_cookie 's_key')
-	test -f "$DB/members/$m_id/sessions/$s_key" ||
-	start_over 'You are not logged in'
-
-	paypal_init
-	url="$PAYPAL_API/payments/billing-agreements/$t/agreement-execute"
-
-	a=$(
-		curl -s -X POST "$url" \
-		-H "Content-Type: application/json" \
-		-H "Authorization: Bearer $PAYPAL_ACCESS_TOKEN"
-	)
-
-	a_id=$(echo "$a" | jq -r .id)
-	a_s=$(echo "$a" | jq -r .state)
-	e=$(echo "$a" | jq -r .payer.payer_info.email)
-
-	make_file "$DB/paypal/agreements/$a_id/$a_s.json" "$a"
-	make_file "$DB/members/$m_id/paypal_email" "$e"
-	make_file "$DB/members/$m_id/paypal_agreement_id" "$a_id"
-
-	e_at=$(($(date +%s) + 3600 * 24))
-	make_file "$DB/members/$m_id/expires_at" "$e_at"
-	make_file "$DB/members/$m_id/paypal_agreement_state" "$a_s"
-
-	url=$(get_cookie 'url')
-	test -z "$url" && url="/$BASE"
-
-	echo 'Status: 303 See Other'
-	echo "Location: $url"
-	echo 'Content-Type: text/html; charset=utf-8'
-	echo
-	exit 0
-}
-
-
-paypal_cancel() {
-	m_id=$(get_cookie 'm_id')
-	s_key=$(get_cookie 's_key')
-	test -f "$DB/members/$m_id/sessions/$s_key" ||
-	start_over 'You are not logged in' "/$BASE_URL/"
-	start_over 'PayPal redirected you back' "/$BASE_URL/"
-}
 
 
 ##############################################################################
@@ -453,7 +242,7 @@ subscription_form() {
 	test -f "$DB/members/$m_id/email" &&
 	e=$(cat "$DB/members/$m_id/email")
 
-	http200 '<p>'"$e"'</p>
+	box='<p>'"$e"'</p>
 <form
 	method=get
 	action='"${REQUEST_URI%%\?*}"'
@@ -477,13 +266,13 @@ subscription_form() {
 			5</span><span class="b">
 			/&nbsp;month</span>
 		</div>
-		<button name="paypal" value="pm"
+		<button value="pm"
 		class="w-100 b link dib ba ph3 pv2 mt3
 		black bg-white b--dark-gray
 		hover-bg-yellow hover-b--yellow
 		hover-black">Subscribe</button>
 		<div class="mt4">or save 16%</div>
-		<button name="paypal" value="py"
+		<button value="py"
 		class="link bn black bg-white pointer">
 			<span class="underline b">&euro;
 			50 /&nbsp;year</span>
@@ -503,13 +292,13 @@ subscription_form() {
 			55</span><span class="b">
 			/&nbsp;month</span>
 		</div>
-		<button name="paypal" value="tm"
+		<button value="tm"
 		class="w-100 b link dib ba ph3 pv2 mt3
 		white bg-vltr b--white
 		hover-bg-yellow hover-b--yellow
 		hover-black">Subscribe</button>
 		<div class="mt4">2 months free</div>
-		<button name="paypal" value="ty"
+		<button value="ty"
 		class="b link bn white bg-vltr pointer">
 			<span class="underline">&euro;
 			550 /&nbsp;year
@@ -530,13 +319,13 @@ subscription_form() {
 			550</span><span class="b">
 			/&nbsp;month</span>
 		</div>
-		<button name="paypal" value="em"
+		<button value="em"
 		class="w-100 b link dib ba ph3 pv2 mt3
 		white bg-black b--white
 		hover-b--yellow hover-bg-yellow
 		hover-black">Subscribe</button>
 		<div class="mt4">save &euro; 1,100</div>
-		<button name="paypal" value="ey"
+		<button value="ey"
 		class="b link bn white bg-black pointer">
 			<span class="underline">&euro;
 			5,550 /&nbsp;year
@@ -546,36 +335,56 @@ subscription_form() {
 
 </div>
 
-</form>'"$(tags_to_upper < "$f" | obfuscate)"
+</form>'
+
+http200 "$(tags_to_upper < "$f" | obfuscate "$box")"
 
 }
 
 
 new_session_form() {
 	f="$1"
-	http200 '
-<h1>Register or log in</h1>
-<p>Type-in your email address</p>
+	box='
+<div class="pa3 ba mt4 bg-washed-yellow b--dark-yellow dark-gray f7">
+<div class="mb2">To get full access register or log in with <b>your email address</b></div>
+<div class="cf center">
 <form
 	method=post
 	action='"${REQUEST_URI%%\?*}"'?send_magic_link
 	class="form">
+	<div class="fl w-100 w-80-m w-80-l">
+	<div class="pr2-l pr2-m">
 	<input
 		type="email"
-		class="mw-100 mb2 outline w5 pa3 ba mr1 hover-bg-light-yellow b--dark-gray"
+		class="f7 w-100 mb2 pa2 ba mr2
+		outline black bg-white b--dark-yellow
+		hover-bg-white"
 		autocorrect="off"
 		specllcheck="false"
 		required="required"
 		minlength="2"
 		maxlength="255"
 		autofocus="autofocus"
-		name="email"
+	 	name="email"
+		placeholder="alice@example.com"
 		value="'"$e"'">
+	<a href="/terms.html">User&nbsp;Agreement</a>&nbsp;
+	<a href="/privacy.html">Privacy&nbsp;policy</a>
+	</div>
+	</div>
+	<div class="fl w-20-m w-20-l">
 	<input
 		type="submit"
-		class="mw-100 outline dib pa3 b ba white bg-blue b--dark-gray hover-black hover-bg-light-yellow"
-		value="Get a magic link">
-</form>'"$(tags_to_upper < "$f" | obfuscate)"
+		class="f7 w-100 outline dib pa2 ba mb2
+		black bg-light-yellow b--dark-yellow
+		hover-bg-black hover-white"
+		value="Continue">
+	</div>
+</form>
+</div>
+</div>'
+
+http200 "$(tags_to_upper < "$f" | obfuscate "$box")"
 
 }
 
@@ -709,17 +518,21 @@ get_value() {
 
 
 obfuscate() {
-	echo '<p
-	style="font-size: 14px;
-	margin: 60px 0;
-	padding-bottom: 5px;
-	border-bottom: 1px dashed #aaaaaa;">The page is obfuscated</p>'
+	page=$(cat)
+	echo "$page" |
+	awk '{ print; if ( $0 == "<!-- cut -->" ) exit }'
+	echo "$1"
+	echo '<div class="bg-washed-yellow mt3 ba b--dark-yellow w6 pa3">'
+	echo "$page" |
+	awk '
+	BEGIN { cut = 0 }
+	{
+		if ( cut == 0 && $0 == "<!-- cut -->" ) cut = 1
+		if ( cut == 1 ) print
+	}
+	' |
 	tr '[:lower:]' "$(jot -rcs '' 26 97 122)"
-	echo '<p
-	style="font-size: 14px;
-	margin: 60px 0;
-	padding-top: 5px;
-	border-top: 1px dashed #aaaaaa;">The end</p>'
+	echo '</div>'
 }
 
 
@@ -797,13 +610,6 @@ setup() {
 		test -f "$HEADER" || echo "$HEADER: not a file"
 		test -f "$FOOTER" || echo "$FOOTER: not a file"
 		test -d "$DB" || echo "$DB not a dir"
-		test -d "$DB/paypal" || echo "mkdir -p $DB/paypal"
-		test -f "$DB/paypal/domain" ||
-		echo "echo \$PAYPAL_DOMAIN > $DB/paypal/domain"
-		test -f "$DB/paypal/client_id" ||
-		echo "echo \$PAYPAL_CLIENT_ID > $DB/paypal/client_id"
-		test -f "$DB/paypal/secret" ||
-		echo "echo \$PAYPAL_SECRET > $DB/paypal/secret"
 	)
 	test -z "$errs" || http500 "$errs\\nFAILED"
 	http200 '<pre>PASS</pre>'
