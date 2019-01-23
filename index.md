@@ -18,7 +18,7 @@ Support Unix/BSD related projects:<br>
 [Etsh Project (V6Shell)](etsh.nl/)
 
 I'm here to help you with [OpenBSD](openbsd/).<br>
-Oh, and I also publish how-tos.
+Oh, and I also compose and publish how-tos.
 
 Thank you for [supporting my projects](sponsors.html) and [your kind words](words.html).&#8221;
 
