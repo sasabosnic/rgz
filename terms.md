@@ -1,9 +1,10 @@
-This document is a translation of User Agreement in English. In
-case of conflict between the Russian version of User Agreement and
-this translation &mdash; only the Russian version of User Agreement
-is legally binding. The Russian version of User Agreement can be
-found here:<br>
-<https://www.romanzolotarev.com/terms.ru.html>
+<p class="f7">This document is a translation of User Agreement in
+English. In case of conflict between the Russian version of User
+Agreement and this translation &mdash; only the Russian version of
+User Agreement is legally binding. The Russian version of User
+Agreement can be found here: <a
+href="https://www.romanzolotarev.com/terms.ru.html">
+https://www.romanzolotarev.com/terms.ru.html</a></p>
 
 # User Agreement
 
@@ -224,12 +225,12 @@ and a respective fee is charged.
 5.3. Information on the subscription fee, payment methods and the
 Subscription Period as well as information on other privileges
 available with the Subscription can be found at
-<https://www.romanzolotarev.com/pricing.html>.
+<https://www.romanzolotarev.com/m/>.
 
 This information forms part of this Agreement and is covered by the
 rules of cl. 1.3 of this Agreement. The User understands and agrees
 that the list of privileges available at
-<https://www.romanzolotarev.com/pricing.html>
+<https://www.romanzolotarev.com/m/>
 may be changed, inter alia, may be extended/shortened.
 
 Payment transactions are processed by Paddle. Paddle Buyer Terms

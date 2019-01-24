@@ -1,9 +1,10 @@
-This document is a translation of Privacy Policy in English. In
-case of conflict between the Russian version of Privacy Policy and
-this translation &mdash; only the Russian version of Privacy Policy
-is legally binding. The Russian version of Privacy Policy can be
-found here:<br>
-<https://www.romanzolotarev.com/privacy.ru.html>
+<p class="f7">This document is a translation of Privacy Policy in
+English. In case of conflict between the Russian version of Privacy
+Policy and this translation &mdash; only the Russian version of
+Privacy Policy is legally binding. The Russian version of Privacy
+Policy can be found here: <a
+href="https://www.romanzolotarev.com/privacy.ru.html">
+https://www.romanzolotarev.com/privacy.ru.html</a></p>
 
 # Privacy Policy
 

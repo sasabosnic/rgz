@@ -242,100 +242,63 @@ subscription_form() {
 	test -f "$DB/members/$m_id/email" &&
 	e=$(cat "$DB/members/$m_id/email")
 
-	box='<p>'"$e"'</p>
-<form
-	method=get
-	action='"${REQUEST_URI%%\?*}"'
-	class="form">
+	box='
+<div class="pa3 ba mt4 bg-white b--light-gray dark-gray f7">
 
+	<p>Hello <b>'"$e"'</b>!</p>
 
-        <p class="f7">By clickng <em>Subscribe</em> you accept
-	<a href="/terms.html">User&nbsp;Agreement</a>&nbsp;and
-	<a href="/privacy.html">Privacy&nbsp;Policy</a>.</p>
+	<button id="button-549237"
+	class="f7 outline dib pa2 ba mb2
+	black bg-white b--light-gray
+	hover-bg-black hover-white"
+	>Upgrade
+	<span class="tracked-tight paddle-net"
+	data-product="549237">&euro;90.00</span>
+	/&nbsp;year</span>
+	</button>
 
-<div class="cf center mw6 mt2 tc">
+	<button id="button-549707"
+	class="f7 outline dib pa2 ba mb2
+	black bg-white b--light-gray
+	hover-bg-black hover-white"
+	>Upgrade
+	<span class="tracked-tight paddle-net"
+	data-product="549707">&euro;9.00</span>
+	/&nbsp;month</span>
+	</button>
 
-	<div class="fl w-100 w-50-m w-50-l">
-	<div class="pv4 ph3 bg-white">
-		<div class="f2 b mb2">Personal</div>
-		<div class="mb2 h3">
-			1 seat<br>
-		</div>
-		<div>
-			<span class="tracked-tight f2">&euro;
-			5</span><span class="b">
-			/&nbsp;month</span>
-		</div>
-		<button value="pm"
-		class="w-100 b link dib ba ph3 pv2 mt3
-		black bg-white b--dark-gray
-		hover-bg-yellow hover-b--yellow
-		hover-black">Subscribe</button>
-		<div class="mt4">or save 16%</div>
-		<button value="py"
-		class="link bn black bg-white pointer">
-			<span class="underline b">&euro;
-			50 /&nbsp;year</span>
-		</button>
-	</div>
-	</div>
-
-	<div class="fl w-100 w-50-m w-50-l">
-	<div class="pv4 ph3 white bg-vltr">
-		<div class="f2 b mb2">Team</div>
-		<div class="mb2 h3">
-			10 seats<br>
-			Virtual machine
-		</div>
-		<div>
-			<span class="tracked-tight f2">&euro;
-			55</span><span class="b">
-			/&nbsp;month</span>
-		</div>
-		<button value="tm"
-		class="w-100 b link dib ba ph3 pv2 mt3
-		white bg-vltr b--white
-		hover-bg-yellow hover-b--yellow
-		hover-black">Subscribe</button>
-		<div class="mt4">2 months free</div>
-		<button value="ty"
-		class="b link bn white bg-vltr pointer">
-			<span class="underline">&euro;
-			550 /&nbsp;year
-		</button>
-	</div>
-	</div>
-
-	<div class="fl w-100 w-50-m w-50-l">
-	<div class="pv4 ph3 white-60 bg-black">
-		<div class="f2 f3-m b mb2">Enterprise</div>
-		<div class="mb2 h3">
-			100 seats<br>
-			Virtual machine<br>
-			Priority support
-		</div>
-		<div>
-			<span class="tracked-tight f2">&euro;
-			550</span><span class="b">
-			/&nbsp;month</span>
-		</div>
-		<button value="em"
-		class="w-100 b link dib ba ph3 pv2 mt3
-		white bg-black b--white
-		hover-b--yellow hover-bg-yellow
-		hover-black">Subscribe</button>
-		<div class="mt4">save &euro; 1,100</div>
-		<button value="ey"
-		class="b link bn white bg-black pointer">
-			<span class="underline">&euro;
-			5,550 /&nbsp;year
-		</button>
-	</div>
-	</div>
+	<p>VAT/GST may be added if applicable.
+	14 day money back guarantee.
+	<a href="/terms.html">User&nbsp;Agreement</a>&nbsp;
+	<a href="/privacy.html">Privacy&nbsp;Policy</a>
+	</p>
 
 </div>
 
-</form>'
+<script src="https://cdn.paddle.com/paddle/paddle.js"></script>
+<script type="text/javascript">
+Paddle.Setup({ vendor: 38540 });
+[
+  549707,
+  549237,
+].forEach(
+  function(x) {
+    document
+    .getElementById("button-" + x)
+    .addEventListener("click",
+      function() {
+        Paddle.Checkout.open({
+          product: x,
+          email: "'"$e"'",
+          success: "/paddle/success",
+          passthrough: "'"${REQUEST_URI%%\?*}"'",
+        });
+      },
+    false);
+  }
+);
+</script>
+'
 
 http200 "$(tags_to_upper < "$f" | obfuscate "$box")"
 
@@ -345,7 +308,7 @@ http200 "$(tags_to_upper < "$f" | obfuscate "$box")"
 new_session_form() {
 	f="$1"
 	box='
-<div class="pa3 ba mt4 bg-washed-yellow b--dark-yellow dark-gray f7">
+<div class="pa3 ba mt4 bg-white b--light-gray dark-gray f7">
 <div class="mb2">To get full access register or log in with <b>your email address</b></div>
 <div class="cf center">
 <form
@@ -355,9 +318,10 @@ new_session_form() {
 	<div class="fl w-100 w-80-m w-80-l">
 	<div class="pr2-l pr2-m">
 	<input
+		tabindex="1"
 		type="email"
 		class="f7 w-100 mb2 pa2 ba mr2
-		outline black bg-white b--dark-yellow
+		outline black bg-white b--light-gray
 		hover-bg-white"
 		autocorrect="off"
 		specllcheck="false"
@@ -368,17 +332,21 @@ new_session_form() {
 	 	name="email"
 		placeholder="alice@example.com"
 		value="'"$e"'">
-	<a href="/terms.html">User&nbsp;Agreement</a>&nbsp;
+	By clicking <em>Continue</em> you are accepting<br>
+	<a href="/terms.html">User&nbsp;Agreement</a> and
 	<a href="/privacy.html">Privacy&nbsp;policy</a>
 	</div>
 	</div>
 	<div class="fl w-20-m w-20-l">
+
 	<input
+		tabindex="2"
 		type="submit"
 		class="f7 w-100 outline dib pa2 ba mb2
-		black bg-light-yellow b--dark-yellow
+		black bg-white b--light-gray
 		hover-bg-black hover-white"
 		value="Continue">
+
 	</div>
 </form>
 </div>
@@ -522,16 +490,21 @@ obfuscate() {
 	echo "$page" |
 	awk '{ print; if ( $0 == "<!-- cut -->" ) exit }'
 	echo "$1"
+
+	after_cut=$(
+		echo "$page" |
+		awk '
+		BEGIN { cut = 0 }
+		{
+			if ( cut == 0 && $0 == "<!-- cut -->" ) cut = 1
+			if ( cut == 1 ) print
+		}
+		' |
+		tr '[:lower:]' "$(jot -rcs '' 26 97 122)"
+	)
+	test -n "$after_cut" || return
 	echo '<div class="bg-washed-yellow mt3 ba b--dark-yellow w6 pa3">'
-	echo "$page" |
-	awk '
-	BEGIN { cut = 0 }
-	{
-		if ( cut == 0 && $0 == "<!-- cut -->" ) cut = 1
-		if ( cut == 1 ) print
-	}
-	' |
-	tr '[:lower:]' "$(jot -rcs '' 26 97 122)"
+	echo "$after_cut"
 	echo '</div>'
 }
 

@@ -8,6 +8,7 @@ textarea { overflow: auto; }
 
 .b--black, .hover-b--black:hover { border-color: #000; }
 .b--dark-gray, .hover-b--dark-gray:hover { border-color: #333; }
+.b--light-gray, .hover-b--light-gray:hover { border-color: #ccc; }
 .b--dark-yellow, .hover-b--dark-yellow:hover, .hover-b--dark-yellow:focus { border-color: #e6e3b9; }
 .b--white-60, .hover-b--white-60 { border-color: rgba(255, 255, 255, .6); }
 .b--yellow, .hover-b--yellow:hover, .hover-b--yellow:focus { border-color: #ffc439; }
@@ -25,7 +26,7 @@ textarea { overflow: auto; }
 .bg-white, .hover-bg-white:hover, .hover-bg-white:focus { background-color: #fff; }
 .bg-xrpb, .hover-bg-xrpb:hover, .hover-bg-xrpb:focus { background-color: #808080; }
 .bg-yellow, .hover-bg-yellow:hover, .hover-bg-yellow:focus { background-color: #ffc439; }
-.black, .hover-black:hover, .hover-black:hover:visited, .hover-black:focus, .hover-black:hover:focus { color: #000; }
+.black, .black:visited, .hover-black:hover, .hover-black:hover:visited, .hover-black:focus, .hover-black:hover:focus { color: #000; }
 .black-60, .black-60:visited { color: rgba(0, 0, 0, .6); }
 .dark-gray, .hover-dark-gray:hover { color: #333; }
 .dark-red { color: #e7040f; }
