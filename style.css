@@ -30,7 +30,7 @@ textarea { overflow: auto; }
 .black-60, .black-60:visited { color: rgba(0, 0, 0, .6); }
 .dark-gray, .hover-dark-gray:hover { color: #333; }
 .dark-red { color: #e7040f; }
-.gray, .hover-gray:hover { color: #777; }
+.gray, .hover-gray:hover { color: #808080; }
 .hover-b--gold:hover { border-color: #ffb700; }
 .hover-b--navy:hover { border-color: #001b44; }
 .hover-b--oams:hover { border-color: #ec0000; }
@@ -80,6 +80,7 @@ textarea { overflow: auto; }
 .link:focus, .outline:focus { outline: 1px solid #333; }
 .mb2 { margin-bottom: .5rem; }
 .mb3 { margin-bottom: 1rem; }
+.mb4 { margin-bottom: 2rem; }
 .ml0 { margin-left: 0; }
 .mr1 { margin-right: .25rem; }
 .mr2 { margin-right: .5rem; }
@@ -147,6 +148,7 @@ textarea { overflow: auto; }
   .w-20-m { width: 20%; }
   .w-25-m { width: 25%; }
   .w-50-m { width: 50%; }
+  .w-75-m { width: 75%; }
   .w-80-m { width: 80%; }
   .w-third-m { width: 33.33%; }
   .w4-m { width: 8rem; }
@@ -170,6 +172,7 @@ textarea { overflow: auto; }
   .w-20-l { width: 20%; }
   .w-25-l { width: 25%; }
   .w-50-l { width: 50%; }
+  .w-75-l { width: 75%; }
   .w-80-l { width: 80%; }
   .w-third-l { width: 33.33%; }
   .w4-l { width: 8rem; }
