@@ -27,13 +27,13 @@ main() {
 
 	URI=${REQUEST_URI##/$BASE_URL}
 	case "$REQUEST_METHOD$URI" in
-		GET/*?log_out*) log_out;;
-		GET/*?magic=*) verify_magic_link;;
-		GET/*?setup*) setup;;
-		GET/*?wait_for_magic_link*) wait_for_magic_link;;
-		GET/*) render_page;;
-		POST/*?send_magic_link*) send_magic_link;;
-		*) full_stop 'Wat?';;
+		GET/*?log_out*)			log_out;;
+		GET/*?magic=*) 			verify_magic_link;;
+		GET/*?setup*) 			setup;;
+		GET/*?wait_for_magic_link*) 	wait_for_magic_link;;
+		GET/*) 				render_page;;
+		POST/*?send_magic_link*) 	send_magic_link;;
+		*) 				full_stop 'Wat?';;
 	esac
 }
 
@@ -46,17 +46,18 @@ wait_for_magic_link() {
 	m_id=$(get_cookie 'm_id')
 	s_key=$(get_cookie 's_key')
 	f="$DB/members/$m_id/sessions/$s_key"
+
 	if test -f "$f"
 	then
-	echo 'Status: 303 See Other'
-	echo "Location: $u"
-	echo 'Content-Type: text/html; charset=utf-8'
-	echo
-	exit 0
+		echo 'Status: 303 See Other'
+		echo "Location: $u"
+		echo 'Content-Type: text/html; charset=utf-8'
+		echo
+		exit 0
 	fi
 
 	http200 '
-<div class="pa3 bg-washed-yellow dark-gray f7">
+<div class="pa3 ba mt4 bg-white b--light-gray dark-gray f7">
 <div class="mb2">
 Sending a magic link to you in a minute.<br>
 Please <b>check your mailbox</b>.<br><br>
@@ -76,11 +77,11 @@ start_over() {
 	f="$DB/members/$m_id/sessions/$s_key"
 	if test -f "$f"
 	then
-	echo 'Status: 303 See Other'
-	echo "Location: $u"
-	echo 'Content-Type: text/html; charset=utf-8'
-	echo
-	exit 0
+		echo 'Status: 303 See Other'
+		echo "Location: $u"
+		echo 'Content-Type: text/html; charset=utf-8'
+		echo
+		exit 0
 	fi
 
 	http200 '<h1>Oops...</h1><p>'"$err"'</p>
@@ -243,36 +244,38 @@ subscription_form() {
 	e=$(cat "$DB/members/$m_id/email")
 
 	box='
-<div class="pa3 ba mt4 bg-white b--light-gray dark-gray f7">
+<div class="ph3 ba mt4 bg-white b--light-gray dark-gray f7">
 
-	<p>Hello <b>'"$e"'</b>!</p>
-
-	<button id="button-549237"
-	class="f7 outline dib pa2 ba mb2
-	black bg-white b--light-gray
-	hover-bg-black hover-white"
-	>Upgrade
-	<span class="tracked-tight paddle-net"
-	data-product="549237">&euro;90.00</span>
-	/&nbsp;year</span>
-	</button>
+	<p>Hey, <b>'"$e"'</b>!</p>
 
 	<button id="button-549707"
-	class="f7 outline dib pa2 ba mb2
+	class="f7 outline dib pa2 ba
 	black bg-white b--light-gray
 	hover-bg-black hover-white"
 	>Upgrade
-	<span class="tracked-tight paddle-net"
-	data-product="549707">&euro;9.00</span>
+	<span class="b tracked-tight">&euro;9.00</span>
 	/&nbsp;month</span>
 	</button>
 
-	<p>VAT/GST may be added if applicable.
-	14 day money back guarantee.
-	<a href="/terms.html">User&nbsp;Agreement</a>&nbsp;
-	<a href="/privacy.html">Privacy&nbsp;Policy</a>
-	</p>
+	<button id="button-549237"
+	class="f7 outline dib pa2 ba
+	black bg-yellow b--black
+	hover-bg-black hover-white"
+	>Upgrade
+	<span class="b tracked-tight">&euro;90.00</span>
+	/&nbsp;year</span>
+	</button>
 
+	<button id="button-549725"
+	class="f7 outline dib pa2 ba
+	black bg-white b--light-gray
+	hover-bg-black hover-white"
+	>Upgrade
+	<span class="b tracked-tight">&euro;1.00</span>
+	/&nbsp;month</span>
+	</button>
+
+	<p>VAT, GST, or sale tax may be added if applicable.</p>
 </div>
 
 <script src="https://cdn.paddle.com/paddle/paddle.js"></script>
@@ -281,12 +284,14 @@ Paddle.Setup({ vendor: 38540 });
 [
   549707,
   549237,
+  549725,
 ].forEach(
   function(x) {
     document
     .getElementById("button-" + x)
     .addEventListener("click",
       function() {
+	// Paddle.Product.Prices(x, console.log);
         Paddle.Checkout.open({
           product: x,
           email: "'"$e"'",
@@ -309,13 +314,13 @@ new_session_form() {
 	f="$1"
 	box='
 <div class="pa3 ba mt4 bg-white b--light-gray dark-gray f7">
-<div class="mb2">To get full access register or log in with <b>your email address</b></div>
+<div class="mb2">Type-in <b>your email address</b></div>
 <div class="cf center">
 <form
 	method=post
 	action='"${REQUEST_URI%%\?*}"'?send_magic_link
 	class="form">
-	<div class="fl w-100 w-80-m w-80-l">
+	<div class="fl w-100 w-75-m w-75-l">
 	<div class="pr2-l pr2-m">
 	<input
 		tabindex="1"
@@ -332,12 +337,12 @@ new_session_form() {
 	 	name="email"
 		placeholder="alice@example.com"
 		value="'"$e"'">
-	By clicking <em>Continue</em> you are accepting<br>
+	By clicking <em>Register or log in</em> you are accepting<br>
 	<a href="/terms.html">User&nbsp;Agreement</a> and
 	<a href="/privacy.html">Privacy&nbsp;policy</a>
 	</div>
 	</div>
-	<div class="fl w-20-m w-20-l">
+	<div class="fl w-25-m w-25-l">
 
 	<input
 		tabindex="2"
@@ -345,7 +350,7 @@ new_session_form() {
 		class="f7 w-100 outline dib pa2 ba mb2
 		black bg-white b--light-gray
 		hover-bg-black hover-white"
-		value="Continue">
+		value="Register or log in">
 
 	</div>
 </form>
@@ -491,7 +496,7 @@ obfuscate() {
 	awk '{ print; if ( $0 == "<!-- cut -->" ) exit }'
 	echo "$1"
 
-	after_cut=$(
+	cut=$(
 		echo "$page" |
 		awk '
 		BEGIN { cut = 0 }
@@ -502,9 +507,9 @@ obfuscate() {
 		' |
 		tr '[:lower:]' "$(jot -rcs '' 26 97 122)"
 	)
-	test -n "$after_cut" || return
+	test -n "$cut" || return
 	echo '<div class="bg-washed-yellow mt3 ba b--dark-yellow w6 pa3">'
-	echo "$after_cut"
+	echo "$cut"
 	echo '</div>'
 }
 
@@ -585,7 +590,10 @@ setup() {
 		test -d "$DB" || echo "$DB not a dir"
 	)
 	test -z "$errs" || http500 "$errs\\nFAILED"
-	http200 '<pre>PASS</pre>'
+	echo 'Status: 200 OK'
+	echo
+	echo '<pre>PASS</pre>'
+	exit 0
 }
 
 
