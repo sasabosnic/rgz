@@ -253,7 +253,7 @@ subscription_form() {
 	black bg-white b--light-gray
 	hover-bg-black hover-white"
 	>Upgrade
-	<span class="b tracked-tight">&euro;9.00</span>
+	<b>&euro;9.00</b>
 	/&nbsp;month</span>
 	</button>
 
@@ -262,18 +262,18 @@ subscription_form() {
 	black bg-yellow b--black
 	hover-bg-black hover-white"
 	>Upgrade
-	<span class="b tracked-tight">&euro;90.00</span>
+	<b>&euro;90.00</b>
 	/&nbsp;year</span>
 	</button>
 
-	<button id="button-549725"
+	<!--button id="button-549725"
 	class="f7 outline dib pa2 ba
 	black bg-white b--light-gray
 	hover-bg-black hover-white"
 	>Upgrade
-	<span class="b tracked-tight">&euro;1.00</span>
+	<b>&euro;1.00</b>
 	/&nbsp;month</span>
-	</button>
+	</button-->
 
 	<p>VAT, GST, or sale tax may be added if applicable.</p>
 </div>
