@@ -105,6 +105,21 @@ Reinitialize the network:
 #
 </pre>
 
+Add to your crontab:
+
+<pre>
+# <b>crontab -e</b>
+</pre>
+
+These are workarounds for <a
+href="https://openbsd.amsterdam/known.html">known issues</a>.
+Replace `46.23.88.1` with your default gateway from `/etc/mygate`.
+
+<pre>
+*/15 * * * * /usr/sbin/rdate pool.ntp.org > /dev/null
+*/5 * * * * /sbin/ping -c3 <em>46.23.88.1</em> > /dev/null
+</pre>
+
 Update `/etc/pf.conf`, test, and load it:
 
 <pre>
