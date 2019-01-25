@@ -39,7 +39,7 @@ textarea { overflow: auto; }
 .hover-b--vltr:hover { border-color: #1e88e5; }
 .hover-b--xrpb:hover { border-color: #808080; }
 .near-white { color: #f4f4f4; }
-.white, .hover-white:hover, .hover-white:hover:visited, .hover-white:focus, .hover-white:hover:focus { color: #fff; }
+.white, .white:visited, .hover-white:hover, .hover-white:hover:visited, .hover-white:focus, .hover-white:hover:focus { color: #fff; }
 .white-60 { color: rgba(255, 255, 255, .6); }
 
 .b { font-weight: bold; }
@@ -48,8 +48,10 @@ textarea { overflow: auto; }
 .bb { border-bottom-style: solid; border-bottom-width: 1px; }
 .bn { border-width: 0; border-style: none; }
 .br-100 { border-radius: 100%; }
-.bw1 { border-width: .125rem; }
+.br2 { border-radius: .25rem; }
+.br3 { border-radius: .5rem; }
 .bw-1 { border-width: 1px; }
+.bw1 { border-width: .125rem; }
 .cb { clear: both; }
 .center { margin-right: auto; margin-left: auto; }
 .cf { *zoom: 1; }

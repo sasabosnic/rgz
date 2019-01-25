@@ -10,8 +10,8 @@ _Tested on [OpenBSD](/openbsd/) 6.3 and 6.4_
 If you need a new OpenBSD server, make sure you have your [public
 SSH key](/ssh.html) handy, then...
 
-<a href="/vultr.html"><span class="form__button form__button-vultr">sign
-up at Vultr</span></a>
+<a class="b link ph2 pv1 mb2 dib ba bg-vltr white b--black
+hover-white hover-bg-black" href="/vultr.html">register at Vultr</a>
 
 Deploy an instance, for example:
 
