@@ -97,6 +97,7 @@ textarea { overflow: auto; }
 .mw8 { max-width: 64rem; }
 .ni { text-indent: -.5rem; }
 .normal { font-weight: normal; }
+.pa1 { padding: .25rem; }
 .pa2 { padding: .5rem; }
 .pa3 { padding: 1rem; }
 .pb3 { padding-bottom: 1rem; }

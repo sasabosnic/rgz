@@ -9,7 +9,7 @@ A silent computer with a large display, _ergonomic_ keyboard, and
 trackball.
 
 [Zotac CI527 NANO](/zotac-ci527.html)
-powered by [OpenBSD](/openbsd/) and [RUN BSD sticker](/runbsd.html) ;)<br>
+powered by [OpenBSD](/openbsd/) and [Run BSD sticker](/runbsd.html) ;)<br>
 [Asus VZ249HE](/asus-vz249he.html)<br>
 [ErgoDox EZ V3](/ergodox.html)<br>
 [Kensington Orbit Trackball](/kensington-orbit.html)
