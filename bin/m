@@ -244,38 +244,36 @@ subscription_form() {
 	e=$(cat "$DB/members/$m_id/email")
 
 	box='
-<div class="ph3 ba mt4 bg-white b--light-gray dark-gray f7">
+<div z-index="1000" class="sticky top-1 pa3 ba bg-white b--light-gray dark-gray f7 tc">
 
-	<p>Hey, <b>'"$e"'</b>!</p>
+	<div>You logged in as <em>'"$e"'</em>.
+	Upgrade to continue.</div>
 
 	<button id="button-549707"
-	class="f7 outline dib pa2 ba
+	class="f7 outline dib pa2 ba mr2 mt2
 	black bg-white b--light-gray
 	hover-bg-black hover-white"
-	>Upgrade
-	<b>&euro;9.00</b>
+	><b>&euro;9.00</b>
 	/&nbsp;month</span>
 	</button>
 
 	<button id="button-549237"
-	class="f7 outline dib pa2 ba
+	class="f7 outline dib pa2 ba mr2 mt2
 	black bg-yellow b--black
 	hover-bg-black hover-white"
-	>Upgrade
-	<b>&euro;90.00</b>
+	><b>&euro;90.00</b>
 	/&nbsp;year</span>
 	</button>
 
 	<!--button id="button-549725"
-	class="f7 outline dib pa2 ba
+	class="f7 outline dib pa2 ba mr2 mt2
 	black bg-white b--light-gray
 	hover-bg-black hover-white"
-	>Upgrade
-	<b>&euro;1.00</b>
+	><b>&euro;1.00</b>
 	/&nbsp;month</span>
 	</button-->
 
-	<p>VAT, GST, or sale tax may be added if applicable.</p>
+	<a href="/'"$BASE_URL"'/#Pricing">Pricing</a>
 </div>
 
 <script src="https://cdn.paddle.com/paddle/paddle.js"></script>
@@ -313,19 +311,17 @@ http200 "$(tags_to_upper < "$f" | obfuscate "$box")"
 new_session_form() {
 	f="$1"
 	box='
-<div class="pa3 ba mt4 bg-white b--light-gray dark-gray f7">
-<div class="mb2">Type-in <b>your email address</b></div>
+<div class="sticky top-1 pa3 ba bg-white b--light-gray dark-gray f7 tc">
+<div class="mb2">Type-in your email address</div>
 <div class="cf center">
 <form
 	method=post
 	action='"${REQUEST_URI%%\?*}"'?send_magic_link
 	class="form">
-	<div class="fl w-100 w-75-m w-75-l">
-	<div class="pr2-l pr2-m">
 	<input
 		tabindex="1"
 		type="email"
-		class="f7 w-100 mb2 pa2 ba mr2
+		class="f7 w-100 w5-m w5-l mb2 ba pa2 mr2
 		outline black bg-white b--light-gray
 		hover-bg-white"
 		autocorrect="off"
@@ -337,25 +333,26 @@ new_session_form() {
 	 	name="email"
 		placeholder="alice@example.com"
 		value="'"$e"'">
-	By clicking <em>Register or log in</em> you are accepting<br>
-	<a href="/terms.html">User&nbsp;Agreement</a> and
-	<a href="/privacy.html">Privacy&nbsp;policy</a>
-	</div>
-	</div>
-	<div class="fl w-25-m w-25-l">
-
 	<input
 		tabindex="2"
 		type="submit"
-		class="f7 w-100 outline dib pa2 ba mb2
-		black bg-white b--light-gray
+		class="f7 w-100 w4-m w4-l outline dib pa2 ba mb2
+		black bg-yellow b--black
 		hover-bg-black hover-white"
 		value="Register or log in">
 
-	</div>
 </form>
+
+<span class="ph2">
+By clicking <em>Register or log in</em> you are accepting
+<a href="/terms.html">User&nbsp;Agreement</a> and
+<a href="/privacy.html">Privacy&nbsp;policy</a>.
+This site uses cookies.</span>
+
 </div>
-</div>'
+</div>
+</div>
+'
 
 http200 "$(tags_to_upper < "$f" | obfuscate "$box")"
 
@@ -417,7 +414,11 @@ render_page() {
 	else t="$e &mdash; $t_l";
 	fi
 
-	http200 '<p>'"$t"'</p>'"$(cat "$f")"
+	http200 '
+<div class="pa3 ba bg-white b--light-gray dark-gray f7 tc">
+'"$t"'
+</div>
+'"$(cat "$f")"
 }
 
 
@@ -495,22 +496,23 @@ obfuscate() {
 	echo "$page" |
 	awk '{ print; if ( $0 == "<!-- cut -->" ) exit }'
 	echo "$1"
-
 	cut=$(
-		echo "$page" |
-		awk '
-		BEGIN { cut = 0 }
-		{
-			if ( cut == 0 && $0 == "<!-- cut -->" ) cut = 1
-			if ( cut == 1 ) print
-		}
-		' |
-		tr '[:lower:]' "$(jot -rcs '' 26 97 122)"
+	echo "$page" |
+	awk '
+	BEGIN { cut = 0 }
+	{
+		if ( cut == 0 && $0 == "<!-- cut -->" ) cut = 1
+		if ( cut == 1 ) print
+	}
+	' |
+	tr '[:lower:]' "$(jot -rcs '' 26 97 122)"
 	)
 	test -n "$cut" || return
-	echo '<div class="bg-washed-yellow mt3 ba b--dark-yellow w6 pa3">'
-	echo "$cut"
-	echo '</div>'
+	echo '
+<div class="f7 sans-serif gray bb b--light-gray pv2 mt2">
+The rest of the page is obfuscated
+</div>
+'"$cut"
 }
 
 

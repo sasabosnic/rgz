@@ -5,6 +5,7 @@ button, input, optgroup, select, textarea { font-family: inherit; font-size: 1re
 button, select { text-transform: none; }
 img { border-style: none; }
 textarea { overflow: auto; }
+h1, h2, h3, h4 { margin-bottom: 0; }
 
 .b--black, .hover-b--black:hover { border-color: #000; }
 .b--dark-gray, .hover-b--dark-gray:hover { border-color: #333; }
@@ -42,6 +43,9 @@ textarea { overflow: auto; }
 .white, .white:visited, .hover-white:hover, .hover-white:hover:visited, .hover-white:focus, .hover-white:hover:focus { color: #fff; }
 .white-60 { color: rgba(255, 255, 255, .6); }
 
+.sticky { position: sticky; }
+.top-1 { top: 1rem; }
+
 .b { font-weight: bold; }
 .b--dashed { border-style: dashed; }
 .ba { border-width: 1px; border-style: solid; }
@@ -50,6 +54,7 @@ textarea { overflow: auto; }
 .br-100 { border-radius: 100%; }
 .br2 { border-radius: .25rem; }
 .br3 { border-radius: .5rem; }
+.bt { border-top-style: solid; border-top-width: 1px; }
 .bw-1 { border-width: 1px; }
 .bw1 { border-width: .125rem; }
 .cb { clear: both; }
@@ -91,6 +96,7 @@ textarea { overflow: auto; }
 .mt2 { margin-top: .5rem; }
 .mt3 { margin-top: 1rem; }
 .mt4 { margin-top: 2rem; }
+.mt5 { margin-top: 3rem; }
 .mw-100 { max-width: 100%; }
 .mw6 { max-width: 32rem; }
 .mw7 { max-width: 48rem; }
@@ -115,6 +121,7 @@ textarea { overflow: auto; }
 .serif { font-family: "noto serif", georgia, times, serif; }
 .tc { text-align: center; }
 .tl { text-align: left; }
+.tr { text-align: right; }
 .tracked-tight { letter-spacing: -.05em; }
 .underline { text-decoration: underline; }
 .w-100 { width: 100%; }
@@ -156,6 +163,8 @@ textarea { overflow: auto; }
   .w-third-m { width: 33.33%; }
   .w4-m { width: 8rem; }
   .w5-m { width: 16rem; }
+  .tr-m { text-align: right; }
+  .mt5-m { margin-top: 3rem; }
 }
 @media screen and (min-width: 60em) {
   .f1-l { font-size: 3rem; }
@@ -180,4 +189,6 @@ textarea { overflow: auto; }
   .w-third-l { width: 33.33%; }
   .w4-l { width: 8rem; }
   .w5-l { width: 16rem; }
+  .tr-l { text-align: right; }
+  .mt5-l { margin-top: 3rem; }
 }
