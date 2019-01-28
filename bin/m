@@ -27,6 +27,8 @@ main() {
 
 	URI=${REQUEST_URI##/$BASE_URL}
 	case "$REQUEST_METHOD$URI" in
+		GET/paddle/success)		http500 'success';;
+		GET/paddle/cancel)		http500 'cancel';;
 		GET/*?log_out*)			log_out;;
 		GET/*?magic=*) 			verify_magic_link;;
 		GET/*?setup*) 			setup;;
@@ -61,7 +63,7 @@ wait_for_magic_link() {
 <div class="mb2">
 Sending a magic link to you in a minute.<br>
 Please <b>check your mailbox</b>.<br><br>
-<a href="'"$u"'">Or try again</a></div>
+<a href="'"$u"'#Continue">Or try again</a></div>
 </div>
 '
 }
@@ -244,36 +246,29 @@ subscription_form() {
 	e=$(cat "$DB/members/$m_id/email")
 
 	box='
-<div z-index="1000" class="sticky top-1 pa3 ba bg-white b--light-gray dark-gray f7 tc">
+<div id="Continue"
+class="z-index-1 sticky top-1 pa3 ba bg-white b--light-gray dark-gray f7 tc">
 
-	<div>You logged in as <em>'"$e"'</em>.
-	Upgrade to continue.</div>
+	<div class="mb2">You logged in as <em>'"$e"'</em>.
+	Upgrade&nbsp;to&nbsp;continue.</div>
 
 	<button id="button-549707"
-	class="f7 outline dib pa2 ba mr2 mt2
-	black bg-white b--light-gray
-	hover-bg-black hover-white"
-	><b>&euro;9.00</b>
-	/&nbsp;month</span>
+	class="f7 outline dib pa2 ba mr2 mb2 w-100 w4-m w4-l
+	black bg-white b--light-gray hover-bg-black hover-white">
+	<span class="paddle-net b" data-product="549707">&euro;9.00</span>
+	/&nbsp;month
 	</button>
 
 	<button id="button-549237"
-	class="f7 outline dib pa2 ba mr2 mt2
-	black bg-yellow b--black
-	hover-bg-black hover-white"
-	><b>&euro;90.00</b>
-	/&nbsp;year</span>
+	class="f7 outline dib pa2 ba mr2 mb2 w-100 w4-m w4-l
+	black bg-yellow b--black hover-bg-black hover-white">
+	<span class="paddle-net b" data-product="549237">&euro;90.00</span>
+	/&nbsp;year
 	</button>
 
-	<!--button id="button-549725"
-	class="f7 outline dib pa2 ba mr2 mt2
-	black bg-white b--light-gray
-	hover-bg-black hover-white"
-	><b>&euro;1.00</b>
-	/&nbsp;month</span>
-	</button-->
-
+	<span class="w-100 w4-m w4-l">
 	<a href="/'"$BASE_URL"'/#Pricing">Pricing</a>
+	</span>
 </div>
 
 <script src="https://cdn.paddle.com/paddle/paddle.js"></script>
@@ -282,19 +277,18 @@ Paddle.Setup({ vendor: 38540 });
 [
   549707,
   549237,
-  549725,
 ].forEach(
   function(x) {
+    //Paddle.Product.Prices(x, console.log);
     document
     .getElementById("button-" + x)
     .addEventListener("click",
       function() {
-	// Paddle.Product.Prices(x, console.log);
         Paddle.Checkout.open({
           product: x,
           email: "'"$e"'",
-          success: "/paddle/success",
           passthrough: "'"${REQUEST_URI%%\?*}"'",
+          country: "GB",
         });
       },
     false);
@@ -311,7 +305,8 @@ http200 "$(tags_to_upper < "$f" | obfuscate "$box")"
 new_session_form() {
 	f="$1"
 	box='
-<div class="sticky top-1 pa3 ba bg-white b--light-gray dark-gray f7 tc">
+<div id="Continue"
+class="z-index-1 sticky top-1 pa3 ba bg-white b--light-gray dark-gray f7 tc">
 <div class="mb2">Type-in your email address</div>
 <div class="cf center">
 <form
@@ -329,7 +324,6 @@ new_session_form() {
 		required="required"
 		minlength="2"
 		maxlength="255"
-		autofocus="autofocus"
 	 	name="email"
 		placeholder="alice@example.com"
 		value="'"$e"'">
@@ -347,7 +341,7 @@ new_session_form() {
 By clicking <em>Register or log in</em> you are accepting
 <a href="/terms.html">User&nbsp;Agreement</a> and
 <a href="/privacy.html">Privacy&nbsp;policy</a>.
-This site uses cookies.</span>
+This&nbsp;site&nbsp;uses&nbsp;cookies.</span>
 
 </div>
 </div>
@@ -512,7 +506,10 @@ obfuscate() {
 <div class="f7 sans-serif gray bb b--light-gray pv2 mt2">
 The rest of the page is obfuscated
 </div>
-'"$cut"
+<div class="blur3 z-index--1">
+'"$cut"'
+</div>
+'
 }
 
 

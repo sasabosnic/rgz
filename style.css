@@ -43,13 +43,18 @@ h1, h2, h3, h4 { margin-bottom: 0; }
 .white, .white:visited, .hover-white:hover, .hover-white:hover:visited, .hover-white:focus, .hover-white:hover:focus { color: #fff; }
 .white-60 { color: rgba(255, 255, 255, .6); }
 
+.blur3 { filter: blur(3px) opacity(0.3); }
+.right-1 { right: 1rem; }
 .sticky { position: sticky; }
 .top-1 { top: 1rem; }
+.z-index--1 { z-index: -1; }
+.z-index-1 { z-index: 1; }
 
 .b { font-weight: bold; }
 .b--dashed { border-style: dashed; }
 .ba { border-width: 1px; border-style: solid; }
 .bb { border-bottom-style: solid; border-bottom-width: 1px; }
+.bb--dashed { border-bottom-style: dashed; border-bottom-width: 1px; }
 .bn { border-width: 0; border-style: none; }
 .br-100 { border-radius: 100%; }
 .br2 { border-radius: .25rem; }
