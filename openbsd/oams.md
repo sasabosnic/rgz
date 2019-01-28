@@ -12,8 +12,8 @@ _Tested on [OpenBSD](/openbsd/) 6.3 and 6.4_
 [vmd(8)](https://man.openbsd.org/vmd.8) servers to host opinionated
 VMs.
 
-Send your name, email address, hostname, username, and public SSH
-key to OpenBSDAms via [contact
+Send your name, email address, hostname, username, and [public SSH
+key](/ssh.html) to OpenBSDAms via [contact
 form](https://openbsd.amsterdam/contact.html?rz),
 [Twitter](https://twitter.com/OpenBSDAms), or
 [Mastodon](https://bsd.network/@OpenBSDAms), before you pay.
