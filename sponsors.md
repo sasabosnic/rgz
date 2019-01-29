@@ -26,7 +26,7 @@ P.S. Here are all received donations. Please ping me, if yours
 hasn't been listed, or if you want to remove your name from the
 list.
 
-_Updated on 7 Jan 2019_
+_Updated on 29 Jan 2019_
 
 Patreon:
 **[Tom Smyth](https://www.patreon.com/user/creators?u=10913897 "24 Apr 2018 80.00 USD")&nbsp;
@@ -50,6 +50,7 @@ Patreon:
 [Leon Stafford](https://www.patreon.com/beautifulmoalboal "12 Nov 2018 1.00 USD")&nbsp;
 [Roger](https://www.patreon.com/solvaholic/creators "21 Nov 2018 1.00 USD")&nbsp;
 [Isak Holmstr&ouml;m](https://www.patreon.com/iah/creators "03 Nov 2018 1.00 USD")&nbsp;
+[Ann Choate](https://www.patreon.com/user?u=9470641 "25 Jan 2019 1.00 USD")&nbsp;
 [Peter Kotr&#x10D;ka](https://octodon.social/@pkotrcka "16 May 2018 4.00 USD")&nbsp;
 [int16h](https://www.patreon.com/0x16h "05 Dec 2018 3.00 USD")&nbsp;
 [Moritz Buhl](https://www.patreon.com/user/creators?u=5130313 "05 Jan 2019 2.00 USD")&nbsp;
