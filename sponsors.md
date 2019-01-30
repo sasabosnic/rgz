@@ -67,7 +67,7 @@ PayPal:
 [Gabriel Francisco](https://twitter.com/fgbreel "8 Jun 2018 10.00 EUR I love your blog and the content you share about OpenBSD! Keep rocking!")&nbsp;
 [Joan Catala](https://twitter.com/joancatala "22 Aug 2018 10.00 USD")&nbsp;
 [Ales Tepina](https://twitter.com/alestepi "21 Aug 2018 10.00 USD")&nbsp;
-[Anh Tran Dac](https://twitter.com/chesireCode "07 Jan 2019")&nbsp;
+[Anh Tran Dac](https://twitter.com/chesireCode "07 Jan 2019 10.00 SGD")&nbsp;
 [Hans Solo](https://twitter.com/pikkabird "01 Oct 2018 4.00 USD")&nbsp;
 
 other forms of support:
