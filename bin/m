@@ -247,7 +247,7 @@ subscription_form() {
 
 	box='
 <div id="Continue"
-class="z-index-1 sticky top-1 pa3 ba bg-white b--light-gray dark-gray f7 tc">
+class="z-index-1 sticky top-1 mt3 pa3 ba bg-white b--light-gray dark-gray f7 tc">
 
 	<div class="mb2">You logged in as <em>'"$e"'</em>.
 	Upgrade&nbsp;to&nbsp;continue.</div>
@@ -306,7 +306,7 @@ new_session_form() {
 	f="$1"
 	box='
 <div id="Continue"
-class="z-index-1 sticky top-1 pa3 ba bg-white b--light-gray dark-gray f7 tc">
+class="z-index-1 sticky top-1 mt3 pa3 ba bg-white b--light-gray dark-gray f7 tc">
 <div class="mb2">Type-in your email address</div>
 <div class="cf center">
 <form
