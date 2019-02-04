@@ -1,8 +1,8 @@
 #!/bin/sh
 
 main() {
-	test -n "$PAYPAL_SECRET" || fail 'no PAYPAL_SECRET'
-	test -n "$PAYPAL_CLIENT_ID" || fail 'no PAYPAL_CLIENT_ID'
+	test -n "$PADDLE_AUTH_CODE" || fail 'no PADDLE_AUTH_CODE'
+	test -n "$PADDLE_ID" || fail 'no PADDLE_ID'
 
 	init
 	test_GET

@@ -1,89 +1,85 @@
-<p class="f4 f3-m f3-l lh-title ni">&#8220;Hi, my name is
-<span class="p-name">Roman</span><br>
-and I'm <a href="n/">mastering the&nbsp;Web</a>.
-</p>
+# Mastering the&nbsp;Web
 
-I write [shell scripts](/bin):<br>
-[ssg4](/ssg.html) &mdash; a static site generator<br>
-[rssg](/rssg.html) &mdash; an RSS feed generator<br>
-[form](/form.html) &mdash; a web form handler<br>
-[arc](/arc.html) &mdash; an archiver<br>
-[diceware](/diceware.html) &mdash; a passphrase generator<br>
-[pass](/pass.html) &mdash; a password manager<br>
-[screenshot](bin/screenshot) &mdash; a screenshot tool<br>
-[screencapture](bin/screencapture) &mdash; a screen capture tool<br>
+_The ultimate guide for indie web developers_
 
-Support Unix/BSD related projects:<br>
-[OpenBSD Amsterdam](openbsd.amsterdam/)<br>
-[Etsh Project (V6Shell)](etsh.nl/)
+<p class="f4 f3-m f3-l lh-title ni">&#8220;Dear aspiring full-stack
+web developers and indie hackers, my dear peers,
 
-I'm here to help you with [OpenBSD](openbsd/).<br>
-Oh, and I also compose and publish how-tos.
+<p class="f4 f3-m f3-l lh-title">we are all a little bit tired of
+bloated web stacks and we're worrying about future of the web.</p>
 
-Thank you for [supporting my projects](sponsors.html) and [your kind words](words.html).&#8221;
+<p class="f4 f3-m f3-l lh-title">Too many things to learn. Too many
+abstractions. Short-living or breaking third-party APIs and packages
+with security and performance issues. Over-engineered tooling.
+Outdated documentation.</p>
 
----
+<p class="f4 f3-m f3-l lh-title">We can do better... </p>
+
+and as users we deserve a better web. The web today is getting
+slower, less secure, and visually overwhelming. Endless pop-ups,
+intrusive notifications, distracting ads, and all the things getting
+in the way of us and the content.
+
+Don't waste your time on learning things that change too quickly.
+Don't allow complexity sneak into your products.
+
+Start building with simple battle-tested technologies.  Start
+building your products with less code, fewer dependencies, with
+good-old web stack: **vanilla JavaScript, HTML, CSS** on the frontend,
+and **CGI and shell scripts** for the backend, and maybe **Unix
+userland** as your IDE.
+
+Scale as you go. Add new tools only when you really need them.
+Learn fundamentals first. Learn as you build. Keep the web fast,
+safe, neat, and accessible for everyone.&#8221;
+
+<hr>
+
+<div class="mb2"><a href="/"><img
+	src="/avatar120.jpeg"
+	class="w3 br-100"
+	title="romanzolotarev.com"></a></div>
 
 **Roman Zolotarev**<br>
 _Die-hard Webmaster_<br>
 hi@romanzolotarev.com<br>
 [@romanzolotarev](/twitter.html)
 
-<a class="f7 b link ph2 pv1 mb2 dib ba black-60 b--dark-gray hover-white hover-bg-ptrn" href="/patreon.html">Patreon</a>
-<a class="f7 b link ph2 pv1 mb2 dib ba black-60 b--dark-gray hover-white hover-bg-payp" href="/paypal.html">PayPal</a>
-<a class="f7 b link ph2 pv1 mb2 dib ba black-60 b--dark-gray hover-white hover-bg-vltr" href="/openbsd/vultr.html">Vultr</a>
-<a class="f7 b link ph2 pv1 mb2 dib ba black-60 b--dark-gray hover-white hover-bg-oams" href="/openbsd/oams.html">OpenBSD&nbsp;Amsterdam</a>
-<a class="f7 b link ph2 pv1 mb2 dib ba black-60 b--dark-gray hover-black hover-bg-gold" href="/n/">Mastering&nbsp;the&nbsp;Web</a>
+<hr>
+
+Want to learn basic web technologies and Unix userland? Want to
+build a fully functional and production-ready website like this
+one. All you need is to follow my direct and detailed instructions.
+You will need nothing else, just my guides. Build as you learn.
+
+- [Before we start](/m/toc.html)
+- [OpenBSD as a desktop](/m/toc.html#OpenBSD as a desktop)
+- [Web server on OpenBSD](/m/toc.html#Web server on OpenBSD)
+- [Plain text and files](/m/toc.html#Plain text and files)
+- [Portable shell scripts](/m/toc.html#Portable shell scripts)
+- [Static web pages](/m/toc.html#Static web pages)
+- [HTTP and CGI](/m/toc.html#HTTP and CGI)
 
 ---
 
-## How to...
-
-Subscribe via [RSS](https://www.romanzolotarev.com/rss.xml).
-
-- [configure nsd(8) on OpenBSD](openbsd/nsd.html "2018-12-14")
-- [forward outgoing mail to a remote SMTP server](openbsd/smtpd-forward.html "2018-11-23")
-- [mount exFAT file system on OpenBSD](openbsd/exfat.html "2018-11-16")
-- [mount file system via Media Transfer Protocol on OpenBSD](openbsd/mtp.html "2018-11-06")
-- [upgrade OpenBSD on bare metal](openbsd/upgrade.html "2018-10-18")
-- [generate random string with random(4)](random.html "2018-09-27")
-- [find and remove whitespaces with grep(1) and sed(1)](ws.html "2018-09-23")
-- **[generate RSS feeds with grep(1), sed(1), and awk(1)](rssg.html "2018-09-21")**
-- [find disk name and partition with sysctl(1) and dmesg(1)](openbsd/disk.html "2018-09-19")
-- [make bootable image geteltorito(1) and dd(1)](openbsd/geteltorito.html "2018-09-12")
-- [dock laptop with with xrandr(1), xinput(1), xrdb(1), and sysctl(8)](openbsd/dock.html "2018-09-12")
-- [prepare ThinkPad X1&nbsp;Carbon&nbsp;Gen&nbsp;5 for OpenBSD](openbsd/lenovo-thinkpad-x1c5.html "2018-08-13")
-- [encrypt disk with bioctl(8) and CRYPTO](openbsd/bioctl-crypto.html "2018-08-12")
-- [deploy VM on OpenBSD.Amsterdam](openbsd/oams.html "2018-07-01")
-- [publish Git repositories with stagit(1) on OpenBSD](stagit.html "2018-06-07")
-- [host Git repositories on OpenBSD](git.html "2018-06-07")
-- [manage your terminals with tmux(1)](tmux.html "2018-05-18")
-- [edit text with vi(1)](vi.html "2018-05-12")
-- [configure newsboat(1) to read RSS feeds in&nbsp;terminal](newsboat.html "2018-05-06")
-- [set default programs with xdg-mime(1)](xdg-mime.html "2018-05-01")
-- [customize xenodm(1) login screen](openbsd/xenodm.html "2018-05-01")
-- [enable HTTPS with acme-client(1) and Let's Encrypt on OpenBSD](openbsd/acme-client.html "2018-04-13")
-- [configure httpd(8) on OpenBSD](openbsd/httpd.html "2018-04-12")
-- [install OpenBSD on Vultr](/openbsd/vultr.html "2018-04-11")
-- **[make a static site with lowdown(1) and rsync(1)](ssg.html "2018-04-07")**
-- **[generate passphrases with random(4)](diceware.html "2018-03-30")**
-- [change time zone on OpenBSD](openbsd/timezone.html "2018-03-16")
-- [archive with borg(1)](borg.html "2018-03-02")
-- [mount(1) on OpenBSD](openbsd/mount.html "2018-03-01")
-- [print with cups(1) on macOS](macos/cups.html "2018-02-27")
-- **[manage passwords with openssl(1) and oathtool(1)](pass.html "2017-10-10")**
-- [install OpenBSD on a desktop](openbsd/install.html "2017-09-20")
-- [prepare a bootable USB drive with OpenBSD installer on macOS](macos/openbsd-installer.html "2017-09-19")
-- [configure login.conf(5) and sshd(8) for YubiKey on OpenBSD](openbsd/yubikey.html "2017-09-01")
-- [edit text with Vim](vim.html "2017-08-26")
-- [manage passwords with security(1) on macOS](macos/security.html "2017-05-16")
-- [generate SSH keys](ssh.html "2017-05-01")
-- [host repositories on GitHub](github.html "2017-04-16")
-- [make a static site with Jekyll](jekyll.html "2016-11-22")
-- [learn touch typing](typing.html "2016-11-19")
-- [compare JavaScript, with Ramda, and Elm](js-ramda-elm.html "2016-10-26")
-- **[watch screencasts for programmers](screencasts.html "2016-10-25")**
-- [edit text with TextEdit.app](macos/textedit.html "2016-09-17")
-- [learn Markdown](markdown.html "2016-08-30")
-- [start a standalone website](standalone.html "2016-08-23")
-- [decide if you need a website](website.html "2016-08-15")
+<a class="link" href="words.html">
+<img src="/openbsd.amsterdam/avatar.png" class="w2 mt2 br-100">
+<img src="/ref/antranigv.jpeg" class="br-100 w2">
+<img src="/ref/av.jpeg" class="br-100 w2">
+<img src="/ref/b3h3m0th.jpeg" class="br-100 w2">
+<img src="/ref/brutusunix.jpeg" class="br-100 w2">
+<img src="/ref/ds.jpeg" class="br-100 w2">
+<img src="/ref/h3artbl33d.jpeg" class="br-100 w2">
+<img src="/ref/iah.jpeg" class="br-100 w2">
+<img src="/ref/lambdanerd.jpeg" class="br-100 w2">
+<img src="/ref/leonvolunteers.jpeg" class="br-100 w2">
+<img src="/ref/pikkabird.jpeg" class="br-100 w2">
+<img src="/ref/pkotrcka.jpeg" class="br-100 w2">
+<img src="/ref/rossijonas.jpeg" class="br-100 w2">
+<img src="/ref/sadhya_mafia.jpeg" class="br-100 w2">
+<img src="/ref/sethhanford.jpeg" class="br-100 w2">
+<img src="/ref/ts.jpeg" class="br-100 w2">
+<img src="/ref/tuxbsd.jpeg" class="br-100 w2">
+<img src="/ref/vetelko.jpeg" class="br-100 w2">
+<img src="/ref/wesley974.jpeg" class="br-100 w2">
+</a>

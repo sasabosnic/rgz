@@ -24,15 +24,18 @@ main() {
 	: "${ROOT:=}"
 	HEADER="/htdocs/www/raw/_header.html"
 	FOOTER="/htdocs/www/raw/_footer.html"
+	PADDLE_ID=$(cat "$DB/paddle/id")
+	PADDLE_AUTH_CODE=$(cat "$DB/paddle/auth_code")
 
 	URI=${REQUEST_URI##/$BASE_URL}
 	case "$REQUEST_METHOD$URI" in
-		GET/paddle/success)		http500 'success';;
+		GET/*?checkout=*)		paddle_checkout;;
 		GET/paddle/cancel)		http500 'cancel';;
 		GET/*?log_out*)			log_out;;
 		GET/*?magic=*) 			verify_magic_link;;
 		GET/*?setup*) 			setup;;
 		GET/*?wait_for_magic_link*) 	wait_for_magic_link;;
+		GET/*?profile*)			render_profile_page;;
 		GET/*) 				render_page;;
 		POST/*?send_magic_link*) 	send_magic_link;;
 		*) 				full_stop 'Wat?';;
@@ -43,23 +46,73 @@ main() {
 ##############################################################################
 
 
+paddle_checkout() {
+	u="${REQUEST_URI%%\?*}"
+	m_id=$(get_cookie 'm_id')
+	s_key=$(get_cookie 's_key')
+	f="$DB/members/$m_id/sessions/$s_key"
+
+	test -f "$f" || full_stop 'no member'
+	c_id=$(get_value "$QUERY_STRING" 'checkout')
+	sub_id=$(
+		curl -s GET \
+		https://checkout.paddle.com/api/1.0/order?checkout_id="$c_id" |
+		jq '.order.subscription_id'
+	)
+
+	make_file "$DB/members/$m_id/email" "$e"
+
+	fetch_subscription_stats "$sub_id" |
+	write_stats
+
+
+}
+
+fetch_subscription_stats() {
+	sub=$(
+		curl -s -X POST \
+		-d vendor_id="$PADDLE_ID" \
+		-d vendor_auth_code="$PADDLE_AUTH_CODE" \
+		-d subscription_id="$sub_id" \
+		https://vendors.paddle.com/api/2.0/subscription/users |
+		jq '.response[0]'
+	)
+
+	# if state = deleted then show pricing
+	# if state = active  then show stats
+	# if state = past_due then show stats
+
+	user_email=$(echo "$sub" | jq '.user_email')
+	update_url=$(echo "$sub" | jq '.update_url')
+	cancel_url=$(echo "$sub" | jq '.cancel_url')
+	state=$(echo "$sub" | jq '.state')
+	next_payment=$(echo "$sub" |
+	jq '"\(.next_payment.amount) \(.next_payment.currency)"')
+	next_due=$(echo "$sub" | jq '.next_payment.date')
+
+	http500 '
+next_payment: '"$next_payment"'
+next_due: '"$next_due"'
+update_url: '"$update_url"'
+cancel_url: '"$cancel_url"'
+state: '"$state"'
+user_email: '"$user_email"'
+'
+
+}
+
+
+
 wait_for_magic_link() {
 	u="${REQUEST_URI%%\?*}"
 	m_id=$(get_cookie 'm_id')
 	s_key=$(get_cookie 's_key')
 	f="$DB/members/$m_id/sessions/$s_key"
 
-	if test -f "$f"
-	then
-		echo 'Status: 303 See Other'
-		echo "Location: $u"
-		echo 'Content-Type: text/html; charset=utf-8'
-		echo
-		exit 0
-	fi
+	test -f "$f" && http303 "$u"
 
 	http200 '
-<div class="pa3 ba mt4 bg-white b--light-gray dark-gray f7">
+<div class="pv3 mt4 dark-gray">
 <div class="mb2">
 Sending a magic link to you in a minute.<br>
 Please <b>check your mailbox</b>.<br><br>
@@ -77,14 +130,7 @@ start_over() {
 	m_id=$(get_cookie 'm_id')
 	s_key=$(get_cookie 's_key')
 	f="$DB/members/$m_id/sessions/$s_key"
-	if test -f "$f"
-	then
-		echo 'Status: 303 See Other'
-		echo "Location: $u"
-		echo 'Content-Type: text/html; charset=utf-8'
-		echo
-		exit 0
-	fi
+	test -f "$f" && http303 "$u"
 
 	http200 '<h1>Oops...</h1><p>'"$err"'</p>
 <p><a href="'"$u"'">Start over</a></p>'
@@ -126,15 +172,12 @@ verify_magic_link() {
 
 	s_key=$(create_session "$m_id")
 
-	echo 'Status: 303 See Other'
-	echo "Location: ${REQUEST_URI%%\?*}"
-	echo 'Content-Type: text/html; charset=utf-8'
-	echo "Set-Cookie: m_id=$m_id; Path=/; HttpOnly"
-	echo "Set-Cookie: s_key=$s_key; Path=/; HttpOnly"
-	echo 'Set-Cookie: key_a=; Path=/; HttpOnly'
-	echo 'Set-Cookie: e_hash=; Path=/; HttpOnly'
-	echo
-	exit 0
+	http303 "${REQUEST_URI%%\?*}" \
+'Content-Type: text/html; charset=utf-8
+Set-Cookie: m_id='"$m_id"'; Path=/; HttpOnly
+Set-Cookie: s_key='"$s_key"'; Path=/; HttpOnly
+Set-Cookie: key_a=; Path=/; HttpOnly
+Set-Cookie: e_hash=; Path=/; HttpOnly'
 }
 
 
@@ -145,13 +188,10 @@ log_out() {
 	f="$DB/members/$m_id/sessions/$s_key"
 	test -f "$f" && rm "$f"
 
-	echo 'Status: 303 See Other'
-	echo "Location: ${REQUEST_URI%%\?*}"
-	echo 'Content-Type: text/html; charset=utf-8'
-	echo "Set-Cookie: m_id=; Path=/; HttpOnly"
-	echo "Set-Cookie: s_key=; Path=/; HttpOnly"
-	echo
-	exit 0
+	http303 "${REQUEST_URI%%\?*}" \
+'Content-Type: text/html; charset=utf-8
+Set-Cookie: m_id=; Path=/; HttpOnly
+Set-Cookie: s_key=; Path=/; HttpOnly'
 }
 
 
@@ -178,15 +218,12 @@ create_member() {
 
 	s_key=$(create_session "$m_id")
 
-	echo 'Status: 303 See Other'
-	echo "Location: ${REQUEST_URI%%\?*}"
-	echo 'Content-Type: text/html; charset=utf-8'
-	echo "Set-Cookie: m_id=$m_id; Path=/; HttpOnly"
-	echo "Set-Cookie: s_key=$s_key; Path=/; HttpOnly"
-	echo 'Set-Cookie: key_a=; Path=/; HttpOnly'
-	echo 'Set-Cookie: e_hash=; Path=/; HttpOnly'
-	echo
-	exit 0
+	http303 "${REQUEST_URI%%\?*}" \
+'Content-Type: text/html; charset=utf-8
+Set-Cookie: m_id='"$m_id"'; Path=/; HttpOnly
+Set-Cookie: s_key='"$s_key"'; Path=/; HttpOnly
+Set-Cookie: key_a=; Path=/; HttpOnly
+Set-Cookie: e_hash=; Path=/; HttpOnly'
 }
 
 
@@ -220,19 +257,11 @@ Hey, please open this link in the same browser you requested it from:
 
 The link will expire in an hour. Sent to: '"$e"
 
-	echo 'Status: 303 See Other'
-	echo "Location: ${REQUEST_URI%%\?*}?wait_for_magic_link"
-	echo 'Content-Type: text/html; charset=utf-8'
-	echo "Set-Cookie: key_a=$key_a; Path=/; HttpOnly"
-	echo "Set-Cookie: e_hash=$e_hash; Path=/; HttpOnly"
-	echo
-	exit 0
+	http303 "${REQUEST_URI%%\?*}?wait_for_magic_link" \
+'Content-Type: text/html; charset=utf-8
+Set-Cookie: key_a='"$key_a"'; Path=/; HttpOnly
+Set-Cookie: e_hash='"$e_hash"'; Path=/; HttpOnly'
 }
-
-
-##############################################################################
-
-
 
 
 ##############################################################################
@@ -245,30 +274,36 @@ subscription_form() {
 	test -f "$DB/members/$m_id/email" &&
 	e=$(cat "$DB/members/$m_id/email")
 
-	box='
+	header='<div class="f7 mt2"><a href="?profile">'"$e"'</a></div>'
+	footer='
 <div id="Continue"
-class="z-index-1 sticky top-1 mt3 pa3 ba bg-white b--light-gray dark-gray f7 tc">
-
-	<div class="mb2">You logged in as <em>'"$e"'</em>.
-	Upgrade&nbsp;to&nbsp;continue.</div>
+class="z-index-1 sticky top-0 mt4 pv3 bg-near-white dark-gray tc">
+	<p>Upgrade to continue.</p>
 
 	<button id="button-549707"
-	class="f7 outline dib pa2 ba mr2 mb2 w-100 w4-m w4-l
+	class="outline dib pa2 ba mr2 mb2 w-100 w4-m w4-l
 	black bg-white b--light-gray hover-bg-black hover-white">
-	<span class="paddle-net b" data-product="549707">&euro;9.00</span>
+	<span class="paddle-net b"
+	data-product="549707">&euro;9.00</span>
 	/&nbsp;month
 	</button>
 
 	<button id="button-549237"
-	class="f7 outline dib pa2 ba mr2 mb2 w-100 w4-m w4-l
+	class="outline dib pa2 ba mr2 mb2 w-100 w4-m w4-l
 	black bg-yellow b--black hover-bg-black hover-white">
-	<span class="paddle-net b" data-product="549237">&euro;90.00</span>
+	<span class="paddle-net b"
+	data-product="549237">&euro;90.00</span>
 	/&nbsp;year
 	</button>
 
-	<span class="w-100 w4-m w4-l">
-	<a href="/'"$BASE_URL"'/#Pricing">Pricing</a>
-	</span>
+	<div>
+	<a id="button-551192" href="https://pay.paddle.com/checkout/551192">
+	Enterprise
+	<span class="paddle-net b"
+	data-product="551192">&euro;550.00</span>
+	/&nbsp;month</a>
+	</div>
+
 </div>
 
 <script src="https://cdn.paddle.com/paddle/paddle.js"></script>
@@ -277,6 +312,7 @@ Paddle.Setup({ vendor: 38540 });
 [
   549707,
   549237,
+  551192,
 ].forEach(
   function(x) {
     //Paddle.Product.Prices(x, console.log);
@@ -287,8 +323,14 @@ Paddle.Setup({ vendor: 38540 });
         Paddle.Checkout.open({
           product: x,
           email: "'"$e"'",
-          passthrough: "'"${REQUEST_URI%%\?*}"'",
-          country: "GB",
+          // closeCallback: console.log,
+          successCallback: function(data) {
+            window.location = "'"${REQUEST_URI%%\?*}?checkout="'" + data.checkout.id;
+            console.log(data);
+            var checkoutId = data.checkout.id;
+            Paddle.Order.details(checkoutId, console.log);
+          }
+
         });
       },
     false);
@@ -297,16 +339,17 @@ Paddle.Setup({ vendor: 38540 });
 </script>
 '
 
-http200 "$(tags_to_upper < "$f" | obfuscate "$box")"
+http200 "$(tags_to_upper < "$f" | obfuscate "$header" "$footer")"
 
 }
 
 
 new_session_form() {
 	f="$1"
-	box='
+	header='<div class="f7 mt2"><a href="#Continue">Register or log in</a></div>'
+	footer='
 <div id="Continue"
-class="z-index-1 sticky top-1 mt3 pa3 ba bg-white b--light-gray dark-gray f7 tc">
+class="z-index-1 sticky top-0 mt4 pv3 tc">
 <div class="mb2">Type-in your email address</div>
 <div class="cf center">
 <form
@@ -337,18 +380,20 @@ class="z-index-1 sticky top-1 mt3 pa3 ba bg-white b--light-gray dark-gray f7 tc"
 
 </form>
 
-<span class="ph2">
+<p class="ph2 f7">
 By clicking <em>Register or log in</em> you are accepting
-<a href="/terms.html">User&nbsp;Agreement</a> and
-<a href="/privacy.html">Privacy&nbsp;policy</a>.
-This&nbsp;site&nbsp;uses&nbsp;cookies.</span>
+<a href="/terms.html">User&nbsp;Agreement</a>,
+<a href="/privacy.html">Privacy&nbsp;Policy</a>,
+<a href="/'"$BASE_URL"'/#Pricing">Pricing</a>, and
+some cookies. &#x1F36A;
+</p>
 
 </div>
 </div>
 </div>
 '
 
-http200 "$(tags_to_upper < "$f" | obfuscate "$box")"
+http200 "$(tags_to_upper < "$f" | obfuscate "$header" "$footer")"
 
 }
 
@@ -369,59 +414,52 @@ render_page() {
 	test -f "$DB/members/$m_id/expires_at" ||
 	subscription_form "$f" "$m_id"
 
-	e_at=$(cat "$DB/members/$m_id/expires_at")
-	e_on=$(date -j -r "$e_at" '+%b %d, %Y')
-	t_l=$(time_left "$e_at")
+	test -f "$DB/members/$m_id/email" &&
+	e=$(cat "$DB/members/$m_id/email")
+
+	http200 '<div class="f7 mt2"><a href="?profile">'"$e"'</a></div>
+'"$(cat "$f")"
+}
+
+render_profile_page() {
+	u="${REQUEST_URI%%\?*}"
+	m_id=$(get_cookie 'm_id')
+	s_key=$(get_cookie 's_key')
+
+	f_s_key="$DB/members/$m_id/sessions/$s_key"
+
+	test -f "$f_s_key" || http303 "$u"
+
+	f_e_at="$DB/members/$m_id/expires_at"
+	if test -f "$f_e_at"
+	then
+		e_at=$(cat "$DB/members/$m_id/expires_at")
+		e_on=$(date -j -r "$e_at" '+%b %e, %Y')
+		m_stat='
+<p>Your membership has been paid till <b>'"$e_on"'</b>,<br>
+the next payment of <b>&euro;9</b> will be processed via <b>PayPal</b>.</p>
+<p>You can <a href="/cancel">cancel</a> or
+<a href="/update">change the next payment</a> anytime.</p>
+'
+	else
+		m_stat='
+<p>Your membership has been expired.<br>
+You can <a href="'"$u"'#Continue">re-new your membership</a> anytime.</p>
+'
+	fi
 
 	test -f "$DB/members/$m_id/email" &&
 	e=$(cat "$DB/members/$m_id/email")
 
-	if test -f "$DB/members/$m_id/paypal_agreement_id" &&
-	test -f "$DB/members/$m_id/paypal_agreement_state"
-	then
-		a_id=$(cat "$DB/members/$m_id/paypal_agreement_id")
-		a_s=$(cat "$DB/members/$m_id/paypal_agreement_state")
-
-		p_d=$(cat "$DB/paypal/domain")
-		a_uri="https://www.$p_d/myaccount/autopay/connect/$a_id"
-
-		case "$a_s" in
-
-			Pending) t="$e"' &mdash;
-<a href="'$a_uri'"
-	title="Processing may take up to 24 hours">Pending</a>...'
-				;;
-
-			Active) t="$e"' &mdash;
-<a href="'$a_uri'"
-	title="Next payment on '"$e_on"'">'"$t_l"'</a>'
-				;;
-
-			Cancelled) t="$e"' &mdash;
-<a href="'$a_uri'"
-	title="Next payments cancelled. Expires on '"$e_on"'">'"$t_l"'</a>'
-				;;
-
-			*) t="$e &mdash; $t_l";;
-		esac
-
-	else t="$e &mdash; $t_l";
-	fi
 
 	http200 '
-<div class="pa3 ba bg-white b--light-gray dark-gray f7 tc">
-'"$t"'
-</div>
-'"$(cat "$f")"
-}
+<div class="f7 mt2"><a href='"$u"'>Go back</a></div>
 
-
-time_left() {
-	e_at="$1"
-	e_in=$(( e_at - $(date +%s) ))
-	test "$e_in" -lt 86400 && echo "expires today" && return
-	test "$e_in" -lt 172800 && echo "expires tomorrow" && return
-	test "$e_in" -ge 172800 && echo "$(( e_in / 86400 )) days" && return
+<p><h1>Hello</h1> and <em>thank you</em> for your support. &#x2764;</p>
+'"$m_stat"'
+<p><p>You'\''re logged in as <b>'"$e"'</b>.</p>
+<p><a href="?logout">Log out</a></p>
+'
 }
 
 
@@ -486,10 +524,11 @@ get_value() {
 
 
 obfuscate() {
+	echo "$1"
 	page=$(cat)
 	echo "$page" |
 	awk '{ print; if ( $0 == "<!-- cut -->" ) exit }'
-	echo "$1"
+	echo "$2"
 	cut=$(
 	echo "$page" |
 	awk '
@@ -503,9 +542,9 @@ obfuscate() {
 	)
 	test -n "$cut" || return
 	echo '
-<div class="f7 sans-serif gray bb b--light-gray pv2 mt2">
+<p class="f7 gray tc">
 The rest of the page is obfuscated
-</div>
+</p>
 <div class="blur3 z-index--1">
 '"$cut"'
 </div>
@@ -568,6 +607,15 @@ http404() {
 	exit 0
 }
 
+http303() {
+	echo 'Status: 303 See Other'
+	echo "Location: $1"
+	echo 'Content-Type: text/html; charset=utf-8'
+	test -n "$2" && echo "$2"
+	echo
+	exit 0
+}
+
 http200() {
 	echo 'Status: 200 OK'
 	echo
@@ -577,12 +625,15 @@ http200() {
 	exit 0
 }
 
+
 ##############################################################################
 
 
 setup() {
 	errs=$(
 		setup_test_deps
+		test -n "$PADDLE_ID" || echo "$PADDLE_ID: not defined"
+		test -n "$PADDLE_AUTH_CODE" || echo "$PADDLE_AUTH_CODE: not defined"
 		test -d "$PAGES" || echo "$PAGES: not a dir"
 		test -f "$HEADER" || echo "$HEADER: not a file"
 		test -f "$FOOTER" || echo "$FOOTER: not a file"
