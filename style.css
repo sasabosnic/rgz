@@ -41,6 +41,7 @@ h1, h2, h3, h4 { margin-bottom: 0; }
 .hover-b--xrpb:hover { border-color: #808080; }
 .near-white { color: #f4f4f4; }
 .white, .white:visited, .hover-white:hover, .hover-white:hover:visited, .hover-white:focus, .hover-white:hover:focus { color: #fff; }
+.red, .red:visited, .hover-red:hover, .hover-red:hover:visited, .hover-red:focus, .hover-red:hover:focus { color: #b22; }
 .white-60 { color: rgba(255, 255, 255, .6); }
 
 .blur3 { filter: blur(3px) opacity(0.3); }

@@ -22,22 +22,21 @@ main() {
 	: "${DB:=/db/www}"
 	: "${PAGES:=/htdocs/$BASE_URL}"
 	: "${ROOT:=}"
-	HEADER="/htdocs/www/raw/_header.html"
-	FOOTER="/htdocs/www/raw/_footer.html"
-	PADDLE_ID=$(cat "$DB/paddle/id")
-	PADDLE_AUTH_CODE=$(cat "$DB/paddle/auth_code")
+	HEADER='/htdocs/www/raw/_header.html'
+	FOOTER='/htdocs/www/raw/_footer.html'
 
 	URI=${REQUEST_URI##/$BASE_URL}
 	case "$REQUEST_METHOD$URI" in
-		GET/*?checkout=*)		paddle_checkout;;
-		GET/paddle/cancel)		http500 'cancel';;
-		GET/*?log_out*)			log_out;;
-		GET/*?magic=*) 			verify_magic_link;;
-		GET/*?setup*) 			setup;;
-		GET/*?wait_for_magic_link*) 	wait_for_magic_link;;
-		GET/*?profile*)			render_profile_page;;
-		GET/*) 				render_page;;
+		GET/*?setup*) 			paddle_init; setup;;
 		POST/*?send_magic_link*) 	send_magic_link;;
+		GET/*?wait_for_magic_link*) 	wait_for_magic_link;;
+		GET/*?magic=*) 			verify_magic_link;;
+		GET/*?checkout=*)		paddle_checkout;;
+		GET/*?profile*)			render_profile_page;;
+		GET/*?cancel*)			paddle_cancel;;
+		GET/*?sync*)			paddle_sync;;
+		GET/*?log_out*)			log_out;;
+		GET/*) 				render_page;;
 		*) 				full_stop 'Wat?';;
 	esac
 }
@@ -46,13 +45,35 @@ main() {
 ##############################################################################
 
 
+paddle_cancel() {
+	u="${REQUEST_URI%%\?*}"
+	m_id=$(get_cookie 'm_id')
+	s_key=$(get_cookie 's_key')
+	f="$DB/members/$m_id/sessions/$s_key"
+	test -f "$f" || full_stop 'no member'
+
+	f="$DB/members/$m_id/paddle_subscription"
+	test -f "$f" || paddle_no_sub
+
+	sub_id=$(jq '.subscription_id' "$f")
+	test -n "$sub_id" || paddle_no_sub
+
+	curl -s -X POST \
+	-d vendor_id="$PADDLE_ID" \
+	-d vendor_auth_code="$PADDLE_AUTH_CODE" \
+	-d subscription_id="$sub_id" \
+	https://vendors.paddle.com/api/2.0/subscription/users_cancel
+
+	paddle_no_sub
+}
+
 paddle_checkout() {
 	u="${REQUEST_URI%%\?*}"
 	m_id=$(get_cookie 'm_id')
 	s_key=$(get_cookie 's_key')
 	f="$DB/members/$m_id/sessions/$s_key"
-
 	test -f "$f" || full_stop 'no member'
+
 	c_id=$(get_value "$QUERY_STRING" 'checkout')
 	sub_id=$(
 		curl -s GET \
@@ -60,15 +81,149 @@ paddle_checkout() {
 		jq '.order.subscription_id'
 	)
 
-	make_file "$DB/members/$m_id/email" "$e"
-
-	fetch_subscription_stats "$sub_id" |
-	write_stats
-
-
+	paddle_fetch_subscription "$sub_id"
 }
 
-fetch_subscription_stats() {
+paddle_init() {
+	test -x '/bin/cat' || http500 'cp /bin/cat /var/www/bin/cat
+FAIL'
+
+	f="$DB/paddle/id"
+	test -r "$f" || http500 "PADDLE_ID: $f not a file"
+	PADDLE_ID=$(cat "$f")
+
+	f="$DB/paddle/auth_code"
+	test -r "$f" || http500 "PADDLE_AUTH_CODE: $f not a file"
+	PADDLE_AUTH_CODE=$(cat "$f")
+}
+
+paddle_fetch_subscription_by_email() {
+	e="$1"
+
+	paddle_init
+	sub=$(
+		curl -s -X POST \
+		-d vendor_id="$PADDLE_ID" \
+		-d vendor_auth_code="$PADDLE_AUTH_CODE" \
+		https://vendors.paddle.com/api/2.0/subscription/users |
+		jq '.response[] | select(.user_email=="'"$e"'")'
+	)
+
+	test -n "$sub" || paddle_no_sub
+
+	make_file "$DB/members/$m_id/paddle_subscription" "$sub"
+	paddle_sync
+}
+
+paddle_no_sub() {
+	u="${REQUEST_URI%%\?*}"
+	m_id=$(get_cookie 'm_id')
+	s_key=$(get_cookie 's_key')
+
+	f="$DB/members/$m_id/sessions/$s_key"
+	test -f "$f" || http303 "$u"
+
+	f="$DB/members/$m_id/email"
+	test -f "$f" || full_stop 'no email'
+	e=$(cat "$f")
+
+	f="$DB/members/$m_id/paddle_subscription"
+	test -f "$f" && rm "$f"
+
+	f="$DB/members/$m_id/expires_at"
+	if test -f "$f"
+	then
+		e_at=$(cat "$f")
+		e_on=$(date -j -r "$e_at" '+%e %b %Y')
+		state='
+<p>Your memebership has been paid till <b>'"$e_on"'</b>,<br>
+and then will be cancelled, no payments scheduled.<br>'
+	else
+		state='
+<p>Your membership has been cancelled.<br>
+You can <a href="'"$u"'#Continue">re-new your membership</a> anytime.</p>'
+	fi
+
+	make_file "$DB/members/$m_id/state" "$state"'
+<div class="f7">Updated on '"$(date "+%e %b %Y at %H:%M:%S")"'.
+<a href="?sync">Refresh</a></div>
+'
+	http303 "$u?profile"
+}
+
+paddle_sync() {
+	u="${REQUEST_URI%%\?*}"
+	m_id=$(get_cookie 'm_id')
+	s_key=$(get_cookie 's_key')
+
+	f="$DB/members/$m_id/sessions/$s_key"
+	test -f "$f" || http303 "$u"
+
+	f="$DB/members/$m_id/email"
+	test -f "$f" || full_stop 'no email'
+	e=$(cat "$f")
+
+	f="$DB/members/$m_id/paddle_subscription"
+	test -f "$f" || paddle_fetch_subscription_by_email "$e"
+
+	sub=$(jq . "$f")
+	sub_state=$(echo "$sub" | jq -r '.state')
+	update_url=$(echo "$sub" | jq -r '.update_url')
+	next_due=$(echo "$sub" | jq -r '.next_payment.date')
+
+	if test "$sub_state" = 'active'
+	then
+		e_at=$(date -j '+%s' "$(echo "$next_due" | tr -d'-')"0000)
+		e_on=$(date -j -r "$e_at" '+%b %e, %Y')
+		make_file "$DB/members/$m_id/expires_at" "$e_at"
+	else
+		rm "$DB/members/$m_id/expires_at"
+	fi
+
+	case "$sub_state" in
+		active)
+			next_amount=$(echo "$sub" | jq -r '.next_payment.amount')
+			next_currency=$(echo "$sub" | jq -r '.next_payment.currency')
+			next_payment="$(printf '%.2f' "$next_amount") $next_currency"
+			state='
+<p>Your memebership has been paid till <b>'"$e_on"'</b>,<br>
+the next payment of <b>'"$next_payment"'</b> will be processed on that day.<br>
+<span class="f7">You can <a class="red hover-red"
+title="Are you sure?" href="?cancel">cancel payments instantly</a> or
+<a href="'"$update_url"'">change your payment method</a> anytime.</span></p>
+'
+		;;
+
+		deleted)
+			state='
+<p>Your membership has been cancelled.<br>
+You can <a href="'"$u"'#Continue">re-new your membership</a> anytime.</p>
+'
+		;;
+
+		past_due) state='
+<p>Your membership has been suspended. Waiting for the payment.
+<p>You can <a href="'"$cancel_url"'">cancel</a> or
+<a href="'"$update_url"'">change the next payment</a> anytime.</p>
+'
+		;;
+
+		*) full_stop 'wrong subscription state' ;;
+	esac
+
+	make_file "$DB/members/$m_id/state" "$state"'
+<div class="f7">Updated on '"$(date "+%e %b %Y at %H:%M:%S")"'.
+<a href="?sync">Refresh</a></div>
+'
+	http303 "$u?profile"
+}
+
+paddle_fetch_subscription() {
+	u="${REQUEST_URI%%\?*}"
+	m_id=$(get_cookie 'm_id')
+	sub_id="$1"
+
+	paddle_init
 	sub=$(
 		curl -s -X POST \
 		-d vendor_id="$PADDLE_ID" \
@@ -77,28 +232,16 @@ fetch_subscription_stats() {
 		https://vendors.paddle.com/api/2.0/subscription/users |
 		jq '.response[0]'
 	)
+	f="$DB/members/$m_id/email"
+	test -f "$f" || full_stop 'no email'
 
-	# if state = deleted then show pricing
-	# if state = active  then show stats
-	# if state = past_due then show stats
+	e=$(cat "$f")
+	user_email=$(echo "$sub" | jq -r '.user_email')
 
-	user_email=$(echo "$sub" | jq '.user_email')
-	update_url=$(echo "$sub" | jq '.update_url')
-	cancel_url=$(echo "$sub" | jq '.cancel_url')
-	state=$(echo "$sub" | jq '.state')
-	next_payment=$(echo "$sub" |
-	jq '"\(.next_payment.amount) \(.next_payment.currency)"')
-	next_due=$(echo "$sub" | jq '.next_payment.date')
+	test "$user_email" = "$e" || http500 'wrong email'
 
-	http500 '
-next_payment: '"$next_payment"'
-next_due: '"$next_due"'
-update_url: '"$update_url"'
-cancel_url: '"$cancel_url"'
-state: '"$state"'
-user_email: '"$user_email"'
-'
-
+	make_file "$DB/members/$m_id/paddle_subscription" "$sub"
+	paddle_sync
 }
 
 
@@ -113,10 +256,12 @@ wait_for_magic_link() {
 
 	http200 '
 <div class="pv3 mt4 dark-gray">
-<div class="mb2">
+<p>
 Sending a magic link to you in a minute.<br>
-Please <b>check your mailbox</b>.<br><br>
-<a href="'"$u"'#Continue">Or try again</a></div>
+Please <b>check your mailbox</b>.</p>
+<p class="f7">Didn'\''t get an email?
+<a href="'"$u"'#Continue">Try again</a>
+</p>
 </div>
 '
 }
@@ -304,6 +449,8 @@ class="z-index-1 sticky top-0 mt4 pv3 bg-near-white dark-gray tc">
 	/&nbsp;month</a>
 	</div>
 
+	<p class="f7">Already paid? <a href="?sync">Refresh</a></p>
+
 </div>
 
 <script src="https://cdn.paddle.com/paddle/paddle.js"></script>
@@ -426,39 +573,25 @@ render_profile_page() {
 	m_id=$(get_cookie 'm_id')
 	s_key=$(get_cookie 's_key')
 
-	f_s_key="$DB/members/$m_id/sessions/$s_key"
+	f="$DB/members/$m_id/sessions/$s_key"
+	test -f "$f" || http303 "$u"
 
-	test -f "$f_s_key" || http303 "$u"
+	f="$DB/members/$m_id/email"
+	test -f "$f" && e=$(cat "$f")
 
-	f_e_at="$DB/members/$m_id/expires_at"
-	if test -f "$f_e_at"
-	then
-		e_at=$(cat "$DB/members/$m_id/expires_at")
-		e_on=$(date -j -r "$e_at" '+%b %e, %Y')
-		m_stat='
-<p>Your membership has been paid till <b>'"$e_on"'</b>,<br>
-the next payment of <b>&euro;9</b> will be processed via <b>PayPal</b>.</p>
-<p>You can <a href="/cancel">cancel</a> or
-<a href="/update">change the next payment</a> anytime.</p>
-'
-	else
-		m_stat='
-<p>Your membership has been expired.<br>
-You can <a href="'"$u"'#Continue">re-new your membership</a> anytime.</p>
-'
+
+	f="$DB/members/$m_id/state"
+	if test -f "$f"
+	then state=$(cat "$DB/members/$m_id/state")
+	else state='<p>Your membership status is unknown.</p>'
 	fi
-
-	test -f "$DB/members/$m_id/email" &&
-	e=$(cat "$DB/members/$m_id/email")
-
 
 	http200 '
 <div class="f7 mt2"><a href='"$u"'>Go back</a></div>
-
 <p><h1>Hello</h1> and <em>thank you</em> for your support. &#x2764;</p>
-'"$m_stat"'
-<p><p>You'\''re logged in as <b>'"$e"'</b>.</p>
-<p><a href="?logout">Log out</a></p>
+'"$state"'
+<div class="f7">You'\''re logged in as <b title="'"member: $m_id\nsession: $s_key"'">'"$e"'</b>.
+<span class="f7"><a href="?log_out">Log out</a></div>
 '
 }
 
@@ -632,11 +765,9 @@ http200() {
 setup() {
 	errs=$(
 		setup_test_deps
-		test -n "$PADDLE_ID" || echo "$PADDLE_ID: not defined"
-		test -n "$PADDLE_AUTH_CODE" || echo "$PADDLE_AUTH_CODE: not defined"
-		test -d "$PAGES" || echo "$PAGES: not a dir"
-		test -f "$HEADER" || echo "$HEADER: not a file"
-		test -f "$FOOTER" || echo "$FOOTER: not a file"
+		test -d "$PAGES" || echo "PAGES: $PAGES: not a dir"
+		test -r "$HEADER" || echo "HEADER: $HEADER: not a file"
+		test -r "$FOOTER" || echo "FOOTER: $FOOTER: not a file"
 		test -d "$DB" || echo "$DB not a dir"
 	)
 	test -z "$errs" || http500 "$errs\\nFAILED"
@@ -645,7 +776,6 @@ setup() {
 	echo '<pre>PASS</pre>'
 	exit 0
 }
-
 
 setup_test_deps() {
 	test -x '/usr/local/bin/curl' || echo 'pkg_add curl'
@@ -666,6 +796,7 @@ setup_test_deps() {
 /bin/sha256
 /usr/bin/awk
 /usr/bin/b64encode
+/usr/bin/cut
 /usr/bin/find
 /usr/bin/grep
 /usr/bin/head

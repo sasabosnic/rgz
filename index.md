@@ -52,7 +52,7 @@ build a fully functional and production-ready website like this
 one. All you need is to follow my direct and detailed instructions.
 You will need nothing else, just my guides. Build as you learn.
 
-- [Before we start](/m/toc.html)
+- [Before we start](/m/)
 - [OpenBSD as a desktop](/m/toc.html#OpenBSD as a desktop)
 - [Web server on OpenBSD](/m/toc.html#Web server on OpenBSD)
 - [Plain text and files](/m/toc.html#Plain text and files)
