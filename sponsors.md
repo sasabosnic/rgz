@@ -26,32 +26,32 @@ P.S. Here are all received donations. Please ping me, if yours
 hasn't been listed, or if you want to remove your name from the
 list.
 
-_Updated on 29 Jan 2019_
+_Updated on 5 Feb 2019_
 
 Patreon:
-**[Tom Smyth](https://www.patreon.com/user/creators?u=10913897 "24 Apr 2018 80.00 USD")&nbsp;
+**[Tom Smyth](https://www.patreon.com/user/creators?u=10913897 "24 Apr 2018 90.00 USD")&nbsp;
+[Mischa Peters](https://www.patreon.com/user/creators?u=13855226 "29 Sep 2018 50.00 USD")&nbsp;
+[Denis Borovikov](https://www.patreon.com/user/creators?u=10926064 "25 Apr 2018 45.00 USD")&nbsp;
+[Wesley Moore](https://www.patreon.com/wezm "15 Apr 2018 45.00 USD")&nbsp;
+[Tom Atkinson](https://www.patreon.com/user?u=10778845 "16 Apr 2018 45.00 USD")&nbsp;
 [Aleksey Popov](https://www.patreon.com/user?u=10910753 "24 Apr 2018 45.00 USD")&nbsp;
-[Denis Borovikov](https://www.patreon.com/user/creators?u=10926064 "25 Apr 2018 40.00 USD")&nbsp;
-[Wesley Moore](https://www.patreon.com/wezm "15 Apr 2018 40.00 USD")&nbsp;
-[Tom Atkinson](https://www.patreon.com/user?u=10778845 "16 Apr 2018 40.00 USD")&nbsp;
-[Mischa Peters](https://www.patreon.com/user/creators?u=13855226 "29 Sep 2018 30.00 USD")&nbsp;
+[Mikko Nyman](https://www.patreon.com/user/creators?u=13641444 "18 Sep 2018 40.00 USD")&nbsp;
 [Eric LeBlanc](https://www.patreon.com/user/creators?u=845703 "02 Oct 2018 30.00 USD")&nbsp;
-[Mikko Nyman](https://www.patreon.com/user/creators?u=13641444 "18 Sep 2018 30.00 USD")&nbsp;
-[Andrew Vieyra](https://www.patreon.com/andrewvieyra/creators "31 Oct 2018 20.00 USD")&nbsp;**
-[Wesley Mouedine Assaby](https://twitter.com/wesley974 "20 Aug 2018 20.00 USD")&nbsp;
+[Andrew Vieyra](https://www.patreon.com/andrewvieyra/creators "31 Oct 2018 30.00 USD")&nbsp;**
+[Wesley Mouedine Assaby](https://twitter.com/wesley974 "20 Aug 2018 25.00 USD")&nbsp;
+[micah](https://www.patreon.com/user/creators?u=4721204 "28 May 2018 11.00 USD")&nbsp;
 [Ashe](https://www.patreon.com/kivikakk/creators "26 Nov 2018 10.00 USD")&nbsp;
-[micah](https://www.patreon.com/user/creators?u=4721204 "28 May 2018 10.00 USD")&nbsp;
-[Drew Bell](https://www.patreon.com/droob/creators "29 Apr 2018 8.00 USD")&nbsp;
-[Ilmari Vacklin](https://www.patreon.com/user?u=2288738 "23 Apr 2018 8.00 USD")&nbsp;
-[Alexander Gudulin](https://www.patreon.com/agudulin/creators "14 May 2018 7.00 USD")&nbsp;
+[Drew Bell](https://www.patreon.com/droob/creators "29 Apr 2018 9.00 USD")&nbsp;
+[Ilmari Vacklin](https://www.patreon.com/user?u=2288738 "23 Apr 2018 9.00 USD")&nbsp;
+[Alexander Gudulin](https://www.patreon.com/agudulin/creators "14 May 2018 9.00 USD")&nbsp;
+[Paul Kelly](https://www.patreon.com/user?u=13444615 "08 Sep 2018 4.00 USD")&nbsp;
 [Dylan Thiedeke](https://www.patreon.com/user/creators?u=2300411 "24 Jun 2018 4.00 USD")&nbsp;
-[Paul Kelly](https://www.patreon.com/user?u=13444615 "08 Sep 2018 1.00 USD")&nbsp;
-[Thomas Fragstein](https://www.patreon.com/user/creators?u=3821228 "01 Nov 2018 1.00 USD")&nbsp;
-[Leon Stafford](https://www.patreon.com/beautifulmoalboal "12 Nov 2018 1.00 USD")&nbsp;
-[Roger](https://www.patreon.com/solvaholic/creators "21 Nov 2018 1.00 USD")&nbsp;
-[Isak Holmstr&ouml;m](https://www.patreon.com/iah/creators "03 Nov 2018 1.00 USD")&nbsp;
+[Thomas Fragstein](https://www.patreon.com/user/creators?u=3821228 "01 Nov 2018 3.00 USD")&nbsp;
+[Roger](https://www.patreon.com/solvaholic/creators "21 Nov 2018 3.00 USD")&nbsp;
+[Isak Holmstr&ouml;m](https://www.patreon.com/iah/creators "03 Nov 2018 3.00 USD")&nbsp;
+[Leon Stafford](https://www.patreon.com/beautifulmoalboal "12 Nov 2018 2.00 USD")&nbsp;
 [Ann Choate](https://www.patreon.com/user?u=9470641 "25 Jan 2019 1.00 USD")&nbsp;
-[Peter Kotr&#x10D;ka](https://octodon.social/@pkotrcka "16 May 2018 4.00 USD")&nbsp;
+[Peter Kotr&#x10D;ka](https://octodon.social/@pkotrcka "16 May 2018 3.00 USD")&nbsp;
 [int16h](https://www.patreon.com/0x16h "05 Dec 2018 3.00 USD")&nbsp;
 [Moritz Buhl](https://www.patreon.com/user/creators?u=5130313 "05 Jan 2019 2.00 USD")&nbsp;
 
