@@ -50,7 +50,7 @@ paddle_cancel() {
 	m_id=$(get_cookie 'm_id')
 	s_key=$(get_cookie 's_key')
 	f="$DB/members/$m_id/sessions/$s_key"
-	test -f "$f" || full_stop 'no member'
+	test -f "$f" || start_over 'You are not logged in'
 
 	f="$DB/members/$m_id/paddle_subscription"
 	test -f "$f" || paddle_no_sub
@@ -72,7 +72,7 @@ paddle_checkout() {
 	m_id=$(get_cookie 'm_id')
 	s_key=$(get_cookie 's_key')
 	f="$DB/members/$m_id/sessions/$s_key"
-	test -f "$f" || full_stop 'no member'
+	test -f "$f" || start_over 'You are not logged in'
 
 	c_id=$(get_value "$QUERY_STRING" 'checkout')
 	sub_id=$(
@@ -124,7 +124,7 @@ paddle_no_sub() {
 	test -f "$f" || http303 "$u"
 
 	f="$DB/members/$m_id/email"
-	test -f "$f" || full_stop 'no email'
+	test -f "$f" || start_over 'Cannot find your email'
 	e=$(cat "$f")
 
 	f="$DB/members/$m_id/paddle_subscription"
@@ -160,7 +160,7 @@ paddle_sync() {
 	test -f "$f" || http303 "$u"
 
 	f="$DB/members/$m_id/email"
-	test -f "$f" || full_stop 'no email'
+	test -f "$f" || start_over 'Cannot find your email'
 	e=$(cat "$f")
 
 	f="$DB/members/$m_id/paddle_subscription"
@@ -203,12 +203,12 @@ You can <a href="'"$u"'#Continue">re-new your membership</a> anytime.</p>
 
 		past_due) state='
 <p>Your membership has been suspended. Waiting for the payment.
-<p>You can <a href="'"$cancel_url"'">cancel</a> or
+<p>You can <a href="?cancel">cancel</a> or
 <a href="'"$update_url"'">change the next payment</a> anytime.</p>
 '
 		;;
 
-		*) full_stop 'wrong subscription state' ;;
+		*) start_over 'Wrong subscription state' ;;
 	esac
 
 	make_file "$DB/members/$m_id/state" "$state"'
@@ -233,7 +233,7 @@ paddle_fetch_subscription() {
 		jq '.response[0]'
 	)
 	f="$DB/members/$m_id/email"
-	test -f "$f" || full_stop 'no email'
+	test -f "$f" || start_over 'Cannot find your email'
 
 	e=$(cat "$f")
 	user_email=$(echo "$sub" | jq -r '.user_email')
@@ -301,6 +301,7 @@ verify_magic_link() {
 	test -n "$u_key_b" || start_over 'This magic link is broken'
 
 	u_e_hash=$(get_cookie 'e_hash')
+
 	u_key_a=$(get_cookie 'key_a')
 	test -z "$u_e_hash" || test -z "$u_key_a" &&
 	start_over 'Looks like you are using a different web browser'
@@ -392,15 +393,15 @@ send_magic_link() {
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
-Subject: '"${SERVER_NAME##www.}"': here is your magic link
+Subject: [RGZ.EE] Here is your magic link
 
-Hey, please open this link in the same browser you requested it from:
+Hey, please open this link to log in:
 
-'"$HTTP_ORIGIN${REQUEST_URI%%\?*}?magic=$key_b"'
+'"https://rgz.ee${REQUEST_URI%%\?*}?magic=$key_b"'
 
 --
 
-The link will expire in an hour. Sent to: '"$e"
+The link will expire in a day. Sent to: '"$e"
 
 	http303 "${REQUEST_URI%%\?*}?wait_for_magic_link" \
 'Content-Type: text/html; charset=utf-8
@@ -590,7 +591,7 @@ render_profile_page() {
 <div class="f7 mt2"><a href='"$u"'>Go back</a></div>
 <p><h1>Hello</h1> and <em>thank you</em> for your support &#x2764;</p>
 '"$state"'
-<div class="f7">You'\''re logged in as <b title="'"member: $m_id\nsession: $s_key"'">'"$e"'</b>.
+<div class="f7">You'\''re logged in as <b title="'"member: $m_id\\nsession: $s_key"'">'"$e"'</b>.
 <span class="f7"><a href="?log_out">Log out</a></div>
 '
 }
