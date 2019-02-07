@@ -2,9 +2,24 @@ _Thank you for your kind words and [support](sponsors.html)!_
 
 # People are saying...
 
-"Even though it's Thursday, I have a reason to pick one early entry for the Follow Friday mentions: @romanzolotarev<br>YOU GUYS THIS MAN IS A WIZARD"<br>&mdash;
+"Even though it's Thursday, I have a reason to pick one early entry for the Follow Friday mentions: @romanzolotarev<br>You guys this man is a wizard"<br>&mdash;
 [h3artbl33d](https://twitter.com/h3artbl33d/status/1093472714415898624 "07 Feb 2019")
 (@h3artbl33d)
+
+---
+
+<p id="mwl" class="f4 f3-m f3-l lh-title ni">&#8220;Yeah, if
+he keeps this up he'll be my successor. Which is good, we need
+one.&#8221;</p>
+
+<img src="/ref/mwlauthor.jpeg" class="br-100 w3"><br>
+**Michael Warren Lucas**<br>
+_Author_<br>
+[@mwlauthor]
+(https://twitter.com/mwlauthor/status/1093490147063156738 "07 Feb 2019")<br>
+[mwl.io](https://mwl.io/)
+
+---
 
 "OpenBSD might seem kind of a obscure, but it has a really cool community, which is really helpful. I want to give a shoutout to this one guy. His name is Roman Zolotarev... His articles and his messages have been really helpful to me."<br>&mdash;
 [Wolfgang](https://youtu.be/t2vrRZqDy74?t=553 "06 Feb 2019")

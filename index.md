@@ -35,7 +35,7 @@ safe, neat, and accessible for everyone.&#8221;
 
 <hr>
 
-<div class="mb2"><a href="/"><img
+<div class="mb2"><a href="/about.html"><img
 	src="/avatar120.jpeg"
 	class="w3 br-100"
 	title="romanzolotarev.com"></a></div>

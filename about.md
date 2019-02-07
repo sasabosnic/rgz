@@ -1,8 +1,6 @@
-# Me, myself, and I
-
-<p class="f4 f3-m f3-l lh-title ni">&#8220;A father, husband, son,
-and brother. :)<br>
-I'm 41 with 27 years of experience.<br>
+<p class="f4 f3-m f3-l lh-title ni">&#8220;A
+father, husband, son, and brother.<br>
+I'm 41 with 27 years of work experience.<br>
 A slow fashion webmaster.<br>
 A minimalist.
 </p>
