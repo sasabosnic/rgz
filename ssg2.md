@@ -57,8 +57,8 @@ $ <b>mkdir src dst</b>
 $ <b>echo '# Hello, World!' > src/index.md</b>
 $ <b>echo '&lt;p&gt;&lt;a href="/"&gt;Home&lt;/a&gt;&lt;/p&gt;' &gt; src/_header.html</b>
 $ <b>echo '&lt;p&gt;2018 Roman Zolotarev&lt;/p&gt;' &gt; src/_footer.html</b>
-$ <b>ftp -Vo src/_styles.css https://www.romanzolotarev.com/_styles.css</b>
-_styles.css  100% |**************************|  1020       00:00
+$ <b>ftp -Vo src/_styles.css https://www.romanzolotarev.com/style.css</b>
+style.css  100% |**************************|  1020       00:00
 $ <b>ssg2 src dst 'Test' 'https://www.romanzolotarev.com'</b>
 index.html
 _header.html

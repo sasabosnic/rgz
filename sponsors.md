@@ -89,6 +89,6 @@ supported, please consider supporting them too:
 [The&nbsp;OpenBSD&nbsp;Foundation](https://www.openbsdfoundation.org/donations.html "15 Dec 2017 91920137MK9975307 10.00 EUR\n25 Aug 2017 7BF04702TU178773D 100.00 EUR")&nbsp;
 [The&nbsp;OpenBSD&nbsp;Store](https://www.openbsdstore.com/ "6 May 2018 41389 73.21 GBP")&nbsp;
 [High5!](https://high5.nl/ "20 Jun 2018 60.00 EUR")&nbsp;
-[Michael&nbsp;W&nbsp;Lucas](https://www.michaelwlucas.com/tools/ed "1 Apr 2018 5.00 USD Ed Mastery\n1 Apr 2018 10.00 USD Relayd and Httpd Mastery\n2 Nov 2017 25.00 USD SSH Mastery (e-book sponsor)\n14 Sep 2017 10.00 USD Tarsnap Mastery\n1 Jul 2018 10.00 USD Patreon")&nbsp;
+[Michael&nbsp;W&nbsp;Lucas](https://www.michaelwlucas.com/ "1 Apr 2018 5.00 USD Ed Mastery\n1 Apr 2018 10.00 USD Relayd and Httpd Mastery\n2 Nov 2017 25.00 USD SSH Mastery (e-book sponsor)\n14 Sep 2017 10.00 USD Tarsnap Mastery\n1 Jul 2018 10.00 USD Patreon")&nbsp;
 [Bryan Steele](https://brynet.biz.tm/ "02 Nov 2018 2HE50576BY512230V 20.00 CAD\n16 Apr 2018 5M5560322U154440G 10.00 CAD\n6 Oct 2017 0AB18292BG563772H 5.00 CAD")&nbsp;
 [Ingo Schwarze](https://www.patreon.com/IngoSchwarze "1 Jun 2018 7.00 USD Patreon")&nbsp;

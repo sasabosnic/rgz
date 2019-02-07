@@ -83,7 +83,7 @@ _Entrepreneur and book publisher_<br>
 (@julienxx@mastodon.sdf.org)
 
 "Updated my web server to OpenBSD 6.4 with help from @romanzolotarev. Thanks again for all your work!"<br>&mdash;
-[d4rk_0men](https://twitter.com/d4rk_0men/status/1054764230023364609 "23 Oct 2018")
+[d4rk_0men](https://twitter.com/d4rk_0men "23 Oct 2018")
 (@d4rk_0men)
 
 "Thanks to @romanzolotarev help I got the installer running and pulling packages right now. Installation in progress."<br>&mdash;
@@ -131,7 +131,7 @@ one drive. Roman, you redefine awesome. Thank you!&#8221;</p>
 
 <img src="/ref/h3artbl33d.jpeg" class="br-100 w3"><br>
 **h3artbl33d**<br>
-[h3artbl33d.nl](https://h3artbl33d.nl/blog/about "18 Sep 2018")
+[h3artbl33d.nl](https://h3artbl33d.nl/ "18 Sep 2018")
 
 ---
 
@@ -177,7 +177,7 @@ _Cofounder of HardenedBSD_<br>
 ---
 
 "So... it works! Thanks @romanzolotarev for your guide ! More details in a few minutes"<br>&mdash;
-[V](https://twitter.com/monolit0/status/1031486483885182977 "20 Aug 2018")
+[V](https://twitter.com/monolit0 "20 Aug 2018")
 (@monolit0)
 
 "Just launched my first OpenBSD instance on @Vultr! I'm excited to *finally* dig into it. I blame @romanzolotarev"<br>&mdash;
@@ -200,7 +200,7 @@ _Cofounder of HardenedBSD_<br>
 [Wesley Moore](https://twitter.com/wezm/status/1029674316252688384 "15 Aug 2018")
 (@wezm)
 
-"Read stories of people running #BSD at [bsdjobs.com/people](https://www.bsdjobs.com/people/) it is interesting and motivating. It is edifying experience."<br>&mdash;
+"Read stories of people running #BSD at [bsdjobs.com/people](https://runbsd.info/people/) it is interesting and motivating. It is edifying experience."<br>&mdash;
 [Vetelko](https://twitter.com/vetelko/status/1029833892382089217 "15 Aug 2018")
 (@vetelko)
 
@@ -233,7 +233,7 @@ _Cofounder of HardenedBSD_<br>
 (@lambdanerd)
 
 "about to deploy my first #OpenBSD web server on vultr with special thanks to @romanzolotarev for the helpful guide"<br>&mdash;
-[The Electron User](https://twitter.com/thebadposts/status/1027644226547240960 "09 Aug 2018")
+[The Electron User](https://twitter.com/thebadposts "09 Aug 2018")
 (@thebadposts)
 
 "I've used #OpenBSD on email servers and firewalls since 3.0 (2001) and briefly as my family home computer ~3.6 (2004). But kudos to @romanzolotarev whose consistent advocacy and engagement in the community has spurred me to move my main work laptop there for the first time. Thx!"<br>&mdash;
@@ -264,7 +264,7 @@ _OpenBSD developer_<br>
 [surryhill](https://twitter.com/surryhill/status/1025788422227718145 "4 Aug 2018")
 (@surryhill)
 
-"You're the [@AllanJude](https://twitterc.com/AllanJude) of OpenBSD :)"<br>&mdash;
+"You're the [@AllanJude](https://twitter.com/AllanJude) of OpenBSD :)"<br>&mdash;
 [Farhan Yusufzai](https://twitter.com/FarhanYusufzai/status/1025475485197914112 "3 Aug 2018")
 (@FarhanYusufzai)
 
@@ -277,7 +277,7 @@ _OpenBSD developer_<br>
 (@h3artbl33d@bsd\.network "27 Jul 2018")
 
 "Thanks @romanzolotarev for your password management tool."<br>&mdash;
-[minimalist_unix](https://twitter.com/minimalist_unix/status/1022544604082647040 "26 Jul 2018")
+[minimalist_unix](https://twitter.com/minimalist_unix "26 Jul 2018")
 (@minimalist_unix)
 
 "...thank you for pointing me to the @ergodoxez keyboard. Thank you! It's a nice replacement for my _das keyboard_."<br>&mdash;
@@ -289,7 +289,7 @@ _OpenBSD developer_<br>
 (@rosstimson)
 
 "...Roman's tutorials on his page are awesome. Become a patron and support his effort"<br>&mdash;
-[Peter Kotr&#x10D;ka](https://twitter.com/pkotrcka/status/1015104972185374721 "6 Jul 2018")
+[Peter Kotr&#x10D;ka](https://octodon.social@pkotrcka "6 Jul 2018")
 (@pkotrcka@octodon.social)
 
 "the acme client docs you wrote helped to set this up in no time. Thanks!"<br>&mdash;
@@ -353,7 +353,7 @@ _OpenBSD developer_<br>
 (@rossijonas)
 
 "...thanx again for ssg! Starting to move gists to my site and it couldn't have been more simple."<br>&mdash;
-[(((Mischa &#x1F576; &#x1F421; RCX)))](https://twitter.com/mischapeters/status/1005464189807353857 "9 Jun 2018")
+[(((Mischa &#x1F576; &#x1F421; RCX)))](https://twitter.com/mischapeters "9 Jun 2018")
 (@mischapeters)
 
 "TIL #OpenBSD nvi can do split window... Thanks @romanzolotarev!"<br>&mdash;
@@ -387,11 +387,11 @@ _OpenBSD developer_<br>
 (@v6shell)
 
 "Oh wow, this is something for my long and boring night shifts."<br>&mdash;
-[Peter Kotr&#x10D;ka](https://twitter.com/pkotrcka/status/996695819792330754 "17 May 2018")
+[Peter Kotr&#x10D;ka](https://octodon.social@pkotrcka "17 May 2018")
 (@pkotrcka@octodon.social)
 
 "@romanzolotarev inspired me to create my new #webpage - I'll test some ideas there. I'm going to learn so much :-)"<br>&mdash;
-[Peter Kotr&#x10D;ka](https://twitter.com/pkotrcka/status/996695819792330754 "16 May 2018")
+[Peter Kotr&#x10D;ka](https://octodon.social@pkotrcka "16 May 2018")
 (@pkotrcka@octodon.social)
 
 "@romanzolotarev your tweets made me write my first ed(1) powered refactoring. I thought you would've been proud to know. ;)"<br>&mdash;
@@ -457,7 +457,7 @@ find spare couple hours yet :)&#8221;</p>
 (@kaihendry)
 
 "It's a nice .cwmrc! I even modeled mine after it. Recommended.  5&nbsp;stars."<br>&mdash;
-[(((Mischa &#x1F576; &#x1F421; RCX)))](https://twitter.com/mischapeters/status/987004963682430976 "19 Apr 2018")
+[(((Mischa &#x1F576; &#x1F421; RCX)))](https://twitter.com/mischapeters "19 Apr 2018")
 (@mischapeters)
 
 "Sounds good. Thanks again for all of your awesome work! Truly appreciate it :)"<br>&mdash;
@@ -487,7 +487,7 @@ I appreciate your work - ssg, your how-to's for less familiar users,
 etc. I felt I should mention that to you &#x1F600;&#8221;</p>
 
 <img src="/ref/h3artbl33d.jpeg" class="br-100 w3"><br> **h3artbl33d**<br> _OpenBSD fan_<br>
-[@h3artbl33d](https://twitter.com/h3artbl33d/985173503103074304 "14 Apr 2018")
+[@h3artbl33d](https://twitter.com/h3artbl33d "14 Apr 2018")
 
 ---
 
@@ -496,7 +496,7 @@ etc. I felt I should mention that to you &#x1F600;&#8221;</p>
 (@gumnos)
 
 "zOMG! This is AWESOME! Great job, going to set this up first thing in the morning. &#x1F495;"<br>&mdash;
-[H3artbl33d](https://twitter.com/h3artbl33d/status/983827387409403904 "11 Apr 2018")
+[H3artbl33d](https://twitter.com/h3artbl33d "11 Apr 2018")
 (@h3artbl33d)
 
 "my X1 Carbon was delayed yet again... That @romanzolotarev will be ready with his OpenBSD setup by the time it finally ships is the only good thing about the delay. Tot stealing his work"<br>&mdash;

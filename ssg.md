@@ -210,8 +210,7 @@ $ <b>for f in $(which cat cpio date sh awk find grep printf readlink sort tee)</
 [openbsd.amsterdam](https://openbsd.amsterdam/?rz)<br>
 [openbsd.space](https://openbsd.space/)<br>
 [romanzolotarev.com](https://www.romanzolotarev.com/) &mdash; obviously ;)<br>
-[runbsd.info](https://www.runbsd.info/)<br>
-[starbreakersaga.com](https://starbreakersaga.com/)<br>
+[runbsd.info](https://runbsd.info/)<br>
 [stockersolutions.com](https://www.stockersolutions.com/)<br>
 
 ---

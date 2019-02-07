@@ -41,8 +41,8 @@ $ <b>mkdir src dst</b>
 $ <b>echo '# Hello, World!' > src/index.md</b>
 $ <b>echo '&lt;p&gt;&lt;a href="/"&gt;Home&lt;/a&gt;&lt;/p&gt;' &gt; src/_header.html</b>
 $ <b>echo '&lt;p&gt;2018 Roman Zolotarev&lt;/p&gt;' &gt; src/_footer.html</b>
-$ <b>ftp -Vo src/_styles.css https://www.romanzolotarev.com/_styles.css</b>
-_styles.css  100% |**************************|  1020       00:00
+$ <b>ftp -Vo src/_styles.css https://www.romanzolotarev.com/style.css</b>
+style.css    100% |**************************|  1020       00:00
 $ <b>bin/ssg3 src dst 'Test' 'https://www'</b>
 ./index.md
 [ssg] 1 file, 1 url
@@ -88,7 +88,7 @@ I recommend to avoid JS whenever possible, though.
 ## CSS
 
 To inject CSS to all pages add it to `_styles.css`.<br>
-Use my [_styles.css](/raw/_styles.css) as a starting point.
+Use my [_styles.css](/style.css) as a starting point.
 
 ## Sitemap
 
@@ -221,8 +221,7 @@ $ <b>for f in $(which cat cpio date sh awk find grep printf readlink sort tee wc
 [openbsd.amsterdam](https://openbsd.amsterdam/?rz)<br>
 [openbsd.space](https://openbsd.space/)<br>
 [romanzolotarev.com](https://www.romanzolotarev.com/) &mdash; obviously ;)<br>
-[runbsd.info](https://www.runbsd.info/)<br>
-[starbreakersaga.com](https://starbreakersaga.com/)<br>
+[runbsd.info](https://runbsd.info/)<br>
 [stockersolutions.com](https://www.stockersolutions.com/)<br>
 
 ---
