@@ -2,6 +2,10 @@ _Thank you for your kind words and [support](sponsors.html)!_
 
 # People are saying...
 
+"Even though it's Thursday, I have a reason to pick one early entry for the Follow Friday mentions: @romanzolotarev<br>YOU GUYS THIS MAN IS A WIZARD"<br>&mdash;
+[h3artbl33d](https://twitter.com/h3artbl33d/status/1093472714415898624 "07 Feb 2019")
+(@h3artbl33d)
+
 "Been learning a lot of bsd and specifically openbsd from Roman. This is a great website."<br>&mdash;
 [Isak Holmstr&ouml;m](https://lobste.rs/s/fbopnk/roman_zolotarev "06 Jan 2019")
 (iah@fosstodon.org)
@@ -517,4 +521,4 @@ etc. I felt I should mention that to you &#x1F600;&#8221;</p>
 
 ---
 
-_105 quotes, but who's counting ;)_
+_106 quotes, but who's counting ;)_

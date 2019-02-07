@@ -588,7 +588,7 @@ render_profile_page() {
 
 	http200 '
 <div class="f7 mt2"><a href='"$u"'>Go back</a></div>
-<p><h1>Hello</h1> and <em>thank you</em> for your support. &#x2764;</p>
+<p><h1>Hello</h1> and <em>thank you</em> for your support &#x2764;</p>
 '"$state"'
 <div class="f7">You'\''re logged in as <b title="'"member: $m_id\nsession: $s_key"'">'"$e"'</b>.
 <span class="f7"><a href="?log_out">Log out</a></div>
