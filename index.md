@@ -53,12 +53,12 @@ one. All you need is to follow my direct and detailed instructions.
 You will need nothing else, just my guides. Build as you learn.
 
 - [Before we start](/m/)
-- [OpenBSD as a desktop](/m/toc.html#OpenBSD as a desktop)
-- [Web server on OpenBSD](/m/toc.html#Web server on OpenBSD)
-- [Plain text and files](/m/toc.html#Plain text and files)
-- [Portable shell scripts](/m/toc.html#Portable shell scripts)
-- [Static web pages](/m/toc.html#Static web pages)
-- [HTTP and CGI](/m/toc.html#HTTP and CGI)
+- [OpenBSD as a desktop](/m/#OpenBSD as a desktop)
+- [Web server on OpenBSD](/m/#Web server on OpenBSD)
+- [Plain text and files](/m/#Plain text and files)
+- [Portable shell scripts](/m/#Portable shell scripts)
+- [Static web pages](/m/#Static web pages)
+- [HTTP and CGI](/m/#HTTP and CGI)
 
 ---
 
