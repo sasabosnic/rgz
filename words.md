@@ -6,6 +6,10 @@ _Thank you for your kind words and [support](sponsors.html)!_
 [h3artbl33d](https://twitter.com/h3artbl33d/status/1093472714415898624 "07 Feb 2019")
 (@h3artbl33d)
 
+"OpenBSD might seem kind of a obscure, but it has a really cool community, which is really helpful. I want to give a shoutout to this one guy. His name is Roman Zolotarev... His articles and his messages have been really helpful to me."<br>&mdash;
+[Wolfgang](https://youtu.be/t2vrRZqDy74?t=553 "06 Feb 2019")
+(@notthebeeee)
+
 "Been learning a lot of bsd and specifically openbsd from Roman. This is a great website."<br>&mdash;
 [Isak Holmstr&ouml;m](https://lobste.rs/s/fbopnk/roman_zolotarev "06 Jan 2019")
 (iah@fosstodon.org)
@@ -521,4 +525,4 @@ etc. I felt I should mention that to you &#x1F600;&#8221;</p>
 
 ---
 
-_106 quotes, but who's counting ;)_
+_107 quotes, but who's counting ;)_
