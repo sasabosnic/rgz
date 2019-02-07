@@ -278,7 +278,7 @@ start_over() {
 	test -f "$f" && http303 "$u"
 
 	http200 '<h1>Oops...</h1><p>'"$err"'</p>
-<p><a href="'"$u"'">Start over</a></p>'
+<p class="f7"><a href="'"$u"'">Start over</a></p>'
 }
 
 
@@ -297,21 +297,13 @@ full_stop() {
 
 
 verify_magic_link() {
-	u_key_b=$(get_value "$QUERY_STRING" 'magic')
-	test -n "$u_key_b" || start_over 'This magic link is broken'
+	magic=$(get_value "$QUERY_STRING" 'magic')
+	test -n "$magic" || start_over 'This magic link is broken'
 
-	u_e_hash=$(get_cookie 'e_hash')
-
-	u_key_a=$(get_cookie 'key_a')
-	test -z "$u_e_hash" || test -z "$u_key_a" &&
-	start_over 'Looks like you are using a different web browser'
-
-	f="$DB/magic_links/$u_e_hash"
+	f="$DB/magic_links/$magic"
 	test -f "$f" || start_over 'This magic link is expired'
-	test "$(cut -f1 < "$f")" = "$u_key_a:$u_key_b" ||
-	start_over 'This magic link is invalid'
 
-	e=$(cut -f2 < "$f")
+	e=$(cat "$f")
 	rm "$f"
 	m_id=$(get_member_id "$e")
 	test -n "$m_id" || create_member "$e"
@@ -321,9 +313,7 @@ verify_magic_link() {
 	http303 "${REQUEST_URI%%\?*}" \
 'Content-Type: text/html; charset=utf-8
 Set-Cookie: m_id='"$m_id"'; Path=/; HttpOnly
-Set-Cookie: s_key='"$s_key"'; Path=/; HttpOnly
-Set-Cookie: key_a=; Path=/; HttpOnly
-Set-Cookie: e_hash=; Path=/; HttpOnly'
+Set-Cookie: s_key='"$s_key"'; Path=/; HttpOnly'
 }
 
 
@@ -385,10 +375,9 @@ send_magic_link() {
 	query=$(read_query_string_post) || start_over 'Invalid request'
 	e=$(get_value "$query" 'email' | tr '[:upper:]' '[:lower:]')
 	e_hash=$(echo "$e" | sha256)
-	key_a=$(random_str 20)
-	key_b=$(random_str 20)
+	magic=$(random_str 20)
 
-	make_file "$DB/magic_links/$e_hash" "$key_a:$key_b	$e"
+	make_file "$DB/magic_links/$magic" "$e"
 	make_file "$DB/mail_queue/m-$e_hash" 'To: '"$e"'
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
@@ -397,16 +386,13 @@ Subject: [RGZ.EE] Here is your magic link
 
 Hey, please open this link to log in:
 
-'"https://rgz.ee${REQUEST_URI%%\?*}?magic=$key_b"'
+'"https://rgz.ee${REQUEST_URI%%\?*}?magic=$magic"'
 
 --
 
 The link will expire in a day. Sent to: '"$e"
 
-	http303 "${REQUEST_URI%%\?*}?wait_for_magic_link" \
-'Content-Type: text/html; charset=utf-8
-Set-Cookie: key_a='"$key_a"'; Path=/; HttpOnly
-Set-Cookie: e_hash='"$e_hash"'; Path=/; HttpOnly'
+	http303 "${REQUEST_URI%%\?*}?wait_for_magic_link"
 }
 
 
