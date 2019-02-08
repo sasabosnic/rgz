@@ -49,7 +49,7 @@ hi@romanzolotarev.com<br>
 
 Want to learn basic web technologies and Unix userland? Want to
 build a fully functional and production-ready website like this
-one. All you need is to follow my direct and detailed instructions.
+one? All you need is to follow my direct and detailed instructions.
 You will need nothing else, just my guides. Build as you learn.
 
 - [Before we start](/m/)

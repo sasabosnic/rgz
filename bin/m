@@ -29,6 +29,8 @@ main() {
 	case "$REQUEST_METHOD$URI" in
 		GET/*?setup*) 			paddle_init; setup;;
 		POST/*?send_magic_link*) 	send_magic_link;;
+		POST/*?invite*) 		invite;;
+		POST/*?stop_sponsorship*) 	stop_sponsorship;;
 		GET/*?wait_for_magic_link*) 	wait_for_magic_link;;
 		GET/*?magic=*) 			verify_magic_link;;
 		GET/*?checkout=*)		paddle_checkout;;
@@ -45,12 +47,98 @@ main() {
 ##############################################################################
 
 
+stop_sponsorship() {
+	u="${REQUEST_URI%%\?*}"
+	m_id=$(get_cookie 'm_id')
+	s_key=$(get_cookie 's_key')
+	f="$DB/members/$m_id/sessions/$s_key"
+	test -f "$f" || full_stop 'You are not logged in'
+	query=$(read_query_string_post) || start_over 'Invalid request'
+	test -n "$query" || start_over 'Select emails first' "$u?profile"
+
+	d="$DB/members/$m_id/sponsored"
+	test -d "$d" || full_stop 'No sponsored members'
+
+	echo "$query" | tr '&' '\n' |
+	while read -r line
+	do
+		# revoke invitation
+
+		f_s=$(echo "$line" | cut -d= -f1)
+
+		f="$DB/members/$m_id/sponsored/$f_s"
+		test -f "$f" && rm "$f"
+
+		f="$DB/mail_queue/m-$f_s"
+		test -f "$f" && rm "$f"
+
+		# remove sponsorship from existing member
+		s_id=$(get_member_id "$f_s")
+
+		f="$DB/members/$s_id/sponsor"
+		test -f "$f" && rm "$f"
+
+		f="$DB/members/$s_id/sponsorship_expires_at"
+		test -f "$f" && rm "$f"
+
+		f="$DB/members/$s_id/sponsorship_state"
+		test -f "$f" && rm "$f"
+
+	done || start_over 'No sponsored' "$u?profile"
+
+	http303 "${REQUEST_URI%%\?*}?profile"
+}
+
+
+invite() {
+	m_id=$(get_cookie 'm_id')
+	s_key=$(get_cookie 's_key')
+	f="$DB/members/$m_id/sessions/$s_key"
+	test -f "$f" || full_stop 'You are not logged in'
+
+	f="$DB/members/$m_id/email"
+	test -f "$f" || full_stop 'Cannot find your email'
+	sponsor=$(cat "$f")
+
+	query=$(read_query_string_post) || start_over 'Invalid request'
+	e=$(get_value "$query" 'email' | tr '[:upper:]' '[:lower:]')
+	e_hash=$(echo "$e" | sha256)
+	sponsor_hash=$(echo "$sponsor" | sha256)
+
+	test "$e_hash" = "$sponsor_hash" &&
+	full_stop 'Cannot invite yourself'
+
+	magic=$(random_str 20)
+
+	make_file "$DB/members/$m_id/sponsored/$e_hash" "$e"
+	make_file "$DB/magic_links/$magic" "$e	$m_id"
+	make_file "$DB/mail_queue/m-$e_hash" 'To: '"$e"'
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Subject: [RGZ.EE] An invitation from '"$sponsor"'
+
+Hey, '"$sponsor"' wants to sponsor your membership at RGZ.EE.
+To accept the invitation open this link:
+
+'"https://rgz.ee${REQUEST_URI%%\?*}?magic=$magic"'
+
+Otherwise ignore this email.
+
+--
+
+The link will expire in a day. Sent to: '"$e"
+
+	http303 "${REQUEST_URI%%\?*}?profile"
+}
+
+
 paddle_cancel() {
 	u="${REQUEST_URI%%\?*}"
 	m_id=$(get_cookie 'm_id')
 	s_key=$(get_cookie 's_key')
 	f="$DB/members/$m_id/sessions/$s_key"
-	test -f "$f" || start_over 'You are not logged in'
+	test -f "$f" || full_stop 'You are not logged in'
 
 	f="$DB/members/$m_id/paddle_subscription"
 	test -f "$f" || paddle_no_sub
@@ -58,11 +146,16 @@ paddle_cancel() {
 	sub_id=$(jq '.subscription_id' "$f")
 	test -n "$sub_id" || paddle_no_sub
 
-	curl -s -X POST \
-	-d vendor_id="$PADDLE_ID" \
-	-d vendor_auth_code="$PADDLE_AUTH_CODE" \
-	-d subscription_id="$sub_id" \
-	https://vendors.paddle.com/api/2.0/subscription/users_cancel
+	paddle_init
+	cancel=$(curl -s -X POST \
+		-d vendor_id="$PADDLE_ID" \
+		-d vendor_auth_code="$PADDLE_AUTH_CODE" \
+		-d subscription_id="$sub_id" \
+		https://vendors.paddle.com/api/2.0/subscription/users_cancel |
+		jq -r '.success'
+	)
+	test "$cancel" = "true" ||
+	full_stop 'Could not cancel your membership'
 
 	paddle_no_sub
 }
@@ -72,7 +165,7 @@ paddle_checkout() {
 	m_id=$(get_cookie 'm_id')
 	s_key=$(get_cookie 's_key')
 	f="$DB/members/$m_id/sessions/$s_key"
-	test -f "$f" || start_over 'You are not logged in'
+	test -f "$f" || full_stop 'You are not logged in'
 
 	c_id=$(get_value "$QUERY_STRING" 'checkout')
 	sub_id=$(
@@ -124,7 +217,7 @@ paddle_no_sub() {
 	test -f "$f" || http303 "$u"
 
 	f="$DB/members/$m_id/email"
-	test -f "$f" || start_over 'Cannot find your email'
+	test -f "$f" || full_stop 'Cannot find your email'
 	e=$(cat "$f")
 
 	f="$DB/members/$m_id/paddle_subscription"
@@ -136,11 +229,11 @@ paddle_no_sub() {
 		e_at=$(cat "$f")
 		e_on=$(date -j -r "$e_at" '+%e %b %Y')
 		state='
-<p>Your memebership has been paid till <b>'"$e_on"'</b>,<br>
+<p>Your membership has been paid till <b>'"$e_on"'</b>,<br>
 and then will be cancelled, no payments scheduled.<br>'
 	else
 		state='
-<p>Your membership has been cancelled.<br>
+<p>Your membership is inactive.<br>
 You can <a href="'"$u"'#Continue">re-new your membership</a> anytime.</p>'
 	fi
 
@@ -148,7 +241,21 @@ You can <a href="'"$u"'#Continue">re-new your membership</a> anytime.</p>'
 <div class="f7">Updated on '"$(date "+%e %b %Y at %H:%M:%S")"'.
 <a href="?sync">Refresh</a></div>
 '
+	update_sponsorships "$m_id"
+
 	http303 "$u?profile"
+}
+
+update_sponsorships() {
+	m_id="$1"
+	d="$DB/members/$m_id/sponsored"
+	test -d "$d" &&
+	find "$d" -type f |
+	while read -r f
+	do
+		e_hash=$(echo "$f" | cut -d'/' -f7)
+		update_sponsorship "$(get_member_id "$e_hash")" "$m_id"
+	done
 }
 
 paddle_sync() {
@@ -160,16 +267,26 @@ paddle_sync() {
 	test -f "$f" || http303 "$u"
 
 	f="$DB/members/$m_id/email"
-	test -f "$f" || start_over 'Cannot find your email'
+	test -f "$f" || full_stop 'Cannot find your email'
 	e=$(cat "$f")
 
-	f="$DB/members/$m_id/paddle_subscription"
-	test -f "$f" || paddle_fetch_subscription_by_email "$e"
+	f="$DB/members/$m_id/sponsor"
+	test -f "$f" && sponsor_existing_member "$m_id" "$(cat "$f")"
+
+	#f="$DB/members/$m_id/paddle_subscription"
+	#test -f "$f" ||
+	paddle_fetch_subscription_by_email "$e"
 
 	sub=$(jq . "$f")
 	sub_state=$(echo "$sub" | jq -r '.state')
+	plan_id=$(echo "$sub" | jq -r '.plan_id')
 	update_url=$(echo "$sub" | jq -r '.update_url')
 	next_due=$(echo "$sub" | jq -r '.next_payment.date')
+
+	case "$plan_id" in
+		551183) make_file "$DB/members/$m_id/seats" 9;;
+		551192) make_file "$DB/members/$m_id/seats" 99;;
+	esac
 
 	if test "$sub_state" = 'active'
 	then
@@ -186,18 +303,11 @@ paddle_sync() {
 			next_currency=$(echo "$sub" | jq -r '.next_payment.currency')
 			next_payment="$(printf '%.2f' "$next_amount") $next_currency"
 			state='
-<p>Your memebership has been paid till <b>'"$e_on"'</b>,<br>
+<p>Your membership has been paid till <b>'"$e_on"'</b>,<br>
 the next payment of <b>'"$next_payment"'</b> will be processed on that day.<br>
 <span class="f7">You can <a class="red hover-red"
 title="Are you sure?" href="?cancel">cancel payments instantly</a> or
 <a href="'"$update_url"'">change your payment method</a> anytime.</span></p>
-'
-		;;
-
-		deleted)
-			state='
-<p>Your membership has been cancelled.<br>
-You can <a href="'"$u"'#Continue">re-new your membership</a> anytime.</p>
 '
 		;;
 
@@ -208,13 +318,16 @@ You can <a href="'"$u"'#Continue">re-new your membership</a> anytime.</p>
 '
 		;;
 
-		*) start_over 'Wrong subscription state' ;;
+		*) full_stop 'Wrong subscription state' ;;
 	esac
 
 	make_file "$DB/members/$m_id/state" "$state"'
 <div class="f7">Updated on '"$(date "+%e %b %Y at %H:%M:%S")"'.
 <a href="?sync">Refresh</a></div>
 '
+
+	update_sponsorships "$m_id"
+
 	http303 "$u?profile"
 }
 
@@ -233,7 +346,7 @@ paddle_fetch_subscription() {
 		jq '.response[0]'
 	)
 	f="$DB/members/$m_id/email"
-	test -f "$f" || start_over 'Cannot find your email'
+	test -f "$f" || full_stop 'Cannot find your email'
 
 	e=$(cat "$f")
 	user_email=$(echo "$sub" | jq -r '.user_email')
@@ -287,13 +400,11 @@ full_stop() {
 	fb='/feedback.html?comment='"$(encode_value "\"$err\"")"
 	u="${REQUEST_URI%%\?*}"
 
-	http200 '<h1>Sorry</h1>
-<p>Something went wrong, please <a href="'"$fb"'">let me know</a>.</p>
-<p>'"$err"'</p>
-<p><a href="'"$u"'">Try a bit later</a></p>'
+	http200 '<h1>Oops...</h1><p>'"$err"'</p>
+<p class="f7">Something went wrong, please <a href="'"$fb"'">let me know</a> or
+<a href="'"$u"'">try again a bit later</a>.</p>'
 
 }
-
 
 
 verify_magic_link() {
@@ -303,10 +414,26 @@ verify_magic_link() {
 	f="$DB/magic_links/$magic"
 	test -f "$f" || start_over 'This magic link is expired'
 
-	e=$(cat "$f")
+	e=$(cut -f1 "$f")
+	sponsor=$(cut -f2 "$f")
+
 	rm "$f"
-	m_id=$(get_member_id "$e")
-	test -n "$m_id" || create_member "$e"
+
+	e_hash=$(echo "$e" | sha256)
+	m_id=$(get_member_id "$e_hash")
+	test -n "$m_id"    && f="$DB/members/$m_id"
+	test -n "$sponsor" && f_s="$DB/members/$sponsor"
+
+	test   -n "$m_id" && test   -n "$sponsor" &&
+	test   -d "$f"    && test   -d "$f_s" &&
+	sponsor_existing_member "$m_id" "$sponsor"
+
+	test   -z "$m_id" && test   -n "$sponsor" &&
+	test   -d "$f_s"  &&
+	create_sponsored_member "$e" "$sponsor"
+
+	test   -z "$m_id" && test   -z "$sponsor" &&
+	create_member "$e"
 
 	s_key=$(create_session "$m_id")
 
@@ -332,14 +459,74 @@ Set-Cookie: s_key=; Path=/; HttpOnly'
 
 
 get_member_id() {
-	e="$1"
-	e_hash=$(echo "$e" | sha256)
-
+	e_hash="$1"
 	d="$DB/members"
 	test -d "$d" || { echo; return; }
 	f=$(find "$d" -name "$e_hash" -path '*/emails/*' -type f | head -1)
 	m="${f##$d/}"
 	echo "${m%%/*}"
+}
+
+update_sponsorship() {
+	m_id="$1"
+	sponsor="$2"
+
+	f_s="$DB/members/$sponsor/expires_at"
+	f_m="$DB/members/$m_id/sponsorship_expires_at"
+
+	if test -f "$f_s"
+	then cat "$f_s" > "$f_m"
+	else test -f "$f_m" && rm "$f_m"
+	fi
+
+
+	sponsor_email=$(cat "$DB/members/$sponsor/email")
+	if test -f "$f_m"
+	then
+		e_at=$(cat "$f_m")
+		e_on=$(date -j -r "$e_at" '+%e %b %Y')
+		state='
+<p>Your membership has been sponsored<br>by
+<b>'"$sponsor_email"'</b> till <b>'"$e_on"'</b>.'
+	else
+		state='
+<p>Your membership has been sponsored<br>by
+<b>'"$sponsor_email"'</b>, but it is inactive now.'
+	fi
+
+	make_file "$DB/members/$m_id/sponsor" "$sponsor"
+	make_file "$DB/members/$m_id/sponsorship_state" "$state"
+}
+
+sponsor_existing_member() {
+	m_id="$1"
+	sponsor="$2"
+
+	update_sponsorship "$m_id" "$sponsor"
+
+	s_key=$(create_session "$m_id")
+
+	http303 "${REQUEST_URI%%\?*}" \
+'Content-Type: text/html; charset=utf-8
+Set-Cookie: m_id='"$m_id"'; Path=/; HttpOnly
+Set-Cookie: s_key='"$s_key"'; Path=/; HttpOnly
+Set-Cookie: key_a=; Path=/; HttpOnly
+Set-Cookie: e_hash=; Path=/; HttpOnly'
+}
+
+
+create_sponsored_member() {
+	e="$1"
+	sponsor="$2"
+
+	m_id=$(random_str 20)
+	e_hash=$(echo "$e" | sha256)
+
+	make_file "$DB/members/$m_id/created_at" "$(date +%s)"
+	make_file "$DB/members/$m_id/email" "$e"
+	make_file "$DB/members/$m_id/emails/$e_hash" "$e"
+
+	sponsor_existing_member "$m_id" "$sponsor"
 }
 
 
@@ -382,7 +569,7 @@ send_magic_link() {
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
-Subject: [RGZ.EE] Here is your magic link
+Subject: [RGZ.EE] Register or log in
 
 Hey, please open this link to log in:
 
@@ -499,7 +686,7 @@ new_session_form() {
 class="z-index-1 sticky top-0 mt4 pv3 tr">
 	<p>Type-in your email address</p>
 	<form
-		method=post
+		method="post"
 		action='"${REQUEST_URI%%\?*}"'?send_magic_link
 		class="form">
 	<input
@@ -575,11 +762,88 @@ render_profile_page() {
 	f="$DB/members/$m_id/email"
 	test -f "$f" && e=$(cat "$f")
 
+	f="$DB/members/$m_id/sponsorship_state"
+	if test -f "$f"
+	then state=$(cat "$f")
+	else
 
 	f="$DB/members/$m_id/state"
 	if test -f "$f"
-	then state=$(cat "$DB/members/$m_id/state")
-	else state='<p>Your membership status is unknown.</p>'
+	then state=$(cat "$f")
+	else state='<p>Membership status unknown. <a href="?sync">Refresh</a></p>'
+	fi
+
+
+	f_seats="$DB/members/$m_id/seats"
+	if test -f "$f_seats"
+	then
+		d="$DB/members/$m_id/sponsored"
+		test -d "$d" &&
+		seat_emails=$(
+			find "$d" -type f |
+			while read -r f
+			do
+				seat_time=$(stat -f "%m" "$f" | head -1)
+				seat_email=$(cat "$f")
+				name=$(echo "$f" | cut -d'/' -f7)
+echo "$seat_time"'	<input type="checkbox" name="'"$name"'"> '"$seat_email"'<br>'
+			done | sort -rn | cut -f2-
+		)
+		if test -n "$seat_emails"
+		then
+			sponsored='
+	<form
+		method="post"
+		action='"${REQUEST_URI%%\?*}"'?stop_sponsorship
+		class="form">
+	<p class="f7 mt2">'"$seat_emails"'</p>
+	<input
+		tabindex="2"
+		type="submit"
+		class="f7 outline dib pa2 ba mb2
+		black bg-white b--black
+		hover-bg-black hover-white"
+		value="Stop sponsorship">
+	</form>
+'
+		fi
+
+		if test -n "$seat_emails"
+		then seats="$(( $(cat "$f_seats") - $(echo "$seat_emails" | wc -l) ))"
+		else seats=$(cat "$f_seats")
+		fi
+
+		sponsor='<div class="f7 mb2">You can invite '"$seats"' people.</div>
+
+	<form
+		method="post"
+		action='"${REQUEST_URI%%\?*}"'?invite
+		class="form">
+	<input
+		tabindex="1"
+		type="email"
+		class="f7 w-100 w5-l w5-m  mb2 ba pa2
+		outline black bg-white b--light-gray
+		hover-bg-white"
+		autocorrect="off"
+		specllcheck="false"
+		required="required"
+		minlength="2"
+		maxlength="255"
+	 	name="email"
+		placeholder="alice@example.com">
+	<input
+		tabindex="2"
+		type="submit"
+		class="f7 outline dib pa2 ba mb2 ml2
+		black bg-white b--black
+		hover-bg-black hover-white"
+		value="Invite">
+	</form>
+'
+
+	fi
+
 	fi
 
 	http200 '
@@ -587,8 +851,9 @@ render_profile_page() {
 <p><h1>Hello</h1> and <em>thank you</em> for your support &#x2764;</p>
 '"$state"'
 <div class="f7">You'\''re logged in as <b title="'"member: $m_id\\nsession: $s_key"'">'"$e"'</b>.
-<span class="f7"><a href="?log_out">Log out</a></div>
-'
+<a href="?log_out">Log out</a></div>
+'"$sponsor"'
+'"$sponsored"
 }
 
 
@@ -720,7 +985,7 @@ make_file() {
 http500() {
 	echo 'Status: 500 Internal Server Error'
 	echo
-	echo "<pre>$1</pre>"
+	echo "<pre>$*</pre>"
 	exit 1
 }
 
