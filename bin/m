@@ -412,6 +412,10 @@ subscription_form() {
 class="z-index-1 sticky top-0 mt4 pv3 tr">
 	<p>Upgrade to continue</p>
 
+	<noscript><div class="red dib bb bb--dashed">
+	...but please enable JavaScript first
+	</div></noscript>
+
 	<p>
 	<button id="button-549237"
 	class="f5 outline dib pv2 ph3 ba
