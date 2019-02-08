@@ -409,34 +409,42 @@ subscription_form() {
 	header='<div class="f7 mt2"><a href="?profile">'"$e"'</a></div>'
 	footer='
 <div id="Continue"
-class="z-index-1 sticky top-0 mt4 pv3 bg-near-white dark-gray tc">
-	<p>Upgrade to continue.</p>
+class="z-index-1 sticky top-0 mt4 pv3 tr">
+	<p>Upgrade to continue</p>
 
-	<button id="button-549707"
-	class="outline dib pa2 ba mr2 mb2 w-100 w4-m w4-l
-	black bg-white b--light-gray hover-bg-black hover-white">
-	<span class="paddle-net b"
-	data-product="549707">&euro;9.00</span>
-	/&nbsp;month
-	</button>
-
+	<p>
 	<button id="button-549237"
-	class="outline dib pa2 ba mr2 mb2 w-100 w4-m w4-l
+	class="f5 outline dib pv2 ph3 ba
 	black bg-yellow b--black hover-bg-black hover-white">
-	<span class="paddle-net b"
-	data-product="549237">&euro;90.00</span>
-	/&nbsp;year
-	</button>
+	Personal&nbsp;
+	<span class="paddle-net b f5"
+	data-product="549237">&euro;90.00</span><b>/y</b></button>
+	</p>
 
-	<div>
-	<a id="button-551192" href="https://pay.paddle.com/checkout/551192">
-	Enterprise
-	<span class="paddle-net b"
-	data-product="551192">&euro;550.00</span>
-	/&nbsp;month</a>
-	</div>
+	<p class="f7">Prefer monthly plans?</span><br>
+	Have a team?<br>
+	</p>
 
-	<p class="f7">Already paid? <a href="?sync">Refresh</a></p>
+	<p>
+	Personal&nbsp;
+	<a id="button-549707" href="#">
+	<span class="paddle-net b f4"
+	data-product="549707">&euro;9.00</span><b>/m</b></a><br>
+
+	Team&nbsp;
+	<a id="button-551183" href="#">
+	<span class="paddle-net b f4"
+	data-product="551183">&euro;55.00</span><b>/m</b></a><br>
+
+	Enterprise&nbsp;
+	<a id="button-551192" href="#">
+	<span class="paddle-net b f4"
+	data-product="551192">&euro;550.00</span><b>/m</b></a>
+	</p>
+
+	<p class="f7">
+	See <a href="/m/pricing.html">Pricing</a> for details<br>
+	Already paid? <a href="?sync">Refresh</a></p>
 
 </div>
 
@@ -444,8 +452,9 @@ class="z-index-1 sticky top-0 mt4 pv3 bg-near-white dark-gray tc">
 <script type="text/javascript">
 Paddle.Setup({ vendor: 38540 });
 [
-  549707,
   549237,
+  549707,
+  551183,
   551192,
 ].forEach(
   function(x) {
@@ -483,17 +492,16 @@ new_session_form() {
 	header='<div class="f7 mt2"><a href="#Continue">Register or log in</a></div>'
 	footer='
 <div id="Continue"
-class="z-index-1 sticky top-0 mt4 pv3 tc">
-<div class="mb2">Type-in your email address</div>
-<div class="cf center">
-<form
-	method=post
-	action='"${REQUEST_URI%%\?*}"'?send_magic_link
-	class="form">
+class="z-index-1 sticky top-0 mt4 pv3 tr">
+	<p>Type-in your email address</p>
+	<form
+		method=post
+		action='"${REQUEST_URI%%\?*}"'?send_magic_link
+		class="form">
 	<input
 		tabindex="1"
 		type="email"
-		class="f7 w-100 w5-m w5-l mb2 ba pa2 mr2
+		class="f5 w-100 w5-l w5-m  mb2 ba pa2
 		outline black bg-white b--light-gray
 		hover-bg-white"
 		autocorrect="off"
@@ -507,23 +515,20 @@ class="z-index-1 sticky top-0 mt4 pv3 tc">
 	<input
 		tabindex="2"
 		type="submit"
-		class="f7 w-100 w4-m w4-l outline dib pa2 ba mb2
+		class="f5 outline dib pa2 ba mb2 ml2
 		black bg-yellow b--black
 		hover-bg-black hover-white"
 		value="Register or log in">
+	</form>
 
-</form>
+	<p class="mt2 f7">
+	By clicking <em>Register or log in</em> you are accepting
+	<a href="/terms.html">User&nbsp;Agreement</a>,
+	<a href="/privacy.html">Privacy&nbsp;Policy</a>,
+	<a href="/'"$BASE_URL"'/#Pricing">Pricing</a>, and
+	some cookies.<br>&#x1F36A;
+	</p>
 
-<p class="ph2 f7">
-By clicking <em>Register or log in</em> you are accepting
-<a href="/terms.html">User&nbsp;Agreement</a>,
-<a href="/privacy.html">Privacy&nbsp;Policy</a>,
-<a href="/'"$BASE_URL"'/#Pricing">Pricing</a>, and
-some cookies. &#x1F36A;
-</p>
-
-</div>
-</div>
 </div>
 '
 
@@ -662,9 +667,6 @@ obfuscate() {
 	)
 	test -n "$cut" || return
 	echo '
-<p class="f7 gray tc">
-The rest of the page is obfuscated
-</p>
 <div class="blur3 z-index--1">
 '"$cut"'
 </div>
