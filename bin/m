@@ -230,7 +230,7 @@ paddle_no_sub() {
 		e_on=$(date -j -r "$e_at" '+%e %b %Y')
 		state='
 <p>Your membership has been paid till <b>'"$e_on"'</b>,<br>
-and then will be cancelled, no payments scheduled.<br>'
+and to be cancelled after that date, no payments scheduled.<br>'
 	else
 		state='
 <p>Your membership is inactive.<br>
@@ -361,6 +361,7 @@ paddle_fetch_subscription() {
 
 wait_for_magic_link() {
 	u="${REQUEST_URI%%\?*}"
+	e=$(get_value "$QUERY_STRING" 'email')
 	m_id=$(get_cookie 'm_id')
 	s_key=$(get_cookie 's_key')
 	f="$DB/members/$m_id/sessions/$s_key"
@@ -372,6 +373,14 @@ wait_for_magic_link() {
 <p>
 Sending a magic link to you in a minute.<br>
 Please <b>check your mailbox</b>.</p>
+
+<pre class="f5 mt5">
+From: hi@romanzolotarev.com
+Subject: <em>[RGZ.EE] Register or log in</em>
+To: <em>'"$e"'</em>
+
+...
+</pre>
 <p class="f7">Didn'\''t get an email?
 <a href="'"$u"'#Continue">Try again</a>
 </p>
@@ -416,16 +425,18 @@ verify_magic_link() {
 
 	e=$(cut -f1 "$f")
 	sponsor=$(cut -f2 "$f")
+	test "$e" = "$sponsor" && sponsor=''
 
 	rm "$f"
 
 	e_hash=$(echo "$e" | sha256)
 	m_id=$(get_member_id "$e_hash")
-	test -n "$m_id"    && f="$DB/members/$m_id"
+
+	test -n "$m_id"    && f_m="$DB/members/$m_id"
 	test -n "$sponsor" && f_s="$DB/members/$sponsor"
 
 	test   -n "$m_id" && test   -n "$sponsor" &&
-	test   -d "$f"    && test   -d "$f_s" &&
+	test   -d "$f_m"  && test   -d "$f_s" &&
 	sponsor_existing_member "$m_id" "$sponsor"
 
 	test   -z "$m_id" && test   -n "$sponsor" &&
@@ -571,15 +582,19 @@ Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 Subject: [RGZ.EE] Register or log in
 
-Hey, please open this link to log in:
+Hello,
+
+you are about to register or log in to RZE.EE (aka romanzolotarev.com),
+please open this link to continue:
 
 '"https://rgz.ee${REQUEST_URI%%\?*}?magic=$magic"'
 
 --
 
-The link will expire in a day. Sent to: '"$e"
+The link will expire in one day. Sent to: '"$e"
 
-	http303 "${REQUEST_URI%%\?*}?wait_for_magic_link"
+
+	http303 "${REQUEST_URI%%\?*}?wait_for_magic_link&email=$e"
 }
 
 
@@ -590,8 +605,8 @@ subscription_form() {
 	f="$1"
 	m_id="$2"
 
-	test -f "$DB/members/$m_id/email" &&
-	e=$(cat "$DB/members/$m_id/email")
+	f_e="$DB/members/$m_id/email"
+	test -f "$f_e" && e=$(cat "$f_e")
 
 	header='<div class="f7 mt2"><a href="?profile">'"$e"'</a></div>'
 	footer='
