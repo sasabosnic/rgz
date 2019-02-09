@@ -1,7 +1,3 @@
-# Mastering the&nbsp;Web
-
-_The ultimate guide for indie web developers_
-
 <p class="f4 f3-m f3-l lh-title ni">&#8220;Dear aspiring full-stack
 web developers and indie hackers, my dear peers,
 
@@ -46,6 +42,10 @@ hi@romanzolotarev.com<br>
 [@romanzolotarev](/twitter.html)
 
 <hr>
+
+# Mastering the&nbsp;Web
+
+_The ultimate guide for indie web developers_
 
 Want to learn basic web technologies and Unix userland? Want to
 build a fully functional and production-ready website like this
