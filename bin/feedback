@@ -1,6 +1,6 @@
 #!/bin/sh
 MAIL_TO='hi@romanzolotarev.com'
-MAIL_SUBJECT='romanzolotarev.com: feedback'
+MAIL_SUBJECT='[RGZ.EE] Feedback'
 # MAIL_HTML='yes'
 FIELDS='
 name, 1, 255, Name
