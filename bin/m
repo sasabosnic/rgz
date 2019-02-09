@@ -273,8 +273,8 @@ paddle_sync() {
 	f="$DB/members/$m_id/sponsor"
 	test -f "$f" && sponsor_existing_member "$m_id" "$(cat "$f")"
 
-	#f="$DB/members/$m_id/paddle_subscription"
-	#test -f "$f" ||
+	f="$DB/members/$m_id/paddle_subscription"
+	test -f "$f" ||
 	paddle_fetch_subscription_by_email "$e"
 
 	sub=$(jq . "$f")
@@ -447,7 +447,6 @@ verify_magic_link() {
 	create_member "$e"
 
 	s_key=$(create_session "$m_id")
-
 	http303 "${REQUEST_URI%%\?*}" \
 'Content-Type: text/html; charset=utf-8
 Set-Cookie: m_id='"$m_id"'; Path=/; HttpOnly
