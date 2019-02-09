@@ -16,11 +16,12 @@ mkdir "$temp/news"
 
 desc 'args'
 
-usage='usage: rssg index.{html,md} [title] > rss.xml'
+title='People who run BSD'
+usage='usage: rssg index.{html,md} title > rss.xml'
 no_file="rssg: $temp/news/index.html: No such file"
 
 eq "$(2>&1 "$program")" "$usage" 'no args'
-eq "$(2>&1 "$program" "$temp/news/index.html")" "$no_file" 'index.html'
+eq "$(2>&1 "$program" "$temp/news/index.html" "$title")" "$no_file" 'index.html'
 
 
 desc 'out'
@@ -144,7 +145,7 @@ Hosted by Roman Zolotarev</description>
 </channel></rss>
 EOF
 
-"$program" "$temp/news/index.html" > "$temp/news/rss.xml" 2>/dev/null
+"$program" "$temp/news/index.html" "$title" > "$temp/news/rss.xml" 2>/dev/null
 
 sed 's#Date>.*</#Date>XXX, XX XXX XXXX XX:XX:XX +XXXX</#' \
 "$temp/news/rss.xml" > "$temp/out"
@@ -155,7 +156,7 @@ then ok 'html -> RSS'
 else no 'html -> RSS'
 fi
 
-"$program" "$temp/news/index.md" > "$temp/news/rss.xml" 2>/dev/null
+"$program" "$temp/news/index.md" "$title" > "$temp/news/rss.xml" 2>/dev/null
 
 sed 's#Date>.*</#Date>XXX, XX XXX XXXX XX:XX:XX +XXXX</#' \
 "$temp/news/rss.xml" > "$temp/out"

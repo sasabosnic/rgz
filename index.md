@@ -1,4 +1,4 @@
-<p class="f4 f3-m f3-l lh-title ni">&#8220;Dear aspiring full-stack
+<p class="f4 f3-m f3-l lh-title ni mt5">&#8220;Dear aspiring full-stack
 web developers and indie hackers, my dear peers,
 
 <p class="f4 f3-m f3-l lh-title">we are all a little bit tired of
@@ -29,9 +29,7 @@ Scale as you go. Add new tools only when you really need them.
 Learn fundamentals first. Learn as you build. Keep the web fast,
 safe, neat, and accessible for everyone.&#8221;
 
-<hr>
-
-<div class="mb2"><a href="/about.html"><img
+<div class="mb2 mt4"><a href="/about.html"><img
 	src="/avatar120.jpeg"
 	class="w3 br-100"
 	title="romanzolotarev.com"></a></div>
@@ -41,7 +39,7 @@ _Die-hard Webmaster_<br>
 hi@romanzolotarev.com<br>
 [@romanzolotarev](/twitter.html)
 
-<hr>
+---
 
 # Mastering the&nbsp;Web
 

@@ -17,8 +17,7 @@ rm -rf "${src:?}"
 git clone . "$src"
 
 "$HOME/bin/ssg4" "$src" "$dst" "$title" "$url" > /dev/null
-# "$HOME/bin/rssg" "$src/index.md" "$title" > "$dst/rss.xml"
-# "$HOME/bin/rssg" "$src/n/index.md" "$title" > "$dst/n/rss.xml"
+"$HOME/bin/rssg" "$src/n/index.md" "Newsletter - $title" > "$dst/n/rss.xml"
 
 mkdir -p "$dst/src"
 echo "$title" > "$repo/owner"

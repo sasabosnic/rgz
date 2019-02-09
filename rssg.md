@@ -5,11 +5,11 @@ _Tested on [OpenBSD](/openbsd/) 6.3 and 6.4_
 [rssg](/bin/rssg) is an RSS feed generator written in shell. It's
 a good companion for [ssg](ssg.html).
 
-It gets feed's title, description, URL, and the list of items
+It gets feed's description, URL, and the list of items
 from an index file.
 
-Then for every item it extracts an item's title and treats the rest
-of the file as its description, replacing all relative URLs with
+Then for every item it extracts its title and treats the rest of
+the file as its description, replacing all relative URLs with
 absolute ones.
 
 An index file can be in HTML or in Markdown format.
@@ -36,7 +36,7 @@ $
 ## Usage
 
 <pre>
-$ <b>rssg index.html &gt; rss.xml</b>
+$ <b>rssg index.html 'title' &gt; rss.xml</b>
 $
 </pre>
 

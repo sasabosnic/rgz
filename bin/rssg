@@ -20,7 +20,9 @@ set -e
 
 main () {
 	test -n "$1" || usage
+	test -n "$2" || usage
 	test -f "$1" || no_file "$1"
+
 
 	index_file=$(readlink -f "$1")
 	test -z "${index_file##*html}" && html=$(cat "$index_file")
@@ -31,12 +33,8 @@ main () {
 	base_url="$(echo "$html" | get_url | sed 's#\(.*\)/[^/]*#\1#')"
 
 	url=$(		echo "$html" | get_url)
-	page_title=$(	echo "$html" | get_title)
 
-	test -n "$2" && test -n "$page_title" && title="$page_title - $2"
-	test -n "$2" && test -z "$page_title" && title="$2"
-	test -z "$2" && test -n "$page_title" && title="$page_title"
-	test -z "$2" && test -z "$page_title" && title=''
+	title="$2"
 
 	description=$(	echo "$html" | get_description |
 			remove_tags |
@@ -54,7 +52,7 @@ main () {
 
 
 usage() {
-	echo "usage: ${0##*/} index.{html,md} [title] > rss.xml" >&2
+	echo "usage: ${0##*/} index.{html,md} title > rss.xml" >&2
 	exit 1
 }
 
@@ -169,7 +167,7 @@ render_item() {
 
 render_feed() {
 	url="$1"
-	title="$2"
+	title=$(echo "$2" | remove_nbsp)
 	description="$3"
 
 	base_url="$(echo "$url" | cut -d '/' -f1-3)"
