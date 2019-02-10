@@ -15,5 +15,4 @@ do
 	"$(echo "$logs" | head -1 | sed -E 's/.*\[(.*):.*\].*/\1/')" \
 	"$(echo "$logs" | tail -1 | sed -E 's/.*\[(.*):.*\].*/\1/')" \
 	"$(echo "$stats" | jq '.visits.total')"
-	#"$(echo "$stats" | jq '.hits.total')"
 done

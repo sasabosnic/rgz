@@ -30,8 +30,9 @@ h1, h2, h3, h4 { margin-bottom: 0; }
 .black, .black:visited, .hover-black:hover, .hover-black:hover:visited, .hover-black:focus, .hover-black:hover:focus { color: #000; }
 .black-60, .black-60:visited { color: rgba(0, 0, 0, .6); }
 .dark-gray, .hover-dark-gray:hover { color: #333; }
+.dark-gray, .dark-gray:visited, .hover-dark-gray:hover, .hover-dark-gray:hover:visited, .hover-dark-gray:focus, .hover-dark-gray:hover:focus { color: #333; }
 .dark-red { color: #e7040f; }
-.gray, .hover-gray:hover { color: #808080; }
+.gray, .gray:visited, .hover-gray:hover, .hover-gray:hover:visited, .hover-gray:focus, .hover-gray:hover:focus { color: #808080; }
 .hover-b--gold:hover { border-color: #ffb700; }
 .hover-b--navy:hover { border-color: #001b44; }
 .hover-b--oams:hover { border-color: #ec0000; }

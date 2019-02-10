@@ -238,7 +238,7 @@ You can <a href="'"$u"'#Continue">re-new your membership</a> anytime.</p>'
 	fi
 
 	make_file "$DB/members/$m_id/state" "$state"'
-<div class="f7">Updated on '"$(date "+%e %b %Y at %H:%M:%S")"'.
+<div class="f7">Updated on '"$(date "+%e %b %Y at %H:%M:%S UTC")"'.
 <a href="?sync">Refresh</a></div>
 '
 	update_sponsorships "$m_id"
@@ -392,13 +392,11 @@ To: <em>'"$e"'</em>
 start_over() {
 	err="$1"
 	u="$2"
-
 	test -z "$u" && u="${REQUEST_URI%%\?*}"
 	m_id=$(get_cookie 'm_id')
 	s_key=$(get_cookie 's_key')
 	f="$DB/members/$m_id/sessions/$s_key"
 	test -f "$f" && http303 "$u"
-
 	http200 '<h1>Oops...</h1><p>'"$err"'</p>
 <p class="f7"><a href="'"$u"'">Start over</a></p>'
 }
@@ -408,7 +406,6 @@ full_stop() {
 	err="$1"
 	fb='/feedback.html?comment='"$(encode_value "\"$err\"")"
 	u="${REQUEST_URI%%\?*}"
-
 	http200 '<h1>Oops...</h1><p>'"$err"'</p>
 <p class="f7">Something went wrong, please <a href="'"$fb"'">let me know</a> or
 <a href="'"$u"'">try again a bit later</a>.</p>'
@@ -592,7 +589,6 @@ please open this link to continue:
 
 The link will expire in one day. Sent to: '"$e"
 
-
 	http303 "${REQUEST_URI%%\?*}?wait_for_magic_link&email=$e"
 }
 
@@ -720,7 +716,7 @@ class="z-index-1 sticky top-0 mt4 pv3 tr">
 	<input
 		tabindex="2"
 		type="submit"
-		class="f5 outline dib pa2 ba mb2 ml2
+		class="f5 outline dib pv2 ph3 ba mb2 ml2
 		black bg-yellow b--black
 		hover-bg-black hover-white"
 		value="Register or log in">
