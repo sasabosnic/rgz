@@ -207,7 +207,7 @@ post="$(sed '
 s/boundary=".*/boundary="XXXX"/
 s/--[a-z]\{20,20\}/--XXXX/
 s/^www .*/www 127.0.0.1 XXXX/
-' "$temp/db/mail_queue/"*)"
+' "$temp/db/mail/"*)"
 
 eq "$post" "$model" 'html'
 
@@ -227,7 +227,7 @@ www 127.0.0.1 XXXX'
 
 export REQUEST_METHOD='GET'
 "$program" > /dev/null
-rm "${temp:?}/db/mail_queue/"*
+rm "${temp:?}/db/mail/"*
 export REQUEST_METHOD='POST'
 token=$(cd "$temp/db/tokens/" && ls)
 query="name=a&email=a@aa.aa&comment=a&token=$token"
@@ -237,7 +237,7 @@ out=$(printf '%s' "$query" | "$program")
 post="$(sed '
 s/--[a-z]\{20,20\}/--XXXX/
 s/^www .*/www 127.0.0.1 XXXX/
-' "$temp/db/mail_queue/"*)"
+' "$temp/db/mail/"*)"
 eq "$post" "$model" 'plain'
 
 rm -rf "${temp:?}"

@@ -19,7 +19,7 @@
 main() {
 	test_bin
 	test -n "$DB" || no_def 'DB'
-	MAIL_QUEUE="$DB/mail_queue"
+	MAIL_QUEUE="$DB/mail"
 	TOKENS="$DB/tokens"
 	mkdir -p "$MAIL_QUEUE" || no_dir "$MAIL_QUEUE"
 	mkdir -p "$TOKENS" || no_dir "$TOKENS"
@@ -80,10 +80,10 @@ post() {
 validate_token() {
 	token=$(get_value 'token' "$1")
 	test -n "$token" || { echo 'invalid'; exit 1; }
-	test -f "$TOKENS/${token:?}" || { echo 'invalid'; exit 1; }
-	test "$(cat "$TOKENS/$token")" = "$REMOTE_ADDR" || { echo 'invalid'; exit 1; }
-	delta=$(( $(date +%s) - $(stat -f%m "$TOKENS/$token") ))
-	rm "$TOKENS/$token"
+	test -f "$TOKENS/f-${token:?}" || { echo 'invalid'; exit 1; }
+	test "$(cat "$TOKENS/f-$token")" = "$REMOTE_ADDR" || { echo 'invalid'; exit 1; }
+	delta=$(( $(date +%s) - $(stat -f%m "$TOKENS/f-$token") ))
+	rm "$TOKENS/f-$token"
 	test "$delta" -lt "$EXP_TIME" || { echo 'expired'; exit 1; }
 }
 
@@ -125,8 +125,8 @@ get_params() {
 
 create_token() {
 	token=$(random_str)
-	echo "$REMOTE_ADDR" > "$TOKENS/$token"
-	chmod 0660 "$TOKENS/$token"
+	echo "$REMOTE_ADDR" > "$TOKENS/f-$token"
+	chmod 0660 "$TOKENS/f-$token"
 	echo "$token"
 }
 

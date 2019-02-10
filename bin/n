@@ -44,7 +44,7 @@ main() {
 verify_magic_link() {
 	magic=$(get_value "$QUERY_STRING" 'magic')
 	test -n "$magic" || full_stop 'This magic link is broken'
-	f="$DB/magic_links/$magic"
+	f="$DB/tokens/n-$magic"
 	test -f "$f" || full_stop 'This magic link is expired'
 	e=$(cat "$f")
 	test -n "$e" || full_stop 'Email is missing'
@@ -118,8 +118,8 @@ send_magic_link() {
 	e_hash=$(echo "$e" | sha256)
 	magic=$(random_str 20)
 
-	make_file "$DB/magic_links/$magic" "$e"
-	make_file "$DB/mail_queue/n-$e_hash" 'To: '"$e"'
+	make_file "$DB/tokens/n-$magic" "$e"
+	make_file "$DB/mail/n-$e_hash" 'To: '"$e"'
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit

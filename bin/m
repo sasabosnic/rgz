@@ -69,7 +69,7 @@ stop_sponsorship() {
 		f="$DB/members/$m_id/sponsored/$f_s"
 		test -f "$f" && rm "$f"
 
-		f="$DB/mail_queue/m-$f_s"
+		f="$DB/mail/m-$f_s"
 		test -f "$f" && rm "$f"
 
 		# remove sponsorship from existing member
@@ -111,8 +111,8 @@ invite() {
 	magic=$(random_str 20)
 
 	make_file "$DB/members/$m_id/sponsored/$e_hash" "$e"
-	make_file "$DB/magic_links/$magic" "$e	$m_id"
-	make_file "$DB/mail_queue/m-$e_hash" 'To: '"$e"'
+	make_file "$DB/tokens/m-$magic" "$e	$m_id"
+	make_file "$DB/mail/m-$e_hash" 'To: '"$e"'
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
@@ -417,7 +417,7 @@ verify_magic_link() {
 	magic=$(get_value "$QUERY_STRING" 'magic')
 	test -n "$magic" || start_over 'This magic link is broken'
 
-	f="$DB/magic_links/$magic"
+	f="$DB/tokens/m-$magic"
 	test -f "$f" || start_over 'This magic link is expired'
 
 	e=$(cut -f1 "$f")
@@ -571,8 +571,8 @@ send_magic_link() {
 	e_hash=$(echo "$e" | sha256)
 	magic=$(random_str 20)
 
-	make_file "$DB/magic_links/$magic" "$e"
-	make_file "$DB/mail_queue/m-$e_hash" 'To: '"$e"'
+	make_file "$DB/tokens/m-$magic" "$e"
+	make_file "$DB/mail/m-$e_hash" 'To: '"$e"'
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
