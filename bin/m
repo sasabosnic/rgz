@@ -127,7 +127,7 @@ Otherwise ignore this email.
 
 --
 
-The link will expire in a day. Sent to: '"$e"
+The link will expire in an hour. Sent to: '"$e"
 
 	http303 "${REQUEST_URI%%\?*}?profile"
 }
@@ -381,7 +381,7 @@ To: <em>'"$e"'</em>
 
 ...
 </pre>
-<p class="f7">Didn'\''t get an email?
+<p class="f7">The link will expire in an hour. Didn'\''t get an email?
 <a href="'"$u"'#Continue">Try again</a>
 </p>
 </div>
@@ -569,6 +569,7 @@ send_magic_link() {
 	query=$(read_query_string_post) || start_over 'Invalid request'
 	e=$(get_value "$query" 'email' | tr '[:upper:]' '[:lower:]')
 	e_hash=$(echo "$e" | sha256)
+	e_e=$(encode_value "$e")
 	magic=$(random_str 20)
 
 	make_file "$DB/tokens/m-$magic" "$e"
@@ -587,9 +588,9 @@ please open this link to continue:
 
 --
 
-The link will expire in one day. Sent to: '"$e"
+The link will expire in an hour. Sent to: '"$e"
 
-	http303 "${REQUEST_URI%%\?*}?wait_for_magic_link&email=$e"
+	http303 "${REQUEST_URI%%\?*}?wait_for_magic_link&email=$e_e"
 }
 
 
@@ -922,6 +923,8 @@ get_value() {
 			t = substr(t, RSTART+RLENGTH)
 		}
 		a = a t
+		gsub(/</, "\\&lt;",a)
+		gsub(/>/,"\\&gt;",a)
 		print a
 	}'
 }

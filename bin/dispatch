@@ -10,7 +10,7 @@ main () {
 	dispatch_mail
 	remove_expired_tokens
 	remove_expired_memberships
-	list_newsletter_subscribers
+	list_subscribers
 }
 
 ##########################################################################
@@ -38,7 +38,7 @@ remove_expired_tokens() {
 	test -d "$dir" || return
 
 	>&2 echo "[dispatch] $(date '+%Y-%m%-%d %H:%M:%S') tokens/*"
-	find "$dir" -type f -cmin "+$(( EXP_TIME / 60 ))" -delete
+	find "$dir" -type f -cmin "+$(( EXP_TIME / 60 ))" -print -delete
 }
 
 
@@ -67,18 +67,30 @@ remove_expired_memberships() {
 	done
 }
 
-list_newsletter_subscribers() {
+list_subscribers() {
 	dir="$DB/members"
 	test -d "$dir" || return
 
-	>&2 echo "[dispatch] $(date '+%Y-%m%-%d %H:%M:%S') members/*/newsletter"
-	find "$dir" -type f -name 'newsletter' |
-	while read -r f
+	>&2 echo "[dispatch] $(date '+%Y-%m%-%d %H:%M:%S') members/*"
+	find "$dir" -type d -maxdepth 1 |
+	while read -r m
 	do
-		m=${f%%/newsletter}
-		f_email="$m/email"
-		test -f "$f_email" && email=$(cat "$f_email")
-		echo "$m: $email"
+		f_a="$m/expires_at"
+		test -f "$f_a" && at='a'	|| at='-'
+
+		f_n="$m/newsletter"
+		test -f "$f_n" && n='N'		|| n='-'
+
+		d_ss="$m/sponsored"
+		test -d "$d_ss" && ss='S'	|| ss='-'
+
+		f_s="$m/sponsor"
+		test -f "$f_s" && s='s'		|| s='-'
+
+		f="$m/email"
+		test -f "$f" && e=$(cat "$f")	|| e=''
+
+		echo "$m: $at$n$ss$s $e"
 	done
 }
 

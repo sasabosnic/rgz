@@ -240,6 +240,8 @@ decode_url() {
 			t = substr(t, RSTART+RLENGTH)
 		}
 		a = a t
+		gsub(/</, "\\&lt;",a)
+		gsub(/>/,"\\&gt;",a)
 		print a
 	}'
 }
