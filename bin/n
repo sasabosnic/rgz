@@ -147,7 +147,6 @@ unsubscribe() {
 	s_key=$(get_cookie 's_key')
 	test -f "$DB/members/$m_id/sessions/$s_key" ||
 	full_stop 'You are not logged in'
-	http500 ok
 
 	f_n="$DB/members/$m_id/newsletter"
 	test -f "$f_n" && rm "$f_n"
