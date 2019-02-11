@@ -23,12 +23,12 @@ Re-type passphrase:
 <strong>softraid0: CRYPTO volume attached as sd4</strong>
 # <b>dd if=/dev/zero of=/dev/rsd4c bs=1m count=1</b>
 # <b>fdisk -iy sd4</b>
-# <b>printf 'a i\\n\\n\\nRAID\\nw\\nq\\n'|disklabel -E sd4</b>
-# <b>newfs sd4i</b>
-# <b>mkdir /mnt/sd4i</b>
-# <b>mount /dev/sd4i /mnt/sd4i</b>
+# <b>printf 'a i\\n\\n\\n\\nw\\nq\\n'|disklabel -E sd4</b>
+# <b>newfs sd4a</b>
+# <b>mkdir /mnt/sd4a</b>
+# <b>mount /dev/sd4a /mnt/sd4a</b>
 # ...
-# <b>umount /dev/sd4i</b>
+# <b>umount /dev/sd4a</b>
 # <b>bioctl -d sd4</b>
 #
 </pre>
@@ -43,10 +43,10 @@ Plug the drive in.
 # <b>bioctl -c C -l sd3a softraid0</b>
 Passphrase:
 softraid0: CRYPTO volume attached as sd4
-# <b>mkdir /mnt/sd4i</b>
-# <b>mount /dev/sd4i /mnt/sd4i</b>
+# <b>mkdir /mnt/sd4a</b>
+# <b>mount /dev/sd4a /mnt/sd4a</b>
 ...
-# <b>umount /dev/sd4i</b>
+# <b>umount /dev/sd4a</b>
 # <b>bioctl -d sd4</b>
 #
 </pre>
@@ -69,7 +69,7 @@ You can find DUIDs by running this:
 # <b>disklabel /dev/sd3a | grep -E 'duid|RAID'</b>
 duid: XXXXXXXXXXXXXXXX
   a:          7716864                 0    RAID
-# <b>disklabel /dev/sd4i | grep -E 'duid|BSD'</b>
+# <b>disklabel /dev/sd4a | grep -E 'duid|BSD'</b>
 duid: YYYYYYYYYYYYYYYY
   i:          7716864                64    4.2BSD   4096 32768 26062
 #
@@ -86,9 +86,9 @@ softraid0: sd4 was not shutdown properly
 Passphrase:
 softraid0: sd4 was not shutdown properly
 softraid0: CRYPTO volume attached as sd4
-# <b>fsck /dev/sd4i</b>
-** /dev/rsd4i
-** Last Mounted on /mnt/sd4i
+# <b>fsck /dev/sd4a</b>
+** /dev/rsd4a
+** Last Mounted on /mnt/sd4a
 ** Phase 1 - Check Blocks and Sizes
 ** Phase 2 - Check Pathnames
 ** Phase 3 - Check Connectivity

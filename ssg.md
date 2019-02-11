@@ -59,8 +59,10 @@ $ <b>open dst/index.html</b>
 
 ## Markdown and HTML files
 
-_ssg4_ renders Markdown files first and then HTML files. In the
-following example `src/a.html` wins:
+HTML files from `src` have greater priority than Markdown ones.
+_ssg4_ converts Markdown files from `src` to HTML in `dst` and then
+copies HTML files from `src` to `dst`. In the following example
+`src/a.html` wins:
 
 	src/a.md   -> dst/a.html
 	src/a.html -> dst/a.html
