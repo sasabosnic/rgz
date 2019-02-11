@@ -149,11 +149,12 @@ render_item() {
 		remove_nbsp
 	)
 	title=$(echo "$description" | get_title)
+	guid="$base_url/$(echo "$url" | sed 's#^/##')"
 
 	echo '
 <item>
-<guid>'"$base_url/$url"'</guid>
-<link>'"$base_url/$url"'</link>
+<guid>'"$guid"'</guid>
+<link>'"$guid"'</link>
 <pubDate>'"$(date_rfc_822 "$date")"'</pubDate>
 <title>'"$title"'</title>
 <description><![CDATA[
