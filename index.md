@@ -61,7 +61,7 @@ You will need nothing else, just my guides. Build as you learn.
 ---
 
 <a class="link" href="/m/words.html">
-<img src="/openbsd.amsterdam/avatar.png" class="w2 mt2 br-100">
+<img src="/ref/oams.jpeg" class="br-100 w2">
 <img src="/ref/mwlauthor.jpeg" class="br-100 w2">
 <img src="/ref/antranigv.jpeg" class="br-100 w2">
 <img src="/ref/av.jpeg" class="br-100 w2">
