@@ -6,6 +6,7 @@ main () {
 	EXP_TIME='3600'
 	FROM='hi@romanzolotarev.com'
 	NAME='Roman Zolotarev'
+	TIME_FMT='+%Y-%m-%d %H:%M:%S'
 
 	dispatch_mail
 	remove_expired_tokens
@@ -18,80 +19,82 @@ main () {
 
 dispatch_mail() {
 	dir="$DB/mail"
-	test -d "$dir" || return
-
-	>&2 echo "[dispatch] $(date '+%Y-%m%-%d %H:%M:%S') mail/*"
-	find "$dir" -type f | head -n 10 |
-	while read -r m
-	do
-		test -f "$m" || break
-		sendmail -t -F "$NAME" -f "$FROM" < "$m"
-		to=$(head -n 1 "$m" | cut -d' ' -f2-)
-		echo "$m: $to"
-		rm "$m"
-	done
+	if test -d "$dir"
+	then
+		>&2 echo "[dispatch] $(date "$TIME_FMT") mail"
+		find "$dir" -type f | head -n 10 |
+		while read -r m
+		do
+			test -f "$m" || break
+			sendmail -t -F "$NAME" -f "$FROM" < "$m"
+			to=$(head -n 1 "$m" | cut -d' ' -f2-)
+			echo "$m: $to"
+			rm "$m"
+		done
+	fi
 }
 
 
 remove_expired_tokens() {
 	dir="$DB/tokens"
-	test -d "$dir" || return
-
-	>&2 echo "[dispatch] $(date '+%Y-%m%-%d %H:%M:%S') tokens/*"
-	find "$dir" -type f -cmin "+$(( EXP_TIME / 60 ))" -print -delete
+	if test -d "$dir"
+	then
+		>&2 echo "[dispatch] $(date "$TIME_FMT") tokens"
+		find "$dir" \
+			-type f \
+			-cmin "+$(( EXP_TIME / 60 ))" \
+			-print -delete
+	fi
 }
 
 
 remove_expired_memberships() {
 	dir="$DB/members"
-	test -d "$dir" || return
-
-	>&2 echo "[dispatch] $(date '+%Y-%m%-%d %H:%M:%S') members/*/expires_at"
-	now=$(date +%s)
-	find "$dir" -type f -name 'expires_at' |
-	while read -r f
-	do
-		m=${f%%/expires_at}
-		f_email="$m/email"
-		test -f "$f_email" && email=$(cat "$f_email")
-		e_at=$(cat "$f")
-		e_in=$(( (e_at - now)  ))
-		e_in_days=$(( (e_in) / 86400 ))
-		if test "$e_in" -lt 0
-		then
-			echo "$m: ------ $email"
-			rm "${f:?}"
-		else
-			>&2 printf '%s: %6.d %s\n' "$m" "$e_in_days" "$email"
-		fi
-	done
+	if test -d "$dir"
+	then
+		>&2 echo "[dispatch] $(date "$TIME_FMT") members/*/expires_at"
+		now=$(date +%s)
+		find "$dir" -type f -name 'expires_at' |
+		while read -r f
+		do
+			m=${f%%/expires_at}
+			f_email="$m/email"
+			test -f "$f_email" && email=$(cat "$f_email")
+			e_at=$(cat "$f")
+			e_in=$(( (e_at - now)  ))
+			e_in_days=$(( (e_in) / 86400 ))
+			if test "$e_in" -lt 0
+			then
+				echo "$m: ------ $email"
+				rm "${f:?}"
+			else
+				>&2 printf '%s: %6.d %s\n' "$m" "$e_in_days" "$email"
+			fi
+		done
+	fi
 }
 
 list_subscribers() {
 	dir="$DB/members"
-	test -d "$dir" || return
-
-	>&2 echo "[dispatch] $(date '+%Y-%m%-%d %H:%M:%S') members/*"
-	find "$dir" -type d -path "$dir/*" -maxdepth 1 |
-	while read -r m
-	do
-		f_a="$m/expires_at"
-		test -f "$f_a" && at='a'	|| at='-'
-
-		f_n="$m/newsletter"
-		test -f "$f_n" && n='N'		|| n='-'
-
-		d_ss="$m/sponsored"
-		test -d "$d_ss" && ss='S'	|| ss='-'
-
-		f_s="$m/sponsor"
-		test -f "$f_s" && s='s'		|| s='-'
-
-		f="$m/email"
-		test -f "$f" && e=$(cat "$f")	|| e=''
-
-		>&2 echo "$m:   $at$n$ss$s $e"
-	done
+	if test -d "$dir"
+	then
+		>&2 echo "[dispatch] $(date "$TIME_FMT") members"
+		find "$dir" -type d -path "$dir/*" -maxdepth 1 |
+		while read -r m
+		do
+			f_a="$m/expires_at"
+			test -f "$f_a" && at='a'	|| at='-'
+			f_n="$m/newsletter"
+			test -f "$f_n" && n='N'		|| n='-'
+			d_ss="$m/sponsored"
+			test -d "$d_ss" && ss='S'	|| ss='-'
+			f_s="$m/sponsor"
+			test -f "$f_s" && s='s'		|| s='-'
+			f="$m/email"
+			test -f "$f" && e=$(cat "$f")	|| e=''
+			>&2 echo "$m:   $at$n$ss$s $e"
+		done
+	fi
 }
 
 ##########################################################################
