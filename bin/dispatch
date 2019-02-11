@@ -57,12 +57,12 @@ remove_expired_memberships() {
 		e_at=$(cat "$f")
 		e_in=$(( (e_at - now)  ))
 		e_in_days=$(( (e_in) / 86400 ))
-		printf '%s: %6.d %s' "$m" "$e_in_days" "$email"
 		if test "$e_in" -lt 0
 		then
-			printf ' - expired\n'
+			echo "$m: ------ $email"
 			rm "${f:?}"
-		else echo
+		else
+			>&2 printf '%s: %6.d %s\n' "$m" "$e_in_days" "$email"
 		fi
 	done
 }
@@ -72,7 +72,7 @@ list_subscribers() {
 	test -d "$dir" || return
 
 	>&2 echo "[dispatch] $(date '+%Y-%m%-%d %H:%M:%S') members/*"
-	find "$dir" -type d -maxdepth 1 |
+	find "$dir" -type d -path "$dir/*" -maxdepth 1 |
 	while read -r m
 	do
 		f_a="$m/expires_at"
@@ -90,7 +90,7 @@ list_subscribers() {
 		f="$m/email"
 		test -f "$f" && e=$(cat "$f")	|| e=''
 
-		echo "$m: $at$n$ss$s $e"
+		>&2 echo "$m:   $at$n$ss$s $e"
 	done
 }
 
