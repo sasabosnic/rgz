@@ -607,7 +607,7 @@ subscription_form() {
 	header='<div class="f7 mt2"><a href="?profile">'"$e"'</a></div>'
 	footer='
 <div id="Continue"
-class="z-index-1 sticky top-0 mt4 pv3 tr">
+class="z-index-1 sticky top-0 mt2 pv3 tr bg-near-white b--light-gray bb--dashed">
 	<p>Upgrade to continue</p>
 
 	<noscript><div class="red dib bb bb--dashed">
@@ -694,8 +694,8 @@ new_session_form() {
 	header='<div class="f7 mt2"><a href="#Continue">Register or log in</a></div>'
 	footer='
 <div id="Continue"
-class="z-index-1 sticky top-0 mt4 pv3 tr">
-	<p>Type-in your email address</p>
+class="z-index-1 sticky top-0 mt2 pv1 tr bg-near-white b--light-gray bb--dashed">
+	<div class="mb2">Type-in your email address</div>
 	<form
 		method="post"
 		action='"${REQUEST_URI%%\?*}"'?send_magic_link
@@ -703,7 +703,7 @@ class="z-index-1 sticky top-0 mt4 pv3 tr">
 	<input
 		tabindex="1"
 		type="email"
-		class="f5 w-100 w5-l w5-m  mb2 ba pa2
+		class="f5 w-100 w5-l w5-m mb2 ba pa2
 		outline black bg-white b--light-gray
 		hover-bg-white"
 		autocorrect="off"
@@ -725,10 +725,10 @@ class="z-index-1 sticky top-0 mt4 pv3 tr">
 
 	<p class="mt2 f7">
 	By clicking <em>Register or log in</em> you are accepting
-	<a href="/terms.html">User&nbsp;Agreement</a>,
-	<a href="/privacy.html">Privacy&nbsp;Policy</a>,
-	<a href="/'"$BASE_URL"'/#Pricing">Pricing</a>, and
-	some cookies.<br>&#x1F36A;
+	<a href="/terms.html">User Agreement</a>,
+	<a href="/privacy.html">Privacy Policy</a>,
+	<a href="/'"$BASE_URL"'/#Pricing">Pricing</a>,
+	and some cookies. &#x1F36A;
 	</p>
 
 </div>
