@@ -1,53 +1,62 @@
 #!/bin/sh -e
 
 main() {
-	test -n "$1" || fail "usage: ${0##*/} action"
-
+	test -n "$1" || fail "usage: ${0##*/} action [args]"
 	BASE="$HOME/prv/conf"
 	action="$1"
 	now=$(date +%Y%m%d-%H%M%S)
 
 	case "$action" in
-		archive)
-			test -n "$2" || fail "usage: ${0##*/} archive host"
-			host="$2"
+		httpd)
+			f_h="$BASE/$2/etc/httpd.conf"
+			f_r="$BASE/$2/etc/relayd.conf"
 
-			dst="$BASE/archives/$host/$now" && mkdir -p "$dst"
-			ssh "$host" '
-			(cat <<-EOF
-			/etc/doas.conf
-			/etc/fstab
-			/etc/hosts
-			/etc/httpd.conf
-			/etc/login.conf
-			/etc/mail/aliases
-			/etc/mail/secrets
-			/etc/mail/smtpd.conf
-			/etc/myname
-			/etc/pf.conf
-			/etc/rc.conf.local
-			EOF
-			) | doas tar czvf - -I /dev/stdin' | ( cd "$dst" && doas tar xzpf -)
+			test -n "$2" || fail "usage: ${0##*/} $1 hostname"
+			test -f "$f_h" || fail "no $f_h"
+			test -f "$f_r" || fail "no $f_r"
 
+			scp "$f_r" "$f_h" "$2":/etc/
+
+			ssh "$2" 'set -xe
+rcctl enable httpd
+rcctl enable slowcgi
+rcctl enable relayd
+httpd -n
+relayd -n
+rcctl restart httpd
+rcctl restart relayd
+'
 			;;
 
-		setup_httpd)
-			ssh s2 'rcctl enable httpd && rcctl enable slowcgi'
+		acme_s1)
+			f_a="$BASE/s1/etc/acme-client.conf"
+			test -f "$f_a" || fail "no $f_a"
+			scp "$f_a" s1:/etc/
 
-			echo 'continue?' && read -r
-			ssh s1 'rcctl enable httpd && rcctl enable slowcgi'
+			ssh s1 'set -xe
+acme-client -n www.romanzolotarev.com
+acme-client -v www.romanzolotarev.com
+rcctl reload httpd
+'
+			mkdir -p s1/etc/ssl/private
+			scp s1:/etc/ssl/private/s1.key s1/etc/ssl/private/
+			scp s1:/etc/ssl/s1.{crt,pem} s1/etc/ssl/
 			;;
 
-		update_httpd)
-			f="$BASE/s1/etc/httpd.conf"
-			test -f "$f" || fail "no $f"
+		acme_s2)
+			test -f "$f_a" || fail "no $f_a"
+			scp s1/etc/ssl/private/s1.key s2:/etc/ssl/private/
+			scp s1/etc/ssl/s1.{crt,pem} s2:/etc/ssl/
+			;;
 
-			scp "$f" s2:/etc/httpd.conf
-			ssh s2 'httpd -n && rcctl restart httpd'
-
-			echo 'continue?' && read -r
-			scp "$f" s1:/etc/httpd.conf
-			ssh s1 'httpd -n && rcctl restart httpd'
+		nsd)
+			test -n "$2" || fail "usage: ${0##*/} $1 hostname"
+			f_n="$BASE/s1/var/nsd/etc/nsd.conf"
+			test -f "$f_n" || fail "no $f_n"
+			nsd-checkconf "$f_n"
+			scp "$f_n" "$2":/var/nsd/etc/
+			scp "$BASE/s1/var/nsd/zones/master/"* "$2":/var/nsd/zones/master/
+			ssh "$2" 'set -xe && rcctl restart nsd'
 			;;
 
 		setup_smtpd)
@@ -78,7 +87,7 @@ main() {
 		*) fail 'invalid action';;
 	esac
 
-	}
+}
 
 fail() { echo "$1"; exit 1; }
 
