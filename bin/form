@@ -176,7 +176,7 @@ fail() {
 
 http200() {
 	echo 'Status: 200 OK'
-	echo 'Content-Type: text/html'
+	echo 'Content-Type: text/html; charset=utf-8'
 	echo
 	echo "$1"
 	exit 0
@@ -185,6 +185,7 @@ http200() {
 
 http301() {
 	echo 'Status: 301 Moved Permanently'
+	echo 'Content-Type: text/html; charset=utf-8'
 	echo "Location: $1"
 	echo
 	exit 0
@@ -193,7 +194,7 @@ http301() {
 
 http500() {
 	echo 'Status: 500 Internal Server Error'
-	echo 'Content-Type: text/html'
+	echo 'Content-Type: text/html; charset=utf-8'
 	echo '
 <!DOCTYPE html>
 <html>

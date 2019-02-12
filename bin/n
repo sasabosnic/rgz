@@ -396,6 +396,7 @@ full_stop() {
 
 http500() {
 	echo 'Status: 500 Internal Server Error'
+	echo 'Content-Type: text/html; charset=utf-8'
 	echo
 	echo "<pre>$*</pre>"
 	exit 1
@@ -403,6 +404,7 @@ http500() {
 
 http404() {
 	echo 'Status: 404 Not Found'
+	echo 'Content-Type: text/html; charset=utf-8'
 	echo
 	cat "$HEADER"
 	echo "<h1>Oops...</h1><p>/$BASE_URL$URI not found</p>"
@@ -412,8 +414,8 @@ http404() {
 
 http303() {
 	echo 'Status: 303 See Other'
-	echo "Location: $1"
 	echo 'Content-Type: text/html; charset=utf-8'
+	echo "Location: $1"
 	test -n "$2" && echo "$2"
 	echo
 	exit 0
@@ -421,6 +423,7 @@ http303() {
 
 http200() {
 	echo 'Status: 200 OK'
+	echo 'Content-Type: text/html; charset=utf-8'
 	echo
 	echo "$1"
 	exit 0
@@ -428,6 +431,7 @@ http200() {
 
 http200_wrapped() {
 	echo 'Status: 200 OK'
+	echo 'Content-Type: text/html; charset=utf-8'
 	echo
 	cat "$HEADER"
 	echo "$1"

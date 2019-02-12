@@ -1,5 +1,16 @@
 #!/bin/sh -e
 
+LINK_CERTS='
+ln -fs /etc/ssl/private/s1.key /etc/ssl/private/46.23.88.178.key
+ln -fs /etc/ssl/private/s1.key /etc/ssl/private/2a03:6000:1015::178.key
+ln -fs /etc/ssl/s1.pem /etc/ssl/46.23.88.178.crt
+ln -fs /etc/ssl/s1.pem /etc/ssl/2a03:6000:1015::178.crt
+ln -fs /etc/ssl/private/s1.key /etc/ssl/private/140.82.28.210.key
+ln -fs /etc/ssl/private/s1.key /etc/ssl/private/2001:19f0:9002:1505:5400:1ff:fe73:6676.key
+ln -fs /etc/ssl/s1.pem /etc/ssl/140.82.28.210.crt
+ln -fs /etc/ssl/s1.pem /etc/ssl/2001:19f0:9002:1505:5400:1ff:fe73:6676.crt
+'
+
 main() {
 	test -n "$1" || fail "usage: ${0##*/} action [args]"
 	BASE="$HOME/prv/conf"
@@ -8,16 +19,12 @@ main() {
 
 	case "$action" in
 		httpd)
-			f_h="$BASE/$2/etc/httpd.conf"
-			f_r="$BASE/$2/etc/relayd.conf"
-
 			test -n "$2" || fail "usage: ${0##*/} $1 hostname"
-			test -f "$f_h" || fail "no $f_h"
-			test -f "$f_r" || fail "no $f_r"
-
-			scp "$f_r" "$f_h" "$2":/etc/
-
+			scp \
+				"$BASE/$2/etc/relayd.conf" \
+				"$BASE/s1/etc/httpd.conf" "$2":/etc/
 			ssh "$2" 'set -xe
+'"$LINK_CERTS"'
 rcctl enable httpd
 rcctl enable slowcgi
 rcctl enable relayd
@@ -29,59 +36,45 @@ rcctl restart relayd
 			;;
 
 		acme_s1)
-			f_a="$BASE/s1/etc/acme-client.conf"
-			test -f "$f_a" || fail "no $f_a"
-			scp "$f_a" s1:/etc/
-
+			scp "$BASE/s1/etc/acme-client.conf" s1:/etc/
 			ssh s1 'set -xe
+test -f /etc/ssl/s1.crt && mv /etc/ssl/s1.crt /etc/ssl/s1.crt.bak
 acme-client -n www.romanzolotarev.com
-acme-client -v www.romanzolotarev.com
-rcctl reload httpd
-'
-			mkdir -p s1/etc/ssl/private
-			scp s1:/etc/ssl/private/s1.key s1/etc/ssl/private/
-			scp s1:/etc/ssl/s1.{crt,pem} s1/etc/ssl/
+#acme-client -vFAD www.romanzolotarev.com
+'"$LINK_CERTS"
+			mkdir -p "$BASE/s1/etc/ssl/private"
+			rm -f "$BASE/s1/etc/ssl/s1.pem"
+			rm -f "$BASE/s1/etc/ssl/s1.crt"
+			rm -f "$BASE/s1/etc/ssl/s1.crt.bak"
+			scp s1:/etc/ssl/s1.* "$BASE/s1/etc/ssl/"
+			rm -f "$BASE/s1/etc/ssl/private/s1.key"
+			scp s1:/etc/ssl/private/s1.key "$BASE/s1/etc/ssl/private/"
 			;;
 
 		acme_s2)
-			test -f "$f_a" || fail "no $f_a"
-			scp s1/etc/ssl/private/s1.key s2:/etc/ssl/private/
-			scp s1/etc/ssl/s1.{crt,pem} s2:/etc/ssl/
+			scp "$BASE/s1/etc/ssl/s1."* s2:/etc/ssl/
+			scp "$BASE/s1/etc/ssl/private/s1.key" s2:/etc/ssl/private/
+			ssh s2 'set -xe && acme-client -n www.romanzolotarev.com && rcctl reload relayd'
 			;;
 
 		nsd)
 			test -n "$2" || fail "usage: ${0##*/} $1 hostname"
-			f_n="$BASE/s1/var/nsd/etc/nsd.conf"
-			test -f "$f_n" || fail "no $f_n"
-			nsd-checkconf "$f_n"
-			scp "$f_n" "$2":/var/nsd/etc/
+			nsd-checkconf "$BASE/s1/var/nsd/etc/nsd.conf"
+			scp "$BASE/s1/var/nsd/etc/nsd.conf" "$2":/var/nsd/etc/
 			scp "$BASE/s1/var/nsd/zones/master/"* "$2":/var/nsd/zones/master/
 			ssh "$2" 'set -xe && rcctl restart nsd'
 			;;
 
-		setup_smtpd)
-			f="$BASE/s1/etc/mail/smtpd.conf"
-			test -f "$f" || fail "no $f"
-			scp "$f" s1:/etc/mail/smtpd.conf
-
-			pass show etc-mail-secrets-s2 |
-			scp /dev/stdin s2:/etc/mail/secrets
-			ssh s2 'smtpd -n && rcctl restart smtpd'
-
-			echo 'continue?' && read -r
-			pass show etc-mail-secrets-s1 |
-			scp /dev/stdin s1:/etc/mail/secrets
-			ssh s1 'smtpd -n && rcctl restart smtpd'
+		smtpd)
+			test -n "$2" || fail "usage: ${0##*/} $1 hostname"
+			scp "$BASE/$2/etc/mail/smtpd.conf" "$2":/etc/mail/smtpd.conf
+			pass show etc-mail-secrets-"$2" | scp /dev/stdin "$2":/etc/mail/secrets
+			ssh "$2" 'set -xe && smtpd -n && rcctl restart smtpd'
 			;;
 
-		install_ssg)
-			f="$HOME/bin/ssg4"
-			test -f "$f" || fail "no $f"
-
-			scp "$f" git@s2:bin/ssg4
-
-			echo 'continue?' && read -r
-			scp "$f" git@s1:bin/ssg4
+		ssg)
+			test -n "$2" || fail "usage: ${0##*/} $1 hostname"
+			scp "$HOME/bin/ssg4" "$HOME/bin/rssg" git@"$2":bin/
 			;;
 
 		*) fail 'invalid action';;
