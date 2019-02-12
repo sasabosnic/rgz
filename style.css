@@ -1,3 +1,18 @@
+html { font-size: 20px; -webkit-text-size-adjust: 100%; }
+a { color: #204fd5; }
+a:hover, a:visited:hover { color: #204fd5; }
+a:visited { color: #334f83; }
+hr { border: 0; margin-top: 2rem; }
+hr, h1, h2 { margin-top: 3rem; }
+li { padding: .125rem 0; }
+p img, table { width: 100%; }
+pre em { background-color: #fea; font-style: normal; }
+pre i { font-style: normal; font-weight: normal; color: #333; }
+pre i::before { content: "> "; color: #aaa; }
+pre strong { background-color: #0000cc; color: #fff; }
+pre { font-size: 15px; overflow-x: auto; color: #333; }
+
+
 a { background-color: transparent; }
 a, blockquote, body, code, div, form, h1, h2, h3, html, input, li, ol, p, pre, table, td, textarea, th, tr, ul { box-sizing: border-box; }
 button { overflow: visible; -webkit-appearance: none; -moz-appearance: none; }
