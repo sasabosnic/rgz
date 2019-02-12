@@ -207,3 +207,5 @@ h1, h2, h3, h4 { margin-bottom: 0; }
   .tr-l { text-align: right; }
   .mt5-l { margin-top: 3rem; }
 }
+
+.cut *, .cut *::before { color: #ccc; background-color: #f4f4f4; }

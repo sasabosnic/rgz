@@ -948,11 +948,7 @@ obfuscate() {
 	tr '[:lower:]' "$(jot -rcs '' 26 97 122)"
 	)
 	test -n "$cut" || return
-	echo '
-<div class="blur3 z-index--1">
-'"$cut"'
-</div>
-'
+	echo '<div class="cut z-index--1">'"$cut"'</div>'
 }
 
 
