@@ -384,7 +384,7 @@ no_bin() {
 	echo '<pre># copy binaries'
 	echo "$DEPS" | grep . |
 	while read -r file
-	do echo "cp $file /var/www$file"
+	do echo "cp $file /var/rgz$file"
 	done
 }
 

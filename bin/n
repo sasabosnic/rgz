@@ -19,11 +19,11 @@
 
 main() {
 	BASE_URL='n'
-	: "${PAGES:=/htdocs/www}"
-	: "${DB:=/db/www}"
+	: "${PAGES:=/htdocs/rgz}"
+	: "${DB:=/db/rgz}"
 	: "${ROOT:=}"
-	HEADER='/htdocs/www/raw/_header.html'
-	FOOTER='/htdocs/www/raw/_footer.html'
+	HEADER='/htdocs/rgz/raw/_header.html'
+	FOOTER='/htdocs/rgz/raw/_footer.html'
 
 	URI=${REQUEST_URI##/$BASE_URL}
 	case "$REQUEST_METHOD$URI" in

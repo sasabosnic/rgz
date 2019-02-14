@@ -1,8 +1,8 @@
 #!/bin/sh
 apm -H
 
-dst='/var/www/htdocs/www'
-src="$HOME/src/www"
+dst='/var/www/htdocs/rgz'
+src="$HOME/src/rgz"
 mkdir -p ${dst:?}/n
 
 echo "rssg"

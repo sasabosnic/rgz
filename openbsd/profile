@@ -30,14 +30,14 @@ nb()	{ stmux 'nb'	'downloads'	'newsboat'; }
 v()	{ stmux 'v'	'prv/openvpn'	'doas openvpn --config default.ovpn'; }
 
 alias bsdj='sssg4 src/bsdj'
-alias leto='sssg leto'
-alias wwwm='sssg4 prv/m'
-alias oams='sssg4 src/oams'
 alias high5='sssg4 src/high5'
+alias leto='sssg leto'
+alias oams='sssg4 src/oams'
+alias rgz='sssg4 src/rgz'
+alias rgzm='sssg4 prv/m'
 alias runbsd='sssg4 src/runbsd'
-alias www='sssg4 src/www'
 
-s_log()	{ test -n "$1" && { rsync -azcvP "$1:/var/www/logs/*" "$HOME/prv/logs/$(date +%Y-%m-%d)-$1/"; }; }
+s_log()	{ test -n "$1" && { rsync -azcvP "$1:/var/rgz/logs/*" "$HOME/prv/logs/$(date +%Y-%m-%d)-$1/"; }; }
 
 png()	{ optipng -preserve -strip all -o7 "$1"; }
 jpeg()	{ jpegoptim --strip-all --preserve --preserve-perms --verbose -m80 $@; }

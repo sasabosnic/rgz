@@ -19,11 +19,11 @@
 
 main() {
 	BASE_URL='m'
-	: "${DB:=/db/www}"
+	: "${DB:=/db/rgz}"
 	: "${PAGES:=/htdocs/$BASE_URL}"
 	: "${ROOT:=}"
-	HEADER='/htdocs/www/raw/_header.html'
-	FOOTER='/htdocs/www/raw/_footer.html'
+	HEADER='/htdocs/rgz/raw/_header.html'
+	FOOTER='/htdocs/rgz/raw/_footer.html'
 
 	URI=${REQUEST_URI##/$BASE_URL}
 	case "$REQUEST_METHOD$URI" in
@@ -178,7 +178,7 @@ paddle_checkout() {
 }
 
 paddle_init() {
-	test -x '/bin/cat' || http500 'cp /bin/cat /var/www/bin/cat
+	test -x '/bin/cat' || http500 'cp /bin/cat /var/rgz/bin/cat
 FAIL'
 
 	f="$DB/paddle/id"
@@ -1099,11 +1099,11 @@ setup_test_deps() {
 		test "$d" != '/usr/local/lib'
 		then
 			dirs="$dirs:$d" && test -d "${ROOT}$d" ||
-			echo "mkdir -p /var/www$d"
+			echo "mkdir -p /var/rgz$d"
 		fi
 		test "${f##/usr/local/lib/}" = "$f" &&
 		x="$f" || x="/usr/lib${f##/usr/local/lib}"
-		test -f "${ROOT}$x" || echo "cp $f /var/www$x"
+		test -f "${ROOT}$x" || echo "cp $f /var/rgz$x"
 	done
 }
 
