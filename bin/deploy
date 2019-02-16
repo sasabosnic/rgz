@@ -52,6 +52,7 @@ acme-client -n www.romanzolotarev.com
 			;;
 
 		acme_s2)
+			scp "$BASE/s1/etc/acme-client.conf" s2:/etc/
 			scp "$BASE/s1/etc/ssl/s1."* s2:/etc/ssl/
 			scp "$BASE/s1/etc/ssl/private/s1.key" s2:/etc/ssl/private/
 			ssh s2 'set -xe && acme-client -n www.romanzolotarev.com && rcctl reload relayd'
@@ -72,9 +73,15 @@ acme-client -n www.romanzolotarev.com
 			ssh "$2" 'set -xe && smtpd -n && rcctl restart smtpd'
 			;;
 
-		ssg)
+		deps)
 			test -n "$2" || fail "usage: ${0##*/} $1 hostname"
 			scp "$HOME/bin/ssg4" "$HOME/bin/rssg" git@"$2":bin/
+			scp "$HOME/src/rgz/post-receive" git@"$2":rgz.git/hooks/
+			scp "$HOME/prv/m/post-receive" git@"$2":m.git/hooks/
+			ssh "$2" 'set -xe
+pkg_add git jq lowdown stagit logswan
+pkg_delete -a
+'
 			;;
 
 		*) fail 'invalid action';;

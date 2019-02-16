@@ -18,11 +18,7 @@ add these sections to `/etc/acme-client.conf`:
 
     authority letsencrypt {
       api url "https://acme-v01.api.letsencrypt.org/directory"
-      account key "/etc/acme/letsencrypt-privkey.pem"
-    }
-    authority letsencrypt-staging {
-      api url "https://acme-staging.api.letsencrypt.org/directory"
-      account key "/etc/acme/letsencrypt-staging-privkey.pem"
+      account key "/etc/ssl/private/letsencrypt.key"
     }
     domain www.example.com {
       alternative names { example.com }
@@ -35,8 +31,7 @@ add these sections to `/etc/acme-client.conf`:
 Create directories:
 
 <pre>
-# <b>mkdir -p -m 700 /etc/acme</b>
-# <b>mkdir -p -m 700 /etc/ssl/acme/private</b>
+# <b>mkdir -p -m 700 /etc/ssl/private</b>
 # <b>mkdir -p -m 755 /var/www/acme</b>
 #
 </pre>

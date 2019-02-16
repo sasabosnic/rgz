@@ -5,12 +5,14 @@ a:visited { color: #334f83; }
 hr { border: 0; margin-top: 2rem; }
 hr, h1, h2 { margin-top: 3rem; }
 li { padding: .125rem 0; }
-p img, table { width: 100%; }
+p img, table { max-width: 100%; }
 pre em { background-color: #fea; font-style: normal; }
-pre i { font-style: normal; font-weight: normal; color: #333; }
+pre i { font-style: normal; color: #333; }
+pre b { color: #333; }
+pre u { text-decoration: none; background-color: #c0e0ee; }
 pre i::before { content: "> "; color: #aaa; }
 pre strong { background-color: #0000cc; color: #fff; }
-pre { font-size: 15px; overflow-x: auto; color: #333; }
+pre { font-size: 15px; overflow-x: auto; color: #888; }
 
 
 a { background-color: transparent; }
