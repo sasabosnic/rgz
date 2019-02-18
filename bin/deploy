@@ -18,6 +18,20 @@ main() {
 	now=$(date +%Y%m%d-%H%M%S)
 
 	case "$action" in
+		httpd_s0)
+			set -xe
+			doas cp -v \
+				"$BASE/s0/etc/relayd.conf" \
+				"$BASE/s0/etc/httpd.conf" /etc/
+			doas rcctl enable httpd
+			doas rcctl enable slowcgi
+			doas rcctl enable relayd
+			doas httpd -n
+			doas relayd -n
+			doas rcctl restart httpd
+			doas rcctl restart relayd
+			;;
+
 		httpd)
 			test -n "$2" || fail "usage: ${0##*/} $1 hostname"
 			scp \
@@ -40,8 +54,9 @@ rcctl restart relayd
 			ssh s1 'set -xe
 test -f /etc/ssl/s1.crt && mv /etc/ssl/s1.crt /etc/ssl/s1.crt.bak
 acme-client -n www.romanzolotarev.com
-#acme-client -vFAD www.romanzolotarev.com
-'"$LINK_CERTS"
+# acme-client -vFAD www.romanzolotarev.com
+'"$LINK_CERTS"'
+rcctl reload relayd'
 			mkdir -p "$BASE/s1/etc/ssl/private"
 			rm -f "$BASE/s1/etc/ssl/s1.pem"
 			rm -f "$BASE/s1/etc/ssl/s1.crt"
@@ -55,7 +70,25 @@ acme-client -n www.romanzolotarev.com
 			scp "$BASE/s1/etc/acme-client.conf" s2:/etc/
 			scp "$BASE/s1/etc/ssl/s1."* s2:/etc/ssl/
 			scp "$BASE/s1/etc/ssl/private/s1.key" s2:/etc/ssl/private/
-			ssh s2 'set -xe && acme-client -n www.romanzolotarev.com && rcctl reload relayd'
+			ssh s2 'set -xe
+acme-client -n www.romanzolotarev.com
+'"$LINK_CERTS"'
+rcctl reload relayd'
+			;;
+
+		acme_s0)
+			set -xe
+			doas mkdir -p -m 0700 /etc/ssl/private
+			doas cp -v "$BASE/s1/etc/acme-client.conf" /etc/
+			doas cp -v "$BASE/s1/etc/ssl/s1."* /etc/ssl/
+			doas cp -v "$BASE/s1/etc/ssl/private/s1.key" /etc/ssl/private/
+			doas ln -fs /etc/ssl/private/s1.key /etc/ssl/private/127.0.0.1.key
+			doas ln -fs /etc/ssl/private/s1.key /etc/ssl/private/192.168.1.11.key
+			doas ln -fs /etc/ssl/private/s1.key /etc/ssl/private/::1.key
+			doas ln -fs /etc/ssl/s1.pem /etc/ssl/127.0.0.1.crt
+			doas ln -fs /etc/ssl/s1.pem /etc/ssl/192.168.1.11.crt
+			doas ln -fs /etc/ssl/s1.pem /etc/ssl/::1.crt
+			doas rcctl reload relayd
 			;;
 
 		nsd)
