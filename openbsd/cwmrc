@@ -30,10 +30,8 @@ bind-key CMS-s          "bin/screencapture stop"
 bind-key M-s            "bin/screenshot"
 bind-key MS-s           "bin/screenshot 200"
 
-bind-mouse M-3          window-resize
-
-color    activeborder   "#222222"
-color    inactiveborder "#000000"
+color    activeborder   "#333"
+color    inactiveborder "#000"
 
 fontname "fixed:pixelsize=15"
 snapdist 20

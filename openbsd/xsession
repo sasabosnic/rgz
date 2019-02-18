@@ -1,14 +1,23 @@
 #!/bin/sh -e
-setxkbmap \
-	-option 'grp:alt_space_toggle,grp_led:caps,ctrl:nocaps' \
-	-layout 'us,ru' &
-unclutter -root -idle 2 -noevents &
-xidle &
-xinput set-button-map 7 1 2 3 5 4 7 6 &
-xinput set-prop 7 'Device Accel Constant Deceleration' 1 &
-xinput set-prop 8 'Device Accel Constant Deceleration' 2 &
-xset -b &
-xset mouse 5 1 &
-xsetroot -solid black &
 
+# add Russian and US keyboard layouts and toggle them with Alt + Space
+setxkbmap -layout 'us,ru' -option \
+	'grp:alt_space_toggle,grp_led:caps,ctrl:nocaps'
+
+# hide X11 pointer (cursor) when it has not moved for a few seconds
+unclutter -root -idle 2 -noevents &
+
+# run xlock when idle
+xidle &
+
+# emulate the middle button and the scroll wheel
+xinput set-prop /dev/wsmouse 'WS Pointer Middle Button Emulation' 1
+xinput set-prop /dev/wsmouse 'WS Pointer Wheel Emulation'         1
+xinput set-prop /dev/wsmouse 'WS Pointer Wheel Emulation Button'  2
+xinput set-prop /dev/wsmouse 'WS Pointer Wheel Emulation Inertia' 5
+xinput set-prop /dev/wsmouse 'WS Pointer Wheel Emulation Timeout' 500
+
+# turn off the bell, make background black, and launch cwm
+xset -b
+xsetroot -solid black
 exec cwm
