@@ -41,11 +41,10 @@ the business and <a href="tech.html">technical background</a>.</em>
 
 ## Current projects
 
-**Founder, [Mastering the Web](/n/)**<br>
-_Publishing, 2018&ndash;present_<br>
-[romanzolotarev.com/n/](/n/)
+**Founder, [RGZ.EE](https://rgz.ee/)**<br>
+_A school for full-stack web developers and indie hackers, 2018&ndash;present_<br>
 
-Writing [how-to guides](/) for beginners.<br>
+Writing [how-to guides](/m/) for beginners.<br>
 Advocating simple development tools on [Twitter] and [Mastodon].<br>
 Serving [a very kind BSD community](words.html).
 
