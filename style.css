@@ -17,7 +17,8 @@ pre { font-size: 15px; overflow-x: auto; color: #888; }
 
 a { background-color: transparent; }
 a, blockquote, body, code, div, form, h1, h2, h3, html, input, li, ol, p, pre, table, td, textarea, th, tr, ul { box-sizing: border-box; }
-button { overflow: visible; -webkit-appearance: none; -moz-appearance: none; }
+button { overflow: visible; }
+button, input { -webkit-appearance: none; -moz-appearance: none; }
 button, input, optgroup, select, textarea { font-family: inherit; font-size: 1rem; line-height: 1.5; margin: 0; }
 button, select { text-transform: none; }
 img { border-style: none; }
