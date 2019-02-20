@@ -17,8 +17,7 @@ $ <b>xrandr --output HDMI-1 --auto --output eDP-1 --auto --right-of HDMI-1</b>
 $
 </pre>
 
-## Mouse and touchpad
-
+## Mouse, track point, and touchpad
 
 List all connected devices with
 [xinput(1)](https://man.openbsd.org/xinput.1):
@@ -27,20 +26,59 @@ List all connected devices with
 $ <b>xinput</b>
 &#9121; Virtual core pointer                          id=2    [master pointer  (3)]
 &#9116;   &#8627; Virtual core XTEST pointer                id=4    [slave  pointer  (2)]
-&#9116;   &#8627; /dev/wsmouse0                             id=7    [slave  pointer  (2)]
-&#9116;   &#8627; /dev/wsmouse                              id=8    [slave  pointer  (2)]
+&#9116;   &#8627; <em>/dev/wsmouse0</em>                             id=7    [slave  pointer  (2)]
+&#9116;   &#8627; <em>/dev/wsmouse</em>                              id=8    [slave  pointer  (2)]
 &#9123; Virtual core keyboard                         id=3    [master keyboard (2)]
     &#8627; Virtual core XTEST keyboard               id=5    [slave  keyboard (3)]
     &#8627; /dev/wskbd                                id=6    [slave  keyboard (3)]
+$
 </pre>
 
-Then adjust button mapping and pointer acceleration. For example,
-reverse touchpad scrolling (`id=7`) and slow down trackball (`id=8`).
+In this example, `/dev/wsmouse0` is a built-in touchpad and
+`/dev/wsmouse` is an external mouse.  Reverse scrolling (swap `4`
+and `5`, `6` and `7`)  for the touchpad and slow down the mouse.
 
 <pre>
-$ <b>xinput set-button-map 7 1 2 3 5 4 7 6</b>
-$ <b>xinput set-prop 8 'Device Accel Constant Deceleration' 5</b>
+$ <b>xinput set-button-map /dev/wsmouse0 1 2 3 5 4 7 6</b>
+$ <b>xinput set-prop /dev/wsmouse 'Device Accel Constant Deceleration' 5</b>
 $
+</pre>
+
+For devices (e.g. trackballs) with _two buttons_: enable `Middle
+Button Emulation` and then press two buttons at the same time to
+emulate the middle button.
+
+<pre>
+$ <b>xinput set-prop /dev/wsmouse 'WS Pointer Middle Button Emulation' 1</b>
+$
+</pre>
+
+For devices (e.g. mices) with _three or more buttons_: Enable `Wheel
+Emulation`, then hold the middle button (`2`) and move the mouse
+up and down to scroll. Adjust `Inertia` and `Timeout` if needed.
+
+<pre>
+$ <b>xinput set-prop /dev/wsmouse 'WS Pointer Wheel Emulation'         1</b>
+$ <b>xinput set-prop /dev/wsmouse 'WS Pointer Wheel Emulation Button'  2</b>
+$ <b>xinput set-prop /dev/wsmouse 'WS Pointer Wheel Emulation Inertia' 3</b>
+$ <b>xinput set-prop /dev/wsmouse 'WS Pointer Wheel Emulation Timeout' 500</b>
+$
+</pre>
+
+Install `unclutter`:
+
+<pre>
+# <b>pkg_add unclutter</b>
+quirks-3.16 signed on 2018-10-12T15:26:25Z
+unclutter-8p1: ok
+#
+</pre>
+
+...then add this line to `~/.xsession` to hide X pointer when it has not moved for a
+few seconds:
+
+<pre>
+<b>unclutter -root -idle 2 -noevents &</b>
 </pre>
 
 See also my [.xsession](xsession).

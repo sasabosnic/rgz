@@ -14,7 +14,7 @@ xidle &
 xinput set-prop /dev/wsmouse 'WS Pointer Middle Button Emulation' 1
 xinput set-prop /dev/wsmouse 'WS Pointer Wheel Emulation'         1
 xinput set-prop /dev/wsmouse 'WS Pointer Wheel Emulation Button'  2
-xinput set-prop /dev/wsmouse 'WS Pointer Wheel Emulation Inertia' 5
+xinput set-prop /dev/wsmouse 'WS Pointer Wheel Emulation Inertia' 3
 xinput set-prop /dev/wsmouse 'WS Pointer Wheel Emulation Timeout' 500
 
 # turn off the bell, make background black, and launch cwm
