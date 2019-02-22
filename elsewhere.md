@@ -8,7 +8,7 @@ I run these websites:<br>
 [Twitter](https://twitter.com/romanzolotarev)<br>
 [bsd.network](https://bsd.network/@romanzolotarev)<br>
 [Patreon](https://patreon.com/romanzolotarev)<br>
-[r/zolotarevroman](https://reddit.com/u/zolotarevroman)<br>
+[u/zolotarevroman](https://reddit.com/u/zolotarevroman)<br>
 [r/mastering\_the\_web](https://www.reddit.com/r/mastering_the_web/)<br>
 [TinyLetter](https://tinyletter.com/romanzolotarev)<br>
 [Lobsters](https://lobste.rs/u/romanzolotarev)<br>
