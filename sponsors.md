@@ -26,7 +26,7 @@ P.S. Here are all received donations. Please ping me, if yours
 hasn't been listed, or if you want to remove your name from the
 list.
 
-_Updated on 5 Feb 2019_
+_Updated on 24 Feb 2019_
 
 Patreon:
 **[Tom Smyth](https://www.patreon.com/user/creators?u=10913897 "24 Apr 2018 90.00 USD")&nbsp;
@@ -64,6 +64,7 @@ PayPal:
 [Daniel Stocker](https://twitter.com/stoege "02 Jan 2019 25.00 USD")&nbsp;
 [David Carlier](https://twitter.com/devnexen "01 Oct 2018 20.00 USD")&nbsp;
 [Jeffrey Allen Neitzel](https://jan.etsh.nl/ "24 Jul 2018 15.00 USD")&nbsp;
+[Ernie Eaglebeak](https://twitter.com/ErnieEaglebeak "24 Feb 2019 10.00 USD")&nbsp;
 [Gabriel Francisco](https://twitter.com/fgbreel "8 Jun 2018 10.00 EUR I love your blog and the content you share about OpenBSD! Keep rocking!")&nbsp;
 [Joan Catala](https://twitter.com/joancatala "22 Aug 2018 10.00 USD")&nbsp;
 [Ales Tepina](https://twitter.com/alestepi "21 Aug 2018 10.00 USD")&nbsp;
