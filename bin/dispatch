@@ -3,7 +3,7 @@
 main () {
 	DB='/var/www/db/rgz'
 	test -d "$DB" || fail "$DB: not found"
-	EXP_TIME='3600'
+	EXP_TIME='360000'
 	FROM='hi@romanzolotarev.com'
 	NAME='Roman Zolotarev'
 	TIME_FMT='+%Y-%m-%d %H:%M:%S'
@@ -26,7 +26,7 @@ dispatch_mail() {
 		while read -r m
 		do
 			test -f "$m" || break
-			sendmail -t -F "$NAME" -f "$FROM" < "$m"
+			sendmail -t -F "$NAME" -f "$FROM" < "$m" || continue
 			to=$(head -n 1 "$m" | cut -d' ' -f2-)
 			echo "$m: $to"
 			rm "$m"
