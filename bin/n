@@ -28,9 +28,10 @@ main() {
 	URI=${REQUEST_URI##/$BASE_URL}
 	case "$REQUEST_METHOD$URI" in
 		POST/?send_magic_link) 		send_magic_link;;
-		GET/?subscribe) 		subscribe;;
+		GET/*?opt_in) 			opt_in;;
 		GET/?wait_for_magic_link*) 	wait_for_magic_link;;
-		GET/?unsubscribe) 		unsubscribe;;
+		GET/*?opt_out) 			opt_out;;
+		GET/?opt_out_email=*)		opt_out_email;;
 		GET/?magic=*) 			verify_magic_link;;
 		GET/*) 				render_page;;
 		*) 				full_stop 'Wat?';;
@@ -70,10 +71,10 @@ verify_magic_link() {
 	s_key=$(create_session "$m_id")
 	http303 '/n/' \
 'Content-Type: text/html; charset=utf-8
-Set-Cookie: m_id='"$m_id"'; Path=/; HttpOnly
-Set-Cookie: s_key='"$s_key"'; Path=/; HttpOnly
-Set-Cookie: key_a=; Path=/; HttpOnly
-Set-Cookie: e_hash=; Path=/; HttpOnly'
+Set-Cookie: m_id='"$m_id"'; Path=/; Secure; HttpOnly
+Set-Cookie: s_key='"$s_key"'; Path=/; Secure; HttpOnly
+Set-Cookie: key_a=; Path=/; Secure; HttpOnly
+Set-Cookie: e_hash=; Path=/; Secure; HttpOnly'
 }
 
 
@@ -132,7 +133,7 @@ Hello,
 you are about to subscribe to my newsletter,
 please open this link to continue:
 
-'"https://rgz.ee/n/?magic=$magic"'
+'"https://$SERVER_NAME/n/?magic=$magic"'
 
 --
 
@@ -142,7 +143,36 @@ The link will expire in an hour. Sent to: '"$e"
 }
 
 
-unsubscribe() {
+opt_out_email() {
+	e=$(get_value "$QUERY_STRING" 'opt_out_email')
+
+	test -n "$e" ||
+	full_stop "$e is not subscribed"
+
+	e_hash=$(echo "$e" | sha256)
+	m_id=$(get_member_id "$e_hash")
+
+	test -n "$m_id" ||
+	full_stop "$e is not subscribed"
+
+	f_n="$DB/members/$m_id/newsletter"
+	test -f "$f_n" ||
+	full_stop "$e is not subscribed"
+
+	# rm "$f_n"
+	http200_wrapped '
+<h1>Unsubscribed</h1>
+<p>'"$e"' has been unsubscribed for the newsletter.</p>
+<p class="f7">
+Find me on
+<a href="/twitter.html">Twitter</a> or
+<a href="/elsewhere.html">elsewhere</a>.<br>
+<a href="/feedback.html">Let me know</a> if I can help you.</p>
+'
+}
+
+
+opt_out() {
 	m_id=$(get_cookie 'm_id')
 	s_key=$(get_cookie 's_key')
 	test -f "$DB/members/$m_id/sessions/$s_key" ||
@@ -150,11 +180,11 @@ unsubscribe() {
 
 	f_n="$DB/members/$m_id/newsletter"
 	test -f "$f_n" && rm "$f_n"
-	http303 '/n/'
+	http303 "${REQUEST_URI%%\?*}"
 }
 
 
-subscribe() {
+opt_in() {
 	m_id=$(get_cookie 'm_id')
 	s_key=$(get_cookie 's_key')
 	test -f "$DB/members/$m_id/sessions/$s_key" ||
@@ -162,7 +192,7 @@ subscribe() {
 
 	f_n="$DB/members/$m_id/newsletter"
 	test -f "$f_n" || make_file "$f_n" "$(date +%s)"
-	http303 '/n/'
+	http303 "${REQUEST_URI%%\?*}"
 }
 
 
@@ -174,27 +204,27 @@ render_page() {
 	fi
 	test -f "$f_page"	|| http404
 
-	# logged in && subscribed && no email
+	# logged in && opted in && no email
 	# => set_fill_email_form
 
         ######################################################################
 	#
 	# logged out
-	# => subscribe_email_form
+	# => opt_in_email_form
 	#
-	# logged in && subscribed
-	# => unsubscribe_form
+	# logged in && opted in
+	# => opt_out_form
 	#
-	# logged in && unsubscribed && no email
-	# => set_subscribe_form
+	# logged in && opted out && no email
+	# => set_opt_in_form
 	#
-	# logged in && unsubscribed
-	# => set_subscribe_form
+	# logged in && opted out
+	# => set_opt_in_form
 
 	m_id=$(get_cookie 'm_id')
 	s_key=$(get_cookie 's_key')
 	f_m="$DB/members/$m_id/sessions/$s_key"
-	test -f "$f_m"		|| subscribe_email_form "$f_page"
+	test -f "$f_m"		|| opt_in_email_form "$f_page"
 
 	f_email="$DB/members/$m_id/email"
 	email=$(cat "$f_email")
@@ -206,8 +236,8 @@ render_page() {
 	if test -f "$f_n"
 	then
 		d=$(date -j -r "$(cat "$f_n")" '+%e %b %Y at %H:%M:%S UTC')
-		unsubscribe_form "$f_page" "$email" "$d"
-	else subscribe_form "$f_page" "$email"
+		opt_out_form "$f_page" "$email" "$d"
+	else opt_in_form "$f_page" "$email"
 	fi
 
 }
@@ -223,7 +253,7 @@ set_user_profile_link() {
 '
 }
 
-unsubscribe_form() {
+opt_out_form() {
 	f="$1"
 	e="$2"
 	d="$3"
@@ -231,43 +261,45 @@ unsubscribe_form() {
 <p class="f7 mt4"><span class="f3">&#x1F44C</span><br>
 Thanks for subscribing to my newsletter.<br>
 Expect monthly updates sent to <b title="Subscribed on '$d'">'"$e"'</b>.</p>
-<p><a href="?unsubscribe" class="f7 outline link mw-100 dib mb4 pv1 ph2 b ba dark-gray
+<p><a href="?opt_out" class="f7 outline link mw-100 dib mb4 pv1 ph2 b ba dark-gray
 bg-near-white b--dark-gray hover-black hover-bg-light-yellow">Unsubscribe</a></p>
 '
 	http200 "$(render_template < "$f")"
 }
 
-subscribe_form() {
+opt_in_form() {
 	f="$1"
 	e="$2"
 	export SUBSCRIPTION_FORM='
 <p class="f7 mt4"><span class="f3">&#x1F4E8;</span><br>
 You are not subscribed at the moment.<br>
-Want to get monthly updates to <b>'"$e"'</b>?</p>
-<p><a href="?subscribe" class="f7 outline link mw-100 dib mb4 pv1 ph2 b ba white
+Want to get monthly updates to <b>'"$e"'</b>?<br>
+Join 500+ subscribers.</p>
+<p><a href="?opt_in" class="f7 outline link mw-100 dib mb4 pv1 ph2 b ba white
 bg-vltr b--dark-gray hover-black hover-bg-light-yellow">Subscribe</a></p>
 '
 	http200 "$(render_template < "$f")"
 }
 
 
-subscribe_email_form() {
+opt_in_email_form() {
 	f="$1"
 	export SUBSCRIPTION_FORM='
 <p class="f7 mt4"><span class="f3">&#x1F4E8;</span><br>
-Want to get monthly updates via email?</p>
+Want to get my monthly updates via email?<br>
+Join 500+ subscribers.</p>
 <form class="mb4" method="post" action="/n/?send_magic_link">
 <input
-    class="outline f7 mw-100 w5 pv1 ph2 ba mb2 mr1
+	class="outline f7 mw-100 w5 pv1 ph2 ba mb2 mr1
 hover-bg-light-yellow b--dark-gray"
-    required="required"
-    name="email"
-    type="email"
-    placeholder="email@example.com">
+	required="required"
+	name="email"
+	type="email"
+	placeholder="email@example.com">
 <button
-    class="outline f7 mw-100 dib pv1 ph2 b ba white bg-blue b--dark-gray
+	class="outline f7 mw-100 dib pv1 ph2 b ba white bg-blue b--dark-gray
 hover-black hover-bg-light-yellow"
-    type="submit">Subscribe</button>
+	type="submit">Subscribe</button><br>
 </form>
 '
 	http200 "$(render_template < "$f")"

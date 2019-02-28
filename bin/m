@@ -121,7 +121,7 @@ Subject: [RGZ.EE] An invitation from '"$sponsor"'
 Hey, '"$sponsor"' wants to sponsor your membership at RGZ.EE.
 To accept the invitation open this link:
 
-'"https://rgz.ee${REQUEST_URI%%\?*}?magic=$magic"'
+'"https://${SERVER_NAME}${REQUEST_URI%%\?*}?magic=$magic"'
 
 Otherwise ignore this email.
 
@@ -446,8 +446,8 @@ verify_magic_link() {
 	s_key=$(create_session "$m_id")
 	http303 "${REQUEST_URI%%\?*}" \
 'Content-Type: text/html; charset=utf-8
-Set-Cookie: m_id='"$m_id"'; Path=/; HttpOnly
-Set-Cookie: s_key='"$s_key"'; Path=/; HttpOnly'
+Set-Cookie: m_id='"$m_id"'; Path=/; Secure; HttpOnly
+Set-Cookie: s_key='"$s_key"'; Path=/; Secure; HttpOnly'
 }
 
 
@@ -460,8 +460,8 @@ log_out() {
 
 	http303 "${REQUEST_URI%%\?*}" \
 'Content-Type: text/html; charset=utf-8
-Set-Cookie: m_id=; Path=/; HttpOnly
-Set-Cookie: s_key=; Path=/; HttpOnly'
+Set-Cookie: m_id=; Path=/; Secure; HttpOnly
+Set-Cookie: s_key=; Path=/; Secure; HttpOnly'
 }
 
 
@@ -515,10 +515,10 @@ sponsor_existing_member() {
 
 	http303 "${REQUEST_URI%%\?*}" \
 'Content-Type: text/html; charset=utf-8
-Set-Cookie: m_id='"$m_id"'; Path=/; HttpOnly
-Set-Cookie: s_key='"$s_key"'; Path=/; HttpOnly
-Set-Cookie: key_a=; Path=/; HttpOnly
-Set-Cookie: e_hash=; Path=/; HttpOnly'
+Set-Cookie: m_id='"$m_id"'; Path=/; Secure; HttpOnly
+Set-Cookie: s_key='"$s_key"'; Path=/; Secure; HttpOnly
+Set-Cookie: key_a=; Path=/; Secure; HttpOnly
+Set-Cookie: e_hash=; Path=/; Secure; HttpOnly'
 }
 
 
@@ -528,10 +528,12 @@ create_sponsored_member() {
 
 	m_id=$(random_str 20)
 	e_hash=$(echo "$e" | sha256)
+	d="$(date +%s)"
 
-	make_file "$DB/members/$m_id/created_at" "$(date +%s)"
+	make_file "$DB/members/$m_id/created_at" "$d"
 	make_file "$DB/members/$m_id/email" "$e"
 	make_file "$DB/members/$m_id/emails/$e_hash" "$e"
+	make_file "$DB/members/$m_id/newsletter" "$d"
 
 	sponsor_existing_member "$m_id" "$sponsor"
 }
@@ -541,19 +543,21 @@ create_member() {
 	e="$1"
 	m_id=$(random_str 20)
 	e_hash=$(echo "$e" | sha256)
+	d="$(date +%s)"
 
-	make_file "$DB/members/$m_id/created_at" "$(date +%s)"
+	make_file "$DB/members/$m_id/created_at" "$d"
 	make_file "$DB/members/$m_id/email" "$e"
 	make_file "$DB/members/$m_id/emails/$e_hash" "$e"
+	make_file "$DB/members/$m_id/newsletter" "$d"
 
 	s_key=$(create_session "$m_id")
 
 	http303 "${REQUEST_URI%%\?*}" \
 'Content-Type: text/html; charset=utf-8
-Set-Cookie: m_id='"$m_id"'; Path=/; HttpOnly
-Set-Cookie: s_key='"$s_key"'; Path=/; HttpOnly
-Set-Cookie: key_a=; Path=/; HttpOnly
-Set-Cookie: e_hash=; Path=/; HttpOnly'
+Set-Cookie: m_id='"$m_id"'; Path=/; Secure; HttpOnly
+Set-Cookie: s_key='"$s_key"'; Path=/; Secure; HttpOnly
+Set-Cookie: key_a=; Path=/; Secure; HttpOnly
+Set-Cookie: e_hash=; Path=/; Secure; HttpOnly'
 }
 
 
@@ -584,7 +588,7 @@ Hello,
 you are about to register or log in to RZE.EE (aka romanzolotarev.com),
 please open this link to continue:
 
-'"https://rgz.ee${REQUEST_URI%%\?*}?magic=$magic"'
+'"https://${SERVER_NAME}${REQUEST_URI%%\?*}?magic=$magic"'
 
 --
 
@@ -1004,9 +1008,9 @@ http404() {
 	echo 'Status: 404 Not Found'
 	echo 'Content-Type: text/html; charset=utf-8'
 	echo
-	cat "$HEADER"
+	test -f "$HEADER" && cat "$HEADER"
 	echo "<h1>Oops...</h1><p>/$BASE_URL$URI not found</p>"
-	cat "$FOOTER"
+	test -f "$FOOTER" && cat "$FOOTER"
 	exit 0
 }
 
@@ -1023,9 +1027,9 @@ http200() {
 	echo 'Status: 200 OK'
 	echo 'Content-Type: text/html; charset=utf-8'
 	echo
-	cat "$HEADER"
+	test -f "$HEADER" && cat "$HEADER"
 	echo "$1"
-	cat "$FOOTER"
+	test -f "$FOOTER" && cat "$FOOTER"
 	exit 0
 }
 
@@ -1043,6 +1047,7 @@ setup() {
 	)
 	test -z "$errs" || http500 "$errs\\nFAILED"
 	echo 'Status: 200 OK'
+	echo 'Content-Type: text/html; charset=utf-8'
 	echo
 	echo '<pre>PASS</pre>'
 	exit 0
