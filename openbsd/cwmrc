@@ -38,7 +38,8 @@ fontname "fixed:pixelsize=15"
 snapdist 20
 sticky   yes
 
-command  chrome         "chrome --enable-unveil"
+command  chrome         "chrome --enable-unveil --enable-dom-distiller"
+command  firefox        "firefox"
 command  gimp           "gimp"
 command  inkscape       "inkscape"
 command  office         "libreoffice"
