@@ -9,6 +9,7 @@ Tutorials for web developers.
 
 <div>$SUBSCRIPTION_FORM</div>
 
+- [Shell scripts to manage newsletters and memberships](2019-03-02.html "2019-03-02")
 - [nsd(8), ssg4, Tachyons, and BSD stories](2019-01-04.html "2019-01-04")
 - [Web forms and good old Common Gateway Interface](2018-11-24.html "2018-11-24")
 - [OpenBSD 6.4 and ssg3](2018-10-30.html "2018-10-30")

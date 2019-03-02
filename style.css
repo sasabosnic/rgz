@@ -93,7 +93,7 @@ h1, h2, h3, h4 { margin-bottom: 0; }
 .cf { *zoom: 1; }
 .cf:after { clear: both; }
 .cf:before, .cf:after { content: " "; display: table; }
-.code, pre, code { font-family: Consolas, monaco, monospace; }
+.code, pre, code { font-family: Consolas, Monaco, monospace; }
 .dib { display: inline-block; }
 .dim { opacity: 1; transition: opacity .15s ease-in; }
 .dim:active { opacity: .8; transition: opacity .15s ease-out; }
@@ -151,8 +151,8 @@ h1, h2, h3, h4 { margin-bottom: 0; }
 .pv2 { padding-top: .5rem; padding-bottom: .5rem; }
 .pv3 { padding-top: 1rem; padding-bottom: 1rem; }
 .pv4 { padding-top: 2rem; padding-bottom: 2rem; }
-.sans-serif { font-family: sans-serif; }
-.serif { font-family: "noto serif", georgia, times, serif; }
+.sans-serif { font-family: "Noto Sans", sans-serif; }
+.serif { font-family: "Noto Serif", Georgia, Times, serif; }
 .tc { text-align: center; }
 .tl { text-align: left; }
 .tr { text-align: right; }

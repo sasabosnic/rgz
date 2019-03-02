@@ -1,0 +1,44 @@
+Beep boop beep. What's up?
+
+- In the last two months I've released and started testing my shell
+scripts for memberships [1] and newsletter subscriptions [2] (work
+in progress);
+
+[1]: https://rgz.ee/bin/m
+[2]: https://rgz.ee/bin/n
+
+- this week I wrote few more scripts to send this very newsletter
+to you; all these shell scripts served by OpenBSD httpd(8) and
+slowcgi(8); I use curl to talk to the RESTful API of my payment
+service provider and jq to parse JSON;
+
+- moved my website to a new domain RGZ.EE, so you can enjoy shorter
+URLs; yay! (the old domain name [3] will stay intact for awhile);
+
+[3]: https://www.romanzolotarev.com
+
+- I've also added a logo and updated my avatar.
+
+Want to learn how to make a simple web service with the minimalist
+tech stack: vanilla JavaScript, HTML, CSS on the frontend, and CGI
+and shell scripts for the backend?
+
+Please become a member:
+
+https://rgz.ee/m/
+
+
+There are two member-only pages so far:
+
+1. Connect to Wi-Fi and Ethernet networks from OpenBSD
+https://rgz.ee/m/on.html
+
+2. Set up a web server with httpd(8) and relayd(8) on OpenBSD
+https://rgz.ee/m/ow.html
+
+
+
+P.S. Most of my how-tos and script are still available for free.
+Please support me on Pateron if you want me to keep those guides
+updated and available for everyone:
+https://rgz.ee/patreon.html
