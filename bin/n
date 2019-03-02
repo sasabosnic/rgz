@@ -159,7 +159,7 @@ opt_out_email() {
 	test -f "$f_n" ||
 	full_stop "$e is not subscribed"
 
-	# rm "$f_n"
+	rm "$f_n"
 	http200_wrapped '
 <h1>Unsubscribed</h1>
 <p>'"$e"' has been unsubscribed for the newsletter.</p>
