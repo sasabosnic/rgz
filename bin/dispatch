@@ -28,7 +28,7 @@ list_subscribers() {
 
 	if test -d "$d_m" && test -d "$d_n"
 	then
-		>&2 printf '[dispatch] %s subscribers ' "$(date "$TIME_FMT")"
+		printf '[dispatch] %s subscribers ' "$(date "$TIME_FMT")"
 		r=$(
 			find "$d_m" -type d -path "$d_m/*" -maxdepth 1 |
 			while read -r m
@@ -40,7 +40,7 @@ list_subscribers() {
 				echo "$e"
 			done | sort -u
 		)
-		echo "$r" | wc -l | >&2 tr -d ' '
+		echo "$r" | wc -l | tr -d ' '
 		test -n "$r" || return
 		echo "$r" > "$d_n/subscribers"
 	fi
