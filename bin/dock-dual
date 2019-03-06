@@ -10,7 +10,7 @@ xinput set-prop		/dev/wsmouse 'Device Accel Constant Deceleration' 2
 
 # set bitmap font, lower dpi, restart cwm
 xrdb "$HOME/.Xdefaults"
-echo 'Xft.dpi: 85
+echo '
 XTerm*font: -misc-fixed-medium-r-normal--15-140-75-75-c-90-iso10646-1
 XTerm*faceName:' |
 xrdb -merge
