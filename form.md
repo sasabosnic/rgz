@@ -71,7 +71,7 @@ and restart `httpd`:
 <i>DB='/db/www'</i>
 <i>TEMPLATE='/htdocs/www/feedback.html'</i>
 <i>SUCCESS_URL='/thanks.html'</i>
-<i>. /var/www/bin/form</i>
+<i>. /bin/form</i>
 <i><b>EOF</b></i>
 #
 # <b>cat &gt; /var/www/htdocs/www/feedback.html &lt;&lt; EOF</b>
