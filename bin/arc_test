@@ -1,14 +1,13 @@
 #!/bin/sh
 #
-# https://www.romanzolotarev.com/bin/arc_test
-# Copyright 2018 Roman Zolotarev <hi@romanzolotarev.com>
+# https://rgz.ee/bin/arc_test
+# Copyright 2018-2019 Roman Zolotarev <hi@romanzolotarev.com>
 #
-program="$(dirname "$(readlink -f "$0")")/arc"
-
+program="${0%_test}"
 total=0; nos=0
 no() { total=$((total+1)); echo "no ok $total - $1"; nos=$((nos+1)); }
 ok() { total=$((total+1)); echo "ok $total - $1"; }
-eq() { if [ "$1" = "$2" ]; then ok "$3"; else no "$3\\n$1\\n$2"; fi; }
+eq() { if test "$1" = "$2"; then ok "$3"; else no "$3\\n$1\\n$2"; fi; }
 desc() { printf '#\n\033[1m%s\033[m\n' "$1"; }
 
 ##########################################################################
@@ -46,4 +45,7 @@ rm -rf "$temp"
 ##########################################################################
 
 echo "1..$total"
-if [ "$nos" -gt 0 ]; then echo "FAILED $nos/$total"; else echo "PASS"; fi
+if test "$nos" -gt 0
+then echo "FAILED $nos/$total"
+else echo "PASS"
+fi

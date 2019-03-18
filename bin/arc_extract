@@ -1,28 +1,56 @@
-#!/bin/sh
+#!/bin/sh -e
 #
 # arc_extract - an extractor for archives created by arc
 #
-# https://www.romanzolotarev.com/bin/arc_extract
-# Copyright 2018 Roman Zolotarev <hi@romanzolotarev.com>
+# https://rgz.ee/bin/arc_extract
+# Copyright 2018-2019 Roman Zolotarev <hi@romanzolotarev.com>
 #
-set -e
-usage() { >&2 echo "usage: ${0##*/} <archive>"; exit 1; }
-[ -z "$1" ] && usage
 
-archive="$(readlink -f "$1")"
+fail() { >&2 echo "$@"; exit 1; }
 
-tree="${archive}.tree.gz"
-dgst="${archive}.tree.sha256"
+if test "$1" = '-n'
+then dry=1; shift
+else dry=0
+fi
 
-test -f "$archive" || { >&2 echo "$archive is not a file"; exit 2; }
-test -f "$tree" || { >&2 echo "$tree is not a file"; exit 4; }
-test -f "$dgst" || { >&2 echo "$dgst is not a file"; exit 4; }
+test -z "$1" && fail "usage: ${0##*/} [-n] <archive>"
 
-[ "$(gunzip < "$tree"|sha256)" = "$(cat "$dgst")" ] ||
-	{ >&2 echo "$dgst doesn't match $tree"; exit 5; }
+f_arch="$(readlink -f "$1")"
+f_tree="${f_arch}.tree.gz"
+f_dgst="${f_arch}.tree.sha256"
 
-pax -pe -rzf "$archive"
+test -f "$f_arch" || fail "$f_arch: no file"
+test -f "$f_tree" || fail "$f_tree: no file"
+test -f "$f_dgst" || fail "$f_dgst: no file"
 
-gunzip < "$tree" |
+
+# generate the hash from the spec file
+# get the hash from sha256 file
+# exit if they mismatch
+tree=$(gunzip < "$f_tree"|sha256)
+dgst=$(cat "$f_dgst")
+test "$tree" = "$dgst" ||
+fail "$dgst"' (tree.sha256) !=
+'"$tree"' (tree.gz|sha256)'
+
+
+# during "dry run" print out the spec file and
+# list all the files from the archive, then exit
+
+if test $dry = 1
+then
+	gunzip < "$f_tree"
+	pax -zvf "$f_arch"
+	exit 0
+fi
+
+
+# read (-r) and unzip (-z) the archive from $f_arch and "preserve
+# everything" (-pe) (uid, gid, mode, atime, mtime)
+pax -pe -rzf "$f_arch"
+
+# unzip the spec file, remove nanoseconds (pax doesn't preserve
+# them), check the contents of the current directory with mtree
+gunzip < "$f_tree" |
 sed 's/time=\([0-9]*\)\.[0-9]*/time=\1.0/' |
 mtree

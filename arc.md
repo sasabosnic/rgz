@@ -6,7 +6,7 @@ CRYPTO](/openbsd/bioctl-crypto.html),
 
 If you are looking for a deduplicating archiver, try [borg(1)](/borg.html).
 
-_Tested on [OpenBSD](/openbsd/) 6.3_
+_Tested on [OpenBSD](/openbsd/) 6.3 and 6.4_
 
 # Archive with mtree(8) and pax(1)
 
@@ -23,8 +23,8 @@ compressed archive with [pax(1)][p] and [gzip(1)][g].
 ## Install
 
 <pre>
-$ <b>ftp -Vo ~/bin/arc https://www.romanzolotarev.com/bin/arc</b>
-arc          100% |********************| 18711       00:00
+$ <b>ftp -Vo ~/bin/arc https://rgz.ee/bin/arc</b>
+arc          100% |********************| 1192        00:00
 $ <b>chmod +x ~/bin/arc</b>
 </pre>
 
@@ -32,7 +32,7 @@ $ <b>chmod +x ~/bin/arc</b>
 
 <pre>
 $ <b>arc ~/src /tmp/archive</b>
-/home/romanzolotarev/src 24080K /tmp/archive 16752K OKAY
+/home/romanzolotarev/src 24080K /tmp/archive 16752K
 $ <b>ls -1 /tmp/archive*</b>
 /tmp/archive
 /tmp/archive.tree.gz
@@ -42,8 +42,8 @@ $
 
 ## Extract a file
 
-Restore one file from the archive and compare its
-contents with the original.
+Restore _a single file_ from the archive and compare its contents
+with the original.
 
 <pre>
 $ <b>cd /tmp</b>
@@ -54,16 +54,17 @@ $
 
 ## Extract all files
 
-[arc_extract](/bin/arc_extract) restores whole archive into _current
-directory_ and compares restored files with the spec created by
-mtree(8).
+[arc_extract](/bin/arc_extract) restores the archive into _the
+current directory_ and compares restored files with the spec created
+by mtree(8).
 
-Note: time of original files in spec is in nanoseconds, while pax(1)
-restores time in seconds. Therefore, we use sed to cut nanoseconds.
+Note: time of original files in the spec is in nanoseconds, while
+pax(1) restores time in seconds. Therefore, we use sed(1) to cut
+those nanoseconds.
 
 <pre>
 $ <b>mkdir -p /tmp/restored && cd /tmp/restored</b>
-$ <b>arc_extract archive</b>
+$ <b>arc_extract /tmp/archive</b>
 $
 </pre>
 

@@ -1,32 +1,41 @@
-#!/bin/sh
+#!/bin/sh -e
 #
 # arc - a directory archiver with compression
 #
-# https://www.romanzolotarev.com/bin/arc
-# Copyright 2018 Roman Zolotarev <hi@romanzolotarev.com>
+# https://rgz.ee/bin/arc
+# Copyright 2018-2019 Roman Zolotarev <hi@romanzolotarev.com>
 #
-set -e
-usage() { >&2 echo "usage: ${0##*/} <src> <archive>"; exit 1; }
-[ -z "$1" ] && usage
-[ -z "$2" ] && usage
 
-src="$(readlink -f "$1")"
-archive="$(readlink -f "$2")"
-tree="${archive}.tree.gz"
-dgst="${archive}.tree.sha256"
+fail() { >&2 echo "$@" exit 1; }
+usage() { fail "usage: ${0##*/} <src> <archive>"; }
 
-test -d "$src" || { >&2 echo "$src is not a directory"; exit 2; }
-test -e "$archive" && { >&2 echo "$archive already exists"; exit 3; }
-test -e "$tree" && { >&2 echo "$tree already exists"; exit 3; }
-test -e "$dgst" && { >&2 echo "$dgst already exists"; exit 3; }
+test -z "$1" && usage
+test -z "$2" && usage
 
-printf '%s %s %s ' "$src" "$(du -sh "$src"|cut -f1)" "$archive"
+src=$(readlink -f "$1")
+arch=$(readlink -f "$2")
+tree="${arch}.tree.gz"
+dgst="${arch}.tree.sha256"
+
+test -d "$src" || fail "$src: no directory"
+test -e "$arch" && fail "$arch: exists"
+test -e "$tree" && fail "$tree: exists"
+test -e "$dgst" && fail "$dgst: exists"
+
+# print out $src, its file size and archive's file name
+printf '%s %s %s ' "$src" "$(du -sh "$src"|cut -f1)" "$arch"
+
+# generate the spec file with sha256 hashes for every file
+# archive it and generate sha256 hash for the spec itself
 mtree -cK sha256digest -p "$src" | gzip   > "$tree"
 zcat "$tree"                     | sha256 > "$dgst"
 
-cd "$src" || exit
+cd "$src" || fail "$src: no directory"
 
-pax -wzx cpio -f "$archive" .
+# write (-w) gzipped (-z) archive
+# in cpio format (-x cpio)
+# to the file (-f)
+pax -wzx cpio -f "$arch" .
 	# TODO
 	#
 	# to exclude '.*/foo/.*' and '.*bar.*'
@@ -34,4 +43,6 @@ pax -wzx cpio -f "$archive" .
 	# -'s,.*/foo/.*,,' \
 	# -'s,.*bar.*,,' \
 
-du -sh "$archive"|cut -f1
+# print out the archive file size
+du -sh "$arch" |
+cut -f1
