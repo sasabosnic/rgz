@@ -1,30 +1,34 @@
 #!/bin/sh -e
 
 title='Roman Zolotarev'
-url='https://www.romanzolotarev.com/'
+url='https://rgz.ee'
 
-pwd=$(pwd)
-if test -z "${pwd##*.git}"
-then repo="$pwd"
-else repo="$pwd/.git"
-fi
-
-dst="/var/www/htdocs/$(basename "$pwd" '.git')"
-src="$dst/raw"
+dst="/var/www/htdocs/$(basename "$PWD" '.git')"
+raw="$dst/raw"
+src="$dst/src"
 
 rm -rf "${dst:?}/.files"
+rm -rf "${raw:?}"
 rm -rf "${src:?}"
-git clone . "$src"
 
-"$HOME/bin/ssg4" "$src" "$dst" "$title" "$url" > /dev/null
-"$HOME/bin/rssg" "$src/n/index.md" "Newsletter - $title" > "$dst/n/rss.xml"
+if test -z "${PWD##*.git}"
+then repo="$PWD"
+else repo="$PWD/.git"
+fi
+echo "${title}" > "$repo/owner"
+echo "${url##*//}" > "$repo/description"
+echo "${url}/raw/.git" > "$repo/url"
 
-mkdir -p "$dst/src"
-echo "$title" > "$repo/owner"
-echo "$url" > "$repo/description"
-(cd "$dst/src" && stagit "$pwd")
-cp -f "$dst/src/log.html" "$dst/src/index.html"
-cp -f "$dst/stagit/"* "$dst/src/"
->&2 echo "[stagit] $(grep -c '"commit' "$dst/src/log.html") commits"
+git clone "$repo" "$raw"
+(cd "$raw/.git" && git update-server-info)
+
+"$HOME/bin/ssg4" "$raw" "$dst" "$title" "$url" > /dev/null
+"$HOME/bin/rssg" "$raw/n/index.md" "Newsletter - $title" > "$dst/n/rss.xml"
+
+mkdir -p "$src"
+(cd "$src" && stagit "$repo")
+cp -f "$src/log.html" "$src/index.html"
+cp -f "$raw/stagit/"* "$src/"
+>&2 echo "[stagit] $(grep -c '"commit' "$src/log.html") commits"
 
 hostname > "$dst/hostname"
