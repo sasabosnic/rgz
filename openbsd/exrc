@@ -7,6 +7,7 @@ map gc :%!prettier --parser=css --write
 map gd :r!date +\%Y-\%m-\%d
 map ge :E
 map gf {!}fmt -p}}{j
+map go :%!gofmt
 map gg 1G
 map gj :%!prettier --parser=flow --write
 map gJ :%!prettier --parser=json --write
