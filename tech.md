@@ -4,6 +4,7 @@ _This is a part of my [curriculum vitae](cv.html)._
 
 ## Languages
 
+- 2019 Go, TypeScript
 - 2016 Haskell
 - 2015 Elm
 - 1998 JavaScript

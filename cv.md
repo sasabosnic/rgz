@@ -1,7 +1,7 @@
 # Roman Zolotarev
 
 <p class="p-note">
-<em>An entrepreneur, software developer, minimalist web designer with
+<em>A software developer and minimalist web designer with
 the business and <a href="tech.html">technical background</a>.</em>
 </p>
 
