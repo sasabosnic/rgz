@@ -1,5 +1,7 @@
 #!/bin/sh
 
+stty status '^T'
+
 LC_ALL='en_US.UTF-8'
 PATH="$HOME/bin:$PATH"
 PS1='\w '
