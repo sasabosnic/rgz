@@ -1,5 +1,16 @@
 #!/bin/sh -e
 
+# backup s1 -> r1 -> s2 git + find + chmod + chown
+# check what files are changed and install/enable/start/restart services they depend on
+# deployment script -> post-receive
+# key material (/etc/smtpd, /etc/ssl, /var/www/db/www/paddle)
+# mkdir /var/www/db/www /var/www/{bin,usr}
+# relayd: cdn.paddle.com cdn.ravenjs.com cdnjs.cloudflare.com checkout-data.paddle.com checkout.paddle.com static.paddle.com
+# slowcgi smtpd httpd acme sshd crond pf nsd
+# with rdist: https://high5.nl/gist/rdist.html
+# nsd: DNSSEC
+# nsd: rgz.ee and romanzolotarev.com, remove the others
+
 LINK_CERTS='
 ln -fs /etc/ssl/private/s1.key /etc/ssl/private/46.23.88.178.key
 ln -fs /etc/ssl/private/s1.key /etc/ssl/private/2a03:6000:1015::178.key
