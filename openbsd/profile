@@ -40,7 +40,7 @@ alias rgz='sssg4 src/rgz'
 alias rgzm='sssg4 prv/m'
 alias runbsd='sssg4 src/runbsd'
 
-s_log()	{ test -n "$1" && { rsync -azcvP "$1:/var/www/logs/*" "$HOME/prv/logs/$(date +%Y-%m-%d)-$1/"; }; }
+s_log()	{ test -n "$1" && { rsync -azcvP "$1:/var/www/logs/*" "$HOME/prv/logs/$1/$(date +%Y-%m-%d)/"; }; }
 
 png()	{ optipng -preserve -strip all -o7 "$1"; }
 jpeg()	{ jpegoptim --strip-all --preserve --preserve-perms --verbose -m80 $@; }
