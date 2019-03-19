@@ -1,46 +1,46 @@
-bind-key F7             "bin/dock"
-bind-key F8             "bin/undock"
-bind-key F9             "bin/dock-dual"
-bind-key M-Return       terminal
-bind-key CM-1           group-only-1
-bind-key CM-2           group-only-2
-bind-key CM-3           group-only-3
-bind-key CMS-1          window-movetogroup-1
-bind-key CMS-2          window-movetogroup-2
-bind-key CMS-3          window-movetogroup-3
-bind-key M-j            window-cycle
-bind-key M-k            window-cycle
-bind-key M-t            window-maximize
-bind-key M-v            window-vtile
+bind-key F7		"bin/dock"
+bind-key F8		"bin/undock"
+bind-key F9		"bin/dock-dual"
+bind-key M-Return	terminal
+bind-key CM-1		group-only-1
+bind-key CM-2		group-only-2
+bind-key CM-3		group-only-3
+bind-key CMS-1		window-movetogroup-1
+bind-key CMS-2		window-movetogroup-2
+bind-key CMS-3		window-movetogroup-3
+bind-key M-j		window-cycle
+bind-key M-k		window-cycle
+bind-key M-t		window-maximize
+bind-key M-v		window-vtile
 
-bind-key M-equal        "bin/vol up"
-bind-key M-m            "bin/vol toggle"
-bind-key M-minus        "bin/vol down"
+bind-key M-equal	"bin/vol up"
+bind-key M-m		"bin/vol toggle"
+bind-key M-minus	"bin/vol down"
 
-bind-key M-b            "xbacklight -dec 10 -time 0"
-bind-key MS-b           "xbacklight -inc 10 -time 0"
+bind-key M-b		"xbacklight -dec 10 -time 0"
+bind-key MS-b		"xbacklight -inc 10 -time 0"
 
-bind-key M-l            "cmus-remote --shuffle"
-bind-key M-n            "cmus-remote --next"
-bind-key M-p            "cmus-remote --prev"
-bind-key M-r            "cmus-remote -C 'toggle repeat_current'"
-bind-key M-u            "cmus-remote --pause"
+bind-key M-l		"cmus-remote --shuffle"
+bind-key M-n		"cmus-remote --next"
+bind-key M-p		"cmus-remote --prev"
+bind-key M-r		"cmus-remote -C 'toggle repeat_current'"
+bind-key M-u		"cmus-remote --pause"
 
-bind-key CM-s           "bin/screencapture start"
-bind-key CMS-s          "bin/screencapture stop"
-bind-key M-s            "bin/screenshot"
-bind-key MS-s           "bin/screenshot 200"
+bind-key CM-s		"bin/screencapture start"
+bind-key CMS-s		"bin/screencapture stop"
+bind-key M-s		"bin/screenshot"
+bind-key MS-s		"bin/screenshot 200"
 
-color    activeborder   "#333"
-color    inactiveborder "#000"
+color activeborder	"#333"
+color inactiveborder	"#000"
 
-fontname "fixed:pixelsize=15"
-snapdist 20
-sticky   yes
+fontname		"fixed:pixelsize=15"
+snapdist		20
+sticky			yes
 
-command  chrome         "chrome --enable-unveil --enable-dom-distiller"
-command  firefox        "firefox"
-command  gimp           "gimp"
-command  inkscape       "inkscape"
-command  office         "libreoffice"
-command  iridium	"iridium --enable-unveil"
+command firefox		"firefox"
+command gimp		"gimp"
+command gthumb		"gthumb"
+command inkscape	"inkscape"
+command iridium		"iridium --enable-unveil"
+command office		"libreoffice"
