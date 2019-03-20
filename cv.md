@@ -16,6 +16,8 @@ the business and <a href="tech.html">technical background</a>.</em>
   class="u-url" rel="me">bsd.network/@romanzolotarev</a><br>
 </p>
 
+<a href="about.html"><img src="romanzolotarev-wide.jpeg" class="w-100"></a>
+
 <hr>
 
 <pre>
@@ -36,36 +38,32 @@ the business and <a href="tech.html">technical background</a>.</em>
                    -b2b
 </pre>
 
-[BSDjobs]: https://www.bsdjobs.com/
-[Cinarra Systems]: https://www.cinarra.com/
 
 ## Current projects
 
 **Founder, [RGZ.EE](https://rgz.ee/)**<br>
 _A school for full-stack web developers and indie hackers, 2018&ndash;present_<br>
 
-Writing [how-to guides](/m/) for beginners.<br>
+Writing [how-to guides](/m/) for beginners.
+
 Advocating simple development tools on [Twitter] and [Mastodon].<br>
 Serving [a very kind BSD community](words.html).
 
 [Twitter]: https://twitter.com/romanzolotarev
 [Mastodon]: https://bsd.network/@romanzolotarev
 
-Supporting Unix/BSD related projects and [mentoring developers](ref/mk.html).
-#IndieWeb #RunBSD #BSDjobs #OpenBSD &#x1f421;<br>
-
-Maintaining [a media kit](/openbsd.amsterdam/) and website for
-[OpenBSD Amsterdam](https://openbsd.amsterdam).<br>
-Created [a logo](/etsh.nl) for [Jeff](words.html#je)'s [Etsh](https://etsh.nl/).<br>
+Supporting Unix/BSD related projects and [mentoring
+developers](ref/mk.html). #RunBSD #OpenBSD &#x1f421;
+For example, maintaining [a media kit](/openbsd.amsterdam/)
+and website for [OpenBSD Amsterdam](https://openbsd.amsterdam).
 Helping [Mischa](ref/mp.html) to promote OpenBSD Amsterdam.
 
-Promoting BSD companies on [Twitter](https://twitter.com/bsdjobscom).<br>
-Interviewing the community and hosting [user stories](https://www.bsdjobs.com/people/).<br>
-h/t [Raman](ref/rs.html) is inspiring and advising.<br>
-[Reyk](words.html#rf) for being my first customer right after the project launch.
+Interviewing the community and hosting [user stories](https://runbsd.info/).
 
 Writing and maintaining [shell scripts](/bin/) (licensed under
 [ISC](https://en.m.wikipedia.org/wiki/ISC_license)).
+
+Developing [software](/bin/m) for [my membership website](/m/pricing.html).
 
 [<img src="ref/mp.jpeg" class="br-100 w3">](ref/mp.html "Mischa")
 [<img src="ref/je.jpeg" class="br-100 w3">](words.html#je "Jeff")
@@ -74,13 +72,12 @@ Writing and maintaining [shell scripts](/bin/) (licensed under
 [<img src="ref/rs.jpeg" class="br-100 w3">](ref/rs.html "Raman")
 [<img src="ref/rf.jpeg" class="br-100 w3">](words.html#rf "Reyk")
 
-_Why?_ &#29983;&#12365;&#30002;&#26000;<br> The modern web is slow,
-bloated, and intrusive.  Our community (developers,
-system administrators, technical writers) must promote high code
-standards, support free software projects. For example, OpenBSD
-project&mdash;the invisible backbone of the Internet&mdash;software
-for routers, firewalls, mail, web, DNS servers, etc.
-Who else can save internet kittens?
+_Why?_ The modern web is slow, bloated, and intrusive.  Our community
+(developers, system administrators, technical writers) must promote
+high code standards, support free software projects. For example,
+OpenBSD project&mdash;the invisible backbone of the Internet&mdash;software
+for routers, firewalls, mail, web, DNS servers, etc.  Who else can
+save internet kittens?
 
 _Challenges?_ We need to (re-)educate few hundred thousand of web
 developers. I heard number of programmers doubles every five years.
@@ -96,7 +93,12 @@ _Software development, Russia, 2016&ndash;present_<br>
 Developing software for the web. Managing all strategic and operational
 marketing, customer relationship activities, and sales.
 
+Tech stack: **JavaScript**, **HTML**, **CSS**, **NodeJS**, Unix/BSD
+userland, **OpenBSD**, httpd/relayd, FastCGI, shell, MongoDB, SQLite.
+
 ---
+
+[Cinarra Systems]: https://www.cinarra.com/
 
 ## Past experience
 
