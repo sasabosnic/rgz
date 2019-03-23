@@ -20,4 +20,4 @@ test -f "$b" || b="$HOME/bin/no_tests"
 
 tmux split-window -p 95 "vi $a"
 tmux split-window -p 40 -dh \
-"ls $wa $wb | entr -rc sh -c 'echo $a;shellcheck $a $b && $b'"
+"ls $wa $wb | entr -rc sh -c 'echo $a;shellcheck $a $b && sh $b'"
