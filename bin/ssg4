@@ -184,7 +184,7 @@ render_html_file() {
 			t = substr(body, RSTART + RLENGTH)
 			sub("<[[:space:]]*/[[:space:]]*[Hh]1.*", "", t)
 			gsub(/^[[:space:]]*|[[:space:]]$/, "", t)
-			if (t) title = t " - " title
+			if (t) title = t " &mdash; " title
 		}
 		n = split(ENVIRON["HEADER"], header, /\n/)
 		for (i = 1; i <= n; i++) {

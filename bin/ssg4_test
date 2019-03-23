@@ -110,7 +110,7 @@ model="$header"'
 eq "$model" "$(cat ./a.html)" 'html wrapped'
 
 model="$header"'
-<title>Title B - r</title>
+<title>Title B &mdash; r</title>
 </head>
 <body>
 <H1>Title B</H1>
