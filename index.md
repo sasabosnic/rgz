@@ -1,5 +1,5 @@
 <p class="f4 f3-m f3-l lh-title ni mt5">&#8220;Dear aspiring full-stack
-web developers and indie hackers, my dear peers,
+web developers and indie hackers, my dear peers,</p>
 
 <p class="f4 f3-m f3-l lh-title">we are all a little bit tired of
 bloated web stacks and we're worrying about future of the web.</p>
