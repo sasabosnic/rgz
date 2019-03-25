@@ -756,11 +756,19 @@ render_page() {
 	test -f "$DB/members/$m_id/sessions/$s_key" ||
 	new_session_form "$f"
 
-	test -f "$DB/members/$m_id/expires_at" ||
-	subscription_form "$f" "$m_id"
+	f_s="$DB/members/$m_id/sponsor"
+	if test -f "$f_s"
+	then
+		s_id=$(cat "$f_s")
+		test -f "$DB/members/$s_id/expires_at" ||
+		subscription_form "$f" "$m_id"
+	else
+		test -f "$DB/members/$m_id/expires_at" ||
+		subscription_form "$f" "$m_id"
+	fi
 
-	test -f "$DB/members/$m_id/email" &&
-	e=$(cat "$DB/members/$m_id/email")
+	f_e="$DB/members/$m_id/email"
+	test -f "$f_e" && e=$(cat "$f_e")
 
 	http200 '<div class="f7 mt2"><a href="?profile">'"$e"'</a></div>
 '"$(cat "$f")"
