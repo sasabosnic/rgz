@@ -6,8 +6,9 @@ LC_ALL='en_US.UTF-8'
 PATH="$HOME/bin:$PATH"
 PS1='\w '
 VISUAL='vi'
+TERM=xterm-256color
 GOPATH="$HOME"
-export LC_ALL PATH PS1 VISUAL GOPATH
+export LC_ALL PATH PS1 VISUAL TERM GOPATH
 
 # shellcheck disable=SC2086
 update_complete_pass() {

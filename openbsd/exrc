@@ -9,7 +9,7 @@ map ge :E
 map gf {!}fmt -p}}{j
 map go :%!gofmt
 map gg 1G
-map gj :%!prettier --parser=flow --write
+map gj :%!prettier --parser=typescript --write
 map gJ :%!prettier --parser=json --write
 map gp :r!xclip -o -selection clipboard
 map gs {!}sort -u

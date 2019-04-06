@@ -19,5 +19,5 @@ then cd "$src" || exit
 else
 	tmux new-window -n "$1" -c "$src"
 	tmux split-window -l 2 -d -c "$src" \
-	"while :; do cd $src;find . -type f ! -path '*/.*'|entr -d ssg4 '$src' '$dst' '$title' '$url'; done"
+	"while :; do cd $src;find . -type f ! -path '*/node_modules/*' ! -path '*/.*'|entr -d ssg4 '$src' '$dst' '$title' '$url'; done"
 fi

@@ -77,7 +77,7 @@ bytes) as a placeholder.
 
 ## Sitemap
 
-_ssg4_ generates `sitemap.xml` with the list of all page.  Don't
+_ssg4_ generates `sitemap.xml` with the list of all page. Don't
 forget to add absolute URL of the sitemap to your `robot.txt`.<br>For
 example:
 
@@ -214,6 +214,7 @@ $ <b>for f in $(which cat cpio date sh awk find grep printf readlink sort tee)</
 [romanzolotarev.com](https://www.romanzolotarev.com/) &mdash; obviously ;)<br>
 [runbsd.info](https://runbsd.info/)<br>
 [stockersolutions.com](https://www.stockersolutions.com/)<br>
+[why-vi.rocks](http://why-vi.rocks)<br>
 
 ---
 
