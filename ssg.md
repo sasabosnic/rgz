@@ -1,12 +1,13 @@
-_Tested on [OpenBSD](/openbsd/) 6.3 and 6.4_
+_Tested on [OpenBSD](/openbsd/) 6.3, 6.4, and macOS 10.14 with lowdown and Markdown.pl_
 
-# Make a static site with find(1), grep(1), and lowdown(1)
+# Make a static site with find(1), grep(1), and lowdown or Markdown.pl
 
-[ssg](/bin/ssg4) is a static site generator written in shell. Optionally it
-converts Markdown files to HTML with
-[lowdown(1)](https://kristaps.bsd.lv/lowdown/).
+[ssg](/bin/ssg5) is a static site generator written in shell.
+Optionally it converts Markdown files to HTML with
+[lowdown(1)](https://kristaps.bsd.lv/lowdown/) or
+[Markdown.pl](https://daringfireball.net/projects/markdown/).
 
-Unless a page has `<HTML>` tag _ssg4_ extracts its title from `<H1>`
+Unless a page has `<HTML>` tag _ssg5_ extracts its title from `<H1>`
 tag, wraps the page with `_header.html`, `_footer.html`.
 
 Then copies everything (excluding `.*`, `CVS`, and `_*`) from `src`
@@ -17,42 +18,48 @@ _180 LoC. [Enlarge, enhance, zoom!](ssg4.png)_
 
 ## Install
 
-Download and chmod it:
+On OpenBSD:
 
 <pre>
 $ <b>mkdir -p bin</b>
-$ <b>ftp -Vo bin/ssg4 https://www.romanzolotarev.com/bin/ssg4</b>
-ssg4       100% |*********************|    4916      00:00
-$ <b>chmod +x bin/ssg4</b>
+$ <b>ftp -Vo bin/ssg5 https://rgz.ee/bin/ssg5</b>
+ssg5       100% |*********************|    4916      00:00
+$ <b>chmod +x bin/ssg5</b>
 $ <b>doas pkg_add lowdown</b>
 quirks-2.414 signed on 2018-03-28T14:24:37Z
 lowdown-0.3.1: ok
 $
 </pre>
 
-lowdown(1) is optional. It's required only if there are
-any `*.md` files.
+Or on macOS:
+
+<pre>
+$ <b>mkdir -p bin</b>
+$ <b>curl -s https://rgz.ee/bin/ssg5 > bin/ssg5</b>
+$ <b>curl -s https://rgz.ee/bin/Markdown.pl > bin/Markdown.pl</b>
+$ <b>chmod +x bin/ssg5 bin/Markdown.pl</b>
+$
+</pre>
+
+lowdown(1) and Markdown.pl are optional. They are required only if
+there are any `*.md` files.
 
 ## Usage
 
+Make sure `ssg5` and `lowdown` or `Markdown.pl` are in your `$PATH`:
+
 <pre>
+$ <b>PATH="$HOME/bin:$PATH"</b>
 $ <b>mkdir src dst</b>
 $ <b>echo '# Hello, World!' > src/index.md</b>
-$ <b>ftp -Vo src/_header.html https://www.romanzolotarev.com/raw/_header.html</b>
-_header.html 100% |**************************|  3362       00:00
-$ <b>ftp -Vo src/_footer.html https://www.romanzolotarev.com/raw/_footer.html</b>
-_header.html 100% |**************************|   727       00:00
-$ <b>ftp -Vo src/favicon.png https://www.romanzolotarev.com/raw/favicon.png</b>
-favicon.png  100% |**************************|   408       00:00
-$ <b>bin/ssg4 src dst 'Test' 'http://www'</b>
+$ <b>echo '&lt;html&gt;&lt;title&gt;&lt;/title&gt;' > src/_header.md</b>
+$ <b>bin/ssg5 src dst 'Test' 'http://www'</b>
 ./index.md
-./favicon.png
-[ssg] 2 files, 1 url
+[ssg] 1 files, 1 url
 $ <b>find dst</b>
 dst
 dst/.files
 dst/index.html
-dst/favicon.png
 dst/sitemap.xml
 $ <b>open dst/index.html</b>
 </pre>
@@ -60,7 +67,7 @@ $ <b>open dst/index.html</b>
 ## Markdown and HTML files
 
 HTML files from `src` have greater priority than Markdown ones.
-_ssg4_ converts Markdown files from `src` to HTML in `dst` and then
+_ssg5_ converts Markdown files from `src` to HTML in `dst` and then
 copies HTML files from `src` to `dst`. In the following example
 `src/a.html` wins:
 
@@ -77,12 +84,12 @@ bytes) as a placeholder.
 
 ## Sitemap
 
-_ssg4_ generates `sitemap.xml` with the list of all page. Don't
+_ssg5_ generates `sitemap.xml` with the list of all page. Don't
 forget to add absolute URL of the sitemap to your `robot.txt`.<br>For
 example:
 
 	user-agent: *
-	sitemap: https://www.romanzolotarev.com/sitemap.xml
+	sitemap: https://rgz.ee/sitemap.xml
 
 ## RSS
 
@@ -93,21 +100,21 @@ to `_header.html`.<br>For example:
 
 ## Incremental updates
 
-On every run _ssg4_ saves a list of files in `dst/.files` and updates
-only newer files. If no files were modified after that, _ssg4_ does
+On every run _ssg5_ saves a list of files in `dst/.files` and updates
+only newer files. If no files were modified after that, _ssg5_ does
 nothing.
 
 <pre>
-$ <b>bin/ssg4 src dst 'Test' 'https://www'</b>
+$ <b>bin/ssg5 src dst 'Test' 'https://www'</b>
 [ssg] no files, 1 url
 $
 </pre>
 
-To force the update delete `dst/.files` and re-run _ssg4_.
+To force the update delete `dst/.files` and re-run _ssg5_.
 
 <pre>
 $ <b>rm dst/.files</b>
-$ <b>bin/ssg4 src dst 'Test' 'https://www'</b>
+$ <b>bin/ssg5 src dst 'Test' 'https://www'</b>
 index.md
 [ssg] 1 file, 1 url
 $
@@ -115,7 +122,7 @@ $
 
 ## Watch
 
-Save this helper to `~/bin/sssg`. It re-runs _ssg4_ with
+Save this helper to `~/bin/sssg`. It re-runs _ssg5_ with
 [entr(1)](http://entrproject.org) on every file change.
 
 <pre>
@@ -124,7 +131,7 @@ $ <b>cat $HOME/bin/sssg</b>
 while :
 do
 	find . -type f ! -path '*/.*' |
-	entr -d "$HOME/bin/ssg4" . "$1" "$(date)" '//www'
+	entr -d "$HOME/bin/ssg5" . "$1" "$(date)" '//www'
 done
 $
 </pre>
@@ -143,56 +150,6 @@ Start the helper and keep it running:
 <pre>
 $ <b>~/bin/s /var/www/htdocs/www</b>
 [ssg] 1 file, 1 url
-</pre>
-
-## Upgrade
-
-_[Previous version of ssg](ssg3.html) has been retired._
-
-Add `<!DOCTYPE html>`, `<STYLE>...</STYLE>` with your styles and
-an empty `<TITLE></TITLE>` tags to `_header.html`.
-
-_ssg4_ captures page's title from the first `<H1>` tag of the page
-and inject it into `<TITLE>`, if it's present and empty.
-
-Move `_rss.html` to `_header.html`, `_styles.css` to `<STYLE>` tag
-in `_header.html`, and `_scripts.js` to `<SCRIPT>` tag.
-
-_ssg3_                               | _ssg4_
-:--                                  | :--
-Builds 1,730 files in **8.54s**      | in **5.43s**
-&nbsp;                               |
-Contains basic HTML tags.            | Contains no HTML tags.
-wc(1) is required.                   | Doesn't use wc(1).
-&nbsp;                               |
-List of feeds read from `_rss.html`, | `_rss.html`,
-styles from `_styles.css`, and       | `_styles.css`, and
-scripts from `_scripts.js`.          | `_scripts.js` have been removed.
-
-## Dependencies
-
-_ssg4_ depends on few programs from OpenBSD base:
-
-<pre>
-$ <b>for f in $(which cat cpio date sh awk find grep printf readlink sort tee)</b>
-<i><b>do ldd "$f"</b></i>
-<i><b>done | awk '/\//{print$7}' | grep '.' | sort -u</b></i>
-/bin/cat
-/bin/cpio
-/bin/date
-/bin/sh
-/usr/bin/awk
-/usr/bin/find
-/usr/bin/grep
-/usr/bin/printf
-/usr/bin/readlink
-/usr/bin/sort
-/usr/bin/tee
-/usr/lib/libc.so.92.5
-/usr/lib/libm.so.10.1
-/usr/lib/libutil.so.13.0
-/usr/lib/libz.so.5.0
-/usr/libexec/ld.so
 </pre>
 
 ---
