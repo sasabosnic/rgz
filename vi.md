@@ -39,30 +39,41 @@ to the marked line with `d'm`. Or copy to the buffer with `y'm`.
 
 Break lines at column 72 in _Insert_ and _Append_ modes.
 
-    :set wraplen=72
+<pre>
+:<b>set wraplen=72</b>
+</pre>
 
 Format a paragraph with goal line length 72, allow indented paragraphs.
 
-    :?^$?,//!fmt -pw 72
+<pre>
+:<b>?^$?,//!fmt -pw 72</b>
+</pre>
 
 Sort lines in a paragraph (in _Command_ mode):
 
-    !}sort
+<pre>
+!<b>}sort</b>
+</pre>
 
 To remove trailing spaces:
 
-    :%s/[[:space:]]\{1,\}/
-
+<pre>
+:<b>%s/[[:space:]]\{1,\}/</b>
+</pre>
 
 To edit command-history:
 
-    :set cedit=\<TAB>
+<pre>
+:<b>set cedit=\<TAB></b>
+</pre>
 
 Where `<TAB>` is the actual tab character: press `^V`, then `<TAB>`.
 
 To read help:
 
-    :help
+<pre>
+:<b>help</b>
+</pre>
 
 If you need Unicode, use [nvi2](https://github.com/lichray/nvi2):
 
@@ -78,4 +89,5 @@ nvi-2.1.3p1-iconv: ok
 [.exrc](/openbsd/exrc),
 [`.profile`](/openbsd/profile),
 [.tmux.conf](/openbsd/tmux.conf),
+[Why vi Rocks](http://why-vi.rocks),
 [vi command help guide](http://www.jeffw.com/vi/vi_help.txt) by Jeff W.
