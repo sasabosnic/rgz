@@ -5,6 +5,7 @@ bind-key M-Return	terminal
 bind-key CM-1		group-only-1
 bind-key CM-2		group-only-2
 bind-key CM-3		group-only-3
+bind-key CMS-0		window-movetogroup-0
 bind-key CMS-1		window-movetogroup-1
 bind-key CMS-2		window-movetogroup-2
 bind-key CMS-3		window-movetogroup-3
@@ -37,6 +38,8 @@ color inactiveborder	"#000"
 fontname		"fixed:pixelsize=15"
 snapdist		20
 sticky			yes
+
+autogroup 0		"Firefox"
 
 command firefox		"firefox"
 command gimp		"gimp"
