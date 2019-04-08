@@ -13,6 +13,7 @@ pre u { color: #333; text-decoration: none; background-color: #c0e0ee; }
 pre i::before { content: "> "; color: #aaa; }
 pre strong { background-color: #0000cc; color: #fff; }
 pre { font-size: 15px; overflow-x: auto; color: #888; }
+p code { vertical-align: middle; padding: .125em .25em .05em .25em; font-size: .9em; border-radius: .25em; background-color: #fffceb; }
 
 
 a { background-color: transparent; }
