@@ -45,6 +45,7 @@ temp=$(mktemp -d)
 mkdir "$temp/dst"
 mkdir "$temp/src"
 cd "$temp/src" || exit 1
+echo '.' > "$temp/src/.ssgignore"
 mkdir .git 'a a' b c a 'a/a' 'a/_temp'
 touch 'a.jpeg' 'b/a.png' '_styles.css' '.gitignore' '_header.html'
 echo '<html>Title 0' > "0.html"
@@ -134,6 +135,7 @@ temp=$(mktemp -d)
 
 mkdir "$temp/src" "$temp/dst"
 
+echo '.' > "$temp/src/.ssgignore"
 echo 'Page 1' > "$temp/src/page1.html"
 mkdir "$temp/src/dir"
 echo '<h1>Page 5</h1>' > "$temp/src/dir/index.html"

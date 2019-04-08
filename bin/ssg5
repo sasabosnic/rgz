@@ -27,6 +27,14 @@ main() {
 	src=$(readlink_f "$1")
 	dst=$(readlink_f "$2")
 
+	IGNORE=$(
+		test -f "$src/.ssgignore" || echo ''
+		while read -r x
+		do
+			test -n "$x" || continue
+			printf ' ! -path "*/%s*"' "$x"
+		done < "$src/.ssgignore"
+	)
 
 	# files
 
@@ -131,34 +139,24 @@ no_dir() {
 	exit 2
 }
 
-
 list_dirs() {
-	cd "$1" &&
-	find . -type d \
-	! -name '.' ! -path '*/.*' ! -path '*/CVS/*' ! -path '*/_*'
+	cd "$1" && eval "find . -type d ! -name '.' ! -path '*/_*' $IGNORE"
 }
 
 
 list_files() {
-	cd "$1" &&
-	find . -type f \
-	! -name '.' ! -path '*/.*' ! -path '*/CVS/*' ! -path '*/_*'
+	cd "$1" && eval "find . -type f ! -name '.' ! -path '*/_*' $IGNORE"
 }
 
 
 list_dependant_files () {
-	cd "$1" &&
-	find . -type f \
-	! -name '.' ! -path '*/.*' ! -path '*/CVS/*' ! -path '*/_*' \
-	\( -name '*.html' -o -name '*.md' -o -name '*.css' -o -name '*.js' \)
+ 	exts="\\( -name '*.html' -o -name '*.md' -o -name '*.css' -o -name '*.js' \\)"
+	cd "$1" && eval "find . -type f ! -name '.' ! -path '*/_*' $IGNORE $exts"
 }
 
-
 list_newer_files() {
-	cd "$1" &&
-	find . -type f \
-	! -name '.' ! -path '*/.*' ! -path '*/CVS/*' \
-	-newer "$2"
+	# shellcheck disable=SC2086
+	cd "$1" && eval "find . -type f ! -name '.' $IGNORE -newer $2"
 }
 
 

@@ -5,19 +5,28 @@ not_found() { >&2 echo "${0##*/}: $1: No such directory"; exit 2; }
 [ -x "$(which entr)" ] || exit 2
 [ -n "$1" ] || usage
 
-name="$1"
-src="$HOME/src/$1"
-dst="/var/www/htdocs/$1"
+name="${1##*/}"
+src="$HOME/$1"
+dst="/var/www/htdocs/$name"
 title="$1"
-url="http://$1"
+url="http://$name"
 
 [ -d "$src" ] || not_found "$src"
 [ -d "$dst" ] || not_found "$dst"
 
-if tmux select-window -t "$name" 2>/dev/null
+IGNORE=$(
+	test -f "$src/.ssgignore" || echo ''
+	while read -r x
+	do
+		test -n "$x" || continue
+		printf ' ! -path "*/%s*"' "$x"
+	done < "$src/.ssgignore"
+)
+
+if tmux select-window -t "$1" 2>/dev/null
 then cd "$src" || exit
 else
-	tmux new-window -n "$name" -c "$src"
+	tmux new-window -n "$1" -c "$src"
 	tmux split-window -l 2 -d -c "$src" \
-	"while :; do cd $src;find . -type f ! -path '*/node_modules/*' ! -path '*/.*'|entr -d ssg3 '$src' '$dst' '$title' '$url'; done"
+	"while :; do cd $src;find . -type f $IGNORE |entr -d ssg5 '$src' '$dst' '$title' '$url'; done"
 fi
