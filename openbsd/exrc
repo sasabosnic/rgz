@@ -11,7 +11,7 @@ map gg 1G
 map gj :%!prettier --parser=typescript --write
 map go :%!gofmt
 map gp :r!xclip -o -selection clipboard
-map gqj {!}fmt -p}}{j
+map gqip {!}fmt -72 -s -p}}{j
 map gs {!}sort -u
 map gt mM:%s/[[:space:]]*$//`M
 set cedit=\

@@ -1,5 +1,4 @@
-#!/bin/sh
-set -x
+#!/bin/sh -x
 
 ln -fsh	"$HOME/src/rgz/bin"			"$HOME/bin"
 ln -fsh	"$HOME/prv/pass"			"$HOME/.pass"
@@ -9,8 +8,11 @@ ln -fs	"$HOME/src/rgz/openbsd/Xdefaults"	"$HOME/.Xdefaults"
 ln -fs	"$HOME/src/rgz/openbsd/cwmrc"		"$HOME/.cwmrc"
 ln -fs	"$HOME/src/rgz/openbsd/exrc"		"$HOME/.exrc"
 ln -fs	"$HOME/src/rgz/openbsd/gitconfig"	"$HOME/.gitconfig"
+ln -fs	"$HOME/src/rgz/openbsd/npmrc"		"$HOME/.npmrc"
+ln -fs	"$HOME/src/rgz/openbsd/prettierrc.json"	"$HOME/.prettierrc.json"
 ln -fs	"$HOME/src/rgz/openbsd/profile"		"$HOME/.profile"
 ln -fs	"$HOME/src/rgz/openbsd/tmux.conf"	"$HOME/.tmux.conf"
+ln -fs	"$HOME/src/rgz/openbsd/vimrc"		"$HOME/.vimrc"
 ln -fs	"$HOME/src/rgz/openbsd/xsession"	"$HOME/.xsession"
 
 mkdir -p "$HOME/.config/"
