@@ -241,10 +241,10 @@ highlight htmlItalic     ctermfg=7   ctermbg=NONE cterm=NONE
 highlight htmlItalicBold ctermfg=15  ctermbg=NONE cterm=bold
 highlight htmlBoldItalic ctermfg=15  ctermbg=NONE cterm=bold
 
-function! HighlightItem()
-  return synIDattr(synID(line('.'),col('.'),1),'name')
-endfunction
-set statusline=%{HighlightItem()}
+" function! HighlightItem()
+"   return synIDattr(synID(line('.'),col('.'),1),'name')
+" endfunction
+" set statusline=%{HighlightItem()}
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 

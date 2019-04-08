@@ -28,18 +28,16 @@ pass_export()	{ pass export	"$1"; }
 t()	{ tmux new -As 0; }
 
 c()	{ stmux 'conf'	'prv/conf'; }
-j()	{ stmux 'j'	'prv/j'		'vi my.journal'; }
+j()	{ stmux 'j'	'prv/j'		'vim my.journal'; }
 m()	{ stmux 'mus'	'pub/music'	'cmus'; }
 nb()	{ stmux 'nb'	'downloads'	'newsboat'; }
 v()	{ stmux 'v'	'prv/openvpn'	'doas openvpn --config default.ovpn'; }
 
-alias bsdj='sssg4 src/bsdj'
-alias high5='sssg4 src/high5'
-alias leto='sssg leto'
-alias oams='sssg4 src/oams'
-alias rgz='sssg4 src/rgz'
-alias rgzm='sssg4 prv/m'
-alias runbsd='sssg4 src/runbsd'
+alias bsdj='sssg src/bsdj'
+alias oams='sssg src/oams'
+alias rgz='sssg src/rgz'
+alias rgzm='sssg prv/m'
+alias runbsd='sssg src/runbsd'
 
 s_log()	{ test -n "$1" && { rsync -azcvP "$1:/var/www/logs/*" "$HOME/prv/logs/$1/$(date +%Y-%m-%d)/"; }; }
 
